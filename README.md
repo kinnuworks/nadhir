@@ -1,8 +1,10 @@
 # Nadhir
 
-**AI drafts the public warning. Cited rules and two people decide whether it goes out.**
+**For alerting authorities: AI drafts the public warning, and cited rules and two people decide whether it goes out.**
 
-Nadhir (نذير, "warner") is a pre-broadcast check for AI-drafted emergency alerts in CAP 1.2 (ITU-T X.1303bis), the format behind cell broadcast warnings such as UAE-Alert. Two AI agents draft and translate the alert, and the model can only propose text. Twelve deterministic rules decide whether it may go out, each quoting a public policy or an official investigation from a 43-source knowledge base. People approve, the alert is signed, and every step goes into a hash-chained log.
+Nadhir writes and checks emergency phone alerts. One AI agent drafts the alert and a second translates it into Arabic. Neither can send anything. Twelve fixed rules then check it, each quoting a public policy or an official investigation, and people approve before it is signed and released. The same rules, run on the real 2018 Hawaii missile alert, block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone.
+
+It works on CAP 1.2 (ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
 
 **Live demo:** https://nadhir-gilt.vercel.app (no sign-up)
 

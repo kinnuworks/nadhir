@@ -28,16 +28,39 @@ AI is starting to write warning text. The US National Weather Service publishes 
 
 ## 4. Mapping with ITU-T Y.3172, the Readiness 2.0 report and domain policies
 
-{{MAPPING_TABLE}}
+| Node | Use case (Nadhir) | Readiness 2.0 dimension | Documents (KB) |
+|---|---|---|---|
+| SRC | NCM hazard warnings and event reports, marked verified or unverified | D4 Contextualization (UAE bulletins in Arabic and English) | NCM warnings via WAM; WMO CAP guidance |
+| C | Inputs per event, operator-drawn target area, issuer register, prior alerts | D7 Strategy alignment (who may warn for what) | UAE issuer list (press); Seoul 2023 ministry statement |
+| PP | Draft to CAP 1.2 XML, schema check, cell broadcast page count per script | D13 Digital infrastructure | CAP 1.2 / X.1303bis and XSD; 3GPP TS 23.041, 23.038; TDRA TS040 summary |
+| M | Drafter and Translator agents (hosted LLM); propose only, every answer recorded | D8 Collaboration with AI | ITU ESTR.AICNHM; MHEWS report 2026 |
+| P | 12 deterministic rules, each citing a source; block or hold | D10 AI policy and policy for AI | FCC Hawaii report; FCC DA 25-12; UAE AI Charter |
+| D | Two named approvers, approver roles and AI involvement written in, XML signature, final check | D8 Collaboration with AI | FCC Hawaii report; CAP 1.2 §3.3.4.1; proposed profile |
+| SINK | Signed alert to a cell broadcast centre stub; hash-chained audit log | D13 Digital infrastructure | TDRA cell broadcast spec (2017) |
+| MLFO / sandbox | Orchestrator with gate-feedback redrafts; replay bench of real failures, demo keys and zones | D7, D10 | ITU-T Y.3172 |
 
 ## 5. Error scenarios
 
-{{SCENARIOS}}
+Each scenario follows the template's steps: deployed, problem noticed, handled under rules in the KB. The first four replay real failures; the answer key is the official finding.
+
+1. **A drill goes out live (Hawaii, 2018).** Step 1: an internal drill message says "EXERCISE" and "this is not a drill". Step 2: one officer sends it as a live statewide missile alert. Step 3: the gate blocks it on R2 (the event is an exercise, the alert says Actual) and R1 (one approver for an extreme alert). The 38-minute correction was a new alert with no link to the false one; R10 holds it. All three match the FCC's recommendations. Given the same drill input, the AI drafter kept it marked as an exercise.
+2. **The wrong area (Los Angeles, 2025; Japan, 2022).** The fire polygon was never saved, so the alert held only the county code and went to the whole county. In Japan, the alert also went to Tokyo's islands. R3 (area sent = area requested, drawn for this event) blocks both.
+3. **Controversy: who may warn (Seoul, 2023).** The ministry alerted two islands and told "areas that did not receive the alert" to issue their own. Seoul read that as itself and alerted the whole city. The ministry called it an error; the mayor called it an over-reaction, not an error. The gate does not settle the dispute. It holds the city's alert under R4 because a higher authority's active alert covers a different area, and escalates to that authority. Given the same ambiguous instruction, the AI drafter also produced an alert the city may not send, and the gate held it the same way.
+4. **An intruder (Brazil, 2026).** "Extreme" alerts were sent by someone outside the national civil defence system. R5 (registered signing key) and R4 (registered sender) block it. If the intruder held the platform's own key, R5 would not catch it; R1 (two named approvers) would.
+5. **AI translation in the UAE (our scenarios, real NCM warnings).** In all 12 runs the translator machine-translated the Arabic. Without the gate it would have gone to phones unreviewed. With the gate each alert waited for a named Arabic reader (R9). Every draft also exceeded the one-page handset advice (5 to 6 Arabic pages), which the gate reports as a warning (R6) and which we raise as gap G6.
 
 **Judges' own scenario.** On the live demo, a judge can type any event (verified or not), pick a zone, mark it as a drill, and watch the agents and gate respond. A judge can also paste any real CAP alert into the checker.
 
 ## 6. Policy gaps and standards gaps
 
-{{GAPS}}
+Seven gaps, each with sources and a global example in docs/gaps.md:
+
+1. **G1, standards (SG17):** CAP / X.1303bis has no field for AI involvement or a named approver. In 1,711 live alerts from 8 feeds, none records either. We propose five registered parameters, signed with the alert (draft profile in the repo).
+2. **G2, UAE policy:** no public rule on who approves an AI-drafted public alert; the UAE AI Charter states principles only. Global example: the FCC's two-person recommendation after Hawaii.
+3. **G3, UAE policy:** no rule on machine translation of alerts. The US is split: the FCC refuses it for phone alerts and publishes vetted templates in 13 languages, while the National Weather Service uses AI translation.
+4. **G4, UAE policy:** no public CAP feed on the WMO Register of Alerting Authorities (record dated 2013). Saudi Arabia, Qatar and Kuwait publish live feeds.
+5. **G5, international norm:** no norm on correcting false alerts (link to the original, same channels, same area) or publishing an after-action note. 3 of 1,000 recent US alerts cancelled earlier alerts without a link.
+6. **G6, standards:** vetted multilingual templates are written for a 360-character US limit, not cell broadcast pages. The FCC Arabic dust storm template is 10 pages in UCS-2; the UAE handset summary says 1 page.
+7. **G7, standards:** CAP status vs US test practice. 246 of 1,000 US alerts marked "Actual" carry a test event code.
 
 **Limits.** Replays are rebuilt from public reports. Where the record is silent, we assume the alert was fine. Three incidents rest on press reports of official statements. The UAE handset rules come from a compliance firm's summary. The demo issuer, zones and keys are stand-ins. One model plays both agents.
