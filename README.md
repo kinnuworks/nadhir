@@ -2,7 +2,7 @@
 
 **AI drafts the public warning. Cited rules and two people decide whether it goes out.**
 
-Nadhir (نذير, "warner") is a pre-broadcast check for AI-drafted emergency alerts in CAP 1.2 (ITU-T X.1303bis), the format behind cell broadcast warnings such as UAE-Alert. Two AI agents draft and translate the alert. The model never decides. Twelve deterministic rules decide, each one quoting a public policy or an official investigation from a 43-source knowledge base. A person approves, the alert is signed, and every step goes into a hash-chained log.
+Nadhir (نذير, "warner") is a pre-broadcast check for AI-drafted emergency alerts in CAP 1.2 (ITU-T X.1303bis), the format behind cell broadcast warnings such as UAE-Alert. Two AI agents draft and translate the alert, and the model can only propose text. Twelve deterministic rules decide whether it may go out, each quoting a public policy or an official investigation from a 43-source knowledge base. People approve, the alert is signed, and every step goes into a hash-chained log.
 
 **Live demo:** https://nadhir-gilt.vercel.app (no sign-up)
 
@@ -13,7 +13,9 @@ Nadhir (نذير, "warner") is a pre-broadcast check for AI-drafted emergency al
 
 ## What it found
 
-**Replays of real alert failures.** We rebuilt six real public alert failures from published reports and ran each message through the gate as it was actually sent. Our answer key is each investigator's or authority's own finding, not ours.
+### Replays of real alert failures
+
+We rebuilt six real public alert failures from published reports and ran each message through the gate as it was actually sent. The answer key for each replay is the investigator's or authority's own published finding.
 
 | Real failure | Answer key | Rules that fired on the real message | Rule the finding points to |
 |---|---|---|---|
@@ -26,17 +28,24 @@ Nadhir (نذير, "warner") is a pre-broadcast check for AI-drafted emergency al
 
 In every replay, the rule the official finding points to fired on the real message (6 of 6). Seoul's evidence is the ministry's own public correction, quoted in the press. India's is press reporting only.
 
-The rules were written with these findings in hand, so this shows the rules encode the findings. It is not an independent test. For that, see the next result.
+We wrote the rules with these findings in hand, so the table shows that the rules encode the findings. The next result is the independent test.
 
-**The gate on 1,000 real routine alerts.** We ran the context-free rules (R0, R2, R6, R10) over the 1,000 most recent US IPAWS alerts. It would hold 5 of them: 3 cancellations sent as brand-new alerts with no `<references>` to the alert they cancel (R10, the same pattern as Hawaii's correction), and 2 test messages sent with status Actual (R2). Our first run also flagged 119 scheduled US EAS tests, which go out as "Actual" by US convention. We then added a narrow exemption for them and say so here.
+### The gate on 1,000 real routine alerts
 
-**What real alerts record today.** We read 1,711 live alerts from 8 public feeds (US IPAWS, Canada, Australia, Saudi Arabia, Qatar, Kuwait) on 8 Nov 2026. None records that AI or machine translation was involved, and none records an approval. The only approver-like field is one US vendor's `UserName` login parameter, in 17 alerts. The UAE lists no public feed on the WMO Register of Alerting Authorities. Details: [`audit/`](audit/README.md).
+We ran the context-free rules (R0, R2, R6, R10) over the 1,000 most recent US IPAWS alerts. It would hold 5 of them: 3 cancellations sent as brand-new alerts with no `<references>` to the alert they cancel (R10, the same pattern as Hawaii's correction), and 2 test messages sent with status Actual (R2). Our first run also flagged 119 scheduled US EAS tests, which go out as "Actual" by US convention, so we added a narrow exemption for them after that run.
 
-**AI on the same inputs.** We gave the drafter the same inputs in 5 of the replays, plus 4 UAE scenarios built on real NCM warnings, run 3 times each.
+### What real alerts record today
+
+We read 1,711 live alerts from 8 public feeds (US IPAWS, Canada, Australia, Saudi Arabia, Qatar, Kuwait) on 8 Nov 2026. None records that AI or machine translation was involved, and none records an approval. The only approver-like field is one US vendor's `UserName` login parameter, in 17 alerts. The UAE lists no public feed on the WMO Register of Alerting Authorities. Details: [`audit/`](audit/README.md).
+
+### AI on the same inputs
+
+We gave the drafter the same inputs in 5 of the replays, plus 4 UAE scenarios built on real NCM warnings, run 3 times each.
 - Its first drafts broke no content rule in any of the 12 UAE runs. It left the unverified dam rumour out in 3 of 3, and it kept the drill marked as an exercise in 3 of 3.
 - In all 12 runs it machine-translated the Arabic instead of using the FCC's vetted template. Without the gate, unreviewed machine Arabic would have gone to phones 12 times. With it, every one waited for a named Arabic reader (R9).
 - Every draft was longer than the one-page advice in the UAE handset spec summary: 2 to 3 pages in English and 5 to 6 in Arabic (R6, warning only).
 - In the Seoul replay, the drafter read the ministry's ambiguous instruction and drafted an alert for the islands, which the city may not issue. The gate held it for escalation (R4).
+
 So the gate's work on AI-written alerts here is mostly holding them for people: reviewers, two approvers, escalation. Invented content was not the main risk in these runs.
 
 ## The gaps
@@ -49,7 +58,7 @@ The full list, with sources and global examples, is in [docs/gaps.md](docs/gaps.
 4. **The UAE lists no public CAP feed** on the WMO Register of Alerting Authorities. Saudi Arabia, Qatar and Kuwait do.
 5. **No international norm for correcting false alerts.** Hawaii's correction took 38 minutes and was not linked to the false alert.
 6. **Vetted templates don't fit cell broadcast.** The FCC's Arabic dust storm template is 10 cell broadcast pages long. The UAE handset spec summary says 1 page.
-7. **CAP status and US test practice conflict.** 246 of 1,000 US alerts marked "Actual" were scheduled tests.
+7. **CAP status and US test practice conflict.** 246 of 1,000 US alerts marked "Actual" carried a test event code.
 
 ## How it works
 
@@ -94,12 +103,12 @@ CI runs all of this on every push.
 ## Limits
 
 - Replays are rebuilt from public reports, not the original systems. Fields the reports don't give are marked as reconstructed in each incident file. Wherever the record is silent (signature, number of approvers), the replay assumes the alert was fine, so the gate gets no credit it hasn't earned.
-- Three incidents (J-Alert, Seoul, India) rest on press reports of official statements. Brazil's official note is quoted, but no investigation report is public.
+- Seoul rests on the ministry's statement as quoted in the press, and India on press reports only. J-Alert's official finding is a government white paper, but the detail that the area came from old drill data is press only. Brazil's official note is quoted, but no investigation report is public.
 - The UAE handset rules (Arabic and English, one page) come from a compliance firm's summary of the TDRA spec, not the spec itself.
 - The issuer, target zones and signing keys in the demo are stand-ins. Nothing here connects to a real broadcast system.
 - In replays the approvals are scripted and labelled as such. In the live demo, a person clicks.
 - R11 is a surface check. It catches invented numbers, hazard words and listed place names, not every wrong claim.
-- One model (claude-opus-5-5) plays both agents. Recorded answers make every run replayable, but a fresh run can differ.
+- One hosted language model plays both agents (set with `NADHIR_MODEL`). Recorded answers make every run replayable, but a fresh run can differ.
 - If an intruder controls an issuer's own signing key, R5 cannot tell. The two-person rule is the backstop.
 
 ## Repository
