@@ -1,0 +1,597 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>urn:oid:2.49.0.1.124.1303503953.2026</identifier>
+    <sender>cap-pac@canada.ca</sender>
+    <sent>2026-11-08T03:20:41-00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <source>Env. Can. - Can. Met. Ctr. – Montréal</source>
+    <scope>Public</scope>
+    <code>profile:CAP-CP:0.4</code>
+    <code>layer:SOREM:1.0</code>
+    <code>layer:EC-MSC-SMC:1.0</code>
+    <code>layer:EC-MSC-SMC:1.1</code>
+    <code>layer:SOREM:2.0</code>
+    <note>Service Notice – October 2026: The Environment and Climate Change Canada (ECCC) CAP Service undergoes changes from time to time as the business of alerting evolves. For Fall 2026, changes are expected to include... 1) Coastal flooding alerts will start to be issued in Northern Ontario (along the Hudson Bay/James Bay coast) and in Northern Quebec, 2) Time zones will be updated for Yukon, British Columbia, Alberta, Manitoba and Northwest Territories following the changes that are happening in Western Canada, 3) A new parameter will be available to represent the risk-colour of the alert in its previous state, 4) The event values are updated for the following alert types: Tropical Cyclone Statement, Marine Weather Advisory, Coastal Flooding Warning, and Coastal Flooding Statement, 5) the ECCC Signature Certificate of the CAP posted in Pelmorex NAADS feed is getting an update by end of November, 2026 and 6) other minor improvements and corrections. For more information on these changes: https://comm.collab.science.gc.ca/mailman3/hyperkitty/list/dd_info@comm.collab.science.gc.ca/ | Notification de service – octobre 2026: Le service du PAC d’Environnement et Changement climatique Canada (ECCC) subit périodiquement des changements à mesure que le système d’alerte évolue. Pour l’automne 2026, il y aura des changements incluant... 1) Des alertes de submersion côtière commenceront à être émises dans le nord de l’Ontario (le long des côtes de la baie d’Hudson et de la baie James) ainsi que dans le nord du Québec, 2) Les fuseaux horaires seront mis à jour pour le Yukon, la Colombie-Britannique, l’Alberta, le Manitoba et les Territoires du Nord-Ouest afin de tenir compte des changements qui ont lieu dans l’Ouest canadien, 3) Un nouveau paramètre sera disponible afin de représenter la couleur de risque de l’alerte dans son état précédent, 4) Les valeurs d’événement seront mises à jour pour les types d’alertes suivants : bulletin sur les cyclones tropicaux, avis météorologique maritime, avertissement de submersion côtière et bulletin de submersion côtière, 5) Le certificat de signature d’ECCC pour le PAC, publié dans le flux NAADS de Pelmorex, sera mis à jour d’ici la fin novembre 2026 et 6) d’autres améliorations et corrections mineures. Pour plus d’informations sur ces changements: https://comm.collab.science.gc.ca/mailman3/hyperkitty/list/dd_info@comm.collab.science.gc.ca/</note>
+    <references>cap-pac@canada.ca,urn:oid:2.49.0.1.124.2501693914.2026,2026-11-08T01:31:45-00:00</references>
+    <info>
+        <language>en-CA</language>
+        <category>Met</category>
+        <event>fog</event>
+        <responseType>Monitor</responseType>
+        <urgency>Future</urgency>
+        <severity>Moderate</severity>
+        <certainty>Likely</certainty>
+        <audience>general public</audience>
+        <eventCode>
+            <valueName>profile:CAP-CP:Event:0.4</valueName>
+            <value>other</value>
+        </eventCode>
+        <effective>2026-11-08T03:20:41-00:00</effective>
+        <onset>2026-11-08T03:19:00-00:00</onset>
+        <expires>2026-11-08T17:52:41-00:00</expires>
+        <senderName>Environment Canada</senderName>
+        <headline>yellow advisory - fog - in effect</headline>
+        <description>
+Near-zero visibility in fog is expected.
+
+Dense fog is currently affecting the community of Fort Chipewyan, and sections of the Northwest Territories.
+
+Visibility will improve Sunday morning as winds increase from the southeast.
+
+###
+
+Visibility will likely be suddenly reduced at times.
+
+Fog advisories are issued when widespread poor visibility in fog is expected.
+
+Please continue to monitor alerts and forecasts issued by Environment Canada. To report severe weather, send an email to ABstorm@ec.gc.ca, call 1-800-239-0484 or post reports on social media using #ABStorm.
+</description>
+        <instruction />
+        <web>https://weather.gc.ca/</web>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Type</valueName>
+            <value>advisory</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Broadcast_Intrusive</valueName>
+            <value>no</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Parent_URI</valueName>
+            <value>msc/alert/environment/hazard/alert-3.0-ascii/consolidated-xml-2.0/20261108031949622/WO_16_76_CWWG/FGA/12835846329002009202611080519_WO_16_76_CWWG/actual/en_proper_complete_c-fr_proper_complete_c/NinJo</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:CAP_count</valueName>
+            <value>A:24621 M:126098 C:145417</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Name</valueName>
+            <value>yellow advisory - fog</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Coverage</valueName>
+            <value>Northern Alberta</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Designation_Code</valueName>
+            <value>WO_16_76_CWWG</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Event_End_Time</valueName>
+            <value>2026-11-08T15:52:00.000Z</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Risk_Tiered_Ranking</valueName>
+            <value>8</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Impact</valueName>
+            <value>moderate</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Confidence</valueName>
+            <value>high</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Colour</valueName>
+            <value>yellow</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Previous_Colour</valueName>
+            <value>yellow</value>
+        </parameter>
+        <area>
+            <areaDesc>Wood Buffalo Nat. Park west of the Fifth Meridian</areaDesc>
+            <polygon>59.475,-114 59.4609,-114.7395 59.4759,-115.5532 59.6481,-115.553 59.6483,-115.5576 59.6489,-115.5692 59.8176,-115.586 59.9981,-115.5673 60.0054,-115.1365 59.9983,-114.6026 60.0029,-114.2977 59.9985,-114.001 59.475,-114</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079111</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Wood Buffalo Nat. Park near Hay Camp and Ninishith Hills</areaDesc>
+            <polygon>59.4744,-111.5721 59.4738,-112.5922 59.475,-114 59.9985,-114.001 60.0115,-113.2078 60.0022,-112.5214 60.0091,-112.1655 59.8686,-111.8905 59.878,-111.4898 59.7337,-111.3879 59.6393,-111.2965 59.4743,-111.3304 59.4739,-111.4493 59.4739,-111.4654 59.4744,-111.5721</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079112</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Wood Buffalo Nat. Park near Garden River and Thebacha Trail</areaDesc>
+            <polygon>58.0784,-112.4909 58.0626,-113.193 58.0812,-113.9999 58.1709,-114.0146 58.253,-114 58.5197,-114.0162 58.7762,-113.9999 59.1355,-114.0476 59.475,-114 59.4738,-112.5922 59.2997,-112.5922 59.2997,-112.5773 59.2997,-112.5648 58.9509,-112.5648 58.9509,-112.5479 58.9509,-112.5391 58.602,-112.5391 58.602,-112.5191 58.602,-112.5139 58.2531,-112.5139 58.2531,-112.4909 58.0784,-112.4909</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079113</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Wood Buffalo Nat. Park near Peace Point and Lake Claire</areaDesc>
+            <polygon>58.7917,-111.2424 58.6889,-111.2106 58.6893,-111.1372 58.6902,-110.9651 58.6102,-110.9444 58.5305,-111.0769 58.4172,-111.4481 58.3083,-111.4207 58.1864,-111.286 58.0855,-111.2932 58.0845,-111.49 58.0823,-111.8279 58.0691,-112.1505 58.0784,-112.4909 58.2531,-112.4909 58.2531,-112.5139 58.602,-112.5139 58.602,-112.5191 58.602,-112.5391 58.9509,-112.5391 58.9509,-112.5479 58.9509,-112.5648 59.2997,-112.5648 59.2997,-112.5773 59.2997,-112.5922 59.4738,-112.5922 59.4744,-111.5721 59.4739,-111.4654 59.4739,-111.4493 59.4743,-111.3304 59.4151,-111.3556 59.2998,-111.3105 59.2814,-111.3033 59.2519,-111.3556 59.2162,-111.265 59.0969,-111.3297 59.0235,-111.306 58.9914,-111.2306 58.947,-111.1046 58.888,-111.0911 58.8424,-111.1667 58.8013,-111.174 58.7928,-111.2427 58.7917,-111.2424</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079114</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>R.M. of Wood Buffalo near Namur River and Namur Lake Reserves</areaDesc>
+            <polygon>57.2935,-111.7932 57.2941,-112.7677 57.295,-113.0931 57.383,-113.0935 57.3667,-113.5756 57.3812,-114 57.7352,-114.0438 58.0812,-113.9999 58.0939,-113.1879 58.0784,-112.4909 58.0906,-112.1538 58.0823,-111.8279 57.9042,-111.8279 57.9042,-111.8106 57.5552,-111.8106 57.5549,-111.7931 57.2935,-111.7932</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079121</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816857</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816858</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>R.M. of Wood Buffalo near Clausen's Landing and Chipewyan 201FG</areaDesc>
+            <polygon>57.2926,-110.0058 57.2935,-111.7932 57.5549,-111.7931 57.5552,-111.8106 57.9042,-111.8106 57.9042,-111.8279 58.0823,-111.8279 58.0845,-111.49 58.0855,-111.2932 58.0851,-110.006 57.7471,-109.9779 57.409,-110.0059 57.3555,-109.9973 57.2926,-110.0058</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079122</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>R.M. of Wood Buffalo near Old Fort Chipewyan 201 and 201ABCDE</areaDesc>
+            <polygon>58.6892,-110.0061 58.5488,-109.9875 58.3999,-110.006 58.2437,-109.9887 58.0851,-110.006 58.0855,-111.2932 58.0845,-111.49 58.1645,-111.4573 58.1925,-111.5336 58.4507,-111.6629 58.5021,-111.5884 58.608,-111.1995 58.6398,-111.134 58.6893,-111.1372 58.6902,-110.9651 58.6909,-110.817 58.6462,-110.4637 58.6904,-110.3539 58.6892,-110.0061</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079123</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816831</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816849</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>R.M. of Wood Buffalo near Fitzgerald and La Butte Creek</areaDesc>
+            <polygon>59.9993,-110.875 59.2996,-110.873 59.2998,-111.3105 59.2996,-111.4296 59.3001,-111.5303 59.4489,-111.5809 59.4744,-111.5721 59.6146,-111.5237 59.6907,-111.6035 59.7754,-111.623 59.7646,-112.0069 59.9989,-112.5128 59.9991,-112.1589 60.0064,-111.511 59.9993,-110.875</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079131</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816860</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816861</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>R.M. of Wood Buffalo near Colin-Cornwall Lakes Prov. Park</areaDesc>
+            <polygon>59.3009,-110.0061 59.2996,-110.0302 59.2872,-110.4 59.2996,-110.873 59.9993,-110.875 60.0022,-110.584 59.9994,-110.3064 59.9994,-110.2836 59.9994,-110.2226 59.9994,-110.2097 59.9994,-110.1527 59.9994,-110.124 59.9994,-110.084 59.9994,-110.0301 59.9994,-110.0063 59.6384,-109.9709 59.3009,-110.0061</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079132</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816855</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>R.M. of Wood Buffalo near Fort Chipewyan and Sand Point</areaDesc>
+            <polygon>58.6892,-110.0061 58.6904,-110.3539 58.6462,-110.4637 58.6909,-110.817 58.6902,-110.9651 58.6893,-111.1372 58.6889,-111.2106 58.7917,-111.2424 58.7687,-111.3197 58.8007,-111.3626 58.8941,-111.2961 58.9948,-111.5063 59.0984,-111.5259 59.1881,-111.4831 59.2156,-111.5926 59.284,-111.5817 59.3001,-111.5303 59.2996,-111.4296 59.2998,-111.3105 59.2996,-110.873 59.3087,-110.3944 59.3009,-110.0061 59.0003,-109.9836 58.6892,-110.0061</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079133</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816850</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816852</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>fr-CA</language>
+        <category>Met</category>
+        <event>brouillard</event>
+        <responseType>Monitor</responseType>
+        <urgency>Future</urgency>
+        <severity>Moderate</severity>
+        <certainty>Likely</certainty>
+        <audience>grand public</audience>
+        <eventCode>
+            <valueName>profile:CAP-CP:Event:0.4</valueName>
+            <value>other</value>
+        </eventCode>
+        <effective>2026-11-08T03:20:41-00:00</effective>
+        <onset>2026-11-08T03:19:00-00:00</onset>
+        <expires>2026-11-08T17:52:41-00:00</expires>
+        <senderName>Environnement Canada</senderName>
+        <headline>avis jaune - brouillard - en vigueur</headline>
+        <description>
+La visibilité sera presque nulle dans le brouillard. 
+
+Le brouillard dense touche actuellement la collectivité de Fort Chipewyan et certaines parties des Territoires du Nord-Ouest.
+
+La visibilité s'améliorera dimanche matin à mesure que les vents augmenteront d'intensité du sud-est.
+
+###
+
+Une visibilité soudainement réduite par moments est à prévoir.
+
+Un avis de brouillard est émis lorsqu'une mauvaise visibilité généralisée due au brouillard est prévue.
+
+Veuillez continuer à surveiller les alertes et les prévisions émises par Environnement Canada. Pour signaler du temps violent, envoyez un courriel à meteoAB@ec.gc.ca, appelez au 1-800-239-0484 ou publiez un message sur les réseaux sociaux en utilisant #ABMeteo.
+</description>
+        <instruction />
+        <web>https://meteo.gc.ca/</web>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Type</valueName>
+            <value>advisory</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Broadcast_Intrusive</valueName>
+            <value>no</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Parent_URI</valueName>
+            <value>msc/alert/environment/hazard/alert-3.0-ascii/consolidated-xml-2.0/20261108031949622/WO_16_76_CWWG/FGA/12835846329002009202611080519_WO_16_76_CWWG/actual/en_proper_complete_c-fr_proper_complete_c/NinJo</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:CAP_count</valueName>
+            <value>A:24621 M:126098 C:145417</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Name</valueName>
+            <value>avis jaune - brouillard</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Coverage</valueName>
+            <value>nord de l'Alberta</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Designation_Code</valueName>
+            <value>WO_16_76_CWWG</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Event_End_Time</valueName>
+            <value>2026-11-08T15:52:00.000Z</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Risk_Tiered_Ranking</valueName>
+            <value>8</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Impact</valueName>
+            <value>modéré</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Confidence</valueName>
+            <value>élevée</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Colour</valueName>
+            <value>jaune</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Previous_Colour</valueName>
+            <value>jaune</value>
+        </parameter>
+        <area>
+            <areaDesc>parc nat. Wood Buffalo à l'ouest du cinquième méridien</areaDesc>
+            <polygon>59.475,-114 59.4609,-114.7395 59.4759,-115.5532 59.6481,-115.553 59.6483,-115.5576 59.6489,-115.5692 59.8176,-115.586 59.9981,-115.5673 60.0054,-115.1365 59.9983,-114.6026 60.0029,-114.2977 59.9985,-114.001 59.475,-114</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079111</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>parc nat. Wood Buffalo près de Hay Camp et de la coll. Ninishith</areaDesc>
+            <polygon>59.4744,-111.5721 59.4738,-112.5922 59.475,-114 59.9985,-114.001 60.0115,-113.2078 60.0022,-112.5214 60.0091,-112.1655 59.8686,-111.8905 59.878,-111.4898 59.7337,-111.3879 59.6393,-111.2965 59.4743,-111.3304 59.4739,-111.4493 59.4739,-111.4654 59.4744,-111.5721</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079112</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>parc nat. Wood Buffalo près de Garden River et de la piste Thebacha</areaDesc>
+            <polygon>58.0784,-112.4909 58.0626,-113.193 58.0812,-113.9999 58.1709,-114.0146 58.253,-114 58.5197,-114.0162 58.7762,-113.9999 59.1355,-114.0476 59.475,-114 59.4738,-112.5922 59.2997,-112.5922 59.2997,-112.5773 59.2997,-112.5648 58.9509,-112.5648 58.9509,-112.5479 58.9509,-112.5391 58.602,-112.5391 58.602,-112.5191 58.602,-112.5139 58.2531,-112.5139 58.2531,-112.4909 58.0784,-112.4909</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079113</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>parc nat. Wood Buffalo près de Peace Point et du lac Claire</areaDesc>
+            <polygon>58.7917,-111.2424 58.6889,-111.2106 58.6893,-111.1372 58.6902,-110.9651 58.6102,-110.9444 58.5305,-111.0769 58.4172,-111.4481 58.3083,-111.4207 58.1864,-111.286 58.0855,-111.2932 58.0845,-111.49 58.0823,-111.8279 58.0691,-112.1505 58.0784,-112.4909 58.2531,-112.4909 58.2531,-112.5139 58.602,-112.5139 58.602,-112.5191 58.602,-112.5391 58.9509,-112.5391 58.9509,-112.5479 58.9509,-112.5648 59.2997,-112.5648 59.2997,-112.5773 59.2997,-112.5922 59.4738,-112.5922 59.4744,-111.5721 59.4739,-111.4654 59.4739,-111.4493 59.4743,-111.3304 59.4151,-111.3556 59.2998,-111.3105 59.2814,-111.3033 59.2519,-111.3556 59.2162,-111.265 59.0969,-111.3297 59.0235,-111.306 58.9914,-111.2306 58.947,-111.1046 58.888,-111.0911 58.8424,-111.1667 58.8013,-111.174 58.7928,-111.2427 58.7917,-111.2424</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079114</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816051</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>m.r. de Wood Buffalo près des rés. ind. Namur River et Namur Lake</areaDesc>
+            <polygon>57.2935,-111.7932 57.2941,-112.7677 57.295,-113.0931 57.383,-113.0935 57.3667,-113.5756 57.3812,-114 57.7352,-114.0438 58.0812,-113.9999 58.0939,-113.1879 58.0784,-112.4909 58.0906,-112.1538 58.0823,-111.8279 57.9042,-111.8279 57.9042,-111.8106 57.5552,-111.8106 57.5549,-111.7931 57.2935,-111.7932</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079121</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816857</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816858</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>m.r. de Wood Buffalo près de Clausen's Landing et Chipewyan 201FG</areaDesc>
+            <polygon>57.2926,-110.0058 57.2935,-111.7932 57.5549,-111.7931 57.5552,-111.8106 57.9042,-111.8106 57.9042,-111.8279 58.0823,-111.8279 58.0845,-111.49 58.0855,-111.2932 58.0851,-110.006 57.7471,-109.9779 57.409,-110.0059 57.3555,-109.9973 57.2926,-110.0058</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079122</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>m.r. de Wood Buffalo près d'Old Fort Chipewyan 201 et 201ABCDE</areaDesc>
+            <polygon>58.6892,-110.0061 58.5488,-109.9875 58.3999,-110.006 58.2437,-109.9887 58.0851,-110.006 58.0855,-111.2932 58.0845,-111.49 58.1645,-111.4573 58.1925,-111.5336 58.4507,-111.6629 58.5021,-111.5884 58.608,-111.1995 58.6398,-111.134 58.6893,-111.1372 58.6902,-110.9651 58.6909,-110.817 58.6462,-110.4637 58.6904,-110.3539 58.6892,-110.0061</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079123</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816831</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816849</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>m.r. de Wood Buffalo près de Fitzgerald et de la crique La Butte</areaDesc>
+            <polygon>59.9993,-110.875 59.2996,-110.873 59.2998,-111.3105 59.2996,-111.4296 59.3001,-111.5303 59.4489,-111.5809 59.4744,-111.5721 59.6146,-111.5237 59.6907,-111.6035 59.7754,-111.623 59.7646,-112.0069 59.9989,-112.5128 59.9991,-112.1589 60.0064,-111.511 59.9993,-110.875</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079131</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816860</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816861</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>m.r. de Wood Buffalo près du Colin-Cornwall Lakes Prov. Park</areaDesc>
+            <polygon>59.3009,-110.0061 59.2996,-110.0302 59.2872,-110.4 59.2996,-110.873 59.9993,-110.875 60.0022,-110.584 59.9994,-110.3064 59.9994,-110.2836 59.9994,-110.2226 59.9994,-110.2097 59.9994,-110.1527 59.9994,-110.124 59.9994,-110.084 59.9994,-110.0301 59.9994,-110.0063 59.6384,-109.9709 59.3009,-110.0061</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079132</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816855</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>m.r. de Wood Buffalo près de Fort Chipewyan et de la pointe Sand</areaDesc>
+            <polygon>58.6892,-110.0061 58.6904,-110.3539 58.6462,-110.4637 58.6909,-110.817 58.6902,-110.9651 58.6893,-111.1372 58.6889,-111.2106 58.7917,-111.2424 58.7687,-111.3197 58.8007,-111.3626 58.8941,-111.2961 58.9948,-111.5063 59.0984,-111.5259 59.1881,-111.4831 59.2156,-111.5926 59.284,-111.5817 59.3001,-111.5303 59.2996,-111.4296 59.2998,-111.3105 59.2996,-110.873 59.3087,-110.3944 59.3009,-110.0061 59.0003,-109.9836 58.6892,-110.0061</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>079133</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816037</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816850</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>4816852</value>
+            </geocode>
+        </area>
+    </info>
+<Signature Id="NAADS Signature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>7A1TBaxxrEt+qV6xiLXEx8wyISeJoyKjMi7UoZ/kIgo=</DigestValue></Reference></SignedInfo><SignatureValue>Ka5adt8txG3vSG0Fe+m6d8bB5DYxvSspljZlfj8hpOCZhPEdfSji4A1TImDU/ql61zQMFIddJs3k70guxbSG/fa4U7p+A4L7YPGC9SxqTKC0qbqTVwAeL326SFWnSmlNWKvyFYAQAmFJFLDLZaYcbvU6t8uU0MNJUpRdBJ+Qt3voGs+QVOt5cM9xwLpOw4JV3EOsZFOpuVuwxLPnzrSvdaJ0xSxgw0AO6wE+15iX9CIn6TLTDuAg3aUV9AR7DlHIOiZ/gl0kbXi1rtsEBRRz/jEeadzFkK4QJ1salQcLCthI0t+dfnL6IWccs9+vnNIig5p7TV7aQ/HUa/vOhLROGA==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object xmlns=""><SignatureProperties><SignatureProperty Id="NAADS-DSS1" Target="https://dss1.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty><SignatureProperty Id="NAADS-DSS2" Target="https://dss2.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty></SignatureProperties></Object></Signature><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="Environment Canada">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+<DigestValue>7A1TBaxxrEt+qV6xiLXEx8wyISeJoyKjMi7UoZ/kIgo=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>DHtf/g9rm+udoywYlb0lQvcgtHgptuFhr5HGd4+DUMa6TmtPcX8RiIfzAvkkceGK
+B3Zg7BU8EqniOpJHOVIuSj/aYC6bZ1zhJnQoPQ3Xu8ER1G5zQBloAZXdOIkZ/Jpz
+NazPZroXQqJ13uVyHGKizU4oMZhp2gDozyx8nLZEb98VqDBAopGobtY8VfHOAnB4
+YzPvEEtIM6Fk8AQNsGck9yZXOdYu6xkfbTFY5QpeqG3G50liQfUGj7td7AOvhppJ
+k7IIRl4o/RdiF6HWBuKwx23MW5RZnkOS/FQY13WyVcGeJLcgmb2kj/Hv5X12bvvD
+xls28gLTOVw4vPtmHvXvEA==</SignatureValue>
+<KeyInfo>
+<X509Data>
+<X509Certificate>MIIHDDCCBfSgAwIBAgIQM2dJyev0XEPJoQlSaOQgYDANBgkqhkiG9w0BAQsFADCB
+ujELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUVudHJ1c3QsIEluYy4xKDAmBgNVBAsT
+H1NlZSB3d3cuZW50cnVzdC5uZXQvbGVnYWwtdGVybXMxOTA3BgNVBAsTMChjKSAy
+MDEyIEVudHJ1c3QsIEluYy4gLSBmb3IgYXV0aG9yaXplZCB1c2Ugb25seTEuMCwG
+A1UEAxMlRW50cnVzdCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSAtIEwxSzAeFw0y
+NDA0MTkwOTQ3MDZaFw0yNTA1MTkwOTQ3MDRaMGwxCzAJBgNVBAYTAkNBMQ8wDQYD
+VQQIEwZRdWViZWMxETAPBgNVBAcTCEdhdGluZWF1MR8wHQYDVQQKExZTaGFyZWQg
+U2VydmljZXMgQ2FuYWRhMRgwFgYDVQQDDA8qLndlYXRoZXIuZ2MuY2EwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDARd6fBVAjKlOvocp442ydQbSCoxHW
+91i1r5TkucsGLkzm92HQsj4eVNCl6Uti3hd3yYL1QxFTImdyUs2ETlDoU/hVFEey
+IevKo3m3ufuv9YryXGtoRcthMITEPrIy6vOyNbGaxJw1J6/AkOs7oAm3kUlx6PS8
+vOnuoyik1r6Q9qx1XP9Z05cIyyIBhsyjdS124Jj01quCjz5COPMXKU1LlaU8LeSA
+qILe9DyC3XWluZGxZH+tGiw42mpiCD3JGlCsXQujU5y4jg2fq8/ePsM3OUzM/Dxs
+kGMMN7LAG9/H4CINJ+aXZQvlgTfIZp2eWLvHy5dnsbi3VAJOEtgRVzedAgMBAAGj
+ggNZMIIDVTAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBSSLKB4osVSIvgfhk+6NayJ
+BDAXuDAfBgNVHSMEGDAWgBSConB03bxTP8971PfNf6dgxgpMvzBoBggrBgEFBQcB
+AQRcMFowIwYIKwYBBQUHMAGGF2h0dHA6Ly9vY3NwLmVudHJ1c3QubmV0MDMGCCsG
+AQUFBzAChidodHRwOi8vYWlhLmVudHJ1c3QubmV0L2wxay1jaGFpbjI1Ni5jZXIw
+MwYDVR0fBCwwKjAooCagJIYiaHR0cDovL2NybC5lbnRydXN0Lm5ldC9sZXZlbDFr
+LmNybDCBnQYDVR0RBIGVMIGSgg8qLndlYXRoZXIuZ2MuY2GCDXdlYXRoZXIuZ2Mu
+Y2GCC21ldGVvLmdjLmNhgg0qLm1ldGVvLmdjLmNhghUqLmFscGhhLndlYXRoZXIu
+Z2MuY2GCEyouYWxwaGEubWV0ZW8uZ2MuY2GCFCouYmV0YS53ZWF0aGVyLmdjLmNh
+ghIqLmJldGEubWV0ZW8uZ2MuY2EwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQG
+CCsGAQUFBwMBBggrBgEFBQcDAjATBgNVHSAEDDAKMAgGBmeBDAECAjCCAYAGCisG
+AQQB1nkCBAIEggFwBIIBbAFqAHYAouMK5EXvva2bfjjtR2d3U9eCW4SU1yteGyzE
+uVCkR+cAAAGO9cCizQAABAMARzBFAiEA7hlkvyyYsnhbas5WDwoTkdGWf92Ukckw
+rGyUqMPZQjkCID8oQlHWS11haifx+i9tBr0epmrzkh2/bbneb9WNrlUvAHcATnWj
+J1yaEMM4W2zU3z9S6x3w4I4bjWnAsfpksWKaOd8AAAGO9cCi2AAABAMASDBGAiEA
+iE1jLaXrlPxrkIiq7NU0gH/sDiUlHCmMrT79KUy2V+YCIQCb2GrTID6NO3hb8bGs
+ctd8ipYRuu1FnDY8X3MGVDcWnAB3AObSMWNAd4zBEEEG13G5zsHSQPaWhIb7uocy
+Hf0eN45QAAABjvXAovkAAAQDAEgwRgIhALRWB9aVOe3Zi9j6MEVKJl1NKQKIycr3
+8IfKeHxckblpAiEA85xjN3iBFvEVT4yIxO4qKRelbpFGomgSrYnfwTSUwHIwDQYJ
+KoZIhvcNAQELBQADggEBADGEK5tU92TqoTWPh1lfSRTDVCpk5qhqmIuaTeYQMonV
+AgHF5rktrUhXmMzRJEef8XRwLvApT4zOn+TV+NOUpi8q6tDWxx7dE8+moIf6tXq8
+d4OQ+VDO/C6nz/xA8FqvxAbPfqCJ6DqgitSyXhF01XkNMfVcknGAzhc/HemuukI1
+3DTuaATlbaXkHjSp+O0mXCykCIgH/9eMuOoFMzhdQhtJiLf2MMVclJ72/YzgVveA
+XrSTVE5F4BYdp9hX+0BTg5zNgg1wwvVVOwuIOTFqSSJCzGHjl/1i8IyyPLKB3ilt
+B+0V7IdmIxlvPbL//qNkzyUVufkewAoLMqCOUIZA0eY=</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature></alert>

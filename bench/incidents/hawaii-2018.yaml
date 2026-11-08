@@ -1,0 +1,118 @@
+id: hawaii-2018
+title: "Hawaii false ballistic missile alert"
+date: "2018-01-13"
+jurisdiction: "US, State of Hawaii (Hawaii Emergency Management Agency, HI-EMA)"
+sources: [FCC-HI-2018]
+
+summary: >-
+  During an internal ballistic missile drill at shift change, a warning officer believed the drill was a real
+  attack and sent a live alert over EAS and WEA to the whole state. HI-EMA cancelled further transmission
+  five minutes later, but the correction over the same systems went out 38 minutes after the false alert.
+
+timeline:
+  - {t: "2018-01-13T08:00-10:00", event: "Midnight shift hands watch to the day shift.", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:05-10:00", event: "Midnight shift supervisor starts a no-notice drill by phone; the recording includes 'this is not a drill', and 'Exercise, Exercise, Exercise' at start and end.", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:07-10:00", event: "Day shift warning officer selects the live alert template and confirms a generic prompt; the alert goes out over EAS and WEA.", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:08-10:00", event: "The officer's own phone receives the WEA alert.", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:09-10:00", event: "State Adjutant notifies the Governor that the alert was false.", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:12-10:00", event: "HI-EMA cancels further transmission of the false alert; no all-clear message is issued.", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:20-10:00", event: "HI-EMA posts on Twitter: 'NO missile threat to Hawaii.'", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:27-10:00", event: "Staff meet to choose an event code for a corrective message and settle on Civil Emergency Message (CEM).", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:31-10:00", event: "Deputy Chief of the Telecommunication Branch logs in and creates the correction messages (until 08:44).", source: FCC-HI-2018}
+  - {t: "2018-01-13T08:45-10:00", event: "HI-EMA issues a CEM correcting the false alert, 38 minutes after the first transmission.", source: FCC-HI-2018}
+  - {t: "2018-04", event: "FCC Public Safety and Homeland Security Bureau publishes its report and recommendations (cover date April 2018).", source: FCC-HI-2018}
+
+inputs:
+  event_text: >-
+    No-notice internal drill message played by phone to the State Warning Point. The FCC report says it contained
+    the text of an EAS message for a live ballistic missile alert, including "this is not a drill", and the
+    words "Exercise, Exercise, Exercise" at the beginning and end.
+  issuer: "HI-EMA State Warning Point"
+  environment: live
+  intended_status: Exercise
+  intended_status_basis: "FCC report: officers 'sought to conduct an internal exercise'; the software used one interface and one login for live and test."
+  requested_area:
+    areaDesc: "State of Hawaii (internal drill; no public area was intended)"
+    geocodes: [{valueName: SAME, value: "015000"}]
+
+real_message:
+  text_verbatim: "BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "HI-EMA State Warning Point"
+  category: Safety
+  event: "Civil Defense Warning (EAS event code CDW)"
+  urgency: Immediate
+  severity: Extreme
+  certainty: Observed
+  language: en-US
+  headline: "BALLISTIC MISSILE THREAT INBOUND TO HAWAII."
+  description: "BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL."
+  instruction: "SEEK IMMEDIATE SHELTER."
+  areaDesc: "State of Hawaii"
+  area:
+    areaDesc: "State of Hawaii"
+    geocodes: [{valueName: SAME, value: "015000"}]
+  approvals_count: 1
+  approvals_basis: "FCC report para. 39: on January 13, 2018, HI-EMA only required one credentialed warning officer to initiate the alert."
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, urgency, severity, certainty, headline, instruction, area.geocodes, sender]
+  reconstruction_note: "The FCC report gives the message text, the EAS event code (CDW) and that it went statewide over EAS and WEA. The CAP field values above other than status, msgType, text and event are our reconstruction; the original CAP XML is not public."
+
+corrections:
+  - t: "2018-01-13T08:12-10:00"
+    kind: "cancellation of further transmission (text not public)"
+    source: FCC-HI-2018
+  - t: "2018-01-13T08:45-10:00"
+    kind: "new Civil Emergency Message (CEM) over EAS and WEA"
+    text_verbatim: "There is no missile threat or danger to the State of Hawaii. Repeat. False Alarm."
+    text_source_note: "Read from the phone screenshot in Appendix A of the FCC report (image, transcribed by OCR and checked by eye)."
+    references_original: unknown
+    source: FCC-HI-2018
+
+real_outcome:
+  text: >-
+    The false alert reached the public statewide over EAS and WEA at 08:07 HST. The correction over the same
+    systems went out at 08:45 HST, 38 minutes later. The FCC report says Hawaii has over 1.4 million residents
+    and about 200,000 visitors on an average day.
+  source: FCC-HI-2018
+
+official_finding:
+  body: "Federal Communications Commission, Public Safety and Homeland Security Bureau"
+  document: "Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (April 2018), Section IV.B, para. 40"
+  finding_status: official-verbatim
+  quote: "Require more than one credentialed person to validate the message content prior to transmission of a ballistic missile alert or other high-impact alerts that affect a significant percentage of the population, as well as all tests."
+  source: FCC-HI-2018
+  further_quotes:
+    - rule: R2
+      quote: "refrain from using phrases such as “This is Not a Drill” or “Real World” in test messages."
+      locator: "para. 40"
+    - rule: R2
+      quote: "Direct alert origination software providers to (1) separate live alerts from test environments"
+      locator: "para. 40"
+    - rule: R10
+      quote: "corrections to false alerts must be issued over the same systems used to issue the false alert, including the EAS and WEA"
+      locator: "para. 40"
+    - rule: R1
+      quote: "Prior to the morning of January 13, 2018, HI-EMA did not require confirmation from a second warning officer before sending a ballistic missile alert."
+      locator: "para. 21"
+
+expected_rules: [R2, R1, R10]
+
+unknowns:
+  - "The original CAP XML (identifier, urgency, severity, certainty, area encoding) is not public."
+  - "Whether the alert or the 08:45 correction was signed, and whether the correction carried a CAP <references> to the original."
+  - "Text of the 08:12 cancellation."
+  - "Exact delivered geography per carrier; the report says it went 'throughout Hawaii'."
+
+framing_note: >-
+  The FCC report states that some of its facts differ from HI-EMA's own report (for example 08:07 versus 08:06)
+  and that it relies on its own interviews; this file follows the FCC report. The report attributes the event to
+  human error combined with inadequate safeguards, not to any single person.
+
+source_urls:
+  FCC-HI-2018: "https://docs.fcc.gov/public/attachments/DOC-350119A1.pdf"
+source_hashes:
+  FCC-HI-2018: {sha256: "d19c432a20ac86e14165221aa906d780c97c87489afabc23a6b61a04d48235c0", fetched: "2026-11-09", note: "apps.fcc.gov mirror returned 403; docs.fcc.gov copy used (28 pages)"}

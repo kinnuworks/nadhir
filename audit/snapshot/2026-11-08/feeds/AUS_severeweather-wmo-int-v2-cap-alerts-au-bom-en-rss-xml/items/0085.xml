@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDQ21033-2026-11-07T09:08:20+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-07T09:08:20+00:00</sent>
+    <status>Actual</status>
+    <msgType>Cancel</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-07T04:13:35+00:00,2026-11-07T04:13:35+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-07T05:39:23+00:00,2026-11-07T05:39:23+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-07T06:25:15+00:00,2026-11-07T06:25:15+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-07T07:13:18+00:00,2026-11-07T07:13:18+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Minor</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-07T09:08:17+00:00</effective>
+        <expires>2026-11-07T14:08:17+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Severe Thunderstorm Warning for Capricornia, Wide Bay and Burnett and Southeast Coast forecast districts</headline>
+        <description>
+          
+          
+          This warning is now cancelled.
+          
+          Thunderstorms are likely to persist between Moranbah and Gayndah for the next couple of hours but are not expected to be severe. Should severe thunderstorms redevelop, a new warning will be issued as necessary. 
+           
+          
+          3 to 4 cm was observed in the Gin Gin area around 3.15 pm.
+        </description>
+        <instruction>Emergency services advise people to:
+* Never drive, walk, play or ride through floodwater. It is dangerous.
+* Stay away from storm water drains.
+* Stay away from fallen powerlines.
+* Drive slowly and never drive through floodwaters. If the road is flooded or damaged, go another way.
+* For storm help, call the SES on 132 500 or download the free SES Assistance QLD app.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Capricornia, Wide Bay and Burnett and Southeast Coast</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW007</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW014</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW015</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

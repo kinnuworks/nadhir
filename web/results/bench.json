@@ -1,0 +1,174 @@
+{
+ "incidents": [
+  {
+   "id": "brazil-2026",
+   "title": "Unauthorised 'Extreme Alert' messages sent through Brazil's Defesa Civil Alerta platform",
+   "date": "2026-06-19",
+   "outcome": "Phones in several states received 'Extreme Alert' messages overnight, which sound even in silent mode. Agência Brasil's preliminary analysis (via Jovem Pan) lists cities totalling about 30 million people; the government did not publish a device count. The platform stayed offline while security was restored.",
+   "finding": {
+    "body": "Ministério da Integração e do Desenvolvimento Regional (MIDR), Secretaria Nacional de Proteção e Defesa Civil",
+    "quote": "após ter sofrido uma invasão e disparado um alerta para diversas regiões do país, ordenado remotamente por alguém alheio ao Sistema Nacional de Proteção e Defesa Civil",
+    "source": "BRAZIL-2026"
+   },
+   "expected": [
+    "R5"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R1",
+     "R4",
+     "R5"
+    ]
+   },
+   "match": true,
+   "caught": [
+    "R5"
+   ],
+   "missed": [],
+   "ai": null
+  },
+  {
+   "id": "hawaii-2018",
+   "title": "Hawaii false ballistic missile alert",
+   "date": "2018-01-13",
+   "outcome": "The false alert reached the public statewide over EAS and WEA at 08:07 HST. The correction over the same systems went out at 08:45 HST, 38 minutes later. The FCC report says Hawaii has over 1.4 million residents and about 200,000 visitors on an average day.",
+   "finding": {
+    "body": "Federal Communications Commission, Public Safety and Homeland Security Bureau",
+    "quote": "Require more than one credentialed person to validate the message content prior to transmission of a ballistic missile alert or other high-impact alerts that affect a significant percentage of the population, as well as all tests.",
+    "source": "FCC-HI-2018"
+   },
+   "expected": [
+    "R2",
+    "R1",
+    "R10"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R1",
+     "R2",
+     "R10 (correction)"
+    ]
+   },
+   "match": true,
+   "caught": [
+    "R1",
+    "R10",
+    "R2"
+   ],
+   "missed": [],
+   "ai": null
+  },
+  {
+   "id": "india-test-2023",
+   "title": "Nationwide cell broadcast test messages shown as 'Emergency alert: Severe' and 'Extreme'",
+   "date": "2023-10-10",
+   "outcome": "Phones across India showed a test message under an 'Emergency alert: Extreme' title with a loud tone. In Odisha the test messages triggered panic among users who confused them with fraud messages, according to Orissa Post.",
+   "finding": {
+    "body": "Department of Telecommunications and NDMA (Press Information Bureau, Ministry of Communications)",
+    "quote": "Emergency alerts integral part of planned testing process and do not indicate actual emergency",
+    "source": "INDIA-2023"
+   },
+   "expected": [
+    "R2"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R2"
+    ]
+   },
+   "match": true,
+   "caught": [
+    "R2"
+   ],
+   "missed": [],
+   "ai": null
+  },
+  {
+   "id": "jalert-2022",
+   "title": "J-Alert missile launch information also sent to the Tokyo islands",
+   "date": "2022-10-04",
+   "outcome": "The Tokyo island municipalities received missile launch information they should not have received. Stars and Stripes reports the alert was broadcast over loudspeakers on the islands and some schools delayed classes.",
+   "finding": {
+    "body": "Fire and Disaster Management Agency (FDMA), Ministry of Internal Affairs and Communications",
+    "quote": "内閣官房のシステム上の不具合により、東京都島しょ部に誤って送信されたことが判明し、直ちに内閣官房においてシステム改修が行われた。",
+    "source": "JALERT-2022"
+   },
+   "expected": [
+    "R3"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R3"
+    ]
+   },
+   "match": true,
+   "caught": [
+    "R3"
+   ],
+   "missed": [],
+   "ai": null
+  },
+  {
+   "id": "la-county-2025",
+   "title": "Kenneth Fire evacuation warning delivered to all of Los Angeles County",
+   "date": "2025-01-09",
+   "outcome": "Nearly 10 million people across Los Angeles County received an evacuation warning meant for the Kenneth Fire area. Many kept receiving it overnight and the next day, some several times.",
+   "finding": {
+    "body": "Office of U.S. Representative Robert Garcia (CA-42), congressional oversight report",
+    "quote": "However, the correct Kenneth Fire-area polygon was NOT saved into the IPAWS wireless channel in the Genasys system, and the operator did not realize the polygon was missing.",
+    "source": "LA-2025"
+   },
+   "expected": [
+    "R3"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R3",
+     "R10 (correction)"
+    ]
+   },
+   "match": true,
+   "caught": [
+    "R3"
+   ],
+   "missed": [],
+   "ai": null
+  },
+  {
+   "id": "seoul-2023",
+   "title": "Seoul city air-raid alert text after a North Korean launch, corrected by the Interior Ministry",
+   "date": "2023-05-31",
+   "outcome": "Phones across Seoul received the city's alert at 06:41 telling people to prepare to evacuate, without a reason or a place to go. The ministry's 07:03 text called it erroneous. Korea Times reports confusion and that Naver's mobile page was briefly disrupted.",
+   "finding": {
+    "body": "Ministry of the Interior and Safety (MOIS)",
+    "quote": "서울특별시에서 발령한 경계경보는 오발령 사항임을 알려드림",
+    "source": "SEOUL-2023-PRESSIAN"
+   },
+   "expected": [
+    "R4"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R3",
+     "R4"
+    ]
+   },
+   "match": true,
+   "caught": [
+    "R4"
+   ],
+   "missed": [],
+   "ai": null
+  }
+ ],
+ "scenarios": [],
+ "matched": 6,
+ "total": 6,
+ "note": "Replays are rebuilt from public reports, not the original systems. Approvals in AI runs are scripted and labelled as such; in the live demo a person clicks."
+}

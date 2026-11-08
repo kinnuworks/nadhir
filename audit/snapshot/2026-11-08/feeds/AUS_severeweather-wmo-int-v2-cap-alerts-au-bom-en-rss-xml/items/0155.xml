@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDN29000-2026-11-06T17:13:05+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-06T17:13:05+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDN29000-2026-11-05T18:20:14+00:00,2026-11-05T18:20:14+00:00 CAP.Message@bom.gov.au,AusBoM-IDN29000-2026-11-05T23:09:09+00:00,2026-11-05T23:09:09+00:00 CAP.Message@bom.gov.au,AusBoM-IDN29000-2026-11-06T05:53:07+00:00,2026-11-06T05:53:07+00:00 CAP.Message@bom.gov.au,AusBoM-IDN29000-2026-11-06T12:25:21+00:00,2026-11-06T12:25:21+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Sheep Grazier Warning</event>
+        <urgency>Unknown</urgency>
+        <severity>Moderate</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>sheepWarning</value>
+        </eventCode>
+        <effective>2026-11-06T17:12:00+00:00</effective>
+        <expires>2026-11-07T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Warning to Sheep Graziers for Illawarra, South Coast, Southern Tablelands, Snowy Mountains and Australian Capital Territory forecast districts</headline>
+        <description>Sheep graziers are warned that cold temperatures, showers and southwesterly winds are expected during Saturday. Areas likely to be affected include the Illawarra and Snowy Mountains forecast districts and parts of the South Coast, Southern Tablelands and Australian Capital Territory forecast districts. There is a risk of losses of lambs and sheep exposed to these conditions.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>New South Wales: Illawarra, South Coast, Southern Tablelands, Snowy Mountains and Australian Capital Territory forecast districts</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW006</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW007</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW009</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW010</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW017</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Sheep Grazier Warning</event>
+        <urgency>Unknown</urgency>
+        <severity>Minor</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>sheepWarning</value>
+        </eventCode>
+        <effective>2026-11-06T17:12:00+00:00</effective>
+        <expires>2026-11-07T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Warning to Sheep Graziers for South West Slopes forecast district</headline>
+        <description>The Warning to Sheep Graziers for the South West Slopes forecast district has been cancelled.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>New South Wales: South West Slopes forecast district</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW013</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

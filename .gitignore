@@ -1,0 +1,17 @@
+CLAUDE.md
+HACKATHON.md
+STATE.md
+judge.sh
+stranger.sh
+judging/
+SETUP.md
+gitignore-add.txt
+
+# private research notes (contain session passcodes)
+research/
+
+# local secrets and environments
+.env
+.venv/
+__pycache__/
+.vercel/

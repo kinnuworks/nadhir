@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>nrcan:eew:test:1794150024.alert-prod1.eew2</identifier>
+  <sender>earthquakeinfo-infoseisme@nrcan-rncan.gc.ca</sender>
+  <sent>2026-11-08T15:00:24-00:00</sent>
+  <status>Test</status>
+  <msgType>Alert</msgType>
+  <source>alert-prod1.eew2.nrcan-rncan.cloud-nuage.canada.ca</source>
+  <scope>Public</scope>
+  <code>profile:CAP-CP:0.4</code>
+  <code>layer:SOREM:1.0</code>
+  <info>
+    <language>en-CA</language>
+    <category>Other</category>
+    <event>Test Message</event>
+    <responseType>Prepare</responseType>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Unknown</certainty>
+    <eventCode>
+      <valueName>profile:CAP-CP:Event:0.4</valueName>
+      <value>testMessage</value>
+    </eventCode>
+    <effective>2026-11-08T15:00:24-00:00</effective>
+    <expires>2026-11-08T16:00:24-00:00</expires>
+    <senderName>Natural Resources Canada</senderName>
+    <headline>This is a Test Message and is NOT Intended for distribution to the Public</headline>
+    <description>This is a Test Message and is NOT Intended for distribution to the Public</description>
+    <instruction>This is a Test Message and is NOT Intended for distribution to the Public</instruction>
+    <parameter>
+      <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+      <value>No</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+      <value>No</value>
+    </parameter>
+    <area>
+      <areaDesc>Colville Lake</areaDesc>
+      <polygon>66.9467,-125.8546 67.0506,-125.8609 67.0525,-126.1558 66.9585,-126.1701 66.9467,-125.8546</polygon>
+      <geocode>
+        <valueName>profile:CAP-CP:Location:0.3</valueName>
+        <value>6101012</value>
+      </geocode>
+    </area>
+  </info>
+  <info>
+    <language>fr-CA</language>
+    <category>Other</category>
+    <event>Message test</event>
+    <responseType>Prepare</responseType>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Unknown</certainty>
+    <eventCode>
+      <valueName>profile:CAP-CP:Event:0.4</valueName>
+      <value>testMessage</value>
+    </eventCode>
+    <effective>2026-11-08T15:00:24-00:00</effective>
+    <expires>2026-11-08T16:00:24-00:00</expires>
+    <senderName>Ressources naturelles Canada</senderName>
+    <headline>Ceci est un message-test et n'est pas prévu pour la distribution au public</headline>
+    <description>Ceci est un message-test et n'est pas prévu pour la distribution au public</description>
+    <instruction>Ceci est un message-test et n'est pas prévu pour la distribution au public</instruction>
+    <parameter>
+      <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+      <value>No</value>
+    </parameter>
+    <parameter>
+      <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+      <value>No</value>
+    </parameter>
+    <area>
+      <areaDesc>Colville Lake</areaDesc>
+      <polygon>66.9467,-125.8546 67.0506,-125.8609 67.0525,-126.1558 66.9585,-126.1701 66.9467,-125.8546</polygon>
+      <geocode>
+        <valueName>profile:CAP-CP:Location:0.3</valueName>
+        <value>6101012</value>
+      </geocode>
+    </area>
+  </info>
+<Signature Id="NAADS Signature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>p3XLFItWQ8ew6dFtSyo/lkr8Kak5LBkqsry5IBP/4aE=</DigestValue></Reference></SignedInfo><SignatureValue>q36xuHRLcbnAg5XTNV8lcfQp6g9hfoJVwPus1H8ameukow2+LOcgc6LSLusPYYvPxCOFjbleJcuR4ekzCTa0GRLFq4VjIqI4+U0UJFQU8gaYqV/IS/nj32FxwSZ5ga3qTOGSK6Xhq42xx/RK+Jaj79gKi2CL5yOclKArz0mLRwKGXpyOYMoDeOf1uRYBTlkHmFewoBBfi/ub/q7E5qPu8Ka1OzSdDTC5yQQaZVLRi8FZ/kMArRFk2Yx3rK5+kMiWaVQPTX4G1tehRAYp7lQaLsZGqUvKBvWHdlRHt46rS60sqQii11NwL2+HBgwRFpDfF/gVKnUD2z9xrPJIeUsdWg==</SignatureValue><KeyInfo><X509Data><X509Certificate>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</X509Certificate></X509Data></KeyInfo><Object xmlns=""><SignatureProperties><SignatureProperty Id="NAADS-DSS1" Target="https://dss1.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty><SignatureProperty Id="NAADS-DSS2" Target="https://dss2.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty></SignatureProperties></Object></Signature></alert>

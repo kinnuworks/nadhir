@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>urn:oid:2.49.0.1.124.3441308468.2026</identifier>
+    <sender>cap-pac@canada.ca</sender>
+    <sent>2026-11-08T09:48:34-00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <source>Env. Can. - Can. Met. Ctr. – Montréal</source>
+    <scope>Public</scope>
+    <code>profile:CAP-CP:0.4</code>
+    <code>layer:SOREM:1.0</code>
+    <code>layer:EC-MSC-SMC:1.0</code>
+    <code>layer:EC-MSC-SMC:1.1</code>
+    <code>layer:SOREM:2.0</code>
+    <note>Service Notice – October 2026: The Environment and Climate Change Canada (ECCC) CAP Service undergoes changes from time to time as the business of alerting evolves. For Fall 2026, changes are expected to include... 1) Coastal flooding alerts will start to be issued in Northern Ontario (along the Hudson Bay/James Bay coast) and in Northern Quebec, 2) Time zones will be updated for Yukon, British Columbia, Alberta, Manitoba and Northwest Territories following the changes that are happening in Western Canada, 3) A new parameter will be available to represent the risk-colour of the alert in its previous state, 4) The event values are updated for the following alert types: Tropical Cyclone Statement, Marine Weather Advisory, Coastal Flooding Warning, and Coastal Flooding Statement, 5) the ECCC Signature Certificate of the CAP posted in Pelmorex NAADS feed is getting an update by end of November, 2026 and 6) other minor improvements and corrections. For more information on these changes: https://comm.collab.science.gc.ca/mailman3/hyperkitty/list/dd_info@comm.collab.science.gc.ca/ | Notification de service – octobre 2026: Le service du PAC d’Environnement et Changement climatique Canada (ECCC) subit périodiquement des changements à mesure que le système d’alerte évolue. Pour l’automne 2026, il y aura des changements incluant... 1) Des alertes de submersion côtière commenceront à être émises dans le nord de l’Ontario (le long des côtes de la baie d’Hudson et de la baie James) ainsi que dans le nord du Québec, 2) Les fuseaux horaires seront mis à jour pour le Yukon, la Colombie-Britannique, l’Alberta, le Manitoba et les Territoires du Nord-Ouest afin de tenir compte des changements qui ont lieu dans l’Ouest canadien, 3) Un nouveau paramètre sera disponible afin de représenter la couleur de risque de l’alerte dans son état précédent, 4) Les valeurs d’événement seront mises à jour pour les types d’alertes suivants : bulletin sur les cyclones tropicaux, avis météorologique maritime, avertissement de submersion côtière et bulletin de submersion côtière, 5) Le certificat de signature d’ECCC pour le PAC, publié dans le flux NAADS de Pelmorex, sera mis à jour d’ici la fin novembre 2026 et 6) d’autres améliorations et corrections mineures. Pour plus d’informations sur ces changements: https://comm.collab.science.gc.ca/mailman3/hyperkitty/list/dd_info@comm.collab.science.gc.ca/</note>
+    <references>cap-pac@canada.ca,urn:oid:2.49.0.1.124.2587642420.2026,2026-11-06T13:09:16-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.2743867976.2026,2026-11-06T13:13:49-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.2278729351.2026,2026-11-06T16:40:49-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.0379095673.2026,2026-11-06T20:26:05-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.0349227129.2026,2026-11-07T08:57:28-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.1699513175.2026,2026-11-07T20:27:09-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.1928133116.2026,2026-11-07T20:30:29-00:00</references>
+    <info>
+        <language>en-CA</language>
+        <category>Met</category>
+        <event>snowfall</event>
+        <responseType>Monitor</responseType>
+        <urgency>Future</urgency>
+        <severity>Severe</severity>
+        <certainty>Likely</certainty>
+        <audience>general public</audience>
+        <eventCode>
+            <valueName>profile:CAP-CP:Event:0.4</valueName>
+            <value>snowfall</value>
+        </eventCode>
+        <eventCode>
+            <valueName>SAME</valueName>
+            <value>WSW</value>
+        </eventCode>
+        <effective>2026-11-08T09:48:34-00:00</effective>
+        <onset>2026-11-08T09:46:00-00:00</onset>
+        <expires>2026-11-08T23:01:34-00:00</expires>
+        <senderName>Environment Canada</senderName>
+        <headline>orange warning - snowfall - in effect</headline>
+        <description>
+Snowfall, with total amounts of 30 to 40 cm is expected.
+
+Snow, at times heavy, continues in Pangnirtung.
+
+Heavy snow will continue today before tapering off this afternoon. Additional snowfall amounts today in the range of 5 to 10 cm are expected by the time snow ends.
+
+###
+
+Visibility will likely be reduced at times.
+
+Snowfall warnings are issued when significant impacts are expected due to snowfall accumulations.
+
+Please continue to monitor alerts and forecasts issued by Environment Canada. To report severe weather, send an email to NUstorm@ec.gc.ca, call 1-800-239-0484 or post reports on social media using #NUStorm.
+</description>
+        <instruction>
+Prepare for quickly changing and deteriorating travel conditions. Take frequent breaks and avoid strain when clearing snow.
+</instruction>
+        <web>https://weather.gc.ca/</web>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Type</valueName>
+            <value>warning</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Broadcast_Intrusive</valueName>
+            <value>no</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Parent_URI</valueName>
+            <value>msc/alert/environment/hazard/alert-3.0-ascii/consolidated-xml-2.0/20261108094633023/WW_16_76_CWNT/SFW/52922044349327944202611060501_WW_16_76_CWNT/actual/en_proper_complete_c-fr_proper_complete_c/NinJo</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:CAP_count</valueName>
+            <value>A:24625 M:126139 C:145458</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Name</valueName>
+            <value>orange warning - snowfall</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Coverage</valueName>
+            <value>Qikiqtaaluk area</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Designation_Code</valueName>
+            <value>WW_16_76_CWNT</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Event_End_Time</valueName>
+            <value>2026-11-08T21:00:00.000Z</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Risk_Tiered_Ranking</valueName>
+            <value>4</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Impact</valueName>
+            <value>high</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Confidence</valueName>
+            <value>high</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Colour</valueName>
+            <value>orange</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Previous_Colour</valueName>
+            <value>orange</value>
+        </parameter>
+        <area>
+            <areaDesc>Pangnirtung</areaDesc>
+            <polygon>66.1138,-65.1793 66.0301,-65.2527 65.984,-65.2598 65.9399,-65.4561 65.9329,-65.8821 65.9566,-65.9456 66.0385,-66.0952 66.1091,-66.2196 66.1832,-66.217 66.1953,-66.2213 66.1961,-66.2214 66.1965,-66.2214 66.1965,-66.2217 66.1967,-66.2216 66.1977,-66.221 66.1979,-66.2209 66.2358,-66.1862 66.2364,-66.1855 66.2368,-66.185 66.2497,-66.168 66.2491,-66.1688 66.2497,-66.168 66.2497,-66.168 66.2507,-66.1665 66.3087,-66.0439 66.3452,-65.8823 66.3571,-65.6886 66.357,-65.6849 66.357,-65.6814 66.341,-65.5029 66.341,-65.5027 66.3408,-65.502 66.3408,-65.501 66.2822,-65.3016 66.2817,-65.3005 66.2816,-65.3002 66.2031,-65.1955 66.1588,-65.1758 66.1138,-65.1793</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>098220</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>6204009</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>6204030</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>fr-CA</language>
+        <category>Met</category>
+        <event>neige</event>
+        <responseType>Monitor</responseType>
+        <urgency>Future</urgency>
+        <severity>Severe</severity>
+        <certainty>Likely</certainty>
+        <audience>grand public</audience>
+        <eventCode>
+            <valueName>profile:CAP-CP:Event:0.4</valueName>
+            <value>snowfall</value>
+        </eventCode>
+        <eventCode>
+            <valueName>SAME</valueName>
+            <value>WSW</value>
+        </eventCode>
+        <effective>2026-11-08T09:48:34-00:00</effective>
+        <onset>2026-11-08T09:46:00-00:00</onset>
+        <expires>2026-11-08T23:01:34-00:00</expires>
+        <senderName>Environnement Canada</senderName>
+        <headline>avertissement orange - neige - en vigueur</headline>
+        <description>
+De la neige, laissant une accumulation totale de 30 à 40 cm est prévue.
+
+La neige parfois forte continue de tomber à Pangnirtung.
+
+La neige forte persistera aujourd'hui, puis elle cessera peu à peu cet après-midi. On prévoit une accumulation de neige supplémentaire de l'ordre de 5 à 10 cm aujourd'hui d'ici à ce que la neige cesse.
+
+###
+
+La visibilité sera probablement réduite par moments.
+
+Un avertissement de neige est émis lorsqu’on prévoit des impacts significatifs en raison d’une accumulation de neige.
+
+Veuillez continuer à surveiller les alertes et les prévisions émises par Environnement Canada. Pour signaler du temps violent, envoyez un courriel à meteoNU@ec.gc.ca, appelez au 1-800-239-0484 ou publiez un message sur les réseaux sociaux en utilisant #NUMeteo.
+</description>
+        <instruction>
+Préparez-vous à composer avec des conditions routières qui changent et se détériorent rapidement. Prenez des pauses fréquentes et évitez de trop forcer lorsque vous déblayez la neige.
+</instruction>
+        <web>https://meteo.gc.ca/</web>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Type</valueName>
+            <value>warning</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Broadcast_Intrusive</valueName>
+            <value>no</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Parent_URI</valueName>
+            <value>msc/alert/environment/hazard/alert-3.0-ascii/consolidated-xml-2.0/20261108094633023/WW_16_76_CWNT/SFW/52922044349327944202611060501_WW_16_76_CWNT/actual/en_proper_complete_c-fr_proper_complete_c/NinJo</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:CAP_count</valueName>
+            <value>A:24625 M:126139 C:145458</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Name</valueName>
+            <value>avertissement orange - neige</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Coverage</valueName>
+            <value>Qikiqtaaluk</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Designation_Code</valueName>
+            <value>WW_16_76_CWNT</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Alert_Location_Status</valueName>
+            <value>active</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Event_End_Time</valueName>
+            <value>2026-11-08T21:00:00.000Z</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Risk_Tiered_Ranking</valueName>
+            <value>4</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Impact</valueName>
+            <value>élevé</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:MSC_Confidence</valueName>
+            <value>élevée</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Colour</valueName>
+            <value>orange</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Previous_Colour</valueName>
+            <value>orange</value>
+        </parameter>
+        <area>
+            <areaDesc>Pangnirtung</areaDesc>
+            <polygon>66.1138,-65.1793 66.0301,-65.2527 65.984,-65.2598 65.9399,-65.4561 65.9329,-65.8821 65.9566,-65.9456 66.0385,-66.0952 66.1091,-66.2196 66.1832,-66.217 66.1953,-66.2213 66.1961,-66.2214 66.1965,-66.2214 66.1965,-66.2217 66.1967,-66.2216 66.1977,-66.221 66.1979,-66.2209 66.2358,-66.1862 66.2364,-66.1855 66.2368,-66.185 66.2497,-66.168 66.2491,-66.1688 66.2497,-66.168 66.2497,-66.168 66.2507,-66.1665 66.3087,-66.0439 66.3452,-65.8823 66.3571,-65.6886 66.357,-65.6849 66.357,-65.6814 66.341,-65.5029 66.341,-65.5027 66.3408,-65.502 66.3408,-65.501 66.2822,-65.3016 66.2817,-65.3005 66.2816,-65.3002 66.2031,-65.1955 66.1588,-65.1758 66.1138,-65.1793</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>098220</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>6204009</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>6204030</value>
+            </geocode>
+        </area>
+    </info>
+<Signature Id="NAADS Signature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>5eDZaWhp6QlcrYu2VGswaQgECOHVKgsfKCPFLZjk1Bw=</DigestValue></Reference></SignedInfo><SignatureValue>RLrHqWXJSfU8NZOTxsclbhHK/O4R+BRwf1izwDyE5XdbjhvgebSOksFVtc6rP3k9N4UmF1GlrcpYetSmeL2k8dBiYJpRUJlZCUpQ7Is/SaikTqSGxR6vcXlKIGWYfhsGFmuP2vgRWLsMooK89hDsVrOfKuSojPcoTXxK8IQ9cGvZwKfRx2eOlhe8OCpU8hZG3Rbuuix7r3WDgjnSO+5SK9SX6cd0FMvf0dGt03+ELuVNnevvoxw+9bUfD4QJeo2+YVSuEs5IHSyzoamuMNYTAAzy4iN3SB0WsPDgaenhcerslqqpJnkjWlukuRpuljT8NTtwWHMyQ8x9WRwETgYd9Q==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIGzzCCBbegAwIBAgIQDAMc51VvXnM0Cc04Uud5+zANBgkqhkiG9w0BAQsFADBZMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMTMwMQYDVQQDEypEaWdpQ2VydCBHbG9iYWwgRzIgVExTIFJTQSBTSEEyNTYgMjAyMCBDQTEwHhcNMjYwNzAyMDAwMDAwWhcNMjcwMTE2MjM1OTU5WjBmMQswCQYDVQQGEwJDQTEQMA4GA1UECBMHT250YXJpbzERMA8GA1UEBxMIT2FrdmlsbGUxFjAUBgNVBAoTDVBlbG1vcmV4IENvcnAxGjAYBgNVBAMTEWRzczIucGVsbW9yZXguY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtyYl8WI9lEqZczakOwEbqSTLgv6dH2FzysgzffmU1CvYPiyI/F4phSfD/zlGgVAIh9VpbQvmlTb+bf3Wm8xNI25oAI9U1/FBdGOwOLmVDNfq2sMngGNRoNMwr40wRs4Og5ev11Veqf1Qk2QI6mK6qJ5TvF2VQSMFye45YWbXOejBsoJHgDU204jkNEqXcHfTlemTYbxus3roQX3TzrNAVc85VUJAKp7plcBeRJLB87n+IeJcI0WFQGBeNhP1w+7tnDjam96LUwrculmZvYe5JF4aIMcQ8RkzOZ0K4D90NYPk5hscoVwBBGCdswS8GvQEuspf2JRbvt3tpvb/a0NacwIDAQABo4IDhDCCA4AwHwYDVR0jBBgwFoAUdIWAwGbH3zfez70pN6oDHb7tzRcwHQYDVR0OBBYEFKMbt+b+/UOkHGPP4x/0xbbon2UZMBwGA1UdEQQVMBOCEWRzczIucGVsbW9yZXguY29tMD4GA1UdIAQ3MDUwMwYGZ4EMAQICMCkwJwYIKwYBBQUHAgEWG2h0dHA6Ly93d3cuZGlnaWNlcnQuY29tL0NQUzAOBgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwgZ8GA1UdHwSBlzCBlDBIoEagRIZCaHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0R2xvYmFsRzJUTFNSU0FTSEEyNTYyMDIwQ0ExLTEuY3JsMEigRqBEhkJodHRwOi8vY3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBDQTEtMS5jcmwwgYcGCCsGAQUFBwEBBHsweTAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29tMFEGCCsGAQUFBzAChkVodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBDQTEtMS5jcnQwDAYDVR0TAQH/BAIwADCCAX8GCisGAQQB1nkCBAIEggFvBIIBawFpAHcATGPcmOWcHauI9h6KPd6uj6tEozd7X5uUw/uhnPzBviYAAAGfI8X30AAABAMASDBGAiEAm4I15feddXyrhwvGJ+PEhvjrEd6KpIalXUxjQIu7eBACIQDIQjOzI+YqeNYDe65U2obISFXgtiHEpjaQGQ/YPdGmNQB2ANbVjanQF1Pzakqgx1dJAq/rx9ws04zZ92TIDIkZHp8CAAABnyPF914AAAQDAEcwRQIgMOfYz84hwYjnwmRxPUpsHRkUIWCaLO7bzwS2zigJIbgCIQDhqZoS8aVN/VKP61FaK/MPBJekmQZ/CTqXm9oIVuPguQB2AETCvQzpFA5kpclKAZMKWqG7NZcOAO4RFoloKhxE17VmAAABnyPF95sAAAQDAEcwRQIhAOFbJXYsiVovkESudBRplOA64gYxzlA2SUrpYPAgvt7+AiB+gWpDjtftYmMzsQArzqtmpjos1Wz9zN5ifi4vY0ZgdDANBgkqhkiG9w0BAQsFAAOCAQEAFz6r7QztFgqLqjrEFeZao73obspoSex6YbEyK90qivQeBhUYLce43a8mh4mZIfhSCYxnla4RM2mPonErgtaaU0suYuu37AXl/35jMw98vky8EUXEc/Il96n8HCCuj20ZqXnVS6Ee6nHfCLBZCG5ty7nyonhNYlbWUkZ+emdYaXMyaXEEvWvUJx022toKRbW7bDKRfFXyYDZiSATqwk7IVX5SsDvcsXkY7t6flpoBw+0iRMHi5Bn0/gMonfmhC/o53ChVG3ncs4aYkMrUOxlxFvb2zHcjVq/uUNrRPahzKi5aGBRpZMBBu1cdvSwDTlnQapu/VJDgjbCFvPcsmeghzg==</X509Certificate></X509Data></KeyInfo><Object xmlns=""><SignatureProperties><SignatureProperty Id="NAADS-DSS1" Target="https://dss1.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty><SignatureProperty Id="NAADS-DSS2" Target="https://dss2.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty></SignatureProperties></Object></Signature><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="Environment Canada">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+<DigestValue>5eDZaWhp6QlcrYu2VGswaQgECOHVKgsfKCPFLZjk1Bw=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>WAiSZrjMSJniVVM4LPC+lwQbkpKCcMIJ0aXqg3gMF3yWDCfc/AjD54UxlGulZui5
+zuO+d14dpGwp9+Xs6KWmVoeYl4eOX7AMiZ7Yr88b5RKkzMmbzpoChYvKFMOVfJ/2
+Hyw6OVNpk1icnFliDPy6r56YqyzRioOH5lIZ3QbLkSzI1pLEHnIUnskpzkjxbDUw
+ndOjineZMJKXjQ1ptP0+TwW4lWdjZRAKhRcvgyy4BV1N1Pl9WXfJ8HhTlN9DCqy0
+U+qUla5+hZcqM0s6CNRyGFmbvxZhZwzYt1z9efDYiWu8VXB9BUrFoH5UrtCOc2yS
+J7Pn/3cLxtJc2ka7IIMBxg==</SignatureValue>
+<KeyInfo>
+<X509Data>
+<X509Certificate>MIIHDDCCBfSgAwIBAgIQM2dJyev0XEPJoQlSaOQgYDANBgkqhkiG9w0BAQsFADCB
+ujELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUVudHJ1c3QsIEluYy4xKDAmBgNVBAsT
+H1NlZSB3d3cuZW50cnVzdC5uZXQvbGVnYWwtdGVybXMxOTA3BgNVBAsTMChjKSAy
+MDEyIEVudHJ1c3QsIEluYy4gLSBmb3IgYXV0aG9yaXplZCB1c2Ugb25seTEuMCwG
+A1UEAxMlRW50cnVzdCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSAtIEwxSzAeFw0y
+NDA0MTkwOTQ3MDZaFw0yNTA1MTkwOTQ3MDRaMGwxCzAJBgNVBAYTAkNBMQ8wDQYD
+VQQIEwZRdWViZWMxETAPBgNVBAcTCEdhdGluZWF1MR8wHQYDVQQKExZTaGFyZWQg
+U2VydmljZXMgQ2FuYWRhMRgwFgYDVQQDDA8qLndlYXRoZXIuZ2MuY2EwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDARd6fBVAjKlOvocp442ydQbSCoxHW
+91i1r5TkucsGLkzm92HQsj4eVNCl6Uti3hd3yYL1QxFTImdyUs2ETlDoU/hVFEey
+IevKo3m3ufuv9YryXGtoRcthMITEPrIy6vOyNbGaxJw1J6/AkOs7oAm3kUlx6PS8
+vOnuoyik1r6Q9qx1XP9Z05cIyyIBhsyjdS124Jj01quCjz5COPMXKU1LlaU8LeSA
+qILe9DyC3XWluZGxZH+tGiw42mpiCD3JGlCsXQujU5y4jg2fq8/ePsM3OUzM/Dxs
+kGMMN7LAG9/H4CINJ+aXZQvlgTfIZp2eWLvHy5dnsbi3VAJOEtgRVzedAgMBAAGj
+ggNZMIIDVTAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBSSLKB4osVSIvgfhk+6NayJ
+BDAXuDAfBgNVHSMEGDAWgBSConB03bxTP8971PfNf6dgxgpMvzBoBggrBgEFBQcB
+AQRcMFowIwYIKwYBBQUHMAGGF2h0dHA6Ly9vY3NwLmVudHJ1c3QubmV0MDMGCCsG
+AQUFBzAChidodHRwOi8vYWlhLmVudHJ1c3QubmV0L2wxay1jaGFpbjI1Ni5jZXIw
+MwYDVR0fBCwwKjAooCagJIYiaHR0cDovL2NybC5lbnRydXN0Lm5ldC9sZXZlbDFr
+LmNybDCBnQYDVR0RBIGVMIGSgg8qLndlYXRoZXIuZ2MuY2GCDXdlYXRoZXIuZ2Mu
+Y2GCC21ldGVvLmdjLmNhgg0qLm1ldGVvLmdjLmNhghUqLmFscGhhLndlYXRoZXIu
+Z2MuY2GCEyouYWxwaGEubWV0ZW8uZ2MuY2GCFCouYmV0YS53ZWF0aGVyLmdjLmNh
+ghIqLmJldGEubWV0ZW8uZ2MuY2EwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQG
+CCsGAQUFBwMBBggrBgEFBQcDAjATBgNVHSAEDDAKMAgGBmeBDAECAjCCAYAGCisG
+AQQB1nkCBAIEggFwBIIBbAFqAHYAouMK5EXvva2bfjjtR2d3U9eCW4SU1yteGyzE
+uVCkR+cAAAGO9cCizQAABAMARzBFAiEA7hlkvyyYsnhbas5WDwoTkdGWf92Ukckw
+rGyUqMPZQjkCID8oQlHWS11haifx+i9tBr0epmrzkh2/bbneb9WNrlUvAHcATnWj
+J1yaEMM4W2zU3z9S6x3w4I4bjWnAsfpksWKaOd8AAAGO9cCi2AAABAMASDBGAiEA
+iE1jLaXrlPxrkIiq7NU0gH/sDiUlHCmMrT79KUy2V+YCIQCb2GrTID6NO3hb8bGs
+ctd8ipYRuu1FnDY8X3MGVDcWnAB3AObSMWNAd4zBEEEG13G5zsHSQPaWhIb7uocy
+Hf0eN45QAAABjvXAovkAAAQDAEgwRgIhALRWB9aVOe3Zi9j6MEVKJl1NKQKIycr3
+8IfKeHxckblpAiEA85xjN3iBFvEVT4yIxO4qKRelbpFGomgSrYnfwTSUwHIwDQYJ
+KoZIhvcNAQELBQADggEBADGEK5tU92TqoTWPh1lfSRTDVCpk5qhqmIuaTeYQMonV
+AgHF5rktrUhXmMzRJEef8XRwLvApT4zOn+TV+NOUpi8q6tDWxx7dE8+moIf6tXq8
+d4OQ+VDO/C6nz/xA8FqvxAbPfqCJ6DqgitSyXhF01XkNMfVcknGAzhc/HemuukI1
+3DTuaATlbaXkHjSp+O0mXCykCIgH/9eMuOoFMzhdQhtJiLf2MMVclJ72/YzgVveA
+XrSTVE5F4BYdp9hX+0BTg5zNgg1wwvVVOwuIOTFqSSJCzGHjl/1i8IyyPLKB3ilt
+B+0V7IdmIxlvPbL//qNkzyUVufkewAoLMqCOUIZA0eY=</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature></alert>

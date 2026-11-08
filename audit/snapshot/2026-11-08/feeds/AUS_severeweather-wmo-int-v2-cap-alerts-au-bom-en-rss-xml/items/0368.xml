@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDQ21035-2026-11-03T06:41:29+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-03T06:41:29+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDQ21035-2026-11-03T04:50:17+00:00,2026-11-03T04:50:17+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21035-2026-11-03T05:36:32+00:00,2026-11-03T05:36:32+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-03T06:41:24+00:00</effective>
+        <expires>2026-11-03T09:41:24+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Severe Thunderstorm Warning for Greater Brisbane and Surrounds</headline>
+        <description>
+          The Bureau of Meteorology warns that, at 4:35 pm, severe thunderstorms likely to produce damaging winds, large hailstones and heavy rainfall that may lead to flash flooding were detected near Toowoomba, the area north of Toowoomba and Cecil Plains. These thunderstorms are moving towards the east. They are forecast to affect Laidley, Gatton and Pittsworth by 5:05 pm and Ipswich, Esk and the area south of Toowoomba by 5:35 pm.
+           
+          
+          106 km/h wind gust was recorded at Wellcamp Airport at 4:07 pm.
+        </description>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Ipswich, Logan, Somerset, Scenic Rim, Southern Downs, Western Downs, South Burnett, Toowoomba, Lockyer Valley and Brisbane City</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME005</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME009</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME010</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME011</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME012</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME015</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME016</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME017</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME018</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

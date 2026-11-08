@@ -1,0 +1,70 @@
+{
+ "headline": "1,711 real public alerts from 8 feeds (snapshot 2026-11-08): 0 record that AI or machine translation was involved, and none records who approved them. The only approver-like fields are one vendor's login names (UserName), in 17 US alerts.",
+ "rows": [
+  {
+   "source": "US IPAWS (OpenFEMA archive)",
+   "alerts": 1000,
+   "ai": 0,
+   "approver": 17,
+   "signed": 1000
+  },
+  {
+   "source": "Canada: Environment and Climate Change Canada, Meteorological Service of Canada; Canada: Ministère de la Sécurité publique du Québec [en, fr]",
+   "alerts": 93,
+   "ai": 0,
+   "approver": 0,
+   "signed": 93
+  },
+  {
+   "source": "Saudi Arabia: National Center for Meteorology [ar]",
+   "alerts": 54,
+   "ai": 0,
+   "approver": 0,
+   "signed": 54
+  },
+  {
+   "source": "Saudi Arabia: National Center for Meteorology [en]",
+   "alerts": 54,
+   "ai": 0,
+   "approver": 0,
+   "signed": 54
+  },
+  {
+   "source": "Kuwait: Meteorological Department [en]",
+   "alerts": 1,
+   "ai": 0,
+   "approver": 0,
+   "signed": 0
+  },
+  {
+   "source": "Australia: Bureau of Meteorology [en]",
+   "alerts": 499,
+   "ai": 0,
+   "approver": 0,
+   "signed": 0
+  },
+  {
+   "source": "Qatar: Civil Aviation Authority [ar]",
+   "alerts": 5,
+   "ai": 0,
+   "approver": 0,
+   "signed": 5
+  },
+  {
+   "source": "Qatar: Civil Aviation Authority [en]",
+   "alerts": 5,
+   "ai": 0,
+   "approver": 0,
+   "signed": 5
+  }
+ ],
+ "gate_on_real": {
+  "alerts": 1000,
+  "held": 5,
+  "by_rule": {
+   "R2": 2,
+   "R10": 3
+  }
+ },
+ "note": "The gate was also run over the 1000 US alerts using the rules that need no issuer context (R0, R2, R6, R10): it would hold 5 (R2: 2, R10: 3). Scheduled US EAS tests sent as status Actual are exempt; that exemption was added after a first run flagged them. UAE: no CAP feed is listed on the WMO Register of Alerting Authorities (record dated 2013)."
+}

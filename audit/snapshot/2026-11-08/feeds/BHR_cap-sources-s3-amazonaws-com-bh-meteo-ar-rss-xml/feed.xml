@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/bh-meteo-ar/rss-style.xsl"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <atom:link rel="hub" href="//alert-hub.appspot.com"/>
+    <atom:link rel="self" href="https://cap-sources.s3.amazonaws.com/bh-meteo-ar/rss.xml" type="application/rss+xml"/>
+    <title>أحدث التنبيهات من  مديرية الأرصاد الجوية</title>
+    <link>https://cap-sources.s3.amazonaws.com/bh-meteo-ar/rss.xml</link>
+    <description>أحدث التنبيهات من   مديرية الأرصاد الجوية</description>
+    <language>en</language>
+    <copyright>public domain</copyright>
+    <pubDate>Wed, 30 Sep 2026 15:13:00 +0000</pubDate>
+    <lastBuildDate>Wed, 30 Sep 2026 15:13:00 +0000</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <image>
+      <title>أحدث التنبيهات من  مديرية الأرصاد الجوية</title>
+      <url>https://alert-hub.s3.amazonaws.com/images/bh-meteo-ar.png</url>
+      <link>https://cap-sources.s3.amazonaws.com/bh-meteo-ar/rss.xml</link>
+    </image>
+    
+  </channel>
+</rss>

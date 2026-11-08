@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDN29000-2026-11-03T18:13:16+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-03T18:13:16+00:00</sent>
+    <status>Actual</status>
+    <msgType>Alert</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Sheep Grazier Warning</event>
+        <urgency>Unknown</urgency>
+        <severity>Moderate</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>sheepWarning</value>
+        </eventCode>
+        <effective>2026-11-03T18:12:00+00:00</effective>
+        <expires>2026-11-05T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Warning to Sheep Graziers for Southern Tablelands and Snowy Mountains forecast districts</headline>
+        <description>Sheep graziers are warned that cold temperatures, showers and southwesterly winds are expected during Thursday. Areas likely to be affected include the Snowy Mountains forecast district and parts of the Southern Tablelands forecast district. There is a risk of losses of lambs and sheep exposed to these conditions.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>New South Wales: Southern Tablelands and Snowy Mountains forecast districts</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW009</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>NSW_PW010</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

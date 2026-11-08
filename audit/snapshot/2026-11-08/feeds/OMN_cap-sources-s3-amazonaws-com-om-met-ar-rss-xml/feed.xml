@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/om-met-en/rss-style.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link rel="hub" href="//alert-hub.appspot.com" />
+    <atom:link rel="self" href="https://cap-sources.s3.amazonaws.com/om-met-ar/rss.xml" type="application/rss+xml" />
+    <title>أحدث التنبيهات من المديرية العامة للأرصاد الجوية</title>
+    <link>https://cap-sources.s3.amazonaws.com/om-met-ar/rss.xml</link>
+    <description>أحدث التنبيهات من  المديرية العامة للأرصاد الجوية</description>
+    <language>en</language>
+    <copyright>public domain</copyright>
+    <pubDate>Mon, 12 Feb 2024 07:13:10 +0000</pubDate>
+    <lastBuildDate>Mon, 12 Feb 2024 07:13:10 +0000</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <image>
+      <title>أحدث التنبيهات من المديرية العامة للأرصاد الجوية</title>
+      <url>https://alert-hub.s3.amazonaws.com/images/om-met-en.png</url>
+      <link>https://cap-sources.s3.amazonaws.com/om-met-ar/rss.xml</link>
+    </image>
+  </channel>
+</rss>

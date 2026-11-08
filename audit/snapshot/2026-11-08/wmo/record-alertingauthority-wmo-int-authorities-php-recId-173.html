@@ -1,0 +1,571 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+           	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+	<head>
+	    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		<link href="https://alertingauthority.wmo.int/rss.xml" rel="alternate" type="application/rss+xml" title="WMO Register of Alerting Authorities News Feed" />
+		<link href="https://alertingauthority.wmo.int/atom.xml" rel="alternate" type="application/atom+xml" title="WMO Register of Alerting Authorities News Feed" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="keywords" content="alerting, authorities, WMO, member, official, list" />
+		<meta name="description" content="WMO Register of Alerting Authorities" />
+		<meta name="owner" content="WMO-OMM" />
+		<meta name="robots" content="INDEX, FOLLOW" />
+		<meta name="publisher" content="WMO" />
+		<meta name="distribution" content="global" /> 
+		<meta name="rating" content="GENERAL" />
+		<meta name="page-topic" content="Scientific" />
+		<meta name="abstract" content="Working together in weather, climate, and water" /> 
+		<meta name="audience" content="All" />
+		<meta name="page-type" content="specialized agency" />
+		<meta name="mssmarttagspreventparsing" content="true" />
+		<title>WMO Register of Alerting Authorities</title>
+		<style type="text/css">
+			body { color:black; background-color:white; font-family:sans-serif; font-size:medium; font-weight:normal }
+			v\:* { behavior:url(#default#VML); }
+			.leaflet-bottom { visibility: hidden; }
+		</style>
+		<!--<script type="text/javascript" src="/js/boxSelect.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+		<!-- 
+			Use this to get the more sophisticated Google Maps v3 API, which includes spherical geometry functions      
+			<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+		-->
+		<script src="/js/OpenLayers.js"></script>
+
+		<link rev="MADE" href="mailto:webdesk@wmo.int" />
+		<link href="/css/main.css" rel="stylesheet" type="text/css" />
+		<link href="/css/text.css" rel="stylesheet" type="text/css" />
+		<link href="/css/print.css" rel="stylesheet" type="text/css" media="print,projection,handheld">
+		<link href="/css/speech.css" rel="stylesheet" type="text/css" media="speech">
+		<script type="text/javascript" src="/js/zoom.js"></script>
+		
+		
+		<!-- @2019-07-18 -->
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+		<link rel="stylesheet" href="/css/leaflet.css"/>
+		<script type="text/javascript" src="/js/leaflet.js"></script>
+		<!-- Load Mapbox GL -->
+		<link rel="stylesheet" href="/css/mapbox-gl.css"/>
+		<script src="/js/mapbox-gl.js"></script>
+
+		<script src="/js/esri-leaflet.js"></script>
+		<script src="/js/esri-leaflet-vector.js"></script>
+
+		<script src="/js/turf.min.js"></script>
+		<!-- @2019-07-18 -->
+
+		<script type="text/javascript">
+			function addToFavorites()
+			{
+				var url = location.href; 
+				var title = document.title;
+				if ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4)) 
+				{
+					window.external.AddFavorite(url,title);
+				}
+				else if (navigator.appName == "Netscape")
+				{
+					window.sidebar.addPanel(title,url,"");
+				}
+				else
+				{
+					alert("Press CTRL-D (Netscape) or CTRL-T (Opera) to bookmark");
+				}
+			} 
+			
+			function validatePassword (pw, options) 
+			{
+				// default options (allows any password)
+				var o = 
+				{
+					lower:    0,
+					upper:    0,
+					alpha:    0, /* lower + upper */
+					numeric:  0,
+					special:  0,
+					length:   [0, Infinity],
+					custom:   [ /* regexes and/or functions */ ],
+					badWords: [],
+					badSequenceLength: 0,
+					noQwertySequences: false,
+					noSequential:      false
+				};
+
+				for (var property in options)
+					o[property] = options[property];
+
+				var	re = {
+						lower:   /[a-z]/g,
+						upper:   /[A-Z]/g,
+						alpha:   /[A-Z]/gi,
+						numeric: /[0-9]/g,
+						special: /[\W_]/g
+					},
+					rule, i;
+
+				// enforce min/max length
+				if (pw.length < o.length[0] || pw.length > o.length[1])
+					return false;
+
+				// enforce lower/upper/alpha/numeric/special rules
+				for (rule in re) {
+					if ((pw.match(re[rule]) || []).length < o[rule])
+						return false;
+				}
+
+				// enforce word ban (case insensitive)
+				for (i = 0; i < o.badWords.length; i++) {
+					if (pw.toLowerCase().indexOf(o.badWords[i].toLowerCase()) > -1)
+						return false;
+				}
+
+				// enforce the no sequential, identical characters rule
+				if (o.noSequential && /([\S\s])\1/.test(pw))
+					return false;
+
+				// enforce alphanumeric/qwerty sequence ban rules
+				if (o.badSequenceLength) {
+					var	lower   = "abcdefghijklmnopqrstuvwxyz",
+						upper   = lower.toUpperCase(),
+						numbers = "0123456789",
+						qwerty  = "qwertyuiopasdfghjklzxcvbnm",
+						start   = o.badSequenceLength - 1,
+						seq     = "_" + pw.slice(0, start);
+					for (i = start; i < pw.length; i++) {
+						seq = seq.slice(1) + pw.charAt(i);
+						if (
+							lower.indexOf(seq)   > -1 ||
+							upper.indexOf(seq)   > -1 ||
+							numbers.indexOf(seq) > -1 ||
+							(o.noQwertySequences && qwerty.indexOf(seq) > -1)
+						) {
+							return false;
+						}
+					}
+				}
+
+				// enforce custom regex/function rules
+				for (i = 0; i < o.custom.length; i++) 
+				{
+					rule = o.custom[i];
+					if (rule instanceof RegExp) 
+					{
+						if (!rule.test(pw))
+							return false;
+					} 
+					else if (rule instanceof Function) 
+					{
+						if (!rule(pw))
+							return false;
+					}
+				}
+
+				// great success!
+				return true;
+			}
+		</script>
+
+		<!-- WMO map, added by On@2014-09-12 -->
+		<script type="text/javascript">
+        var map, polygonControl, vectors, modifyControl;
+        function boxMapInit(){
+            /*map = new OpenLayers.Map('map');
+            
+            var wmsLayer = new OpenLayers.Layer.WMS( "OpenLayers WMS", 
+                "http://vmap0.tiles.osgeo.org/wms/vmap0?", {layers: 'basic'}); 
+
+            var polygonLayer = new OpenLayers.Layer.Vector("Polygon Layer");
+*/
+			
+			//@2019-07-18
+			map = L.map('map_canvas', {
+				'center': [22,114],
+				'zoom': 1,
+				'worldCopyJump': true,
+				minZoom: 1,
+				maxZoom: 8,
+				zoomControl: true
+				//'maxBounds': bounds
+				//'renderer': L.canvas()
+			});
+			//@2019-07-18
+			L.esri.Vector.layer('2848c7bbd9bf479f9d810d8f1c32e2f5').addTo(map);
+
+			// draw default polygon 
+			var default_area = '';
+			var alerting_areas = document.showAuthority.alertingAreas.value;
+			if (alerting_areas != "")
+			{
+				default_area = alerting_areas;
+			}
+			else
+				default_area =document.showAuthority.defaultNWSE.value;
+
+			var area_arr = default_area.split(" ");
+			//@2019-07-18
+			var p1 = [area_arr[0],area_arr[1]];
+			var p2 = [area_arr[2],area_arr[1]];
+			var p3 = [area_arr[2],area_arr[3]];
+			var p4 = [area_arr[0],area_arr[3]];
+			var polygon = L.polygon(
+				[ p1,p2,p3,p4 ] ,
+				{
+					color: 'rgb(238, 153, 0)'
+					,weight: 1
+				}
+			).addTo(map);
+			
+			//@2019-07-18
+			//get polygon center
+			var features = turf.featureCollection([
+				turf.point( [parseFloat(area_arr[0]),parseFloat(area_arr[1])] ),
+				turf.point( [parseFloat(area_arr[2]),parseFloat(area_arr[1])] ),
+				turf.point( [parseFloat(area_arr[2]),parseFloat(area_arr[3])] ),
+				turf.point( [parseFloat(area_arr[0]),parseFloat(area_arr[3])] )
+			]);
+			var point_center = turf.center(features);
+			
+			//@2019-07-18
+			map.setView(
+				[point_center.geometry.coordinates[0],point_center.geometry.coordinates[1]]
+				, zoomByDegrees(area_arr[3]-area_arr[1])
+				, { animation: false }
+			);
+			
+			//<!---   lat   lng //@2019-07-18
+			map.on('mousemove', function(e){
+				var coord = e.latlng;
+				var lat = coord.lat;
+				var lng = coord.lng;
+				//console.log("lat: " + lat + ", lng: " + lng);
+				jQuery(".latlng-msg p").html(lat.toFixed(5) + ", " + lng.toFixed(5));
+			});
+			//   lat   lng  -->
+			
+			//@2019-07-18
+			jQuery("#map_canvas").append('<div class="latlng-msg"><p></p></div>');
+			
+			setTimeout(function() {
+				if($(".esri-dynamic-attribution").length == 1) {
+					$(".leaflet-control-attribution").html("The boundaries and names shown and the designations used do not imply official endorsement or acceptance by WMO or the United Nations.");
+					var att = $(".leaflet-bottom.leaflet-right").html();
+					$(".leaflet-bottom.leaflet-right").html("");
+					$(".leaflet-bottom.leaflet-left").html(att);
+					$(".leaflet-bottom").css({"visibility":"visible"});
+				}
+			}, 1500);
+
+        }
+		function zoomByDegrees(degreesLongitude) {
+			// these figures are approximate
+			var degrees = Math.abs(degreesLongitude);
+			//alert("degrees: "+degrees);
+			switch (true) {
+				case (degrees < 2):
+					return 8;
+					break;
+				case (degrees < 5):
+					return 7;
+					break;
+				case (degrees < 10):
+					return 6;
+					break;
+				case (degrees < 20):
+					return 5;
+					break;
+				case (degrees < 40):
+					return 4;
+					break;
+				case (degrees < 60):
+					return 3;
+					break;
+				case (degrees < 80):
+					return 2;
+					break;
+				case (degrees < 100):
+					return 1;
+					break;
+			/*	case (degrees < 5.5):
+					return 3;
+					break;
+				case (degrees < 11.2):
+					return 2;
+					break;
+				case (degrees < 22.5):
+					return 3;
+					break;
+				case (degrees < 45):
+					return 3;
+					break;
+				case (degrees < 90):
+					return 2;
+					break;
+				case (degrees < 180):
+					return 2;
+					break;*/
+				default:
+					return 1;
+			}
+		}
+		function stopDrawPolygon(data)
+		{
+			if(data && data.type && data.type == 'featureadded')
+			{
+				polygonControl.deactivate();
+				document.getElementById("resize").checked = true;
+				update();
+			//	modifyControl.activate();
+			}
+		}
+		function chkZoomLevel(event) {
+			var zLevel = map.getZoom();
+			if( zLevel > 8) {
+				map.events.unregister("zoomend", map, chkZoomLevel);
+				var center = map.getCenter();
+				setMapCenter(center.lat, center.lon, 8);
+				map.events.register('zoomend', map, chkZoomLevel);
+			}
+			if( zLevel < 1) {
+				map.events.unregister("zoomend", map, chkZoomLevel);
+				var center = map.getCenter();
+				setMapCenter(center.lat, center.lon, 1);
+				map.events.register('zoomend', map, chkZoomLevel);
+			}
+		}
+        function setOptions(options) {
+            polygonControl.handler.setOptions(options);
+        }
+        function setSize(fraction) {
+            var radius = fraction * map.getExtent().getHeight();
+            polygonControl.handler.setOptions({radius: radius,
+                                               angle: 0});
+        }
+		function setMapCenter(lat, lng, zoomlv) {
+			map.setCenter(new OpenLayers.LonLat(lng, lat).transform(
+				new OpenLayers.Projection("EPSG:4326"),
+				new OpenLayers.Projection("EPSG:3857")
+			), zoomlv);
+		}
+		function setPoint(lat, lng) {
+			var pt = new OpenLayers.Geometry.Point(lat, lng).transform(
+				new OpenLayers.Projection("EPSG:4326"),
+				new OpenLayers.Projection("EPSG:3857")
+			);
+			return pt;
+		}
+		function getPolygonCenter()
+		{
+			return vectors.features[0].geometry.getCentroid().transform(
+				new OpenLayers.Projection("EPSG:3857"),
+				new OpenLayers.Projection("EPSG:4326")
+			);
+		}
+		function tranformLatLng(coord) {
+			return coord.transform(
+				new OpenLayers.Projection("EPSG:3857"),
+				new OpenLayers.Projection("EPSG:4326")
+			);
+		}
+		function serialize() {
+          //  var str = geojson.write(vectors.features, true);
+          //  document.getElementById('features').value = str;
+			var pt1, pt2, pt3, pt4, str='';
+			var points = vectors.features[0].geometry.getVertices();
+			
+				pt1 = tranformLatLng(points[0]);
+				pt2 = tranformLatLng(points[1]);
+				pt3 = tranformLatLng(points[2]);
+				pt4 = tranformLatLng(points[3]);
+				str += "PT1 - x: "+pt1.x+"   y: "+pt1.y+"\n";
+				str += "PT2 - x: "+pt2.x+"   y: "+pt2.y+"\n";
+				str += "PT3 - x: "+pt3.x+"   y: "+pt3.y+"\n";
+				str += "PT4 - x: "+pt4.x+"   y: "+pt4.y+"\n";
+			/*.transform(
+				new OpenLayers.Projection("EPSG:4326"),
+				new OpenLayers.Projection("EPSG:3857")
+			);*/
+			document.getElementById('features').value = str;
+        }
+		function update() {
+            // reset modification mode
+            var resize = document.getElementById("resize").checked;
+            if(resize) {
+                modifyControl.mode |= OpenLayers.Control.ModifyFeature.RESIZE;
+              /*  var keepAspectRatio = document.getElementById("keepAspectRatio").checked;
+                if (keepAspectRatio) {
+                    controls.modify.mode &= ~OpenLayers.Control.ModifyFeature.RESHAPE;
+                }*/
+				toggleControl(true);
+            }
+			else
+				toggleControl(false);
+        }
+		function toggleControl(bool) {
+          //  for(key in controls) {
+          //      var control = controls[key];
+                if(bool) {
+                    modifyControl.activate();
+					polygonControl.deactivate();
+                } else {
+                    polygonControl.activate();
+					modifyControl.deactivate();
+                }
+           // }
+        }
+    </script>
+
+	<style>
+	/*//@2019-07-18*/
+	.latlng-msg { 
+		position:absolute; z-index:999; 
+		left:45px; top:0; 
+		font-size:14px;
+		font-family:arial; line-height:25px; 
+		height:35px; width:450px; 
+	}
+	.latlng-msg p { margin:5px 10px; }
+	</style>
+
+	</head>
+
+<body onload="boxMapInit();"><div class="hidetop">
+								<table style="width: 924px;" align="center" cellpadding="0" cellspacing="0">
+									<tr>
+										<td style="height:98px; background-color: #00529c" class="hBlue">
+											<table style="width: 100%;" cellpadding="0" cellspacing="0" border="0">
+												<tr>
+													<td width="5%">&nbsp;</td>
+													<td width="95%">
+														<a href="https://public.wmo.int/en" target="_blank" rel="noopener noreferrer">
+															<img src="/images/WMOLogo.png" alt="World Meteorological Organization" name="logoWMO" width="527" height="84" border="0" id="logoWMO" /></a>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td height="16" bgcolor="ff9b00" class="hOrange">
+											<table width="265" border="0" align="right" cellpadding="0" cellspacing="0">
+												<tr> 
+													<td width="55" nowrap="nowrap" class="navHeadLinksBlue"><a href="https://public.wmo.int/en" target="_blank" rel="noopener noreferrer">HOME</a></td>
+													<td width="105" nowrap="nowrap" class="navHeadLinksBlue"><a href="https://worldweather.wmo.int" target="_blank" rel="noopener noreferrer">WORLDWEATHER</a></td>
+													<td width="105" nowrap="nowrap" class="navHeadLinksBlue"><a href="https://severeweather.wmo.int" target="_blank" rel="noopener noreferrer">SEVERE WEATHER</a></td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td><div align="center"><a href="https://public.wmo.int/en/programmes/public-weather-services-programme" target="_blank" rel="noopener noreferrer"><br />Public Weather Services</a> established this register of information about alerting authorities as identified by Members.<br />For questions, <a href="https://public.wmo.int/en/about-us/contact-us" target="_blank" rel="noopener noreferrer">please contact us</a>. Select a country to get started.</div><p style="font-size:150%; font-weight:bold">WMO Register of Alerting Authorities <a href="https://alertingauthority.wmo.int/authorities.php">[ home ]</a></p>
+	<form name="showAuthority" method="post" onsubmit="return do_submit();">
+		<input type="hidden" name="memberCode" value="AE">
+		<input type="hidden" name="editor" value="">
+		<input type="hidden" name="password" value="">
+		<input type="hidden" name="recId" value="173">
+		<input type="hidden" name="defaultNWSE" value="26.25 51.06 21.82 56.87">
+		<input type="hidden" name="hazardsCategories" value=" Geo Met Safety Security Rescue Fire Health Env Transport Infra Other">
+		<input type="hidden" name="csrfToken" value="e3fc89f9301fd96eebf90f996e9b96c5701ed9eaaf120812e15e55e18f2e1016d06c05">
+	<input type="hidden" name="alertingAreas" value="">
+	<input type="hidden" name="changes" value="">
+<table>
+						<tr id="record" style="display:block; background:#F0F0F0;">
+							<td style="width:100%">OID: <span style="width:100px; background:#FFFFFF;">2.49.0.0.784.0</span>
+WMO Member: <span style="width:20em; background:#FFFFFF;">United Arab Emirates</span>
+ ISO 3166: <span style="width:100px; background:#FFFFFF;">AE  ARE  784</span>
+<br />
+<br />
+  Issuing Organization: <span style="width:600px;background:#FFFFFF;"
+    title="Name of the organization that issues the alerts described here.">Meteorological Department</span>
+<br />
+<br />
+  Hazard Categories: <span style="width:600px;background:#FFFFFF;"
+    title="This alerting authority issues these types of alerts (see category list below)."> Geo Met Safety Security Rescue Fire Health Env Transport Infra Other</span>
+<br />
+<br />  Authorization Basis: <span style="width:600px;background:#FFFFFF;"
+    title="Here is the offical basis (e.g., law, policy, practice) for the organization to issue these alerts.">[ blank ]</span>
+<br />
+<br />
+CAP Feed URL(s): <span style=\"width:600px;background:#FFFFFF;">[ blank ]</span><br /><br />  Forecasts URL: <span style="width:600px;background:#FFFFFF;"
+    title="Forecasts are posted at this URL for public access."><a href="http://www.worldweather.org/117/m117.htm" target="_blank" rel="noopener noreferrer">http://www.worldweather.org/117/m117.htm</a></span>
+<br />
+<br />
+  Alerting Area (NWSE): <span style="width:600px;background:#FFFFFF;"
+    title="Area wherein this authority typically issues alerts." id="alertingAreas">[ blank ]</span>
+<br />
+<br />
+  </td>
+</tr>
+</table>
+<table>
+<tr>
+<td>
+<b>Default map for this authority (alerting area not yet specified).</b>
+<div id="map_canvas" style="width:500px;height:400px;"></div>
+</td>
+  <td  style="width:300px;height:400px;">
+    <u>Hazard Categories</u><br />
+    <b>Geo</b>: Geophysical (earthquakes, volcanoes, tsunami, etc., includes landslide)<br />
+    <b>Met</b>: Meteorological (weather, storms, etc. includes flood)<br />
+    <b>Safety</b>: General emergency and public safety<br />
+    <b>Security</b>: Law enforcement, military, homeland and local/private security<br />
+    <b>Rescue</b>: Rescue and recovery<br />
+    <b>Fire</b>: Fire suppression and rescue<br />
+    <b>Health</b>: Medical and public health<br />
+    <b>Env</b>: Pollution and other environmental<br />
+    <b>Transport</b>: Public and private transportation<br />
+    <b>Infra</b>: Utility, telecommunication, other non-transport infrastructure<br />
+    <b>CBRNE</b>: Chemical, Biological, Radiological, Nuclear or High-Yield Explosive threat or attack<br />
+    <b>Other</b>: Other events
+  </td>
+</tr>
+</table>
+</form>
+<script type="text/javascript">
+  function do_submit() {
+    document.getElementById("hideButtons").style.display="none";
+    document.getElementById("wait_msg").style.display="";
+    return true; // hide submit and reset buttons while form is being submitted
+}</script>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<br/><br/>
+						<p align="center">Authorized registry editors may proceed to the editing page by clicking <a href="https://alertingauthority.wmo.int/edit.php">here</a>.</p>
+						<p align="center"><img src="/images/linehoriz.gif" alt="line" width="394" height="4" /></p>
+						<table width="200" border="0" align="right" cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="center"><a href="#top"><img src="/images/btnTop.gif" alt="top" width="23" height="20" border="0" /></a></td>
+							</tr>
+							<tr>
+								<td align="center" class="topics"><div align="center"><a href="#">Back to top</a></p></div></td>
+							</tr>
+							<tr>
+								<td align="center" class="topics"></td>
+							</tr>
+							<tr>
+								<td align="center" class="topics">&nbsp;</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" bgcolor="#ccdceb" class="foot">
+						<a href="https://old.wmo.int/extranet/pages/documents/wmo.vcf">&copy; World Meteorological Organization</a>, 7bis, avenue de la Paix, Case postale 2300, CH-1211 Geneva 2, Switzerland<br />
+						<a href="callto://41227308111/">Tel.: + 41(0) 22 730 81 11</a> / Fax: + 41(0) 22 730 81 81 - &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						<a href="https://public.wmo.int/en/copyright">Copyright</a> | 
+						<a href="https://public.wmo.int/en/privacy-policy">Privacy Policy</a> | 
+						<a href="https://public.wmo.int/en/disclaimer">Disclaimer</a> | 
+						<a href="https://public.wmo.int/en/disclaimer#mapdisclaimer">Map disclaimer</a>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

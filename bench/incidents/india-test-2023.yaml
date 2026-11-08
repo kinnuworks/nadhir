@@ -1,0 +1,95 @@
+id: india-test-2023
+title: "Nationwide cell broadcast test messages shown as 'Emergency alert: Severe' and 'Extreme'"
+date: "2023-10-10"
+jurisdiction: "India (Department of Telecommunications, DoT, with the National Disaster Management Authority, NDMA)"
+sources: [INDIA-2023, INDIA-2023-BS, INDIA-2023-ITV, INDIA-2023-OP]
+
+summary: >-
+  In 2023 the Department of Telecommunications ran repeated cell broadcast tests with NDMA. Phones displayed the
+  test messages under the titles 'Emergency alert: Severe' (August) and 'Emergency alert: Extreme' (October) with a
+  loud alert tone, although the text said it was a sample test needing no action. Press reported public confusion;
+  DoT said the alerts were part of planned testing.
+
+timeline:
+  - {t: "2023-08-17", event: "Phones receive a test message titled 'Emergency alert: Severe' at around 1:30 pm; DoT says tests will run regularly in different regions.", source: INDIA-2023-BS}
+  - {t: "2023-09-28T15:38+05:30", event: "PIB release (Ministry of Communications): DoT and NDMA are testing the Cell Broadcast Alert System; alerts are part of planned testing and do not indicate an actual emergency; Punjab next on 29 September.", source: INDIA-2023}
+  - {t: "2023-10-10T11:30+05:30", event: "Mobile users across India receive a test message titled 'Emergency alert: Extreme' with a loud tone; India TV calls it the sixth such message since August.", source: INDIA-2023-ITV}
+  - {t: "2023-10-25", event: "Odisha test messages cause panic, with some users taking them for fraud; DoT Odisha LSA holds a press meet and issues a statement.", source: INDIA-2023-OP}
+
+inputs:
+  event_text: "Planned test of the Pan-India Emergency Alert System (cell broadcast) by DoT with NDMA. No hazard."
+  issuer: "Department of Telecommunications, Government of India"
+  environment: live
+  intended_status: Test
+  intended_status_basis: "PIB release of 28 Sep 2023 and the message text itself say these were tests."
+  requested_area:
+    areaDesc: "Test areas chosen by DoT (reported as received across India on 10 Oct 2023)"
+    geocodes: [{valueName: ISO3166-1, value: "IN"}]
+
+real_message:
+  text_verbatim: "This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India. Please ignore this message as no action is required from your end. This message has been sent to test Pan-India Emergency Alert System being implemented by National Disaster Management Authority. It aims to enhance public safety and provide timely alerts during emergencies."
+  text_verbatim_note: "As quoted by India TV for 10 Oct 2023. Business Standard quotes the August message with 'TEST' in capitals; otherwise the same."
+  displayed_title_press: "Emergency alert: Extreme"
+  status: Test
+  status_note: "Reconstructed from intent and text ('SAMPLE TESTING MESSAGE'). It reached the public on an emergency display class (Severe/Extreme title), not a test-only channel."
+  msgType: Alert
+  scope: Public
+  sender: "Department of Telecommunications, Government of India"
+  category: Other
+  event: "Test of Pan-India Emergency Alert System"
+  urgency: Unknown
+  severity: Extreme
+  certainty: Unknown
+  language: en-IN
+  headline: "Emergency alert: Extreme"
+  description: "This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India. Please ignore this message as no action is required from your end. This message has been sent to test Pan-India Emergency Alert System being implemented by National Disaster Management Authority. It aims to enhance public safety and provide timely alerts during emergencies."
+  instruction: "Please ignore this message as no action is required from your end."
+  areaDesc: "India (as reported)"
+  area:
+    areaDesc: "India (as reported)"
+    geocodes: [{valueName: ISO3166-1, value: "IN"}]
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [status, category, event, urgency, severity, certainty, headline, area.geocodes]
+  reconstruction_note: >-
+    'Severe' and 'Extreme' are the titles phones displayed (press). The title a handset shows depends on the cell
+    broadcast message identifier, which was not published, so the mapping to CAP severity is our reconstruction.
+
+real_outcome:
+  text: >-
+    Phones across India showed a test message under an 'Emergency alert: Extreme' title with a loud tone. In Odisha
+    the test messages triggered panic among users who confused them with fraud messages, according to Orissa Post.
+  source: INDIA-2023-OP
+
+official_finding:
+  body: "Department of Telecommunications and NDMA (Press Information Bureau, Ministry of Communications)"
+  document: "PIB release 'DOT and NDMA collaborate to enhance emergency communication with Cell Broadcast Alert System testing', 28 Sep 2023"
+  finding_status: press-only
+  quote: "Emergency alerts integral part of planned testing process and do not indicate actual emergency"
+  source: INDIA-2023
+  scope_note: >-
+    The government statement confirms the messages were tests. No government or regulator statement was found
+    that addresses the 'Severe'/'Extreme' display class or calls it a problem; that part rests on press reports
+    only. The expected rule rests on the general principle in R2 (FCC Hawaii report and CAP status semantics), not
+    on an Indian finding.
+
+expected_rules: [R2]
+expected_rules_basis: "R2: a Test must not go out on the public channel at Extreme severity unless that is stated policy."
+
+unknowns:
+  - "Cell broadcast message identifiers (channels) used, which decide the title phones display."
+  - "Whether showing tests under Severe/Extreme titles was an intended design of the test programme."
+  - "Exact areas covered on each test date."
+  - "Approval and signing steps."
+
+framing_note: >-
+  DoT and NDMA ran these as announced tests and said so in the message. The replay asks only whether a gate would
+  flag a Test status travelling on an Extreme-class public channel. It does not treat the tests as a failure of
+  the programme.
+
+source_urls:
+  INDIA-2023: "https://pib.gov.in/PressReleasePage.aspx?PRID=1961680"
+  INDIA-2023-BS: "https://www.business-standard.com/india-news/received-emergency-alert-severe-text-on-your-phone-here-s-what-it-means-123081700397_1.html"
+  INDIA-2023-ITV: "https://www.indiatvnews.com/technology/news/today-s-emergency-alert-here-s-what-you-need-to-know-2023-10-10-897082"
+  INDIA-2023-OP: "https://www.orissapost.com/cell-broadcast-alert-system-creates-panic-among-people-in-odisha/amp/"

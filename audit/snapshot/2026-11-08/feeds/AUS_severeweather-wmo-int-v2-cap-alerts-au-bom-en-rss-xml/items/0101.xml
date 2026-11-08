@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDQ21033-2026-11-07T06:25:15+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-07T06:25:15+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-07T04:13:35+00:00,2026-11-07T04:13:35+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-07T05:39:23+00:00,2026-11-07T05:39:23+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-07T06:25:10+00:00</effective>
+        <expires>2026-11-07T11:25:10+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Severe Thunderstorm Warning for Capricornia, Central Highlands and Coalfields, Darling Downs and Granite Belt, Wide Bay and Burnett and Southeast Coast forecast districts</headline>
+        <description>
+          Severe thunderstorms are likely to produce damaging winds, large hailstones and heavy rainfall that may lead to flash flooding in the warning area over the next several hours. Locations which may be affected include Maroochydore, Bundaberg, Biloela, Cherbourg, Monto and Gayndah.  
+          
+          
+          3 to 4 cm was observed in the Gin Gin area around 3.15 pm.
+        </description>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Central Highlands and Coalfields, Capricornia, Wide Bay and Burnett, Darling Downs and Granite Belt and Southeast Coast</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW007</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW013</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW014</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW015</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-07T06:25:10+00:00</effective>
+        <expires>2026-11-07T11:25:10+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Severe Thunderstorm Warning for Maranoa and Warrego forecast district</headline>
+        <description/>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Maranoa and Warrego forecast district</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW012</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

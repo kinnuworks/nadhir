@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDS20290-2026-11-08T17:28:50+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-08T17:28:50+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDS20290-2026-11-08T06:12:56+00:00,2026-11-08T06:12:56+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Fire Weather</event>
+        <urgency>Unknown</urgency>
+        <severity>Severe</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>fireWeather</value>
+        </eventCode>
+        <effective>2026-11-08T16:30:00+00:00</effective>
+        <expires>2026-11-09T13:30:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Extreme Fire Weather Warning for West Coast fire district for 09 November</headline>
+        <instruction>The Country Fire Service advises you to:
+Action your Bushfire Survival Plan now.
+Monitor the fire and weather situation through your local radio station, www.cfs.sa.gov.au, and www.bom.gov.au.
+Call 000 (Triple Zero) in an emergency.
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>South Australia: West Coast</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>SA_FW010</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

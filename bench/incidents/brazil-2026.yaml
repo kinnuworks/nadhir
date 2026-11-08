@@ -1,0 +1,102 @@
+id: brazil-2026
+title: "Unauthorised 'Extreme Alert' messages sent through Brazil's Defesa Civil Alerta platform"
+date: "2026-06-19"
+jurisdiction: "Brazil (Ministério da Integração e do Desenvolvimento Regional, MIDR; Secretaria Nacional de Proteção e Defesa Civil, SEDEC)"
+sources: [BRAZIL-2026, BRAZIL-2026-AB, BRAZIL-2026-OD, BRAZIL-2026-TNW]
+
+summary: >-
+  Overnight on 19 to 20 June 2026, someone outside the national civil defence system remotely triggered
+  'Extreme Alert' messages through the Defesa Civil Alerta platform to several regions of Brazil, with text
+  containing the word 'misantropia'. The ministry took the platform offline at 01:30 and asked the Federal
+  Police to investigate.
+
+timeline:
+  - {t: "2026-06-19T23:41-03:00", event: "First unauthorised message sent (ministry figure, as reported by Agência Brasil via Jovem Pan); the first alert went to Curitiba.", source: BRAZIL-2026-AB}
+  - {t: "2026-06-20T01:23-03:00", event: "Last unauthorised message sent (ministry figure, as reported).", source: BRAZIL-2026-AB}
+  - {t: "2026-06-20T01:30-03:00", event: "The Defesa Civil Alerta sending platform is taken offline.", source: BRAZIL-2026}
+  - {t: "2026-06-20T05:08-03:00", event: "MIDR publishes an official note: the platform was invaded, the alert was ordered remotely by someone outside the national civil defence system, and the Federal Police will be called in.", source: BRAZIL-2026}
+  - {t: "2026-06-20", event: "National Secretary Wolnei Wolff tells a press conference that ten notifications were sent: nine by cell broadcast and one by SMS.", source: BRAZIL-2026-AB}
+  - {t: "2026-06-20", event: "Anatel says the alerts, as far as known, did not pass through the official channels of the system's technical platform operated by ABR Telecom.", source: BRAZIL-2026-AB}
+
+inputs:
+  event_text: null
+  event_text_note: "No hazard existed. The Defesa Civil Nacional said there was no meteorological or natural-disaster risk under way (as reported by Olhar Digital)."
+  issuer: null
+  issuer_note: "Unknown sender outside the Sistema Nacional de Proteção e Defesa Civil (MIDR note)."
+  environment: live
+  requested_area: null
+
+real_message:
+  text_verbatim: "Defesa Civil: misantropi4"
+  text_verbatim_note: "As displayed on phones, reported by The Next Web. MIDR's note says the message contained the word 'misantropia'; Jovem Pan reports texts mentioning 'misantropia' and 'invasão alienígena' among others, so the ten messages were not identical."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "unknown (not a registered originator)"
+  category: Other
+  event: "Alerta Extremo"
+  urgency: Immediate
+  severity: Extreme
+  certainty: Unknown
+  language: pt-BR
+  headline: "Alerta Extremo"
+  description: "Defesa Civil: misantropi4"
+  instruction: null
+  areaDesc: "Multiple regions; first Curitiba (PR), then reported in SP, RJ, DF, BA, PA, MS, AC and other municipalities"
+  area:
+    areaDesc: "Multiple regions of Brazil (cities and states as reported)"
+    geocodes:
+      - {valueName: ISO3166-2, value: "BR-PR"}
+      - {valueName: ISO3166-2, value: "BR-SP"}
+      - {valueName: ISO3166-2, value: "BR-RJ"}
+      - {valueName: ISO3166-2, value: "BR-DF"}
+      - {valueName: ISO3166-2, value: "BR-BA"}
+      - {valueName: ISO3166-2, value: "BR-PA"}
+      - {valueName: ISO3166-2, value: "BR-MS"}
+      - {valueName: ISO3166-2, value: "BR-AC"}
+    geocodes_basis: "State list as reported by The Next Web; the official note says only 'diversas regiões do país'."
+  approvals_count: 0
+  approvals_basis: "No authorised originator approved it (MIDR: ordered by someone outside the national system)."
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, urgency, certainty, headline, area.geocodes, approvals_count]
+  reconstruction_note: "Severity class 'Alerta Extremo' is stated in the official note; other CAP values are ours."
+
+real_outcome:
+  text: >-
+    Phones in several states received 'Extreme Alert' messages overnight, which sound even in silent mode.
+    Agência Brasil's preliminary analysis (via Jovem Pan) lists cities totalling about 30 million people; the
+    government did not publish a device count. The platform stayed offline while security was restored.
+  source: BRAZIL-2026-AB
+
+official_finding:
+  body: "Ministério da Integração e do Desenvolvimento Regional (MIDR), Secretaria Nacional de Proteção e Defesa Civil"
+  document: "Nota oficial: MIDR aciona Polícia Federal para investigar invasão ao Defesa Civil Alerta (20/06/2026 05h08)"
+  finding_status: official-verbatim
+  quote: "após ter sofrido uma invasão e disparado um alerta para diversas regiões do país, ordenado remotamente por alguém alheio ao Sistema Nacional de Proteção e Defesa Civil"
+  quote_translation_unofficial: "after suffering an intrusion and sending an alert to several regions of the country, ordered remotely by someone outside the National Civil Protection and Defence System"
+  source: BRAZIL-2026
+  verification_note: "Text read from a print of the gov.br page hosted by Poder360 (PDF, 2 pages); a direct fetch of the gov.br page returned no article text."
+
+expected_rules: [R5]
+expected_rules_basis: "R5: originator authentication; an alert not signed by a registered originator key is held."
+
+unknowns:
+  - "How access was obtained (central platform credentials, an interface, or another route). The ministry says the platform was invaded; Anatel says the alerts did not pass through the official channels of the ABR Telecom technical platform."
+  - "Whether a valid originator credential or key was used. If it was, signature checking alone would not have blocked the messages."
+  - "Exact text and target area of each of the ten messages."
+  - "Federal Police findings; none published as of the fetch date."
+
+framing_note: >-
+  The official note describes an intrusion by someone outside the system and calls it probably a hacker attack.
+  The replay tests whether an unsigned or unregistered originator is held. It does not claim the gate would have
+  stopped an attacker holding valid credentials; the attack route is not public.
+
+source_urls:
+  BRAZIL-2026: "https://www.gov.br/mdr/pt-br/noticias/midr-aciona-policia-federal-para-investigar-invasao-ao-defesa-civil-alerta"
+  BRAZIL-2026-COPY: "https://static.poder360.com.br/uploads/2026/06/midr-alerta.pdf"
+  BRAZIL-2026-AB: "https://jovempan.com.br/brasil/cerca-de-30-milhoes-de-pessoas-receberam-alerta-falso-da-defesa-civil/"
+  BRAZIL-2026-OD: "https://olhardigital.com.br/2026/06/20/seguranca/policia-federal-vai-investigar-falso-alerta-enviado-pela-defesa-civil/"
+  BRAZIL-2026-TNW: "https://thenextweb.com/news/brazil-civil-defense-alert-hack-misanthropy-cell-broadcast"
+source_hashes:
+  BRAZIL-2026-COPY: {sha256: "09b8054d9fa09e52ba0490cf85e27458541211d2614ed429e953c6cd4185f875", fetched: "2026-11-09"}

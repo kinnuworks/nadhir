@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/qa-caa-en/rss-style.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link rel="hub" href="//alert-hub.appspot.com" />
+    <atom:link rel="self" href="https://cap-sources.s3.amazonaws.com/qa-caa-en/rss.xml" type="application/rss+xml" />
+    <title>Latest alerts from Civil Aviation Authority</title>
+    <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/rss.xml</link>
+    <description>Latest alerts from Civil Aviation Authority</description>
+    <language>en</language>
+    <copyright>public domain</copyright>
+    <pubDate>Tue, 27 Oct 2026 08:23:00 +0000</pubDate>
+    <lastBuildDate>Tue, 27 Oct 2026 08:23:00 +0000</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <image>
+      <title>Latest alerts from Civil Aviation Authority</title>
+      <url>https://alert-hub.s3.amazonaws.com/images/qa-caa-en.png</url>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/rss.xml</link>
+    </image>
+    <item>
+      <title>Thunderstorms</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/2026-10-27-08-22-51.xml</link>
+      <description>Moderate rain with thunderstorms , accompanied by sudden strong winds reaching speeds of up to 35 knots.</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.27.8.22.51</guid>
+      <pubDate>Tue, 27 Oct 2026 08:22:51 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thunderstorms</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/2026-10-26-09-27-12.xml</link>
+      <description>Moderate rain with thunderstorms , accompanied by sudden strong winds reaching speeds of up to 35 knots.</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.26.9.27.12</guid>
+      <pubDate>Mon, 26 Oct 2026 09:27:12 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thunderstorms</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/2026-10-23-09-04-37.xml</link>
+      <description>Moderate rain with thunderstorms , accompanied by sudden strong winds reaching speeds of up to 35 knots.</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.23.9.4.37</guid>
+      <pubDate>Fri, 23 Oct 2026 09:04:37 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thunderstorms</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/2026-10-22-13-06-21.xml</link>
+      <description>Moderate rain with thunderstorms , accompanied by sudden strong winds reaching speeds of up to 35 knots.</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.22.13.6.21</guid>
+      <pubDate>Thu, 22 Oct 2026 13:06:21 +0000</pubDate>
+    </item>
+    <item>
+      <title>Thunderstorms</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-en/2026-10-20-08-22-59.xml</link>
+      <description>Moderate rain with thunderstorms , accompanied by sudden strong winds reaching speeds of up to 25 knots.</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.20.8.22.59</guid>
+      <pubDate>Tue, 20 Oct 2026 08:22:59 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

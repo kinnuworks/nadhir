@@ -1,0 +1,88 @@
+# Vetted Wireless Emergency Alert templates adopted by the FCC in DA 25-12 (US federal government text, public domain).
+# Used by gate rule R9: a machine-translated draft must match a vetted template slot-for-slot,
+# or carry a named human language approval.
+id: fcc-da-25-12-dust-storm
+source_id: FCC-DA-25-12
+document:
+  title: "Wireless Emergency Alerts; Amendments to Part 11 of the Commission's Rules Regarding the Emergency Alert System, Report and Order"
+  number: "DA 25-12"
+  dockets: ["PS Docket No. 15-91", "PS Docket No. 15-94"]
+  issuer: "Federal Communications Commission, Public Safety and Homeland Security Bureau"
+  adopted: "2025-01-08"
+  released: "2025-01-08"
+  url: "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf"
+  fetched: "2026-11-09"
+  pdf_sha256: "06fbf300a7ed79a4619d5ee806e1558ae86ea70880521f12295379ec9c1a5d3f"
+  pdf_pages: 70
+  license_note: "Work of the US federal government; not subject to copyright in the US (17 U.S.C. 105)."
+
+# Slot markers are kept exactly as printed. Paragraph 13 of the order's FRFA appendix says the Bureau declined
+# to require the fillable elements to be translated, so the markers stay in English in every language.
+slot_markers: ["[SENDING AGENCY]", "[LOCATION]", "[TIME]", "[URL]"]
+
+adoption_context:
+  - para: 6
+    page: 3
+    quote: "We decline to adopt evacuation and shelter-in-place templates and defer consideration of other templates at this time."
+  - para: 17
+    page: 8
+    quote: "We adopt the multilingual templates located in Appendix D."
+  - para: 18
+    page: 8
+    quote: "we adopt the Arabic, Haitian Creole, Hindi, Italian, Portuguese, and Russian templates with only minor changes"
+  - para: 43
+    page: 19
+    quote: "We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts."
+
+templates:
+  - template: "Dust Storm Warning"
+    language: en-US
+    locator: {appendix: "C (English Templates)", pdf_page: 29, printed_page: 29}
+    extraction: "pdftotext text layer; line breaks joined with single spaces"
+    text: "[SENDING AGENCY]: A DUST STORM WARNING is in effect for [LOCATION] until [TIME]. Be ready for sudden drop to zero visibility. Pull Aside, Stay Alive! When visibility drops, pull far off the road and put your vehicle in park. Turn the lights off and keep your foot off the brake. Infants, the elderly, and those with trouble breathing urged to take precautions. [URL]"
+
+  - template: "Dust Storm Warning"
+    language: ar
+    locator: {appendix: "D (Multilingual Templates, Arabic Templates)", pdf_page: 32, printed_page: 32}
+    extraction: >-
+      Letters taken from the PDF text layer and checked word by word against the rendered page (300 dpi).
+      Normalisation applied: Unicode NFKC (Arabic presentation forms to base letters); U+06CC FARSI YEH to
+      U+064A ARABIC YEH and U+06BE HEH DOACHASHMEE to U+0647 ARABIC HEH (the PDF font maps initial and medial
+      yeh/heh glyphs to the Persian code points; the glyphs on the page are identical); bidi control characters
+      removed; word order and comma/full-stop placement restored to logical order as shown on the rendered page;
+      mirrored square brackets around slot markers restored. All 62 Arabic words match the text layer
+      after normalisation; the only differences were punctuation position artefacts.
+    text: "[SENDING AGENCY]: يسري التحذير من عاصفة ترابية لـ [LOCATION] حتى [TIME]. كن مستعدًا للانخفاض المفاجئ في مستوى الرؤية الذي قد يصل إلى الصفر. توقف على جانب الطريق، وابق على قيد الحياة! عندما تنخفض الرؤية، اركن سيارتك بعيدًا عن مسار الطريق، ثم ضعها في وضع الانتظار. أطفئ الأنوار وأبعد قدمك عن المكابح. حث الرضع وكبار السن وأولئك الذين يعانون من مشاكل في التنفس على اتخاذ الاحتياطات اللازمة. [URL]"
+
+  - template: "Dust Storm Warning"
+    language: hi
+    locator: {appendix: "D (Multilingual Templates, Hindi Templates)", pdf_page: 47, printed_page: 47}
+    extraction: >-
+      Transcribed from the rendered page (300 dpi). The PDF text layer has no Unicode mapping for several
+      Devanagari conjuncts (for example दृश्यता, शून्य, बत्तियाँ, वरिष्ठ, श्वसन, समस्याओं come out as replacement
+      characters), so the text layer alone cannot be used. Code points follow the text layer where it maps
+      (ड़ is U+095C as in the text layer). Danda is U+0964.
+    verification: "visual transcription; recheck against the PDF before relying on byte equality"
+    text: "[SENDING AGENCY]: [LOCATION] में [TIME] तक धूल के तूफान की चेतावनी प्रभावी है। दृश्यता अचानक शून्य हो जाने के लिए तैयार रहें। सड़क के किनारे पर रुक जाएं, जीवित रहें! जब दृश्यता कम हो जाए, तो सड़क से दूर होकर रुक जाएं और अपने वाहन को पार्क में लगा दें। बत्तियाँ बुझा दें और अपना पैर ब्रेक से दूर रखें। शिशुओं, वरिष्ठ नागरिकों और श्वसन संबंधी समस्याओं वाले लोगों से एहतियात बरतने का आग्रह किया जाता है। [URL]"
+
+  - template: "Dust Storm Warning"
+    language: tl
+    locator: {appendix: "D (Multilingual Templates, Tagalog Templates)", pdf_page: 66, printed_page: 66}
+    extraction: "pdftotext text layer; line breaks joined with single spaces"
+    text: "[SENDING AGENCY]: May bisa ang BABALA SA DUST STORM para sa [LOCATION] hanggang [TIME]. Maging handa para sa biglaang pagbaba sa zero visibility. Tumabi, Manatiling Buhay! Kapag bumaba ang visibility, huminto sa malayo sa kalsada at i-park ang iyong sasakyan. Patayin ang mga ilaw at alisin ang iyong paa sa preno. Hinihikayat na mag-ingat ang mga sanggol, matatanda at mga may problema sa paghinga. [URL]"
+
+not_present:
+  - item: "Urdu Dust Storm Warning"
+    reason: "Urdu is not one of the 13 languages in Appendix D (Arabic, Chinese Simplified and Traditional, French, German, Haitian Creole, Hindi, Italian, Korean, Portuguese, Russian, Spanish, Tagalog, Vietnamese)."
+  - item: "Shelter in Place and Evacuation templates (any language)"
+    reason: "The order declined to adopt them (para. 6 and para. 11); Appendix C and D contain none. Some adopted templates carry evacuation wording inside them (Flash Flood, Storm Surge, Avalanche, Fire, Hazardous Materials)."
+    quote: "Because of these risks, we decline to adopt generic evacuation and shelter-in-place alerts for use in multilingual WEA."
+    quote_locator: {para: 11, pdf_page: 6}
+
+# Dust Storm Warning label found by text search on these Appendix D pages; Italian and Chinese (Traditional)
+# labels were not matched by text search and were not checked visually.
+other_languages_with_dust_storm_template_in_appendix_d: [zh-Hans, fr, de, ht, ko, pt, ru, es, vi]
+
+source_urls:
+  FCC-DA-25-12: "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf"
+  FCC-WEA-ASL: "https://www.fcc.gov/WirelessEmergencyAlert-Templates-ASL"

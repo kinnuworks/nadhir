@@ -1,0 +1,1030 @@
+{
+ "snapshot": "2026-11-08",
+ "fetched": {
+  "started_at": "2026-11-08T18:50:06Z",
+  "finished_at": "2026-11-08T19:02:34Z"
+ },
+ "fetch_failures": [
+  {
+   "url": "https://severeweather.wmo.int/v2/cap-alerts/au-bom-en/2026/11/07/11/01/00-932572ea59e7c71657d26a032de7ae0b.xml",
+   "error": "HTTP 404",
+   "kind": "cap_item"
+  }
+ ],
+ "method": {
+  "test_statuses_separated": [
+   "Exercise",
+   "Test"
+  ],
+  "ai_patterns": [
+   "ai",
+   "artificial",
+   "machine",
+   "auto-translat",
+   "generated",
+   "llm",
+   "gpt"
+  ],
+  "ai_fields": "source, note, code, and every valueName/value pair (parameter, eventCode, geocode)",
+  "approver_patterns": [
+   "approv",
+   "authoriz/authoris",
+   "username",
+   "operator"
+  ],
+  "approver_fields": "every valueName/value pair (parameter, eventCode, geocode)",
+  "token_match": "ai, llm and gpt match as whole tokens; the rest as substrings"
+ },
+ "sources": [
+  {
+   "groups": {
+    "live": {
+     "alerts": 1000,
+     "with_source": 997,
+     "with_note": 4,
+     "with_signature": 1000,
+     "multi_language": 324,
+     "with_instruction": 405,
+     "with_parameter": 874,
+     "ai_marker": 0,
+     "approver_marker": 17
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 1000
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 246,
+   "parameter_valueNames": {
+    "BLOCKCHANNEL": 831,
+    "EAS-ORG": 695,
+    "WEAHandling": 665,
+    "CMAMtext": 654,
+    "CMAMlongtext": 588,
+    "timezone": 348,
+    "AWIPSidentifier": 201,
+    "eventEndingTime": 201,
+    "WMOidentifier": 201,
+    "VTEC": 201,
+    "flashFloodDamageThreat": 146,
+    "flashFloodDetection": 116,
+    "eventMotionDescription": 55,
+    "tornadoDetection": 53,
+    "maxHailSize": 49,
+    "NWSheadline": 32,
+    "EASText": 22,
+    "EAS-STN-ID": 21,
+    "UserName": 17,
+    "ReceiptsRequested": 17,
+    "MessagePriority": 17,
+    "StationID": 17,
+    "VoiceRepeat": 17,
+    "AssignedAddress": 17,
+    "OriginatingSystem": 17,
+    "EASHeader": 17,
+    "SirenDuration": 17,
+    "AudioSource": 17,
+    "PostToWeb": 17,
+    "ShortText": 10,
+    "USGSMsgType": 4,
+    "DBGFBYPASS": 4,
+    "TimeZone": 3,
+    "EMnet Nodes": 3,
+    "maxWindGust": 2,
+    "windThreat": 2,
+    "thunderstormDamageThreat": 2,
+    "hailThreat": 2
+   },
+   "distinct_source_values": 35,
+   "top_source_values": {
+    "050302 v1.1": 214,
+    "211803 v2.3.0": 201,
+    "091903v6.0": 182,
+    "182001 10.0.100748": 92,
+    "010805 v67909": 47,
+    "011903 v1.159.0.1": 38,
+    "070401 v3.13": 32,
+    "IPAWS": 27,
+    "030405 v1.19.0": 26,
+    "181602 v2.5": 24
+   },
+   "ai_marker_values": [],
+   "approver_marker_values": [
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = EMnet",
+     "pattern": "username",
+     "alerts": 4
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = Administrator",
+     "pattern": "username",
+     "alerts": 3
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = seoc",
+     "pattern": "username",
+     "alerts": 3
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = SHIFT D SOD",
+     "pattern": "username",
+     "alerts": 2
+    },
+    {
+     "group": "live",
+     "field": "parameter.value",
+     "value": "UserName = Operator 145",
+     "pattern": "operator",
+     "alerts": 1
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = [personal name redacted]",
+     "pattern": "username",
+     "alerts": 1
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = ISP Region 6",
+     "pattern": "username",
+     "alerts": 1
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = [personal name redacted]",
+     "pattern": "username",
+     "alerts": 1
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = Operator 145",
+     "pattern": "username",
+     "alerts": 1
+    },
+    {
+     "group": "live",
+     "field": "parameter.valueName",
+     "value": "UserName = Shift C",
+     "pattern": "username",
+     "alerts": 1
+    }
+   ],
+   "source_id": "IPAWS",
+   "label": "US IPAWS (OpenFEMA archive)",
+   "country": "USA",
+   "records": 1000,
+   "unparsed": 0,
+   "sent_range_utc": [
+    "2026-10-17T07:09:08Z",
+    "2026-11-07T18:48:53Z"
+   ]
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 93,
+     "with_source": 93,
+     "with_note": 93,
+     "with_signature": 93,
+     "multi_language": 93,
+     "with_instruction": 32,
+     "with_parameter": 93,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 7,
+     "with_source": 6,
+     "with_note": 0,
+     "with_signature": 7,
+     "multi_language": 6,
+     "with_instruction": 7,
+     "with_parameter": 7,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 93,
+    "Test": 7
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {
+    "layer:SOREM:2.0:WirelessImmediate": 100,
+    "layer:SOREM:1.0:Broadcast_Immediately": 100,
+    "layer:EC-MSC-SMC:1.1:Designation_Code": 93,
+    "layer:EC-MSC-SMC:1.1:Parent_URI": 93,
+    "layer:EC-MSC-SMC:1.0:Alert_Location_Status": 93,
+    "layer:EC-MSC-SMC:1.0:Alert_Name": 93,
+    "layer:EC-MSC-SMC:1.0:Alert_Type": 93,
+    "layer:EC-MSC-SMC:1.1:Alert_Location_Status": 93,
+    "layer:EC-MSC-SMC:1.0:Alert_Coverage": 93,
+    "layer:EC-MSC-SMC:1.0:Broadcast_Intrusive": 93,
+    "layer:EC-MSC-SMC:1.1:CAP_count": 93,
+    "layer:EC-MSC-SMC:1.1:Event_End_Time": 71,
+    "layer:EC-MSC-SMC:1.1:Previous_Colour": 70,
+    "layer:EC-MSC-SMC:1.1:MSC_Risk_Tiered_Ranking": 55,
+    "layer:EC-MSC-SMC:1.1:MSC_Impact": 55,
+    "layer:EC-MSC-SMC:1.1:Colour": 55,
+    "layer:EC-MSC-SMC:1.1:MSC_Confidence": 55,
+    "layer:EC-MSC-SMC:1.1:Newly_Active_Areas": 10,
+    "profile:CAP-CP:0.4:MinorChange": 3
+   },
+   "distinct_source_values": 3,
+   "top_source_values": {
+    "Env. Can. - Can. Met. Ctr. – Montréal": 93,
+    "s-bor-vpa095007": 3,
+    "alert-prod1.eew2.nrcan-rncan.cloud-nuage.canada.ca": 3
+   },
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "CAN:rss-naad-adna-pelmorex-com",
+   "label": "Canada: Environment and Climate Change Canada, Meteorological Service of Canada; Canada: Ministère de la Sécurité publique du Québec [en, fr]",
+   "country": "CAN",
+   "feed_url": "http://rss.naad-adna.pelmorex.com/",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "updated": "2026-11-08T18:49:18-00:00"
+   },
+   "items_listed": 100,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 54,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 54,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 54
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "SAU:ncm-gov-sa-ar-cap-alerts",
+   "label": "Saudi Arabia: National Center for Meteorology [ar]",
+   "country": "SAU",
+   "feed_url": "https://ncm.gov.sa/ar/cap-alerts",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Sun, 08 Nov 2026 18:53:20 GMT"
+   },
+   "items_listed": 54,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 54,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 54,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 54
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "SAU:ncm-gov-sa-en-cap-alerts",
+   "label": "Saudi Arabia: National Center for Meteorology [en]",
+   "country": "SAU",
+   "feed_url": "https://ncm.gov.sa/en/cap-alerts",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Sun, 08 Nov 2026 18:56:04 GMT"
+   },
+   "items_listed": 54,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 1,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 1,
+     "with_instruction": 1,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 1
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "KWT:www-met-gov-kw-rss-eng-kuwait-cap-xml",
+   "label": "Kuwait: Meteorological Department [en]",
+   "country": "KWT",
+   "feed_url": "https://www.met.gov.kw/rss_eng/kuwait_cap.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Sun, 08 Nov 2026 07:29:12 GMT",
+    "lastBuildDate": "Sun, 08 Nov 2026 07:29:12 GMT"
+   },
+   "items_listed": 1,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 499,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 210,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 499
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "AUS:severeweather-wmo-int-v2-cap-alerts-au-bom-en-rss-xml",
+   "label": "Australia: Bureau of Meteorology [en]",
+   "country": "AUS",
+   "feed_url": "https://severeweather.wmo.int/v2/cap-alerts/au-bom-en/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Sun, 08 Nov 2026 17:39:24 +0000",
+    "lastBuildDate": "Thu, 13 Jul 2023 06:54:27 +0000"
+   },
+   "items_listed": 500,
+   "item_fetch_failures": 1,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 5,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 5,
+     "multi_language": 0,
+     "with_instruction": 5,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 5
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "QAT:cap-sources-s3-amazonaws-com-qa-caa-ar-rss-xml",
+   "label": "Qatar: Civil Aviation Authority [ar]",
+   "country": "QAT",
+   "feed_url": "https://cap-sources.s3.amazonaws.com/qa-caa-ar/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Tue, 27 Oct 2026 08:20:11 +0000",
+    "lastBuildDate": "Tue, 27 Oct 2026 08:20:11 +0000"
+   },
+   "items_listed": 5,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 5,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 5,
+     "multi_language": 0,
+     "with_instruction": 5,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {
+    "Actual": 5
+   },
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "QAT:cap-sources-s3-amazonaws-com-qa-caa-en-rss-xml",
+   "label": "Qatar: Civil Aviation Authority [en]",
+   "country": "QAT",
+   "feed_url": "https://cap-sources.s3.amazonaws.com/qa-caa-en/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Tue, 27 Oct 2026 08:23:00 +0000",
+    "lastBuildDate": "Tue, 27 Oct 2026 08:23:00 +0000"
+   },
+   "items_listed": 5,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {},
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "BHR:cap-sources-s3-amazonaws-com-bh-meteo-ar-rss-xml",
+   "label": "Bahrain: Bahrain Meteorological Service [ar]",
+   "country": "BHR",
+   "feed_url": "https://cap-sources.s3.amazonaws.com/bh-meteo-ar/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Wed, 30 Sep 2026 15:13:00 +0000",
+    "lastBuildDate": "Wed, 30 Sep 2026 15:13:00 +0000"
+   },
+   "items_listed": 0,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {},
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "BHR:cap-sources-s3-amazonaws-com-bh-meteo-en-rss-xml",
+   "label": "Bahrain: Bahrain Meteorological Service [en]",
+   "country": "BHR",
+   "feed_url": "https://cap-sources.s3.amazonaws.com/bh-meteo-en/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Wed, 30 Sep 2026 15:15:12 +0000",
+    "lastBuildDate": "Wed, 30 Sep 2026 15:15:12 +0000"
+   },
+   "items_listed": 0,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {},
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "CAN:emergencyalert-alberta-ca-aeapublic-feed-atom",
+   "label": "Canada: Alberta Emergency Management Agency (Government of Alberta, Ministry of Municipal Affairs) [en, fr]",
+   "country": "CAN",
+   "feed_url": "http://emergencyalert.alberta.ca/aeapublic/feed.atom",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "updated": "2026-11-08T18:22:01-00:00"
+   },
+   "items_listed": 0,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {},
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "OMN:cap-sources-s3-amazonaws-com-om-met-ar-rss-xml",
+   "label": "Oman: Directorate General of Meteorology [ar]",
+   "country": "OMN",
+   "feed_url": "https://cap-sources.s3.amazonaws.com/om-met-ar/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Mon, 12 Feb 2024 07:13:10 +0000",
+    "lastBuildDate": "Mon, 12 Feb 2024 07:13:10 +0000"
+   },
+   "items_listed": 0,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  },
+  {
+   "groups": {
+    "live": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    },
+    "test_exercise": {
+     "alerts": 0,
+     "with_source": 0,
+     "with_note": 0,
+     "with_signature": 0,
+     "multi_language": 0,
+     "with_instruction": 0,
+     "with_parameter": 0,
+     "ai_marker": 0,
+     "approver_marker": 0
+    }
+   },
+   "status_counts": {},
+   "duplicates_skipped": 0,
+   "live_with_same_test_event": 0,
+   "parameter_valueNames": {},
+   "distinct_source_values": 0,
+   "top_source_values": {},
+   "ai_marker_values": [],
+   "approver_marker_values": [],
+   "source_id": "OMN:cap-sources-s3-amazonaws-com-om-met-en-rss-xml",
+   "label": "Oman: Directorate General of Meteorology [en]",
+   "country": "OMN",
+   "feed_url": "https://cap-sources.s3.amazonaws.com/om-met-en/rss.xml",
+   "feed_http_status": 200,
+   "feed_error": null,
+   "feed_dates": {
+    "pubDate": "Thu, 26 Oct 2023 06:45:31 +0000",
+    "lastBuildDate": "Thu, 26 Oct 2023 06:45:31 +0000"
+   },
+   "items_listed": 0,
+   "item_fetch_failures": 0,
+   "unparsed": 0
+  }
+ ],
+ "wmo_register": {
+  "entries_total": 303,
+  "states": {
+   "SAU": {
+    "gcc": true,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "SAU",
+      "title": "Saudi Arabia: National Center for Meteorology",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=140",
+      "pubDate": "Sun, 21 Jun 2026 22:38:39 +0000",
+      "feeds": [
+       {
+        "lang": "ar",
+        "url": "https://ncm.gov.sa/ar/cap-alerts"
+       },
+       {
+        "lang": "en",
+        "url": "https://ncm.gov.sa/en/cap-alerts"
+       }
+      ]
+     },
+     {
+      "country": "SAU",
+      "title": "Saudi Arabia: test",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=324",
+      "pubDate": "Sun, 06 Aug 2023 22:41:36 +0000",
+      "feeds": []
+     }
+    ]
+   },
+   "KWT": {
+    "gcc": true,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "KWT",
+      "title": "Kuwait: Meteorological Department",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=222",
+      "pubDate": "Tue, 02 Jun 2026 01:03:59 +0000",
+      "feeds": [
+       {
+        "lang": "en",
+        "url": "https://www.met.gov.kw/rss_eng/kuwait_cap.xml"
+       }
+      ]
+     }
+    ]
+   },
+   "QAT": {
+    "gcc": true,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "QAT",
+      "title": "Qatar: Civil Aviation Authority",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=130",
+      "pubDate": "Sun, 19 Oct 2025 21:45:13 +0000",
+      "feeds": [
+       {
+        "lang": "ar",
+        "url": "https://cap-sources.s3.amazonaws.com/qa-caa-ar/rss.xml"
+       },
+       {
+        "lang": "en",
+        "url": "https://cap-sources.s3.amazonaws.com/qa-caa-en/rss.xml"
+       }
+      ]
+     },
+     {
+      "country": "QAT",
+      "title": "Qatar: qatar",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=335",
+      "pubDate": "Wed, 26 Mar 2025 00:08:52 +0000",
+      "feeds": []
+     }
+    ]
+   },
+   "BHR": {
+    "gcc": true,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "BHR",
+      "title": "Bahrain: Bahrain Meteorological Service",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=11",
+      "pubDate": "Wed, 30 Aug 2023 20:43:50 +0000",
+      "feeds": [
+       {
+        "lang": "ar",
+        "url": "https://cap-sources.s3.amazonaws.com/bh-meteo-ar/rss.xml"
+       },
+       {
+        "lang": "en",
+        "url": "https://cap-sources.s3.amazonaws.com/bh-meteo-en/rss.xml"
+       }
+      ]
+     }
+    ]
+   },
+   "OMN": {
+    "gcc": true,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "OMN",
+      "title": "Oman: Directorate General of Meteorology",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=122",
+      "pubDate": "Wed, 15 Jul 2020 22:34:16 +0000",
+      "feeds": [
+       {
+        "lang": "ar",
+        "url": "https://cap-sources.s3.amazonaws.com/om-met-ar/rss.xml"
+       },
+       {
+        "lang": "en",
+        "url": "https://cap-sources.s3.amazonaws.com/om-met-en/rss.xml"
+       }
+      ]
+     }
+    ]
+   },
+   "ARE": {
+    "gcc": true,
+    "lists_cap_feed": false,
+    "entries": [
+     {
+      "country": "ARE",
+      "title": "United Arab Emirates: Meteorological Department",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=173",
+      "pubDate": "Wed, 11 Sep 2013 00:38:42 +0000",
+      "feeds": []
+     }
+    ]
+   },
+   "CAN": {
+    "gcc": false,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "CAN",
+      "title": "Canada: Environment and Climate Change Canada, Meteorological Service of Canada",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=27",
+      "pubDate": "Wed, 05 Aug 2026 07:06:50 +0000",
+      "feeds": [
+       {
+        "lang": "en",
+        "url": "http://rss.naad-adna.pelmorex.com/"
+       },
+       {
+        "lang": "fr",
+        "url": "http://rss.naad-adna.pelmorex.com/"
+       }
+      ]
+     },
+     {
+      "country": "CAN",
+      "title": "Canada: Alberta Emergency Management Agency (Government of Alberta, Ministry of Municipal Affairs)",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=277",
+      "pubDate": "Mon, 21 Nov 2022 06:23:00 +0000",
+      "feeds": [
+       {
+        "lang": "en",
+        "url": "http://emergencyalert.alberta.ca/aeapublic/feed.atom"
+       },
+       {
+        "lang": "fr",
+        "url": "http://emergencyalert.alberta.ca/aeapublic/feed.atom"
+       }
+      ]
+     },
+     {
+      "country": "CAN",
+      "title": "Canada: Ministère de la Sécurité publique du Québec",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=278",
+      "pubDate": "Mon, 21 Nov 2022 06:23:00 +0000",
+      "feeds": [
+       {
+        "lang": "en",
+        "url": "http://rss.naad-adna.pelmorex.com/"
+       },
+       {
+        "lang": "fr",
+        "url": "http://rss.naad-adna.pelmorex.com/"
+       }
+      ]
+     },
+     {
+      "country": "CAN",
+      "title": "Canada: Natural Resources Canada",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=251",
+      "pubDate": "Wed, 18 Nov 2015 10:43:04 +0000",
+      "feeds": []
+     }
+    ]
+   },
+   "AUS": {
+    "gcc": false,
+    "lists_cap_feed": true,
+    "entries": [
+     {
+      "country": "AUS",
+      "title": "Australia: Bureau of Meteorology",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=6",
+      "pubDate": "Wed, 01 Apr 2026 15:52:16 +0000",
+      "feeds": [
+       {
+        "lang": "en",
+        "url": "https://severeweather.wmo.int/v2/cap-alerts/au-bom-en/rss.xml"
+       }
+      ]
+     },
+     {
+      "country": "AUS",
+      "title": "Australia: Hydrological Services Program",
+      "link": "https://alertingauthority.wmo.int/authorities.php?recId=7",
+      "pubDate": "Mon, 21 Nov 2022 06:23:00 +0000",
+      "feeds": []
+     }
+    ]
+   }
+  }
+ },
+ "hash_mismatches": []
+}

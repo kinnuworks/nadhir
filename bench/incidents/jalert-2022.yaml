@@ -1,0 +1,95 @@
+id: jalert-2022
+title: "J-Alert missile launch information also sent to the Tokyo islands"
+date: "2022-10-04"
+jurisdiction: "Japan (Cabinet Secretariat issues J-Alert missile information; Fire and Disaster Management Agency runs J-Alert)"
+sources: [JALERT-2022, JALERT-2022-TL, JALERT-2022-TOKYO, JALERT-2022-PRESS]
+
+summary: >-
+  After a ballistic missile launch on 4 October 2022, J-Alert sent missile launch information to Hokkaido and,
+  in error, to the Tokyo island municipalities, then to Aomori and again the Tokyo islands. The Fire and Disaster
+  Management Agency later wrote that a defect in the Cabinet Secretariat's system caused the wrong transmission
+  to the Tokyo islands and that the system was repaired at once.
+
+timeline:
+  - {t: "2022-10-04T07:22+09:00", event: "A ballistic missile is launched eastward (estimated time).", source: JALERT-2022-TL}
+  - {t: "2022-10-04T07:27+09:00", event: "J-Alert sends missile launch information to the target areas Hokkaido and the Tokyo islands.", source: JALERT-2022-TL}
+  - {t: "2022-10-04T07:28+09:00", event: "The missile passes over Aomori Prefecture (estimated 07:28 to 07:29).", source: JALERT-2022-TL}
+  - {t: "2022-10-04T07:29+09:00", event: "J-Alert sends missile launch information to Aomori Prefecture and the Tokyo islands.", source: JALERT-2022-TL}
+  - {t: "2022-10-04T07:42+09:00", event: "J-Alert sends missile passage information to Hokkaido and Aomori.", source: JALERT-2022-TL}
+  - {t: "2022-10-04T10:00+09:00", event: "Tokyo Metropolitan Government crisis meeting; its timeline lists the 07:27 target areas as Hokkaido, the Izu Islands and the Ogasawara Islands.", source: JALERT-2022-TOKYO}
+  - {t: "2022-10-05", event: "Yomiuri Shimbun reports that target-area data used in an earlier drill had not been erased (as relayed by Stars and Stripes).", source: JALERT-2022-PRESS}
+  - {t: "2022-10-07", event: "The Prime Minister tells the upper house the system also broadcast an unnecessary alert to islands near Tokyo (as relayed by Stars and Stripes).", source: JALERT-2022-PRESS}
+
+inputs:
+  event_text: "Missile launched from North Korea toward the east; projected to pass over northern Japan (Hokkaido / Aomori)."
+  event_text_basis: "Reconstructed from the FDMA white paper (launch eastward, over Aomori) and the Tokyo timeline (direction of Hokkaido). Not the Cabinet Secretariat's internal input."
+  issuer: "Cabinet Secretariat (via J-Alert)"
+  environment: live
+  requested_area:
+    areaDesc: "Hokkaido (07:27); Aomori Prefecture added at 07:29"
+    geocodes: [{valueName: JIS-X0401, value: "01"}, {valueName: JIS-X0401, value: "02"}]
+    polygon_note: "Prefecture codes only; no polygon needed."
+
+real_message:
+  text_verbatim: null
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Cabinet Secretariat (via J-Alert)"
+  category: Safety
+  event: "ミサイル発射情報 (missile launch information)"
+  urgency: Immediate
+  severity: Extreme
+  certainty: Likely
+  language: ja-JP
+  headline: null
+  description: null
+  instruction: null
+  areaDesc: "Hokkaido; Tokyo island municipalities (Izu Islands, Ogasawara Islands)"
+  area:
+    areaDesc: "Hokkaido; Tokyo island municipalities (Izu Islands, Ogasawara Islands)"
+    geocodes: [{valueName: JIS-X0401, value: "01"}, {valueName: JIS-X0401, value: "13"}]
+    polygon:
+      - "32.4,139.0 34.8,139.0 34.8,140.5 32.4,140.5 32.4,139.0"
+      - "24.2,141.0 27.8,141.0 27.8,142.4 24.2,142.4 24.2,141.0"
+    polygon_label: "approximate, for replay: rough boxes around the Izu Islands and the Ogasawara Islands; prefecture code 13 alone would wrongly cover mainland Tokyo"
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, urgency, severity, certainty, area.geocodes, area.polygon]
+  reconstruction_note: "The message wording sent on 4 October 2022 was not found in an official source; text fields are left null rather than filled from the standard template."
+
+real_outcome:
+  text: >-
+    The Tokyo island municipalities received missile launch information they should not have received. Stars and
+    Stripes reports the alert was broadcast over loudspeakers on the islands and some schools delayed classes.
+  source: JALERT-2022-PRESS
+
+official_finding:
+  body: "Fire and Disaster Management Agency (FDMA), Ministry of Internal Affairs and Communications"
+  document: "令和4年版 消防白書 (FY2022 Fire Service White Paper), Special Feature 5, section 3"
+  finding_status: official-verbatim
+  quote: "内閣官房のシステム上の不具合により、東京都島しょ部に誤って送信されたことが判明し、直ちに内閣官房においてシステム改修が行われた。"
+  quote_translation_unofficial: "It was found that, owing to a defect in the Cabinet Secretariat's system, the information was sent in error to the Tokyo islands, and the Cabinet Secretariat repaired the system immediately."
+  source: JALERT-2022
+  scope_note: "The official text names a system defect. The detail that drill target-area data was left in the system comes from press (Yomiuri via Stars and Stripes), not from the white paper."
+
+expected_rules: [R3]
+expected_rules_basis: "R3: area sent must equal area requested (official finding) and area provenance must belong to this event, not a drill (press detail only)."
+
+unknowns:
+  - "Verbatim J-Alert text sent to phones and loudspeakers on 4 October 2022."
+  - "Exact list of the nine island towns and villages that received it (press gives the count)."
+  - "Whether the stale drill data detail is confirmed in any government document."
+  - "Approval steps inside the Cabinet Secretariat before release."
+
+framing_note: >-
+  The official record describes a system defect fixed the same day. Press accounts attribute it to drill
+  target-area data that was not erased. The bench uses the official wording as the answer key and lists the press
+  detail separately.
+
+source_urls:
+  JALERT-2022: "https://www.fdma.go.jp/publication/hakusho/r4/topics5/00014.html"
+  JALERT-2022-TL: "https://www.fdma.go.jp/publication/hakusho/r4/topics5/00013.html"
+  JALERT-2022-TOKYO: "https://www.bousai.metro.tokyo.lg.jp/_res/projects/default_project/_page_/001/022/251/20221004.pdf"
+  JALERT-2022-PRESS: "https://stripes.com/theaters/asia_pacific/2022-10-17/north-korea-missile-japan-alerts-7717048.html"

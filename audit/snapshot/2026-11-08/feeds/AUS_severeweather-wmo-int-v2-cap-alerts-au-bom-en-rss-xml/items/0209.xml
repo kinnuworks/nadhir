@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDV29000-2026-11-05T18:02:07+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-05T18:02:07+00:00</sent>
+    <status>Actual</status>
+    <msgType>Alert</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Sheep Grazier Warning</event>
+        <urgency>Unknown</urgency>
+        <severity>Moderate</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>sheepWarning</value>
+        </eventCode>
+        <effective>2026-11-05T18:01:00+00:00</effective>
+        <expires>2026-11-07T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Warning to Sheep Graziers for North Central, North East, South West, Central, West and South Gippsland and East Gippsland forecast districts</headline>
+        <description>Sheep graziers are warned that cold temperatures, showers and southwesterly winds are expected during Saturday. Areas likely to be affected include the West and South Gippsland forecast district and parts of the North Central, North East, South West, Central and East Gippsland forecast districts. There is a risk of losses of lambs and sheep exposed to these conditions.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Victoria: North Central, North East, South West, Central, West and South Gippsland and East Gippsland forecast districts</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW004</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW009</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW007</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW006</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW005</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

@@ -1,0 +1,783 @@
+# Knowledge base registry for the pre-broadcast alert gate.
+# Metadata, hashes and short verbatim quotes only. Full documents are not stored here.
+# Field meanings and the checking method are in kb/README.md.
+# Rule ids R1-R11 are the gate rules. Gap ids:
+#   G1 CAP / X.1303bis has no defined field for AI involvement or a named approver
+#   G2 no public UAE operational rule on who approves an AI-drafted public alert (Charter principles only)
+#   G3 AI or machine translation of alerts: no UAE rule; US split (FCC refuses MT for WEA, NWS uses AI translation)
+#   G4 no public UAE CAP feed on the WMO register
+#   G5 no international norm on after-action reporting for false public alerts
+
+schema_version: 1
+fetched_at_default: "2026-11-08"
+
+sources:
+
+# ---------------------------------------------------------------- CAP standard and profiles
+
+- id: CAP12
+  title: "Common Alerting Protocol Version 1.2"
+  publisher: OASIS
+  date: "2010-07-01"
+  url: "https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html"
+  kind: standard
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "f60183dc4f4bb587bac86902e84503ba99ca5ea59a481d11c23f3394ae29a2ac"
+  supports: [R3, R5, R10, G1]
+  quotes:
+    - text: "Other XML signature mechanisms MUST NOT be used in CAP Alert Messages."
+      locator: "§3.3.4.1 Digital Signatures"
+    - text: "“Cancel” - Cancels the earlier message(s) identified in <references>"
+      locator: "§3.2.1 alert, <msgType> code values"
+    - text: "The text describing the affected area of the alert message (REQUIRED)"
+      locator: "§3.2.4 area, <areaDesc>"
+  notes: "Defines sender, source, note, code and parameter. No element for a human approver, an authoring tool or AI involvement (own reading of §3.2). <source> is free text, e.g. 'an operator or a specific device'."
+
+- id: X1303BIS
+  title: "Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2)"
+  publisher: ITU-T (SG17)
+  date: "2014-03-01"
+  url: "https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-X.1303bis-201403-I!!PDF-E&type=items"
+  kind: standard
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "79ec13413942e8e36526ddd38b4ce6d9a9f3197f106d07277e239b255fd45114"
+  supports: [R5, R10, G1]
+  quotes:
+    - text: "This Recommendation is technically equivalent to the OASIS Common Alerting Protocol v.1.2."
+      locator: "Summary, PDF p.9"
+    - text: "Other XML signature mechanisms must not be used in CAP alert messages."
+      locator: "§7.3.4.1 Digital signatures, PDF p.27"
+  notes: "Landing page https://www.itu.int/rec/T-REC-X.1303bis-201403-I/en shows 'Status : In force' and free PDF access (fetched same day)."
+
+- id: CAPXSD
+  title: "CAP v1.2 XML Schema (CAP-v1.2.xsd)"
+  publisher: OASIS
+  date: "2010-07-01"
+  url: "https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd"
+  kind: standard
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "b7798ef25868b068c97b268bda02d067c7d4ba9373adc5638bf37105804ee723"
+  supports: [R3, R8, G1]
+  quotes:
+    - text: '<element name = "parameter" minOccurs = "0" maxOccurs = "unbounded">'
+      locator: "info block, line 170"
+    - text: '<element name = "source" type = "xs:string" minOccurs = "0"/>'
+      locator: "alert block, line 47"
+  notes: "Same bytes as nadhir/schema/CAP-v1.2.xsd in this repo (sha256 match). <parameter> is the only open extension point; a provenance profile (R8) would use it."
+
+- id: IPAWS-PROFILE
+  title: "Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0"
+  publisher: OASIS
+  date: "2009-10-13"
+  url: "https://docs.oasis-open.org/emergency/cap/v1.2/ipaws-profile/v1.0/cap-v1.2-ipaws-profile-v1.0.html"
+  kind: standard
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "9dcd30f41ec21ae0c5d10a6d2e56fa6fdb86f6546581e428f7d5f7d027accffb"
+  supports: [R6, R10, G1]
+  quotes:
+    - text: "All related messages that have not yet expired MUST be referenced for “Update” and “Cancel” messages."
+      locator: "§2 profile table, <references>"
+    - text: "free form text limited in length to 90 English characters"
+      locator: "§2 profile table, <parameter> CMAMtext"
+  notes: "Committee Specification 01. No approver, authoring-tool or AI field (own reading)."
+
+- id: IPAWS-OPEN
+  title: "Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018)"
+  publisher: FEMA (hosted by the IFRC Global Disaster Preparedness Center)
+  date: "2018-11-01"
+  url: "https://preparecenter.org/wp-content/uploads/2026/01/cap-workshop-2018-ipaws.pdf"
+  kind: official-report
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "c2897c60c4e2879d0165ece246c7b3e63749fe93aa5dae227f2007be5f17b451"
+  supports: [R4, R5]
+  quotes:
+    - text: "Authenticates sender"
+      locator: "slide 'Alert Aggregation', PDF p.9"
+    - text: "Verifies permissions"
+      locator: "slide 'Alert Aggregation', PDF p.9"
+  notes: "Slide lists what the IPAWS-OPEN aggregator does: authenticate sender (web service security, digital signature), validate CAP, verify permissions (what, where, how). The FEMA alerting-authorities page (https://www.fema.gov/emergency-managers/practitioners/integrated-public-alert-warning-system/public-safety-officials/alerting-authorities) returned HTTP 403 to our fetch."
+
+- id: OPENFEMA
+  title: "OpenFEMA dataset: IPAWS Archived Alerts (v1), dataset metadata"
+  publisher: FEMA/National Continuity Programs/IPAWS Division
+  date: "2026-11-08"
+  url: "https://www.fema.gov/api/open/v1/DataSets?$filter=name%20eq%20%27IpawsArchivedAlerts%27"
+  kind: dataset
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "8fd01bc53ac0a697e3c765258bcbc60ac86591a10fd3d375e6844d0b60c9663b"
+  supports: [G1]
+  quotes:
+    - text: "This data set contains recent*, historic, and archived IPAWS Common Alerting Protocol (CAP) v1.2 messages from June 2012 to the present"
+      locator: "DataSets[0].description"
+  notes: "Date is the dataset's lastDataSetRefresh. Data endpoint: https://www.fema.gov/api/open/v1/IpawsArchivedAlerts . The human landing page https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1 returned HTTP 403 to our fetch. Hash is of the metadata JSON response, which changes on each refresh."
+
+- id: CAPCP
+  title: "Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2)"
+  publisher: Public Safety Canada / SOREM CAP-CP 1.0 Specification Committee
+  date: "2016-08"
+  url: "https://www.publicsafety.gc.ca/cnt/rsrcs/pblctns/capcp-ntro-rl-st/index5-eng.aspx"
+  kind: standard
+  jurisdiction: CA
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "dfde0fb682cae2cc00a360dbbb75156c88608ff1319dbd62267452a0262e9842"
+  supports: [R8, R9, G1, G3]
+  quotes:
+    - text: "Value: a <valueName> of “profile:CAP-CP:1.0:AutoTranslated” and a <value> of “yes” or “no”"
+      locator: "Recommendation #6, Indicate automated translation of free form text"
+    - text: "Electing to process and the subsequent presentation of automatically translated content is left up to the receiver."
+      locator: "Recommendation #6, Notes"
+  notes: "In 1.0 the flag is an optional Recommendation (#6 in Draft 2, #5 in Draft 1), whereas Beta 0.3 listed it as item 17 of the rule set (also Optional). The page's version block reads Date '<ADD FINAL DATE>' and Approval Date 'TBD'; the hub lists 1.0 Draft 2 (August 2016) as the latest version. No approver or AI-generation field. See kb/README.md, Checks."
+
+- id: CAPAU
+  title: "Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD)"
+  publisher: OASIS / Australian Bureau of Meteorology (host)
+  date: "2013-09-05"
+  url: "https://www.bom.gov.au/metadata/CAP-AU/docs/v3/attachment-a-to-cap-au-std.pdf"
+  kind: standard
+  jurisdiction: AU
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "8cb44ba6b38529447e753e6044037abeff3cb8a71eba5a6bd9f32f35dc9a0546"
+  supports: [R4, G1]
+  quotes:
+    - text: "If an alert message created by another agency is being passed through a system, such as a data aggregator, with no alterations, then the <sender> can remain as is."
+      locator: "<sender> profile specification, PDF p.12 (printed p.9)"
+  notes: "Rules on who counts as sender when messages are relayed. No approver, signature or AI field found by text search (signature, approv, automat)."
+
+# ---------------------------------------------------------------- US regulator documents
+
+- id: FCC-HI-2018
+  title: "Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert"
+  publisher: FCC Public Safety and Homeland Security Bureau
+  date: "2018-04"
+  url: "https://docs.fcc.gov/public/attachments/DOC-350119A1.pdf"
+  kind: official-report
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "d19c432a20ac86e14165221aa906d780c97c87489afabc23a6b61a04d48235c0"
+  supports: [R1, R2, R10, G5]
+  quotes:
+    - text: "Require more than one credentialed person to validate the message content prior to transmission of a ballistic missile alert or other high-impact alerts that affect a significant percentage of the population, as well as all tests."
+      locator: "§IV.B Bureau Recommendations, ¶40, PDF p.24"
+    - text: "refrain from using phrases such as “This is Not a Drill” or “Real World” in test messages."
+      locator: "§IV.B Bureau Recommendations, ¶40, PDF p.24"
+    - text: "corrections to false alerts must be issued over the same systems used to issue the false alert"
+      locator: "§IV.B Bureau Recommendations, ¶40, PDF p.25"
+  notes: "The apps.fcc.gov mirror returned HTTP 403; docs.fcc.gov served the same document ID. The report also recommends separating live alerts from test environments (same list). Example of a published after-action report (G5 contrast)."
+
+- id: FCC-16-127
+  title: "Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127)"
+  publisher: FCC
+  date: "2016-09-29"
+  url: "https://docs.fcc.gov/public/attachments/FCC-16-127A1_Rcd.pdf"
+  kind: regulation
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "c9775eb4e08e25c38ce618463dd46ee1802436a7c9f48d266399731b3ec61ed1"
+  supports: [R6]
+  quotes:
+    - text: "We increase the maximum Alert Message length from 90 to 360 characters for 4G-LTE and future networks."
+      locator: "§I Introduction, PDF p.3"
+
+- id: FCC-23-88
+  title: "Wireless Emergency Alerts, Third Report and Order (FCC 23-88)"
+  publisher: FCC
+  date: "2023-10-20"
+  url: "https://docs.fcc.gov/public/attachments/FCC-23-88A1.pdf"
+  kind: regulation
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "edb20f65c9cbdb2065aade8fa857b977ab82f2f964d597c446bfe3b9dfa2f6ae"
+  supports: [R9, G3]
+  quotes:
+    - text: "We decline to require Participating CMS Providers to implement multilingual WEA using machine translation at this time."
+      locator: "¶18, PDF p.11"
+    - text: "machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages"
+      locator: "¶18"
+  notes: "Adopted 19 Oct 2023, released 20 Oct 2023."
+
+- id: FCC-DA-25-12
+  title: "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates"
+  publisher: FCC Public Safety and Homeland Security Bureau
+  date: "2025-01-08"
+  url: "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf"
+  kind: regulation
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "06fbf300a7ed79a4619d5ee806e1558ae86ea70880521f12295379ec9c1a5d3f"
+  supports: [R9, R11, G3]
+  quotes:
+    - text: "We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts."
+      locator: "¶43, PDF p.19"
+    - text: "“the accuracy of a translation requires human intervention”"
+      locator: "¶43 (commenters, quoting the record)"
+    - text: "“present a serious risk of conveying inaccurate information to the public"
+      locator: "¶43 (state Attorneys General and City of New York)"
+  notes: "Appendix D holds the vetted template texts in 13 languages plus English, including Arabic, Hindi and Tagalog, and a Dust Storm Warning template (text found in the PDF). US government work; templates usable as a non-author answer key for R9."
+
+- id: FCC-FR-2025
+  title: "Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434"
+  publisher: FCC via Federal Register (GovInfo)
+  date: "2025-12-10"
+  url: "https://www.govinfo.gov/content/pkg/FR-2025-12-10/html/2025-22434.htm"
+  kind: regulation
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "71c6842e81f259898b28a50f3730d33b5913eaa6c7bdca40c1e07c4fba3ceb3b"
+  supports: [R9, G3]
+  quotes:
+    - text: "the Public Safety and Homeland Security Bureau (Bureau) adopts implementation parameters for multilingual Wireless Emergency Alerts (WEA)"
+      locator: "SUMMARY"
+    - text: "The alert templates for ASL are non-fillable and signed by a Certified Deaf Interpreter (CDI)."
+      locator: "SUMMARY"
+  notes: "Federal Register publication of the DA 25-12 rules (templates with four fillable elements: sending agency, location, time, optional URL)."
+
+# ---------------------------------------------------------------- Real alert failures
+
+- id: LA-2025
+  title: "Sounding the Alarm: Lessons from the Kenneth Fire False Alerts"
+  publisher: Office of U.S. Rep. Robert Garcia (House Committee on Oversight, minority)
+  date: "2025-05-12"
+  url: "https://robertgarcia.house.gov/sites/evo-subsites/robertgarcia.house.gov/files/evo-media-document/false-alerts-final-report-5.10.pdf"
+  kind: official-report
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "34d3911aff0accce4aabb1422f2ee4b26588a28548374a034bad49dc0dcc4937"
+  supports: [R3, G5]
+  quotes:
+    - text: "the correct Kenneth Fire-area polygon was NOT saved into the IPAWS wireless channel in the Genasys system, and the operator did not realize the polygon was missing."
+      locator: "Findings, PDF p.7"
+    - text: "The Genasys system did not warn the Alert Originator that it did not have a polygon (Kenneth Fire area) in the IPAWS channel, and the message would be sent county-wide"
+      locator: "Findings, PDF p.8"
+  notes: "Press release: https://robertgarcia.house.gov/media/press-releases/congressman-robert-garcia-releases-oversight-report-lessons-kenneth-fire-false . AP summary: https://www.insurancejournal.com/news/west/2025/05/15/823791.htm (both fetched). A member's report, not a committee-adopted report."
+
+- id: JALERT-2022
+  title: "J-Alert mistakenly included Tokyo islands in 4 Oct 2022 missile alert (Stars and Stripes, citing Yomiuri Shimbun)"
+  publisher: Stars and Stripes
+  date: "2022-10-17"
+  url: "https://stripes.com/theaters/asia_pacific/2022-10-17/north-korea-missile-japan-alerts-7717048.html"
+  kind: press
+  jurisdiction: JP
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "907ea8b29bd5adf6651e8a8956e3ac567897ad60639b88573183176a2345f5d5"
+  supports: [R3]
+  quotes:
+    - text: "The alert mistakenly included Tokyo because data on where to send warnings was not erased after it was used in a previous drill, Yomiuri Shimbun reported Oct. 5 ."
+      locator: "article body"
+  notes: "Secondary: Stars and Stripes reporting Yomiuri. No Japanese government (Cabinet Secretariat / FDMA) finding was fetched. The Free Malaysia Today URL in the research notes now serves a section page, not the article."
+
+- id: SEOUL-2023
+  title: "North Korea's satellite launch failed. It still triggered fear and confusion (AP via PBS NewsHour)"
+  publisher: PBS NewsHour / Associated Press
+  date: "2023-05-31"
+  url: "https://www.pbs.org/newshour/world/north-koreas-satellite-launch-failed-it-still-triggered-fear-and-confusion"
+  kind: press
+  jurisdiction: KR
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "7d4709c53f3509cbb376b72cc8a4653a12a3f881a1e3894065c511a4422e5080"
+  supports: [R4]
+  quotes:
+    - text: "about 22 minutes later, the Interior and Safety Ministry sent messages to Seoul residents saying the earlier warning was sent in error."
+      locator: "article body"
+  notes: "Secondary: AP report. Rappler (https://www.rappler.com/world/asia-pacific/evacuation-alerts-panic-seoul-north-korea-launch-may-31-2023/) reports the mayor apologised for confusion but defended the alert. No Korean ministry document fetched."
+
+- id: BRAZIL-2026
+  title: "Hackers hijacked Brazil's emergency alert system and sent 'misanthropy' to millions of phones"
+  publisher: The Next Web
+  date: "2026-06-21"
+  url: "https://thenextweb.com/news/brazil-civil-defense-alert-hack-misanthropy-cell-broadcast"
+  kind: press
+  jurisdiction: BR
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "cd473d193bf891790f5388f3c39ed1e82cb96bacba67160ee01da9d87b433f2a"
+  supports: [R5]
+  quotes:
+    - text: "The Cell Broadcast platform was taken offline after at least 10 unauthorized alerts were sent to phones across seven or more Brazilian states, bypassing silent mode"
+      locator: "standfirst"
+  notes: "Secondary press. Also fetched: Jovem Pan / Agência Brasil (about 30 million recipients, preliminary) https://jovempan.com.br/brasil/cerca-de-30-milhoes-de-pessoas-receberam-alerta-falso-da-defesa-civil/ and Olhar Digital (Federal Police investigation). No official investigation report found."
+
+- id: INDIA-2023
+  title: "Today's emergency alert: here's what you need to know (nationwide Cell Broadcast sample test)"
+  publisher: India TV News
+  date: "2023-10-10"
+  url: "https://www.indiatvnews.com/technology/news/today-s-emergency-alert-here-s-what-you-need-to-know-2023-10-10-897082"
+  kind: press
+  jurisdiction: IN
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "16904548b6af513a58e69abf36b322c0a25c53a11241fcc544b4d77d121f710d"
+  supports: [R2]
+  quotes:
+    - text: "The notification, titled \"Emergency alert: Extreme,\" was designed to capture immediate attention."
+      locator: "article body"
+    - text: "\"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India."
+      locator: "article body, quoted message text"
+  notes: "Secondary press. Business Standard (17 Aug 2023) reports an earlier sample with the label 'emergency alert: severe': https://www.business-standard.com/india-news/received-emergency-alert-severe-text-on-your-phone-here-s-what-it-means-123081700397_1.html (fetched). No DoT/NDMA document fetched."
+
+# ---------------------------------------------------------------- Bearer (cell broadcast) specifications
+
+- id: TS23041
+  title: "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)"
+  publisher: ETSI / 3GPP
+  date: "2024-02"
+  url: "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf"
+  kind: standard
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "72d09fa418aad57decfbe05ec372297f13e6814d86667729bd484c12d86813c5"
+  supports: [R6]
+  quotes:
+    - text: "A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters."
+      locator: "§2 General description, PDF p.11"
+    - text: "Be capable of receiving CBS messages consisting of up to 15 pages."
+      locator: "§8.1 General MS/UE Functionality, PDF p.18"
+
+- id: TS23038
+  title: "3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0)"
+  publisher: ETSI / 3GPP
+  date: "2024-05"
+  url: "https://www.etsi.org/deliver/etsi_ts/123000_123099/123038/18.00.00_60/ts_123038v180000p.pdf"
+  kind: standard
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "c0eacd73a76acc1b37f757d013a75117dd11b70bc5d1ce997d1412bc244fd047"
+  supports: [R6]
+  quotes:
+    - text: "The CR character is then followed by 90 characters of text (NOTE 1)."
+      locator: "§5 CBS Data Coding Scheme, coding group 0001, PDF p.13"
+    - text: "followed by 40 characters of UCS2-encoded message (NOTE 1)."
+      locator: "§5 CBS Data Coding Scheme, coding group 0001, PDF p.13"
+  notes: "These figures apply when the message carries a language indication. Without it, an 82-octet page holds 41 UCS2 characters (82/2), our derivation, not a quoted figure."
+
+- id: TDRA-TS040
+  title: "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)"
+  publisher: Product Compliance Specialists Ltd (Kiwa)
+  date: "2015-09-21"
+  url: "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf"
+  kind: guidance
+  jurisdiction: AE
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "921bfdd6b7da29c6e736cc757a0581d00488fa087e951a79c3ac748220936960"
+  supports: [R6, R7]
+  quotes:
+    - text: "Messages should support both English and Arabic languages."
+      locator: "requirement 2"
+    - text: "Message should be limited to 1 page maximum."
+      locator: "requirement 3"
+  notes: "Secondary: a compliance consultancy's summary. The TS040 text itself was not found on a TDRA site. Whether '1 page' means one CBS page is not stated."
+
+- id: TDRA-2017-CB
+  title: "UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs)"
+  publisher: UAE Telecommunications Regulatory Authority (now TDRA)
+  date: "2017-09-21"
+  url: "https://www.tra.gov.ae/userfiles/assets/lgz6mOeOihm.pdf"
+  kind: regulation
+  jurisdiction: AE
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "4e2fdc285cb5d34818c0208862584cf30854e968a8fbf3d404f8613bf25f3eec"
+  secondary_url: "https://preproduction.episerver.kiwa.com/globalassets/uk/pcs/regulatory-updates-2017/regulatory_update_uae_tra_31-oct-17.pdf"
+  secondary_sha256: "4623bc732c2273cf3b745a1c6c57b806970a9fb098f9382a0205975b9a3ebd3d"
+  supports: [R2, R7]
+  quotes:
+    - text: "Channel ID (Primary Language)"
+      locator: "table header, last column"
+    - text: "Between Minimum 10.5 seconds & Maximum 32.5 seconds"
+      locator: "row National Emergency Alert, sound duration"
+    - text: "mandates that all mobile phones used by and sold to the general public must be able to receive national warning notifications."
+      locator: "secondary_url (Kiwa summary, 31 Oct 2017), p.1"
+  notes: "The TRA-hosted PDF is a one-page bilingual table with no title or date inside it; title and effective date (21 Sep 2017) come from the Kiwa summary, which links this exact TRA URL. The table lists primary-language channel IDs 4370-4381 and secondary-language IDs 4383-4394, with separate rows for Test Alerts and Exercises. Treat the title as descriptive."
+
+# ---------------------------------------------------------------- UAE public alerting
+
+- id: UAE-ISSUERS
+  title: "UAE Early Warning System: How it works and why you get alerts"
+  publisher: Gulf News
+  date: "2026-03-25"
+  url: "https://gulfnews.com/living-in-uae/safety-security/uae-early-warning-system-how-it-works-and-why-you-get-alerts-1.500485778"
+  kind: press
+  jurisdiction: AE
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "69fab6d65aec40804653a8d3e16af426de9d4bcc26ba4f9fbe21a50d5023b64d"
+  supports: [R4, G2]
+  quotes:
+    - text: "Only government entities involved in national emergency management are authorised to issue alerts."
+      locator: "section 'Who can send these alerts?'"
+  notes: "Secondary press. The article then lists NCEMA, MOI, the seven emirate police forces and MOHAP. No primary NCEMA list of authorised issuers was found."
+
+- id: UAE-NAT-2026
+  title: "UAE emergency alerts: what to do when the phone alarm sounds and how the system works"
+  publisher: The National
+  date: "2026-08-19"
+  url: "https://www.thenationalnews.com/news/uae/2026/08/19/uae-emergency-alerts-what-to-do-when-phone-alarm-sounds-and-how-the-system-works/"
+  kind: press
+  jurisdiction: AE
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "c36fcbbf4c479d8f2cafa3afeffa2476080f6ce57a242c0bf4def8f0649b1254"
+  supports: [R3, R7]
+  quotes:
+    - text: "The area can be as small as one cell and as big as the entire network."
+      locator: "article body"
+    - text: "For the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English."
+      locator: "article body"
+
+- id: UAE-KT-2026
+  title: "Behind the UAE alert: How warning goes from national emergency systems to your phone"
+  publisher: Khaleej Times
+  date: "2026-08-19"
+  url: "https://www.khaleejtimes.com/uae/behind-the-uae-alert-how-warning-goes-from-national-emergency-systems-to-your-phone"
+  kind: press
+  jurisdiction: AE
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "d085c505c727ce4b162f7cba861235573e05e1b80b2d0ff30699785663ee74d7"
+  supports: [R3, G2]
+  quotes:
+    - text: "Under standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network."
+      locator: "section 'Not a normal text'"
+    - text: "the decision to issue a civilian warning, and its transmission through telecommunications networks has, however, not been revealed to the public."
+      locator: "article body"
+
+- id: UAE-AI-CHARTER
+  title: "The UAE Charter for the Development & Use of Artificial Intelligence"
+  publisher: UAE Artificial Intelligence Office (ai.gov.ae)
+  date: "2024-07"
+  url: "https://ai.gov.ae/wp-content/uploads/2024/07/UAEAI-Methaq-EN2-3.pdf"
+  kind: guidance
+  jurisdiction: AE
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "2f1de5776449748a91964cd5b061f88b36265ba0be8a5d7a91120e27a6908c1c"
+  supports: [R1, R8, R11, G2]
+  quotes:
+    - text: "the irreplaceable value of human judgment and human oversight over AI, aligning with ethical values and social standards to correct any errors or biases that may arise."
+      locator: "Principle 6 Human Oversight, p.03"
+    - text: "emphasizing the importance of governance and accountability in AI to ensure the technology is used ethically and transparently."
+      locator: "Principle 7 Governance and Accountability, p.03"
+  notes: "Principles only; no operational procedure, approver count or record format (G2)."
+
+- id: DUBAI-AI-ETHICS
+  title: "Smart Dubai Launches Guidelines on Ethical use of Artificial Intelligence"
+  publisher: Smart Dubai (Government of Dubai Media Office)
+  date: "2019-01-08"
+  url: "https://smartdubai.ae/newsroom/news-details/2019/01/08/smart-dubai-launches-guidelines-on-ethical-use-of-artificial-intelligence"
+  kind: official-page
+  jurisdiction: AE-DU
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "5319e4c37d0df7415f376ae857c7d3bf1ff39f07d3947ffba1d642833e3b6395"
+  supports: [R8, G2]
+  quotes:
+    - text: "Smart Dubai outlines standards for AI systems to ensure they are fair, transparent and accountable"
+      locator: "standfirst"
+  notes: "Issuer's launch announcement. The guideline PDF itself was not fetched; the initiative page https://smartdubai.ae/initiatives/ai-principles-ethics loads its text by script and gave no readable content."
+
+- id: UAE-PDPL
+  title: "Data protection laws (UAE Government portal page on Federal Decree-Law No. 45 of 2021)"
+  publisher: UAE Government portal (u.ae)
+  date: null
+  url: "https://u.ae/en/about-the-uae/digital-uae/data/data-protection-laws"
+  kind: official-page
+  jurisdiction: AE
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "8a0b00cb39512d6d73a63708dde85a4785f3df702e61b2110bea9e6a834f0641"
+  supports: [R1]
+  quotes:
+    - text: "constitutes an integrated framework to ensure the confidentiality of information and protect the privacy of individuals in the UAE."
+      locator: "section 'Personal Data Protection Law'"
+  notes: "Context for the audit log: approver names are personal data. The law text on uaelegislation.gov.ae returned HTTP 403 to our fetch. Page has no publication date."
+
+# ---------------------------------------------------------------- ITU / UN documents
+
+- id: ESTR-AICNHM
+  title: "ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management"
+  publisher: ITU-T
+  date: "2025-09"
+  url: "https://www.itu.int/dms_pub/itu-t/opb/tut/T-TUT-DIS-2025-1-PDF-E.pdf"
+  kind: official-report
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "0ad1ef82a6ac1ed389656da8f3fae8cdd08984db356bf6b71f20fc8c318fb7f9"
+  supports: [R8, R11, G1]
+  quotes:
+    - text: "Follow a standardized warning dissemination protocol. Standards such as the common alerting protocol (CAP) provide a simple XML structure to convey key data and information about any kind of emergency."
+      locator: "§6.1 Alerts and early warning systems, best practice, printed p.9"
+    - text: "Establish warning systems, oversights and failsafes."
+      locator: "§7, best practice, printed p.26"
+  notes: "Cites Recommendation ITU-T X.1303 (2007), CAP 1.1, not X.1303bis. Asks for CAP and oversight but defines no way to record oversight in the alert."
+
+- id: MHEWS-2026
+  title: "Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report)"
+  publisher: ITU / UNDRR / WMO / IFRC (Early Warnings for All)
+  date: "2026-07"
+  url: "https://www.itu.int/en/ITU-D/Emergency-Telecommunications/Documents/2026/EW4All/AI-EW4All-Report_%20final.pdf"
+  kind: official-report
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "3d171307fe99e7eb946b11fa7a8956ce842373363dfb86258efcfd3d66ef0bf2"
+  supports: [R1, R8, R11, G1]
+  quotes:
+    - text: "AI-enabled systems must operate within human-in-the-loop governance frameworks."
+      locator: "PDF p.48"
+    - text: "For AI-assisted synthesis tools, transparency requires traceable source references rather than unverified narrative outputs."
+      locator: "PDF p.48"
+    - text: "Define how AI informs warning decisions; ensure human oversight and documentation of use."
+      locator: "PDF p.73 (table of recommendations)"
+  notes: "150-page PDF (about 60 MB), fetched in full. Mentions CAP as an interoperability framework; defines no CAP field for recording AI use or approval (own text search for 'CAP' and 'Common Alerting Protocol')."
+
+- id: MHEWS-HL
+  title: "Highlights: Leveraging AI to Enhance Multi-Hazard Early Warning Systems"
+  publisher: ITU / UNDRR / WMO / IFRC (Early Warnings for All)
+  date: "2026-07-07"
+  url: "https://www.itu.int/en/ITU-D/Emergency-Telecommunications/Documents/2026/EW4All/V3_2026-07-07%20Highlights_Leveraging%20AI%20to%20Enhance%20Multi-Hazard%20Early%20Warning%20Systems_CLEAN.pdf"
+  kind: official-report
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "04a2275091436b5845f19d3725f72c4659fb1b2849be837b4912ac06d9fc5b5e"
+  supports: [R1, R8]
+  quotes:
+    - text: "AI integration needs strong governance: national focal points, human oversight for life-safety decisions, and clear accountability frameworks."
+      locator: "PDF p.2"
+    - text: "AI improves warning dissemination and communication by supporting multilingual messaging"
+      locator: "PDF p.1-2"
+
+- id: Y3172
+  title: "Recommendation ITU-T Y.3172: Architectural framework for machine learning in future networks including IMT-2020"
+  publisher: ITU-T
+  date: "2019-06-22"
+  url: "https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-Y.3172-201906-I!!PDF-E&type=items"
+  kind: standard
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "e42f9a3be3f951d3e19b9007f876f0b389c81b4693f0d8576e18185a1acfe67b"
+  supports: []
+  quotes:
+    - text: "P (policy): This node enables the application of policies to the output of the model node."
+      locator: "§8 ML pipeline nodes, PDF p.21"
+    - text: "SRC (source): This node is the source of data that can be used as input to the ML pipeline."
+      locator: "§8 ML pipeline nodes"
+  notes: "Architecture mapping only (the gate sits at the P node). Not a source for any gate rule."
+
+- id: ITU-AIR2
+  title: "AI Ready – Analysis Towards a Standardized Readiness Framework, Report 2.0"
+  publisher: ITU-T (AI for Good)
+  date: "2026-01"
+  url: "https://www.itu.int/dms_pub/itu-t/opb/ai4g/T-AI4G-AI4GOOD-2025-6-PDF-E.pdf"
+  kind: official-report
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "71191768d46b60778c15f8d62b162aff73a319785cfc31ebf76bb944b0c68273"
+  supports: []
+  quotes:
+    - text: "Humans are not only using the output of AI solutions, but also dynamically interacting and shaping the output of AI solutions synchronously."
+      locator: "Dimension 8: Collaboration with AI, PDF p.27"
+  notes: "Readiness mapping only. Not a source for any gate rule."
+
+- id: EW4ALL-P3
+  title: "Early Warnings for All initiative: Pillar 3 (warning dissemination and communication)"
+  publisher: ITU-D
+  date: null
+  url: "https://www.itu.int/en/ITU-D/Emergency-Telecommunications/Pages/Early-Warnings-for-All-Initiative.aspx"
+  kind: official-page
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "94e481e5c5daf626a591b12101f7bc612615c5ef15ff349e048ed00b0f976280"
+  supports: [G4]
+  quotes:
+    - text: "ITU leads the initiative's Pillar 3, on warning dissemination and communication, with support from the GSMA, Microsoft, Google, REAP, IFRC,"
+      locator: "page body"
+  notes: "Lists cell broadcast and CAP among its tools. Page undated; figures run to Q3 2026."
+
+# ---------------------------------------------------------------- WMO register and CAP guidance
+
+- id: WMO-REGISTER
+  title: "WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173)"
+  publisher: WMO
+  date: "2013-09-11"
+  url: "https://alertingauthority.wmo.int/authorities.php?recId=173"
+  kind: dataset
+  jurisdiction: AE
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "5710d5df26c9b8db1313fe0f14f542f21f4e9f93172eebcda9a9632ea835fed3"
+  supports: [G4]
+  quotes:
+    - text: "CAP Feed URL(s): [ blank ]"
+      locator: "record fields"
+    - text: "Authorization Basis: [ blank ]"
+      locator: "record fields"
+  notes: "Record date (11 Sep 2013) comes from the register RSS pubDate; see WMO-REGISTER-RSS. Only the Meteorological Department is registered for the UAE."
+
+- id: WMO-REGISTER-RSS
+  title: "WMO Register of Alerting Authorities, RSS feed of all records"
+  publisher: WMO
+  date: null
+  url: "https://alertingauthority.wmo.int/rss.xml"
+  kind: dataset
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "3ffbf8709bedb1aea1514d80404e227b162b4652717909f6b8c95c8343dbbade"
+  supports: [G4, R4]
+  quotes:
+    - text: "<pubDate>Wed, 11 Sep 2013 00:38:42 +0000</pubDate>"
+      locator: "item 'United Arab Emirates: Meteorological Department'"
+    - text: "<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>"
+      locator: "item 'Saudi Arabia: National Center for Meteorology'"
+  notes: "303 items on fetch. GCC records with a capAlertFeed element: Saudi Arabia, Kuwait, Qatar, Bahrain, Oman (own count of this file). The UAE item has none. The feed changes over time; the hash fixes what we read."
+
+- id: WMO-CAP-GUIDE
+  title: "Common Alerting Protocol (CAP) (WMO CAP site)"
+  publisher: WMO
+  date: "2025-05-13"
+  url: "https://wmo.int/site/wmo-common-alerting-protocol"
+  kind: guidance
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "f676ca3fd431927a89334d91e6bed89c65427c908ed06749b386e9c6afe475ce"
+  supports: [R4, G4]
+  quotes:
+    - text: "An authorized alerting authority creates a CAP alert message using the XML format."
+      locator: "section 'How does CAP work?'"
+  notes: "Date is the page's 'Last updated'. Requested via https://wmo.int/node/25918 (redirect). The WMO-No. 1109 implementation guidelines PDF was not fetched (hosted behind the ETRP course site)."
+
+- id: WMO-CAP-JUMPSTART
+  title: "Common Alerting Protocol (CAP) Jump-Start offer (leaflet)"
+  publisher: WMO Public Weather Services Division
+  date: null
+  url: "https://old.wmo.int/extranet/pages/prog/amp/pwsp/documents/Common_alerting_protocol_en.pdf"
+  kind: guidance
+  jurisdiction: International
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "9357ee824cb0fb3e850f5f0be333b6b474c458bd31c9c29f8ddaa3bd34b0eae0"
+  supports: [G4]
+  quotes:
+    - text: "Publish a CAP alert news feed;"
+      locator: "implementation steps list, item 6"
+    - text: "Register an Alerting Authority;"
+      locator: "implementation steps list, item 7"
+  notes: "Two-page leaflet, undated."
+
+# ---------------------------------------------------------------- AI translation of warnings (US)
+
+- id: NWS-AI-TRANSLATION
+  title: "From Binary to Bilingual: How the National Weather Service is Using Artificial Intelligence to Develop a Comprehensive Translation Program"
+  publisher: American Meteorological Society, Artificial Intelligence for the Earth Systems 5(3)
+  date: "2026-06-30"
+  url: "https://journals.ametsoc.org/view/journals/aies/5/3/AIES-D-25-0102.1.xml"
+  kind: official-report
+  jurisdiction: US
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "30301c6ebcf70e2218067ba33aee03c9a20f6cab71c98317d2b7b5ef1b508d3a"
+  supports: [R9, G3]
+  quotes:
+    - text: "This article outlines the foundation of an automated translation tool for NWS products, powered by artificial intelligence."
+      locator: "Abstract"
+    - text: "The NWS has partnered with LILT, whose patented training process enables large language models (LLMs) to adapt neural machine translation (NMT) tools for weather terminology and messaging."
+      locator: "Abstract"
+  notes: "Peer-reviewed article co-authored by NWS staff. DOI 10.1175/AIES-D-25-0102.1. Published online 30 Jun 2026."
+
+- id: NWS-NHC-2026
+  title: "Researchers advance first-of-its-kind AI tool for translating life-saving weather warnings across the US"
+  publisher: University of Illinois Urbana-Champaign News Bureau
+  date: "2026-06-01"
+  url: "https://news.illinois.edu/researchers-advance-first-of-its-kind-ai-tool-for-translating-life-saving-weather-warnings-across-the-us/"
+  kind: press
+  jurisdiction: US
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "3d2751d6bc532bfc51ed0622a265fbd4efa297db259a6bd3c7d43f43e38a4712"
+  supports: [G3]
+  quotes:
+    - text: "starting with the 2025 hurricane season, the National Hurricane Center officially began issuing AI-translated Spanish advisories for all hurricanes in the Pacific and Atlantic coasts"
+      locator: "quote attributed to J. Trujillo-Falcón"
+  notes: "Secondary: a university release quoting the lead author. No NHC/NWS notice was fetched for the hurricane-advisory claim."
+
+- id: NWS-PAUSE
+  title: "National Weather Service halts automated translation for alerts"
+  publisher: The Spokesman-Review (Washington Post story)
+  date: "2025-04-08"
+  url: "https://spokesman.com/stories/2025/apr/08/national-weather-service-halts-automated-translati"
+  kind: press
+  jurisdiction: US
+  status: verified-secondary
+  fetched_at: "2026-11-08"
+  sha256: "dedf7e5920ac7ba5162bdaac7b207a76139fda7c3073ce02e4ed0be8a5cdf951"
+  supports: [G3]
+  quotes:
+    - text: "The National Weather Service has halted its automated language translation services until further notice"
+      locator: "first paragraph"
+  notes: "Secondary press. The NWS service notice was not fetched."
+
+# ---------------------------------------------------------------- EU
+
+- id: EU-ALERT
+  title: "Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system"
+  publisher: European Parliament and Council of the EU (EUR-Lex)
+  date: "2018-12-11"
+  url: "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018L1972"
+  kind: regulation
+  jurisdiction: EU
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "8ee8ff556c313dac4ac8a5a4f8f352128b1688764906241c26e307e4907c5df2"
+  supports: [G5]
+  quotes:
+    - text: "public warnings are transmitted by providers of mobile number-based interpersonal communications services to the end-users concerned."
+      locator: "Art. 110(1)"
+    - text: "Public warnings shall be easy for end-users to receive."
+      locator: "Art. 110(2)"
+  notes: "Sets the duty to deliver warnings. Art. 110 has no duty to report on false or mistaken warnings (own reading), which supports G5 for the EU."
+
+- id: ETSI-EUALERT
+  title: "ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service"
+  publisher: ETSI
+  date: "2023-06"
+  url: "https://www.etsi.org/deliver/etsi_ts/102900_102999/102900/01.04.01_60/ts_102900v010401p.pdf"
+  kind: standard
+  jurisdiction: EU
+  status: verified-primary
+  fetched_at: "2026-11-08"
+  sha256: "e1b8bd26a0c20f6e5f9565d44adb9a91e6ec5a63ce0787a296329651565d477b"
+  supports: [R7, G3]
+  quotes:
+    - text: "messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses."
+      locator: "§5.1 Language, PDF p.8"
+  notes: "Requires languages but says nothing on how translations are produced or approved."

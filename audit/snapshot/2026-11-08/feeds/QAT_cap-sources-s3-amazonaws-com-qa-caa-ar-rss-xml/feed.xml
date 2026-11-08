@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/qa-caa-ar/rss-style.xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <atom:link rel="hub" href="//alert-hub.appspot.com" />
+    <atom:link rel="self" href="https://cap-sources.s3.amazonaws.com/qa-caa-ar/rss.xml" type="application/rss+xml" />
+    <title>أحدث التنبيهات من  الهيئة العامة للطيران المدني</title>
+    <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/rss.xml</link>
+    <description>أحدث التنبيهات من   الهيئة العامة للطيران المدني</description>
+    <language>en</language>
+    <copyright>public domain</copyright>
+    <pubDate>Tue, 27 Oct 2026 08:20:11 +0000</pubDate>
+    <lastBuildDate>Tue, 27 Oct 2026 08:20:11 +0000</lastBuildDate>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+    <image>
+      <title>أحدث التنبيهات من  الهيئة العامة للطيران المدني</title>
+      <url>https://alert-hub.s3.amazonaws.com/images/qa-caa-ar.png</url>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/rss.xml</link>
+    </image>
+    <item>
+      <title>امطار رعدية</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/2026-10-27-08-19-55.xml</link>
+      <description>من المتوقع تأثر المنطقة بـ أمطار رعدية متوسطة   مصحوبة بـ رياح مفاجئة وقوية قد تصل سرعتها إلى35 عقدة</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.27.8.19.55</guid>
+      <pubDate>Tue, 27 Oct 2026 08:19:55 +0000</pubDate>
+    </item>
+    <item>
+      <title>امطار رعدية</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/2026-10-26-09-25-31.xml</link>
+      <description>من المتوقع تأثر المنطقة بـ أمطار رعدية متوسطة   مصحوبة بـ رياح مفاجئة وقوية قد تصل سرعتها إلى35 عقدة</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.26.9.25.31</guid>
+      <pubDate>Mon, 26 Oct 2026 09:25:31 +0000</pubDate>
+    </item>
+    <item>
+      <title>امطار رعدية</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/2026-10-23-09-00-10.xml</link>
+      <description>من المتوقع تأثر المنطقة بـ أمطار رعدية متوسطة   مصحوبة بـ رياح مفاجئة وقوية قد تصل سرعتها إلى35 عقدة</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.23.9.0.10</guid>
+      <pubDate>Fri, 23 Oct 2026 09:00:10 +0000</pubDate>
+    </item>
+    <item>
+      <title>امطار رعدية</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/2026-10-22-13-03-54.xml</link>
+      <description>من المتوقع تأثر المنطقة بـ أمطار رعدية متوسطة   مصحوبة بـ رياح مفاجئة وقوية قد تصل سرعتها إلى35 عقدة</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.22.13.3.54</guid>
+      <pubDate>Thu, 22 Oct 2026 13:03:54 +0000</pubDate>
+    </item>
+    <item>
+      <title>امطار رعدية</title>
+      <link>https://cap-sources.s3.amazonaws.com/qa-caa-ar/2026-10-20-08-11-23.xml</link>
+      <description>من المتوقع تأثر المنطقة بـ أمطار رعدية متوسطة   مصحوبة بـ رياح مفاجئة وقوية قد تصل سرعتها إلى25 عقدة</description>
+      <author>QMD (QMD)</author>
+      <category>Met</category>
+      <guid>urn:oid:2.49.0.1.634.0.2026.10.20.8.11.23</guid>
+      <pubDate>Tue, 20 Oct 2026 08:11:23 +0000</pubDate>
+    </item>
+  </channel>
+</rss>

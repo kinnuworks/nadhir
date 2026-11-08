@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nadhir: AI-drafted alerts, checked before broadcast</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; max-width: 980px; margin: 0 auto; padding: 16px; color: #111; background: #fff; }
+  h1 { font-size: 1.6rem; margin: 0.5rem 0 0.25rem; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem; }
+  textarea, input, select { font: inherit; width: 100%; box-sizing: border-box; padding: 6px; }
+  textarea { min-height: 70px; }
+  button { font: inherit; padding: 6px 14px; margin: 4px 4px 4px 0; cursor: pointer; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+  th, td { border: 1px solid #ccc; padding: 4px 6px; text-align: left; vertical-align: top; }
+  .pass { color: #0a6b1f; } .fail { color: #b00020; font-weight: 600; } .pending, .warn { color: #8a5a00; } .na { color: #777; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; } .row > * { flex: 1 1 280px; }
+  pre { white-space: pre-wrap; word-break: break-word; background: #f6f6f6; padding: 8px; font-size: 0.8rem; max-height: 320px; overflow: auto; }
+  .muted { color: #555; font-size: 0.9rem; }
+  .decision { font-size: 1.1rem; font-weight: 600; margin: 8px 0; }
+  .ar { direction: rtl; text-align: right; }
+  details { margin: 4px 0; }
+</style>
+</head>
+<body>
+<h1>Nadhir</h1>
+<p><strong>AI drafts the alert. Cited rules and two people decide if it goes out.</strong>
+A pre-broadcast check for AI-drafted public warnings (CAP 1.2 / ITU-T X.1303bis, cell broadcast).</p>
+
+<h2 id="try">1. Draft and check a warning</h2>
+<p class="muted">The inputs below are prefilled with a published UAE National Center of Meteorology style dust warning and one unverified social post. Edit them or write your own. The issuer and target zones are demo stand-ins.</p>
+<div id="inputs"></div>
+<button id="add">Add input</button>
+<div class="row">
+  <label>Target zone (chosen by the operator, not the AI)
+    <select id="zone"><option value="al-ain">Al Ain (demo zone)</option><option value="abu-dhabi-city">Abu Dhabi city (demo zone)</option><option value="dubai">Dubai (demo zone)</option><option value="sharjah">Sharjah (demo zone)</option><option value="fujairah">Fujairah (demo zone)</option></select></label>
+  <label><input type="checkbox" id="exercise" style="width:auto"> This is a drill</label>
+</div>
+<button id="draft">Draft alert</button> <span id="draftStatus" class="muted"></span>
+<div id="draftOut"></div>
+
+<h2 id="replays">2. Replays of real alert failures</h2>
+<p class="muted">Each row is a real public alert failure, rebuilt from public reports. "As sent" is the real message run through the gate. The rule that blocks it is compared with what the official investigation recommended.</p>
+<div id="bench">Loading…</div>
+
+<h2 id="paste">3. Check any CAP alert</h2>
+<p class="muted">Paste a CAP 1.2 XML alert, for example one from a public feed. Rules that need the issuer's own console (approvals, keys, requested area) show as pending.</p>
+<textarea id="xml" style="min-height:140px" placeholder="&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;…"></textarea>
+<label>Profile <select id="profile" style="width:auto"><option>GENERIC</option><option>UAE</option><option>US</option></select></label>
+<button id="check">Check alert</button>
+<div id="checkOut"></div>
+
+<h2 id="audit">4. What real alerts record today</h2>
+<div id="auditOut">Loading…</div>
+
+<p class="muted" style="margin-top:2rem">Open source. Demo keys and demo zones are illustrations, not real UAE systems. Nothing here sends a real alert.</p>
+<script src="/web/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDQ21033-2026-11-02T10:54:34+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-02T10:54:34+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-02T06:03:00+00:00,2026-11-02T06:03:00+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-02T07:16:22+00:00,2026-11-02T07:16:22+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-02T08:06:07+00:00,2026-11-02T08:06:07+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21033-2026-11-02T09:29:16+00:00,2026-11-02T09:29:16+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-02T10:54:29+00:00</effective>
+        <expires>2026-11-02T15:54:29+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Severe Thunderstorm Warning for Central Highlands and Coalfields, Darling Downs and Granite Belt and Wide Bay and Burnett forecast districts</headline>
+        <description>
+          Severe thunderstorms are likely to produce damaging winds, large hailstones and heavy rainfall that may lead to flash flooding in the warning area over the next several hours. Locations which may be affected include Childers and Biggenden.  
+          
+          
+          Severe thunderstorms are no longer occurring in the Southeast Coast district and the warning for this district is CANCELLED.
+           
+          
+          54 mm of rainfall recorded at Cooroy in the 30 minutes to 4:34 pm AEST.
+          4 cm hailstones reported near Yarraman at around 1:10 pm AEST.
+        </description>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Central Highlands and Coalfields, Wide Bay and Burnett and Darling Downs and Granite Belt</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW013</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW014</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-02T10:54:29+00:00</effective>
+        <expires>2026-11-02T15:54:29+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Severe Thunderstorm Warning for Southeast Coast forecast district</headline>
+        <description/>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Southeast Coast forecast district</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_PW015</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

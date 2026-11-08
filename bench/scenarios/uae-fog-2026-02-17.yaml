@@ -1,0 +1,44 @@
+profile: UAE
+issuer: demo-national-authority@nadhir.example
+issuer_name: Demo national authority (stands in for the real issuer)
+issuers:
+  demo-national-authority@nadhir.example:
+    name: Demo national authority (stands in for the real issuer)
+    level: 1
+    areas:
+    - '*'
+    categories:
+    - '*'
+environment: live
+languages:
+- ar
+runs: 3
+event_id: uae-fog-2026-02-17
+title: Dense fog, 17 Feb 2026
+exercise: false
+label: Our scenario. The hazard input is a real published NCM warning (via WAM); the target zone, issuer and keys are demo
+  stand-ins.
+inputs:
+- text: ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding
+    potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According
+    to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting
+    from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on
+    the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles,
+    and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.
+  verified: true
+  source: NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility
+- text: 'Issuer public site (demo): https://alerts.example.ae'
+  verified: true
+  source: issuer profile
+requested_area:
+  areaDesc: Western region (demo zone)
+  geocodes:
+  - - DEMO-ZONE
+    - AUH-WEST
+  event_id: uae-fog-2026-02-17
+  origin: drawn
+sent: '2026-02-17T15:00:00+04:00'
+reference_ar: أبوظبي في 17 فبراير / وام / حذّر المركز الوطني للأرصاد من فرصة تشكل الضباب وتدنّي مدى الرؤية الأفقية، قد تصل
+  أحياناً إلى انعدامها على بعض المناطق الغربية من الدولة، وذلك ابتداءً من الساعة 21:30 مساء اليوم، وحتى الساعة 10:00 من صباح
+  يوم غد الأربعاء. وأهاب المركز، في بيان له، بالسائقين توخي الحيطة والحذر أثناء القيادة، واتباع إرشادات السلامة المرورية،
+  والالتزام بالسرعات المحددة، خاصة في المناطق التي تشهد انخفاضاً ملحوظاً في مدى الرؤية الأفقية.

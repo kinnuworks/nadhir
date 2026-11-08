@@ -1,0 +1,3 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- A guide on how to use this feed is available at http://www.netalerts.org/cap-feed.html -->
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss"><id>https://emergencyalert.alberta.ca/aeapublic/feed.atom</id><title>Alberta Emergency Alert - Public - Current</title><updated>2026-11-08T18:22:01-00:00</updated><author><name>Alberta Emergency Alert</name><uri>https://emergencyalert.alberta.ca/</uri></author><link href="https://emergencyalert.alberta.ca/aeapublic/feed.atom" rel="self" /><link href="https://emergencyalert.alberta.ca/" rel="alternate" /><generator>AlertFeed</generator></feed>

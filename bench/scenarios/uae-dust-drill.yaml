@@ -1,0 +1,43 @@
+profile: UAE
+issuer: demo-national-authority@nadhir.example
+issuer_name: Demo national authority (stands in for the real issuer)
+issuers:
+  demo-national-authority@nadhir.example:
+    name: Demo national authority (stands in for the real issuer)
+    level: 1
+    areas:
+    - '*'
+    categories:
+    - '*'
+environment: live
+languages:
+- ar
+runs: 3
+event_id: uae-dust-drill
+title: 'Drill: the same dust warning sent as an exercise'
+exercise: true
+label: Our scenario. A drill built on a real NCM warning (via WAM). Tests that a drill stays a drill.
+inputs:
+- text: ABU DHABI, 16th February, 2026 (WAM) -- The National Centre of Meteorology (NCM) warned today of active to occasionally
+    strong northwesterly winds, raising dust and sand and reducing horizontal visibility to less than 3,000 metres in some
+    coastal and inland areas. The Centre stated in a statement issued today that the weather conditions began at 10:30 and
+    will continue until 18:00, urging the public to exercise caution, particularly when driving on external and open roads,
+    due to the risk of sudden drops in visibility caused by blowing dust.
+  verified: true
+  source: NCM via WAM, 2026-02-16, https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced
+- text: 'Issuer public site (demo): https://alerts.example.ae'
+  verified: true
+  source: issuer profile
+requested_area:
+  areaDesc: Coastal and inland areas, Abu Dhabi (demo zone)
+  geocodes:
+  - - DEMO-ZONE
+    - AUH-COAST-INLAND
+  event_id: uae-dust-drill
+  origin: drawn
+sent: '2026-02-16T15:00:00+04:00'
+reference_ar: أبوظبي في 16 فبراير /وام/ حذّر المركز الوطني للأرصاد، من نشاط رياح شمالية غربية تكون نشطة السرعة وقوية أحياناً،
+  ومثيرة للغبار والأتربة، ما يؤدي إلى تدنٍ في مدى الرؤية الأفقية إلى أقل من 3000 متر على بعض المناطق الساحلية والداخلية. وأوضح
+  المركز، في بيانٍ له اليوم، أن الحالة الجوية تبدأ من الساعة 10:30 صباحاً وتستمر حتى الساعة 18:00 مساءً، داعياً أفراد المجتمع
+  إلى توخي الحيطة والحذر، خاصةً أثناء القيادة على الطرق الخارجية والمكشوفة، نظراً لاحتمال تدني الرؤية المفاجئ بسبب الأتربة
+  المثارة.

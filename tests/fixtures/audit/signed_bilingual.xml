@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>fixture-1</identifier>
+  <sender>met.example.org</sender>
+  <sent>2026-11-01T10:00:00+04:00</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <scope>Public</scope>
+  <code>profile:CAP-CP:0.4</code>
+  <note>Second issue of this warning</note>
+  <info>
+    <language>en-CA</language>
+    <category>Met</category>
+    <event>wind</event>
+    <urgency>Expected</urgency>
+    <severity>Moderate</severity>
+    <certainty>Likely</certainty>
+    <instruction>Secure loose objects.</instruction>
+    <parameter><valueName>profile:CAP-CP:0.4:AutoTranslated</valueName><value>no</value></parameter>
+    <area><areaDesc>Coast</areaDesc></area>
+  </info>
+  <info>
+    <language>fr-CA</language>
+    <category>Met</category>
+    <event>vent</event>
+    <urgency>Expected</urgency>
+    <severity>Moderate</severity>
+    <certainty>Likely</certainty>
+    <instruction>Fixez les objets.</instruction>
+    <parameter><valueName>profile:CAP-CP:0.4:AutoTranslated</valueName><value>yes</value></parameter>
+    <area><areaDesc>Côte</areaDesc></area>
+  </info>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo/><SignatureValue>AAAA</SignatureValue></Signature>
+</alert>

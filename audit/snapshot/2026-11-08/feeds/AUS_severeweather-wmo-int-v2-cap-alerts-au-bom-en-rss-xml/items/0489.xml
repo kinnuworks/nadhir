@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDV21033-2026-11-02T05:11:33+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-02T05:11:33+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDV21033-2026-11-02T03:38:22+00:00,2026-11-02T03:38:22+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-02T05:11:28+00:00</effective>
+        <expires>2026-11-02T10:11:28+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Severe Thunderstorm Warning for Mallee, Wimmera and Northern Country forecast districts</headline>
+        <description>
+          Severe thunderstorms are likely to produce heavy rainfall that may lead to flash flooding, damaging winds and large hailstones in the warning area over the next several hours. Locations which may be affected include Swan Hill, Echuca, Kerang, Birchip and Rochester.  
+        </description>
+        <instruction>The State Emergency Service advises that people should:
+* If driving conditions are dangerous, safely pull over away from trees, drains, low-lying areas and floodwater. Avoid travel if possible.
+* Stay safe by avoiding dangerous hazards, such as floodwater, mud, debris, damaged roads and fallen trees.
+* Be aware - heat, fire or recent storms may make trees unstable and more likely to fall when it's windy or wet.
+* Check that loose items, such as outdoor settings, umbrellas and trampolines are safely secured. Move vehicles under cover or away from trees.
+* Stay indoors and away from windows.
+* If outdoors, move to a safe place indoors. Stay away from trees, drains, gutters, creeks and waterways.
+* Stay away from fallen powerlines - always assume they are live.
+* Be aware that in fire affected areas, rainfall run-off into waterways may contain debris such as ash, soil, trees and rocks. Heavy rainfall may also increase the potential for landslides and debris across roads.
+* Stay informed: Monitor weather warnings, forecasts and river levels at the Bureau of Meteorology website, and warnings through VicEmergency website/app/hotline.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Victoria: Mallee, Northern Country and Wimmera</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW001</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW002</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW003</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

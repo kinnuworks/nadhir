@@ -1,0 +1,117 @@
+id: la-county-2025
+title: "Kenneth Fire evacuation warning delivered to all of Los Angeles County"
+date: "2025-01-09"
+jurisdiction: "US, Los Angeles County, California (LA County Office of Emergency Management, LACOEM)"
+sources: [LA-2025, LA-2025-PR, LA-2025-COUNTY, LA-2025-AP]
+
+summary: >-
+  An evacuation warning drafted for the area near Calabasas, Agoura Hills and West Hills under threat from the
+  Kenneth Fire was delivered by WEA to the whole county, nearly 10 million people. A congressional oversight report
+  found that the targeted polygon was saved in the other channels but not in the IPAWS wireless channel, so the
+  county-wide geocode alone was used. The county cancelled within 2 minutes 47 seconds and sent a clarification
+  about 20 minutes later.
+
+timeline:
+  - {t: "2025-01-09T15:46-08:00", event: "LACOEM begins drafting an evacuation warning for individuals near Calabasas, Agoura Hills and West Hills (Kenneth Fire).", source: LA-2025}
+  - {t: "2025-01-09T15:56-08:00", event: "The message is sent and delivered throughout Los Angeles County instead of the intended area.", source: LA-2025}
+  - {t: "2025-01-09T15:56-08:00 + 2m47s", event: "LACOEM cancels the alert 2 minutes and 47 seconds after sending (per Genasys response cited in the report).", source: LA-2025}
+  - {t: "2025-01-09T15:56-08:00 + ~20m", event: "LACOEM issues a new alert saying the warning applied only to the Kenneth Fire area.", source: LA-2025}
+  - {t: "2025-01-09 to 2025-01-10", event: "Many residents keep receiving the warning overnight and the next day, some several times; the FCC attributes repeats to equipment overload, not cached alerts from towers coming back online.", source: LA-2025}
+  - {t: "2025-01-10", event: "The county temporarily switches local alerting to CalOES's OnSolve CodeRED system; it returns to Genasys on 30 January 2025.", source: LA-2025}
+  - {t: "2025-02-03", event: "Rep. Robert Garcia and thirteen other Members of Congress from LA County send oversight letters to Genasys, the county, FEMA and the FCC.", source: LA-2025}
+  - {t: "2025-04-01", event: "Los Angeles County responds; it says the error could not be duplicated and Genasys traced it to the /v2 user interface.", source: LA-2025-COUNTY}
+  - {t: "2025-05-12", event: "Rep. Garcia releases the report 'Lessons from the Kenneth Fire False Alerts'.", source: LA-2025-PR}
+
+inputs:
+  event_text: "Kenneth Fire: evacuation warning for individuals near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley."
+  event_text_basis: "Area description from the congressional report; the county's internal incident data is not public."
+  issuer: "Los Angeles County Office of Emergency Management (LACOEM)"
+  environment: live
+  requested_area:
+    areaDesc: "Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills"
+    geocodes: [{valueName: SAME, value: "006037"}]
+    polygon: ["34.12,-118.78 34.22,-118.78 34.22,-118.60 34.12,-118.60 34.12,-118.78"]
+    polygon_label: "approximate, for replay: rough box around Calabasas, Agoura Hills and West Hills; the real Kenneth Fire polygon is not public"
+
+real_message:
+  text_verbatim: "NEW: This is an emergency message from the Los Angeles County Fire Department. An EVACUATION WARNING has been issued in your area. Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information."
+  text_source_note: "Read from the phone screenshot reproduced on page 4 of the congressional report (image; OCR checked by eye)."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Los Angeles County Office of Emergency Management (LACOEM)"
+  category: Fire
+  event: "Evacuation Warning"
+  urgency: Expected
+  severity: Severe
+  certainty: Likely
+  language: en-US
+  headline: "EVACUATION WARNING"
+  description: "NEW: This is an emergency message from the Los Angeles County Fire Department. An EVACUATION WARNING has been issued in your area."
+  instruction: "Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information."
+  areaDesc: "Los Angeles County"
+  area:
+    areaDesc: "Los Angeles County"
+    geocodes: [{valueName: SAME, value: "006037"}]
+    polygon: []
+    note: "Report: the IPAWS channel held the county geocode (auto-populated) and no polygon."
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, event, urgency, severity, certainty, headline, description, instruction, sender]
+  reconstruction_note: "Text, send time and area (county geocode, no polygon) come from the report; the other CAP field values are our reconstruction."
+
+corrections:
+  - t: "2025-01-09T15:56-08:00 + 2m47s"
+    kind: "cancellation in Genasys ALERT (text not public)"
+    source: LA-2025
+  - t: "2025-01-09T15:56-08:00 + ~20m"
+    kind: "new WEA alert"
+    text_verbatim: "LACoOEM: Disregard last EVACUATION WARNING. It was for Kenneth Fire Only. AlertLA.org for more information"
+    text_source_note: "Read from the phone screenshot on page 7 of the report; 'LACoOEM' is as shown."
+    references_original: unknown
+    source: LA-2025
+
+real_outcome:
+  text: >-
+    Nearly 10 million people across Los Angeles County received an evacuation warning meant for the Kenneth Fire
+    area. Many kept receiving it overnight and the next day, some several times.
+  source: LA-2025
+
+official_finding:
+  body: "Office of U.S. Representative Robert Garcia (CA-42), congressional oversight report"
+  document: "Lessons from the Kenneth Fire False Alerts (May 2025), Key Finding 1, p. 6"
+  finding_status: official-verbatim
+  quote: "However, the correct Kenneth Fire-area polygon was NOT saved into the IPAWS wireless channel in the Genasys system, and the operator did not realize the polygon was missing."
+  source: LA-2025
+  further_quotes:
+    - rule: R3
+      quote: "The Genasys system did not warn the Alert Originator that it did not have a polygon (Kenneth Fire area) in the IPAWS channel, and the message would be sent county-wide"
+      locator: "p. 7"
+    - rule: R11
+      quote: "A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,”"
+      locator: "p. 8"
+  scope_note: "A report by a Member of Congress's office based on responses from Genasys, the county, FEMA and the FCC; not a report adopted by a committee."
+
+expected_rules: [R3]
+expected_rules_basis: "R3: the area actually sent (county geocode, no polygon) must equal the area requested (Kenneth Fire polygon)."
+
+unknowns:
+  - "The real Kenneth Fire polygon coordinates."
+  - "Why the polygon was not saved in the IPAWS channel: Genasys suggested a network disruption; the county response cites the /v2 user interface; the report says the cause was not explained."
+  - "Whether the clarification was sent as a CAP Update/Cancel referencing the original."
+  - "Approval steps before sending; CAP urgency, severity and certainty values."
+
+framing_note: >-
+  The report credits the county with noticing the error quickly, cancelling within 2 minutes 47 seconds and sending
+  a clarification. It names the missing polygon in the vendor's IPAWS channel as the cause and recommends clearer
+  location wording, training and certification. Genasys has since added a warning when an alert has a geocode but
+  no polygon.
+
+source_urls:
+  LA-2025: "https://robertgarcia.house.gov/sites/evo-subsites/robertgarcia.house.gov/files/evo-media-document/false-alerts-final-report-5.10.pdf"
+  LA-2025-PR: "https://robertgarcia.house.gov/media/press-releases/congressman-robert-garcia-releases-oversight-report-lessons-kenneth-fire-false"
+  LA-2025-COUNTY: "https://robertgarcia.house.gov/sites/evo-subsites/robertgarcia.house.gov/files/evo-media-document/signed_la-county-alert-system-congressional-inquiry-response-rep-garcia-v2.pdf"
+  LA-2025-AP: "https://www.insurancejournal.com/news/west/2025/05/15/823791.htm"
+source_hashes:
+  LA-2025: {sha256: "34d3911aff0accce4aabb1422f2ee4b26588a28548374a034bad49dc0dcc4937", fetched: "2026-11-09"}

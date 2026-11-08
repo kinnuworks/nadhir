@@ -1,0 +1,94 @@
+# Real public UAE National Center of Meteorology (NCM) warnings, as published in English and Arabic by the
+# Emirates News Agency (WAM, the UAE state news agency), which relays NCM statements.
+# Inputs for the drafting agent in the UAE dust-storm replay scenario. Text is copied as published,
+# including WAM's own dateline. Nothing here is an alert broadcast to phones; these are NCM weather
+# warnings and advisories as reported by WAM. The English and Arabic items are separate WAM stories, not
+# line-by-line translations of each other, and can differ in detail.
+# Fetched 2026-11-09 by rendering the WAM pages in a headless browser (the pages load their text with JavaScript).
+source_type_legend:
+  state_news_agency: "WAM story relaying an NCM statement (official state media, secondary to NCM itself)"
+
+items:
+  - id: NCM-2026-03-04-dust
+    date: "2026-03-04"
+    hazard: dust
+    source_type: state_news_agency
+    text_en: "ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust."
+    text_ar: "أبوظبي في 4 مارس /وام/ حذر المركز الوطني للأرصاد من نشاط الرياح الشمالية الغربية على مناطق متفرقة من الدولة متوقعا أن تكون نشطة السرعة وقوية أحياناً، وتؤدي إلى إثارة الغبار والأتربة وتدني مدى الرؤية الأفقية إلى أقل من 2000 متر على بعض المناطق الساحلية والداخلية. وأوضح المركز أن الحالة الجوية المتوقعة تبدأ من الساعة 14:55 وتستمر حتى الساعة 19:00 مساءً، داعياً أفراد المجتمع إلى توخي الحيطة والحذر، خاصة أثناء القيادة على الطرق المكشوفة، نظراً لاحتمالية تدني الرؤية الأفقية بسبب الأتربة المثارة."
+    headline_en: "NCM warns of dusty northwesterly winds, reduced visibility"
+    headline_ar: "\"الوطني للأرصاد\" يحذر من رياح شمالية غربية نشطة مثيرة للغبار وتدني الرؤية حتى 2000 متر"
+    published_en: "2026-03-04 16:43 (WAM page time)"
+    published_ar: "2026-03-04 16:38 (WAM page time)"
+    url: "https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced"
+    url_ar: "https://www.wam.ae/ar/article/bz18shu-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D9%8A%D8%AD%D8%B0%D8%B1-%D8%B1%D9%8A%D8%A7%D8%AD-%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D9%86%D8%B4%D8%B7%D8%A9-%D9%85%D8%AB%D9%8A%D8%B1%D8%A9"
+
+  - id: NCM-2026-02-16-dust
+    date: "2026-02-16"
+    hazard: dust
+    source_type: state_news_agency
+    text_en: "ABU DHABI, 16th February, 2026 (WAM) -- The National Centre of Meteorology (NCM) warned today of active to occasionally strong northwesterly winds, raising dust and sand and reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas. The Centre stated in a statement issued today that the weather conditions began at 10:30 and will continue until 18:00, urging the public to exercise caution, particularly when driving on external and open roads, due to the risk of sudden drops in visibility caused by blowing dust."
+    text_ar: "أبوظبي في 16 فبراير /وام/ حذّر المركز الوطني للأرصاد، من نشاط رياح شمالية غربية تكون نشطة السرعة وقوية أحياناً، ومثيرة للغبار والأتربة، ما يؤدي إلى تدنٍ في مدى الرؤية الأفقية إلى أقل من 3000 متر على بعض المناطق الساحلية والداخلية. وأوضح المركز، في بيانٍ له اليوم، أن الحالة الجوية تبدأ من الساعة 10:30 صباحاً وتستمر حتى الساعة 18:00 مساءً، داعياً أفراد المجتمع إلى توخي الحيطة والحذر، خاصةً أثناء القيادة على الطرق الخارجية والمكشوفة، نظراً لاحتمال تدني الرؤية المفاجئ بسبب الأتربة المثارة."
+    headline_en: "National Centre of Meteorology warns of dust, reduced visibility"
+    headline_ar: "\"الوطني للأرصاد\" يحذر من رياح قوية مثيرة للغبار وتدنٍ في الرؤية الأفقية"
+    published_en: "2026-02-16 11:21 (WAM page time)"
+    published_ar: "2026-02-16 10:44 (WAM page time)"
+    url: "https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced"
+    url_ar: "https://www.wam.ae/ar/article/172rs8j-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D9%8A%D8%AD%D8%B0%D8%B1-%D8%B1%D9%8A%D8%A7%D8%AD-%D9%82%D9%88%D9%8A%D8%A9-%D9%85%D8%AB%D9%8A%D8%B1%D8%A9-%D9%84%D9%84%D8%BA%D8%A8%D8%A7%D8%B1-%D9%88%D8%AA%D8%AF%D9%86"
+
+  - id: NCM-2026-02-17-fog
+    date: "2026-02-17"
+    hazard: fog
+    source_type: state_news_agency
+    text_en: "ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog."
+    text_ar: "أبوظبي في 17 فبراير / وام / حذّر المركز الوطني للأرصاد من فرصة تشكل الضباب وتدنّي مدى الرؤية الأفقية، قد تصل أحياناً إلى انعدامها على بعض المناطق الغربية من الدولة، وذلك ابتداءً من الساعة 21:30 مساء اليوم، وحتى الساعة 10:00 من صباح يوم غد الأربعاء. وأهاب المركز، في بيان له، بالسائقين توخي الحيطة والحذر أثناء القيادة، واتباع إرشادات السلامة المرورية، والالتزام بالسرعات المحددة، خاصة في المناطق التي تشهد انخفاضاً ملحوظاً في مدى الرؤية الأفقية."
+    headline_en: "Fog Alert: UAE motorists warned of low visibility through Wednesday morning"
+    headline_ar: "المركز الوطني للأرصاد يحذر من الضباب وتدني الرؤية الأفقية حتى صباح الأربعاء"
+    published_en: "2026-02-17 21:17 (WAM page time)"
+    published_ar: "2026-02-17 21:13 (WAM page time)"
+    url: "https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility"
+    url_ar: "https://www.wam.ae/ar/article/3bnv4zrl-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D9%8A%D8%AD%D8%B0%D8%B1-%D8%A7%D9%84%D8%B6%D8%A8%D8%A7%D8%A8-%D9%88%D8%AA%D8%AF%D9%86%D9%8A-%D8%A7%D9%84%D8%B1%D8%A4%D9%8A%D8%A9"
+    note: "The English says 'modified speed limits'; the Arabic says 'السرعات المحددة' (the set speed limits)."
+
+  - id: NCM-2026-08-22-rain
+    date: "2026-08-22"
+    hazard: heavy_rain
+    source_type: state_news_agency
+    text_en: "ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior."
+    text_ar: "أبوظبي في 22 أغسطس / وام / أصدر المركز الوطني للأرصاد تنبيها بشأن فرصة تكون سحب ركامية يصاحبها سقوط أمطار تتراوح بين الخفيفة والمتوسطة، وتكون غزيرة أحيانا. وحدد المركز الفترة الزمنية لهذا التنبيه بدءا من الساعة 01:30 من ظهر اليوم السبت، لتستمر حتى الساعة 09:00 من مساء اليوم ذاته، مشيرا إلى أن هذه الحالة الجوية ستشمل بعض المناطق الشرقية والجنوبية والغربية، وتمتد لتؤثر على بعض المناطق الداخلية."
+    headline_en: "NCM forecasts light to heavy rain across several UAE areas from Saturday afternoon"
+    headline_ar: "\"الوطني للأرصاد\" : أمطار خفيفة إلى غزيرة على عدة مناطق بدءا من ظهر اليوم"
+    published_en: "2026-08-22 12:46 (WAM page time)"
+    published_ar: "2026-08-22 12:39 (WAM page time)"
+    url: "https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae"
+    url_ar: "https://www.wam.ae/ar/article/c1v1wln-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D8%A3%D9%85%D8%B7%D8%A7%D8%B1-%D8%AE%D9%81%D9%8A%D9%81%D8%A9-%D8%A5%D9%84%D9%89-%D8%BA%D8%B2%D9%8A%D8%B1%D8%A9-%D8%B9%D9%84%D9%89-%D8%B9%D8%AF%D8%A9-%D9%85%D9%86%D8%A7%D8%B7%D9%82"
+    note: "Same times written two ways: English 13:30 and 21:00 (24-hour clock); Arabic 01:30 من ظهر and 09:00 من مساء (12-hour clock with period words). Useful for testing time grounding (R11)."
+
+  - id: NCM-2024-11-26-dust-rain
+    date: "2024-11-26"
+    hazard: dust_and_rain
+    source_type: state_news_agency
+    text_en: "ABU DHABI, 26th November, 2024 (WAM) -- The National Center of Meteorology (NCM) issued a weather advisory, warning of potential dust storms and rainfall from Wednesday through Friday. A surface low-pressure system from the east, combined with an upper-air low-pressure system and jet stream from the west, will lead to cloud formation over parts of the country according to a statement by the NCM today. Weather from Wednesday night until Friday will see clouds amount increase gradually from late night Wednesday over Western areas and move toward coats and islands and over some Northern and Eastern areas with a chance of rainfall on Thursday, and clouds amount decrease gradually on Friday noon time with a drop in temperatures. Sea will be rough to very rough on Thursday and Friday in the Arabian Gulf and moderate to rough in Oman sea. Winds will be southeasterly to northeasterly, shifting to northwesterly, moderate to active in speed and occasionally strong, especially over the sea. They will stir up dust and sand on land, occasionally causing reduced horizontal visibility."
+    text_ar: "أبوظبي في 25 نوفمبر/ وام/ توقع المركز الوطني للأرصاد أن تتأثر الدولة بامتداد منخفض جوي سطحي من الشرق، يتزامن مع امتداد منخفض جوي في طبقات الجو العليا، مما يؤدي إلى تدفق كتلة هوائية باردة نسبياً مع تيار هوائي علوي من الغرب. وأوضح المركز، في تقرير له عن الحالة الجوية خلال الفترة من الأربعاء إلى الجمعة، أن هذه التغيرات الجوية ستساهم في تطور السحب على مناطق متفرقة من الدولة. الطقس من ليل الأربعاء إلى الجمعة: تزداد كميات السحب تدريجياً من آخر ليل الأربعاء على المناطق الغربية وتتحرك يوم الخميس باتجاه السواحل والجزر وعلى بعض المناطق الشمالية والشرقية مع فرصة سقوط أمطار وتقل كميات السحب تدريجياً ظهر يوم الجمعة مع انخفاض ملحوظ في درجات الحرارة. الرياح: جنوبية شرقية إلى شمالية شرقية تتحول إلى شِمالية غربية معتدلة إلى نشطة السرعة وقوية أحياناً خاصة على البحر، وتكون مثيرة للغبار والأتربة على اليابسة تؤدي إلى تدني مدى الرؤية الأفقية أحياناً. البحر: مضطرب إلى شديد الاضطراب يومي الخميس والجمعة في الخليج العربي ومتوسط إلى مضطرب الموج في بحر عمان."
+    headline_en: "Potential dust storms, rainfall from Wednesday to Friday: NCM"
+    headline_ar: "\"الأرصاد\": تأثر الدولة بامتداد منخفض جوي سطحي من الأربعاء إلى الجمعة"
+    published_en: "2024-11-26 00:59 (WAM page time)"
+    published_ar: "2024-11-25 23:34 (WAM page time)"
+    url: "https://www.wam.ae/en/article/148ltir-potential-dust-storms-rainfall-from-wednesday"
+    url_ar: "https://www.wam.ae/ar/article/33rqm0gz-%D8%A7%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D8%AA%D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9-%D8%A8%D8%A7%D9%85%D8%AA%D8%AF%D8%A7%D8%AF-%D9%85%D9%86%D8%AE%D9%81%D8%B6-%D8%AC%D9%88%D9%8A-%D8%B3%D8%B7%D8%AD%D9%8A"
+    note: "Advisory, not a short warning. English has the typo 'coats' (for coasts) as published. Arabic dateline is 25 November, English 26 November."
+
+unknowns:
+  - "None of these items is the text of a phone (cell broadcast) alert; NCM's colour-coded warning texts on ncm.gov.ae were not captured here."
+  - "Whether NCM issued its own Arabic and English wording that WAM edited, or WAM wrote both stories from one NCM statement, is not stated."
+
+source_urls:
+  WAM-NCM-2026-03-04-EN: "https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced"
+  WAM-NCM-2026-03-04-AR: "https://www.wam.ae/ar/article/bz18shu-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D9%8A%D8%AD%D8%B0%D8%B1-%D8%B1%D9%8A%D8%A7%D8%AD-%D8%B4%D9%85%D8%A7%D9%84%D9%8A%D8%A9-%D8%BA%D8%B1%D8%A8%D9%8A%D8%A9-%D9%86%D8%B4%D8%B7%D8%A9-%D9%85%D8%AB%D9%8A%D8%B1%D8%A9"
+  WAM-NCM-2026-02-16-EN: "https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced"
+  WAM-NCM-2026-02-16-AR: "https://www.wam.ae/ar/article/172rs8j-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D9%8A%D8%AD%D8%B0%D8%B1-%D8%B1%D9%8A%D8%A7%D8%AD-%D9%82%D9%88%D9%8A%D8%A9-%D9%85%D8%AB%D9%8A%D8%B1%D8%A9-%D9%84%D9%84%D8%BA%D8%A8%D8%A7%D8%B1-%D9%88%D8%AA%D8%AF%D9%86"
+  WAM-NCM-2026-02-17-EN: "https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility"
+  WAM-NCM-2026-02-17-AR: "https://www.wam.ae/ar/article/3bnv4zrl-%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D9%8A%D8%AD%D8%B0%D8%B1-%D8%A7%D9%84%D8%B6%D8%A8%D8%A7%D8%A8-%D9%88%D8%AA%D8%AF%D9%86%D9%8A-%D8%A7%D9%84%D8%B1%D8%A4%D9%8A%D8%A9"
+  WAM-NCM-2026-08-22-EN: "https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae"
+  WAM-NCM-2026-08-22-AR: "https://www.wam.ae/ar/article/c1v1wln-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D9%84%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D8%A3%D9%85%D8%B7%D8%A7%D8%B1-%D8%AE%D9%81%D9%8A%D9%81%D8%A9-%D8%A5%D9%84%D9%89-%D8%BA%D8%B2%D9%8A%D8%B1%D8%A9-%D8%B9%D9%84%D9%89-%D8%B9%D8%AF%D8%A9-%D9%85%D9%86%D8%A7%D8%B7%D9%82"
+  WAM-NCM-2024-11-26-EN: "https://www.wam.ae/en/article/148ltir-potential-dust-storms-rainfall-from-wednesday"
+  WAM-NCM-2024-11-26-AR: "https://www.wam.ae/ar/article/33rqm0gz-%D8%A7%D9%84%D8%A3%D8%B1%D8%B5%D8%A7%D8%AF-%D8%AA%D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D8%A9-%D8%A8%D8%A7%D9%85%D8%AA%D8%AF%D8%A7%D8%AF-%D9%85%D9%86%D8%AE%D9%81%D8%B6-%D8%AC%D9%88%D9%8A-%D8%B3%D8%B7%D8%AD%D9%8A"

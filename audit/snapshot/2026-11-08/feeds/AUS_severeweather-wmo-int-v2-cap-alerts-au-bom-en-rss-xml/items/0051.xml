@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>AusBoM-IDV36330-2026-11-07T22:54:58+00:00</identifier>
+  <sender>CAP.Message@bom.gov.au</sender>
+  <sent>2026-11-07T22:54:58+00:00</sent>
+  <status>Actual</status>
+  <msgType>Update</msgType>
+  <scope>Public</scope>
+  <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+  <references>CAP.Message@bom.gov.au,AusBoM-IDV36330-2026-11-06T23:59:37+00:00,2026-11-06T23:59:37+00:00</references>
+  <info>
+    <language>en-AU</language>
+    <category>Met</category>
+    <event>Riverine Flood</event>
+    <urgency>Unknown</urgency>
+    <severity>Unknown</severity>
+    <certainty>Unknown</certainty>
+    <eventCode>
+      <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+      <value>riverineFlod</value>
+    </eventCode>
+    <effective>2026-11-07T22:54:58+00:00</effective>
+    <expires>2026-11-09T01:54:58+00:00</expires>
+    <senderName>Australian Government Bureau of Meteorology</senderName>
+    <headline>Flood Warning for Bunyip River, Bunyip River at Iona and Bunyip River at Cora Lynn</headline>
+    <description>Flooding is no longer expected across the Bunyip River catchment.
+
+The Bunyip River at Iona peaked at 1.69 m around 10:45 pm Saturday, below the minor flood level. The river is currently at 1.52 m and falling slowly. The Bunyip River at Iona is expected to remain below the minor flood level (2.10 m).
+
+The Bunyip River at Cora Lynn peaked at 3.09 m around 12:45 am Sunday, just below the minor flood level. The river is currently at 2.91 m and falling. The Bunyip River at Cora Lynn is expected to remain below the minor flood level (3.10 m).</description>
+    <instruction>* Don't drive, walk, swim or play in floodwater because it is dangerous.
+* Stay away from flooded drains, rivers, streams and waterways.
+* Obey road closure signs. Plan ahead so you don't drive on flooded roads.
+* Check the ABC and local media for updates. The situation can change quickly, so stay informed.
+* For local emergency management warnings and advice visit www.emergency.vic.gov.au.
+
+For emergency assistance call SES on telephone number 132 500. In life-threatening emergencies, call 000 (triple zero) immediately.</instruction>
+    <web>http://www.bom.gov.au/australia/warnings</web>
+    <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+    <area>
+      <areaDesc>Victoria: Bunyip River, Bunyip River at Iona and Bunyip River at Cora Lynn</areaDesc>
+      <geocode>
+        <valueName>AMOC-AreaCode</valueName>
+        <value>VIC_RC024</value>
+      </geocode>
+      <geocode>
+        <valueName>AMOC-AreaCode</valueName>
+        <value>VIC_RS155</value>
+      </geocode>
+      <geocode>
+        <valueName>AMOC-AreaCode</valueName>
+        <value>VIC_RS156</value>
+      </geocode>
+    </area>
+  </info>
+</alert>

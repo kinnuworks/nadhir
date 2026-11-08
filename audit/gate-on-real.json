@@ -1,0 +1,23 @@
+{
+ "alerts": 1000,
+ "blocked_on_content_rules": 5,
+ "by_rule": {
+  "R2": 2,
+  "R10": 3
+ },
+ "examples": {
+  "R2": [
+   "status Actual but the text reads like a drill or test",
+   "status Actual but the text reads like a drill or test"
+  ],
+  "R10": [
+   "text corrects an earlier alert, but msgType is Alert with no <references>; phones cannot link it to the alert it corrects",
+   "text corrects an earlier alert, but msgType is Alert with no <references>; phones cannot link it to the alert it corrects",
+   "text corrects an earlier alert, but msgType is Alert with no <references>; phones cannot link it to the alert it corrects"
+  ]
+ },
+ "r8_status": {
+  "fail": 1000
+ },
+ "note": "R0/R2/R6/R10 only. R1, R3, R4, R5 need the issuer's console and are not run here."
+}

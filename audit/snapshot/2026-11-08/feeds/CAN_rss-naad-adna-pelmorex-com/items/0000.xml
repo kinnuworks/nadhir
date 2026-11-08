@@ -1,0 +1,1088 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>urn:oid:2.49.0.1.124.3855789286.2026</identifier>
+    <sender>cap-pac@canada.ca</sender>
+    <sent>2026-11-08T18:27:30-00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <source>Env. Can. - Can. Met. Ctr. – Montréal</source>
+    <scope>Public</scope>
+    <code>profile:CAP-CP:0.4</code>
+    <code>layer:SOREM:1.0</code>
+    <code>layer:EC-MSC-SMC:1.0</code>
+    <code>layer:EC-MSC-SMC:1.1</code>
+    <code>layer:SOREM:2.0</code>
+    <note>Service Notice – October 2026: The Environment and Climate Change Canada (ECCC) CAP Service undergoes changes from time to time as the business of alerting evolves. For Fall 2026, changes are expected to include... 1) Coastal flooding alerts will start to be issued in Northern Ontario (along the Hudson Bay/James Bay coast) and in Northern Quebec, 2) Time zones will be updated for Yukon, British Columbia, Alberta, Manitoba and Northwest Territories following the changes that are happening in Western Canada, 3) A new parameter will be available to represent the risk-colour of the alert in its previous state, 4) The event values are updated for the following alert types: Tropical Cyclone Statement, Marine Weather Advisory, Coastal Flooding Warning, and Coastal Flooding Statement, 5) the ECCC Signature Certificate of the CAP posted in Pelmorex NAADS feed is getting an update by end of November, 2026 and 6) other minor improvements and corrections. For more information on these changes: https://comm.collab.science.gc.ca/mailman3/hyperkitty/list/dd_info@comm.collab.science.gc.ca/ | Notification de service – octobre 2026: Le service du PAC d’Environnement et Changement climatique Canada (ECCC) subit périodiquement des changements à mesure que le système d’alerte évolue. Pour l’automne 2026, il y aura des changements incluant... 1) Des alertes de submersion côtière commenceront à être émises dans le nord de l’Ontario (le long des côtes de la baie d’Hudson et de la baie James) ainsi que dans le nord du Québec, 2) Les fuseaux horaires seront mis à jour pour le Yukon, la Colombie-Britannique, l’Alberta, le Manitoba et les Territoires du Nord-Ouest afin de tenir compte des changements qui ont lieu dans l’Ouest canadien, 3) Un nouveau paramètre sera disponible afin de représenter la couleur de risque de l’alerte dans son état précédent, 4) Les valeurs d’événement seront mises à jour pour les types d’alertes suivants : bulletin sur les cyclones tropicaux, avis météorologique maritime, avertissement de submersion côtière et bulletin de submersion côtière, 5) Le certificat de signature d’ECCC pour le PAC, publié dans le flux NAADS de Pelmorex, sera mis à jour d’ici la fin novembre 2026 et 6) d’autres améliorations et corrections mineures. Pour plus d’informations sur ces changements: https://comm.collab.science.gc.ca/mailman3/hyperkitty/list/dd_info@comm.collab.science.gc.ca/</note>
+    <references>cap-pac@canada.ca,urn:oid:2.49.0.1.124.2431208528.2026,2026-11-07T11:54:27-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.2102518472.2026,2026-11-07T16:32:44-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.1224152483.2026,2026-11-07T16:41:46-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.1601460355.2026,2026-11-07T23:07:10-00:00 cap-pac@canada.ca,urn:oid:2.49.0.1.124.0274087473.2026,2026-11-08T12:06:57-00:00</references>
+    <info>
+        <language>en-CA</language>
+        <category>Met</category>
+        <event>wind</event>
+        <responseType>AllClear</responseType>
+        <urgency>Past</urgency>
+        <severity>Minor</severity>
+        <certainty>Observed</certainty>
+        <audience>general public</audience>
+        <eventCode>
+            <valueName>profile:CAP-CP:Event:0.4</valueName>
+            <value>wind</value>
+        </eventCode>
+        <eventCode>
+            <valueName>SAME</valueName>
+            <value>HWW</value>
+        </eventCode>
+        <effective>2026-11-08T18:27:30-00:00</effective>
+        <expires>2026-11-08T19:27:30-00:00</expires>
+        <senderName>Environment Canada</senderName>
+        <headline>yellow warning - wind - ended</headline>
+        <description>
+Damaging winds are no longer expected.
+
+
+###
+</description>
+        <instruction />
+        <web>https://weather.gc.ca/</web>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Type</valueName>
+            <value>warning</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Broadcast_Intrusive</valueName>
+            <value>no</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Parent_URI</valueName>
+            <value>msc/alert/environment/hazard/alert-3.0-ascii/consolidated-xml-2.0/20261108182730346/WW_11_71_CWVR/WDW/60749246142691253202611070502_WW_11_71_CWVR/actual/en_proper_complete_c-fr_proper_complete_c/NinJo</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:CAP_count</valueName>
+            <value>A:24627 M:126217 C:145539</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Location_Status</valueName>
+            <value>ended</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Name</valueName>
+            <value>yellow warning - wind</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Coverage</valueName>
+            <value>Coastal British Columbia</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Designation_Code</valueName>
+            <value>WW_11_71_CWVR</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Alert_Location_Status</valueName>
+            <value>ended</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Previous_Colour</valueName>
+            <value>yellow</value>
+        </parameter>
+        <area>
+            <areaDesc>Metro Vancouver - North Shore including West Vancouver and North Vancouver</areaDesc>
+            <polygon>49.5413,-122.9146 49.4811,-122.885 49.4767,-122.8828 49.4749,-122.8819 49.4705,-122.8797 49.4701,-122.8851 49.465,-122.8822 49.4482,-122.8699 49.4289,-122.865 49.4124,-122.87 49.3988,-122.8792 49.3811,-122.8711 49.3188,-122.9347 49.2984,-122.9343 49.2973,-123.021 49.2962,-123.0949 49.3167,-123.1385 49.3234,-123.2726 49.3448,-123.2902 49.351,-123.2818 49.3767,-123.2988 49.3867,-123.2629 49.4114,-123.2435 49.4118,-123.2118 49.4117,-123.2105 49.4116,-123.2073 49.4099,-123.1627 49.4125,-123.1552 49.4304,-123.1024 49.4309,-123.1009 49.4805,-123.0998 49.4905,-123.0996 49.5466,-123.0984 49.5466,-122.9299 49.5466,-122.9258 49.5466,-122.9173 49.5449,-122.9164 49.5413,-122.9146</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082512-082610</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915046</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915051</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915055</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915806</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915807</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915808</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915811</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - northeast including Coquitlam and Maple Ridge</areaDesc>
+            <polygon>49.2945,-122.4047 49.2593,-122.4045 49.2585,-122.4099 49.2564,-122.4232 49.2073,-122.4194 49.1923,-122.4182 49.1726,-122.4167 49.1576,-122.4155 49.1548,-122.4372 49.1547,-122.4576 49.1547,-122.4576 49.1546,-122.4687 49.1546,-122.4741 49.1541,-122.5613 49.1786,-122.6086 49.1883,-122.6558 49.1878,-122.6576 49.1827,-122.6785 49.1721,-122.7218 49.1925,-122.7573 49.2011,-122.877 49.203,-122.9046 49.2188,-122.9062 49.2241,-122.907 49.2858,-122.9157 49.2909,-122.9161 49.2931,-122.9167 49.2984,-122.9343 49.3188,-122.9347 49.3811,-122.8711 49.3988,-122.8792 49.4124,-122.87 49.4289,-122.865 49.4482,-122.8699 49.465,-122.8822 49.4701,-122.8851 49.4711,-122.8857 49.4739,-122.8873 49.4757,-122.8884 49.4802,-122.8909 49.5011,-122.9032 49.5413,-122.9267 49.5447,-122.9287 49.5466,-122.9299 49.5573,-122.9361 49.5723,-122.9449 49.573,-122.9453 49.573,-122.9436 49.5729,-122.9303 49.5727,-122.8561 49.5727,-122.8559 49.5725,-122.8048 49.5725,-122.79 49.5725,-122.7899 49.572,-122.6887 49.5443,-122.6639 49.5438,-122.6206 49.5437,-122.6135 49.5436,-122.6102 49.5434,-122.5933 49.4656,-122.5195 49.3688,-122.5764 49.3638,-122.5794 49.3602,-122.5815 49.3595,-122.405 49.2945,-122.4047</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082513-082630-082711-082714</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915034</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915036</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915038</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915039</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915043</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915070</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915075</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915804</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915805</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915830</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915835</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915840</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - central including the City of Vancouver Burnaby and New Westminster</areaDesc>
+            <polygon>49.2973,-123.021 49.2984,-122.9343 49.2931,-122.9167 49.2943,-122.8885 49.2381,-122.8825 49.2347,-122.8695 49.2297,-122.8501 49.2118,-122.8498 49.2011,-122.877 49.187,-122.9128 49.1851,-122.9177 49.1668,-122.9736 49.1945,-123.0408 49.1869,-123.1281 49.2113,-123.2077 49.2017,-123.2309 49.2248,-123.2642 49.177,-123.2978 49.2189,-123.3148 49.2646,-123.3508 49.2707,-123.3727 49.2918,-123.3632 49.3448,-123.2902 49.3234,-123.2726 49.3167,-123.1385 49.2962,-123.0949 49.2973,-123.021</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082620</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915022</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915025</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915029</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915803</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - southeast including Surrey and Langley</areaDesc>
+            <polygon>49.2044,-122.6624 49.2022,-122.6561 49.2114,-122.6562 49.2225,-122.642 49.2281,-122.5906 49.1997,-122.5589 49.1919,-122.4413 49.1886,-122.4406 49.1874,-122.4404 49.1787,-122.4565 49.1729,-122.4568 49.1571,-122.4578 49.1547,-122.4576 49.0653,-122.4494 49.003,-122.4581 49.0022,-122.4582 49.0022,-122.6775 49.0022,-122.6775 49.0021,-122.7185 49.0021,-122.7185 49.0018,-122.7186 49.0015,-122.8815 49.0883,-122.8918 49.091,-122.8922 49.1347,-122.898 49.1722,-122.903 49.176,-122.9201 49.177,-122.9199 49.1851,-122.9177 49.1989,-122.9201 49.2079,-122.9217 49.2188,-122.9062 49.2345,-122.8804 49.2347,-122.8695 49.2367,-122.7551 49.2044,-122.6624</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082640-082713</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915001</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915002</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915004</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915007</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915801</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915809</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915813</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915816</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915825</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - southwest including Richmond and Delta</areaDesc>
+            <polygon>49.177,-123.2978 49.1844,-123.3008 49.2248,-123.2642 49.2381,-123.2453 49.227,-123.1823 49.2096,-123.1287 49.2148,-123.052 49.2079,-122.9217 49.1989,-122.9201 49.1847,-122.9208 49.1773,-122.9198 49.1772,-122.9198 49.177,-122.9199 49.1796,-122.9046 49.1771,-122.8901 49.1096,-122.8801 49.0015,-122.8815 49.0016,-122.8948 49.002,-123.0894 49.0094,-123.1628 49.0343,-123.218 49.0571,-123.2495 49.177,-123.2978</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082650</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915011</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915015</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915802</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915810</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Fraser Valley - west including Abbotsford</areaDesc>
+            <polygon>49.4373,-122.1979 49.3081,-122.1387 49.203,-122.0947 49.2027,-122.0946 49.1995,-122.0938 49.1016,-122.0709 49.0013,-122.0485 49.0015,-122.0739 49.002,-122.098 49.0022,-122.3248 49.0022,-122.4582 49.003,-122.4581 49.0029,-122.4582 49.0029,-122.4583 49.0022,-122.4598 49.0378,-122.4643 49.0994,-122.4723 49.1101,-122.4716 49.1546,-122.4687 49.1726,-122.4676 49.1729,-122.4568 49.1735,-122.4327 49.1736,-122.4284 49.1942,-122.4285 49.2071,-122.4286 49.2692,-122.4289 49.2689,-122.4128 49.3464,-122.4125 49.3475,-122.608 49.3638,-122.5944 49.3682,-122.5908 49.4035,-122.5614 49.4098,-122.5696 49.4206,-122.5682 49.4407,-122.5409 49.4669,-122.5369 49.489,-122.5909 49.5371,-122.6082 49.5378,-122.6272 49.538,-122.6324 49.538,-122.6323 49.5438,-122.6206 49.6577,-122.3877 49.6577,-122.3876 49.6535,-122.3837 49.5135,-122.2519 49.4373,-122.1979</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082711-082712</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909052</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909056</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909060</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909062</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909877</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909878</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Fraser Valley - central including Chilliwack</areaDesc>
+            <polygon>49.1948,-121.7395 49.0003,-121.9611 49.0013,-122.0485 49.0015,-122.0739 49.002,-122.098 49.0934,-122.1038 49.1417,-122.131 49.1984,-122.1051 49.1987,-122.105 49.1992,-122.1048 49.3063,-122.1494 49.4319,-122.2104 49.4642,-122.2497 49.651,-122.3889 49.6554,-122.3923 49.6577,-122.3876 49.7557,-122.1829 49.764,-122.1656 49.762,-122.1531 49.7584,-122.1313 49.6253,-121.9092 49.4921,-121.7777 49.413,-121.8039 49.4085,-121.7999 49.3844,-121.7783 49.3136,-121.7327 49.3079,-121.729 49.2682,-121.7231 49.2542,-121.721 49.2317,-121.7176 49.2078,-121.7318 49.2018,-121.7354 49.1948,-121.7395</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082721-082722</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909027</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909032</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909036</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909048</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909060</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909062</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909821</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909824</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909825</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909826</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909827</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909830</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909831</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909833</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909834</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909835</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909837</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909838</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909839</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909842</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909849</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909879</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909880</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909881</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909882</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909884</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909885</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Fraser Valley - east including Hope</areaDesc>
+            <polygon>49.447,-121.2915 49.3574,-121.2934 49.3412,-121.2938 49.341,-121.3071 49.3406,-121.3297 49.3402,-121.3519 49.3381,-121.4659 49.2877,-121.5016 49.1779,-121.4904 49.1426,-121.395 49.0886,-121.3163 49.0235,-121.2515 49.0011,-121.2293 49.0008,-121.229 49.0006,-121.2289 49,-121.3016 48.9964,-121.764 49.0003,-121.9611 49.2062,-121.7511 49.2062,-121.7511 49.2176,-121.748 49.2351,-121.7433 49.2411,-121.7464 49.3939,-121.8248 49.4005,-121.824 49.4921,-121.8135 49.6545,-122.0044 49.7522,-122.1767 49.7557,-122.1829 49.7574,-122.1859 49.894,-121.7645 49.8942,-121.764 49.8972,-121.7546 49.7382,-121.6978 49.5743,-121.6444 49.522,-121.5289 49.4846,-121.432 49.4726,-121.4012 49.4737,-121.2969 49.4737,-121.291 49.4668,-121.2911 49.447,-121.2915</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082723-082730</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909009</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909016</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909032</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909034</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909036</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909048</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909804</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909807</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909808</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909810</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909812</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909814</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909832</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909841</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909842</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909843</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909844</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>fr-CA</language>
+        <category>Met</category>
+        <event>vent</event>
+        <responseType>AllClear</responseType>
+        <urgency>Past</urgency>
+        <severity>Minor</severity>
+        <certainty>Observed</certainty>
+        <audience>grand public</audience>
+        <eventCode>
+            <valueName>profile:CAP-CP:Event:0.4</valueName>
+            <value>wind</value>
+        </eventCode>
+        <eventCode>
+            <valueName>SAME</valueName>
+            <value>HWW</value>
+        </eventCode>
+        <effective>2026-11-08T18:27:30-00:00</effective>
+        <expires>2026-11-08T19:27:30-00:00</expires>
+        <senderName>Environnement Canada</senderName>
+        <headline>avertissement jaune - vent - terminé</headline>
+        <description>
+On ne prévoit plus de vents destructeurs.
+
+###
+</description>
+        <instruction />
+        <web>https://meteo.gc.ca/</web>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Type</valueName>
+            <value>warning</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Broadcast_Intrusive</valueName>
+            <value>no</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:1.0:Broadcast_Immediately</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Parent_URI</valueName>
+            <value>msc/alert/environment/hazard/alert-3.0-ascii/consolidated-xml-2.0/20261108182730346/WW_11_71_CWVR/WDW/60749246142691253202611070502_WW_11_71_CWVR/actual/en_proper_complete_c-fr_proper_complete_c/NinJo</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:CAP_count</valueName>
+            <value>A:24627 M:126217 C:145539</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Location_Status</valueName>
+            <value>ended</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Name</valueName>
+            <value>avertissement jaune - vent</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.0:Alert_Coverage</valueName>
+            <value>côte de la Colombie-Britannique</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Designation_Code</valueName>
+            <value>WW_11_71_CWVR</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:SOREM:2.0:WirelessImmediate</valueName>
+            <value>No</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Alert_Location_Status</valueName>
+            <value>ended</value>
+        </parameter>
+        <parameter>
+            <valueName>layer:EC-MSC-SMC:1.1:Previous_Colour</valueName>
+            <value>jaune</value>
+        </parameter>
+        <area>
+            <areaDesc>Metro Vancouver - North Shore incluant West Vancouver et North Vancouver</areaDesc>
+            <polygon>49.5413,-122.9146 49.4811,-122.885 49.4767,-122.8828 49.4749,-122.8819 49.4705,-122.8797 49.4701,-122.8851 49.465,-122.8822 49.4482,-122.8699 49.4289,-122.865 49.4124,-122.87 49.3988,-122.8792 49.3811,-122.8711 49.3188,-122.9347 49.2984,-122.9343 49.2973,-123.021 49.2962,-123.0949 49.3167,-123.1385 49.3234,-123.2726 49.3448,-123.2902 49.351,-123.2818 49.3767,-123.2988 49.3867,-123.2629 49.4114,-123.2435 49.4118,-123.2118 49.4117,-123.2105 49.4116,-123.2073 49.4099,-123.1627 49.4125,-123.1552 49.4304,-123.1024 49.4309,-123.1009 49.4805,-123.0998 49.4905,-123.0996 49.5466,-123.0984 49.5466,-122.9299 49.5466,-122.9258 49.5466,-122.9173 49.5449,-122.9164 49.5413,-122.9146</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082512-082610</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915046</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915051</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915055</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915806</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915807</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915808</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915811</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - nord-est incluant Coquitlam et Maple Ridge</areaDesc>
+            <polygon>49.2945,-122.4047 49.2593,-122.4045 49.2585,-122.4099 49.2564,-122.4232 49.2073,-122.4194 49.1923,-122.4182 49.1726,-122.4167 49.1576,-122.4155 49.1548,-122.4372 49.1547,-122.4576 49.1547,-122.4576 49.1546,-122.4687 49.1546,-122.4741 49.1541,-122.5613 49.1786,-122.6086 49.1883,-122.6558 49.1878,-122.6576 49.1827,-122.6785 49.1721,-122.7218 49.1925,-122.7573 49.2011,-122.877 49.203,-122.9046 49.2188,-122.9062 49.2241,-122.907 49.2858,-122.9157 49.2909,-122.9161 49.2931,-122.9167 49.2984,-122.9343 49.3188,-122.9347 49.3811,-122.8711 49.3988,-122.8792 49.4124,-122.87 49.4289,-122.865 49.4482,-122.8699 49.465,-122.8822 49.4701,-122.8851 49.4711,-122.8857 49.4739,-122.8873 49.4757,-122.8884 49.4802,-122.8909 49.5011,-122.9032 49.5413,-122.9267 49.5447,-122.9287 49.5466,-122.9299 49.5573,-122.9361 49.5723,-122.9449 49.573,-122.9453 49.573,-122.9436 49.5729,-122.9303 49.5727,-122.8561 49.5727,-122.8559 49.5725,-122.8048 49.5725,-122.79 49.5725,-122.7899 49.572,-122.6887 49.5443,-122.6639 49.5438,-122.6206 49.5437,-122.6135 49.5436,-122.6102 49.5434,-122.5933 49.4656,-122.5195 49.3688,-122.5764 49.3638,-122.5794 49.3602,-122.5815 49.3595,-122.405 49.2945,-122.4047</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082513-082630-082711-082714</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915034</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915036</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915038</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915039</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915043</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915070</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915075</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915804</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915805</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915830</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915835</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915840</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - centre incluant la ville de Vancouver Burnaby et New Westminster</areaDesc>
+            <polygon>49.2973,-123.021 49.2984,-122.9343 49.2931,-122.9167 49.2943,-122.8885 49.2381,-122.8825 49.2347,-122.8695 49.2297,-122.8501 49.2118,-122.8498 49.2011,-122.877 49.187,-122.9128 49.1851,-122.9177 49.1668,-122.9736 49.1945,-123.0408 49.1869,-123.1281 49.2113,-123.2077 49.2017,-123.2309 49.2248,-123.2642 49.177,-123.2978 49.2189,-123.3148 49.2646,-123.3508 49.2707,-123.3727 49.2918,-123.3632 49.3448,-123.2902 49.3234,-123.2726 49.3167,-123.1385 49.2962,-123.0949 49.2973,-123.021</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082620</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915022</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915025</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915029</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915803</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - sud-est incluant Surrey et Langley</areaDesc>
+            <polygon>49.2044,-122.6624 49.2022,-122.6561 49.2114,-122.6562 49.2225,-122.642 49.2281,-122.5906 49.1997,-122.5589 49.1919,-122.4413 49.1886,-122.4406 49.1874,-122.4404 49.1787,-122.4565 49.1729,-122.4568 49.1571,-122.4578 49.1547,-122.4576 49.0653,-122.4494 49.003,-122.4581 49.0022,-122.4582 49.0022,-122.6775 49.0022,-122.6775 49.0021,-122.7185 49.0021,-122.7185 49.0018,-122.7186 49.0015,-122.8815 49.0883,-122.8918 49.091,-122.8922 49.1347,-122.898 49.1722,-122.903 49.176,-122.9201 49.177,-122.9199 49.1851,-122.9177 49.1989,-122.9201 49.2079,-122.9217 49.2188,-122.9062 49.2345,-122.8804 49.2347,-122.8695 49.2367,-122.7551 49.2044,-122.6624</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082640-082713</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915001</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915002</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915004</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915007</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915801</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915809</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915813</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915816</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915825</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>Metro Vancouver - sud-ouest incluant Richmond et Delta</areaDesc>
+            <polygon>49.177,-123.2978 49.1844,-123.3008 49.2248,-123.2642 49.2381,-123.2453 49.227,-123.1823 49.2096,-123.1287 49.2148,-123.052 49.2079,-122.9217 49.1989,-122.9201 49.1847,-122.9208 49.1773,-122.9198 49.1772,-122.9198 49.177,-122.9199 49.1796,-122.9046 49.1771,-122.8901 49.1096,-122.8801 49.0015,-122.8815 49.0016,-122.8948 49.002,-123.0894 49.0094,-123.1628 49.0343,-123.218 49.0571,-123.2495 49.177,-123.2978</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082650</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915011</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915015</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915802</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5915810</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>vallée du Fraser - ouest incluant Abbotsford</areaDesc>
+            <polygon>49.4373,-122.1979 49.3081,-122.1387 49.203,-122.0947 49.2027,-122.0946 49.1995,-122.0938 49.1016,-122.0709 49.0013,-122.0485 49.0015,-122.0739 49.002,-122.098 49.0022,-122.3248 49.0022,-122.4582 49.003,-122.4581 49.0029,-122.4582 49.0029,-122.4583 49.0022,-122.4598 49.0378,-122.4643 49.0994,-122.4723 49.1101,-122.4716 49.1546,-122.4687 49.1726,-122.4676 49.1729,-122.4568 49.1735,-122.4327 49.1736,-122.4284 49.1942,-122.4285 49.2071,-122.4286 49.2692,-122.4289 49.2689,-122.4128 49.3464,-122.4125 49.3475,-122.608 49.3638,-122.5944 49.3682,-122.5908 49.4035,-122.5614 49.4098,-122.5696 49.4206,-122.5682 49.4407,-122.5409 49.4669,-122.5369 49.489,-122.5909 49.5371,-122.6082 49.5378,-122.6272 49.538,-122.6324 49.538,-122.6323 49.5438,-122.6206 49.6577,-122.3877 49.6577,-122.3876 49.6535,-122.3837 49.5135,-122.2519 49.4373,-122.1979</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082711-082712</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909052</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909056</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909060</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909062</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909877</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909878</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>vallée du Fraser - centre incluant Chilliwack</areaDesc>
+            <polygon>49.1948,-121.7395 49.0003,-121.9611 49.0013,-122.0485 49.0015,-122.0739 49.002,-122.098 49.0934,-122.1038 49.1417,-122.131 49.1984,-122.1051 49.1987,-122.105 49.1992,-122.1048 49.3063,-122.1494 49.4319,-122.2104 49.4642,-122.2497 49.651,-122.3889 49.6554,-122.3923 49.6577,-122.3876 49.7557,-122.1829 49.764,-122.1656 49.762,-122.1531 49.7584,-122.1313 49.6253,-121.9092 49.4921,-121.7777 49.413,-121.8039 49.4085,-121.7999 49.3844,-121.7783 49.3136,-121.7327 49.3079,-121.729 49.2682,-121.7231 49.2542,-121.721 49.2317,-121.7176 49.2078,-121.7318 49.2018,-121.7354 49.1948,-121.7395</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082721-082722</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909027</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909032</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909036</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909048</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909060</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909062</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909821</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909824</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909825</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909826</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909827</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909830</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909831</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909833</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909834</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909835</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909837</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909838</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909839</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909842</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909849</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909879</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909880</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909881</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909882</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909884</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909885</value>
+            </geocode>
+        </area>
+        <area>
+            <areaDesc>vallée du Fraser - est incluant Hope</areaDesc>
+            <polygon>49.447,-121.2915 49.3574,-121.2934 49.3412,-121.2938 49.341,-121.3071 49.3406,-121.3297 49.3402,-121.3519 49.3381,-121.4659 49.2877,-121.5016 49.1779,-121.4904 49.1426,-121.395 49.0886,-121.3163 49.0235,-121.2515 49.0011,-121.2293 49.0008,-121.229 49.0006,-121.2289 49,-121.3016 48.9964,-121.764 49.0003,-121.9611 49.2062,-121.7511 49.2062,-121.7511 49.2176,-121.748 49.2351,-121.7433 49.2411,-121.7464 49.3939,-121.8248 49.4005,-121.824 49.4921,-121.8135 49.6545,-122.0044 49.7522,-122.1767 49.7557,-122.1829 49.7574,-122.1859 49.894,-121.7645 49.8942,-121.764 49.8972,-121.7546 49.7382,-121.6978 49.5743,-121.6444 49.522,-121.5289 49.4846,-121.432 49.4726,-121.4012 49.4737,-121.2969 49.4737,-121.291 49.4668,-121.2911 49.447,-121.2915</polygon>
+            <geocode>
+                <valueName>layer:EC-MSC-SMC:1.0:CLC</valueName>
+                <value>082723-082730</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909009</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909016</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909020</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909032</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909034</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909036</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909048</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909804</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909807</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909808</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909810</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909812</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909814</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909832</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909841</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909842</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909843</value>
+            </geocode>
+            <geocode>
+                <valueName>profile:CAP-CP:Location:0.3</valueName>
+                <value>5909844</value>
+            </geocode>
+        </area>
+    </info>
+<Signature Id="NAADS Signature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" /><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" /><DigestValue>SzyXY9wuQiV3fQXBIvc+uzYQg9+dbsIDwGM/ZO+aOMQ=</DigestValue></Reference></SignedInfo><SignatureValue>YUa3Ae4JhBuIQigt/LmI5SOjllncCjtRC/p4FeX2mgCh3Fza+GRElFh97Ky0rF4ovzi/3rWMUrD6et5ew5WrRU06sT13hBHKms11bPVCahZRpqoVh9ieZtm/B2X1gBszlhkrsvIH8+HNo3kL9YDmio/7TMyyzTMlkqYZp1BUMnpyfF4Zx7z4+jIAachlN0KwjdSL1Bq+uTM9yBHZ3Fz8OujYu5kTK3x+i68QlxTqCtTll/wU6RQntUY0teYQk1LfuN+HKoodAzJk2VPc0d1G9R4o1KKhnq6xeqaAn3RK3fXwTjs466eb3iHVNId2LFw3gFutVA0L36zbMTaqaSvJAw==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIGzzCCBbegAwIBAgIQDAMc51VvXnM0Cc04Uud5+zANBgkqhkiG9w0BAQsFADBZMQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMTMwMQYDVQQDEypEaWdpQ2VydCBHbG9iYWwgRzIgVExTIFJTQSBTSEEyNTYgMjAyMCBDQTEwHhcNMjYwNzAyMDAwMDAwWhcNMjcwMTE2MjM1OTU5WjBmMQswCQYDVQQGEwJDQTEQMA4GA1UECBMHT250YXJpbzERMA8GA1UEBxMIT2FrdmlsbGUxFjAUBgNVBAoTDVBlbG1vcmV4IENvcnAxGjAYBgNVBAMTEWRzczIucGVsbW9yZXguY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtyYl8WI9lEqZczakOwEbqSTLgv6dH2FzysgzffmU1CvYPiyI/F4phSfD/zlGgVAIh9VpbQvmlTb+bf3Wm8xNI25oAI9U1/FBdGOwOLmVDNfq2sMngGNRoNMwr40wRs4Og5ev11Veqf1Qk2QI6mK6qJ5TvF2VQSMFye45YWbXOejBsoJHgDU204jkNEqXcHfTlemTYbxus3roQX3TzrNAVc85VUJAKp7plcBeRJLB87n+IeJcI0WFQGBeNhP1w+7tnDjam96LUwrculmZvYe5JF4aIMcQ8RkzOZ0K4D90NYPk5hscoVwBBGCdswS8GvQEuspf2JRbvt3tpvb/a0NacwIDAQABo4IDhDCCA4AwHwYDVR0jBBgwFoAUdIWAwGbH3zfez70pN6oDHb7tzRcwHQYDVR0OBBYEFKMbt+b+/UOkHGPP4x/0xbbon2UZMBwGA1UdEQQVMBOCEWRzczIucGVsbW9yZXguY29tMD4GA1UdIAQ3MDUwMwYGZ4EMAQICMCkwJwYIKwYBBQUHAgEWG2h0dHA6Ly93d3cuZGlnaWNlcnQuY29tL0NQUzAOBgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEwgZ8GA1UdHwSBlzCBlDBIoEagRIZCaHR0cDovL2NybDMuZGlnaWNlcnQuY29tL0RpZ2lDZXJ0R2xvYmFsRzJUTFNSU0FTSEEyNTYyMDIwQ0ExLTEuY3JsMEigRqBEhkJodHRwOi8vY3JsNC5kaWdpY2VydC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBDQTEtMS5jcmwwgYcGCCsGAQUFBwEBBHsweTAkBggrBgEFBQcwAYYYaHR0cDovL29jc3AuZGlnaWNlcnQuY29tMFEGCCsGAQUFBzAChkVodHRwOi8vY2FjZXJ0cy5kaWdpY2VydC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBDQTEtMS5jcnQwDAYDVR0TAQH/BAIwADCCAX8GCisGAQQB1nkCBAIEggFvBIIBawFpAHcATGPcmOWcHauI9h6KPd6uj6tEozd7X5uUw/uhnPzBviYAAAGfI8X30AAABAMASDBGAiEAm4I15feddXyrhwvGJ+PEhvjrEd6KpIalXUxjQIu7eBACIQDIQjOzI+YqeNYDe65U2obISFXgtiHEpjaQGQ/YPdGmNQB2ANbVjanQF1Pzakqgx1dJAq/rx9ws04zZ92TIDIkZHp8CAAABnyPF914AAAQDAEcwRQIgMOfYz84hwYjnwmRxPUpsHRkUIWCaLO7bzwS2zigJIbgCIQDhqZoS8aVN/VKP61FaK/MPBJekmQZ/CTqXm9oIVuPguQB2AETCvQzpFA5kpclKAZMKWqG7NZcOAO4RFoloKhxE17VmAAABnyPF95sAAAQDAEcwRQIhAOFbJXYsiVovkESudBRplOA64gYxzlA2SUrpYPAgvt7+AiB+gWpDjtftYmMzsQArzqtmpjos1Wz9zN5ifi4vY0ZgdDANBgkqhkiG9w0BAQsFAAOCAQEAFz6r7QztFgqLqjrEFeZao73obspoSex6YbEyK90qivQeBhUYLce43a8mh4mZIfhSCYxnla4RM2mPonErgtaaU0suYuu37AXl/35jMw98vky8EUXEc/Il96n8HCCuj20ZqXnVS6Ee6nHfCLBZCG5ty7nyonhNYlbWUkZ+emdYaXMyaXEEvWvUJx022toKRbW7bDKRfFXyYDZiSATqwk7IVX5SsDvcsXkY7t6flpoBw+0iRMHi5Bn0/gMonfmhC/o53ChVG3ncs4aYkMrUOxlxFvb2zHcjVq/uUNrRPahzKi5aGBRpZMBBu1cdvSwDTlnQapu/VJDgjbCFvPcsmeghzg==</X509Certificate></X509Data></KeyInfo><Object xmlns=""><SignatureProperties><SignatureProperty Id="NAADS-DSS1" Target="https://dss1.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty><SignatureProperty Id="NAADS-DSS2" Target="https://dss2.naad-adna.pelmorex.com"><xc:value xmlns:xc="http://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2.xsd" /></SignatureProperty></SignatureProperties></Object></Signature><Signature xmlns="http://www.w3.org/2000/09/xmldsig#" Id="Environment Canada">
+<SignedInfo>
+<CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+<SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256" />
+<Reference URI="">
+<Transforms>
+<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+</Transforms>
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256" />
+<DigestValue>SzyXY9wuQiV3fQXBIvc+uzYQg9+dbsIDwGM/ZO+aOMQ=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue>ol82tBh6mCNtKFtOFxkP9KnqzWx5Pq+YQff+Kj0p1k46ps9EctBUFzDkZLQnYU1r
+baI4kJwE0HBW346Q28J8LMHndWl7LgcRz425lyE/ugILEr0ETFjeDx6VrcxEYgUN
+JgOrHhg1F0tgUuOcg3+JDxk4G9gr4dmkMHZ/UTDbeY/40D5Zz92fz8yOg/Aw9W0O
+c2QQn0DCh+mjq83L5KvmcRbj0vtrUa/yHBrysar+y0vSLxvQS38UwRwyhlsd71zl
+MqpqdKuNbpr9GqWPBjxqJnKwOkNwS938ZwwfkwNAhpFCOKx1J1JxTsD4szJIaSAq
+FKNqSkU71UNrhnjiaOUXlA==</SignatureValue>
+<KeyInfo>
+<X509Data>
+<X509Certificate>MIIHDDCCBfSgAwIBAgIQM2dJyev0XEPJoQlSaOQgYDANBgkqhkiG9w0BAQsFADCB
+ujELMAkGA1UEBhMCVVMxFjAUBgNVBAoTDUVudHJ1c3QsIEluYy4xKDAmBgNVBAsT
+H1NlZSB3d3cuZW50cnVzdC5uZXQvbGVnYWwtdGVybXMxOTA3BgNVBAsTMChjKSAy
+MDEyIEVudHJ1c3QsIEluYy4gLSBmb3IgYXV0aG9yaXplZCB1c2Ugb25seTEuMCwG
+A1UEAxMlRW50cnVzdCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eSAtIEwxSzAeFw0y
+NDA0MTkwOTQ3MDZaFw0yNTA1MTkwOTQ3MDRaMGwxCzAJBgNVBAYTAkNBMQ8wDQYD
+VQQIEwZRdWViZWMxETAPBgNVBAcTCEdhdGluZWF1MR8wHQYDVQQKExZTaGFyZWQg
+U2VydmljZXMgQ2FuYWRhMRgwFgYDVQQDDA8qLndlYXRoZXIuZ2MuY2EwggEiMA0G
+CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDARd6fBVAjKlOvocp442ydQbSCoxHW
+91i1r5TkucsGLkzm92HQsj4eVNCl6Uti3hd3yYL1QxFTImdyUs2ETlDoU/hVFEey
+IevKo3m3ufuv9YryXGtoRcthMITEPrIy6vOyNbGaxJw1J6/AkOs7oAm3kUlx6PS8
+vOnuoyik1r6Q9qx1XP9Z05cIyyIBhsyjdS124Jj01quCjz5COPMXKU1LlaU8LeSA
+qILe9DyC3XWluZGxZH+tGiw42mpiCD3JGlCsXQujU5y4jg2fq8/ePsM3OUzM/Dxs
+kGMMN7LAG9/H4CINJ+aXZQvlgTfIZp2eWLvHy5dnsbi3VAJOEtgRVzedAgMBAAGj
+ggNZMIIDVTAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBSSLKB4osVSIvgfhk+6NayJ
+BDAXuDAfBgNVHSMEGDAWgBSConB03bxTP8971PfNf6dgxgpMvzBoBggrBgEFBQcB
+AQRcMFowIwYIKwYBBQUHMAGGF2h0dHA6Ly9vY3NwLmVudHJ1c3QubmV0MDMGCCsG
+AQUFBzAChidodHRwOi8vYWlhLmVudHJ1c3QubmV0L2wxay1jaGFpbjI1Ni5jZXIw
+MwYDVR0fBCwwKjAooCagJIYiaHR0cDovL2NybC5lbnRydXN0Lm5ldC9sZXZlbDFr
+LmNybDCBnQYDVR0RBIGVMIGSgg8qLndlYXRoZXIuZ2MuY2GCDXdlYXRoZXIuZ2Mu
+Y2GCC21ldGVvLmdjLmNhgg0qLm1ldGVvLmdjLmNhghUqLmFscGhhLndlYXRoZXIu
+Z2MuY2GCEyouYWxwaGEubWV0ZW8uZ2MuY2GCFCouYmV0YS53ZWF0aGVyLmdjLmNh
+ghIqLmJldGEubWV0ZW8uZ2MuY2EwDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQG
+CCsGAQUFBwMBBggrBgEFBQcDAjATBgNVHSAEDDAKMAgGBmeBDAECAjCCAYAGCisG
+AQQB1nkCBAIEggFwBIIBbAFqAHYAouMK5EXvva2bfjjtR2d3U9eCW4SU1yteGyzE
+uVCkR+cAAAGO9cCizQAABAMARzBFAiEA7hlkvyyYsnhbas5WDwoTkdGWf92Ukckw
+rGyUqMPZQjkCID8oQlHWS11haifx+i9tBr0epmrzkh2/bbneb9WNrlUvAHcATnWj
+J1yaEMM4W2zU3z9S6x3w4I4bjWnAsfpksWKaOd8AAAGO9cCi2AAABAMASDBGAiEA
+iE1jLaXrlPxrkIiq7NU0gH/sDiUlHCmMrT79KUy2V+YCIQCb2GrTID6NO3hb8bGs
+ctd8ipYRuu1FnDY8X3MGVDcWnAB3AObSMWNAd4zBEEEG13G5zsHSQPaWhIb7uocy
+Hf0eN45QAAABjvXAovkAAAQDAEgwRgIhALRWB9aVOe3Zi9j6MEVKJl1NKQKIycr3
+8IfKeHxckblpAiEA85xjN3iBFvEVT4yIxO4qKRelbpFGomgSrYnfwTSUwHIwDQYJ
+KoZIhvcNAQELBQADggEBADGEK5tU92TqoTWPh1lfSRTDVCpk5qhqmIuaTeYQMonV
+AgHF5rktrUhXmMzRJEef8XRwLvApT4zOn+TV+NOUpi8q6tDWxx7dE8+moIf6tXq8
+d4OQ+VDO/C6nz/xA8FqvxAbPfqCJ6DqgitSyXhF01XkNMfVcknGAzhc/HemuukI1
+3DTuaATlbaXkHjSp+O0mXCykCIgH/9eMuOoFMzhdQhtJiLf2MMVclJ72/YzgVveA
+XrSTVE5F4BYdp9hX+0BTg5zNgg1wwvVVOwuIOTFqSSJCzGHjl/1i8IyyPLKB3ilt
+B+0V7IdmIxlvPbL//qNkzyUVufkewAoLMqCOUIZA0eY=</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature></alert>

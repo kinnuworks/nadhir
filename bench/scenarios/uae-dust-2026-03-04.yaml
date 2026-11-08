@@ -1,0 +1,47 @@
+profile: UAE
+issuer: demo-national-authority@nadhir.example
+issuer_name: Demo national authority (stands in for the real issuer)
+issuers:
+  demo-national-authority@nadhir.example:
+    name: Demo national authority (stands in for the real issuer)
+    level: 1
+    areas:
+    - '*'
+    categories:
+    - '*'
+environment: live
+languages:
+- ar
+runs: 3
+event_id: uae-dust-2026-03-04
+title: Blowing dust, 4 Mar 2026, plus an unverified rumour
+exercise: false
+label: Our scenario. The NCM warning is real (via WAM). The rumour is illustrative, written for this test. Zone, issuer and
+  keys are demo stand-ins.
+inputs:
+- text: ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds
+    affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing
+    horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected
+    weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution,
+    especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.
+  verified: true
+  source: NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced
+- text: 'Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now'
+  verified: false
+  source: illustrative rumour written for this test
+- text: 'Issuer public site (demo): https://alerts.example.ae'
+  verified: true
+  source: issuer profile
+requested_area:
+  areaDesc: Coastal and inland areas, Abu Dhabi (demo zone)
+  geocodes:
+  - - DEMO-ZONE
+    - AUH-COAST-INLAND
+  event_id: uae-dust-2026-03-04
+  origin: drawn
+sent: '2026-03-04T15:00:00+04:00'
+reference_ar: أبوظبي في 4 مارس /وام/ حذر المركز الوطني للأرصاد من نشاط الرياح الشمالية الغربية على مناطق متفرقة من الدولة
+  متوقعا أن تكون نشطة السرعة وقوية أحياناً، وتؤدي إلى إثارة الغبار والأتربة وتدني مدى الرؤية الأفقية إلى أقل من 2000 متر على
+  بعض المناطق الساحلية والداخلية. وأوضح المركز أن الحالة الجوية المتوقعة تبدأ من الساعة 14:55 وتستمر حتى الساعة 19:00 مساءً،
+  داعياً أفراد المجتمع إلى توخي الحيطة والحذر، خاصة أثناء القيادة على الطرق المكشوفة، نظراً لاحتمالية تدني الرؤية الأفقية
+  بسبب الأتربة المثارة.

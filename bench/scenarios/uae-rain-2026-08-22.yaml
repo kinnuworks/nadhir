@@ -1,0 +1,42 @@
+profile: UAE
+issuer: demo-national-authority@nadhir.example
+issuer_name: Demo national authority (stands in for the real issuer)
+issuers:
+  demo-national-authority@nadhir.example:
+    name: Demo national authority (stands in for the real issuer)
+    level: 1
+    areas:
+    - '*'
+    categories:
+    - '*'
+environment: live
+languages:
+- ar
+runs: 3
+event_id: uae-rain-2026-08-22
+title: Heavy rain, 22 Aug 2026
+exercise: false
+label: Our scenario. The hazard input is a real published NCM warning (via WAM); the target zone, issuer and keys are demo
+  stand-ins.
+inputs:
+- text: ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility
+    of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is
+    in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect
+    some eastern, southern and western areas, extending to parts of the country's interior.
+  verified: true
+  source: NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae
+- text: 'Issuer public site (demo): https://alerts.example.ae'
+  verified: true
+  source: issuer profile
+requested_area:
+  areaDesc: Eastern, southern and western areas (demo zone)
+  geocodes:
+  - - DEMO-ZONE
+    - UAE-E-S-W
+  event_id: uae-rain-2026-08-22
+  origin: drawn
+sent: '2026-08-22T15:00:00+04:00'
+reference_ar: أبوظبي في 22 أغسطس / وام / أصدر المركز الوطني للأرصاد تنبيها بشأن فرصة تكون سحب ركامية يصاحبها سقوط أمطار تتراوح
+  بين الخفيفة والمتوسطة، وتكون غزيرة أحيانا. وحدد المركز الفترة الزمنية لهذا التنبيه بدءا من الساعة 01:30 من ظهر اليوم السبت،
+  لتستمر حتى الساعة 09:00 من مساء اليوم ذاته، مشيرا إلى أن هذه الحالة الجوية ستشمل بعض المناطق الشرقية والجنوبية والغربية،
+  وتمتد لتؤثر على بعض المناطق الداخلية.

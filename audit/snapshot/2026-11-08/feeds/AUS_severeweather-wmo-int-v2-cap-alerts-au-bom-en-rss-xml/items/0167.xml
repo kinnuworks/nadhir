@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDT38200-2026-11-06T12:18:27+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-06T12:18:27+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDT38200-2026-11-05T06:06:37+00:00,2026-11-05T06:06:37+00:00 CAP.Message@bom.gov.au,AusBoM-IDT38200-2026-11-05T11:54:52+00:00,2026-11-05T11:54:52+00:00 CAP.Message@bom.gov.au,AusBoM-IDT38200-2026-11-05T17:58:32+00:00,2026-11-05T17:58:32+00:00 CAP.Message@bom.gov.au,AusBoM-IDT38200-2026-11-05T23:39:35+00:00,2026-11-05T23:39:35+00:00 CAP.Message@bom.gov.au,AusBoM-IDT38200-2026-11-06T06:31:47+00:00,2026-11-06T06:31:47+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Exposure</event>
+        <urgency>Unknown</urgency>
+        <severity>Moderate</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>exposure</value>
+        </eventCode>
+        <effective>2026-11-06T12:17:00+00:00</effective>
+        <expires>2026-11-07T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Bushwalkers Weather Alert for Central Plateau and Western forecast districts</headline>
+        <description>Bush walkers are advised that snow as low as 800 metres is expected during today and as low as 500 metres during Saturday. These hazardous conditions are expected to occur in the Western and Central Plateau forecast districts.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Tasmania: Western and Central Plateau forecast districts</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>TAS_PW008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>TAS_PW009</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

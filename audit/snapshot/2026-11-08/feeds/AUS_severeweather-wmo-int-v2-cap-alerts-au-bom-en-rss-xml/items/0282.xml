@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDV21033-2026-11-04T08:38:26+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-04T08:38:26+00:00</sent>
+    <status>Actual</status>
+    <msgType>Cancel</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDV21033-2026-11-04T06:53:57+00:00,2026-11-04T06:53:57+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Minor</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-04T08:38:22+00:00</effective>
+        <expires>2026-11-04T13:38:22+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Severe Thunderstorm Warning for Northern Country, North Central, North East and West and South Gippsland forecast districts</headline>
+        <description>
+          
+          
+          This warning is now cancelled.
+           
+        </description>
+        <instruction>The State Emergency Service advises that people should:
+* Stay away from fallen powerlines - always assume they are live.
+* Stay safe by avoiding dangerous hazards, such as floodwater, mud, debris, damaged roads and fallen trees.
+* Don't walk, ride your bike or drive through flood water.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Victoria: Northern Country, North Central, North East and West and South Gippsland</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW003</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW004</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW006</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

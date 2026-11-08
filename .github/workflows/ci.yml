@@ -1,0 +1,25 @@
+name: check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt pytest
+      - name: Unit tests (one or more per gate rule)
+        run: python -m pytest -q
+      - name: Replay the bench from recorded model answers (no API key) and compare with the committed results
+        env: {NADHIR_LLM: replay}
+        run: |
+          cp runs/bench/results.json /tmp/committed.json
+          python -m nadhir.bench
+          python scripts/compare_results.py /tmp/committed.json runs/bench/results.json
+      - name: Verify every audit log's hash chain
+        run: python scripts/verify_logs.py runs/bench/logs
+      - name: Recount the real-feed audit from the snapshot
+        run: |
+          cp audit/results.json /tmp/audit-committed.json
+          python -I audit/count.py audit/snapshot/2026-11-08
+          python -m audit.gate_on_real audit/snapshot/2026-11-08

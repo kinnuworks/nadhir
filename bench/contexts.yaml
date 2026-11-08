@@ -1,0 +1,45 @@
+# Replay settings. These are OUR choices for running each real incident through the gate, kept apart from
+# the sourced facts in bench/incidents/. Defaults (in nadhir/bench.py) favour the real alert whenever the
+# record is silent: unknown signature = treated as validly signed; unknown approver count = R1 not judged;
+# sender = registered for every area. Only the overrides below change that.
+
+hawaii-2018:
+  sent: "2018-01-13T08:07:00-10:00"
+  profile: US
+  runs: 1
+
+jalert-2022:
+  sent: "2022-10-04T07:29:00+09:00"
+  runs: 1
+
+seoul-2023:
+  sent: "2023-05-31T06:41:00+09:00"
+  runs: 1
+  # Seoul may warn for Seoul; the ministry (higher level) had an active air-raid alert for the islands only.
+  issuers:
+    "Seoul Metropolitan Government": {name: "Seoul Metropolitan Government", level: 2, areas: ["KR-ADM=11", "polygon:37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76"], categories: ["*"]}
+    "Ministry of the Interior and Safety": {name: "Ministry of the Interior and Safety", level: 1, areas: ["*"], categories: ["*"]}
+  registered: ["Seoul Metropolitan Government", "Ministry of the Interior and Safety"]
+  active_alerts:
+    - {sender: "Ministry of the Interior and Safety", name: "Ministry of the Interior and Safety", level: 1, event: "air-raid alert", geocodes: [["KR-ADM", "28720"]]}
+
+la-county-2025:
+  sent: "2025-01-09T15:56:00-08:00"
+  profile: GENERIC
+  runs: 1
+
+brazil-2026:
+  sent: "2026-06-19T23:41:00-03:00"
+  skip_ai: true          # no hazard existed, so there is nothing for a drafter to draft
+  # The register holds the national civil defence, not the unknown sender. The message is replayed as signed
+  # with a key that is not registered. Caveat shown with the result: if an intruder controls the platform's own
+  # signing key, R5 would not catch it; two named approvers (R1) still would.
+  issuers:
+    "Defesa Civil Nacional": {name: "Defesa Civil Nacional", level: 1, areas: ["*"], categories: ["*"]}
+  registered: ["Defesa Civil Nacional"]
+  signed_by: "unknown (not a registered originator)"
+  caveat: "If an intruder controls the platform's own signing key, R5 would not catch this; the two-approver rule (R1) still would."
+
+india-test-2023:
+  sent: "2023-10-10T11:30:00+05:30"
+  runs: 1

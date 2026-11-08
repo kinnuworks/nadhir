@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDQ21035-2026-11-02T07:18:13+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-02T07:18:13+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDQ21035-2026-11-02T04:37:33+00:00,2026-11-02T04:37:33+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21035-2026-11-02T05:33:25+00:00,2026-11-02T05:33:25+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21035-2026-11-02T06:04:17+00:00,2026-11-02T06:04:17+00:00 CAP.Message@bom.gov.au,AusBoM-IDQ21035-2026-11-02T06:43:03+00:00,2026-11-02T06:43:03+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-02T07:18:08+00:00</effective>
+        <expires>2026-11-02T10:18:08+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Severe Thunderstorm Warning for Greater Brisbane and Surrounds</headline>
+        <description>
+          The Bureau of Meteorology warns that, at 5:10 pm, severe thunderstorms likely to produce damaging winds, large hailstones and heavy rainfall that may lead to flash flooding were detected near the area northeast of Gympie and Goomboorian. These thunderstorms are moving towards the north. They are forecast to affect Toolara Forest by 5:40 pm.
+           
+        </description>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Gympie</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME013</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Thunderstorm</event>
+        <urgency>Unknown</urgency>
+        <severity>Unknown</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>thunderstorm</value>
+        </eventCode>
+        <effective>2026-11-02T07:18:08+00:00</effective>
+        <expires>2026-11-02T10:18:08+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Severe Thunderstorm Warning for Noosa</headline>
+        <instruction>Emergency services advise people to:
+* Park your car undercover away from trees.
+* Close doors and windows.
+* Keep asthma medications close by. Storms and wind can trigger asthma attacks.
+* Charge mobile phones and power banks in case the power goes out.
+* Put your pets somewhere safe and make sure they can be identified in case they get lost.
+* Do not drive now unless you have to because conditions are dangerous.
+* Tell friends, family and neighbours in the area.
+* Go inside a strong building now. Stay inside until the storm has passed.
+
+</instruction>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Queensland: Noosa</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>QLD_ME025</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

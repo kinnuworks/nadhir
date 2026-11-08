@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+    <identifier>AusBoM-IDV29000-2026-11-07T17:03:22+00:00</identifier>
+    <sender>CAP.Message@bom.gov.au</sender>
+    <sent>2026-11-07T17:03:22+00:00</sent>
+    <status>Actual</status>
+    <msgType>Update</msgType>
+    <scope>Public</scope>
+    <code>urn:oasis:names:tc:emergency:cap:1.2:profile:CAP-AU:1.0</code>
+    <references>CAP.Message@bom.gov.au,AusBoM-IDV29000-2026-11-06T17:32:39+00:00,2026-11-06T17:32:39+00:00 CAP.Message@bom.gov.au,AusBoM-IDV29000-2026-11-06T19:34:26+00:00,2026-11-06T19:34:26+00:00 CAP.Message@bom.gov.au,AusBoM-IDV29000-2026-11-06T23:19:59+00:00,2026-11-06T23:19:59+00:00 CAP.Message@bom.gov.au,AusBoM-IDV29000-2026-11-07T05:40:32+00:00,2026-11-07T05:40:32+00:00 CAP.Message@bom.gov.au,AusBoM-IDV29000-2026-11-07T11:42:04+00:00,2026-11-07T11:42:04+00:00</references>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Sheep Grazier Warning</event>
+        <urgency>Unknown</urgency>
+        <severity>Moderate</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>sheepWarning</value>
+        </eventCode>
+        <effective>2026-11-07T11:41:00+00:00</effective>
+        <expires>2026-11-08T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Warning to Sheep Graziers for North East, Central and East Gippsland forecast districts</headline>
+        <description>Sheep graziers are warned that cold temperatures and southerly winds are expected during Saturday and Sunday. Areas likely to be affected include parts of the North East, Central and East Gippsland forecast districts. There is a risk of losses of lambs and sheep exposed to these conditions.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Victoria: North East, Central and East Gippsland forecast districts</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW004</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW007</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW005</value>
+            </geocode>
+        </area>
+    </info>
+    <info>
+        <language>en-AU</language>
+        <category>Met</category>
+        <event>Sheep Grazier Warning</event>
+        <urgency>Unknown</urgency>
+        <severity>Minor</severity>
+        <certainty>Unknown</certainty>
+        <eventCode>
+            <valueName>https://govshare.gov.au/xmlui/handle/10772/6495</valueName>
+            <value>sheepWarning</value>
+        </eventCode>
+        <effective>2026-11-07T11:41:00+00:00</effective>
+        <expires>2026-11-08T13:00:00+00:00</expires>
+        <senderName>Australian Government Bureau of Meteorology</senderName>
+        <headline>Cancellation of Warning to Sheep Graziers for North Central, South West and West and South Gippsland forecast districts</headline>
+        <description>The Warning to Sheep Graziers for the North Central, South West and West and South Gippsland forecast districts has been cancelled.</description>
+        <web>http://www.bom.gov.au/australia/warnings</web>
+        <contact>http://www.bom.gov.au/inside/contacts.shtml</contact>
+        <area>
+            <areaDesc>Victoria: North Central, South West and West and South Gippsland forecast districts</areaDesc>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW008</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW009</value>
+            </geocode>
+            <geocode>
+                <valueName>AMOC-AreaCode</valueName>
+                <value>VIC_PW006</value>
+            </geocode>
+        </area>
+    </info>
+</alert>

@@ -1,0 +1,15 @@
+.env
+.venv
+CLAUDE.md
+HACKATHON.md
+STATE.md
+SETUP.md
+judge.sh
+stranger.sh
+gitignore-add.txt
+judging
+research
+audit/snapshot
+runs/bench/logs
+tests
+**/__pycache__

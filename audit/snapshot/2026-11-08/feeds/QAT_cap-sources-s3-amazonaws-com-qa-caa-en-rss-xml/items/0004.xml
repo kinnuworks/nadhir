@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://cap-sources.s3.amazonaws.com/qa-caa-en/alert-style.xsl" ?>
+<cap:alert xmlns:cap="urn:oasis:names:tc:emergency:cap:1.2">
+  <cap:identifier>urn:oid:2.49.0.1.634.0.2026.10.20.8.22.59</cap:identifier>
+  <cap:sender>QMD</cap:sender>
+  <cap:sent>2026-10-20T11:22:59+03:00</cap:sent>
+  <cap:status>Actual</cap:status>
+  <cap:msgType>Alert</cap:msgType>
+  <cap:scope>Public</cap:scope>
+  <cap:info>
+    <cap:language>en</cap:language>
+    <cap:category>Met</cap:category>
+    <cap:event>thunderstorm</cap:event>
+    <cap:responseType>Monitor</cap:responseType>
+    <cap:urgency>Immediate</cap:urgency>
+    <cap:severity>Moderate</cap:severity>
+    <cap:certainty>Likely</cap:certainty>
+    <cap:eventCode>
+      <cap:valueName>OET:v1.2</cap:valueName>
+      <cap:value>OET-194</cap:value>
+    </cap:eventCode>
+    <cap:onset>2026-10-20T11:22:18+03:00</cap:onset>
+    <cap:expires>2026-10-20T19:22:18+03:00</cap:expires>
+    <cap:senderName>QMD</cap:senderName>
+    <cap:headline>Thunderstorms</cap:headline>
+    <cap:description>Moderate rain with thunderstorms , accompanied by sudden strong winds reaching speeds of up to 25 knots.</cap:description>
+    <cap:instruction>he public and relevant authorities are advised to exercise caution,  and closely monitor official updates issued by the Meteorology Department.</cap:instruction>
+    <cap:web>https://caa.gov.qa/ar/weather-information</cap:web>
+    <cap:area>
+      <cap:areaDesc>Qatar</cap:areaDesc>
+      <cap:polygon>25.87687,51.11782 25.68966,51.04492 25.47779,50.83702 25.34854,50.79112 25.02847,50.86942 24.83260,50.90182 24.63151,50.86672 24.54803,51.08002 24.59469,51.14482 24.68549,51.23392 24.75662,51.37702 24.91588,51.46342 25.09696,51.42832 25.24357,51.39592 25.50460,51.39862 25.64586,51.38512 25.79910,51.41212 25.89630,51.29602 25.87687,51.11782</cap:polygon>
+    </cap:area>
+  </cap:info>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+  <ds:Reference><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>SxXyNl3uTITqa4AmP1udfezMIzjcv0OoFAJT69XmtOI=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue>qn6XFLjfUz2eZvzeKYcb9cJqC2frXiRRAV93ZTK0AIrpQAEkZufGy84V/xGKuHMjwbZ1K/OCPWiadX2ibBL4+Tx39yRKHlZsb/RWYUE1VntZ516QUX+/PGh9+zt4alUQCwcRWJSh+qXPReXCZgNSLL3SrWdE9YpW7BA/l8in2J1me6HBGPTH/RLSKD/JWorV8h7eQbqqlBQ+FfxVp1bTlbV5Yo9aYLCcIYl13xvfVdcQvoN/SKKPdY+fCt07hKJcg1mPr6aiNX8//Yfkpjbkv0RhnSi8vvNIE4ppEz8bjc3qMqruFKwN2JoR5+xny5M3v5QlnwETI0LwtUx7uvwYDQ==</ds:SignatureValue>
+<ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIECzCCAvOgAwIBAgIBADANBgkqhkiG9w0BAQsFADCBnzELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdpbmlhMQ8wDQYDVQQHDAZSZXN0b24xFjAUBgNVBAoMDWFsZXJ0LWh1Yi5vcmcxDjAMBgNVBAsMBWFkbWluMRgwFgYDVQQDDA9FbGlvdCBDaHJpc3RpYW4xKjAoBgkqhkiG9w0BCQEWG2VsaW90LmouY2hyaXN0aWFuQGdtYWlsLmNvbTAeFw0xOTA3MjIxMDQzMzRaFw0yOTA3MTkxMDQzMzRaMIGfMQswCQYDVQQGEwJVUzERMA8GA1UECAwIVmlyZ2luaWExDzANBgNVBAcMBlJlc3RvbjEWMBQGA1UECgwNYWxlcnQtaHViLm9yZzEOMAwGA1UECwwFYWRtaW4xGDAWBgNVBAMMD0VsaW90IENocmlzdGlhbjEqMCgGCSqGSIb3DQEJARYbZWxpb3Quai5jaHJpc3RpYW5AZ21haWwuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw5KiaOWF0XAG8LmFOFmGpbf4a+Ro3Y7t85+ytyiPLWcdLyjvbiwzRBVu5A2MCBHjJQWmHm3Et3nJxnI58pN3VZ7/3cEEOYpsveR1EJuWwC6Ow9bU1qJjLvIfw+IQ9dmZ1XZuJZCUooeVdWb0JVjedUZ7gwBs3qHxypxEAFFYljDZsK3hjQVUBerE8U0TMSnpiol3slLcKtvY3ZDiSv+EIpmjjOVJqT4BlMB9+W+tYDDhb1uwBY+f9pa2kYgE4KUxA1uyn/HOi+KAYPK525EWnbfGM2xf001lwHDEo7W0fuooTi/WkUpz+WMKuxxhivCnE3WOTu1FCdBTCujfaLGsQwIDAQABo1AwTjAdBgNVHQ4EFgQU78XZNJmiTJXTwsXoPa1oXLbC0pkwHwYDVR0jBBgwFoAU78XZNJmiTJXTwsXoPa1oXLbC0pkwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAQf+N3RFE0qrcJ1R6PkfVBok3Pv3YV3C0BxKQkA4+3C56W16bVT27fBbLh2HL9UPfux2rzWJjBfthroz6hxFKs/OWmdKhBkjvpM5J261+HTQEbIuZEASq2DjS7CfUq4xAzL2GhBL440xmmWuMrcu7Mw6T8YedsVfid4P5bN4Wsa30Ffj+FgPdApiDOu4BLz7n632hZrKUk951ChdomJs/vLk1fu737IyzVzw0m3iMtR7MrU0FPBC+W9AxubmLTruaSnhOs6j9sJKhRmGqw9AyAxey19NaMy0O6qILTrlA2Pe+S1t2Xa0wWzB6cQu8v8viLnp5SKaWf/j69hwkf5139g==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></ds:Signature></cap:alert>
+

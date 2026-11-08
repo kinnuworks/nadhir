@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>fixture-2</identifier>
+  <sender>county.example.gov</sender>
+  <sent>2026-11-02T09:00:00-05:00</sent>
+  <status>Actual</status>
+  <msgType>Alert</msgType>
+  <source>182001 10.0.100474</source>
+  <scope>Public</scope>
+  <code>IPAWSv1.0</code>
+  <note></note>
+  <info>
+    <language>en-US</language>
+    <category>Met</category>
+    <event>Flood Warning</event>
+    <urgency>Immediate</urgency>
+    <severity>Severe</severity>
+    <certainty>Observed</certainty>
+    <eventCode><valueName>SAME</valueName><value>FLW</value></eventCode>
+    <description>Heavy rain over Maine and Bahrain-style flooding near the train station.</description>
+    <parameter><valueName>EAS-ORG</valueName><value>WXR</value></parameter>
+    <parameter><valueName>UserName</valueName><value>Shift C</value></parameter>
+    <parameter><valueName>Hazard</valueName><value>Heavy rain</value></parameter>
+    <area>
+      <areaDesc>Example County</areaDesc>
+      <geocode><valueName>SAME</valueName><value>023001</value></geocode>
+    </area>
+  </info>
+</alert>

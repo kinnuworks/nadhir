@@ -1,0 +1,116 @@
+id: seoul-2023
+title: "Seoul city air-raid alert text after a North Korean launch, corrected by the Interior Ministry"
+date: "2023-05-31"
+jurisdiction: "Republic of Korea (Seoul Metropolitan Government; Ministry of the Interior and Safety, MOIS)"
+sources: [SEOUL-2023-SSHINMUN, SEOUL-2023-YTN, SEOUL-2023-PRESSIAN, SEOUL-2023-KT, SEOUL-2023-JA]
+
+summary: >-
+  After North Korea's launch of what it called a space launch vehicle, the Interior Ministry issued a civil
+  defence alert for two islands near the inter-Korean sea border. Seoul issued its own alert and sent a text to
+  the whole city telling people to prepare to evacuate. About 20 minutes later the ministry sent a public text
+  saying Seoul's alert was erroneous; the mayor said it may have been an over-reaction but was not an error.
+
+timeline:
+  - {t: "2023-05-31T06:29+09:00", event: "North Korea launches a projectile southward (combined account of both agencies, as reported).", source: SEOUL-2023-SSHINMUN}
+  - {t: "2023-05-31T06:30+09:00", event: "MOIS central control centre sends a command broadcast to 17 provinces and cities: real alert issued for Baengnyeong-myeon and Daecheong-myeon; areas that did not receive the alert to issue a real alert themselves.", source: SEOUL-2023-SSHINMUN}
+  - {t: "2023-05-31T06:32+09:00", event: "Seoul issues an air-raid alert (경계경보) for Seoul on its own judgement. Seoul says it could not reach MOIS by phone to confirm.", source: SEOUL-2023-SSHINMUN}
+  - {t: "2023-05-31T06:41+09:00", event: "Seoul sends an emergency text to phones across Seoul telling people to prepare to evacuate.", source: SEOUL-2023-YTN}
+  - {t: "2023-05-31T06:43+09:00", event: "Naver's mobile page is briefly disrupted by traffic (06:43 to about 06:48).", source: SEOUL-2023-KT}
+  - {t: "2023-05-31T07:03+09:00", event: "MOIS sends an emergency text saying the alert issued by Seoul was erroneous.", source: SEOUL-2023-YTN}
+  - {t: "2023-05-31T07:25+09:00", event: "A further text says the alert is lifted across Seoul. Korea Times attributes it to the city government; JoongAng Daily attributes a 07:25 message to the Interior Ministry.", source: SEOUL-2023-KT}
+  - {t: "2023-05-31", event: "Mayor Oh Se-hoon apologises for the confusion and says the alert was not issued in error.", source: SEOUL-2023-JA}
+
+inputs:
+  event_text: "현재 시각, 백령면·대청면에 실제 경계경보 발령. 경보 미수신 지역은 자체적으로 실제 경계경보를 발령"
+  event_text_note: "MOIS command broadcast at about 06:30, as quoted by Seoul Shinmun. MOIS says 'areas that did not receive the alert' meant areas within Baengnyeong and Daecheong; Seoul read it as areas outside them."
+  issuer: "Seoul Metropolitan Government"
+  environment: live
+  active_alerts_known:
+    - sender: "Ministry of the Interior and Safety"
+      event: "경계경보 (air-raid alert)"
+      areaDesc: "Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon"
+      source: SEOUL-2023-KT
+  requested_area:
+    areaDesc: "Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon (area named in the ministry's alert)"
+    geocodes: [{valueName: KR-ADM, value: "28720"}]
+    polygon: ["37.78,124.58 38.02,124.58 38.02,124.78 37.78,124.78 37.78,124.58"]
+    polygon_label: "approximate, for replay: rough box around Baengnyeong and Daecheong islands"
+
+real_message:
+  text_verbatim: "오늘 6시 32분 서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록 해주시기 바란다"
+  text_verbatim_note: "As quoted by YTN. Outlets differ slightly in punctuation and sentence ending (바란다 / 바랍니다), so this is the press-quoted text, not a screenshot of the original."
+  text_translation_press: "A warning has been issued for Seoul. People are advised to prepare for evacuation and to give priority to children, the weak and the elderly"
+  text_translation_source: SEOUL-2023-JA
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Seoul Metropolitan Government"
+  category: Security
+  event: "경계경보 (air-raid alert)"
+  urgency: Immediate
+  severity: Extreme
+  certainty: Possible
+  language: ko-KR
+  headline: null
+  description: "오늘 6시 32분 서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록 해주시기 바란다"
+  instruction: "대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록"
+  areaDesc: "Seoul (entire city)"
+  area:
+    areaDesc: "Seoul (entire city)"
+    geocodes: [{valueName: KR-ADM, value: "11"}]
+    polygon: ["37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76"]
+    polygon_label: "approximate, for replay: rough box around Seoul"
+  wea_class_press: "sent as a 'Presidential Alert' class message (JoongAng Daily)"
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, urgency, severity, certainty, instruction, area.geocodes, area.polygon]
+
+corrections:
+  - t: "2023-05-31T07:03+09:00"
+    sender: "Ministry of the Interior and Safety"
+    text_verbatim: "서울특별시에서 발령한 경계경보는 오발령 사항임을 알려드림"
+    text_source: SEOUL-2023-PRESSIAN
+    note: "Sent by a different authority from the original sender; whether it referenced the original message is unknown."
+
+real_outcome:
+  text: >-
+    Phones across Seoul received the city's alert at 06:41 telling people to prepare to evacuate, without a reason
+    or a place to go. The ministry's 07:03 text called it erroneous. Korea Times reports confusion and that Naver's
+    mobile page was briefly disrupted.
+  source: SEOUL-2023-KT
+
+official_finding:
+  body: "Ministry of the Interior and Safety (MOIS)"
+  document: "MOIS public emergency text of 31 May 2023, 07:03 KST (as quoted by Pressian and YTN)"
+  finding_status: official-statement-via-press
+  quote: "서울특별시에서 발령한 경계경보는 오발령 사항임을 알려드림"
+  quote_translation_unofficial: "We inform you that the air-raid alert issued by the Seoul Metropolitan Government was issued in error."
+  source: SEOUL-2023-PRESSIAN
+  scope_note: >-
+    This is the ministry's own public message, known here through press quotes. No published investigation report
+    was found. Seoul disputes the finding (see framing_note). The ministry's position that only Baengnyeong and
+    Daecheong were under the alert is reported by Seoul Shinmun and Korea Times.
+
+expected_rules: [R4]
+expected_rules_basis: "R4: issuer scope and conflict with an active alert of a higher authority must escalate before release."
+
+unknowns:
+  - "Exact original wording of the 06:41 text (press versions differ slightly) and its CAP/CBS parameters."
+  - "Who sent the 07:25 lifting message (city or ministry); sources differ."
+  - "Whether Seoul's alert required more than one approver."
+  - "Whether any later government review reached a formal conclusion."
+
+framing_note: >-
+  The city disputed that its alert was an error. Mayor Oh Se-hoon said it may have been an over-reaction by
+  working-level officials but was not issued in error, and Seoul said it acted on the ministry's command broadcast.
+  The ministry said it had not asked Seoul to send a message. The bench treats the ministry's 07:03 text as the
+  authority's statement, and reports the city's view next to it. The gate rule tested is escalation when two
+  authorities disagree, not which side was right.
+
+source_urls:
+  SEOUL-2023-SSHINMUN: "https://m.seoul.co.kr/news/2023/06/01/20230601002003"
+  SEOUL-2023-YTN: "https://www.ytn.co.kr/_ln/0115_202305310726522458"
+  SEOUL-2023-PRESSIAN: "https://www.pressian.com/pages/articles/2023060113053318004"
+  SEOUL-2023-KT: "https://www.koreatimes.co.kr/amp/southkorea/society/20230531/seoul-city-takes-flak-for-emergency-text-alert-on-nks-rocket-launch"
+  SEOUL-2023-JA: "https://www.koreajoongangdaily.com/korea/seoul-mayor-says-sorry-but-not-sorry-for-alert-message/11193243"
