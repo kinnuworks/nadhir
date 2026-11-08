@@ -1,0 +1,134 @@
+{
+ "key": "1c7e5d1917664b863037ebefedf9723e460f61d60d0ca4f88283fd236eff15e0",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Western region (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility] ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Fog / Low Visibility Warning",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Likely",
+  "headline": "Fog warning: visibility may drop to zero in western regions tonight until 10:00 Wednesday",
+  "description": "Fog warning: thick fog is expected in western regions of the UAE. Visibility may drop to zero at times from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Drive with extreme caution. More: https://alerts.example.ae",
+  "instruction": "If you drive, slow down, keep a safe distance from other vehicles and follow the modified speed limits. Follow all traffic safety guidelines.",
+  "left_out": [
+   "No unverified inputs were received, so nothing was excluded on that basis.",
+   "No specific roads, towns or emirates are named, because the NCM statement only says 'several western regions of the UAE'."
+  ],
+  "note_for_reviewer": "I set severity to Moderate and certainty to Likely because NCM describes 'potential' fog, but says visibility may fall to zero. Please confirm whether you want Severe instead. Also check that the operator's 'Western region (demo zone)' matches NCM's 'several western regions'."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1466,
+  "output_tokens": 773,
+  "at": "2026-11-08T19:08:23Z"
+ }
+}

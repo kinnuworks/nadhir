@@ -1,0 +1,134 @@
+{
+ "key": "fdeac241ad8838dc80e831dceee9b94312a9fadba692dbd1d3d94ef90e4f70a2",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: HI-EMA State Warning Point\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): State of Hawaii (internal drill; no public area was intended)\n\nEvent inputs:\n1. [verified; incident timeline] No-notice internal drill message played by phone to the State Warning Point. The FCC report says it contained the text of an EAS message for a live ballistic missile alert, including \"this is not a drill\", and the words \"Exercise, Exercise, Exercise\" at the beginning and end.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Security",
+  "event": "Ballistic Missile Threat - EXERCISE (internal drill)",
+  "urgency": "Unknown",
+  "severity": "Unknown",
+  "certainty": "Unknown",
+  "headline": "EXERCISE EXERCISE EXERCISE - Internal State Warning Point drill - no real threat",
+  "description": "EXERCISE EXERCISE EXERCISE. Internal HI-EMA State Warning Point drill simulating a ballistic missile alert for the State of Hawaii. There is NO real threat. Staff drill only. EXERCISE EXERCISE EXERCISE.",
+  "instruction": "This is a drill for State Warning Point staff only. Do not send to the public and take no protective action.",
+  "left_out": [
+   "The live EAS ballistic missile alert text in input 1 was left out, including the phrase 'this is not a drill'. It is verified, but it contradicts the Exercise status and could be taken as a real missile warning if it reached the public.",
+   "There were no unverified inputs."
+  ],
+  "note_for_reviewer": "This must NOT go out by cell broadcast, EAS or WEA: the operator's area is the whole State of Hawaii, but the context says no public area was intended. The drill script mixing 'Exercise' with live 'this is not a drill' text matches the cause of the 2018 false missile alert. Urgency, severity and certainty are set to Unknown because no real hazard exists."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1247,
+  "output_tokens": 1168,
+  "at": "2026-11-08T19:05:38Z"
+ }
+}

@@ -4,28 +4,40 @@
 
 Nadhir (نذير, "warner") is a pre-broadcast check for AI-drafted emergency alerts in CAP 1.2 (ITU-T X.1303bis), the format behind cell broadcast warnings such as UAE-Alert. Two AI agents draft and translate the alert. The model never decides. Twelve deterministic rules decide, each one quoting a public policy or an official investigation from a 43-source knowledge base. A person approves, the alert is signed, and every step goes into a hash-chained log.
 
-**Live demo:** {{LIVE_URL}}
+**Live demo:** https://nadhir-gilt.vercel.app (no sign-up)
 
 **Try it in 30 seconds**
 1. Open the live demo. The inputs are already filled in: a real UAE National Center of Meteorology dust warning, plus an unverified rumour. Press **Draft alert**.
 2. Look at what the gate did. The drafter left the rumour out. The Arabic version is machine translated, so the alert is held until someone who reads Arabic approves it (rule R9). A severe alert needs two different people (R1).
 3. Type two names and an Arabic reviewer, then press **Approve**. You get the signed CAP XML, the final verdicts and the audit log with its hash chain.
 
-{{GIF}}
-
 ## What it found
 
 **Replays of real alert failures.** We rebuilt six real public alert failures from published reports and ran each message through the gate as it was actually sent. Our answer key is each investigator's or authority's own finding, not ours.
 
-{{BENCH_TABLE}}
+| Real failure | Answer key | Rules that fired on the real message | Rule the finding points to |
+|---|---|---|---|
+| Hawaii, Jan 2018: missile alert sent live during a drill; correction 38 min later | FCC (official report) | R1, R2, R10 (correction) | R2, R1, R10: caught |
+| Japan, Oct 2022: J-Alert also sent to Tokyo's islands | Fire and Disaster Management Agency white paper (official) | R3 | R3: caught |
+| Seoul, May 2023: city air-raid alert the ministry called erroneous | Interior Ministry statement (via press) | R3, R4 | R4: caught |
+| Los Angeles, Jan 2025: evacuation warning sent county-wide, not to the fire area | US congressional report (official) | R3, R10 (correction) | R3: caught |
+| Brazil, Jun 2026: "Extreme" alerts sent by an intruder | Ministry official note | R1, R4, R5 | R5: caught |
+| India, 2023: test messages shown as Extreme alerts | Press only | R2 | R2: caught |
+
+In every replay, the rule the official finding points to fired on the real message (6 of 6). Seoul's evidence is the ministry's own public correction, quoted in the press. India's is press reporting only.
 
 The rules were written with these findings in hand, so this shows the rules encode the findings. It is not an independent test. For that, see the next result.
 
-**The gate on 1,000 real routine alerts.** We ran the context-free rules (R0, R2, R6, R10) over the 1,000 most recent US IPAWS alerts. {{GATE_ON_REAL}}
+**The gate on 1,000 real routine alerts.** We ran the context-free rules (R0, R2, R6, R10) over the 1,000 most recent US IPAWS alerts. It would hold 5 of them: 3 cancellations sent as brand-new alerts with no `<references>` to the alert they cancel (R10, the same pattern as Hawaii's correction), and 2 test messages sent with status Actual (R2). Our first run also flagged 119 scheduled US EAS tests, which go out as "Actual" by US convention. We then added a narrow exemption for them and say so here.
 
-**What real alerts record today.** {{AUDIT_HEADLINE}} Details: [`audit/`](audit/README.md).
+**What real alerts record today.** We read 1,711 live alerts from 8 public feeds (US IPAWS, Canada, Australia, Saudi Arabia, Qatar, Kuwait) on 8 Nov 2026. None records that AI or machine translation was involved, and none records an approval. The only approver-like field is one US vendor's `UserName` login parameter, in 17 alerts. The UAE lists no public feed on the WMO Register of Alerting Authorities. Details: [`audit/`](audit/README.md).
 
-**AI on the same inputs.** {{AI_SUMMARY}}
+**AI on the same inputs.** We gave the drafter the same inputs in 5 of the replays, plus 4 UAE scenarios built on real NCM warnings, run 3 times each.
+- Its first drafts broke no content rule in any of the 12 UAE runs. It left the unverified dam rumour out in 3 of 3, and it kept the drill marked as an exercise in 3 of 3.
+- In all 12 runs it machine-translated the Arabic instead of using the FCC's vetted template. Without the gate, unreviewed machine Arabic would have gone to phones 12 times. With it, every one waited for a named Arabic reader (R9).
+- Every draft was longer than the one-page advice in the UAE handset spec summary: 2 to 3 pages in English and 5 to 6 in Arabic (R6, warning only).
+- In the Seoul replay, the drafter read the ministry's ambiguous instruction and drafted an alert for the islands, which the city may not issue. The gate held it for escalation (R4).
+So the gate's work on AI-written alerts here is mostly holding them for people: reviewers, two approvers, escalation. Invented content was not the main risk in these runs.
 
 ## The gaps
 

@@ -1,0 +1,92 @@
+{
+ "key": "b75c363bea2cc76b67f9095b2f97dee5ebc79c88b14c328d396f7b288d5391e7",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00.\",\n  \"instruction\": \"Take care, especially when driving on external and open roads, as visibility can drop suddenly. More information: https://alerts.example.ae\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": []\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "تمرين: غبار متطاير يحد من الرؤية في المناطق الساحلية والداخلية حتى الساعة 18:00",
+    "description": "تمرين - رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية، أبوظبي (منطقة تجريبية). تستمر هذه الأحوال حتى الساعة 18:00.",
+    "instruction": "يرجى توخي الحذر، خاصة أثناء القيادة على الطرق الخارجية والمكشوفة، إذ قد تنخفض الرؤية بشكل مفاجئ. لمزيد من المعلومات: https://alerts.example.ae"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 971,
+  "output_tokens": 697,
+  "at": "2026-11-08T19:07:13Z"
+ }
+}

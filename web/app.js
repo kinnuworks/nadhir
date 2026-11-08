@@ -3,8 +3,16 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const cls = (s) => (s === "n/a" ? "na" : s);
 
 const DEFAULT_INPUTS = [
-  { text: "National Center of Meteorology: blowing dust and a dust storm over Al Ain, horizontal visibility below 500 metres at times, until 18:00 today.", verified: true, source: "NCM bulletin (sample wording)" },
-  { text: "Social media post: the dam near Al Ain has burst, everyone leave now", verified: false, source: "unverified social post" },
+  {
+    "text": "ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.",
+    "verified": true,
+    "source": "NCM via WAM, 4 Mar 2026"
+  },
+  {
+    "text": "Social media post: a dam near Al Ain has burst, everyone leave the area now",
+    "verified": false,
+    "source": "illustrative rumour (not real)"
+  }
 ];
 
 function inputRow(item) {

@@ -49,6 +49,9 @@ def call_json(system: str, user: str, schema: dict, *, salt: str = "", mode: str
     if mode == "replay":
         raise ModelError(f"no recording {path.name} (run with NADHIR_LLM=live to create it)")
 
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        raise ModelError("Live drafting is switched off on this copy (no API key is set). "
+                         "The prefilled example still works: it replays a recorded answer.")
     import anthropic
     client = anthropic.Anthropic()
     try:

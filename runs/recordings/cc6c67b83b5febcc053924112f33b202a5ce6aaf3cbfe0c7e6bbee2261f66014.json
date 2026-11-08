@@ -1,0 +1,92 @@
+{
+ "key": "cc6c67b83b5febcc053924112f33b202a5ce6aaf3cbfe0c7e6bbee2261f66014",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"headline\": \"Blowing dust and sand reducing visibility in coastal and inland areas until 19:00\",\n  \"description\": \"NCM warning: fresh to strong northwesterly winds are causing blowing dust and sand. Visibility is below 2,000 m in some coastal and inland areas. Conditions continue until 19:00 today, 4 March.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop suddenly. Updates: https://alerts.example.ae\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": []\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "غبار ورمال متطايرة تقلل مدى الرؤية في المناطق الساحلية والداخلية حتى الساعة 19:00",
+    "description": "تحذير من المركز الوطني للأرصاد (NCM): رياح شمالية غربية نشطة إلى قوية تتسبب في تطاير الغبار والرمال. مدى الرؤية أقل من 2,000 م في بعض المناطق الساحلية والداخلية. تستمر هذه الأحوال حتى الساعة 19:00 اليوم، 4 مارس.",
+    "instruction": "توخَّ مزيداً من الحذر، خاصة عند القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية فجأة. التحديثات: https://alerts.example.ae"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 960,
+  "output_tokens": 606,
+  "at": "2026-11-08T19:06:54Z"
+ }
+}

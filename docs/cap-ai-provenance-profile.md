@@ -15,7 +15,7 @@ National profiles we checked (US IPAWS, Canada CAP-CP, Australia CAP-AU) do not 
 
 Meanwhile AI is already writing warning text. The US National Weather Service publishes AI-translated products. The FCC, on the other hand, has twice declined machine translation for Wireless Emergency Alerts. An alert from either regime looks the same on the wire. ITU's own recent reports ask for human oversight of AI in early warning (ESTR.AICNHM, 2025; *Leveraging AI to Enhance Multi-Hazard Early Warning Systems*, 2026). There is no field in the alert where that oversight can be recorded.
 
-Our audit of real feeds (see `audit/`) shows what this means in practice: in live alerts, AI involvement and approvers are not recorded in any standard way. Where software vendors want to record an operator, they invent their own parameter names.
+Our audit of real feeds (see `audit/`) shows what this means in practice. Of 1,711 live alerts from 8 public feeds (US, Canada, Australia, Saudi Arabia, Qatar, Kuwait) on 8 Nov 2026, none records AI or machine involvement and none records an approval. The closest thing is one US vendor's own `UserName` parameter, in 17 alerts, which shows who was logged in to the sending software. The 100 Canadian alerts all declare the CAP-CP profile, and none uses its optional `AutoTranslated` flag.
 
 ## Proposal
 

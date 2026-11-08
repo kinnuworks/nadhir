@@ -1,0 +1,134 @@
+{
+ "key": "2f72731399d70c30d06725b83a1fbefbec7fc8f854c73acdaae360cae3a07090",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Department of Telecommunications, Government of India\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): Test areas chosen by DoT (reported as received across India on 10 Oct 2023)\n\nEvent inputs:\n1. [verified; incident timeline] Planned test of the Pan-India Emergency Alert System (cell broadcast) by DoT with NDMA. No hazard.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Other",
+  "event": "Emergency Alert System Test",
+  "urgency": "Unknown",
+  "severity": "Minor",
+  "certainty": "Unknown",
+  "headline": "TEST: Pan-India Emergency Alert System test by DoT and NDMA",
+  "description": "This is a TEST message from the Department of Telecommunications with NDMA, testing the Pan-India Emergency Alert System by cell broadcast. There is no emergency and no hazard.",
+  "instruction": "No action is needed. Please ignore this test message.",
+  "left_out": [
+   "Specific test areas, dates and times: the target area is described only as test areas chosen by DoT, so no place names or times were added.",
+   "No unverified inputs were received."
+  ],
+  "note_for_reviewer": "No hazard exists, so severity is set to Minor and urgency and certainty to Unknown. Please confirm these values meet DoT/NDMA practice for test messages. Also check whether the message should be issued in Hindi and regional languages as well as English."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1213,
+  "output_tokens": 334,
+  "at": "2026-11-08T19:05:42Z"
+ }
+}
