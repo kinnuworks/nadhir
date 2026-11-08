@@ -1,0 +1,114 @@
+{
+ "key": "b56e8635e937825de5d96bb138835469999d9cbc68273a1564d313bf3500f876",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning for western UAE: visibility may drop to zero, 21:30 Tue to 10:00 Wed\",\n  \"description\": \"Fog warning W. UAE 21:30 Tue to 10:00 Wed. Visibility may drop to zero. Drive with care.\",\n  \"instruction\": \"Drive with extreme caution and keep a safe distance from other vehicles. Follow modified speed limits, especially in thick fog.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب لغرب الإمارات العربية المتحدة: قد تنخفض الرؤية إلى الصفر، من 21:30 الثلاثاء إلى 10:00 الأربعاء\",\n  \"description\": \"تحذير من الضباب في غرب الإمارات العربية المتحدة من 21:30 الثلاثاء إلى 10:00 الأربعاء. قد تنخفض الرؤية إلى الصفر. قودوا بحذر.\",\n  \"instruction\": \"قودوا بحذر شديد وحافظوا على مسافة آمنة من المركبات الأخرى. التزموا بحدود السرعة المعدلة، خاصة في الضباب الكثيف.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert human review', 'CAP language info block Arabic headline instruction', 'UAE fog warning reduced speed limits'):\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.\n\n[CAPAU#0069] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.20):\nExample B. INFO element translated into Italian and enumerated <urgency> value of “immediate” written in English: <info> <language>ita</language> ... <urgency>Immediate</urgency> ... <headline>Chimica fuoriuscita Highway 1 </headline> ... </info> 7) When creating public alert messages in languages other than English, a translation of the event list to the appropriate language should be conducted in advance for inclusion in alerts. edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[CAPCP#0148] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\n<alert ... > ... <info> <language>en-CA</language> ... <instruction>Take shelter as threatening or hazardous conditions arrive. </instruction> <parameter> <valueName>profile:CAP-CP:1.0:AutoTranslated</valueName> <value>Yes</value> </parameter> ... </info> <info> <language>fr-CA</language> ... <responseType>Shelter</responseType> <instruction>En menaçant des approches de temps, prenez l'abri à l'intérieur et surveillez la radio locale pour d'autres mises à jour\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0151] UAE National Air Quality Agenda 2031 (p.21):\nReducing ambient noise levels and keeping them within permissible limits Details not yet available The target will be determined later as part of the implementation of the agenda, in consultation with stakeholders\n\n[MHEWS-2026#0323] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.82):\nNeural TTS, ASR models, voice synthesis systems Automated Decision Systems Real-time alert triggering; routing across channels; workflow automation; CAPaligned dissemination Matches decision speed to fast-onset hazards; ensures consistent, standardized warnings; reduces operational burden while maintaining human oversight\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0172] UAE National Air Quality Agenda 2031 (p.23):\nThe International Convention for the Prevention of Pollution from Ships (MARPOL 1973/1978) Since reviewing and evaluating all related international conventions is not relevant to this document, the relationship between these agreements and the National Air Quality Agenda is mainly focused on limiting and reducing emissions. As indicated above, the Agenda is expected to support the reduction of GHG emissions in the medium and long term as a co-benefit. This result is also consistent with the goals set out in international agreements on climate change action. On the other hand, other agreements focus broadly on reducing or limiting emissions of specific pollutants harmful to the environment (such as persistent organic pollutants (POPs) and mercury compounds), and the National Air Quality Agenda supports the goals and responsibilities included in these agreements. Two of the above conventions focus specifically on controlling emissions in\n\n[EU-ALERT#0708] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system (Article 49 - Duration of rights):\n3. Where duly justified, Member States may derogate from paragraph 2 of this Article in the following cases: (a) in limited geographical areas, where access to high-speed networks is severely deficient or absent and this is necessary to ensure achievement of the objectives of Article 45(2);",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic headline, description and instruction match the English in meaning. Times (21:30 Tuesday to 10:00 Wednesday), place (western UAE), hazard (fog, visibility possibly dropping to zero) and the protective actions (drive with extreme caution, keep a safe distance, follow modified speed limits especially in thick fog) all match. 'W. UAE' is correctly expanded to 'غرب الإمارات العربية المتحدة'. I found no difference in meaning. The Arabic was produced by machine translation, so a named Arabic-reading reviewer still has to check and approve it before release. If the alert is sent before that review, the Arabic block should be marked as automatically translated (see CAPCP#0144). I cannot see the CAP parameters, so I cannot check that marking.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4819,
+  "output_tokens": 708,
+  "at": "2026-11-08T20:56:06Z"
+ }
+}

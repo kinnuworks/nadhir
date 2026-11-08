@@ -16,3 +16,6 @@ research/
 __pycache__/
 .vercel/
 .vercel
+
+# fetched source documents for the KB index build
+kb/cache/

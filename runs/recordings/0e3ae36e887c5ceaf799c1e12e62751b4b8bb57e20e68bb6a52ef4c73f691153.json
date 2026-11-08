@@ -1,0 +1,114 @@
+{
+ "key": "0e3ae36e887c5ceaf799c1e12e62751b4b8bb57e20e68bb6a52ef4c73f691153",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility until 21:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 21:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 21:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 21:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert review guidance', 'machine translated alerts human verification', 'multilingual CAP info language element'):\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-HI-2018#0142] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nBureau Recommendations 40. After reviewing the facts that form the basis of this report, the Bureau offers several recommendations below to provide guidance to state, local, Tribal and territorial emergency alert originators and managers about “lessons learned” from the Bureau’s investigation. The Bureau recommends that state, local, Tribal and territorial emergency management agencies and other authorized state entities take the following actions: \n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[ITU-UAE:01_AI_Strategy_and_Governance/MOCAI_AI_Ethics#0064] MOCAI AI Ethics (p.12):\nc In the case that critical decision are life and death decisions, these decisions should be supported by further validation and verification via a human operator. d Facilitate traceability and auditability of AI systems, particularly in critical contexts or situations.\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0015] AI Guide v1 (p.6):\n10 2014 Amazon Echo was introduced. Figure 1. Peaks and Troughs in AI Science Over Time With the advent of the programmable computer in the wake of World War II, Alan Turing introduced the Turing test in 1950, which considered the question, “Can machines think?” while working at the University of Manchester. The test involves a human interrogator who converses with a human and a machine that generates human-like language. If the interrogator is unable to distinguish between the human and the machine, then the machine would have passed the test of being able to act like a human. Since then, the Turing test has become an important concept in the 10\n\n[CAPAU#0068] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.20):\n<headline>Chemical spill Highway 1 </headline> ... </info> 4) When this sub-element is to be included, the alert message producer MUST ensure an appropriate value is used. 5) The language value is important for message distributors. 6) Mixing public display content or text from different languages within the same <info> element is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters. Where fixed CAP values, which often appear as a word from a specific language, are used for software processing purposes and not for display, these values are not translated between <info> elements (e.g. <category>, <urgency>, <severity>, <certainty>, <responseType>, etc...).\n\n[CAPAU#0060] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.19):\nProfile Specification Type Profile Specification Normative Non-Normative 2.2 “info” Element and Sub-elements Any <info> sub-elements whose use is specified as REQUIRED, are only mandatory inclusions when the <info> element is to be included in a CAP-AU message. info\n\n[CAPAU#0062] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.19):\n<msgType>Alert</msgType> <source>example@bom.gov.au</source> <scope>Public</scope> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> 3) Multilingual messages MUST use separate <info> elements for each language, with all non free-form text elements repeated verbatim in each element. Each element must be identical (i.e., they MUST have the same <eventCode>, urgency, severity, certainty, geocodes) except for those elements which will differ because of language such as free form text and resource links.\n\n[CAP12#0087] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n3.2.2 \"info\" Element and Sub-elements info cap. alertInfo. info. group The container for all component parts of the info sub-element of the alert message (OPTIONAL) (1) Multiple occurrences are permitted within a single <alert>. If targeting of multiple <info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. Each set of <info> blocks containing the same language identifier SHALL be treated as a separate sequence.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "I compared the Arabic headline, description and instruction with the English and found no difference in meaning. The wind direction and strength (northwesterly, fresh to strong), the hazard (blowing dust and sand), the visibility threshold (under 2,000 metres), the affected areas (some coastal and inland areas), the end time (21:00 this evening, 4 March), the source (National Centre of Meteorology) and the URL all match. The protective action also matches: take extra care, especially when driving on open roads. The Arabic was produced by machine translation, so a named person who reads Arabic must still review and approve it before it is sent. This review cannot approve the Arabic.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4373,
+  "output_tokens": 683,
+  "at": "2026-11-08T21:01:45Z"
+ }
+}

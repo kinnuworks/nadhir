@@ -1,0 +1,148 @@
+{
+ "key": "31221cd142d8c97b34812c11fb016b514d644b93094085e8e1fd811718709b86",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-fog-2026-02-17\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Disregard the earlier alert\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP msgType Update Cancel references required', 'erroneous alert correction retraction FCC', 'CAP status Actual Exercise Test drill'):\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0106] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nNotes: The normative copy in CAP requires <references> for “Update” and “Cancel” values, however, it is not enforced in the schema. Example: Element: <references> Use: Required Type: Policy Value: Description:\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0415] 3.2 TDRA Consumer Protection Regulations v2 (p.70):\nIn the event that any statement made by a Licensee is misquoted in the media, to the extent that the misquote does, or may, result in an apparent breach of these Regulations, the Licensee shall take reasonable steps to procure a retraction or correction or other appropriate remedial action concerning the\n\n[CAPCP#0157] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #7. Indicate when an update message contains non-substantive content changes):\nWhen a correction is made to some of the free form content, perhaps because of an error, spelling mistake or omission, the value of “correction” should be used in the <info> block(s) where applicable.\n\n[FCC-HI-2018#0135] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\n Third, HI-EMA has created templates for EAS and WEA messages that officers may use to correct a false alarm. This will ensure that, were such an event to occur again, the public could receive notice of the correction more quickly. Prior to the January 13, 2018, false alert, HI-EMA did not have protocols or training in place with respect to how to issue a correction to an alert, or what to do in the event a false alert was initiated.119\n\n[FCC-HI-2018#0155] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.26):\nAPPENDIX A ILLUSTRATION OF FALSE ALERT AND CORRECTION ON EAS AND WEA\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[FCC-HI-2018#0085] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nFurthermore, in this case, the midnight shift supervisor deviated from the abovereferenced procedure by creating a new script that blended elements from 1) the standard drill initiation message script (i.e., the ballistic missile checklist language that used the phrase “real world,” and preceded and followed the message with “exercise, exercise, exercise”) and 2) the EAS message for alerting the public to an actual missile attack (a message that used the phrase “This is not a drill.”).76 71 One emergency management agency the Bureau interviewed acknowledged that if a warning officer conducted a\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Sender is registered (level 1, all areas and categories), the area matches the one drawn for event uae-fog-2026-02-17, and status Actual fits a real event on a live console. The problem is that the headline reads as a correction while the message is a new Alert with no references. This system also has no earlier alert on record that it could be correcting.",
+  "objections": [
+   {
+    "issue": "The headline presents this message as a correction or retraction of an earlier alert. However, msgType is 'Alert' and references is null, so it does not point to any alert it corrects. This system has no earlier alerts on record, and no other authority has an active alert, so recipients cannot tell what to disregard.",
+    "field": "msgType / references / headline",
+    "blocking": true,
+    "fix": "If this is a fog warning, rewrite the headline so it describes the fog hazard. If it is meant to correct or withdraw a previous alert, change msgType to 'Cancel' (or 'Update') and fill references with the sender, identifier and sent time of that alert. Confirm which alert that is, because none appears in this system's earlier alerts.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.headline",
+      "quote": "Disregard the earlier alert"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.references",
+      "quote": "\"references\": null"
+     },
+     {
+      "kind": "view",
+      "ref": "earlier_alerts_from_this_system",
+      "quote": "\"earlier_alerts_from_this_system\": []"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0050",
+      "quote": "\"Cancel\" – Cancels the earlier message(s) identified in <references>"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPCP#0107",
+      "quote": "<references> are required with <msgType> values of “Update” or “Cancel”"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4139,
+  "output_tokens": 1000,
+  "at": "2026-11-08T21:09:21Z"
+ }
+}

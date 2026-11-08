@@ -1,0 +1,148 @@
+{
+ "key": "3847785d0280ffddadb6f97b62481fbeb101deac39f32bcd63d95eb7cdac79cc",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Florida Division of Emergency Management\": {\n   \"name\": \"Florida Division of Emergency Management\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"test\",\n \"requested_area\": {\n  \"areaDesc\": \"State of Florida (broadcast EAS test only)\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"012000\"\n   ]\n  ],\n  \"drawn_for_event\": \"florida-test-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Florida Division of Emergency Management\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Test\",\n  \"severity\": \"unknown\",\n  \"areaDesc\": \"State of Florida\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"012000\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"TEST\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise Test versus Actual', 'Florida test alert sent as actual FCC', 'EAS test message wrongly sent live wireless alert'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[IPAWS-PROFILE#0040] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nTable 1: CAP v1.2 IPAWS Profile Specification and Profile Note CAP Element Profile Specification (Normative) Profile Note (Non-Normative) Elements in boldface are REQUIRED. (Subcommittee) (Subcommittee) status A value of \"Actual\" SHALL be used for messages intended for dissemination to the public, including test messages intended for delivery to the public.\n\n[FCC-23-88#0137] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.23):\nTherefore, we support requiring coordination in overlapping geographic areas, to reduce duplicative testing, and we support requiring notification to state and local emergency authorities before tests are performed”). 127 ATIS Comments at 20 (referencing a test in Florida that was accidentally sent using the attention signal during\n\n[FCC-23-88#0149] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.25):\ninformation on differences that may exist between how live messages and test messages are handled and disseminated, so it is difficult to have confidence in the results of tests sent using the test system”). Alerting authorities still may use State/Local WEA Tests at their discretion to assess WEA’s performance. To the extent that alert originators are able to use these tests to generate data about WEA performance, that data should be representative of WEA’s actual performance during an emergency because Participating CMS Providers are required to transmit State/Local WEA Tests in a manner that complies with the Alert Message Requirements specified in Subpart D. See 47 CFR § 10.350(c). Aside from the fact that the public does not receive State/Local WEA Tests by default, Participating CMS Providers transmit them like any other Alert Message. September 2022 WEA Performance Exercise, 14-19 (Apr. 24, 2023) https://docs.fcc.gov/public/attachments/DOC-392829A1.pdf. We direct the Bureau to develop translations of the survey materials in the 13 languages we require Participating CMS Providers to support for multilingual alerting as well as ASL. 136\n\n[FCC-16-127#0262] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.44):\nin accordance with our Alert Message requirements will ensure that emergency managers have the opportunity to test in an environment that mirrors actual alert conditions and evaluate, for example, the accuracy with which various Participating CMS Providers geo-target Alert Messages in their community. Unlike other Alert Messages, however, consumers will not receive State/Local WEA Tests by default. Participating CMS Providers should provide their subscribers with the option to receive State/Local WEA Tests, and subscribers would have to affirmatively select this option in order to receive these test messages.281 According to CTIA, “[t]his way, unwanted test messages will not disturb wireless consumers who could become confused or annoyed by test messages and opt out of WEA entirely.”282 We also agree with Sprint that making State/Local WEA Tests available on an opt-in basis minimizes any risk of call center congestion.283 Another respect in which a State/Local WEA Test will differ from an actual Alert Message is that we require State/Local WEA Tests to include conspicuous language sufficient to make clear to the public that the message is, in fact, only a test. This will minimize any chance that such test messages might be misconstrued as actual Alert Messages. 66. The 24-hour delivery window that currently applies to RMTs under Section 10.350(a)(2) will not apply to State/Local WEA Tests.\n\n[IPAWS-OPEN#0024] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.21):\n1,324 • WEAs sent by NCMEC 1,357 • WEAs sent by state/local 13,118 • Total Emergency Alert System (EAS) messages sent 11,920 • EAS, including tests, sent by state/local 1,198 • EAS non-test sent by state/local\n\n[FCC-23-88#0031] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.5):\nwidely-accessible formats that live event codes will be used, but that no emergency is, in fact occurring; state in the test message that the event is only a test; and coordinate the test among EAS Participants, state and local emergency authorities, the relevant state emergency communications committees (SECC), and first responder organizations).\n\n[FCC-HI-2018#0140] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nthe live alert templates.120 Further, while HI-EMA’s alert origination software did display a message to confirm the alert originator’s intent to transmit alerts and tests (a “speedbump”), it did not display that message in a way that enables the alert originator to review their message while they confirm their intent to transmit it, nor did the speedbump clearly specify whether the alert originator is about to send a test or a live alert. HI-EMA’s alert origination software vendor intends to clearly differentiate its test environment from its live alert environment (e.g., color coding and alphabetizing their templates, and adding information to its final confirmation prompt (speedbump) that makes clear whether the alert about to be sent is a live alert). This will make it more difficult for a warning officer to accidentally choose the wrong alert message template, or to transmit a false alert.121 \n\n[FCC-23-88#0142] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.24):\nsend live test messages without having to use the cumbersome waiver process”); USGS Comments at 6; Verizon Comments at 13 (“Expanding ‘live’ state and local government tests, for example, may improve consumer education and alert originator awareness, and in some respects resembles the periodic test alerts used for EAS and tornado sirens”). 131 NYCEM Comments at 8 (“For example, as previously noted, NYCEM often uses a link to the Notify NYC",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the issuer register with statewide authority, there are no active alerts from higher authorities to overreach, and the SAME code matches the requested area. However, the alert is marked status \"Actual\" even though the context is an exercise/drill on a test console. A drill must stay a drill, so the status must be changed before this goes anywhere.",
+  "objections": [
+   {
+    "issue": "Status does not fit the context. The context is \"EXERCISE / DRILL\" and the console environment is \"test\", but the alert carries status \"Actual\", which makes it actionable by all targeted recipients statewide. This is the same pattern as a test accidentally going out live.",
+    "field": "status",
+    "blocking": true,
+    "fix": "Set status to \"Test\" for a technical test, or \"Exercise\" for designated participants with the exercise identifier in <note>. Also align areaDesc with the requested area description \"State of Florida (broadcast EAS test only)\". If public delivery of a live-coded test is really intended, a person must approve that explicitly; it should not default to Actual.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.status",
+      "quote": "\"status\": \"Actual\""
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Test\" – Technical testing only, all recipients disregard"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Actual\" – Actionable by all targeted recipients"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0149",
+      "quote": "The script and content for actual emergency alerts versus test alerts should be clearly distinguishable."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4422,
+  "output_tokens": 1189,
+  "at": "2026-11-08T20:47:24Z"
+ }
+}

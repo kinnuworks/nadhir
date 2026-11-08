@@ -1,0 +1,143 @@
+{
+ "key": "ae275a854fbff09d00944240f65e7a420b40e3d95eb327c160aa07d20aed0ff1",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_advice\": null,\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"NEW: This is an emergency message from the Los Angeles County Fire Department. An EVACUATION WARNING has been issued in your area. Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\",\n   \"characters\": 317,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 4\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page length GSM-7 93 characters', 'first page hazard action WEA message truncation', 'FCC report Los Angeles evacuation warning alert error'):\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[LA-2025#0020] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.9):\nAs the County worked with Genasys and federal partners to understand what caused the error, the next day on January 10, 2025, Los Angeles County temporarily switched from sending messages via the Genasys system to having the California Governor's Office of Emergency Services (CalOES) use their emergency alert and warning system, OnSolve 17 CodeRed, to send local alert notifications for the County. Los Angeles County moved 18 back to using Genasys on January 30, 2025. 3. Los Angeles County could improve the wording of alert messages.\n\n[LA-2025#0022] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.9):\n(Federal Emergency Management Agency [FEMA]) Los Angeles County may have avoided damage to people outside the impacted Kenneth Fire area had their message included more information on the location or the timing of the danger. This additional information is also important for people who have older phones, where geotargeting is not precise on those devices. A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,” instead of “An EVACUATION WARNING has been issued for your area.” In questioning, Los Angeles County states, “The County has and currently does identify specific locations and neighborhoods in its emergency alerts,” 20 however, this specific case raises an area for improvement.\n\n[LA-2025#0011] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nLos Angeles Office of Emergency Management Wireless Emergency Alert 9. March 27, 2025, Response by Genasys Inc Chief Executive Officer to February 3, 2025, Congressional oversight letter. 10. https://www.cnn.com/2025/01/16/us/evacuation-warnings-vulnerabilities-la-fires/index.html 11. https://www.latimes.com/california/story/2025-01-09/emergency-alert-text-message-los-angeles-fire\n\n[FCC-16-127#0809] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.143):\nKristin Card Kristin Card Krown Manufacturing Krown Manufacturing Lew Pettit Lew Pettit Lloyd Colston Lloyd Colston Lloyd Ewing Lloyd Ewing Los Angeles Emergency Management Department Los Angeles EMD Mark Maxwell",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The English text (317 GSM-7 characters, 4 pages) is deliverable and the page count is correct at 93 characters per page. However, page 1 does not carry the hazard and the action. The first 93 characters are mostly preamble (\"NEW: This is an emergency message from the Los Angeles County Fire Department.\") and end mid-phrase at \"An EVACUATION\". The action (\"be ready to evacuate\") only appears on page 2. The drafter can fix this by reordering the text.",
+  "objections": [
+   {
+    "issue": "Page 1 lacks the hazard and the action. At 93 GSM-7 characters per page, page 1 holds only the \"NEW:\" tag, the sender preamble and the cut-off words \"An EVACUATION\". The full warning and the instruction \"be ready to evacuate\" fall on page 2, so a reader who sees only page 1 learns neither the hazard nor what to do.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Lead with the hazard and action so both fit within the first 93 characters, then put the source and details after. Example opening: \"EVACUATION WARNING (wildfire) from LA County Fire: Be ready to evacuate now. Gather family, pets, supplies.\" Then add \"More info: alertla.org\". Drop or shorten the \"NEW: This is an emergency message from...\" preamble, which uses most of page 1. Recount characters and pages after the edit.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TS23038#0053",
+      "quote": "The Message Information Page then consists of 93 user characters."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "NEW: This is an emergency message from the Los Angeles County Fire Department."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Remain vigilant of any threats and be ready to evacuate."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "No clause shown sets an explicit rule that the hazard and action must appear on the first cell broadcast page. The objection rests on the 93-character page length plus my mandate rather than on a quoted first-page requirement.",
+    "searched_for": "first page hazard action WEA message truncation"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5734,
+  "output_tokens": 1331,
+  "at": "2026-11-08T20:48:35Z"
+ }
+}

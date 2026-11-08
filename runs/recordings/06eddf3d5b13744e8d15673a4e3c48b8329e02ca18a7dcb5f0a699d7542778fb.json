@@ -1,0 +1,114 @@
+{
+ "key": "06eddf3d5b13744e8d15673a4e3c48b8329e02ca18a7dcb5f0a699d7542778fb",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Scheduled monthly test of the Emergency Alert System for Florida TV and radio broadcasters. No hazard.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Test\",\n  \"severity\": \"unknown\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"unknown\",\n  \"headline\": \"TEST\",\n  \"description\": \"This is a TEST of the Emergency Alert System. No action is required.\",\n  \"instruction\": \"No action is required.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Actual versus Test Exercise', 'FCC report EAS test sent as actual alert', 'CAP severity certainty unknown test message'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[IPAWS-PROFILE#0040] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nTable 1: CAP v1.2 IPAWS Profile Specification and Profile Note CAP Element Profile Specification (Normative) Profile Note (Non-Normative) Elements in boldface are REQUIRED. (Subcommittee) (Subcommittee) status A value of \"Actual\" SHALL be used for messages intended for dissemination to the public, including test messages intended for delivery to the public.\n\n[IPAWS-OPEN#0024] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.21):\n1,324 • WEAs sent by NCMEC 1,357 • WEAs sent by state/local 13,118 • Total Emergency Alert System (EAS) messages sent 11,920 • EAS, including tests, sent by state/local 1,198 • EAS non-test sent by state/local\n\n[FCC-HI-2018#0036] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.8):\nrequired weekly test, as well as for practice/demonstration warnings);47 CFR § 11.45 (prohibits the transmission of false or deceptive EAS messages other than in an actual National, State or Local Area emergency or authorized test of the EAS); 47 CFR § 10.350(a)(4) (end-to-end testing, i.e., testing of the WEA from the Federal Alert Gateway to\n\n[FCC-HI-2018#0152] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\n Carefully consider the use and frequency of no-notice drills and ensure appropriate supervision of no-notice drills and consistency with internal test protocols.  Consult with SECCs on a regular basis—at least annually—to ensure that EAS procedures, including initiation and cancellation of actual alerts and tests, are mutually understood, agreed upon, and documented in the State EAS Plan.\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAP12#0099] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Future” - Responsive action SHOULD be taken in the near future “Past” - Responsive action is no longer required “Unknown” - Urgency not known severity cap. alertInfo. severity. code The code denoting the severity of the subject event of the alert message (REQUIRED)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The only verified input describes a scheduled monthly EAS test with no hazard. The alert matches it: the event is \"Test\", the headline and description clearly say TEST, and no action is required. Severity and certainty are \"unknown\", which claims no threat and fits a no-hazard test. The alert names no unverified reports, times or places beyond what the input supports. Status \"Actual\" for a public-facing EAS test matches the IPAWS profile rule that \"Actual\" is used for test messages delivered to the public. Status coding is in any case outside my hazard-facts mandate. I have no objection within my mandate.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 3592,
+  "output_tokens": 657,
+  "at": "2026-11-08T21:12:38Z"
+ }
+}

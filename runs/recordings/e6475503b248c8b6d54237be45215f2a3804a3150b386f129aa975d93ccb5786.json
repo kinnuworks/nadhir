@@ -1,0 +1,33 @@
+{
+ "key": "e6475503b248c8b6d54237be45215f2a3804a3150b386f129aa975d93ccb5786",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust and sand in coastal and inland Abu Dhabi until 18:00\",\n  \"description\": \"EXERCISE: Blowing dust in coastal & inland Abu Dhabi until 18:00. Drive with care.\",\n  \"instruction\": \"EXERCISE: Take care, especially when driving on external and open roads. Visibility can drop suddenly.\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار ورمال متطايرة في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00\",\n  \"description\": \"تمرين: غبار متطاير في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00. قُد بحذر.\",\n  \"instruction\": \"تمرين: توخَّ الحذر، خاصة عند القيادة على الطرق الخارجية والمفتوحة. قد تنخفض الرؤية بشكل مفاجئ.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert review machine translation",
+   "exercise test message labeling CAP status",
+   "blowing dust visibility warning wording UAE NCM"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 858,
+  "output_tokens": 59,
+  "at": "2026-11-08T20:53:09Z"
+ }
+}

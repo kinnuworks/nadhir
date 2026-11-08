@@ -1,0 +1,143 @@
+{
+ "key": "0e69b13e3b3ea6a94be8309cd3819600d8cdfba620ef478d948dff599837a528",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 12:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('CAP multilingual info block consistency', 'machine translation emergency alert errors review', 'UAE NCM fog warning Arabic terminology'):\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[IPAWS-OPEN#0034] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.27):\n<Info> block 2 – Spanish (optional) ▪ ▪ ▪ <info> block 2 is duplicate to <info> block 1 except: <CMAMtext> for 90 characters <CMAMlongtext> for 360 characters ▪ IPAWS OPEN pushes to carriers for broadcast\n\n[CAPCP#0155] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #7. Indicate when an update message contains non-substantive content changes):\nIn cases of multiple <info> block CAP messages, when no change has occurred in one or more <info> blocks relative to the previous message, the value of “none” should be used.\n\n[CAPCP#0137] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #4. A <senderName> is strongly recommended):\nNotes: The appropriately translated value for the name should be used in each <info> block of a multilingual alert message. Example: 1) In this case, the issuing authority for the Alert is the same entity that creates the CAP message file\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-23-88#0401] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nare mature enough at this time to be used for WEA translations, but notes that the Federal Emergency Management Agency (FEMA) and others have expressed reservations about the exclusive use of machine translations in emergency situations”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); CTIA, Reply, PS Docket Nos. 15-91 and 15-94, at 11 (rec. Aug. 21, 2023) (CTIA Reply) (“CTIA supports efforts by the Commission to evaluate the potential for machine translation that will guide future determination of any appropriate rules adopting its use”); Federal Emergency Management Agency Integrated Public Alert and Warning System Program Office Comments, PS. Docket Nos. 15-91 and 15-94, at 2 (Jul. 29, 2023) (FEMA Comments) (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”);\n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[IPAWS-PROFILE#0024] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (1.3 Terminology):\n1.3 Terminology The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in [RFC2119].\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Government_Services_Strategy_2021-2025_Arabic#0012] UAE Government Services Strategy 2021-2025 Arabic (p.7):\nوعـــــــد حكومـــــــــــــة دولـــــــة اإلمـــــــــــارات\n\n[FCC-DA-25-12#0018] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.4):\nThe standard statewide evacuation terminology for California cited by the City of Berkeley describes an “Evacuation Warning” as a “[p]otential threat to life and/or property. Those who require additional time to evacuate, and those with pets and livestock should leave now.” 23 In other words, this terminology does not advise the public to solely prepare for an evacuation, but to begin evacuating. This is consistent with our proposed fire warning template, which also advises the public to evacuate the location that is the subject of the alert. By contrast, California’s terminology describes an “Evacuation Order” as “a lawful order to leave now” as “the area is lawfully 16 WEA Multilingual Public Notice, 39 FCC Rcd at 1167-68, para. 6. The Bureau also sought comment on if and how it should develop template alerts for other commonly issued alerts that typically contain specific information, such as AMBER alerts. Id. at 1169-70, para. 8. 17\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0018] API First Guideline (p.11):\nUAE Government API First Guidlines 1.6.Key Terminologies The following are the terminologies used in the standard with its description. Terminology Definitions API Service Provider An organization that exposes data through APIs API Consumer Any organization or person who uses the provider’s API to access or send data",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic description gives the wrong end time for the fog warning: 12:00 instead of 10:00 on Wed 18 Feb. The headline, hazard, area, start time, source and protective instruction otherwise match the English. The Arabic was machine-translated, so a named Arabic-reading person must still approve it after the fix.",
+  "objections": [
+   {
+    "issue": "The end time does not match. The English says the warning runs until 10:00 Wed 18 Feb, but the Arabic says until 12:00 on Wednesday 18 February. This wrongly extends the warning period by two hours.",
+    "field": "arabic.description",
+    "blocking": true,
+    "fix": "Change 'حتى الساعة 12:00 يوم الأربعاء 18 فبراير' to 'حتى الساعة 10:00 يوم الأربعاء 18 فبراير'. Then have a named Arabic-reading reviewer recheck every number and time against the English.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "until 10:00 Wed 18 Feb"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "حتى الساعة 12:00 يوم الأربعاء"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4565,
+  "output_tokens": 770,
+  "at": "2026-11-08T21:06:35Z"
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "key": "4a1a2b204b6d1d67d890a051d0fa855999ceb8f34fd9f11bb737f52378b5db54",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Planned test of the Pan-India Emergency Alert System (cell broadcast) by DoT with NDMA. No hazard.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Test\",\n  \"event\": \"Test of Pan-India Emergency Alert System\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"Emergency alert: Extreme\",\n  \"description\": \"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India. Please ignore this message as no action is required from your end. This message has been sent to test Pan-India Emergency Alert System being implemented by National Disaster Management Authority. It aims to enhance public safety and provide timely alerts during emergencies.\",\n  \"instruction\": \"Please ignore this message as no action is required from your end.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP test status severity values', 'cell broadcast test message Extreme alert level', 'FCC test alert headline public confusion'):\n\n[CAPAU#0061] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.19):\nOPTIONAL Notes: Policy 1) This element MUST be included for all alert messages intended for public distribution. Example: Weather alert for public distribution: <alert> ... <status>Actual</status> 2) Different <info> elements MAY be used to support two separate <area>s that are experiencing different levels of threat, where each <area> uses the same <category>, <event> and <eventCode> values in both <info> elements, but requires different <urgency>/<severity>/<certainty> values.\n\n[CAPAU#0074] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.22):\nProfile Specification Type Profile Specification Normative severity REQUIRED Note: Non-Normative Technical Australian jurisdictions / organisations MAY need to further restrict the severity values for use within their particular jurisdiction / organisation. However consuming systems should accept the entire set of values.\n\n[CAPCP#0082] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nUTF-8 is the recommended encoding for XML documents in order to support a wide range of languages and accented characters. Defined CAP element values, such as those defined for <urgency>, <severity>, <certainty>, <responseType>, etc. are in English only, and are always used as specified by CAP within all <info> blocks. (Defined values are values standardized in advance and are coded values used to initiate actions on the part of auto-processing systems – any use of the these defined values as a display element should be confined to using the value as an index into a language based lookup table to find the appropriate word or words, including English).\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[ETSI-EUALERT#0044] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.10):\nSimilar CMAS message type National Alert EU-Alert level 2 EU-Alert level 3 EU-Alert level 4 Extreme Alert Severe Alert Public Safety Alert EU-Info none EU-Amber Child Abduction Alert EU-Monthly Test\n\n[INDIA-2023#0001] Today's emergency alert: here's what you need to know (nationwide Cell Broadcast sample test) (article body):\nThe notification, titled \"Emergency alert: Extreme,\" was designed to capture immediate attention.\n\n[TS23041#0359] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.74):\n4370 1112 CMAS CBS Message Identifier for CMAS Presidential Level Alerts. EU-Alert Level 1 Message Identifier for the local language as defined in ETSI TS 102 900 [32]. Korean Public Alert System (KPAS) Class 0 Message Identifier for Extreme Emergency alerts in Korean language. Not settable by MMI.\n\n[TS23041#0360] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.74):\n4371 1113 CMAS CBS Message Identifier for CMAS Extreme Alerts with Severity of Extreme, Urgency of Immediate, and Certainty of Observed. EU-Alert Level 2 Message Identifier for the local language as defined in ETSI TS 102 900 [32]. Korean Public Alert System (KPAS) Class 1 Message Identifier for Emergency alerts in Korean language. Settable by MMI For subscriber opt-out requirements, see 3GPP TS 22.268 [28].\n\n[FCC-23-88#0134] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.23):\nKing County, USGS, and Portland Regional Disaster Preparedness Organization state that this can be cumbersome and places an unnecessary administrative burden on alerting authorities and CMS Providers128 By doing away with this paperwork requirement, we enable alerting authorities to more easily access this important tool. 38. Our experience with “Live Code” EAS tests over the years suggests that two WEA Performance and Public Awareness Tests per year is sufficient to meet alerting authorities’ public safety objectives and that the preconditions pursuant to which they are issued are effective at limiting the potential for public confusion. The Commission has found that effective public awareness testing helps\n\n[CAP12#0113] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ntext The text naming the originator of the alert message (OPTIONAL) The human-readable name of the agency or authority issuing this alert. headline cap. alertInfo. headline. text The text headline of the alert message (OPTIONAL)\n\n[FCC-HI-2018#0146] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\n To minimize the potential for confusion, limit employee permissions to create or modify any internal drill message. In addition, refrain from using phrases such as “This is Not a Drill” or “Real World” in test messages. Instead, test messages should be clearly identified as tests\n\n[X1303BIS#0075] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\nsenderName cap.alertInfo.senderName. text The text naming the originator of the alert message (OPTIONAL) The human-readable name of the agency or authority issuing this alert. headline cap.alertInfo.headline.text The text headline of the alert message (OPTIONAL)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The only verified input says this is a planned test with no hazard. The alert marks severity as Extreme, and the headline 'Emergency alert: Extreme' states a severity the input does not support and does not say it is a test. The drafter can fix both.",
+  "objections": [
+   {
+    "issue": "Severity is set to Extreme, which means an extraordinary threat to life or property. The verified input says there is no hazard, so this severity is far higher than the facts support.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Set severity to a value that matches a no-hazard test, such as \"Minor\" (minimal to no known threat) or \"Unknown\". If the broadcast channel needs a particular alert class, a person should decide that separately and it should not be stated as the hazard severity.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "\"Extreme\" – Extraordinary threat to life or property"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "No hazard."
+     },
+     {
+      "kind": "view",
+      "ref": "severity",
+      "quote": "Extreme"
+     }
+    ]
+   },
+   {
+    "issue": "The headline states an emergency of Extreme severity, which the input does not support. It also does not identify the message as a test, so people who read only the headline may be misled.",
+    "field": "headline",
+    "blocking": true,
+    "fix": "Rewrite the headline so it clearly identifies a test and claims no severity, for example \"TEST: Pan-India Emergency Alert System – no action required\".",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "Emergency alert: Extreme"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0146",
+      "quote": "test messages should be clearly identified as tests"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "Planned test of the Pan-India Emergency Alert System"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 3872,
+  "output_tokens": 949,
+  "at": "2026-11-08T20:48:04Z"
+ }
+}

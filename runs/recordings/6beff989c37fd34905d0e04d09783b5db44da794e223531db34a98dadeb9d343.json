@@ -1,0 +1,179 @@
+{
+ "key": "6beff989c37fd34905d0e04d09783b5db44da794e223531db34a98dadeb9d343",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Emergency Management Ontario PEOC\": {\n   \"name\": \"Emergency Management Ontario PEOC\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"None intended (training-system practice alert). The template text names people within ten kilometres of the Pickering Nuclear Generating Station.\",\n  \"codes\": [],\n  \"drawn_for_event\": \"pickering-2020\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Emergency Management Ontario PEOC\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"CBRNE\"\n  ],\n  \"event\": \"Nuclear power plant incident\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"unknown\",\n  \"codes\": [],\n  \"polygons\": [],\n  \"headline\": \"Incident at the Pickering Nuclear Generating Station\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise versus Actual drill', 'Pickering nuclear false alert training error', 'test message sent live console safeguards'):\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0085] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nFurthermore, in this case, the midnight shift supervisor deviated from the abovereferenced procedure by creating a new script that blended elements from 1) the standard drill initiation message script (i.e., the ballistic missile checklist language that used the phrase “real world,” and preceded and followed the message with “exercise, exercise, exercise”) and 2) the EAS message for alerting the public to an actual missile attack (a message that used the phrase “This is not a drill.”).76 71 One emergency management agency the Bureau interviewed acknowledged that if a warning officer conducted a\n\n[FCC-HI-2018#0092] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nsupervisor deviated from the script for initiating an internal drill. See Press Conference, Missile Alarm Live Stream, at 53:42, http://dod.hawaii.gov/hiema/false-alarm-incidents-internal-investigation-complete-release-of-results-andactions/ (last visited Mar. 28, 2018). The investigator also noted that the midnight shift supervisor “combined” elements from two messages to initiate the internal drill (1) one message includes the phrase “real world” and (2) a second message includes “This is not a drill.” Id. at 27:16. The investigator noted that supervisors had the flexibility to create drill initiation messages. Id. at 53:42. The investigator observed that the phrase “exercise, exercise, exercise” preceded and followed the drill initiation message transmitted to the State Warning Point. Id. In HI-EMA’s audio recording of the drill initiation message preceding the false alert, the phrase “exercise, exercise, exercise” can be heard at the beginning of the recording, followed by a high-pitch sound, then the phrase “This is not a drill,” then a second high-pitch sound, and concluding with the phrase “exercise, exercise, exercise.” See HIEMA Audio File, supra note 15. 77 HI-EMA Report at 8.\n\n[FCC-HI-2018#0053] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\n8:05 a.m. HI-EMA’s midnight shift supervisor begins a no-notice ballistic missile preparedness drill with day shift officers by placing a call from a secure phone elsewhere in HIEMA to the State Warning Point. The recording that the midnight shift supervisor plays over the phone contains the text of an EAS message for a live ballistic missile alert, including the language, “this is not a drill,” instead of the language used in HIEMA’s standard operating procedure for this drill. Although the midnight shift officer’s recorded voice reads, “Exercise, Exercise, Exercise” at the beginning and end of the drill, using the phrase “this is not a drill” was a deviation from the drill procedure. In the midnight shift supervisor’s analysis, the deviation is not material\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[FCC-HI-2018#0099] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.18):\nnumbering, and unique geographic identification codes for internal tests. These safeguards make it more difficult for users to send live alerts when they intend to test. In other respects, the functionality and safeguards offered by HI-EMA’s alert origination software were in line with safeguards offered by other alert origination software.87 28. After HI-EMA transmitted the false alert, HI-EMA compounded the error by delaying to publicly and authoritatively correct the misinformation.—HI-EMA had not anticipated the possibility of issuing a false alert and, thus had failed to develop standard procedures for how to respond and to communicate the error with the public.88 In hindsight, the most effective method for HI-EMA to follow would have been to notify the public using the same alerting systems (EAS and WEA) that it had used to transmit the false alert. Had the agency prepared a coordinated plan to communicate with the public and key stakeholders, such as the HAB or the Hawaii SECC, HI-EMA could have mitigated the panic that the false alert created in the 38-minute interval between the false alert and correction. C.\n\n[LA-2025#0017] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nAlmost immediately, LACOEM noticed the message was sent county-wide in error, and cancelled the alert 2 minutes and 47 seconds later. 15 Los Angeles Office of Emergency Management Wireless Emergency Alert\n\n[FCC-HI-2018#0150] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\n Require supervisor approval and supervision of internal tests and proficiency training exercises.  Develop and memorialize standard operating procedures for responding to false alerts within their jurisdictions. These standard operating procedures should specify that corrections to false alerts must be issued over the same systems used to issue the false alert, including the EAS and WEA, as well as other available means. They should also include procedures for notifying the media about false alerts.\n\n[FCC-HI-2018#0140] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nthe live alert templates.120 Further, while HI-EMA’s alert origination software did display a message to confirm the alert originator’s intent to transmit alerts and tests (a “speedbump”), it did not display that message in a way that enables the alert originator to review their message while they confirm their intent to transmit it, nor did the speedbump clearly specify whether the alert originator is about to send a test or a live alert. HI-EMA’s alert origination software vendor intends to clearly differentiate its test environment from its live alert environment (e.g., color coding and alphabetizing their templates, and adding information to its final confirmation prompt (speedbump) that makes clear whether the alert about to be sent is a live alert). This will make it more difficult for a warning officer to accidentally choose the wrong alert message template, or to transmit a false alert.121 \n\n[FCC-HI-2018#0136] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\n Fourth, HI-EMA has requested that its alert origination software vendor integrate improvements into the next iteration of its software to help safeguard against false alerts. The January 13, 2018, iteration of HI-EMA’s alert origination software did not clearly differentiate the test environment from the live alert environment or the test templates from\n\n[INDIA-2023#0002] Today's emergency alert: here's what you need to know (nationwide Cell Broadcast sample test) (article body, quoted message text):\n\"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India.\n\n[CAP12#0220] Common Alerting Protocol Version 1.2 (4.3 Conformance as a CAP V1.2 Message Producer):\n– a local test environment has been set up, and the application under test (which claims to be a conforming CAP V1.2 Message Producer) has the ability to produce a CAP V1.2 Message and write it to a file in a directory in response to a request coming from the testing tool; the testing tool has sent many requests to the application under test and is now verifying all the files present in the directory, which is expected to contain only conforming CAP V1.2 Messages;",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "This is a drill being prepared on a live console, but the alert's status is 'Actual' and its scope is 'Public'. No public area was requested, and the alert's area is 'unknown'. Sent as is, this would be a false public nuclear alert. The status must become Exercise, nothing should target the public, and a supervisor must decide before anything goes out on the live system.",
+  "objections": [
+   {
+    "issue": "The context is a drill, but the alert status is 'Actual'. A drill must stay a drill, and this would go out as a real nuclear incident alert.",
+    "field": "status",
+    "blocking": true,
+    "fix": "Set status to 'Exercise' (or 'Test') so it matches the drill context, and make sure the headline and text cannot be read as a real incident.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.status",
+      "quote": "Actual"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0099",
+      "quote": "These safeguards make it more difficult for users to send live alerts when they intend to test."
+     }
+    ]
+   },
+   {
+    "issue": "No target area was requested for this training alert, yet the alert has public scope and an 'unknown' area. The template text names the Pickering 10 km zone, which risks reaching the real public.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Do not target any public area. Limit scope to the training audience, or use a designated test area or code with no public distribution.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "None intended (training-system practice alert)"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "unknown"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.scope",
+      "quote": "Public"
+     }
+    ]
+   },
+   {
+    "issue": "A practice alert is being prepared on the live console rather than a training environment. A person must decide whether to stop it and move it to the training system.",
+    "field": "console_environment",
+    "blocking": true,
+    "fix": "A supervisor should halt sending from the live console and approve or supervise the exercise in a separate training environment.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "console_environment",
+      "quote": "live"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0150",
+      "quote": "Require supervisor approval and supervision of internal tests and proficiency training exercises."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4689,
+  "output_tokens": 1384,
+  "at": "2026-11-08T20:48:52Z"
+ }
+}

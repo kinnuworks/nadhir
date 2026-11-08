@@ -1,0 +1,117 @@
+id: florida-test-2023
+heldout: true
+title: "Florida monthly broadcast test delivered to phones statewide at 4:45 a.m."
+date: "2023-04-20"
+jurisdiction: "US, State of Florida (Florida Division of Emergency Management, FDEM)"
+sources: [FL-2023-FDEM, FL-2023-WGCU]
+
+summary: >-
+  The monthly Emergency Alert System test, meant for TV and radio broadcasters and scheduled early in the morning
+  to limit disruption, was delivered over Wireless Emergency Alerts to phones across Florida at about 4:45 a.m.
+  FDEM said its alerting vendor sent the wrong technical specifications, which pushed the test over WEA. The
+  vendor said human errors in breach of routine precautionary steps caused it. The state ended the vendor's contract.
+
+timeline:
+  - {t: "2023-04-20T04:45-04:00", event: "Phones across Florida receive 'This is a TEST of the Emergency Alert System. No action is required.' (the Florida Association of Broadcasters gives 4:50 a.m.).", source: FL-2023-WGCU}
+  - {t: "2023-04-20", event: "FDEM apologises on Twitter: the alert was supposed to be on TV.", source: FL-2023-WGCU}
+  - {t: "2023-04-20", event: "FDEM publishes a statement saying Everbridge sent the wrong technical specifications, which pushed the alert over WEA.", source: FL-2023-FDEM}
+  - {t: "2023-04-24", event: "WGCU publishes a letter from Everbridge's CEO attributing the alert to human errors and saying a live message went to phones instead of only to broadcasters.", source: FL-2023-WGCU}
+
+inputs:
+  event_text: "Scheduled monthly test of the Emergency Alert System for Florida TV and radio broadcasters. No hazard."
+  event_text_basis: "FDEM statement and FAB statement quoted by WGCU; the actual test request is not public."
+  issuer: "Florida Division of Emergency Management (State Watch Office), using Everbridge alerting software"
+  environment: test
+  environment_basis: "FDEM: the test 'was supposed to be a test of televised emergency alerts'; FAB: sent monthly 'to only TV and radio broadcasters'."
+  intended_status: Test
+  intended_status_basis: "A required monthly EAS test to broadcasters; no public phone delivery was intended."
+  requested_area:
+    areaDesc: "State of Florida (broadcast EAS test only)"
+    geocodes: [{valueName: SAME, value: "012000"}]
+    geocodes_label: "statewide SAME code is our assumption; the request's area encoding is not public"
+
+real_message:
+  text_verbatim: "This is a TEST of the Emergency Alert System. No action is required."
+  text_source_note: "As quoted by WGCU (WGCU 20 and 24 April 2023). No screenshot from an official source was fetched."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Florida Division of Emergency Management"
+  category: Other
+  event: "Test"
+  urgency: Unknown
+  severity: Unknown
+  certainty: Unknown
+  language: en-US
+  headline: "TEST"
+  description: "This is a TEST of the Emergency Alert System. No action is required."
+  instruction: "No action is required."
+  areaDesc: "State of Florida"
+  area:
+    areaDesc: "State of Florida"
+    geocodes: [{valueName: SAME, value: "012000"}]
+  wea_channel: true
+  wea_channel_basis: "FDEM: the specifications 'pushed the alert over the Wireless Emergency Alert system (cellphones)'."
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [status, category, event, urgency, severity, certainty, headline, instruction, sender, area.geocodes, areaDesc]
+  reconstruction_note: >-
+    Only the text, the approximate time and the fact that it reached phones statewide over WEA are sourced. The
+    vendor's letter calls it "a live message"; status Actual is our inference from that and from WEA delivery to
+    the general public. The original CAP XML, including status and any IPAWS channel parameters, is not public.
+
+corrections: []
+corrections_note: "No corrective WEA message was found. FDEM corrected on Twitter and its website."
+
+real_outcome:
+  text: >-
+    A test message meant for broadcasters woke people across Florida at about 4:45 a.m. Everbridge's CEO wrote that
+    it went to "millions of residents’ cellphones". FDEM said it would correct the error; the state ended its
+    contract with Everbridge (press reports; not fetched as an official document).
+  source: FL-2023-WGCU
+
+official_finding:
+  body: "Florida Division of Emergency Management (FDEM)"
+  document: "FDEM news item of 20 April 2023, statement in response to the accidental alert"
+  finding_status: official-verbatim
+  quote: "Everbridge sent the wrong technical specifications for this alert – which ultimately pushed the alert over the Wireless Emergency Alert system (cellphones)."
+  source: FL-2023-FDEM
+  further_quotes:
+    - rule: R2
+      quote: "This morning's test was supposed to be a test of televised emergency alerts"
+      locator: "FDEM statement, para. 1"
+    - rule: R2
+      quote: "a live message was inadvertently sent to millions of residents’ cellphones, instead of a notification sent only to Florida broadcasters."
+      locator: "Everbridge CEO letter, as published by WGCU (FL-2023-WGCU); vendor statement, not an official finding"
+  scope_note: >-
+    A same-day agency statement, not an investigation report. No FCC or state investigation report was found. The
+    vendor disputes the attribution: its CEO wrote that "human errors caused the alert to go out" and that "our
+    system delivered the message as designed"; the Florida Association of Broadcasters said FDEM's Watch Office
+    "sent out the incorrect test".
+
+expected_rules: [R2]
+expected_rules_basis: >-
+  R2 (status matches reality; no test sent live): the inputs are a Test meant for broadcasters, and what went out
+  was delivered to the public over WEA, which the vendor calls a live message. This holds only if the sent CAP
+  carried status Actual (our inference). If the message carried status Test and the fault was only in channel
+  routing (EAS versus WEA), no rule in the table encodes it.
+
+unknowns:
+  - "The CAP status, event code and IPAWS channel settings of the message actually sent."
+  - "Who selected the wrong settings: FDEM blames the vendor's specifications; the vendor and the broadcasters' association point to the state Watch Office."
+  - "Whether any approval step existed for the monthly test."
+  - "Exact send time: FDEM says 4:45 a.m., FAB says 4:50 a.m."
+
+framing_note: >-
+  The cause is disputed between the state agency and its vendor, and no independent investigation was found. This
+  file uses the agency's own statement as the finding and records the vendor's account alongside it. The incident
+  is about a test reaching the wrong channel, not about any hazard; it tests whether the gate's test/live check
+  catches a test that would go out as a public phone alert.
+
+source_urls:
+  FL-2023-FDEM: "https://www.floridadisaster.org/news-media/news/20230420florida-division-of-emergency-management-issues-updates-on-emergency-response-in-florida/"
+  FL-2023-WGCU: "https://www.wgcu.org/government-politics/2023-04-24/official-explains-why-florida-was-awakened-thursday-by-alert"
+source_hashes:
+  FL-2023-FDEM: {sha256: "87cec4824bfa6df4f3e8a951356429321320fa9a619b69e71ddebc31cf48f79a", fetched: "2026-11-09", note: "The page also carries unrelated Broward County flooding updates; the alert statement is its first item."}
+  FL-2023-WGCU: {sha256: "087bc616896c0b0396bed40fd2773112c189d7597df72005085dd520deee2f1e", fetched: "2026-11-09"}

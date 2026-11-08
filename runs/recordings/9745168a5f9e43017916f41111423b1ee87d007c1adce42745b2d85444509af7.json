@@ -1,0 +1,143 @@
+{
+ "key": "9745168a5f9e43017916f41111423b1ee87d007c1adce42745b2d85444509af7",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-drill\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Exercise\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland areas until 18:00\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise scope Public live environment', 'false alert drill sent to public FCC', 'exercise test message cell broadcast handling'):\n\n[CAPCP#0076] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nNotes: Processing of “Ack” or “Error” messages is optional, and systems may impose their own associated rules. Example: (for public distribution) <alert .. > ... <status>Actual</status> <msgType>Alert</msgType> <source>Environment Canada</source> <scope>Public</scope>\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[CAPAU#0049] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<info> ... </info> </alert> Example B. Message that is not intended for public distribution: <alert> <status>Actual</status> <msgType>Error</msgType> <source>example@bom.gov.au</source> <scope>Private</scope> ... <addresses>insert valid recipient addresses </addresses> edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[FCC-HI-2018#0082] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.14):\nhttps://www.nbcnews.com/nightly-news/video/man-who-sent-hawaii-false-missile-alert-speaks-out1152660547656. 70 The midnight shift supervisor specifically decided to drill at shift change, reasoning that it would be most difficult for warning officers to properly respond to a call from PACOM announcing an incoming ballistic missile during a shift change. Drilling at shift change is not standard procedure for HI-EMA.\n\n[FCC-HI-2018#0047] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.10):\nThe ballistic missile alert checklist specifies, however, that the transmission is a test message. Under the drill procedures, the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions. 48 A no-notice drill is a preparedness exercise that begins without prior warning to the warning officer initiating the\n\n[FCC-HI-2018#0057] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\nTime (HST) Event because the phrase “Exercise, Exercise, Exercise” indicates that the event is only a drill. 8:07 a.m. While the other warning officers understand that this is a drill, the warning officer at the alert origination terminal believes that this is a real emergency, not a drill.54 The HI-EMA day shift warning officer at the alert origination terminal responds to this call by transmitting a live incoming ballistic missile alert to the State of Hawaii.55 In doing so, the day shift warning officer selects the template for a live alert from the drop-down menu. When the alert origination software prompts the warning officer to confirm whether the officer wants to send the message, the prompt reads, “Are you sure that you want to send this Alert?” The prompt contains the same message, irrespective of whether the message is a test or an alert, and it does not offer the officer an opportunity to review the message text that would be sent. Members of the public begin to receive the false alert over EAS and WEA.\n\n[FCC-HI-2018#0081] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.14):\nThe HI-EMA Report observed that State Warning Point staff held concerns about this employee’s performance for over ten years. The lead investigator noted that this employee had previously confused real-life events and drills “on at least two separate occasions.” Id. at 10. 69 See NBC News, Man Who Sent Hawaii False Alert Speaks Out, (Feb. 2, 2018),\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[INDIA-2023#0002] Today's emergency alert: here's what you need to know (nationwide Cell Broadcast sample test) (article body, quoted message text):\n\"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India.\n\n[ETSI-EUALERT#0045] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.10):\nRequired Monthly Test EU-Test State/Local Test EU-Exercise Exercise EU-Reserved Reserved for CMSP use EU-Geo-fencing trigger message Geo-fencing trigger Comment Broadcasting of level 1 alerts where opt-out is not allowed. Broadcasting of level 2 alerts where opt-out is allowed. Broadcasting of level 3 alerts where opt-out is allowed. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Allocated for Amber (child abduction) alerts. Users should be able to opt-in to these messages. Allocated for monthly test messages that may or may not involve the general public and may or may not require special UEs. Allocated for messages used for proficiency training and public outreach. Users may be able to opt-in to these messages. Allocated for use during exercises. Its use is for further study. Reserved for operator specific use. In EU-Alert this MI is reserved for national government requests to operators. Allocated for geo-fencing trigger message for DeviceBased Geo-Fencing.\n\n[TS23041#0066] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nTo work efficiently on the interfaces, the BSC/RNC - which is normally controlling more than one cell of a broadcast area - should be used as a concentrator as far as CBS message handling is concerned. Hence, the CBC should work on lists of cells when issuing CB related requests towards the BSC/RNC.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The sender is registered at level 1 with all areas and categories. The area matches the area drawn for uae-dust-drill. Status 'Exercise' fits the drill context. There are no active higher-authority alerts and no correction references to check. However, this drill message has scope 'Public' and is set up on a live console. A person must confirm that the exercise is meant to reach the public and will not be delivered to consumer devices as if it were a real alert.",
+  "objections": [
+   {
+    "issue": "An exercise-status alert with Public scope is being prepared on a live console. That could deliver the drill to public handsets. Drill guidance says test or drill traffic should not reach consumer phones unless this is deliberately intended. Whether public delivery of this drill is authorised is a decision for a person, not the drafter.",
+    "field": "scope",
+    "blocking": true,
+    "fix": "A responsible official should confirm in writing either that public distribution of this exercise is intended, or that scope and routing must be restricted (for example, scope Restricted/Private or a non-live/exercise channel) before release.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "console_environment",
+      "quote": "live"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.scope",
+      "quote": "Public"
+     },
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0047",
+      "quote": "it should never be transmitted to consumer phones, radios, or televisions"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4746,
+  "output_tokens": 1035,
+  "at": "2026-11-08T21:11:03Z"
+ }
+}

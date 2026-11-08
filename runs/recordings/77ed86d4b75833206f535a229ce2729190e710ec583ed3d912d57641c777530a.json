@@ -1,0 +1,138 @@
+{
+ "key": "77ed86d4b75833206f535a229ce2729190e710ec583ed3d912d57641c777530a",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): Coastal and inland areas, Abu Dhabi (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-16, https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced] ABU DHABI, 16th February, 2026 (WAM) -- The National Centre of Meteorology (NCM) warned today of active to occasionally strong northwesterly winds, raising dust and sand and reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas. The Centre stated in a statement issued today that the weather conditions began at 10:30 and will continue until 18:00, urging the public to exercise caution, particularly when driving on external and open roads, due to the risk of sudden drops in visibility caused by blowing dust.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Network operator and regulator reviewer objects (phone_text): The message length exceeds the UAE one-page limit in both languages. English is 204 GSM-7 characters across 3 pages. Arabic is 203 UCS-2 characters across 5 pages. Fix: Shorten each language to fit one cell broadcast page. That is 82 octets: about 93 GSM-7 characters for English and about 41 UCS-2 characters for Arabic. Keep only the hazard, the area, the protective action and the end time. Drop descriptive detail such as wind direction and visibility figures. Keep 'EXERCISE' / 'تمرين' at the start. [cites Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040), requirement 3] | Network operator and regulator reviewer objects (phone_text): Neither language contains a protective action. The text describes the dust and sand hazard and how long it lasts, but never tells recipients what to do. The first page therefore carries the hazard without the action. Fix: Add a short protective action in both languages within the first page. For example: 'Drive with care, stay indoors if possible' / 'قد بحذر وابقَ في الداخل'. Make room for it by cutting descriptive wording, and keep both language versions equivalent. [cites Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates, p.21]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Blowing dust and sand / reduced visibility (EXERCISE)",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "headline": "EXERCISE: Blowing dust and sand in coastal and inland Abu Dhabi until 18:00",
+  "description": "EXERCISE: Blowing dust in coastal & inland Abu Dhabi until 18:00. Drive with care.",
+  "instruction": "EXERCISE: Take care, especially when driving on external and open roads. Visibility can drop suddenly.",
+  "left_out": [
+   "No unverified inputs were received, so none were excluded on that basis.",
+   "Wind direction (northwesterly) and the visibility figure (under 3,000 metres) were dropped from the phone text, as the regulator reviewer asked, so it fits one cell broadcast page (82 of about 93 GSM-7 characters).",
+   "The start time (10:30) was dropped from the phone text for length. Only the end time is kept.",
+   "The reviewer's example action 'stay indoors if possible' was not used. The NCM statement only urges caution, especially when driving on open roads, so the action follows that.",
+   "The issuer URL (https://alerts.example.ae) was left out of the phone text to stay within one page.",
+   "No Arabic version was drafted, because this task asks for English only."
+  ],
+  "note_for_reviewer": "The phone text is 82 GSM-7 characters and starts with EXERCISE. Please confirm the length on your encoder, and confirm that the operator-chosen area 'Abu Dhabi' fairly matches NCM's 'some coastal and inland areas'. An Arabic version of about 41 characters, starting with 'تمرين', still needs to be drafted and checked separately to keep the two languages equivalent."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1968,
+  "output_tokens": 1255,
+  "at": "2026-11-08T20:53:02Z"
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "key": "5c81b915d27cece8f73149f390cad7c20778a18b5e3676d54bc089b76b42c845",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland Abu Dhabi until 18:00\",\n  \"description\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, reducing visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi. Until 18:00 today, 16 Feb 2026. Source: NCM.\",\n  \"instruction\": \"Take care, especially when driving on external and open roads, as visibility can drop suddenly. More: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير يقلل مدى الرؤية في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00\",\n  \"description\": \"تمرين - رياح شمالية غربية نشطة إلى قوية أحياناً تثير الغبار والرمال، مما يقلل مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية من أبوظبي. حتى الساعة 18:00 اليوم، 16 فبراير 2026. المصدر: NCM.\",\n  \"instruction\": \"توخوا الحذر، خاصة عند القيادة على الطرق الخارجية والمفتوحة، إذ قد ينخفض مدى الرؤية فجأة. للمزيد: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert review requirements', 'machine translation public warning human verification', 'exercise test alert message labeling'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0038] DotEmarat Policy EN (p.12):\n11. Eligibility Requirements Restricted Zones There are no . (dotEmarat) . (dotEmarat) Arabic ccTLD Restricted Zones at this time. 12. Policy review The .aeDA may update this Policy at any time in its complete discretion, including for the purpose of clarification.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0005] DotEmarat Policy EN (p.2):\n8.6. . (dotEmarat) Domain Name Variants 6 8.7. Reserved Names List 7 9. Eligibility Requirements 7 10. Eligibility Requirements for 11. Eligibility Requirements 12. Policy review 8 . (dotEmarat) – Unrestricted Zone 8 . (dotEmarat) Restricted Zones 8 Appendix A – Language Tables 9 Table of Allowed Arabic Letters 9 Table of Allowed Numbers and Special Characters Table 10 Active Variant Table 11 ii\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.\n\n[CAP12#0048] Common Alerting Protocol Version 1.2 (2.1 Design Philosophy):\nMulti-use format – One message schema supports multiple message types (e.g., alert / update / cancellations / acknowledgements / error messages) in various applications (actual / exercise / test / system message).\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[FCC-HI-2018#0047] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.10):\nThe ballistic missile alert checklist specifies, however, that the transmission is a test message. Under the drill procedures, the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions. 48 A no-notice drill is a preparedness exercise that begins without prior warning to the warning officer initiating the\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in every field. The EXERCISE label (تمرين) appears in both the headline and the description. The hazard (blowing dust and sand from active to occasionally strong northwesterly winds) is the same, as are the visibility figure (under 3,000 m) and the places (some coastal and inland areas of Abu Dhabi). The time and date (until 18:00 today, 16 Feb 2026), the source (NCM), the protective action (take care, especially when driving on external and open roads, as visibility can drop suddenly) and the URL all match. I found no difference in meaning. The Arabic was produced by machine translation, so a named person who reads Arabic must still verify and approve it before release.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4797,
+  "output_tokens": 634,
+  "at": "2026-11-08T20:54:33Z"
+ }
+}

@@ -1,0 +1,119 @@
+{
+ "key": "d376c90a2225a2a09c4c26fe259d5293da03f21034d89e6bbac258a781335847",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and sand with reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"NCM: Blowing dust and sand, visibility under 2 km until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender status msgType references rules', 'alert area matches requested event area', 'UAE national emergency alert issuing authority'):\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[CAPCP#0068] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area>\n\n[TS23041#0115] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.28):\nThe list of TAIs is only used by the MME. The MME uses it for selecting which eNodeBs to forward the WriteReplace Warning Request message to. If the Write-Replace Warning Request message is sent to reload cells served by an eNodeB, for which the CBC has previously received a Restart Indication (see clause 15A.1 of TS 23.007 [38]), the CBC shall include the Global eNB ID IE with the identity of this eNodeB in the Write-Replace Warning Request message. The Warning Area List shall be a list of Cell IDs or a list of TAIs or one or more Emergency Area IDs. The Warning Area List is only used by the eNodeB. The eNodeB is configured with the TAI(s) and Cell ID(s) it serves and the Emergency Area ID(s) that it belongs to. The eNodeB checks for any match of the contents of the Warning Area List with these IDs to identify the cells where to distribute the warning message. The Warning Area List is an optional information element. If the Warning Area is absent, it shall be interpreted as \"all cells on\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[EU-ALERT#0590] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system (Article 33 - Procedure for the consistent application of remedies):\nThat period may be extended to allow the national regulatory authority to undertake a public consultation in accordance with Article 23. 7. Where the national regulatory authority decides not to amend or withdraw the draft measure on the basis of the recommendation issued under point (a) of paragraph 5, it shall provide reasons. 8. The national regulatory authority may withdraw the proposed draft measure at any stage of the procedure.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0078] UAE National Air Quality Agenda 2031 (p.12):\nNational Environmental Education and Awareness Strategy The strategy aims to raise awareness of environmental issues (including air quality) in the UAE to achieve more sustainable behaviors which will have a positive impact on improving energy efficiency and making better choices regarding rationalizing energy consumption, consumer purchases, and others. The National Air Quality Agenda will contribute to raising awareness of air quality issues as part of its initiatives.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0140] UAE National Air Quality Agenda 2031 (p.20):\nP4 Improve awareness of indoor air quality issues within government and society Increase awareness and engagement on indoor air quality issues P5 Improve awareness of odor issues within government and society",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within my mandate nothing is wrong. The sender is in the issuer register at level 1, with all areas and all categories. The alert area and codes match the area requested for event uae-dust-2026-03-04. The status is Actual, which fits a real event on the live console. No higher authority has an active alert that this one could overreach. The message is a new Alert, so it needs no references.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The headline starts with 'NCM:', which credits the alert to the National Center of Meteorology. The sender is the demo national authority. This may mismatch the issuer shown to the public, but headline wording may sit outside the issuer check. None of the clauses I was shown deals with crediting the alert to a different body in its text.",
+    "searched_for": "Clauses requiring the issuer named in the alert text to match the registered sender (CAP sender/senderName rules, UAE issuing authority rules)."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5183,
+  "output_tokens": 441,
+  "at": "2026-11-08T20:50:32Z"
+ }
+}

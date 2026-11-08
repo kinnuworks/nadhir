@@ -1,0 +1,180 @@
+{
+ "key": "f780321a319441b34bd8cf40eef600f923d0d7b8abebb22e35d5e957151d8d7a",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"EXTREME DANGER: Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty values definitions', 'fog warning severity level guidance WMO', 'overstated severity alert certainty Observed vs Likely'):\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[CAPCP#0082] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nUTF-8 is the recommended encoding for XML documents in order to support a wide range of languages and accented characters. Defined CAP element values, such as those defined for <urgency>, <severity>, <certainty>, <responseType>, etc. are in English only, and are always used as specified by CAP within all <info> blocks. (Defined values are values standardized in advance and are coded values used to initiate actions on the part of auto-processing systems – any use of the these defined values as a display element should be confined to using the value as an index into a language based lookup table to find the appropriate word or words, including English).\n\n[EW4ALL-P3#0025] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (About EW4All):\nLaunch webinar: Methodological Guidance on Conducting After Event Reviews of Early Warning Systems, 4 August 2026, Online EW4All webinar series (co-organized by UNDRR, WMO, ITU, and IFRC): Accelerating cell broadcast for effective early warning systems in Africa, 24 July 2026, Online | see BDT Director's Tweet\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[CAP12#0054] Common Alerting Protocol Version 1.2 (2.2 Requirements for Design):\n· Provide for multiple message types, such as: – Geographic targeting – Level of urgency – Level of certainty – Level of threat severity · Provide a mechanism for referencing supplemental information (e.g., digital audio or image files, additional text);\n\n[MHEWS-2026#0652] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.148):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) 289. 290. 291. 292. 293. 294. 295. 296. 297. 298. 299. wfp-somalia-anticipatory-action-and-integrated-climate-risk-updated-november-2023 WFP. (2024). WFP’s evidence base on Anticipatory Action 2015-2024. World Food Programme. https://www.wfp.org/publications/ wfps-evidence-base-anticipatory-action-2015-2024 WFP. (2025). 2025 - Anticipatory action in Somalia: Evidence and lessons learned from 2023 and 2024 activations. https://www. wfp.org/publications/2025-anticipatory-action-somalia-evidenc e-and-lessons-learned-2023-and-2024 Wilson, H. J., & Daugherty, P. R. (2018, July 1). Collaborative Intelligence: Humans and AI Are Joining Forces. Harvard Business Review. https://hbr.org/2018/07/ collaborative-intelligence-humans-and-ai-are-joining-forces WMO. (2015). WMO guidelines on multi-hazard impactbased forecast and warning services. World Meteorological Organization. https://library.wmo.int/viewer/54669 WMO. (2018). Manual on flood forecasting and warning. https://www.preventionweb.net/publication/ manual-flood-forecasting-and-warning WMO. (2021a). Guidelines on Multi-hazard Impact-based Forecast and Warning Services Part II: Putting Multi-Hazard IBFWS into Practice. https://reliefweb.int/report/world/wmoguidelines-multi-hazard-impact-based-forecast-and-warningservices-part-ii-putting WMO. (2021b). WMO Guidelines on Multi-hazard Impact-based Forecast and Warning Services. https://library.wmo.int/records/ item/57739-wmo-guidelines-on-multi-hazard-impact-basedforecast-and-warning-services WMO. (2022). Early Warnings for All Executive Action Plan 2023-2027. https://library.wmo.int/records/ item/58209-early-warnings-for-all WMO. (2023a). Guide to Instruments and Methods of Observation (WMO-No. 8). World Meteorological Organization. https://wmo.int/ guide-instruments-and-methods-of-observation-wmo-no-8-0 WMO. (2023b). Overview of the Early Warnings for All: Executive Action Plan 2023–2027. World Meteorological Organization. https://wmo.int/media/magazine-article/overview-of-early-warnings-all-executive-action-plan-2023-2027 WMO. (2024). EW4All National Roadmap Template. World\n\n[CAP12#0102] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: “Observed” – Determined to have occurred or to be ongoing “Likely” - Likely (p > ~50%)\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Hazard, area, times and source match the NCM bulletin. Two fields overstate it. Certainty is set to Observed, but NCM issued a forecast of potential fog from 21:30 tonight. Severity is Extreme with an 'EXTREME DANGER' headline, which the bulletin's wording does not support. The drafter can fix both.",
+  "objections": [
+   {
+    "issue": "Certainty 'Observed' overstates the bulletin. NCM warned of potential fog expected to start from 21:30 tonight; it had not occurred at issue time. The alert's own description says the fog 'may' cut visibility.",
+    "field": "certainty",
+    "blocking": true,
+    "fix": "Change certainty to 'Likely', consistent with an NCM forecast warning of expected deterioration.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "potential fog formation and significantly reduced horizontal visibility"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "visibility is expected to deteriorate"
+     },
+     {
+      "kind": "view",
+      "ref": "alert_english.description",
+      "quote": "may cut visibility to zero at times"
+     }
+    ]
+   },
+   {
+    "issue": "Severity 'Extreme' and the headline 'EXTREME DANGER' go beyond the bulletin. The bulletin is a fog and low-visibility weather warning with driving advice. It does not describe an extraordinary threat to life or property, and the phrase 'EXTREME DANGER' does not appear in it.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Lower severity to 'Severe' (or as the issuing authority confirms). Remove 'EXTREME DANGER:' from the headline, e.g. 'Fog warning: visibility may drop to zero in western regions'.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "\"Extreme\" – Extraordinary threat to life or property"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "\"Severe\" – Significant threat to life or property"
+     },
+     {
+      "kind": "view",
+      "ref": "alert_english.headline",
+      "quote": "EXTREME DANGER: Fog warning: visibility may drop to zero"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "has issued a weather warning regarding potential fog formation"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Urgency 'Immediate' may be overstated, since the hazard window starts at 21:30 tonight; 'Expected' may fit better depending on issue time.",
+    "searched_for": "CAP urgency definitions Immediate vs Expected relative to onset time"
+   },
+   {
+    "concern": "The description asserts 'thick fog' across the western regions. The bulletin mentions thick fog only in its driving advice ('areas experiencing thick fog'), not as the forecast itself.",
+    "searched_for": "guidance on alert wording fidelity to bulletin hazard description"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5016,
+  "output_tokens": 1647,
+  "at": "2026-11-08T21:07:22Z"
+ }
+}

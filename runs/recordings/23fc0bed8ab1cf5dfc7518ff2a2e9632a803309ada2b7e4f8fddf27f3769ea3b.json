@@ -1,0 +1,33 @@
+{
+ "key": "23fc0bed8ab1cf5dfc7518ff2a2e9632a803309ada2b7e4f8fddf27f3769ea3b",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust warning: visibility below 2,000 m in some areas until 19:00 today (4 March 2026)\",\n  \"description\": \"Blowing dust and sand cuts visibility in some UAE areas until 19:00. Drive with caution.\",\n  \"instruction\": \"Exercise caution, especially when driving on open roads, as blowing dust may reduce visibility. More details: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الغبار المتطاير: انخفاض مدى الرؤية إلى أقل من 2,000 م في بعض المناطق حتى الساعة 19:00 اليوم (4 مارس 2026)\",\n  \"description\": \"يؤدي الغبار والرمال المتطايرة إلى انخفاض مدى الرؤية في بعض مناطق الإمارات حتى الساعة 19:00. قودوا بحذر.\",\n  \"instruction\": \"توخّوا الحذر، خاصة عند القيادة على الطرق المفتوحة، إذ قد يؤدي الغبار المتطاير إلى انخفاض مدى الرؤية. لمزيد من التفاصيل: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP multilingual info block language translation",
+   "machine translation emergency alerts accuracy review",
+   "UAE Arabic language public warning policy"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 931,
+  "output_tokens": 53,
+  "at": "2026-11-08T20:51:22Z"
+ }
+}

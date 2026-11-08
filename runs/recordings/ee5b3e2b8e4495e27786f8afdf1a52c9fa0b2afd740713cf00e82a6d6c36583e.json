@@ -1,0 +1,119 @@
+{
+ "key": "ee5b3e2b8e4495e27786f8afdf1a52c9fa0b2afd740713cf00e82a6d6c36583e",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and sand with reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"NCM: Blowing dust and sand, visibility below 2,000 m until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender status msgType references rules', 'UAE emergency alert issuing authority policy', 'CAP area geocode polygon requirements'):\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Accessibility_Policy_English#0023] Accessibility Policy English (p.8):\n• Commit to apply and disseminate Digital Accessibility according to this policy and the decisions issued by the Competent Authority. • Federal entities must periodically provide information to the Competent Authority on the extent to which they have fulfilled the requirements and obligations of the policy as well as the decisions issued by the Competent Authority regarding the application of the policy. • Take all necessary technical, administrative/managerial and organizational/regulatory measures/ procedures to provide Digital Accessibility according to the controls determined by the Competent Authority in this extent. • A federal entity must periodically provide executive action plans, which include initiatives and projects that support the implementation and application of the policy objectives. • A regulatory or supervisory federal entity of a sector must liaise with their own licensed SemiGovernment Entities and Private Sector entities, in order to check adherence to the Digital Accessibility policy. • An entity must provide all financial and non-financial resources needed to implement and apply this policy. • An entity must encourage adoption and change management within the community setting and with partners, by mainstreaming Digital Accessibility in its various forms across all services of SemiGovernment Entities and the Private Sector in UAE, in a manner not contrary to the objectives and clauses of the applicable policy and legislation in the UAE.\n\n[WMO-CAP-JUMPSTART#0010] Common Alerting Protocol (CAP) Jump-Start offer (leaflet) (p.2):\n• Making and validating new CAP alerts; • Disseminating CAP alerts via traditional methods, the Internet, and new media; and, HOW WILL CAP BENEFIT AN ALERTING AUTHORITY? • Considering policy issues as alerting becomes increasingly global, all-media, and all-hazard.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0044] UAE Public Policy Development Guidebook (p.26):\nOutline the Rationale for Issuing the Public Policy\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0046] UAE Public Policy Development Guidebook (p.28):\nReasons for Developing a Public Policy Include Leadership Directives Prioritizing issues identified by senior leadership, with the aim of enhancing programs and services catered to the community. Emergency Situations Addressing events that disrupt societal stability and require swift policy responses, such as emergencies, disasters, and epidemics.\n\n[CAPCP#0119] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\nExample: Element: Use: Optional Type: Technical Value: Description: CAP-CP requires either a CAP-CP <geocode> value, or the use of optional <polygon> and <circle> values. When either or both <polygon> and <circle> values are present in an area block, the combination of these <polygon> and <circle> values alone is considered a more accurate representation of the alert area than the CAP supported combination of all <polygon>, <circle> and <geocode> values together. This distinction allows for CAP originators to support alerting systems that require geocodes and still be able to more accurately represent the threat area with GIS constructs all in one CAP message. E.g. Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[CAPCP#0115] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n(2) MAY contain one or multiple instances of <polygon>, <circle> and/or <geocode>. If multiple <polygon>, <circle> and/or <geocode> elements are included, the location described by this <area> element is the union of those represented by the included elements.\n\n[CAPCP#0122] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n</geocode> ... </area> </info> The <polygon> provided is a more accurate representation of the alert area than is the combination of boundary files associated with the <geocode> values included in the alert.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register at level 1 with all areas and categories. The alert area matches the area drawn for event uae-dust-2026-03-04. Status 'Actual' fits a real event on the live console. msgType 'Alert' needs no references. No active alerts from other authorities could be overreached.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The headline credits the message to 'NCM:', but the sender is the demo national authority. Recipients could be misled about who issued the alert. A person should confirm that this attribution is intended and authorised.",
+    "searched_for": "A clause requiring the issuer named in the alert text to match the registered sender (searched CAP sender rules and UAE issuing authority policy). The CAP-CP clause shown only recommends that <sender> be descriptive."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4744,
+  "output_tokens": 442,
+  "at": "2026-11-08T20:52:23Z"
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "key": "b6c8a8eacc4c9f40cdbd46d6bcdccb3dc3b100405ea2bccbd0ad4ebca03cbad7",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_advice\": null,\n \"phone_text\": [\n  {\n   \"language\": \"ko\",\n   \"text\": \"오늘 6시 32분 서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록 해주시기 바란다\",\n   \"characters\": 78,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 2\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast UCS-2 page length characters', 'first page hazard and action alert message', 'Seoul false alert evacuation message failure'):\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[FCC-16-127#0008] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.3):\n2. First, we adopt rules that will improve Alert Message content in order to help communities communicate clearly and effectively about imminent threats and local crises.3 Specifically, we improve Alert Message content with the following actions: x\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[LA-2025#0022] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.9):\n(Federal Emergency Management Agency [FEMA]) Los Angeles County may have avoided damage to people outside the impacted Kenneth Fire area had their message included more information on the location or the timing of the danger. This additional information is also important for people who have older phones, where geotargeting is not precise on those devices. A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,” instead of “An EVACUATION WARNING has been issued for your area.” In questioning, Los Angeles County states, “The County has and currently does identify specific locations and neighborhoods in its emergency alerts,” 20 however, this specific case raises an area for improvement.\n\n[LA-2025#0010] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nExample of Wireless Emergency Alert (WEA) messages (Federal Emergency Management Agency [FEMA]) On January 9, 2025, LACOEM used Genasys’ system to send multiple alerts throughout the day for different areas of the County impacted by concurrent, active fires. At 3:46 p.m., LACOEM began drafting an evacuation warning message intended for individuals near Calabasas, Agoura Hills, and the West Hills community in the western San Fernando Valley, which were under threat from the Kenneth Fire.9 However, when the message was sent at 3:56 p.m., instead of being delivered to just the intended area under threat from the Kenneth Fire, the message was mistakenly delivered throughout the entire Los Angeles County. Thus, nearly 10 million people across the County received this alert: 10 Further complicating the situation, many residents continued to receive the incorrect evacuation warning throughout the night and the following day, including in the early morning, and some receiving alert messages multiple times.11\n\n[LA-2025#0011] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nLos Angeles Office of Emergency Management Wireless Emergency Alert 9. March 27, 2025, Response by Genasys Inc Chief Executive Officer to February 3, 2025, Congressional oversight letter. 10. https://www.cnn.com/2025/01/16/us/evacuation-warnings-vulnerabilities-la-fires/index.html 11. https://www.latimes.com/california/story/2025-01-09/emergency-alert-text-message-los-angeles-fire",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Korean text (78 UCS-2 characters) needs 2 cell broadcast pages, because a page is 82 octets, or 41 UCS-2 characters. The first page names only an alert level (경계경보) and not the threat itself. The action text is cut at the page boundary, roughly at '대피할 준|비를'. Rewrite the message so it fits on one page with the hazard and the action at the start.",
+  "objections": [
+   {
+    "issue": "The message is 78 characters in UCS-2, so it takes 2 pages. At 82 octets per page, a page holds about 41 UCS-2 characters. That puts the page break in the middle of the action ('대피할 준비를 하시고'), so the action is not complete on page 1. Handsets that show only the first page, or show it first, will display a truncated instruction.",
+    "field": "phone_text[ko].pages",
+    "blocking": true,
+    "fix": "Shorten the Korean text to 41 characters or fewer so it fits on a single UCS-2 page. Cut the courtesy wording ('국민 여러분께서는', '해주시기 바란다') and state the instruction directly, for example a short imperative to evacuate. If a second page is unavoidable, make sure the complete hazard and action finish within the first 41 characters.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TS23041#0068",
+      "quote": "where necessary padding the pages to a length of 82 octets"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text[ko].encoding",
+      "quote": "UCS-2"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text[ko].text",
+      "quote": "국민 여러분께서는 대피할 준비를 하시고"
+     }
+    ]
+   },
+   {
+    "issue": "The first page does not name the hazard. It says only that a warning-level alert (경계경보) was issued for Seoul, not what the threat is (e.g. air raid or missile). Recipients cannot judge the danger or the right protective action from page 1.",
+    "field": "phone_text[ko].text",
+    "blocking": true,
+    "fix": "Put the specific hazard type at the start of the message, before the action. Example structure: '[서울] [위협 유형] 경계경보: 즉시 [대피 행동]'. The issuing authority must supply the actual hazard; do not guess it.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text[ko].text",
+      "quote": "서울지역에 경계경보 발령, 국민 여러분께서는"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The action 'prepare to evacuate' gives no destination or method, such as a nearby shelter or underground facility. On the handset it is not actionable.",
+    "searched_for": "Seoul false alert evacuation message failure; first page hazard and action alert message (no clause on required action specificity returned)"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4820,
+  "output_tokens": 1848,
+  "at": "2026-11-08T20:49:33Z"
+ }
+}

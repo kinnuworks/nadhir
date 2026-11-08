@@ -16,6 +16,14 @@ jobs:
           cp runs/bench/results.json /tmp/committed.json
           python -m nadhir.bench
           python scripts/compare_results.py /tmp/committed.json runs/bench/results.json
+      - name: Replay the fault ablation (rules vs institution agents) and compare
+        env: {NADHIR_LLM: replay}
+        run: |
+          cp runs/bench/ablation.json /tmp/ablation-committed.json
+          python -m nadhir.ablation
+          python scripts/compare_ablation.py /tmp/ablation-committed.json runs/bench/ablation.json
+      - name: Check every knowledge-base quote against the indexed clauses
+        run: python kb/index/verify.py --check
       - name: Verify every audit log's hash chain
         run: python scripts/verify_logs.py runs/bench/logs
       - name: Recount the real-feed audit from the snapshot

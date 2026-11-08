@@ -12,3 +12,4 @@ research
 audit/snapshot
 runs/bench/logs
 **/__pycache__
+kb/cache

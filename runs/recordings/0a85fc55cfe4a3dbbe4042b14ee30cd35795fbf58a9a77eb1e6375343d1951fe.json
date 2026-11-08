@@ -1,0 +1,114 @@
+{
+ "key": "0a85fc55cfe4a3dbbe4042b14ee30cd35795fbf58a9a77eb1e6375343d1951fe",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western UAE until 10:00 Wed 18 Feb\",\n  \"description\": \"Drive with care, keep distance: fog, visibility may hit zero, west UAE until 10am Wed.\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow modified speed limits in thick fog. Follow all traffic safety guidelines.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في غرب الإمارات حتى 10:00 الأربعاء 18 فبراير\",\n  \"description\": \"قُد بحذر وحافظ على المسافة: ضباب، وقد تصل الرؤية إلى الصفر، غرب الإمارات حتى 10 صباحاً الأربعاء.\",\n  \"instruction\": \"قُد بحذر شديد، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة في الضباب الكثيف. اتبع جميع إرشادات السلامة المرورية.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert accuracy review', 'machine translated alert human review requirement', 'fog warning protective action wording'):\n\n[FCC-23-88#0402] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nNOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical lifesaving calls-to-action”); NYPSC Reply at 2; County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul. 29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (“Just last fall it was noted that ‘[m]achine translation tools like Google Translate can be super handy, and Big Tech often promotes them as accurate and accessible tools that’ll break down many intra-linguistic barriers in the modern world. But the truth is that things can go awfully wrong’”); T-Mobile USA, Inc., Reply, PS Docket Nos. 15-91 and 15-94, at 3 (T-Mobile Reply); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message.\n\n[FCC-FR-2025#0045] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57293):\nand prioritize conceptual accuracy, as opposed to parallel lexical choices to the English. Commenters resoundingly support the use of a CDI to conduct ASL translations, and believe that utilizing a CDI will correct these issues because ``CDI's possess the cultural and linguistic competencies essential for delivering and understanding emergency messages effectively.'' Further, a CDI will ``ensure translations are linguistically accurate, conceptually precise, and culturally appropriate.'' We agree with these comments and require Participating CMS Providers to support the implementation of these newly developed templates, which are signed by a CDI to ensure that the translations adhere to ``ASL [l]inguistic and [c]ultural [n]orms.'' Because the new translations address the issues identified by commenters in the record, we adopt them today. ---------------------------------------------------------------------------\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0015] AI Guide v1 (p.6):\n10 2014 Amazon Echo was introduced. Figure 1. Peaks and Troughs in AI Science Over Time With the advent of the programmable computer in the wake of World War II, Alan Turing introduced the Turing test in 1950, which considered the question, “Can machines think?” while working at the University of Manchester. The test involves a human interrogator who converses with a human and a machine that generates human-like language. If the interrogator is unable to distinguish between the human and the machine, then the machine would have passed the test of being able to act like a human. Since then, the Turing test has become an important concept in the 10\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[MHEWS-2026#0059] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.17):\nWhen deployed together across the early warning value cycle, these capabilities can transform fragmented technical systems into integrated, people-centred early warning ecosystems that translate knowledge and data into timely protective action. Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[FCC-DA-25-12#0024] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.5):\nWe find that avoiding confusion about the meaning of a tsunami alert where they are used nationwide outweighs ensuring consistency of the tsunami template with the City of Berkeley’s emergency policies. 11. We decline to adopt generic templates that would warn the public to either evacuate or shelter-in-place, as initially proposed. 28 We agree with commenters that these templates are unlikely to effectively alert the public, risking panic due to their vagueness. As Art Botterell and ATIS note, generic templates instructing the public to take a specific protective action without providing essential details about why the warning was issued would be likely to cause confusion. 29 ATIS cites research indicating that such detail, including a description of the threat giving rise to the need to take protective action, is a key component to an effective warning. 30 Without this context, we agree with ATIS that recipients of generic alerts are less likely to take action and receiving such a warning may make a situation worse. 31 24",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning in all three fields. The hazard (fog, visibility may drop to zero), the place (western UAE) and the time (until 10:00 / 10am Wednesday 18 Feb) are all carried over correctly. The protective actions are complete and unchanged: drive with extreme caution, keep a safe distance from other vehicles, follow modified speed limits in thick fog, and follow traffic safety guidelines. I found no meaning differences. The Arabic was machine-translated, so a named Arabic-reading person at the issuing authority must still review and approve it before release. This review does not replace that sign-off.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5255,
+  "output_tokens": 690,
+  "at": "2026-11-08T20:57:07Z"
+ }
+}

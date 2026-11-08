@@ -2,6 +2,8 @@
 
 Each gap lists what is missing, where we looked, what evidence the prototype produced, a global example, and who could act. KB ids refer to `kb/sources.yaml`. "Not found" means we searched the public texts listed and did not find it. It is not proof that nothing exists internally.
 
+We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `Dataset/UAE`, 62 documents in folders 01 to 06, indexed clause by clause in `kb/index/`) with three fixed queries per gap. `python -m kb.gap_search` reruns it and writes every hit, with its score and text, to `kb/index/gap-search.json`. For every gap the closest UAE clauses are about something else. Examples: for G3 (machine translation of alerts) the best hit is the accessibility policy's sign-language translation; for G1 (who approved an alert) it is a blank business-continuity plan form in NCEMA 7000:2012; for G5 (correcting a false alert) it is the cybercrime law's notices to remove false content online.
+
 ## G1. CAP has no defined field for AI involvement or a named approver (standards, ITU-T SG17)
 
 - **Missing.** CAP 1.2 / ITU-T X.1303bis defines no element for "AI drafted or translated this" or "these roles approved it". `<sender>` names the organisation, `<source>` is free text, and the signature proves which key signed, not who reviewed the text.

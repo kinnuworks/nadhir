@@ -1,0 +1,33 @@
+{
+  "checked": 55,
+  "found": 54,
+  "not_found": [
+    {
+      "id": "TDRA-2017-CB",
+      "quote": "mandates that all mobile phones used by and sold to the general public must be able to receive national warning notifications.",
+      "locator": "secondary_url (Kiwa summary, 31 Oct 2017), p.1"
+    }
+  ],
+  "quote_only": [
+    "CAPXSD",
+    "OPENFEMA",
+    "JALERT-2022",
+    "SEOUL-2023",
+    "BRAZIL-2026",
+    "INDIA-2023",
+    "TDRA-TS040",
+    "UAE-ISSUERS",
+    "UAE-NAT-2026",
+    "UAE-KT-2026",
+    "WMO-REGISTER-RSS",
+    "NWS-AI-TRANSLATION",
+    "NWS-NHC-2026",
+    "NWS-PAUSE",
+    "ON-PICKERING-2020",
+    "FL-2023-FDEM",
+    "FL-2023-WGCU",
+    "TW-2024-MND",
+    "TW-2024-TWN",
+    "TW-2024-CNA"
+  ]
+}

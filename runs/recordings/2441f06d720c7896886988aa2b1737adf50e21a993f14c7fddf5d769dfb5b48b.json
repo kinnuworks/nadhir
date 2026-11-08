@@ -1,0 +1,151 @@
+{
+ "key": "2441f06d720c7896886988aa2b1737adf50e21a993f14c7fddf5d769dfb5b48b",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced\",\n   \"text\": \"ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": false,\n   \"source\": \"illustrative rumour written for this test\",\n   \"text\": \"Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now\"\n  },\n  {\n   \"n\": 3,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology. Dubai and Sharjah are also affected.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency values definitions', 'alert area must match hazard bulletin', 'unverified reports excluded from public warnings'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0527] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nCommenters indicate that the suppression of the Alert Messages on mobile devices that are outside of the target area (geo-fencing) would allow Participating CMS Providers to match the target area specified by alert originators.583 We seek comment on this analysis, including any alternative approaches that Participating CMS Providers could use to match the target area or to implement a device-based approach to geo-targeting. The record indicates that technical issues, such as potential increases in message delivery latency, and reductions in the amount of data available for Alert Message text, can be resolved.584 We seek comment on how Participating CMS Providers will address these issues in conversation with other relevant WEA stakeholders. We seek comment on feasible methods Participating CMS Providers could use to mitigate sources of alert delivery latency that may be implicated by geo-targeting Alert Messages to an area that matches the target area specified by the alert originator.585 Participating CMS Providers and ATIS agree that meeting such an accurate geo-targeting standard could cause message delivery delay due to the device needing to determine its location before displaying the message, and due to network constraints.586 ATIS states that “the only currently readily 580 We anticipate that variations in geo-targeting accuracy due to the size of the target area can be controlled through alert originator best practices.\n\n[FCC-16-127#0523] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\nDiscussion 139. As we emphasize above, more granular geo-targeting remains a critical need for both consumers and emergency managers. Accordingly, we propose to require Participating CMS Providers to match the target area specified by alert originators. We anticipate that this may require Participating CMS Providers to leveraging the location sense of WEA-capable mobile devices on their networks. In the following paragraphs, we seek comment on how we should define “matching” the target area for purposes of any such requirement, as well as on steps that alert initiators and Participating CMS Providers can take to minimize alert delivery latency and maximize the amount of data available for other Alert Message content. We also seek comment on the readiness of innovations that could allow alert initiators to geo-target more flexibly, and to smaller areas. 140.\n\n[FCC-16-127#0698] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.123):\nIf, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates matches the target area, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site that best approximates the target area. 9. Add a new Section 10.490: § 10.490 Multimedia support. Participating CMS Providers are required to support the transmission of hazard symbols and thumbnail-sized photos in Public Safety Messages. 10. Amend introductory paragraph and add a new paragraph (h) of § 10.500 to read as follows: § 10.500 General requirements. WEA mobile device functionality is dependent on the capabilities of a Participating CMS Provider's delivery technologies. Mobile devices are required to perform the following functions: *** (h) Preservation of Alert Messages in a consumer-accessible format and location at least until the Alert Message expires.\n\n[EU-ALERT#1200] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system (ANNEX III - CRITERIA FOR THE DETERMINATION OF WHOLESALE VOICE TERMINATION RATES):\n(e) radio spectrum fees shall be excluded from the mobile voice termination increment; (f) only those wholesale commercial costs shall be included which are directly related to the provision of the wholesale voice termination service to third parties;\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0012] 3.2 TDRA Consumer Protection Regulations v2 (p.5):\n2.1.6. “Consumer” means - any Person, but excluding a Licensee, which person consumes or may consume a Public Telecommunications Service provided by a Licensee, and the term ‘Consumer’ includes Subscriber;\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Data_Protection_Law_Final#0408] Data Protection Law Final (p.48):\n(e) a “business day” means a calendar day, excluding Saturdays, Sundays and official public holidays; (f) a “week” shall mean a calendar week or seven (7) days, whichever is applicable in the circumstances;\n\n[EU-ALERT#0218] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system ((Recast) - (Text with EEA relevance)):\nNational regulatory authorities should value reusable legacy civil engineering assets on the basis of the regulatory accounting value net of the accumulated depreciation at the time of calculation, indexed by an appropriate price index, such as the retail price index, and excluding those assets which are fully depreciated, over a period of not less than 40 years, but still in use.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the NCM bulletin on hazard, times (until 19:00 on 4 March), visibility threshold, Observed certainty and Moderate severity, and it leaves out the unverified dam rumour. However, it names Dubai and Sharjah as affected, which the bulletin does not say. The bulletin only refers to various areas and some coastal and inland areas. It also drops the bulletin's 'at times' qualifier on wind strength.",
+  "objections": [
+   {
+    "issue": "The alert names specific places (Dubai and Sharjah) that the verified NCM bulletin does not mention. The bulletin only says 'various areas across the UAE' and 'some coastal and inland areas'. The source of this addition is unverified, and the alert attributes the claim to NCM through the 'Source: National Centre of Meteorology' line.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Delete 'Dubai and Sharjah are also affected.' If more location detail is wanted, use only the bulletin's wording, e.g. 'affecting various areas across the UAE, with reduced visibility in some coastal and inland areas.'",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Dubai and Sharjah are also affected."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "active northwesterly winds affecting various areas across the UAE"
+     }
+    ]
+   },
+   {
+    "issue": "The bulletin says the winds are 'fresh to strong at times'. The alert drops 'at times' and presents the strong winds as continuous, which slightly overstates the hazard.",
+    "field": "description",
+    "blocking": false,
+    "fix": "Change to 'Fresh to strong northwesterly winds at times are blowing dust and sand...' so the wording matches the bulletin.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Fresh to strong northwesterly winds are blowing dust and sand"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "expected to be fresh to strong at times"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5257,
+  "output_tokens": 1176,
+  "at": "2026-11-08T21:03:45Z"
+ }
+}

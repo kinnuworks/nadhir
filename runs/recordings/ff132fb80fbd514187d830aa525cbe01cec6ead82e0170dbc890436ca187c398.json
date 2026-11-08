@@ -1,0 +1,148 @@
+{
+ "key": "ff132fb80fbd514187d830aa525cbe01cec6ead82e0170dbc890436ca187c398",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-fog-2026-02-17\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"All of the UAE\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"UAE-ALL\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP area geocode must match requested alert area', 'alert area overreach wider than event area', 'FCC false alert wrong geographic area targeting'):\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[CAPCP#0068] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area>\n\n[CAPCP#0098] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #7. Location References are required):\n<info> ... <area> ... <geocode> <valueName>profile:CAP-CP:Location:1.0</valueName> <value>3506</value> </geocode> <geocode> <valueName>PostalCode:2011</valueName> <value>M4R2S8</value> </geocode> ... </area> ... </info> (In the third example, the first <geocode> uses a value from a previous CAP-CP Location References list while the second <geocode> uses a value from a later CAP-CP Location References list)\n\n[X1303BIS#0096] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.26):\nTable 7-4 – \"area\" element and sub-elements Element name Context.class.attribute. representation Definition and (Optionality) geocode cap.alertInfoArea.geocode. code The geographic code delineating the affected area of the alert message (OPTIONAL) Notes or value domain (1) Any geographically-based code to describe a message target area, in the form: <geocode> <valueName>valueName</ valueName> <value>value</value> </geocode>\n\n[CAPAU#0083] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.24):\nProfile Specification Type Profile Specification Normative Non-Normative </eventCode> ... <area> <areaDesc>area 2</areaDesc> ... <geocode>...</geocode> ... </area> </info> </alert> Example C. Not Acceptable – shows two <info> elements with different <event> codes: <alert> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>https://govshare.gov.au /xmlui/handle/10772/6495</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> ... edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[LA-2025#0009] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nLACOEM then takes the targeted areas developed in Genasys’ EVAC software and inputs that targeted geographic area in Genasys’ ALERT software, which is used to send out the alert messages over multiple channels, including IPAWS, to the specified areas of concern. IPAWS WEA messages use standardized formatting, and in 2019, the FCC expanded messages from 90 to 360 characters (for 4G LTE network technology and beyond).\n\n[LA-2025#0013] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.6):\nFrom latimes.com Genasys, Inc., the software company used by the County for mapping targets and issuing Wireless Emergency Alerts (WEA) Los Angeles County The Federal Emergency Management Agency (FEMA) The Federal Communications Commission (FCC) All four entities responded to the oversight letters by the requested 12 deadline of April 1, 2025. KEY FINDINGS 1. The initial false alert is believed to be caused by technology issues with third-party technology vendor Genasys. In sending an alert, an Alert Originator designates a broad geographic area (geocode), like a county, where they have permission to send alerts.Within this geocode, a more precise geographic area (polygon) can be used to target alerts to only the area impacted by the threat. 12. https://robertgarcia.house.gov/media/press-releases/congressman-robert-garcia-leads-los-angeles-county-members-demand-answers\n\n[CAP12#0207] Common Alerting Protocol Version 1.2 (3.5.3 ASN.1 Schema):\n-- A geographic code designating the alert target area -- (see 3.2.4) valueName ValueName, value Value }, altitude REAL OPTIONAL, -- Specific or minimum altitude of the affected area ceiling REAL OPTIONAL\n\n[FCC-16-127#0522] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\n3. FCC 16-127 Matching the Geographic Target Area a. Background 138. While our geo-targeting requirement, as amended above, will improve WEA geotargeting by facilitating the delivery of Alert Messages to a more granular polygon level, the limitations of cell broadcast-based geo-targeting may result in continued over-alerting.573 According to CSRIC IV, the “ideal case” from an alert originator perspective would be where “all WEA-enabled mobile devices in the geographic area affected by an emergency event would receive the WEA Alert Message broadcast, and no mobile devices outside the defined alert area would receive those particular WEA Alert Message broadcasts.”574 “However,” CSRIC IV reports, “this ideal case cannot be realized using currently deployed cell broadcast alone.”575 CSRIC V recommends that the Commission collaborate with WEA stakeholders to develop standards and implement systems that support enhanced, device-based geotargeting.576 CSRIC V recommends that the Commission set a goal that Participating CMS Providers geo-target Alert Messages in a manner that includes “100% of the targeted devices within the specified alert area with not more than .10 mile overshoot,” and states that WEA stakeholders, including Participating CMS Providers, “have committed to working to close the gap between current capabilities and aspirational goals.”577 b.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the issuer register and may issue anywhere. The status 'Actual' fits a real event on the live console. No other authority has an active alert, and this is not a correction. However, the alert targets all of the UAE (UAE-ALL), while the area requested for this fog event is the Western region (AUH-WEST). The drafter should narrow the area to the requested one.",
+  "objections": [
+   {
+    "issue": "The alert area is much wider than the area requested for this event. The alert targets the whole country (UAE-ALL, 'All of the UAE'), but the area drawn for event uae-fog-2026-02-17 is the Western region (AUH-WEST). The headline itself says the hazard is in western regions, so the rest of the country would be over-alerted.",
+    "field": "area",
+    "blocking": true,
+    "fix": "Set the alert's areaDesc to 'Western region (demo zone)' and its geocode to DEMO-ZONE / AUH-WEST, matching the requested area drawn for event uae-fog-2026-02-17. If a wider area is really needed, have the requested area redrawn first.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "All of the UAE"
+     },
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "Western region (demo zone)"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.headline",
+      "quote": "visibility may drop to zero in western regions"
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0013",
+      "quote": "a more precise geographic area (polygon) can be used to target alerts to only the area impacted by the threat"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0522",
+      "quote": "no mobile devices outside the defined alert area would receive those particular WEA Alert Message broadcasts"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4663,
+  "output_tokens": 937,
+  "at": "2026-11-08T21:08:30Z"
+ }
+}

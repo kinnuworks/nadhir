@@ -1,0 +1,33 @@
+{
+ "key": "808a3c4fa91556728287aac94aa3c3051ac92028b6a0f4baa48e959c77404fdf",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM: Blowing dust and sand, visibility under 2 km until 19:00 today\",\n  \"description\": \"Blowing dust, winds fresh to strong at times. Drive with care. Visibility <2km until 19:00.\",\n  \"instruction\": \"Take extra care when driving, especially on open roads, as blowing dust can reduce visibility.\"\n },\n \"arabic\": {\n  \"headline\": \"NCM: غبار ورمال متطايرة، والرؤية أقل من 2 كم حتى الساعة 19:00 اليوم\",\n  \"description\": \"غبار متطاير، والرياح نشطة إلى قوية أحياناً. قُد بحذر. الرؤية أقل من 2 كم حتى الساعة 19:00.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر أثناء القيادة، خاصة على الطرق المفتوحة، إذ قد يؤدي الغبار المتطاير إلى انخفاض مدى الرؤية.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert machine translation review",
+   "multilingual alert protective action accuracy",
+   "CAP language info block Arabic headline instruction"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 858,
+  "output_tokens": 57,
+  "at": "2026-11-08T20:50:26Z"
+ }
+}

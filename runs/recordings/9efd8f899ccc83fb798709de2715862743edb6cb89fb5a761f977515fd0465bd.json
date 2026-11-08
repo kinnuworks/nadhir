@@ -1,0 +1,151 @@
+{
+ "key": "9efd8f899ccc83fb798709de2715862743edb6cb89fb5a761f977515fd0465bd",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00. This is not a drill.\",\n   \"characters\": 225,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين - رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية، أبوظبي (منطقة تجريبية). تستمر هذه الأحوال حتى الساعة 18:00. هذا ليس تمريناً.\",\n   \"characters\": 220,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page length GSM-7 UCS-2', 'exercise alert labeling not a drill contradiction', 'UAE public warning message one page'):\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0089] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.21):\nSMS BROADCAST REQUEST 3 3 SMS BROADCAST REQUEST 4 4 Figure 3 With the SMS BROADCAST COMMAND mode of operation, the BSC sends to the BTS in one single message the 88 octet fixed length CBS page. The BTS then splits the page into four 22 octet blocks, adds the sequence number (see 3GPP TS 44.012 [7]) and transmits the four resulting blocks on the air. Figure 4 illustrates the protocol architecture and the scope of the various GSM Specifications for the SMS BROADCAST COMMAND mode of operation.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[FCC-HI-2018#0092] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nsupervisor deviated from the script for initiating an internal drill. See Press Conference, Missile Alarm Live Stream, at 53:42, http://dod.hawaii.gov/hiema/false-alarm-incidents-internal-investigation-complete-release-of-results-andactions/ (last visited Mar. 28, 2018). The investigator also noted that the midnight shift supervisor “combined” elements from two messages to initiate the internal drill (1) one message includes the phrase “real world” and (2) a second message includes “This is not a drill.” Id. at 27:16. The investigator noted that supervisors had the flexibility to create drill initiation messages. Id. at 53:42. The investigator observed that the phrase “exercise, exercise, exercise” preceded and followed the drill initiation message transmitted to the State Warning Point. Id. In HI-EMA’s audio recording of the drill initiation message preceding the false alert, the phrase “exercise, exercise, exercise” can be heard at the beginning of the recording, followed by a high-pitch sound, then the phrase “This is not a drill,” then a second high-pitch sound, and concluding with the phrase “exercise, exercise, exercise.” See HIEMA Audio File, supra note 15. 77 HI-EMA Report at 8.\n\n[FCC-HI-2018#0053] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\n8:05 a.m. HI-EMA’s midnight shift supervisor begins a no-notice ballistic missile preparedness drill with day shift officers by placing a call from a secure phone elsewhere in HIEMA to the State Warning Point. The recording that the midnight shift supervisor plays over the phone contains the text of an EAS message for a live ballistic missile alert, including the language, “this is not a drill,” instead of the language used in HIEMA’s standard operating procedure for this drill. Although the midnight shift officer’s recorded voice reads, “Exercise, Exercise, Exercise” at the beginning and end of the drill, using the phrase “this is not a drill” was a deviation from the drill procedure. In the midnight shift supervisor’s analysis, the deviation is not material\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0050] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\nalert origination software.50 During any practice drills using HI-EMA’s new alert origination software, the simulated PACOM initial notification message would be preceded and followed with the phrase “Exercise, Exercise, Exercise.”51 3.\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0007] UAE National Strategy for AI 2031 (p.3):\nPage 33 Public AI Training Page 33 Upskilling Students Page 33 Government Training Page 34 Professional Upskilling Page 34 Employment Transition Support OBJECTIVE 6: BRING WORLD-LEADING RESEARCH CAPABILITY TO WORK WITH TARGET INDUSTRIES Page 36\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present with appropriate encodings (GSM-7 for English, UCS-2 for Arabic). However, neither version fits the UAE one-page limit: English is 3 pages and Arabic is 6. Neither text contains a protective action, so the first page carries the hazard but no action. Separately, the text contains both 'EXERCISE' and 'This is not a drill'. That contradiction is a content matter outside my delivery mandate and should be checked by the content reviewers.",
+  "objections": [
+   {
+    "issue": "Both language versions exceed the UAE one-page cell broadcast limit. English (GSM-7, 225 characters) is 3 pages and Arabic (UCS-2, 220 characters) is 6 pages. Content beyond page 1 may not be shown or may be truncated on handsets built to the UAE spec.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Cut each language to a single page: about 93 characters for English (GSM-7) and about 41 characters for Arabic (UCS-2). Keep the hazard, the area and the action, and drop secondary detail such as the visibility figure and coastal/inland wording. If a single-page Arabic text cannot carry hazard plus action, flag this for a human decision.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TDRA-TS040#0002",
+      "quote": "Message should be limited to 1 page maximum."
+     },
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     }
+    ]
+   },
+   {
+    "issue": "Neither language contains a protective action. The text describes the dust/sand hazard and its duration but tells recipients nothing to do, so the first (and only deliverable) page lacks the action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Add a short action in both languages near the start of the text, for example 'Drive with caution, stay indoors if possible' and the Arabic equivalent. Place it right after the hazard so it lands on page 1.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "I could not verify the exact per-page character capacity (93 GSM-7 / 41 UCS-2 characters) from the clauses shown. Only the 88-octet page size is stated.",
+    "searched_for": "cell broadcast page length GSM-7 UCS-2"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5234,
+  "output_tokens": 1691,
+  "at": "2026-11-08T21:11:09Z"
+ }
+}

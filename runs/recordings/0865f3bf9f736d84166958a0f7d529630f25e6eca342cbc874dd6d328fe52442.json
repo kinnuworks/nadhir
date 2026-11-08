@@ -1,0 +1,114 @@
+{
+ "key": "0865f3bf9f736d84166958a0f7d529630f25e6eca342cbc874dd6d328fe52442",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog may cut visibility to zero in western UAE, 21:30 Tue to 10:00 Wed 18 Feb\",\n  \"description\": \"Fog may cut visibility to zero, W. UAE, 21:30 Tue-10:00 Wed: drive with extreme caution.\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow the modified speed limits, especially where fog is thick. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"قد يؤدي الضباب إلى انعدام الرؤية في غرب الإمارات، من 21:30 الثلاثاء إلى 10:00 الأربعاء 18 فبراير\",\n  \"description\": \"قد يؤدي الضباب إلى انعدام الرؤية، غرب الإمارات، 21:30 الثلاثاء - 10:00 الأربعاء: قُد بحذر شديد.\",\n  \"instruction\": \"قُد بحذر شديد، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة، خاصةً حيث يكون الضباب كثيفًا. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation public alert review requirements', 'machine translation emergency alert accuracy', 'CAP multilingual info block language'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0038] DotEmarat Policy EN (p.12):\n11. Eligibility Requirements Restricted Zones There are no . (dotEmarat) . (dotEmarat) Arabic ccTLD Restricted Zones at this time. 12. Policy review The .aeDA may update this Policy at any time in its complete discretion, including for the purpose of clarification.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0005] DotEmarat Policy EN (p.2):\n8.6. . (dotEmarat) Domain Name Variants 6 8.7. Reserved Names List 7 9. Eligibility Requirements 7 10. Eligibility Requirements for 11. Eligibility Requirements 12. Policy review 8 . (dotEmarat) – Unrestricted Zone 8 . (dotEmarat) Restricted Zones 8 Appendix A – Language Tables 9 Table of Allowed Arabic Letters 9 Table of Allowed Numbers and Special Characters Table 10 Active Variant Table 11 ii\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[CAP12#0087] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n3.2.2 \"info\" Element and Sub-elements info cap. alertInfo. info. group The container for all component parts of the info sub-element of the alert message (OPTIONAL) (1) Multiple occurrences are permitted within a single <alert>. If targeting of multiple <info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. Each set of <info> blocks containing the same language identifier SHALL be treated as a separate sequence.\n\n[CAPCP#0056] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nincidents Info Rule #4 (Alert messages intended for public distribution must include an <info> block) language Rule #5 (<info> blocks must specify the content language) category event Rule #2 (Constraint of one subject event per alert message)\n\n[CAPCP#0078] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nRule #5. <info> blocks must specify the content language Element: <language> Use: Optional Type: Policy Value: Defined by RFC 3066 Description: The code denoting the language of the <info> blocks sub-elements within the alert message.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "I compared the Arabic and English headline, description and instruction and found no difference in meaning. The hazard (fog that may reduce visibility to zero), the place (western UAE), the times and date (21:30 Tuesday to 10:00 Wednesday 18 February) and the URL all match. The protective actions also match in full: drive with extreme caution, keep a safe distance, follow the modified speed limits, especially where fog is thick. Because the Arabic came from machine translation, a named person who reads Arabic must still review and approve it before release. This review does not replace that sign-off.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4955,
+  "output_tokens": 628,
+  "at": "2026-11-08T20:58:05Z"
+ }
+}

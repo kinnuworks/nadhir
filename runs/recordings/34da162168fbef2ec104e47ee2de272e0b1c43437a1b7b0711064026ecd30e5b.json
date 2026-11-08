@@ -1,0 +1,33 @@
+{
+ "key": "34da162168fbef2ec104e47ee2de272e0b1c43437a1b7b0711064026ecd30e5b",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n   \"characters\": 221,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة.\",\n   \"characters\": 799,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 20\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "cell broadcast page length GSM-7 UCS-2 characters",
+   "UAE emergency alert Arabic English one page",
+   "alert first page hazard and protective action"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1270,
+  "output_tokens": 61,
+  "at": "2026-11-08T21:05:48Z"
+ }
+}

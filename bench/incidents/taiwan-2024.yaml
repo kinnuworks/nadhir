@@ -1,0 +1,115 @@
+id: taiwan-2024
+heldout: true
+title: "Taiwan nationwide alert for a satellite launch called it a missile in English"
+date: "2024-01-09"
+jurisdiction: "Taiwan (Ministry of National Defense, MND; air threat alert issued by the Air Force Command)"
+sources: [TW-2024-MND, TW-2024-TWN, TW-2024-CNA]
+
+summary: >-
+  After a Chinese Long March rocket carrying a satellite crossed southern Taiwan's airspace above the atmosphere,
+  the MND sent a nationwide bilingual alert over the Public Warning System. The Chinese text said a satellite had
+  been launched; the English text, left unchanged from a missile air-raid template, read "Missile flyover Taiwan
+  airspace, be aware". The MND apologised the same afternoon for failing to update the English wording.
+
+timeline:
+  - {t: "2024-01-09T15:03+08:00", event: "MND detects a Long March carrier rocket launched from Xichang that enters Taiwan's air defence identification zone, passing from Tainan over Taitung.", source: TW-2024-MND}
+  - {t: "2024-01-09 (afternoon, before 15:36)", event: "Phones nationwide receive a national-level alert: Chinese text on a satellite launch, English text 'Missile flyover Taiwan airspace, be aware'.", source: TW-2024-TWN}
+  - {t: "2024-01-09T16:15+08:00", event: "MND statement apologises: the English wording was not updated in step with the system's wording to say the object was a satellite, not a missile.", source: TW-2024-TWN}
+  - {t: "2024-01-09T20:50+08:00", event: "MND press release with five supplementary points, including that the national air-raid alert is issued by the Air Force Command commander, and an apology for the inaccurate English wording.", source: TW-2024-MND}
+
+inputs:
+  event_text: >-
+    15:03: a Long March carrier rocket carrying a satellite, launched from the Xichang Satellite Launch Center,
+    entered Taiwan's air defence identification zone, passed from Tainan over Taitung outside the atmosphere,
+    on a path that differed from the satellite launch path notified by the US FAA; possible risk from debris.
+  event_text_basis: "MND press release of 9 January 2024 (20:50), point 1, and MND 16:15 statement as quoted by Taiwan News; paraphrased and translated by us."
+  issuer: "Ministry of National Defense (Air Force Command commander, per MND)"
+  environment: live
+  intended_status: Actual
+  requested_area:
+    areaDesc: "Taiwan (nationwide)"
+    areaDesc_basis: "CNA: 'a nationwide emergency alert'."
+
+real_message:
+  text_verbatim: "[Air raid Alert] Missile flyover Taiwan airspace, be aware"
+  text_verbatim_note: "English part only, as quoted by CNA. The verbatim Chinese text was not found in our sources; Taiwan News paraphrases it as saying China launched a satellite at 15:04 that flew over southern Taiwan, asking people to watch out for their safety and report unidentified objects to police or fire services."
+  text_zh_paraphrase_press: "中國於 15 時 4 分發射衛星，已飛越我國南部上空，請民眾注意安全。若發現不明物體，通報警消人員處理。"
+  text_zh_paraphrase_source: TW-2024-TWN
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Ministry of National Defense"
+  category: Security
+  event: "Air raid alert (air threat warning)"
+  urgency: Immediate
+  severity: Severe
+  certainty: Observed
+  language: en
+  language_note: "The alert was bilingual (Chinese and English). Only the English text is public verbatim, so the replay rebuilds the English part."
+  headline: "[Air raid Alert]"
+  description: "Missile flyover Taiwan airspace, be aware"
+  instruction: "be aware"
+  areaDesc: "Taiwan"
+  area:
+    areaDesc: "Taiwan"
+  template: "Missile air raid alert (per CNA's search of the PWS system; no satellite-launch template existed)"
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, event, urgency, severity, certainty, headline, description, instruction, areaDesc, language]
+  reconstruction_note: >-
+    The English text and the fact that the Chinese text named a satellite come from CNA and Taiwan News. That the
+    message was bilingual comes from CNA's account of the MND statement. The CAP field values are our
+    reconstruction; Taiwan's PWS CAP message for this alert was not fetched.
+
+corrections: []
+corrections_note: "No corrective cell broadcast was found. The MND corrected by statement to the media and a press release."
+
+real_outcome:
+  text: >-
+    A national-level alert reached phones across Taiwan four days before the presidential and legislative
+    elections. Its English text told readers a missile was flying over Taiwan when the object was a satellite
+    launch vehicle outside the atmosphere.
+  source: TW-2024-CNA
+
+official_finding:
+  body: "Ministry of National Defense, Republic of China (Taiwan)"
+  document: "MND press release on the alert messages for the Long March launch of 9 January 2024, issued 20:50, point 5"
+  finding_status: official-verbatim
+  quote: "五、對於此次發布作業期間，英文用字錯誤、表達不夠精準，國防部向大眾致歉，將深入檢討、周延作業程序。"
+  quote_translation_unofficial: "5. For the wrong English wording and imprecise expression during this issuance, the MND apologises to the public and will review and tighten its procedures."
+  source: TW-2024-MND
+  further_quotes:
+    - rule: R11
+      quote: "惟簡訊英文用語，因疏忽未同步更新原系統用字、精準表達發射物係衛星而非飛彈，國防部向社會大眾致歉。"
+      quote_translation_unofficial: "However, through oversight the English wording of the message was not updated in step with the original system wording to state precisely that the launched object was a satellite, not a missile; the MND apologises to the public."
+      locator: "MND statement of 16:15, as quoted by Taiwan News (TW-2024-TWN)"
+    - rule: R11
+      quote: "The English part of the template that read \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\" was not changed."
+      locator: "CNA report (TW-2024-CNA); CNA's own finding from the PWS system, not an MND statement"
+
+expected_rules: [R11]
+expected_rules_basis: >-
+  R11 (no number, hazard or place that the inputs don't contain): the inputs describe a satellite launch vehicle;
+  the English text names a missile and an air raid, a hazard the inputs do not contain.
+
+unknowns:
+  - "The verbatim Chinese alert text and exact send time."
+  - "The CAP XML as sent (event, category, urgency, severity, info blocks per language)."
+  - "Whether the English text is held as a separate CAP <info> block or appended to the Chinese text."
+  - "Whether the alert should have been sent at all: the MND says the abnormal path posed possible ground risk; CNA notes PWS had not been used for a Chinese satellite launch since 2017. No official finding addresses this."
+
+framing_note: >-
+  The official finding is narrow: the English wording of a reused template was not updated. It is a stale
+  template, not machine translation, so R9 (machine translation) is not counted. Both languages were present, so
+  R7 would pass. The decision to alert at all was politically disputed before the elections; this file takes no
+  position on it.
+
+source_urls:
+  TW-2024-MND: "https://www.mnd.gov.tw/news/pressrelease/82446"
+  TW-2024-TWN: "https://www.taiwannews.com.tw/ch/news/5074742"
+  TW-2024-CNA: "https://www.globalsecurity.org/wmd/library/news/taiwan/2024/taiwan-240109-cna03.htm"
+source_hashes:
+  TW-2024-MND: {sha256: "8cc4171bb77fbefd33b8eeb29fa9cdcc70b9981d786d817016a811965d680e5a", fetched: "2026-11-09", note: "Fetched from https://www.mnd.gov.tw/Publish.aspx?p=82446&title=%E5%9C%8B%E9%98%B2%E6%B6%88%E6%81%AF&SelectStyle=%E6%96%B0%E8%81%9E%E7%A8%BF, which redirected to the URL above."}
+  TW-2024-TWN: {sha256: "b38b12d27493fbdbdaa5919ef1516d224e6d3eb6ffce2cb69dae573091cb3da4", fetched: "2026-11-09"}
+  TW-2024-CNA: {sha256: "84dd0056626f807c2d534b9422d40ed077534e21a1f35d42215cab48aeaaebed", fetched: "2026-11-09", note: "GlobalSecurity mirror of the CNA English story; focustaiwan.tw/politics/202401090018 is paywalled after the first paragraph."}

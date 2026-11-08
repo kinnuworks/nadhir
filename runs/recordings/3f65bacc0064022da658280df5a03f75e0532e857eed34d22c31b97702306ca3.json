@@ -1,0 +1,138 @@
+{
+ "key": "3f65bacc0064022da658280df5a03f75e0532e857eed34d22c31b97702306ca3",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): Coastal and inland areas, Abu Dhabi (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-16, https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced] ABU DHABI, 16th February, 2026 (WAM) -- The National Centre of Meteorology (NCM) warned today of active to occasionally strong northwesterly winds, raising dust and sand and reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas. The Centre stated in a statement issued today that the weather conditions began at 10:30 and will continue until 18:00, urging the public to exercise caution, particularly when driving on external and open roads, due to the risk of sudden drops in visibility caused by blowing dust.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Met office reviewer objects (headline): The geography is narrower than the bulletin. NCM warns of reduced visibility 'in some coastal and inland areas' without naming any emirate. 'ABU DHABI' is only the WAM news dateline. Adding 'of Abu Dhabi' could mislead people in other affected areas into thinking the warning does not apply to them. Fix: Remove 'of Abu Dhabi' from the headline and description, and use the bulletin's wording: 'some coastal and inland areas' (optionally 'of the UAE', since NCM is the national centre). | Met office reviewer objects (description): The wind intensity is overstated. The bulletin says 'active to occasionally strong northwesterly winds'. The description says simply 'Strong northwesterly winds', which raises the stated intensity above what the bulletin supports. Fix: Reword to 'Active to occasionally strong northwesterly winds are raising dust and sand.' | Issuing authority reviewer objects (scope): An exercise-status alert with scope Public is being prepared in the live console environment, so it could be broadcast to the public. Drill guidance says drill messages should stay off consumer devices and that test and live environments should be clearly separated. A person must confirm that public distribution of this drill is intended and authorised; otherwise it should be restricted or moved to a test environment. Fix: A responsible person should confirm that a public drill broadcast on the live system is intended. If it is not, change scope to Restricted or Private, or send the alert from a test environment. [cites Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert, p.10] | Network operator and regulator reviewer objects (phone_text): Both language versions exceed the UAE handset limit of one cell broadcast page. English is 195 GSM-7 characters across 3 pages. Arabic is 188 UCS-2 characters across 5 pages. A CBS page is 88 octets, so a single page holds about 93 GSM-7 characters or about 41 UCS-2 characters. Fix: Shorten each language so it fits on one page: no more than about 93 characters for English (GSM-7) and about 41 characters for Arabic (UCS-2). Keep 'EXERCISE', the hazard, the area, the end time and a short action. Drop secondary wording such as 'Visibility can drop suddenly'. If Arabic cannot carry the hazard and the action within one UCS-2 page, raise this with the operators and the authority before sending. [cites Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040), requirement 3] | Network operator and regulator reviewer objects (phone_text): Neither the English nor the Arabic text contains a protective action. The text only describes the dust and visibility hazard, so the first page does not tell people what to do. Fix: Add a short action near the start of both languages, for example 'Drive slowly, use low beams, avoid travel if possible' in English with a matching Arabic version. Place it so it falls on the first (and only) page. [cites Common Alerting Protocol Version 1.2, 3.2.2 \"info\" Element and Sub-elements]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Blowing dust and reduced visibility",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "headline": "EXERCISE: Active to occasionally strong northwesterly winds raising dust and sand, visibility below 3,000 m in some coastal and inland areas until 18:00",
+  "description": "EXERCISE: Dust cuts visibility <3km in some coastal/inland areas to 18:00. Drive carefully.",
+  "instruction": "EXERCISE: Take care, especially when driving on external and open roads, because visibility can drop suddenly in blowing dust. More information: https://alerts.example.ae",
+  "left_out": [
+   "No unverified inputs were received, so nothing was left out on that basis.",
+   "'of Abu Dhabi' was removed. 'ABU DHABI' is only the WAM dateline, and the NCM bulletin names no emirate.",
+   "The wind wording ('active to occasionally strong northwesterly winds') is kept in the headline but dropped from the phone text. This keeps the phone text within one GSM-7 page (about 93 characters) without overstating the wind.",
+   "'Use low beams' and 'avoid travel if possible' were not used. The reviewer suggested them, but the NCM bulletin does not say them. The action follows the bulletin: caution when driving on external and open roads.",
+   "'Visibility can drop suddenly' was dropped from the phone text to fit one page. It is kept in the instruction.",
+   "No Arabic text was drafted, because this task asks for English only. The Arabic one-page limit (about 41 UCS-2 characters) still needs to be resolved by the operators and the authority."
+  ],
+  "note_for_reviewer": "This is an EXERCISE alert prepared in the live console. A responsible person must confirm that a public drill broadcast is intended; otherwise set scope to Restricted or Private, or send it from a test environment. The bulletin gives start and end times (10:30–18:00) but only a 16 Feb 2026 date, so check that 18:00 is still relevant when the drill runs."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 2542,
+  "output_tokens": 1762,
+  "at": "2026-11-08T20:53:59Z"
+ }
+}

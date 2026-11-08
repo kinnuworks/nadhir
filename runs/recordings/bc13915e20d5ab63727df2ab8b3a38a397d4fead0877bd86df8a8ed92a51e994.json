@@ -1,0 +1,134 @@
+{
+ "key": "bc13915e20d5ab63727df2ab8b3a38a397d4fead0877bd86df8a8ed92a51e994",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Emergency Management Ontario PEOC\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): None intended (training-system practice alert). The template text names people within ten kilometres of the Pickering Nuclear Generating Station.\n\nEvent inputs:\n1. [verified; incident timeline] None. The report says the duty officer \"was not acting on any information concerning any nuclear incident\"; the action was the routine shift-change practice alert, meant for the Alert Ready training system.\n2. [verified; policy gate] Gate feedback on your previous draft, fix these: R11 No detail the inputs don't contain: number 911 is not in the inputs",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Other",
+  "event": "Training system practice alert",
+  "urgency": "Unknown",
+  "severity": "Unknown",
+  "certainty": "Unknown",
+  "headline": "EXERCISE ONLY: Emergency Management Ontario practice alert, no emergency",
+  "description": "EXERCISE ONLY. This is a routine practice message from Emergency Management Ontario for the Alert Ready training system. There is no nuclear incident and no emergency.",
+  "instruction": "No action is required. Do not change your plans because of this message.",
+  "left_out": [
+   "Template text naming people within ten kilometres of the Pickering Nuclear Generating Station: this describes no real event. No public target area is intended, and naming a nuclear station in a practice message could cause false alarm.",
+   "The 911 phone number: it is not in the inputs and was removed per the policy gate (R11)."
+  ],
+  "note_for_reviewer": "This alert is meant only for the Alert Ready training system; please confirm it is routed there and never sent to the public, since there is no target area. Category, severity, urgency and certainty are set to Other/Unknown because there is no real hazard. I left out the Pickering template wording on purpose."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1296,
+  "output_tokens": 794,
+  "at": "2026-11-08T20:49:11Z"
+ }
+}

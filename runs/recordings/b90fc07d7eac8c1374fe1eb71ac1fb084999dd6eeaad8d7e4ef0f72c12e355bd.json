@@ -1,0 +1,114 @@
+{
+ "key": "b90fc07d7eac8c1374fe1eb71ac1fb084999dd6eeaad8d7e4ef0f72c12e355bd",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Ministry of National Defense\": {\n   \"name\": \"Ministry of National Defense\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Taiwan (nationwide)\",\n  \"codes\": [],\n  \"drawn_for_event\": \"taiwan-2024\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Ministry of National Defense\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Security\"\n  ],\n  \"event\": \"Air raid alert (air threat warning)\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Taiwan\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"[Air raid Alert]\"\n }\n}\n\nKnowledge base clauses returned by your searches ('presidential alert nationwide area targeting satellite launch', 'CAP area element geocode polygon required', 'issuer authorization national alert scope overreach'):\n\n[FCC-16-127#0320] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.53):\nWe note that CSRIC IV recommended that we allow two years for all Participating CMS Providers to comply with this rule, but the record shows that a two-year compliance timeframe would unduly delay improvements to geo-targeting that nationwide Participating CMS Providers are already capable of providing through the use of proprietary geo-targeting algorithms.355 While Bluegrass Cellular, a non-nationwide Participating CMS Provider, states that it can develop a polygon-level geo-targeting capability in as little as six months,356 and no other non-nationwide Participating CMS Provider made a statement to the contrary, we find it prudent to allow non-nationwide Participating CMS Providers one year to achieve compliance with this rule in order to accommodate differences among non-nationwide Participating CMS Providers’ technical sophistication.357 Further, we note that all Participating CMS Providers (including those subject to our shorter 60-day compliance timeframe noted earlier in this paragraph) would be able to comply with our amended geo-targeting requirement immediately by geo-targeting to an area not larger that the propagation area of a single transmission site.358 We find that this approach, however, would regularly and predictably lead to underalerting.\n\n[FCC-16-127#0771] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.135):\nThese requirements will implicate no additional legal concerns, and will require no additional professional assistance for non-nationwide Participating CMS Providers. 32. Based on our review of the record, we find that it is practicable for all Participating CMS Providers, including non-nationwide Participating CMS Providers, to implement WEA improvements without incurring unduly burdensome costs, especially considering the special treatment that we afford non-nationwide Participating CMS Providers. The WEA Report and Order recognizes that technical and operational issues must be addressed before compliance can be required, and allows sufficient time for nationwide and non-nationwide Participating CMS Providers to achieve compliance with today’s rules. 33. In considering the record received in response to the WEA NPRM, we examined additional alternatives to ease the burden on non-nationwide EAS Participants. These alternatives included adopting longer compliance timeframes than those initially proposed; requiring Participating CMS Providers to support WEA Alert Messages that contain only360 characters, as opposed to 1,380, as considered by the Updated START Report;97 requiring support for only additional languages that are currently supported by standards, as opposed to others as initially proposed; and allowing Participating CMS Providers geo-target an Alert Message to an area that “best approximates” the target area, as opposed to one that is “no larger than” the target area using device-based geo-fencing techniques, as proposed.\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0697] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.123):\n(3) Availability and Reliability. The annual percentage of WEA Alert Messages that the Participating CMS Provider processes successfully, and a summary of the most common errors with alert transmission. (4) Participating CMS Providers shall grant requests from emergency management agencies for locality-specific versions of these performance metrics at least annually, and only so long as the emergency management agency offers confidentiality protection at least equal to that provided by federal FOIA. 7. Amend § 10.410 to read as follows: § 10.410 Prioritization. A Participating CMS Provider is required to transmit Presidential Alerts and earthquake-related Imminent Threat Alerts upon receipt. Presidential Alerts preempt all other Alert Messages, and earthquake-related Imminent Threat Alerts preempt all non-Presidential Alert Messages. A Participating CMS Provider is required to transmit other Imminent Threat Alerts, AMBER Alerts, and Public Safety Messages on a first in-first out (FIFO) basis. 8. Amend § 10.450 to read as follows: § 10.450 Geographic targeting. This section establishes minimum requirements for the geographic targeting of Alert Messages. A Participating CMS Provider will determine which of its network facilities, elements, and locations will be used to geographically target Alert Messages. A Participating CMS Provider must transmit any Alert Message that is specified by a geocode, circle, or polygon to an area that best approximates matches the specified geocode, circle, or polygon.\n\n[CAPCP#0091] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #7. Location References are required):\nNotes: In CAP, use of <polygon> and <circle> are recommended and preferred. Example: Element: <geocode> <polygon> <circle> Use: Required Type: Technical Value: One or more of either the <geocode> <polygon> or <circle> elements must have a valid value where if only <geocode> is used, it must have a value that conforms to the CAP-CP Location References geocode set.\n\n[CAPCP#0115] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n(2) MAY contain one or multiple instances of <polygon>, <circle> and/or <geocode>. If multiple <polygon>, <circle> and/or <geocode> elements are included, the location described by this <area> element is the union of those represented by the included elements.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[CAPCP#0119] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\nExample: Element: Use: Optional Type: Technical Value: Description: CAP-CP requires either a CAP-CP <geocode> value, or the use of optional <polygon> and <circle> values. When either or both <polygon> and <circle> values are present in an area block, the combination of these <polygon> and <circle> values alone is considered a more accurate representation of the alert area than the CAP supported combination of all <polygon>, <circle> and <geocode> values together. This distinction allows for CAP originators to support alerting systems that require geocodes and still be able to more accurately represent the threat area with GIS constructs all in one CAP message. E.g. Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[FCC-23-88#0187] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.31):\nservice providers that elect to transmit emergency alerts and for the devices and equipment used by such providers for transmitting such alerts.”). 185 See Section 9201 of the William M. (Mac) Thornberry National Defense Authorization Act for Fiscal Year 2021,\n\n[CAPAU#0051] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.14):\nExample: <alert> ... <scope>Restricted</scope> 2) Classifications SHALL be in accordance with national security classifications and non-national security markings listed in the Australian Government Protective Security Policy Framework (PSPF). <restriction>CONFIDENTIAL</restriction> <addresses>insert valid recipient addresses </addresses> ... <info> </alert> edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[CAP12#0081] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nUsed when <scope> value is \"Restricted\". addresses cap. alert. addresses. group The group listing of intended recipients of the alert message (CONDITIONAL) (1) Required when <scope> is “Private”, optional when <scope> is “Public” or “Restricted”.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within the issuing-authority mandate, nothing is wrong. The Ministry of National Defense is in the issuer register at level 1, with all areas and all categories authorised, so it may issue a Security alert. Status \"Actual\" fits the real-event context and the live console. There are no active alerts from other authorities, so there is nothing to overreach. msgType \"Alert\" with null references is correct for a first issuance, since there are no earlier alerts to correct. The alert's areaDesc \"Taiwan\" matches the requested area \"Taiwan (nationwide)\" drawn for this event. The area's geometry is an undisclosed record placeholder rather than a geocode or polygon. Whether that is technically valid is a format question for the CAP/technical review, not an authorisation question.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5308,
+  "output_tokens": 819,
+  "at": "2026-11-08T21:13:06Z"
+ }
+}

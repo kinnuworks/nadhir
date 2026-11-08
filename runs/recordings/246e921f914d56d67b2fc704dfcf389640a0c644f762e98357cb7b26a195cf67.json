@@ -1,0 +1,138 @@
+{
+ "key": "246e921f914d56d67b2fc704dfcf389640a0c644f762e98357cb7b26a195cf67",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n   \"characters\": 72,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ.\",\n   \"characters\": 65,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 2\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast UCS-2 page length characters', 'erroneous alert correction cancellation message FCC', 'UAE cell broadcast Arabic English requirements'):\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[CAP12#0065] Common Alerting Protocol Version 1.2 (2.3.5 Repudiating a False Alarm):\n2.3.5 Repudiating a False Alarm Inadvertently the integrated alerting network has been activated with an inaccurate warning message. This activation comes to officials' attention immediately through their own monitoring facilities (e.g., 2.3.3 above). Having determined that the alert is, in fact, inappropriate, the officials issue a cancellation message that refers directly to the erroneous prior alert. Alerting systems that are still in the process of delivering the alert (e.g., telephone dialing systems) stop doing so. Broadcast systems deliver the cancellation message. Other systems (e.g., highway signs) simply reset to their normal state.\n\n[X1303BIS#0040] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.13):\nRepudiating a false alarm \"Inadvertently the integrated alerting network has been activated with an inaccurate warning message. This activation comes to officials' attention immediately through their own monitoring facilities (e.g., clause 6.3.3 above). Having determined that the alert is, in fact, inappropriate, the officials issue a cancellation message that refers directly to the erroneous prior alert. Alerting systems that are still in the process of delivering the alert (e.g., telephone dialling systems) stop doing so. Broadcast systems deliver a cancellation message. Other systems (e.g., highway signs) simply reset to their normal state.\"\n\n[FCC-HI-2018#0113] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.20):\nThe cancellation would have prevented the false alert from being broadcast to those mobile devices not connected to the network at the time the false alert was issued—such as phones turned off at 8:07 a.m., or phones out of cell coverage or on airplane mode—and which remained unconnected through the time the cancellation was transmitted.101 Alert re-transmission times differ among wireless providers; some Participating CMS Providers transmit WEA alerts at regular intervals throughout the valid period of the alert, but applicable standards do not define the frequency of alert retransmission and allow Participating CMS Providers to cease retransmission prior to the alert’s expiration.102 The cancellation, however, would not have prevented wireless customers from receiving the correction alert at 8:45 a.m. (HST), assuming that customers’ mobile devices were turned on and connected to the network during the times the correction alert was issued. Finally, consumers have the option to opt out of receiving all WEA alerts except those\n\n[FCC-HI-2018#0076] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.14):\nTime (HST) Event HI-EMA calls another representative of the FEMA IPAWS Program Management Office and reaches the employee on the employee’s mobile device. After 45 seconds, they agree that the correction meets the criteria for a CEM. Hawaii Gov. Ige posts the alert cancellation notification on his Facebook page.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0090] UAE Public Policy Development Guidebook (p.45):\nConsultations Implementation Media Messages List the consulted stakeholders (federal, local, private companies) and their feedback. Create a list of relevant stakeholders and the implementation plan (main entity, if any, and other supporting entities). Media messages should be written in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0025] DotEmarat Policy EN (p.9):\n8.5.2.3. 8.5.2.4. 8.5.2.5. 8.5.2.6. 8.5.2.7. be in Unicode Normalisation Form C (NFC); consist only of Unicode Code Points present in the Tables of Allowed Letters, Numbers and Special Characters defined in Appendix A; not begin with a digit (English ASCII or Arabic digits); not contain both English ASCII AND Arabic digits; neither begin with nor end with a dash; not contain a dash in the third and fourth positions (e.g. ; and not include a space (e.g. ).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present. English is 72 GSM-7 characters on 1 page, which is fine. Arabic is 65 UCS-2 characters, which spills onto 2 pages. That exceeds the UAE handset advice of a 1-page limit. The first Arabic page should still carry the 'disregard the earlier alert' action, so this is a fixable, non-blocking length issue.",
+  "objections": [
+   {
+    "issue": "The Arabic phone text is encoded in UCS-2 and runs to 2 cell broadcast pages, but UAE handset advice limits messages to 1 page. A CBS page is 82 octets, which holds about 41 UCS-2 characters, so 65 Arabic characters cannot fit on one page.",
+    "field": "phone_text",
+    "blocking": false,
+    "fix": "Shorten the Arabic text to about 40 characters so it fits one UCS-2 page. Keep both the instruction to disregard the earlier weather alert and the fact that it was sent in error. For example, drop 'لهذه المنطقة' or condense to 'تجاهلوا تنبيه الطقس السابق، أُرسل خطأً.'",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0068",
+      "quote": "padding the pages to a length of 82 octets"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4317,
+  "output_tokens": 1131,
+  "at": "2026-11-08T21:05:04Z"
+ }
+}

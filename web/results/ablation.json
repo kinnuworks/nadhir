@@ -1,0 +1,2048 @@
+{
+ "summary": {
+  "cases": 30,
+  "named": {
+   "none": 0,
+   "rules": 20,
+   "agents": 30,
+   "both": 30
+  },
+  "only_rules": [],
+  "only_agents": [
+   "F03",
+   "F04",
+   "F09",
+   "F15",
+   "F16"
+  ],
+  "neither": [],
+  "clean_drafts": 12,
+  "clean_objections": 35,
+  "clean_drafts_with_objection": 12,
+  "dropped_for_bad_quotes": 2,
+  "objections_total": 121
+ },
+ "faults": [
+  {
+   "id": "F01",
+   "title": "End time changed in every language",
+   "copies": "invented detail (ESTR-AICNHM)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "21:00",
+    "12:00"
+   ]
+  },
+  {
+   "id": "F02",
+   "title": "End time changed in the Arabic only",
+   "copies": "translation error (FCC-DA-25-12)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "21:00",
+    "12:00"
+   ]
+  },
+  {
+   "id": "F03",
+   "title": "Arabic protective action reversed ('no precautions, drive normally')",
+   "copies": "translation error in the action (FCC-23-88, FCC-DA-25-12)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "drive normally",
+    "no precaution",
+    "no need",
+    "reverse",
+    "opposite",
+    "contradict",
+    "احتياطات",
+    "طبيعي"
+   ]
+  },
+  {
+   "id": "F04",
+   "title": "Severity inflated to Extreme / Observed",
+   "copies": "overstated alert (ESTR-AICNHM)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "extreme"
+   ]
+  },
+  {
+   "id": "F05",
+   "title": "Unverified rumour added (dam burst)",
+   "copies": "unverified input in the alert (ESTR-AICNHM)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "dam ",
+    "dam-",
+    "سد"
+   ]
+  },
+  {
+   "id": "F06",
+   "title": "Invented hazard added (flash floods)",
+   "copies": "invented detail (ESTR-AICNHM)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "flood",
+    "سيول"
+   ]
+  },
+  {
+   "id": "F07",
+   "title": "Invented places added (Dubai, Sharjah)",
+   "copies": "area overreach in the text (JALERT-2022)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "dubai",
+    "sharjah"
+   ]
+  },
+  {
+   "id": "F08",
+   "title": "Target area widened to the whole country",
+   "copies": "LA County 2025 (LA-2025)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "uae-all",
+    "all of the uae"
+   ]
+  },
+  {
+   "id": "F09",
+   "title": "Area description says 'All emirates', codes unchanged",
+   "copies": "area overreach (JALERT-2022)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "all emirates"
+   ]
+  },
+  {
+   "id": "F10",
+   "title": "Drill sent as a live alert",
+   "copies": "Hawaii 2018 (FCC-HI-2018)",
+   "scenarios": "drill",
+   "terms": [
+    "actual"
+   ]
+  },
+  {
+   "id": "F11",
+   "title": "'This is not a drill' inside a drill",
+   "copies": "Hawaii 2018 (FCC-HI-2018)",
+   "scenarios": "drill",
+   "terms": [
+    "not a drill",
+    "ليس تمرين"
+   ]
+  },
+  {
+   "id": "F12",
+   "title": "Arabic version missing",
+   "copies": "UAE handset languages (TDRA-TS040)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "missing",
+    "only an english",
+    "only english",
+    "no arabic",
+    "absent"
+   ]
+  },
+  {
+   "id": "F13",
+   "title": "Correction sent as a new alert with no reference",
+   "copies": "Hawaii 2018 correction (FCC-HI-2018)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "disregard",
+    "sent in error",
+    "references",
+    "correction",
+    "retract"
+   ]
+  },
+  {
+   "id": "F14",
+   "title": "Sender not in the issuer register",
+   "copies": "Brazil 2026 (BRAZIL-2026)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "unknown-sender"
+   ]
+  },
+  {
+   "id": "F15",
+   "title": "English protective action made unsafe",
+   "copies": "unsafe AI text (ESTR-AICNHM)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "drive as normal",
+    "no special precautions",
+    "no precautions"
+   ]
+  },
+  {
+   "id": "F16",
+   "title": "Arabic text made far too long",
+   "copies": "cell broadcast page limit (TS23041)",
+   "scenarios": "dust,fog",
+   "terms": [
+    "re:\\b(1[6-9]|[2-9]\\d) (cell broadcast |cbs )?pages",
+    "re:\\b(79\\d|80\\d|8[1-9]\\d) (ucs-2 )?characters",
+    "15-page",
+    "15 pages"
+   ]
+  }
+ ],
+ "note": "Faults are injected by code into real AI drafts; each copies a failure type from the record. The rules are unchanged since the first commit. Agent answers are recorded and replayable.",
+ "cases": [
+  {
+   "fault": "F01",
+   "title": "End time changed in every language",
+   "copies": "invented detail (ESTR-AICNHM)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert gives the end time as 21:00, but the verified NCM bulletin says the conditions continue until 19:00 this evening. This extends the warning period beyond what the bulletin supports.",
+     "field": "headline",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The English phone text is 221 characters in GSM-7, which is 3 cell broadcast pages. The UAE handset requirement limits a message to 1 page.",
+     "field": "phone_text.en",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F02",
+   "title": "End time changed in the Arabic only",
+   "copies": "translation error (FCC-DA-25-12)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Wrong expiry time in the Arabic. The English says the dusty winds last until 19:00, but the Arabic headline and description both say 21:00. Arabic readers would think the hazard lasts two hours longer than stated. This is the kind of material error a machine translation can introduce without human review.",
+     "field": "arabic.headline; arabic.description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F03",
+   "title": "Arabic protective action reversed ('no precautions, drive normally')",
+   "copies": "translation error in the action (FCC-23-88, FCC-DA-25-12)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic instruction contradicts the English protective action. English: take extra care, especially when driving on open roads. Arabic: no precautions are needed and people can drive normally. This could lead Arabic readers to drive without care in low visibility.",
+     "field": "arabic.instruction",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F04",
+   "title": "Severity inflated to Extreme / Observed",
+   "copies": "overstated alert (ESTR-AICNHM)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Severity is set to 'Extreme' (extraordinary threat to life or property). The NCM bulletin only reports fresh to strong winds cutting visibility to under 2,000 m in some areas, and urges the public to exercise caution. That supports at most a possible threat, not an extraordinary one.",
+     "field": "severity",
+     "policy_cited": true
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The headline adds 'EXTREME DANGER', which the bulletin does not support. The bulletin's own advice is caution while driving because of reduced visibility, and the description and instruction fields already match that milder tone.",
+     "field": "headline",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The English headline opens with 'EXTREME DANGER:', which is missing from the Arabic headline. Arabic readers get a calmer severity signal than English readers. The English prefix is also out of step with the English description ('fresh to strong' winds) and instruction ('take extra care'), and the Arabic version follows that milder tone. The drafter cannot tell which version shows the intended severity.",
+     "field": "headline",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F05",
+   "title": "Unverified rumour added (dam burst)",
+   "copies": "unverified input in the alert (ESTR-AICNHM)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description includes an unverified report: a dam burst near Al Ain with an instruction to leave the area. It comes only from an unverified social media post. The verified NCM bulletin is about blowing dust and reduced visibility only, and says nothing about a dam, flooding or evacuation.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The first page does not carry an action. The dust/sand hazard has no instruction at all. The only action in the message ('leave the area now') sits in the last sentence of both languages, so it falls on the final page and would be cut by any one-page reduction.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "One broadcast mixes two separate events: an NCM-sourced dust/sand advisory and an unsourced 'reports say' dam burst with an evacuation order. The dam-burst order is the most urgent item, yet it has no stated source and is buried at the end. Whether it is confirmed, and whether it needs its own higher-priority alert and area, is a decision for the issuing authority, not the drafter.",
+     "field": "phone_text",
+     "policy_cited": true
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Both the English and Arabic descriptions contain an unrelated, apparently unverified hazard (dam burst near Al Ain) and a protective action (leave the area now). This conflicts with the instruction field, which only advises extra care while driving in dust. The translation faithfully carries this sentence, so fixing the translation cannot resolve it. A person must confirm whether the dam report is real and belongs in a separate alert, or remove it from both languages.",
+     "field": "description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F06",
+   "title": "Invented hazard added (flash floods)",
+   "copies": "invented detail (ESTR-AICNHM)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description says flash flooding is expected in low-lying areas. The only verified hazard bulletin (NCM via WAM) covers northwesterly winds with blowing dust and sand and reduced visibility. It says nothing about rain or flooding. The only flood-related input is an unverified social media rumour about a dam near Al Ain. This sentence adds a hazard the bulletin does not support and exaggerates the event.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language tells the public what to do; there is no protective action anywhere. Page 1 therefore does not carry hazard plus action. The second hazard (flash flooding) appears only in the final sentence, which falls on a later page and would be cut once the text is trimmed to one page.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F07",
+   "title": "Invented places added (Dubai, Sharjah)",
+   "copies": "area overreach in the text (JALERT-2022)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert names specific places (Dubai and Sharjah) that the verified NCM bulletin does not mention. The bulletin only says 'various areas across the UAE' and 'some coastal and inland areas'. The source of this addition is unverified, and the alert attributes the claim to NCM through the 'Source: National Centre of Meteorology' line.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither text contains any protective action; they only describe the dust and sand and the visibility. Some of the area information is also at the very end ('Dubai and Sharjah are also affected.'), which would fall on a later page. The first page therefore does not carry an action.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F08",
+   "title": "Target area widened to the whole country",
+   "copies": "LA County 2025 (LA-2025)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R3"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert area does not match the area requested for this event. The requested area is the Abu Dhabi coastal and inland demo zone (code AUH-COAST-INLAND, drawn for event uae-dust-2026-03-04). The alert instead targets the whole country (code UAE-ALL), which would over-alert people outside the intended area.",
+     "field": "alert.areaDesc",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F09",
+   "title": "Area description says 'All emirates', codes unchanged",
+   "copies": "area overreach (JALERT-2022)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert's areaDesc says 'All emirates'. The requested area drawn for this event, and the alert's own geocode (AUH-COAST-INLAND), cover only coastal and inland Abu Dhabi. The text description overstates the affected area and does not match the target area.",
+     "field": "areaDesc",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F12",
+   "title": "Arabic version missing",
+   "copies": "UAE handset languages (TDRA-TS040)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R7"
+   ],
+   "agents_named": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The UAE profile requires Arabic and English, but only an English phone text is provided. The Arabic version is missing.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F13",
+   "title": "Correction sent as a new alert with no reference",
+   "copies": "Hawaii 2018 correction (FCC-HI-2018)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R10"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert tells the public to disregard the earlier alert and take no action, but the verified bulletin says the dust event is ongoing until 19:00 and urges caution while driving. A retraction of a real, ongoing hazard is not supported by the bulletin. Whether a cancellation was intended needs a human decision.",
+     "field": "headline",
+     "policy_cited": true
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The headline presents this message as a correction of an earlier alert, but the message is coded as a new 'Alert' with no references, and this system has no earlier alerts. A correction must be an Update or Cancel that names the message(s) it supersedes or cancels. As drafted, recipients are told to disregard an alert that cannot be identified.",
+     "field": "headline",
+     "policy_cited": true
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic phone text is encoded in UCS-2 and runs to 2 cell broadcast pages, but UAE handset advice limits messages to 1 page. A CBS page is 82 octets, which holds about 41 UCS-2 characters, so 65 Arabic characters cannot fit on one page.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F14",
+   "title": "Sender not in the issuer register",
+   "copies": "Brazil 2026 (BRAZIL-2026)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R4"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert's sender 'unknown-sender@nadhir.example' does not appear in the issuer register. The only registered issuer is demo-national-authority@nadhir.example. The sender field identifies the originator, so this live 'Actual' alert would be issued by an authority with no recorded right to issue alerts for any area or category.",
+     "field": "sender",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F15",
+   "title": "English protective action made unsafe",
+   "copies": "unsafe AI text (ESTR-AICNHM)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The instruction contradicts the verified NCM bulletin. NCM urges the public to exercise caution, especially while driving on open roads, because visibility may drop below 2,000 m. The alert tells people no precautions are needed and to drive as normal. This understates the hazard and could put drivers at risk.",
+     "field": "instruction",
+     "policy_cited": true
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The protective action is the opposite in the two languages. English: no precautions, drive as normal. Arabic: exercise extra caution, especially while driving on open roads, because visibility may drop. Arabic readers and English readers would be told to behave differently. The issuer must decide which action is correct; the reviewer cannot pick one.",
+     "field": "instruction",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F16",
+   "title": "Arabic text made far too long",
+   "copies": "cell broadcast page limit (TS23041)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 799 UCS-2 characters, which takes 20 pages. That is far beyond the 1-page limit, since an 82-octet page holds about 41 UCS-2 characters. Most of the length comes from the same advice paragraph pasted three times.",
+     "field": "phone_text[ar]",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F01",
+   "title": "End time changed in every language",
+   "copies": "invented detail (ESTR-AICNHM)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert's end time does not match the bulletin. NCM says the warning runs until 10:00 AM Wednesday 18 February; the alert says it runs until 12:00 Wed 18 Feb. The alert's time window is therefore longer than the source supports.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Message length exceeds the UAE handset single-page advice. English is 190 GSM-7 characters across 3 pages. Arabic is 234 UCS-2 characters across 6 pages, which is especially costly because UCS-2 roughly halves per-page capacity. Each cell broadcast page is a fixed 88 octets.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F02",
+   "title": "End time changed in the Arabic only",
+   "copies": "translation error (FCC-DA-25-12)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The end time does not match. The English says the warning runs until 10:00 Wed 18 Feb, but the Arabic says until 12:00 on Wednesday 18 February. This wrongly extends the warning period by two hours.",
+     "field": "arabic.description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F03",
+   "title": "Arabic protective action reversed ('no precautions, drive normally')",
+   "copies": "translation error in the action (FCC-23-88, FCC-DA-25-12)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic instruction reverses the protective action. It says 'no need to take any precautions, and you can drive normally', which contradicts the English instruction to drive with extreme caution, keep a safe distance and follow reduced speed limits in fog. This is a dangerous meaning inversion introduced by machine translation.",
+     "field": "arabic.instruction",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F04",
+   "title": "Severity inflated to Extreme / Observed",
+   "copies": "overstated alert (ESTR-AICNHM)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Severity 'Extreme' and the headline 'EXTREME DANGER' go beyond the bulletin. The bulletin is a fog and low-visibility weather warning with driving advice. It does not describe an extraordinary threat to life or property, and the phrase 'EXTREME DANGER' does not appear in it.",
+     "field": "severity",
+     "policy_cited": true
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic headline leaves out the English severity prefix \"EXTREME DANGER:\". It begins directly with \"تحذير من الضباب\" (fog warning), so the Arabic headline signals less danger than the English one.",
+     "field": "arabic.headline",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F05",
+   "title": "Unverified rumour added (dam burst)",
+   "copies": "unverified input in the alert (ESTR-AICNHM)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description includes a dam-burst report and evacuation order near Al Ain. No event input supports it: the only verified hazard input is the NCM fog warning. It is also a second event inside a fog alert.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The first page in both languages has no protective action. The only action, 'leave the area now', is in the final sentence. That sentence is about a different hazard (a dam burst near Al Ain), is sourced only to 'reports', and contradicts a fog warning for the western regions. Which hazard and which action go on the single page is a content decision that a person must make.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The description, in both languages, includes an unverified evacuation order about a dam burst near Al Ain. It is unrelated to the fog hazard, comes from no named source, and is absent from the instruction field. The Arabic faithfully translates it, so recipients would get a conflicting protective action ('leave the area now' versus 'drive with extreme caution'). This looks like injected or unauthorised content, and the issuing authority must confirm or remove it.",
+     "field": "description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F06",
+   "title": "Invented hazard added (flash floods)",
+   "copies": "invented detail (ESTR-AICNHM)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description says flash flooding is expected, but the NCM bulletin only warns of fog and reduced visibility. Adding a hazard the bulletin does not support makes the alert inaccurate and could harm trust in official warnings.",
+     "field": "description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F07",
+   "title": "Invented places added (Dubai, Sharjah)",
+   "copies": "area overreach in the text (JALERT-2022)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert adds Dubai and Sharjah as affected areas. No input supports this. The verified NCM bulletin limits the warning to several western regions of the UAE, and Dubai and Sharjah are not in the west. Including them widens the alert area beyond what the bulletin says.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither the English nor the Arabic text contains any protective action (for example, avoid driving or slow down and use low-beam lights). The first page therefore carries the hazard but no action. Affected places (Dubai, Sharjah) are given only at the end, which would land on a later page.",
+     "field": "phone_text.text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F08",
+   "title": "Target area widened to the whole country",
+   "copies": "LA County 2025 (LA-2025)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R3"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert area is much wider than the area requested for this event. The alert targets the whole country (UAE-ALL, 'All of the UAE'), but the area drawn for event uae-fog-2026-02-17 is the Western region (AUH-WEST). The headline itself says the hazard is in western regions, so the rest of the country would be over-alerted.",
+     "field": "area",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F09",
+   "title": "Area description says 'All emirates', codes unchanged",
+   "copies": "area overreach (JALERT-2022)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert's areaDesc (\"All emirates\") does not match the area requested for this event. The requested area is \"Western region (demo zone)\", and the alert's own codes are DEMO-ZONE/AUH-WEST, which match it. A nationwide description on a western-zone alert overstates the target area and could cause over-alerting or confusion about who is affected.",
+     "field": "areaDesc",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F12",
+   "title": "Arabic version missing",
+   "copies": "UAE handset languages (TDRA-TS040)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R7"
+   ],
+   "agents_named": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Arabic phone text is missing. The UAE profile requires both ar and en, but only an English text was provided.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F13",
+   "title": "Correction sent as a new alert with no reference",
+   "copies": "Hawaii 2018 correction (FCC-HI-2018)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R10"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The headline and description claim the earlier alert was sent in error and should be disregarded. No verified input supports this. The verified NCM bulletin confirms an active fog and low-visibility hazard, so the retraction contradicts the hazard facts and rests on an unverified claim.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert fields contradict each other. Event 'Fog warning', status 'Actual', severity 'Moderate' and certainty 'Likely' describe an active hazard, but the text retracts it. The hazard times and places from the bulletin are missing entirely.",
+     "field": "event",
+     "policy_cited": false
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The headline presents this message as a correction or retraction of an earlier alert. However, msgType is 'Alert' and references is null, so it does not point to any alert it corrects. This system has no earlier alerts on record, and no other authority has an active alert, so recipients cannot tell what to disregard.",
+     "field": "msgType / references / headline",
+     "policy_cited": true
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 65 UCS-2 characters, which takes 2 cell broadcast pages. A CBS page is padded to 82 octets, and UCS-2 uses 2 octets per character, so one page holds about 41 Arabic characters. The UAE handset advice limits the message to 1 page.",
+     "field": "phone_text",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F14",
+   "title": "Sender not in the issuer register",
+   "copies": "Brazil 2026 (BRAZIL-2026)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R4"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert's sender (unknown-sender@nadhir.example) does not appear in the issuer register. The only authorised issuer is demo-national-authority@nadhir.example. An unregistered originator is about to issue an Actual, Public alert on a live console.",
+     "field": "sender",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F15",
+   "title": "English protective action made unsafe",
+   "copies": "unsafe AI text (ESTR-AICNHM)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The instruction tells drivers that no precautions are needed and to drive as normal. The NCM bulletin says the opposite: it urges motorists to take extreme caution, keep a safe distance and follow modified speed limits in thick fog. The alert therefore understates the hazard the bulletin describes.",
+     "field": "instruction",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The protective action is contradictory. The English says 'No special precautions are needed; drive as normal'. The Arabic says 'Drive with extreme caution. Keep a safe distance and keep to reduced speed limits during fog'. Arabic and English readers would be told to do opposite things. The English instruction also conflicts with the zero-visibility hazard in the description, so which text is correct is a content decision, not a translation fix.",
+     "field": "instruction",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F16",
+   "title": "Arabic text made far too long",
+   "copies": "cell broadcast page limit (TS23041)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 804 UCS-2 characters, which is 20 cell broadcast pages against a 1-page handset limit. Most of the length comes from the advice paragraph being pasted three times.",
+     "field": "phone_text.ar",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F10",
+   "title": "Drill sent as a live alert",
+   "copies": "Hawaii 2018 (FCC-HI-2018)",
+   "scenario": "uae-dust-drill",
+   "rules_named": [
+    "R2"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The context is an exercise or drill, but the alert status is 'Actual'. This presents the hazard as a real, live event to the public. Mixing live-alert framing with drill material is the confusion that caused the Hawaii false alert.",
+     "field": "status",
+     "policy_cited": true
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The status does not fit the context. The context is an exercise/drill, but the alert has status Actual and Public scope, and it would go out from a live console, which risks a false public alert.",
+     "field": "status",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  },
+  {
+   "fault": "F11",
+   "title": "'This is not a drill' inside a drill",
+   "copies": "Hawaii 2018 (FCC-HI-2018)",
+   "scenario": "uae-dust-drill",
+   "rules_named": [
+    "R2"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description states 'This is not a drill.' even though the message status is Exercise and the context is a drill. This is a false statement about whether the hazard is real, and it could make recipients treat an exercise as a live event.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Both language versions contradict themselves on whether this is an exercise. The headline and description say EXERCISE / تمرين, but the description ends with 'This is not a drill' / 'هذا ليس تمريناً'. Arabic readers get the same mixed signal as English readers. This mix of exercise marking and live-alert wording is the pattern that caused confusion in the Hawaii false alert.",
+     "field": "arabic.description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   }
+  }
+ ],
+ "clean": [
+  {
+   "scenario": "uae-dust-2026-03-04",
+   "run": 1,
+   "objections": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The bulletin says the winds are expected to be fresh to strong only 'at times'. The alert describes them as continuously fresh to strong, which overstates how intense and persistent the hazard is.",
+     "field": "description",
+     "blocking": false,
+     "fix": "Restore the qualifier, e.g. 'Northwesterly winds, fresh to strong at times, are blowing dust and sand...'",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "expected to be fresh to strong at times"
+      },
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "Fresh to strong northwesterly winds are blowing dust and sand"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The English text is 221 GSM-7 characters, which is 3 cell broadcast pages. The UAE handset advice limits the message to 1 page, which is 93 GSM-7 characters.",
+     "field": "phone_text.en",
+     "blocking": true,
+     "fix": "Cut the English text to 93 GSM-7 characters or fewer: the hazard and the action first, then the time. Drop the long visibility and area detail and the source line if needed, e.g. 'NCM: Dust/sand storm, visibility <2km until 19:00. Drive slowly, stay indoors if possible.'",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23038#0053",
+       "quote": "The Message Information Page then consists of 93 user characters.",
+       "title": "3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0)",
+       "locator": "p.15",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123038/18.00.00_60/ts_123038v180000p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 229 UCS-2 characters, which is 6 pages. A page is 82 octets, about 41 UCS-2 characters, so this is far over the 1-page handset limit.",
+     "field": "phone_text.ar",
+     "blocking": true,
+     "fix": "Rewrite the Arabic text to fit one UCS-2 page (about 41 characters, possibly fewer depending on the header): the hazard plus one protective action. Move the time, area and source detail out of the phone text or reduce them to the bare minimum.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TS23041#0043",
+       "quote": "A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters. Other Data Coding Schemes may also be used",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.11",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language contains a protective action. The texts only describe the wind, dust and visibility, the timing and the source, so the first page does not tell people what to do.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "In both languages, put a short protective action alongside the hazard at the very start of the text, e.g. 'Drive slowly, keep distance, stay indoors if possible'. Use equivalent wording in Arabic.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "coupled with a description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology."
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-dust-2026-03-04",
+   "run": 2,
+   "objections": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Geography does not match the bulletin. NCM warns of winds affecting various areas across the UAE, but the alert limits the impact to Abu Dhabi. 'Abu Dhabi' is only the WAM dateline, not the hazard area.",
+     "field": "description",
+     "blocking": true,
+     "fix": "Replace 'some coastal and inland areas of Abu Dhabi' with 'some coastal and inland areas across the UAE'. The alert area should cover the UAE areas named in the bulletin, not only Abu Dhabi.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "some coastal and inland areas of Abu Dhabi"
+      },
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "affecting various areas across the UAE"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The headline presents visibility below 2,000 m as general. The bulletin limits it to some coastal and inland areas.",
+     "field": "headline",
+     "blocking": false,
+     "fix": "Add the qualifier, e.g. 'Blowing dust warning: visibility below 2,000 m in some areas until 19:00 today'.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "headline",
+       "quote": "visibility below 2,000 m until 19:00 today"
+      },
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "less than 2,000 metres in some coastal and inland areas"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Both texts are longer than the UAE handset limit of 1 page. English is 203 characters in GSM-7, which takes 3 pages. Arabic is 204 characters in UCS-2, which takes 5 pages. A cell broadcast page is fixed at 88 octets with 82 octets for content, so it fits about 93 GSM-7 characters or about 41 UCS-2 characters.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Shorten each language to fit one page: about 93 characters or fewer in English (GSM-7) and about 41 characters or fewer in Arabic (UCS-2). Keep the hazard, the area and the action. Drop secondary detail such as the full date and the exact visibility figure, or move it to a linked source.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0089",
+       "quote": "the 88 octet fixed length CBS page",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.21",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0451",
+       "quote": "shall contain padding up to and including the 82nd octet position",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.89",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23038#0052",
+       "quote": "For these languages UCS2 encoding shall be used.",
+       "title": "3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0)",
+       "locator": "p.14",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123038/18.00.00_60/ts_123038v180000p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language contains a protective action. Both describe only the hazard (dust, sand, low visibility) and the times it is in effect. The first page, and here the only page, must carry both the hazard and the action.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short, clear action in both languages, for example 'Drive with caution, avoid outdoor activity' and its Arabic equivalent. Place it on the first page together with the hazard, inside the one-page budget.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "NCM warns of fresh to strong northwesterly winds causing blowing dust and sand."
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "In effect from 14:55 until 19:00 today, 4 March."
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-dust-2026-03-04",
+   "run": 3,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Message length exceeds the UAE handset advice of one cell broadcast page. The English GSM-7 text is 193 characters over 3 pages; the Arabic UCS-2 text is 211 characters over 6 pages. A CBS page is a fixed 88 octets, which leaves about 93 GSM-7 characters or about 41 UCS-2 characters of user content.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Cut each language to a single page. Keep English to 93 GSM-7 characters or fewer, for example: 'NCM: Dust/sand, visibility <2km until 19:00 today. Avoid driving, stay indoors.' Keep Arabic to about 41 UCS-2 characters or fewer, giving only the hazard, the action and the end time. Drop the agency long name, the wind description and the date restatement.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "\"characters\": 211, \"encoding\": \"UCS-2\", \"pages\": 6"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0089",
+       "quote": "the BSC sends to the BTS in one single message the 88 octet fixed length CBS page",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.21",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language gives any protective action. The text only describes winds, dust and visibility, so the first page has the hazard but not what people should do.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Put a short protective action on the first page of both languages, straight after the hazard. For example, in English: 'Drive with caution, avoid travel, stay indoors.' Add the Arabic equivalent.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Visibility is below 2,000 m in some coastal and inland areas."
+      },
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "a description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-dust-drill",
+   "run": 1,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The message length exceeds the UAE one-page limit in both languages. English is 204 GSM-7 characters across 3 pages. Arabic is 203 UCS-2 characters across 5 pages.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Shorten each language to fit one cell broadcast page. That is 82 octets: about 93 GSM-7 characters for English and about 41 UCS-2 characters for Arabic. Keep only the hazard, the area, the protective action and the end time. Drop descriptive detail such as wind direction and visibility figures. Keep 'EXERCISE' / 'تمرين' at the start.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0451",
+       "quote": "padding up to and including the 82nd octet position",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.89",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language contains a protective action. The text describes the dust and sand hazard and how long it lasts, but never tells recipients what to do. The first page therefore carries the hazard without the action.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short protective action in both languages within the first page. For example: 'Drive with care, stay indoors if possible' / 'قد بحذر وابقَ في الداخل'. Make room for it by cutting descriptive wording, and keep both language versions equivalent.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "a description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Conditions until 18:00."
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-dust-drill",
+   "run": 2,
+   "objections": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The geography is narrower than the bulletin. NCM warns of reduced visibility 'in some coastal and inland areas' without naming any emirate. 'ABU DHABI' is only the WAM news dateline. Adding 'of Abu Dhabi' could mislead people in other affected areas into thinking the warning does not apply to them.",
+     "field": "headline",
+     "blocking": true,
+     "fix": "Remove 'of Abu Dhabi' from the headline and description, and use the bulletin's wording: 'some coastal and inland areas' (optionally 'of the UAE', since NCM is the national centre).",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "in some coastal and inland areas"
+      },
+      {
+       "kind": "view",
+       "ref": "headline",
+       "quote": "coastal and inland areas of Abu Dhabi until 18:00"
+      },
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "some coastal and inland areas of Abu Dhabi"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The wind intensity is overstated. The bulletin says 'active to occasionally strong northwesterly winds'. The description says simply 'Strong northwesterly winds', which raises the stated intensity above what the bulletin supports.",
+     "field": "description",
+     "blocking": false,
+     "fix": "Reword to 'Active to occasionally strong northwesterly winds are raising dust and sand.'",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "active to occasionally strong northwesterly winds"
+      },
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "Strong northwesterly winds are raising dust and sand"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "An exercise-status alert with scope Public is being prepared in the live console environment, so it could be broadcast to the public. Drill guidance says drill messages should stay off consumer devices and that test and live environments should be clearly separated. A person must confirm that public distribution of this drill is intended and authorised; otherwise it should be restricted or moved to a test environment.",
+     "field": "scope",
+     "blocking": true,
+     "fix": "A responsible person should confirm that a public drill broadcast on the live system is intended. If it is not, change scope to Restricted or Private, or send the alert from a test environment.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-HI-2018#0047",
+       "quote": "the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions",
+       "title": "Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert",
+       "locator": "p.10",
+       "url": "https://docs.fcc.gov/public/attachments/DOC-350119A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "clause",
+       "ref": "FCC-HI-2018#0140",
+       "quote": "clearly differentiate its test environment from its live alert environment",
+       "title": "Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert",
+       "locator": "p.24",
+       "url": "https://docs.fcc.gov/public/attachments/DOC-350119A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "alert.headline",
+       "quote": "EXERCISE: Blowing dust and low visibility"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Both language versions exceed the UAE handset limit of one cell broadcast page. English is 195 GSM-7 characters across 3 pages. Arabic is 188 UCS-2 characters across 5 pages. A CBS page is 88 octets, so a single page holds about 93 GSM-7 characters or about 41 UCS-2 characters.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Shorten each language so it fits on one page: no more than about 93 characters for English (GSM-7) and about 41 characters for Arabic (UCS-2). Keep 'EXERCISE', the hazard, the area, the end time and a short action. Drop secondary wording such as 'Visibility can drop suddenly'. If Arabic cannot carry the hazard and the action within one UCS-2 page, raise this with the operators and the authority before sending.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0089",
+       "quote": "the BSC sends to the BTS in one single message the 88 octet fixed length CBS page",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.21",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "\"encoding\": \"UCS-2\",\n   \"pages\": 5"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither the English nor the Arabic text contains a protective action. The text only describes the dust and visibility hazard, so the first page does not tell people what to do.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short action near the start of both languages, for example 'Drive slowly, use low beams, avoid travel if possible' in English with a matching Arabic version. Place it so it falls on the first (and only) page.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Visibility can drop suddenly."
+      },
+      {
+       "kind": "clause",
+       "ref": "CAP12#0116",
+       "quote": "The text describing the recommended action to be taken by recipients of the alert message",
+       "title": "Common Alerting Protocol Version 1.2",
+       "locator": "3.2.2 \"info\" Element and Sub-elements",
+       "url": "https://docs.oasis-open.org/emergency/cap/v1.2/CAP-v1.2-os.html",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-dust-drill",
+   "run": 3,
+   "objections": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Wrong geography: the alert limits the hazard to coastal and inland Abu Dhabi. The NCM bulletin only says 'some coastal and inland areas' and names no emirate; 'ABU DHABI' is the news agency's dateline, not the hazard area. People in other affected emirates may think the alert does not apply to them, while people across Abu Dhabi may think all of it is affected.",
+     "field": "headline",
+     "blocking": true,
+     "fix": "Remove 'Abu Dhabi' from the area wording in both the headline and the description. Match the bulletin, e.g. 'Blowing dust reducing visibility in some coastal and inland areas until 18:00' and '...reducing visibility to under 3,000 m in some coastal and inland areas.' Name a region only if NCM specifies one.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "headline",
+       "quote": "coastal and inland Abu Dhabi"
+      },
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "some coastal and inland areas of Abu Dhabi"
+      },
+      {
+       "kind": "view",
+       "ref": "event_inputs[1].text",
+       "quote": "less than 3,000 metres in some coastal and inland areas"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Both language versions exceed the UAE handset limit of one cell broadcast page: the English text is 3 pages and the Arabic text is 5. Handsets may truncate the message or reassemble it out of order, and the UAE requirement is a single page.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Redraft each language to fit one 82-octet CBS page: about 93 characters or fewer for English in GSM-7, and about 41 characters or fewer for Arabic in UCS-2. Drop the source, the full date and secondary detail, for example \"EXERCISE: Dust/sand, visibility <3km, Abu Dhabi. Drive slowly, stay indoors. Until 18:00\". Give the Arabic an equivalent minimal wording, then recheck the page count for each language.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0089",
+       "quote": "the 88 octet fixed length CBS page",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.21",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language version contains a protective action. The text describes only the hazard (dust and sand, reduced visibility), its area and validity, so the first page cannot carry an action telling recipients what to do.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short imperative protective action, such as 'Drive slowly, keep distance; stay indoors if possible', immediately after the hazard on the first page in both en and ar. Use the space freed by removing the source and the full date.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "reducing visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-fog-2026-02-17",
+   "run": 1,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The English text is 190 GSM-7 characters across 3 pages, which exceeds the UAE handset requirement of a 1-page maximum.",
+     "field": "phone_text.en",
+     "blocking": true,
+     "fix": "Shorten the English text to one GSM-7 page (93 characters or fewer, within 82 octets). Keep the hazard, area, timing and a short protective action. Drop low-priority detail such as the full source line and the full date wording. Example: 'Fog warning W. UAE 21:30 Tue-10:00 Wed: visibility near zero. Avoid driving, use low beams.'",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 234 UCS-2 characters across 6 pages, far beyond the 1-page maximum. A UCS-2 page holds only about 41 characters within the 82-octet page.",
+     "field": "phone_text.ar",
+     "blocking": true,
+     "fix": "Rewrite the Arabic text to fit one UCS-2 page (about 41 characters or fewer). Keep only the hazard, area, end time and the action, for example the equivalent of 'Thick fog W. UAE until 10:00 Wed. Avoid driving.' If the hazard and action cannot fit in one page, a person must decide whether to accept multiple pages.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0451",
+       "quote": "padding up to and including the 82nd octet position",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.89",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-fog-2026-02-17",
+   "run": 2,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Both language versions exceed the UAE one-page limit. English is 174 GSM-7 characters, which makes 2 pages at 93 characters per page. Arabic is 192 UCS-2 characters, which makes 5 pages at 82 octets (about 41 characters) per page. Handsets may display only part of the alert, or display it fragmented.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Shorten the English text to no more than 93 GSM-7 characters, avoiding extension-table characters. Shorten the Arabic text to no more than 41 UCS-2 characters (82 octets). Keep the hazard, area, end time and action, and drop the detailed start date and the source line if needed. If the Arabic cannot carry the hazard and action within one page, a person must decide whether a multi-page Arabic message is acceptable.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23038#0053",
+       "quote": "The Message Information Page then consists of 93 user characters.",
+       "title": "3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0)",
+       "locator": "p.15",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123038/18.00.00_60/ts_123038v180000p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0451",
+       "quote": "shall contain padding up to and including the 82nd octet position",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.89",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "\"encoding\": \"UCS-2\", \"pages\": 5"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language contains a protective action. The text describes only the hazard (fog, zero visibility), the area, the time and the source. So the first page, and the whole message, tells people what is happening but not what to do.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "In both languages, put a short action near the start, within the first (and only) page. For example, in English: 'Avoid driving; if you must, slow down and use low-beam lights.' Add an equivalent Arabic sentence.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "coupled with a description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Fog warning: visibility may drop to zero at times in western regions"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-fog-2026-02-17",
+   "run": 3,
+   "objections": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description overstates the hazard. NCM warns of 'potential fog formation' and mentions thick fog only for 'areas experiencing thick fog'. It does not say thick fog is expected across the western regions.",
+     "field": "description",
+     "blocking": false,
+     "fix": "Replace 'thick fog is expected in western regions of the UAE' with 'fog may form in several western regions of the UAE, thick in places', which keeps to the bulletin wording.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "thick fog is expected in western regions of the UAE"
+      },
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE"
+      },
+      {
+       "kind": "view",
+       "ref": "event_inputs",
+       "quote": "particularly in areas experiencing thick fog"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Both language versions exceed the UAE handset requirement of a single cell broadcast page. English (218 characters, GSM-7) takes 3 pages and Arabic (228 characters, UCS-2) takes 6.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Cut each text to fit one page. That means about 93 characters for English in GSM-7 and about 41 characters for Arabic in UCS-2, since one page is 82 usable octets. Keep only the hazard, area, time and action. Drop the long date phrasing and possibly the URL, or shorten them. If a one-page Arabic UCS-2 text cannot carry the essential content, a person should decide whether to accept it.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0451",
+       "quote": "padding up to and including the 82nd octet position",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.89",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The protective action ('Drive with extreme caution' / 'قُد بحذر شديد') sits near the end of both texts. On a multi-page delivery the first page carries only the hazard and timing, not the action.",
+     "field": "phone_text",
+     "blocking": false,
+     "fix": "Restructure both texts so the hazard and the action appear at the very start. For example: 'Thick fog W. UAE tonight–Wed 10:00: drive with extreme caution.' Put the same order in the Arabic text.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Drive with extreme caution. More: https://alerts.example.ae"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "قُد بحذر شديد. للمزيد"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-rain-2026-08-22",
+   "run": 1,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Both language versions run past the UAE one-page limit (en: 3 pages, ar: 5 pages). Handsets may show the message split or cut off.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Rewrite each language to fit one cell broadcast page: at most about 93 GSM-7 characters for English and about 41 UCS-2 characters for Arabic. Keep only the hazard, the area and time in brief, and the action. If a meaningful Arabic text cannot fit in one UCS-2 page, the issuing authority must decide what to drop, or whether multi-page delivery is acceptable.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "TDRA-TS040#0002",
+       "quote": "Message should be limited to 1 page maximum.",
+       "title": "Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040)",
+       "locator": "requirement 3",
+       "url": "https://careers.kiwa.com/globalassets/uk/pcs/regulatory-updates-2015/regulatory_update_uae_21-sep-15.pdf",
+       "status": "verified-secondary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language version tells the public what to do. The text describes the hazard and the validity period only, so the first page carries no action.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short protective action in both languages (for example, avoid valleys and flooded roads, and drive carefully). Place it on the first and only page, right after the hazard.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "a description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "In effect Saturday 22 Aug 2026, 13:30 to 21:00."
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-rain-2026-08-22",
+   "run": 2,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The English text is 217 GSM-7 characters and needs 3 cell broadcast pages, against the UAE advice of 1 page. A GSM-7 page holds 93 characters, so readers on many handsets will see only fragments or have to page through.",
+     "field": "phone_text.en",
+     "blocking": true,
+     "fix": "Cut the English text to 93 GSM-7 characters or fewer, with the hazard and action first. Example: 'NCM: Heavy rain possible E, S, W & interior UAE Sat 22 Aug 13:30-21:00. Avoid valleys & floods.' Drop the 'convective clouds with light to moderate rain' detail.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23038#0053",
+       "quote": "The Message Information Page then consists of 93 user characters.",
+       "title": "3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0)",
+       "locator": "p.15",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123038/18.00.00_60/ts_123038v180000p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 1
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 215 UCS-2 characters and needs 6 cell broadcast pages, against the 1-page limit. A UCS-2 page is 82 octets, which is about 41 characters, so the Arabic version is badly over length.",
+     "field": "phone_text.ar",
+     "blocking": true,
+     "fix": "Rewrite the Arabic as a minimal one-page message, about 41 UCS-2 characters, giving the hazard and the action, for example heavy rain plus avoiding valleys. Move the timing and area detail to a follow-up message or link. If one page cannot carry the required hazard and action in Arabic, refer the page-limit trade-off to the operators or TDRA for a decision.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23038#0053",
+       "quote": "Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length",
+       "title": "3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0)",
+       "locator": "p.15",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123038/18.00.00_60/ts_123038v180000p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 1
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language contains a protective action. The text only describes possible rain and the validity period, so the first page cannot carry an instruction to the public.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short protective action in both languages and put it on the first page, for example 'Avoid valleys and flooded roads' or 'تجنب الأودية والطرق المغمورة'.",
+     "evidence": [
+      {
+       "kind": "clause",
+       "ref": "FCC-DA-25-12#0114",
+       "quote": "coupled with a description of the threat and the protective action the public should take",
+       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
+       "locator": "p.21",
+       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text.en",
+       "quote": "In effect Saturday 22 Aug, 13:30 to 21:00."
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    }
+   ]
+  },
+  {
+   "scenario": "uae-rain-2026-08-22",
+   "run": 3,
+   "objections": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The English text is 184 GSM-7 characters, which is 2 pages. The UAE handset advice limits the message to 1 page. A cell broadcast page carries 82 octets of user information, which is about 93 GSM-7 characters.",
+     "field": "phone_text.en",
+     "blocking": true,
+     "fix": "Cut the English text to 93 GSM-7 characters or fewer so it fits one page. Keep the hazard, area, time and a protective action, for example: 'NCM: heavy rain at times E, S, W & interior areas Sat 13:30-21:00. Avoid valleys & flooded roads.'",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      },
+      {
+       "kind": "view",
+       "ref": "phone_text.en",
+       "quote": "\"characters\": 184, \"encoding\": \"GSM-7\", \"pages\": 2"
+      },
+      {
+       "kind": "clause",
+       "ref": "TS23041#0451",
+       "quote": "shall contain padding up to and including the 82nd octet position",
+       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
+       "locator": "p.89",
+       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The Arabic text is 191 UCS-2 characters, which is 5 pages. This is far over the 1-page UAE limit. At 82 octets per page, UCS-2 allows only about 41 characters per page.",
+     "field": "phone_text.ar",
+     "blocking": true,
+     "fix": "Rewrite the Arabic as a very short message of no more than about 41 UCS-2 characters for a single page, stating the hazard and the action, and remove the Latin 'NCM' if possible. If the hazard plus action cannot fit, refer the one-page limit for Arabic to the operator or authority for a decision.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text.ar",
+       "quote": "\"characters\": 191, \"encoding\": \"UCS-2\", \"pages\": 5"
+      },
+      {
+       "kind": "view",
+       "ref": "handset_advice",
+       "quote": "message should be limited to 1 page"
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither language tells people what to do. The first page carries the hazard (rain) but no protective action.",
+     "field": "phone_text",
+     "blocking": true,
+     "fix": "Add a short protective action, such as avoiding valleys and flooded areas or driving carefully, near the start of each language so that it appears on page 1.",
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text.en",
+       "quote": "In effect Saturday 13:30 to 21:00."
+      }
+     ],
+     "policy_cited": false,
+     "unchecked_evidence": 0
+    }
+   ]
+  }
+ ]
+}

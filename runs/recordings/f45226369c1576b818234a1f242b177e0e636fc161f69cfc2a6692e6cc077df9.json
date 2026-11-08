@@ -1,0 +1,151 @@
+{
+ "key": "f45226369c1576b818234a1f242b177e0e636fc161f69cfc2a6692e6cc077df9",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Defesa Civil Nacional\": {\n   \"name\": \"Defesa Civil Nacional\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"\",\n  \"codes\": [],\n  \"drawn_for_event\": \"brazil-2026\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"unknown (not a registered originator)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Alerta Extremo\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Multiple regions of Brazil (cities and states as reported)\",\n  \"codes\": [\n   [\n    \"ISO3166-2\",\n    \"BR-PR\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-SP\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-RJ\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-DF\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-BA\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-PA\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-MS\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-AC\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Alerta Extremo\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender identifier authorized originator verification', 'alert area exceeds requested area overreach', 'FCC false alert unauthorized sender lessons'):\n\n[X1303BIS#0046] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\nsender cap.alert.sender.identifier The identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[CAP12#0070] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\n(1) A number or string uniquely identifying this message, assigned by the sender. (2) MUST NOT include spaces, commas or restricted characters (< and &). sender cap. alert. sender. identifier\n\n[CAP12#0071] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nThe identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name.\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[FCC-16-127#0226] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.38):\nNWS May 21, 2016 Ex Parte at 2. 234 See 47 CFR § 10.450 (providing that “[i]f, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area”). 235\n\n[FCC-16-127#0688] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.119):\nA Participating CMS Provider must transmit any Alert Message that is specified by a geocode, circle, or polygon to an area not larger than the provider's approximation of coverage for the Counties or County Equivalents with which that geocode, circle, or polygon intersects that best approximates the specified geocode, circle, or polygon. If, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates the specified geocode, circle, or polygon, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site. If, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area. (b) Upon request from an emergency management agency, a Participating CMS Provider will disclose information regarding their capabilities for geo-targeting Alert Messages. A Participating CMS Provider is only required to disclose this information to an emergency management agency insofar as it would pertain to Alert Messages initiated by that emergency management agency, and only so long as the emergency management agency offers confidentiality protection at least equal to that provided by the federal FOIA. 10. Add a new Section 10.480: § 10.480 Language support.\n\n[TS23041#0443] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.87):\n9.4.3.2.5 Warning Area Coordinates This parameter contains the coordinates of the warning area and is contained in the Warning Area Coordinates IE (see clause 9.3.63) of the WRITE-REPLACE-WARNING-REQUEST Request message received from the CBC (see clause 9.2.16) or WRITE-REPLACE-WARNING-REQUEST-NG-RAN request message received from the CBCF (see clause 9.2.26).\n\n[TS23041#0131] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.32):\nETSI TS 123 041 V18.3.0 (2024-02) 5. The MME forwards the request from the CBC by Kill Request to eNodeB's. The MME shall use the Tracking Area ID list to determine the eNodeBs that may have warning message broadcast ongoing. In case the Tracking Area ID list is not included the Kill Request is forwarded to all eNodeBs that are connected to the MME. 6. The eNodeB shall stop broadcasting the warning message identified by the Message Identifier and Serial Number in the areas identified by Warning Area IDs. If the Warning Area is absent, it shall be interpreted as \"all cells on the eNodeB\"). When S1-Flex is used the eNodeB may receive same Kill Request from multiple MMEs, if any redundant Kill Requests are detected only the response to the first MME shall contain statistics related to the cancelled broadcast. 7. If the Send Stop Warning Indication parameter was present in the Stop Warning Request and it is configured in the MME based on operator policy, the MME forwards the Broadcast Cancelled Area List it has received from the eNodeB in a Stop Warning Indication(s) to the CBC. The MME may aggregate Broadcast Cancelled Area Lists it receives from eNodeBs.\n\n[LA-2025#0001] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.1):\nSOUNDING THE ALARM: Lessons from the Kenneth Fire False Alerts May 12, 2025\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[LA-2025#0036] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.14):\nCALL TO ACTION Congress and federal agencies must act now to close identified gaps in alerting system performance, certification, and public communication. The lessons from the Kenneth Fire should not only inform reforms, but serve as a catalyst to modernize the nation's alerting infrastructure before the next disaster strikes. ALTADENA NOT COVERED IN THIS REPORT\n\n[FCC-HI-2018#0123] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.21):\nfalse, East Bay Times (Jan. 14, 2018 updated Jan. 15, 2018), https://www.eastbaytimes.com/2018/01/14/as-missilewarning-brought-chaos-police-dispatch-tried-to-relay-that-its-only-a-drill/. 106 Id. 107 Id. Chas Danner, The Frightening Lessons From Hawaii’s False Missile Alert, N.Y. Mag. (Jan. 15, 2018), http://nymag.com/daily/intelligencer/2018/01/the-frightening-lessons-from-hawaiis-false-missile-alert.html (reporting that Honolulu’s 911 system was quickly overwhelmed with 5,000 calls, only half went through). 108 Email from Courtney Taguba, Executive Director, Enhanced-911 Board, State of Hawaii Department of",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The sender is not in the issuer register (\"unknown (not a registered originator)\"). This is a live, real-event Actual alert with Extreme severity, sent to the public in eight Brazilian states. The requested area for event brazil-2026 is empty, so the alert's multi-state area has no requested area behind it. Both problems need a decision by a person or the national authority (Defesa Civil Nacional) before anything is sent.",
+  "objections": [
+   {
+    "issue": "The sender is not a registered originator. The only registered issuer is Defesa Civil Nacional, but the alert names an unknown sender. An unauthorized sender may not issue a live Actual Extreme alert to the public.",
+    "field": "alert.sender",
+    "blocking": true,
+    "fix": "Hold the alert. A person must confirm the originator. The alert may only be reissued under Defesa Civil Nacional, or another registered issuer, with its proper sender identifier.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.sender",
+      "quote": "unknown (not a registered originator)"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0071",
+      "quote": "Identifies the originator of this alert. Guaranteed by assigner to be unique globally"
+     }
+    ]
+   },
+   {
+    "issue": "The alert area does not match the requested area. The area drawn for event brazil-2026 is empty (no areaDesc, no codes). The alert instead targets eight states (PR, SP, RJ, DF, BA, PA, MS, AC) described only vaguely. This is overreach beyond any requested area.",
+    "field": "alert.areaDesc",
+    "blocking": true,
+    "fix": "Have the requesting authority supply a defined area for this event. Then limit the alert's codes and areaDesc to exactly that area.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "Multiple regions of Brazil (cities and states as reported)"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0688",
+      "quote": "to an area not larger than the provider's approximation of coverage"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4584,
+  "output_tokens": 1045,
+  "at": "2026-11-08T20:47:04Z"
+ }
+}

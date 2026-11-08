@@ -15,14 +15,24 @@ Y.3172 (06/2019) describes a machine-learning pipeline in a network: source, col
 | ML sandbox | The replay bench and the demo issuer, keys and zones. Nothing touches a real broadcast system | `nadhir/bench.py`, `nadhir/keys/demo/` | D10 AI policy (rules tried on real failures before any live use) | Y3172 |
 | Underlay | A real cell broadcast centre and handsets. Not touched | n/a | n/a | TS23041 |
 
-## Readiness dimensions claimed (5 of 13)
+## All 13 Readiness dimensions, with status
 
-We claim only the dimensions the prototype exercises:
+Dimension names follow the ITU AI Readiness Framework 2.0 as used in the organisers' own simulation code (ITUAIReadiness, `simulation/server/agents/`). Their Y.3172 node-to-dimension map (`usecase.py`) is in the second column, so the two tables line up. Status says how far this prototype goes, with the file or result that shows it.
 
-- **D4 Contextualization and regional impact.** Every UAE alert needs Arabic and English (R7). Arabic must come from a vetted template, or a named person who reads Arabic must approve it (R9). Cell broadcast page counts are done per script, since Arabic needs UCS-2 and fits 41 characters a page, not 93 (R6).
-- **D7 Strategy alignment.** The issuer register (R4) encodes who may warn for which hazard and area. When a higher authority already has an alert out, a lower one must not reach beyond its area without escalating.
-- **D8 Collaboration with AI.** The model drafts and translates. People approve. Two different people approve a high-impact live alert (R1). The alert records which roles approved (R8).
-- **D10 AI policy and policy for AI.** Each rule turns a written policy or an official finding into a check, with the source quoted next to the verdict. The gaps in `docs/gaps.md` come from the places where no policy text could be found to back a rule.
-- **D13 Digital infrastructure.** Cell broadcast limits (R6) and the CAP signature (R5) are infrastructure facts the gate enforces.
+| # | Dimension | Organisers' nodes | Status here | What shows it (or why not) |
+|---|---|---|---|---|
+| D1 | Data / model marketplace | SRC, C, PP | Partly | The knowledge base is open: clause index of our sources plus the organisers' own UAE policy dataset (`kb/index/`), and every real alert we read is kept as a snapshot (`audit/snapshot/`). No marketplace or exchange. |
+| D2 | Generated content marketplace | PP, M | Not addressed | AI-generated alert text is the subject, but there is no exchange of generated content. The provenance profile (G1) would let such content be labelled. |
+| D3 | Cross-domain correlation | C, PP, M | Not addressed | One domain (public warning over cell broadcast). |
+| D4 | Contextualization and regional impact | SRC | Exercised | Arabic and English are both required (R7); Arabic needs a vetted template or a named Arabic reader (R9); an Arabic reviewer agent compares meaning; pages are counted per script, since Arabic fits 41 characters a page, not 93 (R6). |
+| D5 | Level of integration of AI in workflows | M, D, SINK, MLFO | Partly | AI drafts and translates; four agents review; people approve. We did not measure time saved. |
+| D6 | Human interface | D, SINK | Partly | The approver sees the draft, the rule table, each agent's quoted objections and the open items to read before release. Plain UI, not user-tested. |
+| D7 | Strategy alignment | P, MLFO | Exercised | The issuer register and the issuing-authority agent check who may warn for what; overreach past a higher authority's alert is held for escalation (R4, Seoul 2023 replay). |
+| D8 | Collaboration with AI | P, MLFO | Exercised | AI proposes; agents object with quotes; named people decide and can overrule an objection only on the record (audit log). Two people for a high-impact alert (R1). |
+| D9 | Impacts of humans in AI integration | M | Not addressed | No study of skills or staffing. |
+| D10 | AI policy and policy for AI | P, Sandbox | Exercised | Each rule turns a written policy or official finding into a check; agents must quote the clause they rely on; searches that find no clause become gap leads (`docs/gaps.md`). |
+| D11 | AI for inclusion | Sandbox | Partly | Arabic on equal terms with English. No accessibility or other-language work (the UAE's large non-Arabic, non-English population is not covered). |
+| D12 | Granular priorities | D, SINK | Not addressed | No regional prioritisation beyond the operator's chosen zone. |
+| D13 | Digital infrastructure | SRC, C, SINK | Exercised | Cell broadcast page budgets per encoding (R6, 3GPP TS 23.038/23.041), CAP schema validation (R0) and XML signatures (R5). |
 
-Dimensions we do not claim: data and model marketplace, generated content marketplace, cross-domain analysis, level of integration (no time-saving measured), human interface (the UI is plain), impact of humans in AI integration, inclusion beyond language, priorities.
+Five exercised, four partly, four not addressed. We claim only the five.

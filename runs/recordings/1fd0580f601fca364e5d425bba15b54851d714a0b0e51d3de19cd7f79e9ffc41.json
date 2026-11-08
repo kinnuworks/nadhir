@@ -1,0 +1,156 @@
+{
+ "key": "1fd0580f601fca364e5d425bba15b54851d714a0b0e51d3de19cd7f79e9ffc41",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fog may cut visibility to zero, W. UAE, 21:30 Tue-10:00 Wed: drive with extreme caution.\",\n   \"characters\": 88,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"قد يؤدي الضباب إلى انعدام الرؤية، غرب الإمارات، 21:30 الثلاثاء - 10:00 الأربعاء: قُد بحذر شديد.\",\n   \"characters\": 95,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 3\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast UCS-2 page length characters', 'UAE public warning Arabic English message length', 'first page hazard action alert truncation'):\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[IPAWS-PROFILE#0059] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nMessages invoking the \"Gubernatorial Must-Carry\" rule MUST include a <parameter> with <valueName> of \"EAS-Must-Carry\" and value of \"TRUE\" for gubernatorial alerts. Messages intended for CMAS dissemination MAY include an instance of <parameter> with a <valueName> of \"CMAMtext\" and a <value> containing free form text limited in length to 90 English characters. *May have multiple occurrences in a message under CAP v1.2 specifcation.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0090] UAE Public Policy Development Guidebook (p.45):\nConsultations Implementation Media Messages List the consulted stakeholders (federal, local, private companies) and their feedback. Create a list of relevant stakeholders and the implementation plan (main entity, if any, and other supporting entities). Media messages should be written in Arabic and English.\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[WMO-CAP-GUIDE#0004] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nPublic and First Responder Action: People receive the alert through multiple communication channels and take appropriate action based on the guidance provided. First responders may receive tailored alerts to support emergency coordination and response. CAP Resources Explore a comprehensive collection of resources on the Common Alerting Protocol (CAP), including online courses, toolkits, guidelines and documents on the CAP implementation. Explore CAP Resources\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[ITU-AIR2#0106] AI Ready – Analysis Towards a Standardized Readiness Framework, Report 2.0 (p.29):\n• Ecosystem readiness/ability to develop AI skills and AI talents. o skills gap analysis: an important output of the framework would be to identify what skills are currently lacking. • AI awareness and adoption levels among end-users. o inference-to-action latency: average time from first inference to human action. E.g., Detection-to-dispatch latency for fire brigades: average time from first detection to brigade mobilization. o decisions on human actions based on AI alerts: number and percentage of incidents where humans decided to act based on AI-based alerts. e.g., Fire brigades' decision to act following AI-based alerts. o number of citizens trained with AI-related skills – effectiveness of AI training programs.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present. The English text fits one GSM-7 page. The Arabic text is 95 characters in UCS-2, which takes 3 pages. A UCS-2 page carries about 41 characters (82 octets), and the UAE handset advice limits messages to 1 page. Because of the split, the Arabic first page carries only the hazard and part of the area. The action (drive with extreme caution) falls on the last page. The drafter can fix both problems by shortening the Arabic text.",
+  "objections": [
+   {
+    "issue": "The Arabic message is 95 characters in UCS-2 and needs 3 cell broadcast pages. UCS-2 pages are padded to 82 octets, which is about 41 characters each. The UAE handset advice limits the message to 1 page.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Shorten the Arabic text to no more than about 41 UCS-2 characters so it fits on one page. For example, keep the hazard, the area and the action, and shorten or drop the time window: 'ضباب كثيف غرب الإمارات: قُد بحذر شديد'.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0068",
+      "quote": "where necessary padding the pages to a length of 82 octets"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "قد يؤدي الضباب إلى انعدام الرؤية"
+     }
+    ]
+   },
+   {
+    "issue": "In the current 3-page Arabic message, the first page (about 41 characters) ends partway through the area name. The protective action 'قُد بحذر شديد' only arrives on the last page. A handset that shows only page 1, or a reader who stops there, gets the hazard but not the action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Restructure the Arabic text so the hazard and the action both come within the first 41 characters. Ideally fit the whole message on one page, as above.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "10:00 الأربعاء: قُد بحذر شديد"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0421",
+      "quote": "indicates the binary value of the total number of pages in the CBS message"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4551,
+  "output_tokens": 1365,
+  "at": "2026-11-08T20:58:09Z"
+ }
+}

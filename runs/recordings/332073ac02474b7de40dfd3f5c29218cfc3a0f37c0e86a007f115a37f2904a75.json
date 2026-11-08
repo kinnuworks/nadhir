@@ -1,0 +1,123 @@
+{
+ "key": "332073ac02474b7de40dfd3f5c29218cfc3a0f37c0e86a007f115a37f2904a75",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty likely possible definitions', 'severity moderate fog warning WMO guidance', 'alert area description vague regions geocode'):\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAP12#0103] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Possible” - Possible but not likely (p <= ~50%) “Unlikely” - Not expected to occur (p ~ 0) “Unknown” - Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of “Very Likely” SHOULD be treated as equivalent to “Likely”.\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAP12#0164] Common Alerting Protocol Version 1.2 (3.4 XML Schema):\n</restriction> </simpleType> </element> <element name = \"severity\"> <simpleType> <restriction base = \"xs:string\"> <enumeration value = \"Extreme\"/> <enumeration value = \"Severe\"/> <enumeration value = \"Moderate\"/> <enumeration value = \"Minor\"/> <enumeration value = \"Unknown\"/>\n\n[EW4ALL-P3#0025] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (About EW4All):\nLaunch webinar: Methodological Guidance on Conducting After Event Reviews of Early Warning Systems, 4 August 2026, Online EW4All webinar series (co-organized by UNDRR, WMO, ITU, and IFRC): Accelerating cell broadcast for effective early warning systems in Africa, 24 July 2026, Online | see BDT Director's Tweet\n\n[X1303BIS#0125] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.36):\nSOUTHWEST AT 5 MPH. HAIL...INTENSE RAIN AND STRONG DAMAGING WINDS ARE LIKELY WITH THIS STORM.</description> <instruction>TAKE COVER IN A SUBSTANTIAL SHELTER UNTIL THE STORM PASSES.</instruction> <contact>BARUFFALDI/JUSKIE</contact> <area> <areaDesc>EXTREME NORTH CENTRAL TUOLUMNE COUNTY IN CALIFORNIA, EXTREME NORTHEASTERN CALAVERAS COUNTY IN CALIFORNIA, SOUTHWESTERN ALPINE COUNTY IN CALIFORNIA</areaDesc> <polygon>38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14</polygon> <geocode> <valueName>SAME</valueName> <value>006109</value> </geocode> <geocode> <valueName>SAME</valueName> <value>006009</value> </geocode> <geocode> <valueName>SAME</valueName> <value>006003</value> </geocode> </area> </info> </alert>\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[CAPCP#0068] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area>\n\n[X1303BIS#0096] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.26):\nTable 7-4 – \"area\" element and sub-elements Element name Context.class.attribute. representation Definition and (Optionality) geocode cap.alertInfoArea.geocode. code The geographic code delineating the affected area of the alert message (OPTIONAL) Notes or value domain (1) Any geographically-based code to describe a message target area, in the form: <geocode> <valueName>valueName</ valueName> <value>value</value> </geocode>",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the NCM bulletin. The hazard is fog with visibility that may drop to zero at times. The times match (21:30 Tue 17 Feb to 10:00 Wed 18 Feb), and so do the places (western regions of the UAE). Certainty 'Likely' fits the bulletin's 'expected to deteriorate'. Severity 'Moderate' fits the CAP definition 'Possible threat to life or property' for a road-visibility hazard. The alert contains no unverified material.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The bulletin says 'several western regions', but the alert says only 'western regions'. Neither names specific areas, so the people receiving the alert may not know whether it covers them. If the bulletin names the regions, the drafter should list them.",
+    "searched_for": "alert area description vague regions geocode"
+   },
+   {
+    "concern": "The description says 'thick fog may cut visibility'. The bulletin speaks of 'potential fog formation' and mentions thick fog only in its driving advice. The wording is hedged with 'may', so the overstatement is minor, but 'fog may cut visibility' would follow the bulletin more closely.",
+    "searched_for": "severity moderate fog warning WMO guidance"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4630,
+  "output_tokens": 773,
+  "at": "2026-11-08T21:09:06Z"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "key": "8111abd18ad271a7284116c535d74e18bc6b2ca10ea1cd3beecea089b3514877",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western UAE until 10:00 Wed 18 Feb\",\n  \"description\": \"Drive with care, keep distance: fog, visibility may hit zero, west UAE until 10am Wed.\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow modified speed limits in thick fog. Follow all traffic safety guidelines.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في غرب الإمارات حتى 10:00 الأربعاء 18 فبراير\",\n  \"description\": \"قُد بحذر وحافظ على المسافة: ضباب، وقد تصل الرؤية إلى الصفر، غرب الإمارات حتى 10 صباحاً الأربعاء.\",\n  \"instruction\": \"قُد بحذر شديد، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة في الضباب الكثيف. اتبع جميع إرشادات السلامة المرورية.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert accuracy review",
+   "machine translated alert human review requirement",
+   "fog warning protective action wording"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 912,
+  "output_tokens": 49,
+  "at": "2026-11-08T20:56:59Z"
+ }
+}

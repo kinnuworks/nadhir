@@ -1,0 +1,125 @@
+id: pickering-2020
+heldout: true
+title: "Pickering nuclear station alert sent from the live system during a shift-change test"
+date: "2020-01-12"
+jurisdiction: "Canada, Province of Ontario (Emergency Management Ontario, Provincial Emergency Operations Centre, PEOC)"
+sources: [ON-PICKERING-2020]
+
+summary: >-
+  During the routine shift-change check of the Alert Ready live and training systems, a PEOC duty officer
+  believed they had switched to the training system, loaded the pre-scripted nuclear template for the Pickering
+  Nuclear Generating Station and sent a live broadcast-intrusive alert. There was no incident at the station.
+  A second alert saying the first was sent in error went out 108 minutes later.
+
+timeline:
+  - {t: "2020-01-12T07:00-05:00", event: "Duty officers begin shift-change protocol: log in and out of the live Alert Ready system, then send a practice alert on the training system.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T07:23-05:00", event: "The public receives a broadcast-intrusive nuclear emergency alert about the Pickering Nuclear Generating Station, sent from the live system.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T07:25-05:00", event: "The duty officer tells an off-duty supervisor the alert was meant for the training system; the supervisor advises following the cancellation procedure.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T07:27-05:00", event: "A second duty officer is unsure how a cancellation alert would be sent.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T07:41-05:00", event: "Pelmorex staff advise that the alert has expired and that no further action is required through Alert Ready.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T08:06-05:00", event: "Ontario Power Generation tweets that the alert was sent in error.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T08:10-05:00", event: "Ministry communications staff send draft content for a second alert; approvals of wording and of intrusive versus non-intrusive delivery continue until about 08:55.", source: ON-PICKERING-2020}
+  - {t: "2020-01-12T09:11-05:00", event: "The PEOC sends a second broadcast-intrusive alert saying there is no active nuclear situation and the previous alert was issued in error.", source: ON-PICKERING-2020}
+  - {t: "2020-01-15", event: "The Deputy Solicitor General directs the Provincial Security Advisor to investigate.", source: ON-PICKERING-2020}
+
+inputs:
+  event_text: >-
+    None. The report says the duty officer "was not acting on any information concerning any nuclear incident";
+    the action was the routine shift-change practice alert, meant for the Alert Ready training system.
+  issuer: "Emergency Management Ontario, Provincial Emergency Operations Centre (PEOC)"
+  environment: live
+  environment_basis: "Report: the duty officer logged in to the live system believing it was the training system; both use the same credentials and can be open at once."
+  intended_status: Exercise
+  intended_status_basis: "Report: the alert was intended for the training system as a shift-change practice alert."
+  requested_area:
+    areaDesc: "None intended (training-system practice alert). The template text names people within ten kilometres of the Pickering Nuclear Generating Station."
+
+real_message:
+  text_verbatim: "This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the Pickering Nuclear Generating Station. An incident was reported at the Pickering Nuclear Generating Station. There has been NO abnormal release of radioactivity from the station and emergency staff are responding to the situation. People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions."
+  text_source_note: "Read from the mobile screenshot in the report's sequence of events (image, transcribed by eye). The phone shows the header 'EMERGENCY ALERT/ALERTE D'URGENCE' and the time 7:23 a.m."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Emergency Management Ontario PEOC"
+  category: CBRNE
+  event: "Nuclear power plant incident"
+  urgency: Immediate
+  severity: Severe
+  certainty: Observed
+  language: en-CA
+  headline: "Incident at the Pickering Nuclear Generating Station"
+  description: "An incident was reported at the Pickering Nuclear Generating Station. There has been NO abnormal release of radioactivity from the station and emergency staff are responding to the situation."
+  instruction: "People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions."
+  areaDesc: "unknown (template text: people within ten kilometres of the Pickering Nuclear Generating Station)"
+  area:
+    areaDesc: "unknown"
+    note: "The report records Pelmorex asking whether the alert 'was meant to be broadcast to all of Ontario' but does not state the area actually sent."
+  approvals_count: 1
+  approvals_basis: "Report: a single user can draft and issue an alert by re-entering their password; there is no system requirement for supervisor or peer review."
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, event, urgency, severity, certainty, headline, description, instruction, sender, language]
+  reconstruction_note: "The report gives the text (screenshot), the send time, that it was broadcast intrusive, English only, and from a pre-scripted template. Other CAP field values are our reconstruction; the original CAP XML is not public. The language is English only per the report; en-CA is our tag."
+
+corrections:
+  - t: "2020-01-12T09:11-05:00"
+    kind: "new broadcast-intrusive alert via Alert Ready (the EMO 'End Alert' procedure was not invoked)"
+    text_verbatim: "There is NO active nuclear situation taking place at the Pickering Nuclear Generating Station. The previous alert was issued in error. There is no danger to the public or environment. No further action is required."
+    text_source_note: "Read from the mobile screenshot in the report (image, transcribed by eye)."
+    references_original: unknown
+    source: ON-PICKERING-2020
+
+real_outcome:
+  text: >-
+    A broadcast-intrusive nuclear emergency alert reached Ontarians at 07:23 with no incident behind it. The
+    clarifying alert went out 108 minutes later, at 09:11. Both alerts were in English only.
+  source: ON-PICKERING-2020
+
+official_finding:
+  body: "Office of the Provincial Security Advisor, Ministry of the Solicitor General (Ontario)"
+  document: "Investigation into the emergency alerts sent on January 12, 2020 (ontario.ca; report released February 2020, page updated 20 October 2021), Executive summary"
+  finding_status: official-verbatim
+  quote: "On January 12, 2020, the DO logged in to the Alert Ready live system, believed they had switched to the training system, selected a pre-scripted nuclear template for the PNGS and accidentally sent a live alert."
+  source: ON-PICKERING-2020
+  further_quotes:
+    - rule: R2
+      quote: "Identical pre-scripted templates were used on both the Alert Ready live and training systems. No distinctive labelling such as “EXERCISE, EXERCISE, EXERCISE…” was used on the training system."
+      locator: "Executive summary, Key findings: A review of Pre-scripted Messages in the Alert Ready System"
+    - rule: R2
+      quote: "Login credentials for the live and training systems are the same. Both training and live systems can be open simultaneously on the same device."
+      locator: "Investigation and findings, The Alert Ready system: Live and training systems"
+    - rule: R1
+      quote: "A single user can draft and issue an alert by re-entering their password as a final step on the live system. There is no system requirement to forward the alert to a supervisor, designate or peer for review."
+      locator: "Investigation and findings, The Alert Ready system: Alert approval"
+    - rule: R1
+      quote: "The ministry will recommend to the NAAD governance council that the Alert Ready system be modified to require two-person verification for all live emergency alerts."
+      locator: "Action plan (end of page), Engagement with partners: NAAD governance council"
+    - rule: R10
+      quote: "There was an EMO “End Alert” procedure which addressed an alert sent in error; however, communications from January 12, 2020 cited no reference to this procedure."
+      locator: "Executive summary, Key findings: Protocols and Procedures for Cancelling an Alert"
+
+expected_rules: [R2, R1, R10]
+expected_rules_basis: >-
+  R2: a practice alert meant for the training system went out live as an Actual alert, and the training template
+  carried no exercise label. R1: one person could draft and send a live alert with no second approver; the ministry
+  recommended two-person verification for all live alerts. R10: the existing End Alert procedure (an end message in
+  the same format as the alert sent in error) was not used; R10 can only check that a correction references the
+  original once one is drafted, not force it to be sent or sent quickly.
+
+unknowns:
+  - "The original CAP XML (identifier, category, urgency, severity, certainty, area encoding) is not public."
+  - "The area actually sent: the template text names a ten-kilometre zone, the report only records Pelmorex asking whether all of Ontario was intended. Province-wide delivery is reported by the press, not stated as a finding."
+  - "Whether the 09:11 alert carried a CAP <references> to the 07:23 alert, and whether either alert was signed."
+  - "Exact time the first alert was sent; the report gives 07:23 as the time the public received it."
+
+framing_note: >-
+  The report attributes the first alert to human error and puts it in the context of procedural gaps, shortened
+  training, lack of familiarity with the system and communication failures; it does not single out one person.
+  It also finds both alerts were English only although Ontario's other official language is French. The gate's R7
+  checks Arabic and English specifically, so the French finding is not counted in expected_rules; a deployment
+  with other required languages would need its own language rule.
+
+source_urls:
+  ON-PICKERING-2020: "https://web.archive.org/web/20230220145556id_/https://www.ontario.ca/page/investigation-emergency-alerts-sent-january-12-2020"
+source_hashes:
+  ON-PICKERING-2020: {sha256: "08e03898b23a652a9e5f6d18d896ae2f2d7b8acfe01176234740a94a6a3feb78", fetched: "2026-11-09", note: "The live ontario.ca URL now redirects to an Archives of Ontario landing page; the Wayback Machine capture of 20 Feb 2023 (raw, id_) was used. Screenshots from files.ontario.ca: solgen-nuclear-alert-screenshot-01-10-2021.png sha256 049326659a7fe66abf718e242e3f137cafef2f9c80373f1993b5c26aec942e92; solgen-second-nuclear-alertjan2020-sm-14-10-2021.png sha256 69a21057a6a8fa6e09cd27ddf455c2286640aee9d8a6bd2f70bd2bece5d30e18"}

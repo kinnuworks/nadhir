@@ -1,0 +1,92 @@
+{
+ "key": "0e1b3a74db8be74d760e4af3cd5507c55a3986c5cb0a6cf10710918237924175",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Blowing dust and low visibility\",\n  \"headline\": \"Blowing dust and sand, visibility below 2,000 m in Al Ain until 19:00\",\n  \"description\": \"Drive with caution. Blowing dust and sand, visibility below 2km in Al Ain until 19:00 today.\",\n  \"instruction\": \"Take care, especially when driving on open roads. Visibility may drop below 2,000 metres.\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": [\n  {\n   \"id\": \"fcc-da-25-12-dust-storm:ar\",\n   \"language\": \"ar\",\n   \"hazard\": \"Dust Storm Warning\",\n   \"text\": \"[SENDING AGENCY]: يسري التحذير من عاصفة ترابية لـ [LOCATION] حتى [TIME]. كن مستعدًا للانخفاض المفاجئ في مستوى الرؤية الذي قد يصل إلى الصفر. توقف على جانب الطريق، وابق على قيد الحياة! عندما تنخفض الرؤية، اركن سيارتك بعيدًا عن مسار الطريق، ثم ضعها في وضع الانتظار. أطفئ الأنوار وأبعد قدمك عن المكابح. حث الرضع وكبار السن وأولئك الذين يعانون من مشاكل في التنفس على اتخاذ الاحتياطات اللازمة. [URL]\"\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "غبار ورمال متطايرة، والرؤية أقل من 2,000 م في العين حتى الساعة 19:00",
+    "description": "قُد بحذر. غبار ورمال متطايرة، والرؤية أقل من 2 كم في العين حتى الساعة 19:00 اليوم.",
+    "instruction": "توخَّ الحذر، خاصة عند القيادة على الطرق المفتوحة. قد تنخفض الرؤية إلى أقل من 2,000 متر."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1239,
+  "output_tokens": 572,
+  "at": "2026-11-08T20:48:57Z"
+ }
+}

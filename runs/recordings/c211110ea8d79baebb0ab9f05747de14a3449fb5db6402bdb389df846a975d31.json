@@ -1,0 +1,151 @@
+{
+ "key": "c211110ea8d79baebb0ab9f05747de14a3449fb5db6402bdb389df846a975d31",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXTREME DANGER: Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('severity wording consistency across alert languages', 'machine translated alert human review requirement', 'CAP headline severity translation omission'):\n\n[CAPCP#0082] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nUTF-8 is the recommended encoding for XML documents in order to support a wide range of languages and accented characters. Defined CAP element values, such as those defined for <urgency>, <severity>, <certainty>, <responseType>, etc. are in English only, and are always used as specified by CAP within all <info> blocks. (Defined values are values standardized in advance and are coded values used to initiate actions on the part of auto-processing systems – any use of the these defined values as a display element should be confined to using the value as an index into a language based lookup table to find the appropriate word or words, including English).\n\n[CAP12#0255] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n· Wording change to <severity> “Minor” · Schema changed to allow only one <EncryptedData> element and changed Security Note section to allow multiple <Signature> elements Various editorial corrections and clarifications\n\n[CAPCP#0037] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Requirements associated with event identification):\nHowever, since the CAP-CP includes rules on issues like languages, providing a coordinated Canadian event list within the CAP-CP, independent of any specific alerting system, will assist in consistency for Canadian users.\n\n[TS23041#0377] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.77):\n4388 1124 CMAS CBS Message for CMAS Severe Alerts with Severity of Severe, Urgency of Immediate, and Certainty of Observed for additional languages. EU-Alert Level 3 Message Identifier for additional languages as defined in ETSI TS 102 900 [32]. Korean Public Alert System (KPAS) Class 1 Message Identifier for additional languages. Settable by MMI.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0015] AI Guide v1 (p.6):\n10 2014 Amazon Echo was introduced. Figure 1. Peaks and Troughs in AI Science Over Time With the advent of the programmable computer in the wake of World War II, Alan Turing introduced the Turing test in 1950, which considered the question, “Can machines think?” while working at the University of Manchester. The test involves a human interrogator who converses with a human and a machine that generates human-like language. If the interrogator is unable to distinguish between the human and the machine, then the machine would have passed the test of being able to act like a human. Since then, the Turing test has become an important concept in the 10\n\n[X1303BIS#0075] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\nsenderName cap.alertInfo.senderName. text The text naming the originator of the alert message (OPTIONAL) The human-readable name of the agency or authority issuing this alert. headline cap.alertInfo.headline.text The text headline of the alert message (OPTIONAL)\n\n[CAP12#0236] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.2\"> <identifier>KAR0-0306112239-SW</identifier> <sender>KARO@CLETS.DOJ.CA.GOV</sender> <sent>2003-06-11T22:39:00-07:00</sent> <status>Actual</status> <msgType>Alert</msgType> <source>SW</source> <scope>Public</scope> <info> <language>en-US</language> <category>Rescue</category> <event>Child Abduction</event> <urgency>Immediate</urgency> <severity>Severe</severity> <certainty>Likely</certainty> <eventCode> <valueName>SAME</valueName> <value>CAE</value> </eventCode> <senderName>Los Angeles Police Dept - LAPD</senderName> <headline>Amber Alert in Los Angeles County</headline>\n\n[CAPAU#0069] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.20):\nExample B. INFO element translated into Italian and enumerated <urgency> value of “immediate” written in English: <info> <language>ita</language> ... <urgency>Immediate</urgency> ... <headline>Chimica fuoriuscita Highway 1 </headline> ... </info> 7) When creating public alert messages in languages other than English, a translation of the event list to the appropriate language should be conducted in advance for inclusion in alerts. edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[CAPAU#0068] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.20):\n<headline>Chemical spill Highway 1 </headline> ... </info> 4) When this sub-element is to be included, the alert message producer MUST ensure an appropriate value is used. 5) The language value is important for message distributors. 6) Mixing public display content or text from different languages within the same <info> element is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters. Where fixed CAP values, which often appear as a word from a specific language, are used for software processing purposes and not for display, these values are not translated between <info> elements (e.g. <category>, <urgency>, <severity>, <certainty>, <responseType>, etc...).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic description and instruction match the English: zero visibility, western regions of the UAE, 21:30 Tue 17 Feb to 10:00 Wed 18 Feb, the National Center for Meteorology as source, and the same driving advice. The Arabic headline, however, drops the English severity prefix \"EXTREME DANGER\", so Arabic readers get a weaker warning than English readers. The Arabic was machine-translated and still needs sign-off by a named person who reads Arabic.",
+  "objections": [
+   {
+    "issue": "The Arabic headline leaves out the English severity prefix \"EXTREME DANGER:\". It begins directly with \"تحذير من الضباب\" (fog warning), so the Arabic headline signals less danger than the English one.",
+    "field": "arabic.headline",
+    "blocking": true,
+    "fix": "Add the severity prefix to the start of the Arabic headline, e.g. \"خطر شديد للغاية: تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\". Alternatively, if the issuer decides the prefix should not be used, remove it from the English so both languages carry the same severity.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.headline",
+      "quote": "EXTREME DANGER: Fog warning"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.headline",
+      "quote": "تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic was produced by machine translation and has not been reviewed by a human. A named person who reads Arabic must check and approve it before it is sent.",
+    "field": "arabic_produced_by",
+    "blocking": false,
+    "fix": "Send the corrected Arabic headline, description and instruction to a named Arabic-reading reviewer for sign-off before release.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4760,
+  "output_tokens": 1079,
+  "at": "2026-11-08T21:07:17Z"
+ }
+}

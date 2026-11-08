@@ -1,0 +1,114 @@
+{
+ "key": "3ee98e1196cfe27c682d517deb78413294b05ee485755a3b9bd1c040d83a6263",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Scheduled monthly test of the Emergency Alert System for Florida TV and radio broadcasters. No hazard.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Test\",\n  \"severity\": \"unknown\",\n  \"urgency\": \"unknown\",\n  \"certainty\": \"unknown\",\n  \"headline\": \"TEST\",\n  \"description\": \"This is a TEST of the Emergency Alert System. No action is required.\",\n  \"instruction\": \"No action is required.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Test versus Actual exercise', 'test alert sent as Actual FCC report', 'EAS required monthly test message format'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[IPAWS-PROFILE#0040] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nTable 1: CAP v1.2 IPAWS Profile Specification and Profile Note CAP Element Profile Specification (Normative) Profile Note (Non-Normative) Elements in boldface are REQUIRED. (Subcommittee) (Subcommittee) status A value of \"Actual\" SHALL be used for messages intended for dissemination to the public, including test messages intended for delivery to the public.\n\n[FCC-23-88#0149] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.25):\ninformation on differences that may exist between how live messages and test messages are handled and disseminated, so it is difficult to have confidence in the results of tests sent using the test system”). Alerting authorities still may use State/Local WEA Tests at their discretion to assess WEA’s performance. To the extent that alert originators are able to use these tests to generate data about WEA performance, that data should be representative of WEA’s actual performance during an emergency because Participating CMS Providers are required to transmit State/Local WEA Tests in a manner that complies with the Alert Message Requirements specified in Subpart D. See 47 CFR § 10.350(c). Aside from the fact that the public does not receive State/Local WEA Tests by default, Participating CMS Providers transmit them like any other Alert Message. September 2022 WEA Performance Exercise, 14-19 (Apr. 24, 2023) https://docs.fcc.gov/public/attachments/DOC-392829A1.pdf. We direct the Bureau to develop translations of the survey materials in the 13 languages we require Participating CMS Providers to support for multilingual alerting as well as ASL. 136\n\n[FCC-16-127#0262] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.44):\nin accordance with our Alert Message requirements will ensure that emergency managers have the opportunity to test in an environment that mirrors actual alert conditions and evaluate, for example, the accuracy with which various Participating CMS Providers geo-target Alert Messages in their community. Unlike other Alert Messages, however, consumers will not receive State/Local WEA Tests by default. Participating CMS Providers should provide their subscribers with the option to receive State/Local WEA Tests, and subscribers would have to affirmatively select this option in order to receive these test messages.281 According to CTIA, “[t]his way, unwanted test messages will not disturb wireless consumers who could become confused or annoyed by test messages and opt out of WEA entirely.”282 We also agree with Sprint that making State/Local WEA Tests available on an opt-in basis minimizes any risk of call center congestion.283 Another respect in which a State/Local WEA Test will differ from an actual Alert Message is that we require State/Local WEA Tests to include conspicuous language sufficient to make clear to the public that the message is, in fact, only a test. This will minimize any chance that such test messages might be misconstrued as actual Alert Messages. 66. The 24-hour delivery window that currently applies to RMTs under Section 10.350(a)(2) will not apply to State/Local WEA Tests.\n\n[FCC-23-88#0137] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.23):\nTherefore, we support requiring coordination in overlapping geographic areas, to reduce duplicative testing, and we support requiring notification to state and local emergency authorities before tests are performed”). 127 ATIS Comments at 20 (referencing a test in Florida that was accidentally sent using the attention signal during\n\n[FCC-HI-2018#0032] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.8):\nSpecifically, the Commission requires EAS Participants to support national tests as scheduled by the Commission in consultation with FEMA, as well as monthly and weekly tests as set forth in their respective State EAS Plans.32 For WEA, the Commission requires wireless providers that elect to provide WEA to participate in monthly tests of their alert transmission capability and periodic tests of their connection to FEMA’s IPAWS.33 In addition, effective May 2019, the Commission will require these wireless providers to support end-to-end WEA tests initiated by federal, state, and local emergency managers and capable of being received by members of the public.34 End-to-end WEA testing will help to ensure that emergency managers have the opportunity to test in an environment that mirrors actual alert conditions and evaluate, for example, the accuracy with which wireless providers can target WEA messages to the areas in their communities actually affected by an emergency.35 To safeguard against confusing the public, the Commission also requires both EAS and WEA test messages that are distributed to the public to include conspicuous language sufficient to make clear to the public that the message is, in fact, only a test.36 29 See 47 CFR §§ 10.10(f), 10.240 (notification to new subscribers of non-participation in WEA).\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[FCC-23-88#0031] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.5):\nwidely-accessible formats that live event codes will be used, but that no emergency is, in fact occurring; state in the test message that the event is only a test; and coordinate the test among EAS Participants, state and local emergency authorities, the relevant state emergency communications committees (SECC), and first responder organizations).\n\n[FCC-HI-2018#0025] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.7):\narchitecture of the EAS to distribute voluntary weather-related and other emergency alerts.24 10. The EAS is maintained and administered in each state by State Emergency Communication Committees (SECCs), non-governmental voluntary groups usually comprised of representatives of broadcasters and other EAS Participants (such as cable television service providers), and occasionally, representatives of state and local government. SECCs are chaired by an EAS Participant, usually a representative of the state broadcast association. SECCs draft EAS Plans that govern how EAS alerts are propagated within their respective states.25 State EAS Plans not only set forth the distribution plans for the daisy-chain of broadcast stations that would distribute the Presidential alert and other EAS alerts, but also schedule and coordinate the monthly EAS tests that EAS Participants are required to conduct. In most states, the SECC coordinates with the state emergency management agencies that initiate alerts for the state and its communities, regardless of whether that agency is a formal member of the SECC. The State EAS Plans are reviewed by the Bureau to ensure that they are consistent with the Commission’s rules and must be approved by the Chief of the Bureau.26 B.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the verified input: a scheduled monthly EAS test with no hazard. It claims no hazard, times or places beyond the input, and severity, urgency and certainty are all 'unknown', which suits a no-hazard test. The text clearly says 'This is a TEST'. Status 'Actual' with event 'Test' is consistent with the IPAWS profile for test messages delivered to the public. No unverified reports are used.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4713,
+  "output_tokens": 400,
+  "at": "2026-11-08T20:47:16Z"
+ }
+}

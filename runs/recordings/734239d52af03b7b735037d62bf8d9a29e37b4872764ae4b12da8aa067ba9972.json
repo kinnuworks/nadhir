@@ -1,0 +1,33 @@
+{
+ "key": "734239d52af03b7b735037d62bf8d9a29e37b4872764ae4b12da8aa067ba9972",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n   \"characters\": 72,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ.\",\n   \"characters\": 65,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 2\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "cell broadcast UCS-2 page length characters",
+   "erroneous alert correction cancellation message FCC",
+   "UAE cell broadcast Arabic English requirements"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 744,
+  "output_tokens": 62,
+  "at": "2026-11-08T21:04:52Z"
+ }
+}

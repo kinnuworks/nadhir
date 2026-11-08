@@ -781,3 +781,144 @@ sources:
     - text: "messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses."
       locator: "§5.1 Language, PDF p.8"
   notes: "Requires languages but says nothing on how translations are produced or approved."
+
+# ================================================================ held-out incidents
+# Added after the rules were frozen (commit beb8f54); not used to write R0-R11. Moved from kb/sources-heldout.yaml.
+
+# ---------------------------------------------------------------- Ontario, Pickering, 12 January 2020
+
+- id: ON-PICKERING-2020
+  title: "Investigation into the emergency alerts sent on January 12, 2020"
+  publisher: "Government of Ontario, Ministry of the Solicitor General (Office of the Provincial Security Advisor)"
+  date: "2020-02-27"
+  url: "https://web.archive.org/web/20230220145556id_/https://www.ontario.ca/page/investigation-emergency-alerts-sent-january-12-2020"
+  kind: investigation-report
+  jurisdiction: "Canada, Ontario"
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "08e03898b23a652a9e5f6d18d896ae2f2d7b8acfe01176234740a94a6a3feb78"
+  supports: [R1, R2, R10]
+  quotes:
+    - text: "On January 12, 2020, the DO logged in to the Alert Ready live system, believed they had switched to the training system, selected a pre-scripted nuclear template for the PNGS and accidentally sent a live alert."
+      locator: "Executive summary"
+    - text: "Identical pre-scripted templates were used on both the Alert Ready live and training systems. No distinctive labelling such as “EXERCISE, EXERCISE, EXERCISE…” was used on the training system."
+      locator: "Executive summary, Key findings: A review of Pre-scripted Messages in the Alert Ready System"
+    - text: "A single user can draft and issue an alert by re-entering their password as a final step on the live system. There is no system requirement to forward the alert to a supervisor, designate or peer for review."
+      locator: "Investigation and findings, The Alert Ready system: Alert approval"
+  notes: >-
+    The live ontario.ca URL now lands on an Archives of Ontario page about archived sites, so the Wayback Machine
+    raw capture of 20 Feb 2023 was used (page shows 'Updated: October 20, 2021'). The release date of 27 Feb 2020
+    is from press coverage (e.g. Global News), not from the page. Alert texts come from two screenshots on
+    files.ontario.ca embedded in the report: solgen-nuclear-alert-screenshot-01-10-2021.png (sha256
+    049326659a7fe66abf718e242e3f137cafef2f9c80373f1993b5c26aec942e92) and
+    solgen-second-nuclear-alertjan2020-sm-14-10-2021.png (sha256
+    69a21057a6a8fa6e09cd27ddf455c2286640aee9d8a6bd2f70bd2bece5d30e18). The report also finds both alerts were
+    English only (no French templates).
+
+# ---------------------------------------------------------------- Florida, 20 April 2023
+
+- id: FL-2023-FDEM
+  title: "Florida Division of Emergency Management Issues Updates on Emergency Response in Florida"
+  publisher: "Florida Division of Emergency Management"
+  date: "2023-04-20"
+  url: "https://www.floridadisaster.org/news-media/news/20230420florida-division-of-emergency-management-issues-updates-on-emergency-response-in-florida/"
+  kind: official-statement
+  jurisdiction: "US, Florida"
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "87cec4824bfa6df4f3e8a951356429321320fa9a619b69e71ddebc31cf48f79a"
+  supports: [R2]
+  quotes:
+    - text: "Everbridge sent the wrong technical specifications for this alert – which ultimately pushed the alert over the Wireless Emergency Alert system (cellphones)."
+      locator: "first item, statement in response to the accidental alert"
+    - text: "This morning's test was supposed to be a test of televised emergency alerts"
+      locator: "first item, statement in response to the accidental alert"
+  notes: "Same-day agency statement, not an investigation report. The page also carries unrelated Broward County flooding updates. No FCC or state investigation report on this alert was found."
+
+- id: FL-2023-WGCU
+  title: "Official explains why Florida was awakened Thursday by alert"
+  publisher: "WGCU News"
+  date: "2023-04-24"
+  url: "https://www.wgcu.org/government-politics/2023-04-24/official-explains-why-florida-was-awakened-thursday-by-alert"
+  kind: press
+  jurisdiction: "US, Florida"
+  status: verified-secondary
+  fetched_at: "2026-11-09"
+  sha256: "087bc616896c0b0396bed40fd2773112c189d7597df72005085dd520deee2f1e"
+  supports: [R2]
+  quotes:
+    - text: "The alert was not for an emergency, rather just a \"test\": “This is a TEST of the Emergency Alert System. No action is required.”"
+      locator: "article body"
+    - text: "a live message was inadvertently sent to millions of residents’ cellphones, instead of a notification sent only to Florida broadcasters."
+      locator: "full text of the Everbridge CEO letter, as reproduced in the article"
+    - text: "The State of Florida's Division of Emergency Management Watch Office sent out the incorrect test, which sent the wrong alert."
+      locator: "Florida Association of Broadcasters statement, as quoted"
+  notes: "Secondary: press report reproducing the vendor's letter, the FDEM tweet and the broadcasters' association statement. The vendor and the association dispute FDEM's attribution of the cause. Press reports of the state ending the Everbridge contract were not fetched."
+
+# ---------------------------------------------------------------- Taiwan, 9 January 2024
+
+- id: TW-2024-MND
+  title: "國防部發布新聞稿，針對「中共今(9)日下午發射長征系列運載火箭，相關告警訊息發布狀況」乙情說明(113年1月9日)"
+  publisher: "Ministry of National Defense, Republic of China (Taiwan)"
+  date: "2024-01-09"
+  url: "https://www.mnd.gov.tw/news/pressrelease/82446"
+  kind: official-statement
+  jurisdiction: Taiwan
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "8cc4171bb77fbefd33b8eeb29fa9cdcc70b9981d786d817016a811965d680e5a"
+  supports: [R11]
+  quotes:
+    - text: "五、對於此次發布作業期間，英文用字錯誤、表達不夠精準，國防部向大眾致歉，將深入檢討、周延作業程序。"
+      locator: "point 5 (release time 2050)"
+    - text: "國軍即運用國家告警系統，以空中威脅警告、簡訊方式告知國人提高警覺。"
+      locator: "point 1"
+  notes: >-
+    Title in English (our translation): MND press release on the alert messages issued for China's Long March
+    launch on the afternoon of 9 January 2024. Unofficial translation of quote 1: "5. For the wrong English wording
+    and imprecise expression during this issuance, the MND apologises to the public and will review and tighten
+    its procedures." Fetched via the Publish.aspx?p=82446 URL, which redirected here. The earlier 16:15 statement
+    was not found on the MND site; it is quoted in TW-2024-TWN.
+
+- id: TW-2024-TWN
+  title: "國防部２度道歉！中國衛星非預警飛越台灣南部上空 英文警報糗用「missile」"
+  publisher: "Taiwan News (台灣英文新聞)"
+  date: "2024-01-09"
+  url: "https://www.taiwannews.com.tw/ch/news/5074742"
+  kind: press
+  jurisdiction: Taiwan
+  status: verified-secondary
+  fetched_at: "2026-11-09"
+  sha256: "b38b12d27493fbdbdaa5919ef1516d224e6d3eb6ffce2cb69dae573091cb3da4"
+  supports: [R11]
+  quotes:
+    - text: "惟簡訊英文用語，因疏忽未同步更新原系統用字、精準表達發射物係衛星而非飛彈，國防部向社會大眾致歉。"
+      locator: "article body, MND statement of 16:15 as quoted"
+    - text: "然而，警報的英文內容「Missile flyover Taiwan airspace, be aware」卻使用飛彈「Missile」一詞"
+      locator: "article body"
+  notes: >-
+    Secondary: press report quoting the MND 16:15 statement in full. Published 2024-01-09 15:36, updated
+    2024-01-10 09:44. Its rendering of the Chinese alert text is a paraphrase, not a verbatim copy. Unofficial
+    translation of quote 1: "However, through oversight the English wording of the message was not updated in step
+    with the original system wording to state precisely that the launched object was a satellite, not a missile;
+    the MND apologises to the public."
+
+- id: TW-2024-CNA
+  title: "Taiwan's military apologizes over 'missile flyover' message mishap"
+  publisher: "Central News Agency (CNA), via GlobalSecurity.org"
+  date: "2024-01-09"
+  url: "https://www.globalsecurity.org/wmd/library/news/taiwan/2024/taiwan-240109-cna03.htm"
+  kind: press
+  jurisdiction: Taiwan
+  status: verified-secondary
+  fetched_at: "2026-11-09"
+  sha256: "84dd0056626f807c2d534b9422d40ed077534e21a1f35d42215cab48aeaaebed"
+  supports: [R11]
+  quotes:
+    - text: "The MND explained that the mistake was made due to a failure to update the English wording used in the emergency text message"
+      locator: "article body"
+    - text: "The English part of the template that read \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\" was not changed."
+      locator: "article body"
+    - text: "A search of the PWS system found no templates for satellite launches so the message was likely based on a template from the \"Missile air raid alert\" category."
+      locator: "article body"
+  notes: "Secondary: CNA English story mirrored by GlobalSecurity.org; the original at https://focustaiwan.tw/politics/202401090018 is paywalled after the first paragraph. The template detail is CNA's own finding, not an MND statement."

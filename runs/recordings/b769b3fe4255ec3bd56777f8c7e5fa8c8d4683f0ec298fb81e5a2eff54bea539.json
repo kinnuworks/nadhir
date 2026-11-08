@@ -1,0 +1,156 @@
+{
+ "key": "b769b3fe4255ec3bd56777f8c7e5fa8c8d4683f0ec298fb81e5a2eff54bea539",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology. Dubai and Sharjah are also affected.\",\n   \"characters\": 258,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد. دبي والشارقة متأثرتان أيضاً.\",\n   \"characters\": 258,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 7\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page length GSM-7 UCS-2 characters', 'UAE public warning Arabic English message length', 'first page hazard and protective action guidance'):\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[IPAWS-PROFILE#0059] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nMessages invoking the \"Gubernatorial Must-Carry\" rule MUST include a <parameter> with <valueName> of \"EAS-Must-Carry\" and value of \"TRUE\" for gubernatorial alerts. Messages intended for CMAS dissemination MAY include an instance of <parameter> with a <valueName> of \"CMAMtext\" and a <value> containing free form text limited in length to 90 English characters. *May have multiple occurrences in a message under CAP v1.2 specifcation.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0090] UAE Public Policy Development Guidebook (p.45):\nConsultations Implementation Media Messages List the consulted stakeholders (federal, local, private companies) and their feedback. Create a list of relevant stakeholders and the implementation plan (main entity, if any, and other supporting entities). Media messages should be written in Arabic and English.\n\n[MHEWS-2026#0572] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.134):\nAI Avatars for Localised Emergency Communication Canada AI-Based Tidal Surge Forecasting Preparedness and crisis communication AI-generated avatars deliver trusted government safety messages in more than 170 languages using video communication. By automating multilingual messaging and localized preparedness guidance, the system enhances accessible warning dissemination (Pillar 3) and supports public awareness and protective action during emergencies (Pillar 4). Further information: https://www. pelmorex.com/en/media-hub/the-weather-network-launches-its-first-advertising-campaign-using-an-ai-assisted-avatar/ Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[MHEWS-2026#0059] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.17):\nWhen deployed together across the early warning value cycle, these capabilities can transform fragmented technical systems into integrated, people-centred early warning ecosystems that translate knowledge and data into timely protective action. Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[WMO-CAP-GUIDE#0004] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nPublic and First Responder Action: People receive the alert through multiple communication channels and take appropriate action based on the guidance provided. First responders may receive tailored alerts to support emergency coordination and response. CAP Resources Explore a comprehensive collection of resources on the Common Alerting Protocol (CAP), including online courses, toolkits, guidelines and documents on the CAP implementation. Explore CAP Resources",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Arabic and English are both present. Neither language fits on one page, and neither text contains any protective action, so the first page does not carry the action. The drafter can fix both by rewriting shorter texts that lead with hazard, area and action.",
+  "objections": [
+   {
+    "issue": "Both languages exceed the one-page limit. The English is 258 GSM-7 characters across 3 pages, against 93 characters per page. The Arabic is 258 UCS-2 characters across 7 pages; at 82 octets per page that is about 41 characters per page. A handset may show only the first page, or show the pages out of order.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Cut the English to 93 GSM-7 characters or fewer, and the Arabic to about 41 UCS-2 characters or fewer, so each is a single page. Drop the source line and other secondary detail, which can go in the full CAP description. If one Arabic page cannot carry hazard, area and action, flag it so the issuing authority can decide whether a two-page Arabic message is acceptable.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23038#0053",
+      "quote": "The Message Information Page then consists of 93 user characters."
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23038#0053",
+      "quote": "will each be 82 octets in length"
+     }
+    ]
+   },
+   {
+    "issue": "Neither text contains any protective action; they only describe the dust and sand and the visibility. Some of the area information is also at the very end ('Dubai and Sharjah are also affected.'), which would fall on a later page. The first page therefore does not carry an action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Open both texts with hazard, area and action, for example: 'Dust storm, coastal and inland areas incl. Dubai, Sharjah: visibility under 2km. Drive with care, stay indoors if possible. Until 19:00.' Use an equivalent in Arabic.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Dubai and Sharjah are also affected."
+     },
+     {
+      "kind": "clause",
+      "ref": "WMO-CAP-GUIDE#0004",
+      "quote": "take appropriate action based on the guidance provided"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5134,
+  "output_tokens": 1519,
+  "at": "2026-11-08T21:03:49Z"
+ }
+}

@@ -1,0 +1,156 @@
+{
+ "key": "0a80e1a9b1458b53afecdb6d1b21ad36cc113c6f6884afb5067c5db904563bdc",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae\",\n   \"text\": \"ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Rain alert\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"NCM rain alert: some eastern, southern, western and interior areas, Sat 22 Aug 13:30-21:00\",\n  \"description\": \"NCM: rain, heavy at times, E, S, W & interior areas Sat 13:30-21:00. Drive with care.\",\n  \"instruction\": \"Drive with care during the rain. Follow NCM updates.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency mapping guidance', 'WMO impact-based warning heavy rain convective', 'CAP description hazard timing area accuracy'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[ITU-UAE:05_Business_Continuity/5.2_NCEMA_Portal#0002] 5.2 NCEMA Portal (Online Poll):\nOnline Poll X Do you have enough information about how to behave during a heavy rains? Yes No Somehow Poll Archive\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022\n\n[MHEWS-2026#0652] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.148):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) 289. 290. 291. 292. 293. 294. 295. 296. 297. 298. 299. wfp-somalia-anticipatory-action-and-integrated-climate-risk-updated-november-2023 WFP. (2024). WFP’s evidence base on Anticipatory Action 2015-2024. World Food Programme. https://www.wfp.org/publications/ wfps-evidence-base-anticipatory-action-2015-2024 WFP. (2025). 2025 - Anticipatory action in Somalia: Evidence and lessons learned from 2023 and 2024 activations. https://www. wfp.org/publications/2025-anticipatory-action-somalia-evidenc e-and-lessons-learned-2023-and-2024 Wilson, H. J., & Daugherty, P. R. (2018, July 1). Collaborative Intelligence: Humans and AI Are Joining Forces. Harvard Business Review. https://hbr.org/2018/07/ collaborative-intelligence-humans-and-ai-are-joining-forces WMO. (2015). WMO guidelines on multi-hazard impactbased forecast and warning services. World Meteorological Organization. https://library.wmo.int/viewer/54669 WMO. (2018). Manual on flood forecasting and warning. https://www.preventionweb.net/publication/ manual-flood-forecasting-and-warning WMO. (2021a). Guidelines on Multi-hazard Impact-based Forecast and Warning Services Part II: Putting Multi-Hazard IBFWS into Practice. https://reliefweb.int/report/world/wmoguidelines-multi-hazard-impact-based-forecast-and-warningservices-part-ii-putting WMO. (2021b). WMO Guidelines on Multi-hazard Impact-based Forecast and Warning Services. https://library.wmo.int/records/ item/57739-wmo-guidelines-on-multi-hazard-impact-basedforecast-and-warning-services WMO. (2022). Early Warnings for All Executive Action Plan 2023-2027. https://library.wmo.int/records/ item/58209-early-warnings-for-all WMO. (2023a). Guide to Instruments and Methods of Observation (WMO-No. 8). World Meteorological Organization. https://wmo.int/ guide-instruments-and-methods-of-observation-wmo-no-8-0 WMO. (2023b). Overview of the Early Warnings for All: Executive Action Plan 2023–2027. World Meteorological Organization. https://wmo.int/media/magazine-article/overview-of-early-warnings-all-executive-action-plan-2023-2027 WMO. (2024). EW4All National Roadmap Template. World\n\n[MHEWS-2026#0358] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.90):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) The Liberia deployment generated several operational and institutional benefits. The dataset supported LTA in strengthening cell broadcast implementation by identifying flood-prone areas where warning messages could not currently be delivered. ITU provided technical assistance throughout 2025, including training on calculating coverage statistics at county and district levels to support evidence-based planning. LTA conducted pilot verification tests in Sinoe County in December 2025 using the Speedchecker Android application. Although heavy rains and flooding limited access to some communities, the exercise highlighted the importance of validating connectivity data under real disaster conditions. Beyond early warning applications, the EWCM produced wider policy and institutional impacts. The analysis informed Universal Access strategies by identifying priority connectivity gaps, leading to targeted ground-truthing and drive tests in four counties - Lofa, Rivercess, Sinoe, and Grand Bassa. The project also improved coordination within LTA by strengthening collaboration between engineering, universal access, and data divisions. Stakeholders reported that visual connectivity maps were particularly effective for communicating results. Spatial representations of coverage gaps proved easier to understand than traditional national statistics, improving decision-maker engagement and supporting investment prioritisation. Further information: https://s41721.pcdn.co/wp-content/ uploads/2022/04/AI4G_EW4All_Discovery_EWCM_2026.01.20.pdf The boundaries and names shown and the designations used on this map do not imply official endorsement or acceptance by ITU, WMO, UNDRR and IFRC.\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[CAP12#0115] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ndescription cap. alertInfo. description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message.\n\n[CAPCP#0101] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #8. <area> blocks are required):\nRule #8. <area> blocks are required Element: <area> Use: Optional Type: Technical Value: Description: Area sub-element container Notes: Example: Element: <area> Use: Required Type: Technical Value: Description: 1 An <area> block is required for each <info> block.\n\n[X1303BIS#0092] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nThe text describing A text description of the affected area. the affected area of the alert message (REQUIRED) polygon cap.alertInfoArea.polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Hazard, date (Sat 22 Aug 2026), times (13:30-21:00), certainty (Possible) and severity (Moderate) match the NCM bulletin, and the headline areas match it. The description overstates the bulletin in two ways: it states heavy rain as fact, and it drops 'some' and 'parts of' from the areas. Both are fixable by the drafter.",
+  "objections": [
+   {
+    "issue": "The description says 'rain, heavy at times' as a firm forecast. It leaves out that the bulletin forecasts light to moderate rain that only 'may become heavy at times', so it overstates intensity and certainty.",
+    "field": "description",
+    "blocking": false,
+    "fix": "Reword to: 'NCM: light to moderate rain, possibly heavy at times, with convective cloud ...'",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "rain, heavy at times"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "light to moderate rainfall, which may become heavy at times"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0077",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     }
+    ]
+   },
+   {
+    "issue": "The description says 'E, S, W & interior areas' without the qualifiers. The bulletin, and the headline, say only some eastern, southern and western areas and parts of the interior, so the description widens the affected area.",
+    "field": "description",
+    "blocking": false,
+    "fix": "Use 'some E, S, W areas & parts of the interior', matching the bulletin and the headline.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "E, S, W & interior areas"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "some eastern, southern and western areas, extending to parts of the country's interior"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5243,
+  "output_tokens": 1086,
+  "at": "2026-11-08T21:01:27Z"
+ }
+}

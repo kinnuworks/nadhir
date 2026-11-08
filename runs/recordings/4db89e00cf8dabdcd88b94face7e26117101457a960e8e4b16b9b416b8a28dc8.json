@@ -1,0 +1,207 @@
+{
+ "key": "4db89e00cf8dabdcd88b94face7e26117101457a960e8e4b16b9b416b8a28dc8",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"15:03: a Long March carrier rocket carrying a satellite, launched from the Xichang Satellite Launch Center, entered Taiwan's air defence identification zone, passed from Tainan over Taitung outside the atmosphere, on a path that differed from the satellite launch path notified by the US FAA; possible risk from debris.\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Air raid alert (air threat warning)\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"[Air raid Alert]\",\n  \"description\": \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\",\n  \"instruction\": \"be aware\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP event type mismatch hazard description', 'satellite launch debris alert misclassified missile', 'CAP severity certainty urgency values guidance'):\n\n[CAP12#0115] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ndescription cap. alertInfo. description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message.\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[CAPCP#0129] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #3. Use established <event> values):\nRecommendation #3. Use established <event> values CAP Element: <event> Use: Required Type: Technical Value: user-defined Description: the subject event of the alert message Notes: Example: CAP-CP Element: <event> Use: Required\n\n[CAPCP#0130] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #3. Use established <event> values):\nType: Policy Value: an event from the CAP-CP Event References document Description: It is recommended that the <event> value come from the CAP-CP event list. Using these pre-defined and pre-translated values helps ensure that all public alert messages are using common terminology to describe events.\n\n[FCC-HI-2018#0059] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\n8:10 a.m. State Adjutant Major General Logan communicates to PACOM that there was no missile launch, confirming what PACOM already knew. 54 The HI-EMA Report found that at 8:06 a.m., “Employee 4 initiated the [ballistic missile alert] drill using a phone\n\n[FCC-HI-2018#0044] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.10):\n16. Hawaii has been actively testing its alert and warning capabilities over the past year.46 On May 5, 2017, HI-EMA began converting its training protocol for falling debris (e.g., from a disabled satellite) into a ballistic missile preparedness drill because of the nuclear threat from North Korea. The ballistic missile defense training protocol simulates an initial notification from PACOM to HI-EMA that Hawaii is under a ballistic missile threat. It begins with a mock call from a warning officer or shift supervisor simulating the role of PACOM, and it ends with the transmission of an internal (i.e., nonpublic) test message to FEMA IPAWS. The test is not sent to consumer phones, radios or televisions.47 By November 27, 2017, HI-EMA was regularly running these internal tests on a “no-notice” basis to staff.48 The protocols and procedures for this type of drill were memorialized in a 20-step ballistic missile alert checklist, which had been refined over months of testing through iterative practice and feedback on lessons learned.49 In mid-December 2017, HI-EMA replaced its older alert origination software with new 15, 2018, the U.S. Army Garrison in Hawaii remains in the process for obtaining alerting authority. See Federal Emergency Management Agency, Organizations with Alerting Authority In Process, https://www.fema.gov/medialibrary/assets/documents/117152 (last visited Mar. 26, 2018). On February 6, 2018, U.S.\n\n[FCC-HI-2018#0064] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.13):\nTime (HST) Event HI-EMA notifies the Honolulu police department that there was no missile launch. 8:12 a.m.58 HI-EMA cancels further transmission of the false alert, but does not issue an “all clear” message.59\n\n[FCC-HI-2018#0017] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.5):\nSee also Hawaii Emergency Management Agency, FAQs Related to Ballistic Missile False Alert (Jan. 13, 2018 revised Jan. 31, 2018), http://dod.hawaii.gov/hiema/faqs-related-tothe-ballistic-missile-false-alert/; Hawaii Emergency Management Agency, Statement on Missile Launch False Alarm (Jan. 13, 2018), https://dod.hawaii.gov/hiema/files/2018/01/20180113-NR-HI-EMA-statement-on-missilelaunch-false-alarm.pdf. As discussed above, this report will use the facts as determined in the FCC investigation but note in footnotes any discrepancies with the HI-EMA Report and the Hawaii Preparedness Report. 15 See State releases heavily redacted recording of HI-EMA’s missile mistake test, Hawaii News Now, (Mar. 14,\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert does not match the verified input. The input reports a Long March carrier rocket carrying a satellite, passing from Tainan over Taitung outside the atmosphere, with a possible debris risk. The alert instead calls it an air raid and a missile flyover in Taiwan airspace. It also rates severity and certainty higher than the input supports and leaves out the places and time.",
+  "objections": [
+   {
+    "issue": "The alert names the wrong hazard. The verified input describes a satellite launch by a carrier rocket with a possible debris risk. The event, headline and description instead call it an air raid and a missile flyover.",
+    "field": "event",
+    "blocking": true,
+    "fix": "Change the event, headline and description to a satellite launch carrier rocket overflight with possible falling debris. Remove 'Air raid' and 'Missile'.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "a Long March carrier rocket carrying a satellite"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Missile flyover Taiwan airspace"
+     },
+     {
+      "kind": "view",
+      "ref": "event",
+      "quote": "Air raid alert (air threat warning)"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0115",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     }
+    ]
+   },
+   {
+    "issue": "The description gives the wrong place and leaves out the time. It says 'Taiwan airspace', but the input says the rocket passed from Tainan over Taitung outside the atmosphere at 15:03.",
+    "field": "description",
+    "blocking": true,
+    "fix": "State the 15:03 overflight from Tainan over Taitung, outside the atmosphere, and the possible risk from debris.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "passed from Tainan over Taitung outside the atmosphere"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "possible risk from debris"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0077",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     }
+    ]
+   },
+   {
+    "issue": "Severity 'Severe' means a significant threat, which is higher than the input supports. The input reports only a possible risk from debris, which fits 'Moderate'.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Set severity to Moderate.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "Possible threat to life or property"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "possible risk from debris"
+     },
+     {
+      "kind": "view",
+      "ref": "severity",
+      "quote": "Severe"
+     }
+    ]
+   },
+   {
+    "issue": "Certainty 'Observed' overstates the hazard. The overflight itself was observed, but the debris hazard is only reported as possible.",
+    "field": "certainty",
+    "blocking": false,
+    "fix": "Set certainty to Possible for the debris hazard.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "possible risk from debris"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4330,
+  "output_tokens": 1874,
+  "at": "2026-11-08T20:49:53Z"
+ }
+}

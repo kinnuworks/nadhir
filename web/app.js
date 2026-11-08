@@ -37,6 +37,30 @@ function verdictTable(vs) {
     <td>${v.sources.map((s) => s.url ? `<details><summary>${esc(s.id)}</summary><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.id)}</a>${s.quote ? `<br>“${esc(s.quote)}”` : ""} <span class="muted">(${esc(s.status)})</span></details>` : esc(s.id)).join("")}</td></tr>`).join("")}</table>`;
 }
 
+const POSITION = { agree: "agrees", object: "objects", escalate: "escalates to a person" };
+
+function evidence(e) {
+  if (e.kind === "clause") {
+    return `<li>“${esc(e.quote)}” <span class="muted">(${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.title || e.ref)}</a>` : esc(e.title || e.ref)}, ${esc(e.locator || "")}; clause ${esc(e.ref)})</span></li>`;
+  }
+  return `<li>“${esc(e.quote)}” <span class="muted">(from the ${esc(e.ref)} it was shown)</span></li>`;
+}
+
+function reviewsBlock(inst) {
+  if (!inst || !inst.rounds || !inst.rounds.length) return "";
+  const rounds = inst.rounds.map((rd) => `<h4>Round ${rd.round}${rd.round > 1 ? " (after the redraft)" : ""}</h4>
+    <table><tr><th>Reviewer (sees only)</th><th>Position</th><th>Objections, each with a quote checked word for word</th><th>Searched the knowledge base for</th></tr>
+    ${rd.reviews.map((r) => `<tr><td><strong>${esc(r.name)}</strong><br><span class="muted">stands in for ${esc(r.stands_for)}</span></td>
+      <td class="${r.position === "agree" ? "pass" : "pending"}">${esc(POSITION[r.position] || r.position)}</td>
+      <td>${r.objections.length ? r.objections.map((o) => `<p><strong>${esc(o.issue)}</strong> <span class="muted">[${esc(o.field)}${o.blocking ? ", blocking" : ""}]</span><br>Fix: ${esc(o.fix)}</p><ul>${o.evidence.map(evidence).join("")}</ul>`).join("") : `<span class="muted">${esc(r.summary)}</span>`}
+        ${r.dropped.length ? `<p class="muted">${r.dropped.length} objection(s) dropped: no quote matched word for word.</p>` : ""}
+        ${r.no_basis.length ? `<p class="muted">No clause found to back: ${r.no_basis.map((n) => esc(n.concern)).join("; ")}</p>` : ""}</td>
+      <td><span class="muted">${r.queries.map(esc).join("<br>")}</span><details><summary>${r.clauses.length} clauses read</summary>${r.clauses.map((c) => `<div class="muted">${esc(c.id)} · ${esc(c.title)} ${esc(c.locator || "")} · score ${c.score}</div>`).join("")}</details></td></tr>`).join("")}</table>`).join("");
+  return `<h3>Institution reviewers</h3>
+    <p class="muted">Four agents, each standing in for a body with its own view of the alert. They search the knowledge base themselves and must quote what they rely on; code checks every quote. They cannot approve: their objections go back to the drafter once, and any left open go to the people below.</p>
+    ${rounds}${(inst.notes || []).map((n) => `<p class="muted">${esc(n)}</p>`).join("")}`;
+}
+
 const DECISION_TEXT = { release: "Cleared for broadcast", waiting: "Waiting for people to approve", blocked: "Blocked" };
 
 let state = null;
@@ -44,7 +68,7 @@ $("draft").onclick = async () => {
   const inputs = [...$("inputs").children].map((d) => ({
     text: d.querySelector(".in-text").value, verified: d.querySelector(".in-ver").checked, source: d.querySelector(".in-src").value,
   }));
-  $("draftStatus").textContent = "Drafting (about 20-40 seconds)…";
+  $("draftStatus").textContent = "Drafting and reviewing (up to about 90 seconds for new text; the prefilled example is instant)…";
   $("draftOut").innerHTML = "";
   const res = await post("/api/draft", { inputs, zone: $("zone").value, exercise: $("exercise").checked });
   $("draftStatus").textContent = "";
@@ -54,13 +78,16 @@ $("draft").onclick = async () => {
   const ar = (res.versions || []).find((v) => v.language.startsWith("ar"));
   $("draftOut").innerHTML = `
     <div class="row"><div><h3>English draft</h3><p><strong>${esc(f.headline)}</strong><br>${esc(f.description)}<br><em>${esc(f.instruction)}</em></p>
-      <p class="muted">${esc(f.status)} · ${esc(f.severity)} · ${esc(f.urgency)}${res.attempts > 1 ? ` · redrafted ${res.attempts - 1} time(s) after gate feedback` : ""}</p>
+      <p class="muted">${esc(f.status)} · ${esc(f.severity)} · ${esc(f.urgency)}${res.attempts > 1 ? ` · redrafted ${res.attempts - 1} time(s) after gate feedback or reviewer objections` : ""}</p>
       ${f.left_out?.length ? `<p class="muted">Left out: ${esc(f.left_out.join("; "))}</p>` : ""}
       <p class="muted">Note for the approver: ${esc(f.note_for_reviewer)}</p></div>
     ${ar ? `<div><h3>Arabic (${ar.method === "template" ? "vetted template " + esc(ar.template_id) : "machine translated"})</h3><p class="ar"><strong>${esc(ar.headline)}</strong><br>${esc(ar.description)}<br><em>${esc(ar.instruction)}</em></p></div>` : ""}</div>
     <p class="decision ${res.decision === "release" ? "pass" : res.decision === "blocked" ? "fail" : "pending"}">Gate: ${DECISION_TEXT[res.decision]}</p>
     ${verdictTable(res.verdicts)}
+    ${reviewsBlock(res.institutions)}
     <h3>Approve</h3>
+    ${res.institutions && res.institutions.open_objections.length ? `<p class="pending">${res.institutions.open_objections.length} objection(s) still open. The approvers must read them before release.</p>
+      <label><input type="checkbox" id="ack" style="width:auto"> I have read the open objections and still approve</label>` : ""}
     <p class="muted">A high-impact alert needs two different people. Machine-translated Arabic also needs someone who reads Arabic to approve the wording.</p>
     <div class="row"><label>Duty officer name<input id="a1" placeholder="name"></label><label>Supervisor name<input id="a2" placeholder="name"></label>
     ${ar && ar.method === "machine" ? `<label>Arabic wording approved by<input id="a3" placeholder="name"></label>` : ""}</div>
@@ -76,9 +103,9 @@ async function approve() {
     { name: $("a2").value, role: "supervisor", scope: "release" },
   ];
   if ($("a3")) approvals.push({ name: $("a3").value, role: "arabic-reviewer", scope: "language:ar" });
-  const res = await post("/api/approve", { state, approvals });
+  const res = await post("/api/approve", { state, approvals, ack_objections: $("ack") ? $("ack").checked : false });
   if (res.error) { $("releaseOut").innerHTML = `<p class="fail">${esc(res.error)}</p>`; return; }
-  $("releaseOut").innerHTML = `<p class="decision ${res.decision === "release" ? "pass" : "fail"}">Final check: ${DECISION_TEXT[res.decision]}</p>
+  $("releaseOut").innerHTML = `<p class="decision ${res.decision === "release" ? "pass" : "fail"}">Final check: ${DECISION_TEXT[res.decision]}${res.objections_unacknowledged ? " (open objections not yet read by an approver)" : ""}</p>
     ${verdictTable(res.verdicts)}
     <details open><summary>Audit log (${res.log.length} records; ${esc(res.log_check)})</summary><pre>${esc(res.log.map((r) => `${r.seq} ${r.actor} ${r.action} ${r.hash.slice(0, 12)} ← ${r.prev.slice(0, 12)}`).join("\n"))}</pre></details>
     <details><summary>Signed CAP XML</summary><pre>${esc(res.xml)}</pre></details>`;
@@ -91,11 +118,12 @@ $("check").onclick = async () => {
 };
 
 fetch("/web/results/bench.json").then((r) => r.json()).then((b) => {
-  $("bench").innerHTML = `<table><tr><th>Incident</th><th>What happened</th><th>As sent: gate result</th><th>Rules that fired</th><th>Official finding</th><th>Match?</th><th>AI drafter on the same inputs</th></tr>
-  ${b.incidents.map((i) => `<tr><td>${esc(i.title)}<br><span class="muted">${esc(i.date)}</span></td><td>${esc(i.outcome)}</td>
+  $("bench").innerHTML = `<table><tr><th>Incident</th><th>What happened</th><th>As sent: gate result</th><th>Rules that fired</th><th>Official finding</th><th>Match?</th><th>Agents alone on the real message</th><th>AI drafter on the same inputs</th></tr>
+  ${b.incidents.map((i) => `<tr><td>${esc(i.title)}<br><span class="muted">${esc(i.date)}${i.heldout ? " · held out" : ""}</span></td><td>${esc(i.outcome)}</td>
     <td class="${i.as_sent.decision === "blocked" ? "fail" : "pass"}">${esc(i.as_sent.decision)}</td>
     <td>${esc(i.as_sent.failed.join(", "))}</td><td>${esc(i.finding.body)}: “${esc(i.finding.quote)}”</td>
     <td>${i.match ? "yes" : "no"} <span class="muted">(expected ${esc(i.expected.join(", "))})</span></td>
+    <td>${i.agents_on_real ? (i.agents_on_real.length ? "named " + esc(i.agents_on_real.join(", ")) : "missed") : "not run"}</td>
     <td>${i.ai ? esc(i.ai.summary) : "not run"}</td></tr>`).join("")}</table>
   <p class="muted">${esc(b.note || "")}</p>`;
 }).catch(() => { $("bench").textContent = "Replay results not built yet."; });
@@ -105,3 +133,20 @@ fetch("/web/results/audit.json").then((r) => r.json()).then((a) => {
   ${a.rows.map((r) => `<tr><td>${esc(r.source)}</td><td>${r.alerts}</td><td>${r.ai}</td><td>${r.approver}</td><td>${r.signed}</td></tr>`).join("")}</table>
   <p class="muted">${esc(a.note || "")}</p>`;
 }).catch(() => { $("auditOut").textContent = "Audit results not built yet."; });
+
+fetch("/web/results/ablation.json").then((r) => r.json()).then((a) => {
+  const s = a.summary;
+  const mark = (x) => (x ? `<td class="pass">named</td>` : `<td class="fail">missed</td>`);
+  $("ablationOut").innerHTML = `<table><tr><th>Setup</th><th>Faults named before broadcast (of ${s.cases})</th></tr>
+    <tr><td>No checks (AI pipeline alone)</td><td>0</td></tr>
+    <tr><td>12 rules only</td><td>${s.named.rules}</td></tr>
+    <tr><td>4 institution agents only</td><td>${s.named.agents}</td></tr>
+    <tr><td>Rules and agents</td><td>${s.named.both}</td></tr></table>
+    <p>Only the agents named: ${esc(s.only_agents.join(", ") || "none")}. Only the rules named: ${esc(s.only_rules.join(", ") || "none")}. Neither: ${esc(s.neither.join(", ") || "none")}.</p>
+    <p class="muted">On the ${s.clean_drafts} clean drafts (no fault) the agents raised ${s.clean_objections} objection(s) in ${s.clean_drafts_with_objection} draft(s). ${s.dropped_for_bad_quotes} objection(s) in the fault runs were dropped because their quote did not match word for word.</p>
+    <details><summary>Every case</summary><table><tr><th>Fault</th><th>Copies</th><th>Scenario</th><th>Rules</th><th>Agents</th></tr>
+    ${a.cases.map((c) => `<tr><td>${esc(c.fault)} ${esc(c.title)}</td><td>${esc(c.copies)}</td><td>${esc(c.scenario)}</td>
+      ${c.rules_named.length ? `<td class="pass">${esc(c.rules_named.join(", "))}</td>` : mark(false)}
+      ${c.agents_named.length ? `<td class="pass">${c.agents_named.map((h) => esc(h.by + ": " + h.issue)).join("<br>")}</td>` : mark(false)}</tr>`).join("")}</table></details>
+    <p class="muted">${esc(a.note)}</p>`;
+}).catch(() => { $("ablationOut").textContent = "Ablation results not built yet."; });

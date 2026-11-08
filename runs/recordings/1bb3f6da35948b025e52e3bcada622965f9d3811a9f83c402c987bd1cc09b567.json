@@ -1,0 +1,33 @@
+{
+ "key": "1bb3f6da35948b025e52e3bcada622965f9d3811a9f83c402c987bd1cc09b567",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust and low visibility in coastal and inland areas of Abu Dhabi until 18:00\",\n  \"description\": \"EXERCISE - Strong northwesterly winds are raising dust and sand. Visibility is below 3,000 m in some coastal and inland areas of Abu Dhabi until 18:00 today, 16 Feb. Visibility can drop suddenly.\",\n  \"instruction\": \"Drive with caution, especially on external and open roads, and be ready for sudden drops in visibility. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير وانخفاض في مدى الرؤية في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00\",\n  \"description\": \"تمرين - رياح شمالية غربية قوية تثير الغبار والرمال. مدى الرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00 اليوم، 16 فبراير. قد ينخفض مدى الرؤية بشكل مفاجئ.\",\n  \"instruction\": \"قُد بحذر، خاصة على الطرق الخارجية والمفتوحة، وكن مستعداً لانخفاض مفاجئ في مدى الرؤية. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert review requirements",
+   "machine translated alert human review policy",
+   "exercise test alert labeling CAP"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1009,
+  "output_tokens": 50,
+  "at": "2026-11-08T20:53:27Z"
+ }
+}

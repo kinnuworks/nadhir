@@ -1,0 +1,179 @@
+{
+ "key": "3d7a436c815aa726e27ca32e1fae63e1e378f38463d0c9d7d6e0349beeebfa5e",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"No special precautions are needed; drive as normal.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('CAP instruction field multilingual consistency', 'FCC alert translation error protective action', 'fog warning driving safety guidance WMO'):\n\n[X1303BIS#0066] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\nurgency cap.alertInfo.urgency.code \"Shelter\" – Take shelter in place or per <instruction> \"Evacuate\" – Relocate as instructed in the <instruction> \"Prepare\" – Make preparations per the <instruction> \"Execute\" – Execute a pre-planned activity identified in <instruction> \"Avoid\" – Avoid the subject event as per the <instruction> \"Monitor\" – Attend to information sources as described in <instruction> \"Assess\" – Evaluate the information in this message. (This value should NOT be used in public warning applications). \"AllClear\" – The subject event no longer poses a threat or concern and any follow on action is described in <instruction> \"None\" – No action recommended (2) Multiple instances may occur within an <info> block.\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[CAPCP#0037] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Requirements associated with event identification):\nHowever, since the CAP-CP includes rules on issues like languages, providing a coordinated Canadian event list within the CAP-CP, independent of any specific alerting system, will assist in consistency for Canadian users.\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.\n\n[FCC-16-127#0132] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.23):\nstate that providing the public with access to enhanced information in WEA Alert Messages can help to convince people to take protective action more quickly.118 Upon review of these studies and expert analyses, we are persuaded that embedded references are likely to reduce network load when included in Alert Messages. 31.\n\n[FCC-16-127#0056] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.10):\nSimpson, Bureau Chief, Public Safety and Homeland Security Bureau, Federal Communications Commission, PS Docket No. 15-91, at 2 (filed Apr. 24, 2015) (Global Security Systems Ex Parte) (stating that “WEA service is not intended to be a reading service” and should only include pertinent “lifesaving information for the Citizen.”). We urge all consumers to pull over if they receive a WEA Alert Message while driving and want to read it. See Distraction.gov, http://www.distraction.gov/ (last visited Aug. 29, 2016) (containing information and guidance on how to stay safe while driving). 41\n\n[EW4ALL-P3#0025] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (About EW4All):\nLaunch webinar: Methodological Guidance on Conducting After Event Reviews of Early Warning Systems, 4 August 2026, Online EW4All webinar series (co-organized by UNDRR, WMO, ITU, and IFRC): Accelerating cell broadcast for effective early warning systems in Africa, 24 July 2026, Online | see BDT Director's Tweet\n\n[WMO-REGISTER#0002] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nWMO Register of Alerting Authorities [ home ] OID: 2.49.0.0.784.0 WMO Member: United Arab Emirates ISO 3166: AE ARE 784 Issuing Organization: Meteorological Department Hazard Categories: Geo Met Safety Security Rescue Fire Health Env Transport Infra Other\n\n[WMO-REGISTER#0004] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nHazard Categories Geo: Geophysical (earthquakes, volcanoes, tsunami, etc., includes landslide) Met: Meteorological (weather, storms, etc. includes flood) Safety: General emergency and public safety Security: Law enforcement, military, homeland and local/private security",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The headline and description match: the hazard, zero visibility, western regions, 21:30 Tue 17 Feb to 10:00 Wed 18 Feb and the source all agree. The instruction does not. The English says no precautions are needed and to drive as normal. The Arabic tells people to drive with extreme caution, keep a safe distance and keep to reduced speed limits. These are opposite protective actions. A person must decide which instruction is intended; the English looks inconsistent with a zero-visibility warning. The Arabic is machine translation and still needs a named person who reads Arabic to approve it.",
+  "objections": [
+   {
+    "issue": "The protective action is contradictory. The English says 'No special precautions are needed; drive as normal'. The Arabic says 'Drive with extreme caution. Keep a safe distance and keep to reduced speed limits during fog'. Arabic and English readers would be told to do opposite things. The English instruction also conflicts with the zero-visibility hazard in the description, so which text is correct is a content decision, not a translation fix.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "The issuing authority must decide the intended protective action, most likely cautious driving given the zero-visibility hazard. Then correct the English instruction and re-check that the Arabic matches it exactly. Do not simply re-translate the current English into Arabic.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.instruction",
+      "quote": "No special precautions are needed; drive as normal."
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.instruction",
+      "quote": "قُد بحذر شديد. حافظ على مسافة آمنة"
+     },
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "thick fog may cut visibility to zero"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0063",
+      "quote": "calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0116",
+      "quote": "The text describing the recommended action to be taken by recipients of the alert message"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic text was produced by machine translation and has not been checked by a human Arabic reader. The protective action has already diverged from the English.",
+    "field": "arabic_produced_by",
+    "blocking": true,
+    "fix": "A named reviewer who reads Arabic must check and approve the final Arabic headline, description and instruction before release.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-DA-25-12#0105",
+      "quote": "an experienced human translator will be required to ensure message correctness and emphasis"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic instruction adds an updates URL that is not in the English instruction.",
+    "field": "instruction",
+    "blocking": false,
+    "fix": "Make the two versions consistent: add the same URL to the English instruction, or remove it from the Arabic.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic.instruction",
+      "quote": "التحديثات: https://alerts.example.ae"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4524,
+  "output_tokens": 1590,
+  "at": "2026-11-08T21:10:09Z"
+ }
+}

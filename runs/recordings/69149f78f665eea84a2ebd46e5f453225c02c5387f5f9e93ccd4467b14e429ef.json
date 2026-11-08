@@ -1,0 +1,143 @@
+{
+ "key": "69149f78f665eea84a2ebd46e5f453225c02c5387f5f9e93ccd4467b14e429ef",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM rain alert: some eastern, southern, western and interior areas, Sat 22 Aug 13:30-21:00\",\n  \"description\": \"NCM: rain, heavy at times, E, S, W & interior areas Sat 13:30-21:00. Drive with care.\",\n  \"instruction\": \"Drive with care during the rain. Follow NCM updates.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه أمطار من NCM: بعض المناطق الشرقية والجنوبية والغربية والداخلية، السبت 22 أغسطس 13:30-21:00\",\n  \"description\": \"NCM: أمطار، غزيرة أحياناً، على المناطق الشرقية والجنوبية والغربية والداخلية السبت 13:30-21:00. قُد بحذر.\",\n  \"instruction\": \"قُد بحذر أثناء هطول الأمطار. تابع تحديثات NCM.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review emergency alert machine translation', 'CAP multilingual info block language translation accuracy', 'UAE NCM weather alert Arabic terminology'):\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-23-88#0401] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nare mature enough at this time to be used for WEA translations, but notes that the Federal Emergency Management Agency (FEMA) and others have expressed reservations about the exclusive use of machine translations in emergency situations”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); CTIA, Reply, PS Docket Nos. 15-91 and 15-94, at 11 (rec. Aug. 21, 2023) (CTIA Reply) (“CTIA supports efforts by the Commission to evaluate the potential for machine translation that will guide future determination of any appropriate rules adopting its use”); Federal Emergency Management Agency Integrated Public Alert and Warning System Program Office Comments, PS. Docket Nos. 15-91 and 15-94, at 2 (Jul. 29, 2023) (FEMA Comments) (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”);\n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[CAPCP#0143] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nWhen automated language translation of free form text content in an <info> block has taken place, a single instance of this parameter should be used with a value of “yes”.\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[NWS-AI-TRANSLATION#0002] From Binary to Bilingual: How the National Weather Service is Using Artificial Intelligence to Develop a Comprehensive Translation Program (Abstract):\nThe NWS has partnered with LILT, whose patented training process enables large language models (LLMs) to adapt neural machine translation (NMT) tools for weather terminology and messaging.\n\n[MHEWS-2026#0349] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nprogramme that adapts neural machine translation tools to specialized weather terminology through a patented training process. The system enables large language models to generate more accurate and context-sensitive translations of weather alerts in languages such as Chinese, Spanish, and Vietnamese (Khurana et al., 2023). Similarly, Canada’s national public alerting system Alert Ready integrates AI-powered translation directly into alert-authoring software to enable real-time bilingual alerts across hazard types (Box 17).\n\n[MHEWS-2026#0348] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) terminology can be difficult to translate with accuracy and timeliness. Recognising these barriers, researchers and practitioners are continuously trying to use AI technologies to improve the translation and dissemination of early warning communication. Operational applications are already emerging. For example, the National Weather Service in the United States has collaborated with the AI translation platform Lilt to develop an automated emergency-weather translation",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic text matches the English in meaning. The hazard (rain, heavy at times), the areas (some eastern, southern, western and interior areas), the date and time (Sat 22 Aug, 13:30-21:00) and the protective action (drive with care, follow updates) all match, with no differences in numbers, times, places or action. One non-blocking issue: the sender acronym 'NCM' is left in Latin script three times in the Arabic text, which Arabic-only readers may not recognise. The Arabic was produced by machine translation, so a named person who reads Arabic must still review and approve it before it is sent; this review does not approve it.",
+  "objections": [
+   {
+    "issue": "The Arabic headline, description and instruction keep the English acronym 'NCM' in Latin script instead of naming the issuing authority in Arabic. This mixes languages in the Arabic public display text, and Arabic-only recipients may not recognise who issued the alert. The meaning is otherwise unchanged.",
+    "field": "arabic.headline / arabic.description / arabic.instruction",
+    "blocking": false,
+    "fix": "Replace 'NCM' in the Arabic text with the authority's official Arabic name, for example 'المركز الوطني للأرصاد'. Examples: 'تنبيه أمطار من المركز الوطني للأرصاد', 'المركز الوطني للأرصاد: أمطار...', 'تابع تحديثات المركز الوطني للأرصاد'. The Arabic reviewer should confirm the exact official Arabic name.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "CAPCP#0080",
+      "quote": "Mixing public display content or text from different languages within the same <info> block is not allowed"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.headline",
+      "quote": "تنبيه أمطار من NCM"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.instruction",
+      "quote": "تابع تحديثات NCM."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The imperative 'قُد بحذر' is in the masculine singular form. That is common in Arabic public messaging, but the human reviewer may prefer a gender-neutral wording such as 'يُرجى القيادة بحذر'. This is a style matter, not a difference in meaning.",
+    "searched_for": "Arabic emergency alert style or gender-neutral imperative guidance"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4539,
+  "output_tokens": 1387,
+  "at": "2026-11-08T21:01:30Z"
+ }
+}

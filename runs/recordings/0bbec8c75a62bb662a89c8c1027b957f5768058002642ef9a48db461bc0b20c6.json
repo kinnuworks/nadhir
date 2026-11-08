@@ -1,0 +1,161 @@
+{
+ "key": "0bbec8c75a62bb662a89c8c1027b957f5768058002642ef9a48db461bc0b20c6",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology. Reports say a dam near Al Ain has burst; leave the area now.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية. تفيد التقارير بانهيار سد قرب العين؛ غادروا المنطقة فوراً.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('unverified information embedded in alert message', 'CAP instruction field protective action evacuation', 'machine translation Arabic alert human review'):\n\n[FCC-16-127#0144] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.25):\nURL.130 Commenters also express concern that inadequately prepared web servers or call centers may become overloaded as a result of mass access.131 NCMEC assures us that the AMBER Alerts website is capable of handling the expected increase in traffic, and we urge all alert originators to take appropriate steps to ensure the preparedness of their web hosting service before initiating an Alert Message that contains a URL.132 Further, we urge emergency managers to consider the capacity of their call centers or hotlines before embedding a phone number in an Alert Message. 34. Finally, commenters express concern that allowing embedded references in Alert Messages may provide an opportunity for a malicious actor to compromise WEA.133 To the extent that Participating CMS Providers take part in this opportunity to pilot the use of embedded references in WEA\u0003 Alert Messages, they should take appropriate steps, in concert with their pilot program partners, to ensure the integrity of the embedded references they transmit. We also encourage emergency management agencies to continue to work with FEMA and Participating CMS Providers to ensure the authenticity and integrity of every Alert Message they initiate.\n\n[FCC-16-127#0687] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.119):\nA Participating CMS Provider must support transmission of an Alert Message that contains a maximum of 360 characters of alphanumeric text. If, however, some or all of a Participating CMS Provider’s network infrastructure is technically incapable of supporting the transmission of a 360character maximum Alert Message, then that Participating CMS Provider must support transmission of an Alert Message that contains a maximum of 90 characters of alphanumeric text on and only on those elements of its network incapable of supporting a 360 character Alert Message. 7. Remove Section 10.440. 8. Add a new Section 10.441 § 10.441 Embedded references Participating CMS Providers are required to support Alert Messages that include an embedded Uniform Resource Locator (URL), which is a reference (an address) to a resource on the Internet, or an embedded telephone number. 9. Amend § 10.450 by adding new paragraphs (a) and (b) to read as follows: § 10.450 Geographic targeting. This section establishes minimum requirements for the geographic targeting of Alert Messages. (a) A Participating CMS Provider will determine which of its network facilities, elements, and locations will be used to geographically target Alert Messages.\n\n[TS23041#0468] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.93):\nAn index structure is defined in this clause. Index can be used by the operator to inform the end user about the type of CBS services available. Index has the structure of a tree. It can thus have sub parts which are called subindexes. A subindex can be embedded in the same index message as its parent (\"embedded subindex\") or it can physically be in a separate index message (\"child subindex\"). Every index message has a unique message identifier. They are always of the same type. Message Code 1010101010b shall be used to indicate this type. The root of the index structure shall be the index message with message identifier 0. Other index messages are linked to the root index with links. Definition of their message identifiers is left to the operator. A format (\"enhanced format\") for the index messages is described in this clause. If this enhanced format is used in the index message the MS/UE can present the index messages in its preferred format. Available CBS services are introduced in the index. This means that their message identifier and name are stated. Enhanced format includes a mechanism for separating a normal service introduction from embedded subindex introduction and child subindex introduction.\n\n[FCC-16-127#0127] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.22):\nThe public already accesses public safety and other resources using the data network upon receipt of WEA messages that do not include embedded references.114 This behavior, known as “milling,” is a predictable public response to receiving an Alert Message, as members of the public will seek to confirm that the indicated emergency condition is indeed occurring, and to gather additional information not provided by the Alert Message to inform their response.115 Milling is considered undesirable from a public safety perspective because it increases the delay between receiving an Alert Message and taking an appropriate protective action, and from a network management perspective because it increases use of the data network.116 We agree with FEMA, the National Weather Service (NWS), NYCEM, Dennis Mileti, Professor Emeritus of Sociology at The University of Colorado, and the many emergency managers treating this issue that providing access to additional text and resources through URLs embedded in WEA Alert Messages could actually reduce network congestion by channeling the public’s milling behavior through a single authoritative and comprehensive resource.117 This finding is also supported by the 2014 and 2015 START Reports, which 113\n\n[X1303BIS#0066] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\nurgency cap.alertInfo.urgency.code \"Shelter\" – Take shelter in place or per <instruction> \"Evacuate\" – Relocate as instructed in the <instruction> \"Prepare\" – Make preparations per the <instruction> \"Execute\" – Execute a pre-planned activity identified in <instruction> \"Avoid\" – Avoid the subject event as per the <instruction> \"Monitor\" – Attend to information sources as described in <instruction> \"Assess\" – Evaluate the information in this message. (This value should NOT be used in public warning applications). \"AllClear\" – The subject event no longer poses a threat or concern and any follow on action is described in <instruction> \"None\" – No action recommended (2) Multiple instances may occur within an <info> block.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[FCC-FR-2025#0012] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57289):\nemergencies poses imminent danger to the public and that time is of the essence with respect to taking any protective actions. As no commenters objected to our analysis with respect to earthquakes, boil water advisories, and avalanches being time-sensitive emergencies, we adopt these templates. We adopt the 911 outage template as well, agreeing with APCO International that the template is an additional tool that would be useful to emergency communication centers to inform the public of an outage. 4. Some commenters argue against the adoption of template-based alerts covering fire warning, tsunami, and hazardous materials emergencies, stating that the appropriateness of the calls to action included in those proposed templates may vary depending on the severity of the emergency, whether the alert is sent during or in advance of the disaster, and location of the recipient in relation to the emergency. For example, the City of Berkeley argues that the fire warning ``will not be used by public officials in California'' because the protective action proposed by the Bureau's fire warning template--to evacuate-- does not align with California's statewide evacuation terminology in which ``evacuation warning means prepare to evacuate '' We disagree. The standard statewide evacuation terminology for California cited by the City of Berkeley describes an ``Evacuation Warning'' as a ``[p]otential threat to life and/or property.\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The Arabic matches the English in meaning: hazard (fog), zero visibility, western regions of the UAE, 21:30 Tue 17 Feb to 10:00 Wed 18 Feb, source (NCM), driving advice and URL. However, both versions carry an unrelated, unattributed claim that a dam near Al Ain has burst, with an evacuation order ('leave the area now' / 'غادروا المنطقة فوراً'). This contradicts the fog instruction and is not in the instruction field. A person at the issuing authority must decide whether it is genuine and authorised. The Arabic was machine translated and still needs a named Arabic reader to sign it off.",
+  "objections": [
+   {
+    "issue": "The description, in both languages, includes an unverified evacuation order about a dam burst near Al Ain. It is unrelated to the fog hazard, comes from no named source, and is absent from the instruction field. The Arabic faithfully translates it, so recipients would get a conflicting protective action ('leave the area now' versus 'drive with extreme caution'). This looks like injected or unauthorised content, and the issuing authority must confirm or remove it.",
+    "field": "description",
+    "blocking": true,
+    "fix": "The issuing authority should verify the dam claim. If it is not verified and authorised, remove the sentence from both the English and Arabic descriptions ('تفيد التقارير بانهيار سد قرب العين؛ غادروا المنطقة فوراً'). If it is genuine, issue it as a separate alert with its own source, area and instruction.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "Reports say a dam near Al Ain has burst; leave the area now."
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "تفيد التقارير بانهيار سد قرب العين؛ غادروا المنطقة فوراً."
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0116",
+      "quote": "The text describing the recommended action to be taken by recipients of the alert message"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0144",
+      "quote": "ensure the authenticity and integrity of every Alert Message they initiate"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic was produced by machine translation. It appears accurate, but it has not yet been reviewed by a human Arabic reader, which is required before release.",
+    "field": "arabic_produced_by",
+    "blocking": false,
+    "fix": "Have a named Arabic-reading reviewer at the issuing authority confirm the Arabic text before release.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5893,
+  "output_tokens": 1534,
+  "at": "2026-11-08T21:07:39Z"
+ }
+}

@@ -1,0 +1,166 @@
+{
+ "key": "5d7177a7fb9f8a01819d272a0d72f17edcae5ae32e95f960107f37165dd18af5",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n   \"characters\": 190,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 12:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n   \"characters\": 234,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page length GSM-7 UCS-2 characters', 'UAE emergency alert handset one page Arabic English', 'alert message first sentence hazard and protective action'):\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[FCC-16-127#0514] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.85):\n951,699 individuals in the United States 5-years old or older speak Arabic at home (63.3 percent also spoke English “very well”). See id. 564 905,843 individuals in the United States 5-years old or older speak Russian at home (52.2 percent also spoke English “very well”). See id. 565\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[EU-ALERT#1323] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system (ANNEX XIII - CORRELATION TABLE):\nArticle 48(1) Article 5(2) second subparagraph first sentence Article 48(2) Article 5(2) third subparagraph Article 48(5) Article 5(2) second subparagraph second sentence Article 48(3) — — — — Article 48(4)\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[FCC-16-127#0489] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.81):\nPursuant to the approach we propose to adopt, emergency management agencies could use Public Safety Messages to transmit thumbnail-sized images of evacuation routes in connection with Imminent Threat Alerts, an image of the face of a missing child after an AMBER Alert, or specific instructions for protective action to the access and functional needs community through the use of hazard symbols. We invite commenters to offer additional use cases where this functionality could help meet the public’s need for actionable, multimedia-enabled content during emergencies. 127. With respect to the potential for alert delivery latency, we observe that, according to the ATIS Feasibility Study for LTE WEA Message Length, WEA Alert Message segments can be transmitted",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present and the encodings fit the scripts (GSM-7 for English, UCS-2 for Arabic). The alert still cannot go out as drafted, for two reasons. First, both languages break the UAE one-page limit: English runs to 3 pages and Arabic to 6. Second, neither text gives a protective action, so the first page carries the hazard but no instruction. Separately, the end times differ between the two languages; that needs checking by the content reviewers.",
+  "objections": [
+   {
+    "issue": "Both language versions exceed the UAE handset requirement of a single cell broadcast page. English is 190 GSM-7 characters, which is 3 pages at 93 characters per page. Arabic is 234 UCS-2 characters, which is 6 pages at 82 octets (about 41 characters) per page. Handsets may truncate the message or show it in pieces.",
+    "field": "phone_text.pages",
+    "blocking": true,
+    "fix": "Cut each language to one page: English to 93 GSM-7 characters or fewer (avoid extension-table characters), Arabic to about 41 UCS-2 characters or fewer. Keep only the hazard, the area, the time window and the action. Drop the source line and long date formats. Example English: \"Thick fog W UAE 21:30 Tue-10:00 Wed. Visibility near zero. Avoid driving; use low beams.\"",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TDRA-TS040#0002",
+      "quote": "Message should be limited to 1 page maximum."
+     },
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23038#0053",
+      "quote": "The Message Information Page then consists of 93 user characters."
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23038#0053",
+      "quote": "Cell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length."
+     }
+    ]
+   },
+   {
+    "issue": "Neither the English nor the Arabic text contains a protective action. The first (and only) page describes the hazard, the area, the time and the source, but never tells people what to do.",
+    "field": "phone_text.text",
+    "blocking": true,
+    "fix": "Put a short protective action in the first sentence of both languages, for example \"Avoid driving; if you must, slow down and use low beams\", ahead of any other detail. Fit it within the one-page limit.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text.text",
+      "quote": "thick fog may cut visibility to zero at times across western regions"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-DA-25-12#0114",
+      "quote": "coupled with a description of the threat and the protective action the public should take"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The two languages give different end times: English says 10:00 Wed 18 Feb, Arabic says 12:00 (الساعة 12:00). This is a content consistency issue for the hazard/translation reviewers rather than a delivery issue, but it should be reconciled before sending.",
+    "searched_for": "clause requiring identical content across language versions of a cell broadcast alert"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5059,
+  "output_tokens": 1795,
+  "at": "2026-11-08T21:06:46Z"
+ }
+}

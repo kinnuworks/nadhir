@@ -1,8 +1,10 @@
 # Nadhir
 
-**For alerting authorities: AI drafts the public warning, and cited rules and two people decide whether it goes out.**
+**For alerting authorities: AI drafts the public warning, and cited rules, institution reviewers and two people decide whether it goes out.**
 
-Nadhir writes and checks emergency phone alerts. One AI agent drafts the alert and a second translates it into Arabic. Neither can send anything. Twelve fixed rules then check it, each quoting a public policy or an official investigation, and people approve before it is signed and released. The same rules, run on the real 2018 Hawaii missile alert, block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone.
+Nadhir writes and checks emergency phone alerts. One AI agent drafts the alert and a second translates it into Arabic. Neither can send anything. Twelve fixed rules then check it, each quoting a public policy or an official investigation. Four more agents review it next, each standing in for an institution with its own partial view: the met office, the issuing authority, the network operator and regulator, and an Arabic reviewer. They search an 11,188-clause knowledge base themselves and must quote what they rely on; code drops any objection whose quote isn't word for word in its source. People approve last, and the alert is signed.
+
+Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. Run on three real failures added after the rules were frozen, they catch two; the agents catch the third.
 
 It works on CAP 1.2 (ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
 
@@ -10,27 +12,47 @@ It works on CAP 1.2 (ITU-T X.1303bis), the alert format behind cell broadcast sy
 
 **Try it in 30 seconds**
 1. Open the live demo. The inputs are already filled in: a real UAE National Center of Meteorology dust warning, plus an unverified rumour. Press **Draft alert**.
-2. Look at what the gate did. The drafter left the rumour out. The Arabic version is machine translated, so the alert is held until someone who reads Arabic approves it (rule R9). A severe alert needs two different people (R1).
-3. Type two names and an Arabic reviewer, then press **Approve**. You get the signed CAP XML, the final verdicts and the audit log with its hash chain.
+2. Look at what happened. The drafter left the rumour out. The rule table shows the Arabic is machine translated, so it waits for someone who reads Arabic (R9). Below it, the four institution reviewers each give a position, with the clauses they searched and the quotes they rely on. Their objections went back to the drafter once; the ones still open are listed for the approvers.
+3. Type two names and an Arabic reviewer, tick that you read the open objections, then press **Approve**. You get the signed CAP XML, the final verdicts and the audit log with its hash chain.
 
 ## What it found
 
 ### Replays of real alert failures
 
-We rebuilt six real public alert failures from published reports and ran each message through the gate as it was actually sent. The answer key for each replay is the investigator's or authority's own published finding.
+We rebuilt nine real public alert failures from published reports and ran each message through the gate as it was actually sent. The answer key for each replay is the investigator's or authority's own published finding. Three of them (marked held out) were added after the rules were frozen at commit `beb8f54`; `nadhir/gate.py` has not changed since, and nobody who wrote the rules picked or mapped those three.
 
-| Real failure | Answer key | Rules that fired on the real message | Rule the finding points to |
-|---|---|---|---|
-| Hawaii, Jan 2018: missile alert sent live during a drill; correction 38 min later | FCC (official report) | R1, R2, R10 (correction) | R2, R1, R10: caught |
-| Japan, Oct 2022: J-Alert also sent to Tokyo's islands | Fire and Disaster Management Agency white paper (official) | R3 | R3: caught |
-| Seoul, May 2023: city air-raid alert the ministry called erroneous | Interior Ministry statement (via press) | R3, R4 | R4: caught |
-| Los Angeles, Jan 2025: evacuation warning sent county-wide, not to the fire area | US congressional report (official) | R3, R10 (correction) | R3: caught |
-| Brazil, Jun 2026: "Extreme" alerts sent by an intruder | Ministry official note | R1, R4, R5 | R5: caught |
-| India, 2023: test messages shown as Extreme alerts | Press only | R2 | R2: caught |
+| Real failure | Answer key | Rules that fired on the real message | Finding's rule caught by the rules? | By the agents alone? |
+|---|---|---|---|---|
+| Hawaii, Jan 2018: missile alert sent live during a drill; correction 38 min later | FCC (official report) | R1, R2, R10 (correction) | yes | yes (R2) |
+| Japan, Oct 2022: J-Alert also sent to Tokyo's islands | Fire and Disaster Management Agency white paper (official) | R3 | yes | yes |
+| Seoul, May 2023: city air-raid alert the ministry called erroneous | Interior Ministry statement (via press) | R3, R4 | yes | yes |
+| Los Angeles, Jan 2025: evacuation warning sent county-wide, not to the fire area | US congressional report (official) | R3, R10 (correction) | yes | yes |
+| Brazil, Jun 2026: "Extreme" alerts sent by an intruder | Ministry official note | R1, R4, R5 | yes | no: agents don't see signatures |
+| India, 2023: test messages shown as Extreme alerts | Press only | R2 | yes | yes |
+| **Held out.** Ontario, Jan 2020: Pickering nuclear alert sent from the live system during training | Ontario Solicitor General investigation (official) | R1, R2 | yes | yes (R2, R10) |
+| **Held out.** Florida, Apr 2023: broadcasters' monthly test reached phones at 4:45 a.m. | Florida Division of Emergency Management statement | R2 | yes | yes |
+| **Held out.** Taiwan, Jan 2024: satellite launch alert whose English said "missile" and "air raid" | Ministry of National Defense statement | none | **no** | yes (met office reviewer: "the alert names the wrong hazard") |
 
-In every replay, the rule the official finding points to fired on the real message (6 of 6). Seoul's evidence is the ministry's own public correction, quoted in the press. India's is press reporting only.
+The rules catch the finding in 8 of 9, and in 2 of the 3 held-out cases. Taiwan is a real miss: R11 (no detail the inputs don't contain) only runs on AI-written text, and Taiwan's wrong English came from an old human template. The agents, reading the same inputs, caught it. Seoul and Florida rest on official statements as quoted or published, not investigation reports; India is press only.
 
-We wrote the rules with these findings in hand, so the table shows that the rules encode the findings. The next result is the independent test.
+### Which layer catches what (ablation)
+
+We injected 16 kinds of fault into real AI drafts, one at a time, 30 cases in all. Each copies a failure type from the record (a drill sent live, a widened area, a wrong time in the Arabic, a reversed protective action, a rumour, an unregistered sender, and so on). The same faulty alert then went through each setup:
+
+| Setup | Faults named before broadcast (of 30) |
+|---|---|
+| No checks (the AI pipeline alone) | 0 |
+| 12 rules only | 20 |
+| 4 institution agents only | 30 |
+| Rules and agents | 30 |
+
+The agents named 10 cases the rules missed: the Arabic protective action reversed ("no precautions needed, drive normally"), severity inflated to Extreme, an area description saying "All emirates" while the codes were unchanged, an English action made unsafe, and Arabic text stretched to 20 pages. The rules are still needed: they are deterministic, and they see what the agents never see (signatures, approver counts, the signing key). "Named" for an agent means a kept objection whose text points at that fault. The matching terms are fixed in `nadhir/ablation.py`. We narrowed them after the first run because broad words such as "time" and "page" also matched objections on clean drafts; none of the narrowed terms matches any clean-draft objection.
+
+The cost of the agents is noise. On the 12 clean drafts they raised 35 objections, 27 of them from the network operator reviewer, almost all saying the text runs past the one-page handset advice (which is gap 6, below). After one redraft, 22 were still open and went to the approvers. 103 of the 121 objections in the fault runs cite a knowledge-base clause; the rest quote the alert or the inputs. 2 were dropped because their quote didn't match. The agents also logged 52 concerns they could not back with any clause; we read those as leads for policy gaps.
+
+### The knowledge base
+
+`kb/index/` holds 11,188 clauses from 105 documents: 43 of our sources (29 with full text, from CAP and X.1303bis to the FCC reports and 3GPP specs) and 62 documents from the organisers' own UAE policy dataset (ITU Sandbox_Training, `Dataset/UAE`, folders 01 to 06). Search is plain BM25, no model and no network, so every agent's evidence replays exactly. 54 of the 55 quotes in `kb/sources.yaml` are found word for word in the indexed text (the miss is quoted from a secondary summary, as its locator says). Only 1 of the agents' 135 clause citations came from the UAE dataset, and our gap search over it (`python -m kb.gap_search`) finds nothing on AI-drafted alerts, alert approval or alert translation. That absence is the evidence behind gaps 2 and 3.
 
 ### The gate on 1,000 real routine alerts
 
@@ -42,7 +64,7 @@ We read 1,711 live alerts from 8 public feeds (US IPAWS, Canada, Australia, Saud
 
 ### AI on the same inputs
 
-We gave the drafter the same inputs in 5 of the replays, plus 4 UAE scenarios built on real NCM warnings, run 3 times each.
+We gave the drafter the same inputs in 5 of the original replays, plus 4 UAE scenarios built on real NCM warnings, run 3 times each.
 - Its first drafts broke no content rule in any of the 12 UAE runs. It left the unverified dam rumour out in 3 of 3, and it kept the drill marked as an exercise in 3 of 3.
 - In all 12 runs it machine-translated the Arabic instead of using the FCC's vetted template. Without the gate, unreviewed machine Arabic would have gone to phones 12 times. With it, every one waited for a named Arabic reader (R9).
 - Every draft was longer than the one-page advice in the UAE handset spec summary: 2 to 3 pages in English and 5 to 6 in Arabic (R6, warning only).
@@ -65,12 +87,24 @@ The full list, with sources and global examples, is in [docs/gaps.md](docs/gaps.
 ## How it works
 
 ```
-event inputs ─► Drafter (LLM) ─► Translator (LLM) ─► Gate: R0–R11 ─► people approve ─► sign ─► Gate again ─► broadcast
-   (verified /     English CAP       Arabic: vetted       deterministic,     two names for      XML-DSig      release
-    unverified)    fields            template or MT       cites sources      high impact                       check
-                       ▲                                       │
-                       └──────── failed text rules go back to the drafter (up to 2 redrafts) ────┘
+event inputs ─► Drafter ─► Translator ─► Gate: R0–R11 ─► 4 institution agents ─► people approve ─► sign ─► Gate again ─► broadcast
+ (verified /    English     Arabic:       deterministic,    met office, issuer,     two names, read      XML-DSig    release
+  unverified)   CAP fields  template/MT   cites sources     operator, Arabic:       open objections                  check
+                    ▲                          │            search KB, quote it
+                    ├── failed text rules ─────┘ (up to 2 redrafts)    │
+                    └── cited objections ──────────────────────────────┘ (1 redraft, then reviewed again)
 ```
+
+Each institution agent sees only part of the alert:
+
+| Agent | Stands in for | Sees | Does not see |
+|---|---|---|---|
+| Met office reviewer | the national meteorological centre | event inputs (verified or not), English text, severity and certainty | register, area codes, Arabic |
+| Issuing authority reviewer | the national emergency authority | issuer register, active and earlier alerts, requested area, alert status, sender and area | the hazard bulletin, Arabic |
+| Network operator and regulator reviewer | the telecom regulator and operators | each language's phone text with characters, encoding and pages | inputs, register |
+| Arabic language reviewer | an Arabic reviewer at the issuer | English and Arabic text, and how the Arabic was made | inputs, register, area |
+
+None of them can approve. A person can release an alert with an objection still open only after ticking that they read it, and the log records who did.
 
 | Rule | Checks | Main source |
 |---|---|---|
@@ -97,6 +131,9 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 NADHIR_LLM=replay .venv/bin/python -m nadhir.bench          # rerun every replay from recorded model answers, no API key
 .venv/bin/python scripts/verify_logs.py runs/bench/logs     # check every audit log's hash chain
 python3 -I audit/count.py audit/snapshot/2026-11-08         # recount the real-feed audit offline
+NADHIR_LLM=replay .venv/bin/python -m nadhir.ablation       # rerun the fault ablation from recorded answers
+.venv/bin/python kb/index/verify.py                         # check every KB quote against the indexed text
+.venv/bin/python -m kb.gap_search                           # search the UAE dataset for each gap
 .venv/bin/python -m nadhir.serve                            # local demo at http://localhost:8000 (needs ANTHROPIC_API_KEY in .env to draft new alerts)
 ```
 
@@ -110,11 +147,13 @@ CI runs all of this on every push.
 - The issuer, target zones and signing keys in the demo are stand-ins. Nothing here connects to a real broadcast system.
 - In replays the approvals are scripted and labelled as such. In the live demo, a person clicks.
 - R11 is a surface check. It catches invented numbers, hazard words and listed place names, not every wrong claim.
-- One hosted language model plays both agents (set with `NADHIR_MODEL`). Recorded answers make every run replayable, but a fresh run can differ.
+- One hosted language model plays all six agents (set with `NADHIR_MODEL`). The institution agents stand in for roles; they are not the real UAE bodies and don't speak for them. Recorded answers make every run replayable, but a fresh run can differ.
+- The fault ablation uses faults we injected, copying real failure types; the answer key there is ours. The held-out replays are the independent test, and there are only three of them.
+- Pickering, Florida and Taiwan were reconstructed by a separate research pass from public reports; several CAP fields are inferred and marked so in each file. Where the area encoding isn't public, the replay assumes it matched the request.
 - If an intruder controls an issuer's own signing key, R5 cannot tell. The two-person rule is the backstop.
 
 ## Repository
 
-`nadhir/` the gate, agents, orchestrator and server · `kb/` the knowledge base (metadata, hashes and short quotes only) · `bench/` real incidents, UAE scenarios and vetted templates · `audit/` real-feed audit and snapshot · `runs/` recorded model answers, results and logs · `docs/` gaps, CAP profile, mapping · `tests/`.
+`nadhir/` the gate, agents, institution reviewers, retrieval, orchestrator and server · `kb/` the knowledge base (registry with hashes and quotes; `kb/index/` the clause index and its build and verify scripts) · `bench/` real incidents, UAE scenarios and vetted templates · `audit/` real-feed audit and snapshot · `runs/` recorded model answers, results and logs · `docs/` gaps, CAP profile, mapping · `tests/`.
 
 Open source under the MIT licence. Uses public documents only.

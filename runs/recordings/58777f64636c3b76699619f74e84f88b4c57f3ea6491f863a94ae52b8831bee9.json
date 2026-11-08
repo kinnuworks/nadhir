@@ -1,0 +1,138 @@
+{
+ "key": "58777f64636c3b76699619f74e84f88b4c57f3ea6491f863a94ae52b8831bee9",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-drill\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Exercise\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"EXERCISE: Blowing dust and low visibility in coastal and inland areas of Abu Dhabi until 18:00\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise scope Public live', 'exercise drill alert broadcast to public live system', 'FCC false alert drill sent live environment'):\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[CAPCP#0076] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nNotes: Processing of “Ack” or “Error” messages is optional, and systems may impose their own associated rules. Example: (for public distribution) <alert .. > ... <status>Actual</status> <msgType>Alert</msgType> <source>Environment Canada</source> <scope>Public</scope>\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPAU#0049] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<info> ... </info> </alert> Example B. Message that is not intended for public distribution: <alert> <status>Actual</status> <msgType>Error</msgType> <source>example@bom.gov.au</source> <scope>Private</scope> ... <addresses>insert valid recipient addresses </addresses> edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[FCC-HI-2018#0053] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\n8:05 a.m. HI-EMA’s midnight shift supervisor begins a no-notice ballistic missile preparedness drill with day shift officers by placing a call from a secure phone elsewhere in HIEMA to the State Warning Point. The recording that the midnight shift supervisor plays over the phone contains the text of an EAS message for a live ballistic missile alert, including the language, “this is not a drill,” instead of the language used in HIEMA’s standard operating procedure for this drill. Although the midnight shift officer’s recorded voice reads, “Exercise, Exercise, Exercise” at the beginning and end of the drill, using the phrase “this is not a drill” was a deviation from the drill procedure. In the midnight shift supervisor’s analysis, the deviation is not material\n\n[FCC-HI-2018#0057] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\nTime (HST) Event because the phrase “Exercise, Exercise, Exercise” indicates that the event is only a drill. 8:07 a.m. While the other warning officers understand that this is a drill, the warning officer at the alert origination terminal believes that this is a real emergency, not a drill.54 The HI-EMA day shift warning officer at the alert origination terminal responds to this call by transmitting a live incoming ballistic missile alert to the State of Hawaii.55 In doing so, the day shift warning officer selects the template for a live alert from the drop-down menu. When the alert origination software prompts the warning officer to confirm whether the officer wants to send the message, the prompt reads, “Are you sure that you want to send this Alert?” The prompt contains the same message, irrespective of whether the message is a test or an alert, and it does not offer the officer an opportunity to review the message text that would be sent. Members of the public begin to receive the false alert over EAS and WEA.\n\n[FCC-HI-2018#0092] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nsupervisor deviated from the script for initiating an internal drill. See Press Conference, Missile Alarm Live Stream, at 53:42, http://dod.hawaii.gov/hiema/false-alarm-incidents-internal-investigation-complete-release-of-results-andactions/ (last visited Mar. 28, 2018). The investigator also noted that the midnight shift supervisor “combined” elements from two messages to initiate the internal drill (1) one message includes the phrase “real world” and (2) a second message includes “This is not a drill.” Id. at 27:16. The investigator noted that supervisors had the flexibility to create drill initiation messages. Id. at 53:42. The investigator observed that the phrase “exercise, exercise, exercise” preceded and followed the drill initiation message transmitted to the State Warning Point. Id. In HI-EMA’s audio recording of the drill initiation message preceding the false alert, the phrase “exercise, exercise, exercise” can be heard at the beginning of the recording, followed by a high-pitch sound, then the phrase “This is not a drill,” then a second high-pitch sound, and concluding with the phrase “exercise, exercise, exercise.” See HIEMA Audio File, supra note 15. 77 HI-EMA Report at 8.\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0140] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nthe live alert templates.120 Further, while HI-EMA’s alert origination software did display a message to confirm the alert originator’s intent to transmit alerts and tests (a “speedbump”), it did not display that message in a way that enables the alert originator to review their message while they confirm their intent to transmit it, nor did the speedbump clearly specify whether the alert originator is about to send a test or a live alert. HI-EMA’s alert origination software vendor intends to clearly differentiate its test environment from its live alert environment (e.g., color coding and alphabetizing their templates, and adding information to its final confirmation prompt (speedbump) that makes clear whether the alert about to be sent is a live alert). This will make it more difficult for a warning officer to accidentally choose the wrong alert message template, or to transmit a false alert.121 \n\n[FCC-HI-2018#0082] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.14):\nhttps://www.nbcnews.com/nightly-news/video/man-who-sent-hawaii-false-missile-alert-speaks-out1152660547656. 70 The midnight shift supervisor specifically decided to drill at shift change, reasoning that it would be most difficult for warning officers to properly respond to a call from PACOM announcing an incoming ballistic missile during a shift change. Drilling at shift change is not standard procedure for HI-EMA.\n\n[FCC-HI-2018#0047] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.10):\nThe ballistic missile alert checklist specifies, however, that the transmission is a test message. Under the drill procedures, the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions. 48 A no-notice drill is a preparedness exercise that begins without prior warning to the warning officer initiating the",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The sender is in the issuer register (level 1, all areas and categories). The area matches the area drawn for uae-dust-drill. There are no active alerts from higher authorities to overreach, and no correction reference is needed for msgType Alert. Status Exercise fits the drill context. However, this exercise is set to scope Public and is being sent from a live console environment, so it could reach the public's devices. Whether a public-facing drill on the live system is intended is a decision for a person.",
+  "objections": [
+   {
+    "issue": "An exercise-status alert with scope Public is being prepared in the live console environment, so it could be broadcast to the public. Drill guidance says drill messages should stay off consumer devices and that test and live environments should be clearly separated. A person must confirm that public distribution of this drill is intended and authorised; otherwise it should be restricted or moved to a test environment.",
+    "field": "scope",
+    "blocking": true,
+    "fix": "A responsible person should confirm that a public drill broadcast on the live system is intended. If it is not, change scope to Restricted or Private, or send the alert from a test environment.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0047",
+      "quote": "the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0140",
+      "quote": "clearly differentiate its test environment from its live alert environment"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.headline",
+      "quote": "EXERCISE: Blowing dust and low visibility"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4962,
+  "output_tokens": 1206,
+  "at": "2026-11-08T20:53:41Z"
+ }
+}

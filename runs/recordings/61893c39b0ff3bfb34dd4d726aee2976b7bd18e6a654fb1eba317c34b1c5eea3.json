@@ -1,0 +1,114 @@
+{
+ "key": "61893c39b0ff3bfb34dd4d726aee2976b7bd18e6a654fb1eba317c34b1c5eea3",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Department of Telecommunications, Government of India\": {\n   \"name\": \"Department of Telecommunications, Government of India\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Test areas chosen by DoT (reported as received across India on 10 Oct 2023)\",\n  \"codes\": [\n   [\n    \"ISO3166-1\",\n    \"IN\"\n   ]\n  ],\n  \"drawn_for_event\": \"india-test-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Department of Telecommunications, Government of India\",\n  \"status\": \"Test\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Test of Pan-India Emergency Alert System\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"India (as reported)\",\n  \"codes\": [\n   [\n    \"ISO3166-1\",\n    \"IN\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Emergency alert: Extreme\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Test Exercise distinction public scope', 'test alert severity Extreme drill misclassification', 'cell broadcast test message presentation emergency alert'):\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[CAPCP#0076] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nNotes: Processing of “Ack” or “Error” messages is optional, and systems may impose their own associated rules. Example: (for public distribution) <alert .. > ... <status>Actual</status> <msgType>Alert</msgType> <source>Environment Canada</source> <scope>Public</scope>\n\n[CAPAU#0049] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<info> ... </info> </alert> Example B. Message that is not intended for public distribution: <alert> <status>Actual</status> <msgType>Error</msgType> <source>example@bom.gov.au</source> <scope>Private</scope> ... <addresses>insert valid recipient addresses </addresses> edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[FCC-HI-2018#0146] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\n To minimize the potential for confusion, limit employee permissions to create or modify any internal drill message. In addition, refrain from using phrases such as “This is Not a Drill” or “Real World” in test messages. Instead, test messages should be clearly identified as tests\n\n[FCC-HI-2018#0047] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.10):\nThe ballistic missile alert checklist specifies, however, that the transmission is a test message. Under the drill procedures, the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions. 48 A no-notice drill is a preparedness exercise that begins without prior warning to the warning officer initiating the\n\n[FCC-HI-2018#0152] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\n Carefully consider the use and frequency of no-notice drills and ensure appropriate supervision of no-notice drills and consistency with internal test protocols.  Consult with SECCs on a regular basis—at least annually—to ensure that EAS procedures, including initiation and cancellation of actual alerts and tests, are mutually understood, agreed upon, and documented in the State EAS Plan.\n\n[CAP12#0100] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: “Extreme” - Extraordinary threat to life or property “Severe” - Significant threat to life or property\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[INDIA-2023#0002] Today's emergency alert: here's what you need to know (nationwide Cell Broadcast sample test) (article body, quoted message text):\n\"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India.\n\n[ETSI-EUALERT#0061] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.12):\n3) It shall be possible for users to configure the behaviour of a UE with regard to alerting and should allow at least volume adjustment. 6.1.2 Presentation of the message\n\n[ETSI-EUALERT#0013] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.5):\nETSI TS 102 900 V1.4.1 (2023-06) Scope The present document defines the system requirements for a European Public Warning Service using the Cell Broadcast Service, defined in ETSI TS 123 041 [1], as a means of message distribution and delivery to User Equipment (UE).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within my mandate, nothing is wrong. The sender, Department of Telecommunications, Government of India, is in the issuer register at level 1 with all areas and categories. The alert area (ISO3166-1 IN) matches the requested area drawn for event india-test-2023. The status 'Test' fits the EXERCISE / DRILL context, even though the console is live. There are no active alerts from other authorities to overreach. The message is a new Alert, not a correction, so empty references is correct. Separately, the content reviewers should look at the headline 'Emergency alert: Extreme' and severity 'Extreme'. The headline does not identify the message as a test, which is outside my issuing-authority mandate.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4057,
+  "output_tokens": 640,
+  "at": "2026-11-08T20:48:02Z"
+ }
+}

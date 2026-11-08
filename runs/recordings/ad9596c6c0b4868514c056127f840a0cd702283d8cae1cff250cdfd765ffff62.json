@@ -1,0 +1,135 @@
+{
+ "key": "ad9596c6c0b4868514c056127f840a0cd702283d8cae1cff250cdfd765ffff62",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Eastern, southern and western areas (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae] ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Network operator and regulator reviewer objects (phone_text.en): The English text is 184 GSM-7 characters, which is 2 pages. The UAE handset advice limits the message to 1 page. A cell broadcast page carries 82 octets of user information, which is about 93 GSM-7 characters. Fix: Cut the English text to 93 GSM-7 characters or fewer so it fits one page. Keep the hazard, area, time and a protective action, for example: 'NCM: heavy rain at times E, S, W & interior areas Sat 13:30-21:00. Avoid valleys & flooded roads.' [cites 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0), p.89] | Network operator and regulator reviewer objects (phone_text.ar): The Arabic text is 191 UCS-2 characters, which is 5 pages. This is far over the 1-page UAE limit. At 82 octets per page, UCS-2 allows only about 41 characters per page. Fix: Rewrite the Arabic as a very short message of no more than about 41 UCS-2 characters for a single page, stating the hazard and the action, and remove the Latin 'NCM' if possible. If the hazard plus action cannot fit, refer the one-page limit for Arabic to the operator or authority for a decision. | Network operator and regulator reviewer objects (phone_text): Neither language tells people what to do. The first page carries the hazard (rain) but no protective action. Fix: Add a short protective action, such as avoiding valleys and flooded areas or driving carefully, near the start of each language so that it appears on page 1.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Rain alert",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Possible",
+  "headline": "NCM rain alert: some eastern, southern, western and interior areas, Sat 22 Aug 13:30-21:00",
+  "description": "NCM: rain, heavy at times, E, S, W & interior areas Sat 13:30-21:00. Drive with care.",
+  "instruction": "Drive with care during the rain. Follow NCM updates.",
+  "left_out": [
+   "Arabic phone text: the output format has no Arabic field, and hazard + time + action likely cannot fit in about 41 UCS-2 characters on one page. Referred to the operator/authority as the reviewer suggested.",
+   "'Avoid valleys & flooded roads' from the reviewer's example: valleys and flooding are not in the verified NCM input, so a generic driving action was used instead.",
+   "Issuer site https://alerts.example.ae: dropped from the phone text to keep it to one 93-character page."
+  ],
+  "note_for_reviewer": "The English text is 85 GSM-7 characters (one page). To fit, 'some' areas and 'parts of' the interior were shortened to 'E, S, W & interior areas', and the action is generic because NCM gave no protective advice. The Arabic one-page version needs your decision. Severity Moderate and certainty Possible reflect NCM's 'possibility' wording."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 2018,
+  "output_tokens": 1498,
+  "at": "2026-11-08T21:01:08Z"
+ }
+}

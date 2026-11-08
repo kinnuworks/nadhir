@@ -1,11 +1,14 @@
-"""Orchestrator (the Y.3172 MLFO role): runs drafter -> translator -> gate -> people -> signature -> gate.
+"""Orchestrator (the Y.3172 MLFO role):
+drafter -> translator -> gate -> institution agents -> (one redraft on cited objections) -> people -> signature -> gate.
 
 The same function serves the replay bench (approvals scripted and labelled as such) and the
 web demo (approvals come from a person clicking).
 """
 from __future__ import annotations
 
-from . import agents, cap, gate, keys
+import time
+
+from . import agents, cap, gate, institutions, keys
 from .log import AuditLog
 
 DRAFTER_FIXABLE = {"R0", "R2", "R6", "R11"}   # text problems the drafter can repair itself
@@ -83,17 +86,18 @@ def agents_model() -> str:
     return MODEL
 
 
-def draft_and_review(scn: dict, run: str = "1", log: AuditLog | None = None) -> dict:
-    """Steps up to human review. Returns the state a person (or the replay script) approves."""
-    log = log or AuditLog()
-    at = scn["sent"]
-    log.append("orchestrator", "inputs", {"event_id": scn["event_id"], "inputs": scn["inputs"],
-                                          "requested_area": scn.get("requested_area")}, at)
-    feedback: list[str] = []
+FEEDBACK_LABEL = {"gate": ("Gate feedback on your previous draft, fix these: ", "policy gate"),
+                  "institutions": ("Objections from the institution reviewers to your previous draft. Fix what is "
+                                   "within the verified inputs; do not add facts: ", "institution reviewers")}
+
+
+def _draft_round(scn, run, attempt0, feedback, log, at, fb_from="gate"):
+    """Drafter + translator + gate, with up to MAX_REVISIONS redrafts on fixable gate failures."""
     history = []
-    for attempt in range(MAX_REVISIONS + 1):
-        inputs = scn["inputs"] + ([{"text": "Gate feedback on your previous draft, fix these: " + " | ".join(feedback),
-                                    "verified": True, "source": "policy gate"}] if feedback else [])
+    for attempt in range(attempt0, attempt0 + MAX_REVISIONS + 1):
+        label, src = FEEDBACK_LABEL[fb_from]
+        inputs = scn["inputs"] + ([{"text": label + " | ".join(feedback),
+                                    "verified": True, "source": src}] if feedback else [])
         fields, meta = agents.draft(inputs, {**scn, "areaDesc": (scn.get("requested_area") or {}).get("areaDesc")},
                                     salt=f"{scn['event_id']}:{run}:{attempt}")
         log.append("drafter", "draft", {"attempt": attempt, "fields": fields, "model": meta}, at)
@@ -106,17 +110,79 @@ def draft_and_review(scn: dict, run: str = "1", log: AuditLog | None = None) -> 
         verdicts = gate.check(envelope_for(scn, xml, [], ai), stage="review")
         log.append("gate", "review", {"decision": gate.decision(verdicts),
                                       "verdicts": [v.as_dict() | {"sources": [s["id"] for s in v.as_dict()["sources"]]} for v in verdicts]}, at)
-        history.append({"attempt": attempt, "fields": fields, "versions": versions, "xml": xml,
-                        "verdicts": [v.as_dict() for v in verdicts]})
+        history.append({"attempt": attempt, "fields": fields, "versions": versions, "xml": xml, "ai": ai,
+                        "verdicts": verdicts})
         fixable = [v for v in verdicts if v.status == gate.FAIL and v.rule in DRAFTER_FIXABLE]
-        if not fixable or attempt == MAX_REVISIONS:
+        if not fixable or attempt == attempt0 + MAX_REVISIONS:
             break
         feedback = [f"{v.rule} {v.title}: {v.detail}" for v in fixable]
+        fb_from = "gate"
+    return history
+
+
+def _log_reviews(log, reviews, round_no, at):
+    for r in reviews:
+        log.append(f"agent:{r['role']}", "review", {
+            "round": round_no, "position": r["position"], "summary": r["summary"],
+            "objections": r["objections"], "dropped": r["dropped"], "no_basis": r["no_basis"],
+            "queries": r["queries"], "clauses": [c["id"] for c in r["clauses"]], "model": r["model"]}, at)
+
+
+def draft_and_review(scn: dict, run: str = "1", log: AuditLog | None = None, institutions_on: bool = True,
+                     budget_s: float | None = None) -> dict:
+    """Steps up to human review. Returns the state a person (or the replay script) approves.
+
+    budget_s: wall-clock budget (the hosted demo has a time limit). When it runs short the redraft or the
+    second review round is skipped, and the result says so."""
+    t0 = time.monotonic()
+    left = lambda: float("inf") if budget_s is None else budget_s - (time.monotonic() - t0)
+    log = log or AuditLog()
+    at = scn["sent"]
+    log.append("orchestrator", "inputs", {"event_id": scn["event_id"], "inputs": scn["inputs"],
+                                          "requested_area": scn.get("requested_area")}, at)
+    history = _draft_round(scn, run, 0, [], log, at)
+    rounds, notes = [], []
+    if institutions_on:
+        cur = history[-1]
+        reviews = institutions.review(scn, cur["xml"], cur["fields"], cur["versions"], salt=f"{scn['event_id']}:{run}:inst1")
+        _log_reviews(log, reviews, 1, at)
+        rounds.append({"round": 1, "attempt": cur["attempt"], "reviews": reviews})
+        objs = institutions.open_objections(reviews)
+        if objs and left() > 60:
+            fb = institutions.feedback(reviews)
+            more = _draft_round(scn, run, cur["attempt"] + 1, fb, log, at, fb_from="institutions")
+            new = more[-1]
+            worse = gate.decision(new["verdicts"]) == "blocked" and gate.decision(cur["verdicts"]) != "blocked"
+            if worse:
+                notes.append("the redraft broke a rule, so the previous draft was kept")
+                log.append("orchestrator", "redraft-rejected", {"reason": notes[-1]}, at)
+            else:
+                history += more
+                cur = new
+                if left() > 35:
+                    reviews = institutions.review(scn, cur["xml"], cur["fields"], cur["versions"],
+                                                  salt=f"{scn['event_id']}:{run}:inst2")
+                    _log_reviews(log, reviews, 2, at)
+                    rounds.append({"round": 2, "attempt": cur["attempt"], "reviews": reviews})
+                else:
+                    notes.append("redrafted after the objections, but not reviewed again (time limit); "
+                                 "the round 1 objections stay open for the approvers")
+        elif objs:
+            notes.append("objections go straight to the approvers (time limit, no redraft)")
+    last = history[-1] if not rounds else next(h for h in history if h["attempt"] == rounds[-1]["attempt"])
+    final_reviews = rounds[-1]["reviews"] if rounds else []
+    open_objs = institutions.open_objections(final_reviews)
     first = history[0]
-    return {"scenario": scn["event_id"], "run": run, "xml": xml, "ai": ai, "fields": fields,
-            "versions": versions, "verdicts": [v.as_dict() for v in verdicts],
-            "decision": gate.decision(verdicts), "attempts": len(history),
-            "first_draft": {"xml": first["xml"], "verdicts": first["verdicts"]}, "log": log}
+    verdicts = last["verdicts"]
+    decision = gate.decision(verdicts)
+    if decision == "release" and open_objs:
+        decision = "waiting"
+    return {"scenario": scn["event_id"], "run": run, "xml": last["xml"], "ai": last["ai"], "fields": last["fields"],
+            "versions": last["versions"], "verdicts": [v.as_dict() for v in verdicts],
+            "decision": decision, "attempts": len(history),
+            "institutions": {"rounds": rounds, "open_objections": open_objs, "notes": notes,
+                             "no_basis": [{"by": r["name"], **n} for rd in rounds for r in rd["reviews"] for n in r["no_basis"]]},
+            "first_draft": {"xml": first["xml"], "verdicts": [v.as_dict() for v in first["verdicts"]]}, "log": log}
 
 
 def approve_and_release(scn: dict, state: dict, approvals: list[dict], log: AuditLog | None = None) -> dict:
@@ -126,7 +192,13 @@ def approve_and_release(scn: dict, state: dict, approvals: list[dict], log: Audi
     for a in approvals:
         log.append(a.get("name", "approver"), "approve", {"role": a.get("role"), "scope": a.get("scope", "release"),
                                                          "kind": a.get("kind", "human"),
-                                                         "scripted": a.get("scripted", False)}, at)
+                                                         "scripted": a.get("scripted", False),
+                                                         "read_open_objections": bool(a.get("ack_objections"))}, at)
+    open_objs = (state.get("institutions") or {}).get("open_objections") or []
+    if open_objs:
+        log.append("orchestrator", "objections-at-approval", {
+            "open": len(open_objs), "acknowledged_by": sorted({a["name"] for a in approvals if a.get("ack_objections")}),
+            "objections": [{"by": o["by"], "issue": o["issue"]} for o in open_objs]}, at)
     names = sorted({a["name"] for a in approvals if a.get("scope", "release") == "release"})
     roles = sorted({a.get("role", "approver") for a in approvals if a.get("scope", "release") == "release"})
     xml = cap.with_parameters(state["xml"], [(gate.P_APPROVED_BY, ",".join(roles)),
@@ -136,10 +208,14 @@ def approve_and_release(scn: dict, state: dict, approvals: list[dict], log: Audi
         xml = cap.sign(xml, key_pem, cert_pem)
     verdicts = gate.check(envelope_for(scn, xml, approvals, state["ai"]), stage="release")
     decision = gate.decision(verdicts)
-    log.append("gate", "release-check", {"decision": decision,
+    unacked = open_objs and not any(a.get("ack_objections") for a in approvals if a.get("scope", "release") == "release")
+    if decision == "release" and unacked:
+        decision = "waiting"
+    log.append("gate", "release-check", {"decision": gate.decision(verdicts), "held_for_open_objections": bool(unacked),
                                          "verdicts": [{"rule": v.rule, "status": v.status, "detail": v.detail} for v in verdicts]}, at)
     log.append("orchestrator", "broadcast" if decision == "release" else "held", {"identifier": cap.parse(xml).get("identifier")}, at)
-    return {"xml": xml, "verdicts": [v.as_dict() for v in verdicts], "decision": decision, "log": log}
+    return {"xml": xml, "verdicts": [v.as_dict() for v in verdicts], "decision": decision, "log": log,
+            "objections_unacknowledged": bool(unacked)}
 
 
 def check_pasted(xml: str, profile: str = "UAE", inputs: list[str] | None = None) -> dict:

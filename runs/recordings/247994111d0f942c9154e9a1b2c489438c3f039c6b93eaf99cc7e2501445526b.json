@@ -1,0 +1,33 @@
+{
+ "key": "247994111d0f942c9154e9a1b2c489438c3f039c6b93eaf99cc7e2501445526b",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Active to occasionally strong northwesterly winds raising dust and sand, visibility below 3,000 m in some coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE: Dust cuts visibility <3km in some coastal/inland areas to 18:00. Drive carefully.\",\n  \"instruction\": \"EXERCISE: Take care, especially when driving on external and open roads, because visibility can drop suddenly in blowing dust. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: رياح شمالية غربية نشطة إلى قوية أحياناً مثيرة للغبار والرمال، والرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية حتى الساعة 18:00\",\n  \"description\": \"تمرين: الغبار يخفض الرؤية إلى أقل من 3 كم في بعض المناطق الساحلية/الداخلية حتى الساعة 18:00. قُد بحذر.\",\n  \"instruction\": \"تمرين: يرجى توخي الحذر، خاصة عند القيادة على الطرق الخارجية والمفتوحة، لأن الرؤية قد تنخفض فجأة بسبب الغبار المتطاير. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation review emergency alert accuracy",
+   "machine translation alerts human review requirement",
+   "exercise test message labeling cell broadcast"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 988,
+  "output_tokens": 55,
+  "at": "2026-11-08T20:54:08Z"
+ }
+}

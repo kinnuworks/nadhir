@@ -1,0 +1,33 @@
+{
+ "key": "84fb667df7f2a84553f877098f0ce97a964e333c6bd638adb6439ba9565ef3e8",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog may cut visibility to zero in western UAE, 21:30 Tue to 10:00 Wed 18 Feb\",\n  \"description\": \"Fog may cut visibility to zero, W. UAE, 21:30 Tue-10:00 Wed: drive with extreme caution.\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow the modified speed limits, especially where fog is thick. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"قد يؤدي الضباب إلى انعدام الرؤية في غرب الإمارات، من 21:30 الثلاثاء إلى 10:00 الأربعاء 18 فبراير\",\n  \"description\": \"قد يؤدي الضباب إلى انعدام الرؤية، غرب الإمارات، 21:30 الثلاثاء - 10:00 الأربعاء: قُد بحذر شديد.\",\n  \"instruction\": \"قُد بحذر شديد، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة، خاصةً حيث يكون الضباب كثيفًا. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation public alert review requirements",
+   "machine translation emergency alert accuracy",
+   "CAP multilingual info block language"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 956,
+  "output_tokens": 49,
+  "at": "2026-11-08T20:57:55Z"
+ }
+}

@@ -1,0 +1,137 @@
+{
+ "key": "800e5132af905ac83f3652750e3ca258c032c5becdedfab4a334933baf431db2",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Western region (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility] ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Network operator and regulator reviewer objects (phone_text.en): The English text is 190 GSM-7 characters across 3 pages, which exceeds the UAE handset requirement of a 1-page maximum. Fix: Shorten the English text to one GSM-7 page (93 characters or fewer, within 82 octets). Keep the hazard, area, timing and a short protective action. Drop low-priority detail such as the full source line and the full date wording. Example: 'Fog warning W. UAE 21:30 Tue-10:00 Wed: visibility near zero. Avoid driving, use low beams.' [cites Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040), requirement 3] | Network operator and regulator reviewer objects (phone_text.ar): The Arabic text is 234 UCS-2 characters across 6 pages, far beyond the 1-page maximum. A UCS-2 page holds only about 41 characters within the 82-octet page. Fix: Rewrite the Arabic text to fit one UCS-2 page (about 41 characters or fewer). Keep only the hazard, area, end time and the action, for example the equivalent of 'Thick fog W. UAE until 10:00 Wed. Avoid driving.' If the hazard and action cannot fit in one page, a person must decide whether to accept multiple pages. [cites Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040), requirement 3]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Fog warning",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Likely",
+  "headline": "Fog warning for western UAE: visibility may drop to zero, 21:30 Tue to 10:00 Wed",
+  "description": "Fog warning W. UAE 21:30 Tue to 10:00 Wed. Visibility may drop to zero. Drive with care.",
+  "instruction": "Drive with extreme caution and keep a safe distance from other vehicles. Follow modified speed limits, especially in thick fog.",
+  "left_out": [
+   "No unverified inputs were received, so nothing was excluded for that reason.",
+   "The reviewer's sample action 'Avoid driving, use low beams' was not used. Neither action appears in the NCM statement, which advises caution, safe distance and modified speed limits.",
+   "The full source line (NCM via WAM) and full dates (17-18 February 2026) were dropped from the phone text to fit one GSM-7 page (88 characters), as the regulator reviewer asked.",
+   "The issuer site URL (https://alerts.example.ae) was left out of the phone text because of the one-page length limit.",
+   "No Arabic text was produced, because this task asks for the English alert only."
+  ],
+  "note_for_reviewer": "Please confirm Moderate severity and Likely certainty: NCM says fog is 'potential' but visibility is 'expected' to fall, at times to zero, and 'W. UAE' abbreviates NCM's 'several western regions'. The Arabic one-page text (about 41 UCS-2 characters) still needs to be drafted, and a person may need to decide whether to accept multiple pages."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 2020,
+  "output_tokens": 1415,
+  "at": "2026-11-08T20:55:50Z"
+ }
+}

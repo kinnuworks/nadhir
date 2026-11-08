@@ -1,0 +1,136 @@
+{
+ "key": "76f124927753488398f87a14b38a1c04a1e8c72804be59a64a8ef5069b6f47df",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Eastern, southern and western areas (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae] ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Network operator and regulator reviewer objects (phone_text): Both language versions run past the UAE one-page limit (en: 3 pages, ar: 5 pages). Handsets may show the message split or cut off. Fix: Rewrite each language to fit one cell broadcast page: at most about 93 GSM-7 characters for English and about 41 UCS-2 characters for Arabic. Keep only the hazard, the area and time in brief, and the action. If a meaningful Arabic text cannot fit in one UCS-2 page, the issuing authority must decide what to drop, or whether multi-page delivery is acceptable. [cites Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040), requirement 3] | Network operator and regulator reviewer objects (phone_text): Neither language version tells the public what to do. The text describes the hazard and the validity period only, so the first page carries no action. Fix: Add a short protective action in both languages (for example, avoid valleys and flooded roads, and drive carefully). Place it on the first and only page, right after the hazard. [cites Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates, p.21]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Convective clouds with rainfall",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Possible",
+  "headline": "NCM rain alert: eastern, southern and western areas, Sat 13:30-21:00",
+  "description": "NCM: rain, heavy at times, E/S/W areas & interior, Sat 13:30-21:00. Avoid flooded roads.",
+  "instruction": "Avoid flooded roads and valleys. Drive carefully.",
+  "left_out": [
+   "No inputs were unverified, so nothing was left out on that basis.",
+   "The issuer site (https://alerts.example.ae) was dropped from the phone text so it fits one 93-character GSM-7 page.",
+   "'Valleys' was kept only in the instruction field because the reviewer gave it as an example action; it does not appear in the NCM text.",
+   "No Arabic version is included here. The reviewer said a meaningful Arabic text may not fit one 41-character UCS-2 page, and that is the issuing authority's decision."
+  ],
+  "note_for_reviewer": "The English phone text is 88 GSM-7 characters and fits one page, but the abbreviations (E/S/W, Sat) lose detail. Please decide how to handle the Arabic version: either a one-page Arabic text with the hazard and action only, or approving multi-page delivery."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1861,
+  "output_tokens": 1295,
+  "at": "2026-11-08T20:58:38Z"
+ }
+}

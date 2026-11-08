@@ -1,0 +1,114 @@
+{
+ "key": "ea7e7200e9594d4bb0d423c2ca612017f1c11dd01569b4a8c23945a38b306fe3",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Ministry of National Defense\": {\n   \"name\": \"Ministry of National Defense\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Taiwan (nationwide)\",\n  \"codes\": [],\n  \"drawn_for_event\": \"taiwan-2024\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Ministry of National Defense\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Security\"\n  ],\n  \"event\": \"Air raid alert (air threat warning)\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Taiwan\",\n  \"codes\": [],\n  \"polygons\": [],\n  \"headline\": \"[Air raid Alert]\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP area element polygon geocode required', 'nationwide alert area scope overreach issuer authorization', 'FCC false alert wrong area investigation'):\n\n[CAPCP#0091] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #7. Location References are required):\nNotes: In CAP, use of <polygon> and <circle> are recommended and preferred. Example: Element: <geocode> <polygon> <circle> Use: Required Type: Technical Value: One or more of either the <geocode> <polygon> or <circle> elements must have a valid value where if only <geocode> is used, it must have a value that conforms to the CAP-CP Location References geocode set.\n\n[CAPCP#0115] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n(2) MAY contain one or multiple instances of <polygon>, <circle> and/or <geocode>. If multiple <polygon>, <circle> and/or <geocode> elements are included, the location described by this <area> element is the union of those represented by the included elements.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[CAPCP#0119] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\nExample: Element: Use: Optional Type: Technical Value: Description: CAP-CP requires either a CAP-CP <geocode> value, or the use of optional <polygon> and <circle> values. When either or both <polygon> and <circle> values are present in an area block, the combination of these <polygon> and <circle> values alone is considered a more accurate representation of the alert area than the CAP supported combination of all <polygon>, <circle> and <geocode> values together. This distinction allows for CAP originators to support alerting systems that require geocodes and still be able to more accurately represent the threat area with GIS constructs all in one CAP message. E.g. Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks.\n\n[FCC-16-127#0771] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.135):\nThese requirements will implicate no additional legal concerns, and will require no additional professional assistance for non-nationwide Participating CMS Providers. 32. Based on our review of the record, we find that it is practicable for all Participating CMS Providers, including non-nationwide Participating CMS Providers, to implement WEA improvements without incurring unduly burdensome costs, especially considering the special treatment that we afford non-nationwide Participating CMS Providers. The WEA Report and Order recognizes that technical and operational issues must be addressed before compliance can be required, and allows sufficient time for nationwide and non-nationwide Participating CMS Providers to achieve compliance with today’s rules. 33. In considering the record received in response to the WEA NPRM, we examined additional alternatives to ease the burden on non-nationwide EAS Participants. These alternatives included adopting longer compliance timeframes than those initially proposed; requiring Participating CMS Providers to support WEA Alert Messages that contain only360 characters, as opposed to 1,380, as considered by the Updated START Report;97 requiring support for only additional languages that are currently supported by standards, as opposed to others as initially proposed; and allowing Participating CMS Providers geo-target an Alert Message to an area that “best approximates” the target area, as opposed to one that is “no larger than” the target area using device-based geo-fencing techniques, as proposed.\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[TS23041#0339] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.71):\nCode 0 1 0 1 Instruction to Terminal No instruction as to emergency user alert. Activate emergency user alert. No instruction as to popup. Activate popup on the display. Geographical Scope: The Geographical Scope (GS) indicates the geographical area over which the Message Code is unique, and the display mode. The CBS message is not necessarily broadcast by all cells within the geographical area. When two CBS messages are received with identical Serial Numbers/Message Identifiers in two different cells, the Geographical Scope may be used to determine if the CBS messages are indeed identical. In particular, the Geographical Scope tells the mobile if the CBS message is: -\n\n[FCC-16-127#0320] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.53):\nWe note that CSRIC IV recommended that we allow two years for all Participating CMS Providers to comply with this rule, but the record shows that a two-year compliance timeframe would unduly delay improvements to geo-targeting that nationwide Participating CMS Providers are already capable of providing through the use of proprietary geo-targeting algorithms.355 While Bluegrass Cellular, a non-nationwide Participating CMS Provider, states that it can develop a polygon-level geo-targeting capability in as little as six months,356 and no other non-nationwide Participating CMS Provider made a statement to the contrary, we find it prudent to allow non-nationwide Participating CMS Providers one year to achieve compliance with this rule in order to accommodate differences among non-nationwide Participating CMS Providers’ technical sophistication.357 Further, we note that all Participating CMS Providers (including those subject to our shorter 60-day compliance timeframe noted earlier in this paragraph) would be able to comply with our amended geo-targeting requirement immediately by geo-targeting to an area not larger that the propagation area of a single transmission site.358 We find that this approach, however, would regularly and predictably lead to underalerting.\n\n[FCC-HI-2018#0010] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.4):\nConsistent with its protocol, the FCC Operations Center contacted the U.S. Department of Homeland Security (DHS) National Operations Center, which confirmed the alert was false. The FCC Operations Center contacted Bureau leadership at 1:42 p.m. (EST) to ensure they were aware of the incident and the DHS confirmation of the alert as false. During this time, Bureau leadership was also in touch with the Federal Emergency Management Agency (FEMA) concerning the false alert. Federal Communications Commission (Commission) Chairman Ajit Pai immediately directed the Bureau to investigate the facts and circumstances around the transmission of the January 13th false alert. Specifically, Chairman Pai instructed the Bureau to start a full investigation into this event, focusing on two key questions: “What went wrong? And what needs to be done to stop a similar mistake from happening in the future?”9 5. On January 18, 2018, the Bureau dispatched two investigators to Hawaii. On January 18 and 19, 2018, the Bureau investigators met with HI-EMA staff, United States Pacific Command (PACOM), the Hawaii State Emergency Communications Committee (Hawaii SECC), and Hawaii legislators.10 Between January 18, 2018 and January 26, 2018, Bureau staff also interviewed alert 6 In a memo to the Bureau staff, the National Association of the Deaf detailed the experiences of its Board of\n\n[FCC-HI-2018#0062] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\non their personal devices.” Id. at 3. According to the Bureau’s investigation, the employee who triggered the false alert received the alert on that employee’s mobile device at 8:08 a.m. The Bureau report does not preclude the possibility that other State Warning Point employees received the false alert at 8:07 a.m. along with members of the general population. 57 State Adjutant Major General Joe Logan also learned of the false alert when he received it on his mobile device.\n\n[FCC-HI-2018#0012] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.4):\nattack, but it wasn’t until 8:45 a.m. that the Board of Directors received the correction alert advising that Hawaii was not in danger from a missile attack. Id. 8 Id. 9 Statement of Chairman Pai re January 30, 2018 Preliminary Report on the Investigation into the False Emergency\n\n[FCC-HI-2018#0017] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.5):\nSee also Hawaii Emergency Management Agency, FAQs Related to Ballistic Missile False Alert (Jan. 13, 2018 revised Jan. 31, 2018), http://dod.hawaii.gov/hiema/faqs-related-tothe-ballistic-missile-false-alert/; Hawaii Emergency Management Agency, Statement on Missile Launch False Alarm (Jan. 13, 2018), https://dod.hawaii.gov/hiema/files/2018/01/20180113-NR-HI-EMA-statement-on-missilelaunch-false-alarm.pdf. As discussed above, this report will use the facts as determined in the FCC investigation but note in footnotes any discrepancies with the HI-EMA Report and the Hawaii Preparedness Report. 15 See State releases heavily redacted recording of HI-EMA’s missile mistake test, Hawaii News Now, (Mar. 14,",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within the issuing-authority mandate nothing is wrong. The sender, Ministry of National Defense, is in the issuer register at level 1 with unrestricted areas ('*') and categories ('*'), so it covers the Security category. The alert area 'Taiwan' matches the requested area 'Taiwan (nationwide)' drawn for event taiwan-2024. Status 'Actual' fits a real event on a live console. No higher-authority alerts are active, so there is no overreach. msgType 'Alert' needs no references. One point is outside this mandate: both the requested area and the alert have empty codes and polygons. Whether a location reference is required (e.g. CAPCP#0091) is for the technical/format reviewer to check.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5272,
+  "output_tokens": 678,
+  "at": "2026-11-08T20:49:43Z"
+ }
+}

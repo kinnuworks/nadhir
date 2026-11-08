@@ -1,0 +1,143 @@
+{
+ "key": "e45f80f96a289ef7479e47860df38d3446a04babe83fe39b7c6f8ded48a8358b",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Los Angeles County Office of Emergency Management (LACOEM)\": {\n   \"name\": \"Los Angeles County Office of Emergency Management (LACOEM)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"006037\"\n   ]\n  ],\n  \"drawn_for_event\": \"la-county-2025\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Los Angeles County Office of Emergency Management (LACOEM)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Fire\"\n  ],\n  \"event\": \"Evacuation Warning\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Los Angeles County\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"006037\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"EVACUATION WARNING\"\n }\n}\n\nKnowledge base clauses returned by your searches ('alert area exceeds requested evacuation zone countywide', 'FCC report Los Angeles wildfire erroneous evacuation alert', 'CAP area polygon versus geocode targeting precision'):\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[FCC-16-127#0226] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.38):\nNWS May 21, 2016 Ex Parte at 2. 234 See 47 CFR § 10.450 (providing that “[i]f, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area”). 235\n\n[LA-2025#0039] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.15):\nEVAC Software – A Genasys, Inc. system used by public safety agencies to create and manage evacuation zone maps and designate areas requiring emergency protective action. FCC (Federal Communications Commission) – The federal agency that regulates interstate and international communications and oversees technical rules for alerting systems like WEA. FEMA (Federal Emergency Management Agency) – A U.S. Department of Homeland Security agency that operates and maintains IPAWS, and supports emergency preparedness, response, and recovery. Geocode – A broad geographic identifier (such as a county or city) used to define the general area where an alert can be sent. IPAWS (Integrated Public Alert and Warning System) – A FEMA-managed national system that enables authorized agencies to send emergency alerts through multiple communication channels, including WEA, EAS, and NOAA Weather Radio. Polygon – A more precise geographic shape or boundary used to target alert messages to specific impacted areas within a broader geocode. PROTECT App – A Genasys, Inc. mobile application that allows users to receive alerts, view hazard zones, and access emergency information. TTY (Teletypewriter) – A communication device used by individuals who are deaf, hard of hearing, or speech-impaired, capable of receiving emergency alert messages. WEA (Wireless Emergency Alerts) – Short emergency messages sent by authorized agencies to mobile devices in a targeted area via participating wireless carriers.\n\n[FCC-16-127#0688] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.119):\nA Participating CMS Provider must transmit any Alert Message that is specified by a geocode, circle, or polygon to an area not larger than the provider's approximation of coverage for the Counties or County Equivalents with which that geocode, circle, or polygon intersects that best approximates the specified geocode, circle, or polygon. If, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates the specified geocode, circle, or polygon, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site. If, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area. (b) Upon request from an emergency management agency, a Participating CMS Provider will disclose information regarding their capabilities for geo-targeting Alert Messages. A Participating CMS Provider is only required to disclose this information to an emergency management agency insofar as it would pertain to Alert Messages initiated by that emergency management agency, and only so long as the emergency management agency offers confidentiality protection at least equal to that provided by the federal FOIA. 10. Add a new Section 10.480: § 10.480 Language support.\n\n[LA-2025#0012] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.6):\nIMPACT To protect life and property during emergencies, appropriately timed, targeted, and understandable emergency alert messages can mean the difference between life and death. However, unclear messages, sent to the wrong locations, multiple times, and after the emergency has passed, can lead to alert fatigue and erosion of public trust. Due to the incorrect warning, millions who were never under any wildfire danger were unnecessarily alarmed and confused, causing distress in a dangerous time of out-of-control wildfires. This had serious implications for public safety and well-being at a time of intense distress for our community. Further, the incident raises a serious risk that future alerts could be ignored or downplayed by more recipients, putting lives at risk. CONGRESSIONAL INVESTIGATION On February 3, 2025, Congressman Robert Garcia (CA-42) and thirteen Members of Congress representing Los Angeles County sent oversight letters seeking answers regarding the erroneous evacuation warnings. Letters were addressed to:\n\n[FCC-16-127#0809] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.143):\nKristin Card Kristin Card Krown Manufacturing Krown Manufacturing Lew Pettit Lew Pettit Lloyd Colston Lloyd Colston Lloyd Ewing Lloyd Ewing Los Angeles Emergency Management Department Los Angeles EMD Mark Maxwell\n\n[LA-2025#0011] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nLos Angeles Office of Emergency Management Wireless Emergency Alert 9. March 27, 2025, Response by Genasys Inc Chief Executive Officer to February 3, 2025, Congressional oversight letter. 10. https://www.cnn.com/2025/01/16/us/evacuation-warnings-vulnerabilities-la-fires/index.html 11. https://www.latimes.com/california/story/2025-01-09/emergency-alert-text-message-los-angeles-fire\n\n[LA-2025#0022] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.9):\n(Federal Emergency Management Agency [FEMA]) Los Angeles County may have avoided damage to people outside the impacted Kenneth Fire area had their message included more information on the location or the timing of the danger. This additional information is also important for people who have older phones, where geotargeting is not precise on those devices. A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,” instead of “An EVACUATION WARNING has been issued for your area.” In questioning, Los Angeles County states, “The County has and currently does identify specific locations and neighborhoods in its emergency alerts,” 20 however, this specific case raises an area for improvement.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[CAPCP#0119] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\nExample: Element: Use: Optional Type: Technical Value: Description: CAP-CP requires either a CAP-CP <geocode> value, or the use of optional <polygon> and <circle> values. When either or both <polygon> and <circle> values are present in an area block, the combination of these <polygon> and <circle> values alone is considered a more accurate representation of the alert area than the CAP supported combination of all <polygon>, <circle> and <geocode> values together. This distinction allows for CAP originators to support alerting systems that require geocodes and still be able to more accurately represent the threat area with GIS constructs all in one CAP message. E.g. Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks.\n\n[CAPAU#0115] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.35):\nProfile Specification Type Profile Specification Normative geocode OPTIONAL Notes: Technical Example A (for note 2): 1) <geocode> SHOULD be used as the backup method to define alert areas whenever the consumer system has no ability to interpret the more accurate geospatial information stated in <polygon> or <circle> sub-elements. Multiple <geocode> sub-elements MAY be used as necessary to fully cover the target area for the alert message.\n\n[CAPCP#0115] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n(2) MAY contain one or multiple instances of <polygon>, <circle> and/or <geocode>. If multiple <polygon>, <circle> and/or <geocode> elements are included, the location described by this <area> element is the union of those represented by the included elements.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the issuer register with countywide authority, and the Actual status fits a live, real event. But the alert's area does not match the area requested for this event. The request was a drawn Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills. The alert instead targets all of Los Angeles County: its areaDesc is countywide, it has only the county SAME geocode and no polygon. This repeats the over-broad targeting of the Kenneth Fire false alert. The drafter can fix it by restricting the area to the drawn evacuation zone.",
+  "objections": [
+   {
+    "issue": "The alert targets the whole county (Los Angeles County, SAME 006037, no polygons) instead of the Kenneth Fire evacuation warning area drawn for this event. Millions of people outside the hazard would receive an evacuation warning.",
+    "field": "area",
+    "blocking": true,
+    "fix": "Change areaDesc to the requested 'Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills'. Include the drawn polygon for event la-county-2025 so targeting is limited to the evacuation zone. Keep the county geocode only as a fallback alongside the polygon, not as the sole area.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "Los Angeles County"
+     },
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills"
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0018",
+      "quote": "clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPCP#0119",
+      "quote": "Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5099,
+  "output_tokens": 1059,
+  "at": "2026-11-08T20:48:31Z"
+ }
+}

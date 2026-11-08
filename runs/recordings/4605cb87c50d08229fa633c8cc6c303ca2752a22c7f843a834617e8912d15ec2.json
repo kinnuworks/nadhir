@@ -1,0 +1,143 @@
+{
+ "key": "4605cb87c50d08229fa633c8cc6c303ca2752a22c7f843a834617e8912d15ec2",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE: Blowing dust in coastal & inland Abu Dhabi until 18:00. Drive with care.\",\n   \"characters\": 82,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين: غبار متطاير في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00. قُد بحذر.\",\n   \"characters\": 86,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 3\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page UCS-2 93 characters', 'UAE cell broadcast Arabic message length single page', 'exercise alert message prefix cell broadcast'):\n\n[TS23041#0043] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.11):\n2 General description The CBS service is analogous to the Teletex service offered on television, in that like Teletex, it permits a number of unacknowledged general CBS messages to be broadcast to all receivers within a particular region. CBS messages are broadcast to defined geographical areas known as cell broadcast areas. These areas may comprise of one or more cells, or may comprise the entire PLMN or SNPN. Individual CBS messages will be assigned their own geographical coverage areas by mutual agreement between the information provider and the PLMN or SNPN operator. CBS messages may originate from a number of Cell Broadcast Entities (CBEs), which are connected to the Cell Broadcast Centre. CBS messages are then sent from the CBC to the cells, in accordance with the CBS's coverage requirements. A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters. Other Data Coding Schemes may also be used, as described in 3GPP TS 23.038 [3]. Up to 15 of these pages may be concatenated to form a CBS messagee. Each page of such CBS message will have the same message identifier (indicating the source of the message), and the same serial number. Using this information, the MS/UE is able to identify and ignore re-broadcasts of already received messages.\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[ETSI-EUALERT#0052] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.11):\n• have clearly established procedures between those who will be involved at the time of an Alert (personal contacts, planned exercises, regular updates, etc.). 5.6 Delay Requirements There are no strict delay requirements for PWS. From an operational point of view two transmissions of a 93 character warning message within 3 minutes could be sufficient. Each transmission represents the use of one language using an \"EU\" or a \"legacy\" Message Identifier.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0089] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.21):\nSMS BROADCAST REQUEST 3 3 SMS BROADCAST REQUEST 4 4 Figure 3 With the SMS BROADCAST COMMAND mode of operation, the BSC sends to the BTS in one single message the 88 octet fixed length CBS page. The BTS then splits the page into four 22 octet blocks, adds the sequence number (see 3GPP TS 44.012 [7]) and transmits the four resulting blocks on the air. Figure 4 illustrates the protocol architecture and the scope of the various GSM Specifications for the SMS BROADCAST COMMAND mode of operation.\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[ETSI-EUALERT#0045] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.10):\nRequired Monthly Test EU-Test State/Local Test EU-Exercise Exercise EU-Reserved Reserved for CMSP use EU-Geo-fencing trigger message Geo-fencing trigger Comment Broadcasting of level 1 alerts where opt-out is not allowed. Broadcasting of level 2 alerts where opt-out is allowed. Broadcasting of level 3 alerts where opt-out is allowed. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Allocated for Amber (child abduction) alerts. Users should be able to opt-in to these messages. Allocated for monthly test messages that may or may not involve the general public and may or may not require special UEs. Allocated for messages used for proficiency training and public outreach. Users may be able to opt-in to these messages. Allocated for use during exercises. Its use is for further study. Reserved for operator specific use. In EU-Alert this MI is reserved for national government requests to operators. Allocated for geo-fencing trigger message for DeviceBased Geo-Fencing.\n\n[TS23041#0370] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.76):\n4381 111D CMAS CBS Message Identifier for CMAS Exercise. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message.\n\n[ETSI-EUALERT#0025] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.6):\nUK-ALERT: The national variant of EU-ALERT for the United Kingdom.  FR-ALERT: The national variant of EU-ALERT for France. message identifier: parameter in a Cell Broadcast message that is an indication of the topic NOTE:",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The English text fits one GSM-7 page and both required languages (ar, en) are present. The Arabic text fails the UAE handset limit: it is 86 UCS-2 characters spread over 3 pages, but the profile allows 1 page. Because a UCS-2 page holds about 41 characters, the action \"قُد بحذر\" falls on page 3, not the first page. The drafter can fix this by shortening the Arabic text.",
+  "objections": [
+   {
+    "issue": "The Arabic message is 86 UCS-2 characters, which makes 3 cell broadcast pages, but the UAE handset spec limits a message to 1 page. A CBS page is 82 octets, which is about 41 UCS-2 characters. Page 1 therefore carries only the exercise label and part of the hazard, and the action \"قُد بحذر\" lands on page 3. Handsets that show only the first page would not show the action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Shorten the Arabic text to at most 41 UCS-2 characters, including spaces and diacritics, so it fits one page. Keep the exercise prefix, the hazard, the area/time and the action. Example: \"تمرين: غبار في أبوظبي حتى 18:00. قد بحذر\". Re-check the computed page count, which must equal 1.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "حتى الساعة 18:00. قُد بحذر."
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0043",
+      "quote": "A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The exact UCS-2 capacity per page (about 41 characters, at 2 octets per character) is my own calculation from the 82-octet page size. None of the clauses shown states the 41-character figure directly.",
+    "searched_for": "cell broadcast page UCS-2 93 characters"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5465,
+  "output_tokens": 1600,
+  "at": "2026-11-08T20:53:25Z"
+ }
+}

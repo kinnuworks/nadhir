@@ -1,0 +1,166 @@
+{
+ "key": "ab22d11d502655f172f05935f2a2033aff9a2f6e810c2d8c1d0447a9839ba2da",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE - Strong northwesterly winds are raising dust and sand. Visibility is below 3,000 m in some coastal and inland areas of Abu Dhabi until 18:00 today, 16 Feb. Visibility can drop suddenly.\",\n   \"characters\": 195,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين - رياح شمالية غربية قوية تثير الغبار والرمال. مدى الرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00 اليوم، 16 فبراير. قد ينخفض مدى الرؤية بشكل مفاجئ.\",\n   \"characters\": 188,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 5\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page length GSM-7 UCS-2', 'UAE public warning handset single page Arabic', 'alert message must include protective action instruction'):\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0089] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.21):\nSMS BROADCAST REQUEST 3 3 SMS BROADCAST REQUEST 4 4 Figure 3 With the SMS BROADCAST COMMAND mode of operation, the BSC sends to the BTS in one single message the 88 octet fixed length CBS page. The BTS then splits the page into four 22 octet blocks, adds the sequence number (see 3GPP TS 44.012 [7]) and transmits the four resulting blocks on the air. Figure 4 illustrates the protocol architecture and the scope of the various GSM Specifications for the SMS BROADCAST COMMAND mode of operation.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[IPAWS-OPEN#0025] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.22):\nIPAWS National Test US Handset Australian Handset Norwegian Handset TV Station\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[CAPAU#0071] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.21):\nOPTIONAL Note: Technical It is RECOMMENDED that alert message producers include response types when applicable, along with a corresponding <instruction> value. Using <responseType> allows for automated dissemination in all included languages, of the actions the end user is expected to take when instructions may not be available, or not available in all languages\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[CAPCP#0140] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #5. <responseType> is strongly recommended, when applicable):\nExample: Element: <responseType> Use: Recommended Type: Policy Value: Description: It is recommended that alert message issuers include response types when applicable, along with a corresponding <instruction> value. Using <responseType> allows for automated dissemination in all included languages of the actions the end user is expected to take when instructions may not be available, or not available in all languages. Notes: Example: <info> ... <responseType>Shelter</responseType> <responseType>Monitor</responseType> <instruction>Take cover as threatening conditions approach and monitor local media broadcasts for further updates</instruction> ... </info>\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present and the encodings are plausible: GSM-7 for English, UCS-2 for Arabic. Two problems block delivery as drafted. First, both versions exceed the UAE one-page limit (en 3 pages, ar 5 pages). Second, neither version tells people what to do, so the first page carries the hazard but no protective action.",
+  "objections": [
+   {
+    "issue": "Both language versions exceed the UAE handset limit of one cell broadcast page. English is 195 GSM-7 characters across 3 pages. Arabic is 188 UCS-2 characters across 5 pages. A CBS page is 88 octets, so a single page holds about 93 GSM-7 characters or about 41 UCS-2 characters.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Shorten each language so it fits on one page: no more than about 93 characters for English (GSM-7) and about 41 characters for Arabic (UCS-2). Keep 'EXERCISE', the hazard, the area, the end time and a short action. Drop secondary wording such as 'Visibility can drop suddenly'. If Arabic cannot carry the hazard and the action within one UCS-2 page, raise this with the operators and the authority before sending.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TDRA-TS040#0002",
+      "quote": "Message should be limited to 1 page maximum."
+     },
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0089",
+      "quote": "the BSC sends to the BTS in one single message the 88 octet fixed length CBS page"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "\"encoding\": \"UCS-2\",\n   \"pages\": 5"
+     }
+    ]
+   },
+   {
+    "issue": "Neither the English nor the Arabic text contains a protective action. The text only describes the dust and visibility hazard, so the first page does not tell people what to do.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Add a short action near the start of both languages, for example 'Drive slowly, use low beams, avoid travel if possible' in English with a matching Arabic version. Place it so it falls on the first (and only) page.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Visibility can drop suddenly."
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0116",
+      "quote": "The text describing the recommended action to be taken by recipients of the alert message"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "I could not confirm the exact single-page character capacity for UCS-2 Arabic (82 user octets, about 41 characters) from a quoted clause. The figure is derived from the 88-octet page minus header.",
+    "searched_for": "cell broadcast page length GSM-7 UCS-2"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4522,
+  "output_tokens": 1491,
+  "at": "2026-11-08T20:53:42Z"
+ }
+}

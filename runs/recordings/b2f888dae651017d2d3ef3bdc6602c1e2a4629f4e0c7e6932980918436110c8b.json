@@ -1,0 +1,136 @@
+{
+ "key": "b2f888dae651017d2d3ef3bdc6602c1e2a4629f4e0c7e6932980918436110c8b",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Al Ain (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 4 Mar 2026] ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\n2. [UNVERIFIED; illustrative rumour (not real)] Social media post: a dam near Al Ain has burst, everyone leave the area now\n3. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n4. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Met office reviewer objects (certainty): Certainty is understated. The bulletin says the dust and visibility conditions began at 14:55 and are continuing, and the alert's own description says winds 'are causing' blowing dust. Under CAP, an ongoing event is 'Observed', not 'Likely'. Fix: Change certainty from 'Likely' to 'Observed' to match the bulletin, which says conditions are already occurring. [cites Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2), p.20] | Network operator and regulator reviewer objects (phone_text): Both language versions exceed the UAE one-page handset limit. English is 225 GSM-7 characters (3 pages), but a GSM-7 cell broadcast page holds 93 characters. Arabic is 269 UCS-2 characters (7 pages), and UCS-2 pages hold far fewer characters. Fix: Shorten each language to fit one cell broadcast page. English must be at most 93 GSM-7 characters. Arabic must fit one UCS-2 page (about 41 characters). Do this by cutting the long wind description, the full country name and the date wording, and by moving or dropping the URL. Keep the hazard, the area, the end time and the action. [cites 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0), p.15] | Network operator and regulator reviewer objects (phone_text): Neither language tells people what to do. Each text describes the hazard (blowing dust and sand, low visibility) and the time it lasts, but gives no protective action. Recipients who see only the first page get no instruction. Fix: Add a short protective action in both languages, placed near the start of the one-page text. For example: 'Drive with caution, reduce speed, stay indoors if you have respiratory conditions.' Add matching Arabic wording. [cites Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates, p.21]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Blowing dust and low visibility",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "headline": "Blowing dust and sand, visibility below 2,000 m in Al Ain until 19:00",
+  "description": "Drive with caution. Blowing dust and sand, visibility below 2km in Al Ain until 19:00 today.",
+  "instruction": "Take care, especially when driving on open roads. Visibility may drop below 2,000 metres.",
+  "left_out": [
+   "Input 2 (dam burst near Al Ain): unverified social media rumour, so it is not in the alert.",
+   "Input 3 (issuer URL): dropped to keep the phone text within one 93-character GSM-7 cell broadcast page, as the network reviewer asked.",
+   "Reviewer's example actions 'reduce speed' and 'stay indoors if you have respiratory conditions': not in the NCM bulletin, so not added. The bulletin only says to take care, especially while driving on open roads.",
+   "Arabic version: this draft is English only, as requested. The one-page Arabic text (about 41 UCS-2 characters) still needs to be written and checked by an Arabic-speaking reviewer."
+  ],
+  "note_for_reviewer": "The bulletin covers 'various coastal and inland areas' across the UAE and does not name Al Ain, so please confirm that the operator's choice of Al Ain fits. Certainty is now 'Observed', and the English phone text is 92 GSM-7 characters with the action at the start; please confirm 'today' is clear enough because the date was cut."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 2196,
+  "output_tokens": 1256,
+  "at": "2026-11-08T20:48:51Z"
+ }
+}

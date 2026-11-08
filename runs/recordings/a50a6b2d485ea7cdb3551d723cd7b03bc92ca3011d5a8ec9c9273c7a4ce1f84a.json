@@ -1,0 +1,119 @@
+{
+ "key": "a50a6b2d485ea7cdb3551d723cd7b03bc92ca3011d5a8ec9c9273c7a4ce1f84a",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and sand with reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Blowing dust warning: visibility below 2,000 m until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender status msgType references rules', 'alert originator authorization area verification', 'UAE emergency alert issuing authority policy'):\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[FCC-16-127#0550] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.92):\nWe reason that achieving a geo-targeting standard whereby Participating CMS Providers can match the target area specified by an alert originator, either through device- or network-based techniques, would have tremendous benefits for public safety, and would eliminate the current dangers of poor geo-targeting that deter many emergency managers from becoming authorized as WEA alert originators.609 As discussed above, alert originators continue to demand more accurate geo-targeting from WEA before they will rely on it for emergency messaging in situations where it could be dangerous for individuals in areas adjacent to the target area to receive instructions intended only for individuals within the target area.610 Further, each incremental improvement that Participating CMS Providers can make to geo-targeting incrementally reduces alert fatigue,611 and increases the public’s trust in WEA as an alerting platform, thereby reducing milling and,612 potentially, network congestion. We seek comment on this reasoning. Finally, we note that the ATIS Feasibility Study for Supplemental Text observed that delivering target area coordinates to the mobile device consistent with a device-based approach to geotargeting would be the first step towards enabling WEA Alert Messages to support high-information maps, an improvement that emergency managers universally endorse.613 We seek comment on this observation.\n\n[FCC-16-127#0407] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.67):\nVerizon Comments at 5 (stating that upgrades to the FEMA gateway, which service providers do not control, will be necessary to initiate end-to-end testing and implementation. Software used by alert originators will require new standards and upgrades to facilitate the FEMA alert gateway’s verification and transmission of the message to service providers.”). 436\n\n[FCC-16-127#0212] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.36):\ngeo-targeting to an area that “best approximates” the target area, as recommended by the CSRIC IV WEA Messaging Report.216 Participating CMS Providers disagreed with our proposed rule to narrow our geotargeting standard to an area “not larger than the target area specified by the alert originator” because it would routinely and predictably lead to over-alerting absent the implementation of device-based geofencing.217 CSRIC V finds that current cellular broadcast technology “has limitations to achieve the necessary geo-fencing precision desired by the [Alert Originators].”218 b.\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Accessibility_Policy_English#0023] Accessibility Policy English (p.8):\n• Commit to apply and disseminate Digital Accessibility according to this policy and the decisions issued by the Competent Authority. • Federal entities must periodically provide information to the Competent Authority on the extent to which they have fulfilled the requirements and obligations of the policy as well as the decisions issued by the Competent Authority regarding the application of the policy. • Take all necessary technical, administrative/managerial and organizational/regulatory measures/ procedures to provide Digital Accessibility according to the controls determined by the Competent Authority in this extent. • A federal entity must periodically provide executive action plans, which include initiatives and projects that support the implementation and application of the policy objectives. • A regulatory or supervisory federal entity of a sector must liaise with their own licensed SemiGovernment Entities and Private Sector entities, in order to check adherence to the Digital Accessibility policy. • An entity must provide all financial and non-financial resources needed to implement and apply this policy. • An entity must encourage adoption and change management within the community setting and with partners, by mainstreaming Digital Accessibility in its various forms across all services of SemiGovernment Entities and the Private Sector in UAE, in a manner not contrary to the objectives and clauses of the applicable policy and legislation in the UAE.\n\n[WMO-CAP-JUMPSTART#0010] Common Alerting Protocol (CAP) Jump-Start offer (leaflet) (p.2):\n• Making and validating new CAP alerts; • Disseminating CAP alerts via traditional methods, the Internet, and new media; and, HOW WILL CAP BENEFIT AN ALERTING AUTHORITY? • Considering policy issues as alerting becomes increasingly global, all-media, and all-hazard.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0044] UAE Public Policy Development Guidebook (p.26):\nOutline the Rationale for Issuing the Public Policy\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0046] UAE Public Policy Development Guidebook (p.28):\nReasons for Developing a Public Policy Include Leadership Directives Prioritizing issues identified by senior leadership, with the aim of enhancing programs and services catered to the community. Emergency Situations Addressing events that disrupt societal stability and require swift policy responses, such as emergencies, disasters, and epidemics.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register at level 1, covering all areas (\"*\") and all categories (\"*\"), so it may issue a Met alert. The alert's areaDesc and codes match the area requested and drawn for event uae-dust-2026-03-04. The status \"Actual\" fits a real event on the live console. It is a new Alert, so no references are needed, and there are no earlier alerts it would need to point to. No active alerts from other authorities exist, so nothing is overreached. Within my mandate, nothing is wrong.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The register entry is a demo stand-in for the real national issuer. Before real use, a person must confirm that the actual national authority is in the register for this sender address.",
+    "searched_for": "UAE emergency alert issuing authority policy; alert originator authorization"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5013,
+  "output_tokens": 287,
+  "at": "2026-11-08T20:50:45Z"
+ }
+}

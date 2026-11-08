@@ -86,11 +86,13 @@ def scenario(body: dict) -> dict:
 def handle_draft(body: dict) -> dict:
     scn = scenario(body)
     try:
-        st = pipeline.draft_and_review(scn, run=body.get("run", "web"))
+        st = pipeline.draft_and_review(scn, run=body.get("run", "web"), budget_s=95)
     except ModelError as e:
         return {"error": str(e)}
     log = st.pop("log")
-    state = {"scn": scn, "xml": st["xml"], "ai": st["ai"], "log": log.records}
+    state = {"scn": scn, "xml": st["xml"], "ai": st["ai"], "log": log.records,
+             "institutions": {"open_objections": [{"by": o["by"], "issue": o["issue"]}
+                                                  for o in st["institutions"]["open_objections"]]}}
     return {**st, "state": _sign_state(state), "log": log.records}
 
 
@@ -102,7 +104,7 @@ def handle_approve(body: dict) -> dict:
         if name:
             approvals.append({"name": name, "role": str(a.get("role", "approver"))[:40],
                               "scope": a.get("scope", "release") if a.get("scope") in ("release", "language:ar") else "release",
-                              "kind": "human"})
+                              "kind": "human", "ack_objections": bool(body.get("ack_objections"))})
     log = AuditLog()
     log.records = state["log"]
     res = pipeline.approve_and_release(state["scn"], state, approvals, log)

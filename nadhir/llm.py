@@ -35,7 +35,8 @@ def _key(model, system, user, schema, salt):
     return hashlib.sha256(blob.encode()).hexdigest()
 
 
-def call_json(system: str, user: str, schema: dict, *, salt: str = "", mode: str | None = None) -> tuple[dict, dict]:
+def call_json(system: str, user: str, schema: dict, *, salt: str = "", mode: str | None = None,
+              effort: str | None = None) -> tuple[dict, dict]:
     """Ask the model for JSON that matches `schema`. Returns (data, meta).
 
     `salt` separates repeated runs of the same prompt (run 1, 2, 3) so each has its own recording.
@@ -62,7 +63,7 @@ def call_json(system: str, user: str, schema: dict, *, salt: str = "", mode: str
             fallbacks="default",
             system=system,
             messages=[{"role": "user", "content": user}],
-            output_config={"effort": EFFORT, "format": {"type": "json_schema", "schema": schema}},
+            output_config={"effort": effort or EFFORT, "format": {"type": "json_schema", "schema": schema}},
         )
     except anthropic.RateLimitError as e:
         raise ModelError("the model is busy (rate limit); try again in a minute") from e

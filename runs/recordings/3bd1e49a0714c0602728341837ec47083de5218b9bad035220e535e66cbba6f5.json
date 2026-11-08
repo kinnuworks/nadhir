@@ -1,0 +1,33 @@
+{
+ "key": "3bd1e49a0714c0602728341837ec47083de5218b9bad035220e535e66cbba6f5",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in some coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE: Dust, visibility <3km. Drive with care. Some coastal/inland areas until 18:00\",\n  \"instruction\": \"EXERCISE: Drive slowly and keep a safe distance, especially on external and open roads. Expect sudden drops in visibility from blowing dust.\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير يقلل مدى الرؤية في بعض المناطق الساحلية والداخلية حتى الساعة 18:00\",\n  \"description\": \"تمرين: غبار، مدى الرؤية أقل من 3 كم. قُد بحذر. بعض المناطق الساحلية/الداخلية حتى الساعة 18:00\",\n  \"instruction\": \"تمرين: قُد ببطء وحافظ على مسافة آمنة، خاصة على الطرق الخارجية والمفتوحة. توقّع انخفاضاً مفاجئاً في مدى الرؤية بسبب الغبار المتطاير.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "multilingual alert translation accuracy review",
+   "machine translated emergency alerts human review",
+   "CAP exercise status message language"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 907,
+  "output_tokens": 47,
+  "at": "2026-11-08T20:55:05Z"
+ }
+}

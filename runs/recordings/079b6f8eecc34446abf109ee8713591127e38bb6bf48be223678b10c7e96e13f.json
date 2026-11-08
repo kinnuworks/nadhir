@@ -1,0 +1,138 @@
+{
+ "key": "079b6f8eecc34446abf109ee8713591127e38bb6bf48be223678b10c7e96e13f",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, the length per language in cell broadcast pages, encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_advice\": \"UAE handset spec summary: message should be limited to 1 page\",\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n   \"characters\": 72,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ.\",\n   \"characters\": 65,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 2\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page length UCS-2 characters', 'erroneous alert correction message FCC lessons', 'UAE emergency alert Arabic English requirements'):\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[LA-2025#0016] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nand now if the other distribution channels have polygon targeting, it will ensure the IPAWS channel also includes that polygon geographic targeting.14 The independent after-action review by the McChrystal Group, ordered by the Los Angeles County Board of Supervisors, may want to further investigate Genasys’ claims of what caused the error, and how a network disruption would have occurred or could have blocked the proper upload of a polygon into the IPAWS distribution channel. 2. LA County noticed the error quickly and acted immediately to stop the message and send a correction.\n\n[CAP12#0065] Common Alerting Protocol Version 1.2 (2.3.5 Repudiating a False Alarm):\n2.3.5 Repudiating a False Alarm Inadvertently the integrated alerting network has been activated with an inaccurate warning message. This activation comes to officials' attention immediately through their own monitoring facilities (e.g., 2.3.3 above). Having determined that the alert is, in fact, inappropriate, the officials issue a cancellation message that refers directly to the erroneous prior alert. Alerting systems that are still in the process of delivering the alert (e.g., telephone dialing systems) stop doing so. Broadcast systems deliver the cancellation message. Other systems (e.g., highway signs) simply reset to their normal state.\n\n[X1303BIS#0040] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.13):\nRepudiating a false alarm \"Inadvertently the integrated alerting network has been activated with an inaccurate warning message. This activation comes to officials' attention immediately through their own monitoring facilities (e.g., clause 6.3.3 above). Having determined that the alert is, in fact, inappropriate, the officials issue a cancellation message that refers directly to the erroneous prior alert. Alerting systems that are still in the process of delivering the alert (e.g., telephone dialling systems) stop doing so. Broadcast systems deliver a cancellation message. Other systems (e.g., highway signs) simply reset to their normal state.\"\n\n[TS23041#0536] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.104):\nSubject/Comment RESET COMPLETE and RESET FAILURE Response messages missing Addition of new Message Identifiers for FCC mandated Wireless Emergency Alert (WEA, aka CMAS) enhancements Correction to the Data Coding Scheme clause in support of NA regulatory requirement Support of PWS in 5GS PWS message format for NG-RAN in 5G AMF to CBC inter-connectivity solution option with and without IWF PWS in NR – clause 9.1.3.5 PWS in NR – clause 9.2.0 PWS in NR – clause 9.2.x PWS in NR – clause 9.3.x AMF, CBC and CBCF functionalities for PWS in 5G Service Based Interface for 5G System Corrections to table 6 and consistent use of terminology Addition of reference to TS 23.502 Addition of entity functionality clauses in annex B Correction for the use of NG-RAN node and other general corrections Addition of reference point between AMF and CBCF Removal of Extended Repetition-Period IE for NG-RAN Correction Warning message content and removal of editor's Clarification on no use of container for PWS messages via N2 Modifications needed to address NG-RAN over SBc Corrections to IE names for NG-RAN Solving Editor's notes for PWS Warning Area Coordinates in WRITE-REPLACE WARNING REQUEST Duplicate detection for EUTRA connected to both EPC and 5GCN Resolving the EN for the PWS restoration procedure for NG-RAN Additional Message Identifier to direct UEs to perform geo-fencing\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[FCC-23-88#0236] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.41):\nDelayed indefinitely, amend § 10.500 by revising paragraph (e) to read as follows: § 10.500 General requirements. ***** (e) Extraction of alert content in English and the subscriber-specified default language, if applicable. (1) Storing pre-scripted alerts in English, Spanish, Chinese, Tagalog, Vietnamese, Arabic, French, Korean, Russian, Haitian Creole, German, Hindi, Portuguese, and Italian. (2) Allowing the subscriber to choose to receive pre-scripted Alert Messages in American Sign Language (ASL) instead of or in addition to their mobile device’s subscriber-specified default language setting. ***** 6. Amend § 10.500 by revising paragraph (i) to read as follows:\n\n[FCC-16-127#0514] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.85):\n951,699 individuals in the United States 5-years old or older speak Arabic at home (63.3 percent also spoke English “very well”). See id. 564 905,843 individuals in the United States 5-years old or older speak Russian at home (52.2 percent also spoke English “very well”). See id. 565",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present. The English text fits on one GSM-7 page and the Arabic opening carries the instruction, but the Arabic text runs to 2 UCS-2 pages against the UAE one-page handset advice. Shortening the Arabic text would fix this.",
+  "objections": [
+   {
+    "issue": "The Arabic text is 65 UCS-2 characters, which takes 2 cell broadcast pages. A CBS page is padded to 82 octets, and UCS-2 uses 2 octets per character, so one page holds about 41 Arabic characters. The UAE handset advice limits the message to 1 page.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Shorten the Arabic text to 41 characters or fewer (UCS-2) so it fits on one page. Keep the instruction to disregard the earlier weather alert and the statement that it was sent in error, for example 'تجاهلوا تنبيه الطقس السابق، أُرسل خطأً.' Check that the final character count is 41 or fewer and the page count is 1.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "handset_advice",
+      "quote": "message should be limited to 1 page"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0068",
+      "quote": "padding the pages to a length of 82 octets"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4694,
+  "output_tokens": 1162,
+  "at": "2026-11-08T21:09:22Z"
+ }
+}

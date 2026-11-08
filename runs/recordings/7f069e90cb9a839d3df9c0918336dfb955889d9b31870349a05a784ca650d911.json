@@ -1,0 +1,114 @@
+{
+ "key": "7f069e90cb9a839d3df9c0918336dfb955889d9b31870349a05a784ca650d911",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Disregard the earlier alert\",\n  \"description\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n  \"instruction\": \"No action is needed.\"\n },\n \"arabic\": {\n  \"headline\": \"تجاهلوا التنبيه السابق\",\n  \"description\": \"تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ.\",\n  \"instruction\": \"لا يلزم اتخاذ أي إجراء.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('false alert retraction correction message wording', 'CAP cancel msgType alert sent in error', 'Arabic translation emergency alert accuracy review'):\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0415] 3.2 TDRA Consumer Protection Regulations v2 (p.70):\nIn the event that any statement made by a Licensee is misquoted in the media, to the extent that the misquote does, or may, result in an apparent breach of these Regulations, the Licensee shall take reasonable steps to procure a retraction or correction or other appropriate remedial action concerning the\n\n[FCC-HI-2018#0135] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\n Third, HI-EMA has created templates for EAS and WEA messages that officers may use to correct a false alarm. This will ensure that, were such an event to occur again, the public could receive notice of the correction more quickly. Prior to the January 13, 2018, false alert, HI-EMA did not have protocols or training in place with respect to how to issue a correction to an alert, or what to do in the event a false alert was initiated.119\n\n[FCC-HI-2018#0155] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.26):\nAPPENDIX A ILLUSTRATION OF FALSE ALERT AND CORRECTION ON EAS AND WEA\n\n[CAP12#0255] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n· Wording change to <severity> “Minor” · Schema changed to allow only one <EncryptedData> element and changed Security Note section to allow multiple <Signature> elements Various editorial corrections and clarifications\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPCP#0075] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nFor alert messages intended for public distribution, a <msgType> of “Alert”, “Update”and sometimes “Cancel” does affect the intended message to the public, and therefore an <info> block is required. For alert messages with a <msgType> of “Ack” or “Error”, an info block is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[CAPCP#0073] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nRule #4. Alert messages intended for public distribution must include an <info> block Element: <msgType> Use: Required Type: Policy Value: “Alert”, “Update”, “Cancel”, “Ack”, “Error” Description: A value denoting the state of the alert at the time of this message\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[FCC-23-88#0402] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nNOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical lifesaving calls-to-action”); NYPSC Reply at 2; County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul. 29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (“Just last fall it was noted that ‘[m]achine translation tools like Google Translate can be super handy, and Big Tech often promotes them as accurate and accessible tools that’ll break down many intra-linguistic barriers in the modern world. But the truth is that things can go awfully wrong’”); T-Mobile USA, Inc., Reply, PS Docket Nos. 15-91 and 15-94, at 3 (T-Mobile Reply); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message.\n\n[FCC-FR-2025#0045] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57293):\nand prioritize conceptual accuracy, as opposed to parallel lexical choices to the English. Commenters resoundingly support the use of a CDI to conduct ASL translations, and believe that utilizing a CDI will correct these issues because ``CDI's possess the cultural and linguistic competencies essential for delivering and understanding emergency messages effectively.'' Further, a CDI will ``ensure translations are linguistically accurate, conceptually precise, and culturally appropriate.'' We agree with these comments and require Participating CMS Providers to support the implementation of these newly developed templates, which are signed by a CDI to ensure that the translations adhere to ``ASL [l]inguistic and [c]ultural [n]orms.'' Because the new translations address the issues identified by commenters in the record, we adopt them today. ---------------------------------------------------------------------------\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning across all three fields. Headline: 'تجاهلوا التنبيه السابق' means 'Disregard the earlier alert'. Description: it keeps 'weather alert', 'this area' and 'sent in error'. Instruction: 'لا يلزم اتخاذ أي إجراء' means 'No action is needed', so the protective action (none) is preserved. There are no numbers, times or place names to check. The Arabic was produced by machine translation, so a named Arabic-reading person at the authority must still read and approve it before it is sent.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4639,
+  "output_tokens": 546,
+  "at": "2026-11-08T21:09:17Z"
+ }
+}

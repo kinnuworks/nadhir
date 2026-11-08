@@ -1,0 +1,92 @@
+{
+ "key": "e495a4665551b185c16a7684b49f5e1dc98318b386dc31d309a13e0df2788d92",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Fog warning\",\n  \"headline\": \"Fog warning for western UAE: visibility may drop to zero, 21:30 Tue to 10:00 Wed\",\n  \"description\": \"Fog warning W. UAE 21:30 Tue to 10:00 Wed. Visibility may drop to zero. Drive with care.\",\n  \"instruction\": \"Drive with extreme caution and keep a safe distance from other vehicles. Follow modified speed limits, especially in thick fog.\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": []\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "تحذير من الضباب لغرب الإمارات العربية المتحدة: قد تنخفض الرؤية إلى الصفر، من 21:30 الثلاثاء إلى 10:00 الأربعاء",
+    "description": "تحذير من الضباب في غرب الإمارات العربية المتحدة من 21:30 الثلاثاء إلى 10:00 الأربعاء. قد تنخفض الرؤية إلى الصفر. قودوا بحذر.",
+    "instruction": "قودوا بحذر شديد وحافظوا على مسافة آمنة من المركبات الأخرى. التزموا بحدود السرعة المعدلة، خاصة في الضباب الكثيف."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 932,
+  "output_tokens": 566,
+  "at": "2026-11-08T20:55:56Z"
+ }
+}

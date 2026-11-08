@@ -1,0 +1,33 @@
+{
+ "key": "3613587c00feb12cb809d8f6179ecedd655bdf0087b98e0e57356c7939532fee",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Seoul Metropolitan Government\": {\n   \"name\": \"Seoul Metropolitan Government\",\n   \"level\": 2,\n   \"areas\": [\n    \"KR-ADM=11\",\n    \"polygon:37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  },\n  \"Ministry of the Interior and Safety\": {\n   \"name\": \"Ministry of the Interior and Safety\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [\n  {\n   \"sender\": \"Ministry of the Interior and Safety\",\n   \"name\": \"Ministry of the Interior and Safety\",\n   \"level\": 1,\n   \"event\": \"air-raid alert\",\n   \"geocodes\": [\n    [\n     \"KR-ADM\",\n     \"28720\"\n    ]\n   ]\n  }\n ],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon (area named in the ministry's alert)\",\n  \"codes\": [\n   [\n    \"KR-ADM\",\n    \"28720\"\n   ]\n  ],\n  \"drawn_for_event\": \"seoul-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Seoul Metropolitan Government\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Security\"\n  ],\n  \"event\": \"경계경보 (air-raid alert)\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Seoul (entire city)\",\n  \"codes\": [\n   [\n    \"KR-ADM\",\n    \"11\"\n   ]\n  ],\n  \"polygons\": [\n   \"37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76\"\n  ],\n  \"headline\": null\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "alert area mismatch requested area overreach",
+   "lower authority alert conflicting higher authority active alert",
+   "erroneous wide-area alert outside affected zone"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1281,
+  "output_tokens": 59,
+  "at": "2026-11-08T20:49:14Z"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "key": "33855e9ddcafe964dc58dbb79f5e062214955dc6de3bae6496ac5a75d4f30fa7",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM rain alert: some eastern, southern, western and interior areas, Sat 22 Aug 13:30-21:00\",\n  \"description\": \"NCM: rain, heavy at times, E, S, W & interior areas Sat 13:30-21:00. Drive with care.\",\n  \"instruction\": \"Drive with care during the rain. Follow NCM updates.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه أمطار من NCM: بعض المناطق الشرقية والجنوبية والغربية والداخلية، السبت 22 أغسطس 13:30-21:00\",\n  \"description\": \"NCM: أمطار، غزيرة أحياناً، على المناطق الشرقية والجنوبية والغربية والداخلية السبت 13:30-21:00. قُد بحذر.\",\n  \"instruction\": \"قُد بحذر أثناء هطول الأمطار. تابع تحديثات NCM.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation review emergency alert machine translation",
+   "CAP multilingual info block language translation accuracy",
+   "UAE NCM weather alert Arabic terminology"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 835,
+  "output_tokens": 62,
+  "at": "2026-11-08T21:01:16Z"
+ }
+}
