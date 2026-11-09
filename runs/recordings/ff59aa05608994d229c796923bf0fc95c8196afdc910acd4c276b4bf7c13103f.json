@@ -1,0 +1,133 @@
+{
+ "key": "ff59aa05608994d229c796923bf0fc95c8196afdc910acd4c276b4bf7c13103f",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Missile launched from North Korea toward the east; projected to pass over northern Japan (Hokkaido / Aomori).\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"ミサイル発射情報 (missile launch information)\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"\",\n  \"description\": \"\",\n  \"instruction\": \"\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency definitions', 'missile launch alert headline instruction required', 'alert area matching hazard bulletin'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[TW-2024-CNA#0003] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nA search of the PWS system found no templates for satellite launches so the message was likely based on a template from the \"Missile air raid alert\" category.\n\n[FCC-HI-2018#0059] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\n8:10 a.m. State Adjutant Major General Logan communicates to PACOM that there was no missile launch, confirming what PACOM already knew. 54 The HI-EMA Report found that at 8:06 a.m., “Employee 4 initiated the [ballistic missile alert] drill using a phone\n\n[FCC-HI-2018#0134] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\n Second, HI-EMA instituted a two-person activation/verification rule for tests as well as for actual missile launch notifications. This will provide an additional quality control to help prevent mistakes. On January 13, 2018, HI-EMA only required one credentialed warning officer to initiate the alert.118\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0527] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nCommenters indicate that the suppression of the Alert Messages on mobile devices that are outside of the target area (geo-fencing) would allow Participating CMS Providers to match the target area specified by alert originators.583 We seek comment on this analysis, including any alternative approaches that Participating CMS Providers could use to match the target area or to implement a device-based approach to geo-targeting. The record indicates that technical issues, such as potential increases in message delivery latency, and reductions in the amount of data available for Alert Message text, can be resolved.584 We seek comment on how Participating CMS Providers will address these issues in conversation with other relevant WEA stakeholders. We seek comment on feasible methods Participating CMS Providers could use to mitigate sources of alert delivery latency that may be implicated by geo-targeting Alert Messages to an area that matches the target area specified by the alert originator.585 Participating CMS Providers and ATIS agree that meeting such an accurate geo-targeting standard could cause message delivery delay due to the device needing to determine its location before displaying the message, and due to network constraints.586 ATIS states that “the only currently readily 580 We anticipate that variations in geo-targeting accuracy due to the size of the target area can be controlled through alert originator best practices.\n\n[FCC-16-127#0523] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\nDiscussion 139. As we emphasize above, more granular geo-targeting remains a critical need for both consumers and emergency managers. Accordingly, we propose to require Participating CMS Providers to match the target area specified by alert originators. We anticipate that this may require Participating CMS Providers to leveraging the location sense of WEA-capable mobile devices on their networks. In the following paragraphs, we seek comment on how we should define “matching” the target area for purposes of any such requirement, as well as on steps that alert initiators and Participating CMS Providers can take to minimize alert delivery latency and maximize the amount of data available for other Alert Message content. We also seek comment on the readiness of innovations that could allow alert initiators to geo-target more flexibly, and to smaller areas. 140.\n\n[FCC-16-127#0698] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.123):\nIf, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates matches the target area, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site that best approximates the target area. 9. Add a new Section 10.490: § 10.490 Multimedia support. Participating CMS Providers are required to support the transmission of hazard symbols and thumbnail-sized photos in Public Safety Messages. 10. Amend introductory paragraph and add a new paragraph (h) of § 10.500 to read as follows: § 10.500 General requirements. WEA mobile device functionality is dependent on the capabilities of a Participating CMS Provider's delivery technologies. Mobile devices are required to perform the following functions: *** (h) Preservation of Alert Messages in a consumer-accessible format and location at least until the Alert Message expires.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Event type, severity (Extreme), urgency (Immediate) and certainty (Likely) are consistent with the verified input: the launch has happened and the overflight is projected. However, the headline and description are empty, and the alert names no place. The verified input places the projected overflight over northern Japan (Hokkaido / Aomori), and the alert does not say this. The drafter can fix this.",
+  "objections": [
+   {
+    "issue": "The alert does not state the affected places or describe the hazard. Headline and description are empty, and there is no area. The verified input says the missile is projected to pass over northern Japan (Hokkaido / Aomori), so the alert cannot be checked against or matched to the bulletin's places.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Fill in the headline and description from the verified input only. State that a missile was launched from North Korea toward the east and is projected to pass over northern Japan (Hokkaido / Aomori). Set the alert area to Hokkaido and Aomori. Do not add times or impact areas that the input does not give.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "projected to pass over northern Japan (Hokkaido / Aomori)"
+     },
+     {
+      "kind": "clause",
+      "ref": "WMO-CAP-GUIDE#0002",
+      "quote": "The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4825,
+  "output_tokens": 994,
+  "at": "2026-11-09T16:05:04Z"
+ }
+}

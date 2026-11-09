@@ -1,0 +1,114 @@
+{
+ "key": "9de53083115e1b61a6010ab115cefdd7453ee18f47b67fa93fc1952e5d4767ae",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n   \"characters\": 72,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ.\",\n   \"characters\": 65,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 2\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cancel alert sent in error wording', 'UCS-2 Arabic cell broadcast page characters', '3GPP TS 23.041 page limit encoding'):\n\n[ON-PICKERING-2020#0072] Investigation into the emergency alerts sent on January 12, 2020 (Sequence of events):\n8:50 a.m. Supervisor 5 e-mailed Supervisor 1 with the approved wording to be released immediately as an emergency alert. 8:53-9:12 a.m. The DSG-CS instructed Supervisor 6 to incorporate the clarifying change requested by the Solicitor General’s Office in the draft alert messaging. Supervisor 6 advised that the wording was already sent to the PEOC. The DSG-CS asked Supervisor 6 why the second alert had not been sent.\n\n[ON-PICKERING-2020#0066] Investigation into the emergency alerts sent on January 12, 2020 (Sequence of events):\n8:15 a.m. A teleconference was held between DSG-CS, EMO Supervisors 5 and 6 and Comms, it was confirmed that the alert was sent in error and that it was unrelated to any activity at PNGS. DSG-CS advised EMO that DSG-CS and Comms would need to approve the content of future communications and alerts with respect to the alert sent in error.\n\n[CAP12#0192] Common Alerting Protocol Version 1.2 (3.5.3 ASN.1 Schema):\nAlertStatus ::= ENUMERATED { actual, draft, exercise, system, test } AlertMessageType ::= ENUMERATED { ack, alert, cancel, error, update } AlertScope ::= ENUMERATED { private, public, restricted } AlertInformation ::= SEQUENCE {\n\n[ON-PICKERING-2020#0075] Investigation into the emergency alerts sent on January 12, 2020 (Box 1: Planned maintenance outage at Pickering Nuclear Generating Station):\nFindings from the investigation confirmed that the above planned outage and brief loss of power was initially misconstrued in senior OPS executives’ correspondence as possibly being related to the alert sent in error. This temporarily added confusion to their understanding of the situation. Subsequent discussions with stakeholders, however, confirmed that the minor issue at Pickering was unrelated to the alert sent in error from the PEOC.\n\n[TS23041#0043] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.11):\n2 General description The CBS service is analogous to the Teletex service offered on television, in that like Teletex, it permits a number of unacknowledged general CBS messages to be broadcast to all receivers within a particular region. CBS messages are broadcast to defined geographical areas known as cell broadcast areas. These areas may comprise of one or more cells, or may comprise the entire PLMN or SNPN. Individual CBS messages will be assigned their own geographical coverage areas by mutual agreement between the information provider and the PLMN or SNPN operator. CBS messages may originate from a number of Cell Broadcast Entities (CBEs), which are connected to the Cell Broadcast Centre. CBS messages are then sent from the CBC to the cells, in accordance with the CBS's coverage requirements. A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters. Other Data Coding Schemes may also be used, as described in 3GPP TS 23.038 [3]. Up to 15 of these pages may be concatenated to form a CBS messagee. Each page of such CBS message will have the same message identifier (indicating the source of the message), and the same serial number. Using this information, the MS/UE is able to identify and ignore re-broadcasts of already received messages.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0049] DotEmarat Policy EN (p.16):\nUnicode Name ARABIC LETTER ALEF WITH MADDA ABOVE ARABIC LETTER ALEF WITH HAMZA ABOVE ARABIC LETTER ALEF WITH HAMZA BELOW ARABIC LETTER ALEF Character Arabic Letter Heh Group Unicode Code Point Unicode Name U+0647 ARABIC LETTER HEH U+0629 ARABIC LETTER TEH MARBUTA Character # Arabic Letter Yeh Group Unicode Code Point Unicode Name U+064A ARABIC LETTER YEH U+0649 ARABIC LETTER ALEF MAKSURA AEDA-POL-016 Character & %\n\n[FCC-23-88#0036] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.6):\nTelecommunications Industry Solutions, Comments, PS Docket Nos. 15-91 and 15-94, at 7-8 (Rec. Dec. 8, 2016) (ATIS 2016 Comments) (“[S]upport for [ideographic] languages would require service providers to switch from GSM 7-bit encoding to basic Unicode (UCS-2) character set . . . ATIS notes that requiring the use of the UCS-2 character set would decrease the number of display characters to less than half of the 360 character maximum”); AT&T, Reply, PS Docket Nos. 15-91 and 15-94, at 3 (Rec. Jan. 9, 2017) (AT&T 2016 Reply); CTIA, Comments, PS Docket Nos. 15-91 and 15-94, at 9 (Rec. Dec. 8, 2016) (CTIA 2016 Comments); Microsoft, Comments, PS Docket Nos. 15-91 and 15-94, at 9 (Rec. Dec. 8, 2016) (Microsoft 2016 Comments); T-Mobile, Comments, PS Docket Nos. 15-91 and 15-94, at 3-4, 9-10 (Rec. Dec. 8, 2016) (T-Mobile 2016 Comments).\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23038#0052] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.14):\nMessage coding: GSM 7 bit default alphabet 8 bit data Bit 1 0 0 1 1 Bit 0 Message Class: 0 No message class. 1 Class 1 user defined. 0 Class 2 user defined. 1 Class 3 default meaning: TE specific (see 3GPP TS 27.005 [8]) NOTE 1: The language indication shall appear at the start of each Message Information Page (see 3GPP TS 23.041 [5]) and the language indication on each Message Information Page shall be for the same language. NOTE 2: Message text in Hebrew, Arabic and Russian cannot be encoded in the GSM 7-bit default alphabet. For these languages UCS2 encoding shall be used. These codings may also be used for USSD and MMI/display purposes.\n\n[TS23041#0280] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.62):\nThe encoding of the Warning-Type parameter is as shown below. The warning type value shall be mutually exclusive and binary encoded. 7 6 Octet 1 5 4 3 Warning Type Value\n\n[TS23041#0273] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.60):\n9.3.19 CBS-Message-Information-Page n This parameter is of a fixed length of 82 octets and carries up to and including 82 octets of user information. Where the user information is less than 82 octets, the remaining octets must be filled with padding (see 3GPP TS 23.038 [3]). The content of a CBS-Message-Information-Page is passed transparently from the CBC to the MS/UE. In GSM the CBS-Message-Information-Page n becomes the 'Content of Message' parameter at the MS.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Both required languages (ar, en) are present. English is 72 characters in GSM-7 on 1 page. Arabic is 65 characters in UCS-2 on 2 pages. Both are well under the 15-page cell broadcast maximum. UCS-2 is the correct encoding for Arabic. On the first page, each language carries the cancellation instruction ('disregard / تجاهلوا') and names the earlier weather alert. The Arabic page count fits the recorded G6 gap and is not grounds to object. Nothing within my mandate needs fixing.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5212,
+  "output_tokens": 448,
+  "at": "2026-11-09T16:01:26Z"
+ }
+}

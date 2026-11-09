@@ -1,0 +1,33 @@
+{
+ "key": "7c3a4becb297abf69d0df5318e0e10a5e07409851a0b6210d15301553528f486",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions of the UAE tonight\",\n  \"description\": \"Fog warning: drive with extreme caution, keep a safe distance and obey modified speed limits. Fog may cut visibility to zero at times in western regions of the UAE from 21:30 Tue 17 Feb until 10:00 Wed 18 Feb. Source: NCM.\",\n  \"instruction\": \"Drive with extreme caution and follow all traffic safety guidelines. Keep a safe distance from other vehicles and strictly obey modified speed limits, especially in thick fog.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية من الإمارات العربية المتحدة الليلة\",\n  \"description\": \"تحذير من الضباب: قُد بحذر شديد، وحافظ على مسافة آمنة، والتزم بحدود السرعة المعدّلة. قد يؤدي الضباب إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من الإمارات العربية المتحدة من الساعة 21:30 يوم الثلاثاء 17 فبراير حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: NCM.\",\n  \"instruction\": \"قُد بحذر شديد واتبع جميع إرشادات السلامة المرورية. حافظ على مسافة آمنة من المركبات الأخرى والتزم بدقة بحدود السرعة المعدّلة، خاصة في الضباب الكثيف.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation alert machine translation review",
+   "multilingual alert protective action translation accuracy",
+   "CAP language info block Arabic"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1083,
+  "output_tokens": 51,
+  "at": "2026-11-09T15:51:03Z"
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "key": "d653b3c6b3da8ea81b00d835b02e033fc0e5af52f5c37cb28231b5639961cc6d",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00. This is not a drill.\",\n   \"characters\": 225,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين - رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية، أبوظبي (منطقة تجريبية). تستمر هذه الأحوال حتى الساعة 18:00. هذا ليس تمريناً.\",\n   \"characters\": 220,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast exercise message identification', 'alert first page hazard and protective action', '3GPP TS 23.041 page limit UCS-2 encoding'):\n\n[TS23041#0245] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.56):\n9.3.5.1 Cell-List sent from CBC to BSC/RNC The CBC to BSC/RNC Cell-List contains a length parameter identifying the number of cell-identifications present in the list, a Cell-Id-Discriminator, which is common for all cell-identifications in the list, and a sequence of cell-identifications. Description of list elements: PARAMETER Length Cell-Id-Discriminator Cell-Identification\n\n[TS23041#0260] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.58):\nThe No-of-Broadcasts-Completed-List must contain at least one cell. 9.3.11 Cell-Identifier The cell-identifier consists of a cell-id-discriminator and cell-identification pair. Description of list elements: PARAMETER Cell-Id-Discriminator Cell-Identification PRESENCE M M The Cell-Id-Discriminator has one of the following formats: Format LAC and CI in GSM CI only SAI in UMTS\n\n[TS23041#0370] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.76):\n4381 111D CMAS CBS Message Identifier for CMAS Exercise. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message.\n\n[TS23041#0385] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.79):\n4394 112A CMAS CBS Message Identifier for CMAS Exercise for additional languages. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message dependent on the language indicated in the CBS message and the language indicator settings in the ME.\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[MHEWS-2026#0059] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.17):\nWhen deployed together across the early warning value cycle, these capabilities can transform fragmented technical systems into integrated, people-centred early warning ecosystems that translate knowledge and data into timely protective action. Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[MHEWS-2026#0570] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.134):\nAI-Generated Weather Articles and Alerts Canada ECHO Governable Agentic AI System Multi-hazard public warning AI editorial tools automatically generate localized weather and hazard articles tailored to hundreds of communities. This strengthens warning dissemination (Pillar 3) by providing timely, location-specific information while enabling editorial teams to focus on severe events, ultimately improving preparedness messaging and public protective action (Pillar 4). Further information: https://www.pelmorex. com/\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23038#0052] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.14):\nMessage coding: GSM 7 bit default alphabet 8 bit data Bit 1 0 0 1 1 Bit 0 Message Class: 0 No message class. 1 Class 1 user defined. 0 Class 2 user defined. 1 Class 3 default meaning: TE specific (see 3GPP TS 27.005 [8]) NOTE 1: The language indication shall appear at the start of each Message Information Page (see 3GPP TS 23.041 [5]) and the language indication on each Message Information Page shall be for the same language. NOTE 2: Message text in Hebrew, Arabic and Russian cannot be encoded in the GSM 7-bit default alphabet. For these languages UCS2 encoding shall be used. These codings may also be used for USSD and MMI/display purposes.\n\n[TS23041#0280] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.62):\nThe encoding of the Warning-Type parameter is as shown below. The warning type value shall be mutually exclusive and binary encoded. 7 6 Octet 1 5 4 3 Warning Type Value\n\n[TS23041#0273] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.60):\n9.3.19 CBS-Message-Information-Page n This parameter is of a fixed length of 82 octets and carries up to and including 82 octets of user information. Where the user information is less than 82 octets, the remaining octets must be filled with padding (see 3GPP TS 23.038 [3]). The content of a CBS-Message-Information-Page is passed transparently from the CBC to the MS/UE. In GSM the CBS-Message-Information-Page n becomes the 'Content of Message' parameter at the MS.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "Both required languages (ar, en) are present. Page counts (en 3, ar 6) are within the 15-page maximum, and the encodings are correct: GSM-7 for English, UCS-2 for Arabic. Two problems remain. First, both languages open with EXERCISE/تمرين but end with 'This is not a drill'/'هذا ليس تمريناً', so a reader cannot tell whether this is real. Exercise and live alerts also go out under different CMAS message identifiers. A person must decide which one this is. Second, neither language gives any protective action, so the first page carries the hazard but no action.",
+  "objections": [
+   {
+    "issue": "The message contradicts itself on whether it is an exercise. It opens with 'EXERCISE' and ends with 'This is not a drill.' The Arabic does the same ('تمرين' … 'هذا ليس تمريناً'). Handsets receive exercise alerts under a separate CMAS Exercise message identifier, so a person must decide whether this is an exercise or a live alert before broadcast.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "An authorised person decides whether this is an exercise or a live alert. Remove the contradicting phrase in both languages and use the matching message identifier (CMAS Exercise 4381/4394 if it is an exercise).",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "EXERCISE - Active to occasionally strong"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "This is not a drill."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "هذا ليس تمريناً"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0370",
+      "quote": "CMAS CBS Message Identifier for CMAS Exercise."
+     }
+    ]
+   },
+   {
+    "issue": "Neither language contains a protective action. The text describes the dust and sand hazard and how long it will last, but does not tell people what to do. The first page therefore does not carry the action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Add a short protective action early in both languages, ideally on the first page. For example: 'Avoid driving; if you must, slow down and use low-beam lights. People with respiratory conditions should stay indoors.' Add the equivalent in Arabic.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Conditions until 18:00. This is not a drill."
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-DA-25-12#0114",
+      "quote": "a description of the threat and the protective action the public should take"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4565,
+  "output_tokens": 1540,
+  "at": "2026-11-09T16:02:56Z"
+ }
+}

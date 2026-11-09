@@ -922,3 +922,103 @@ sources:
     - text: "A search of the PWS system found no templates for satellite launches so the message was likely based on a template from the \"Missile air raid alert\" category."
       locator: "article body"
   notes: "Secondary: CNA English story mirrored by GlobalSecurity.org; the original at https://focustaiwan.tw/politics/202401090018 is paywalled after the first paragraph. The template detail is CNA's own finding, not an MND statement."
+
+# ---- UAE public warning texts (added 9 Nov)
+
+- id: TDRA-TSFS001
+  title: "Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert)"
+  publisher: UAE Telecommunications Regulatory Authority (now TDRA)
+  date: "2019-11-25"
+  url: "https://tdra.gov.ae/-/media/About/Type-Approval/Technical-Standards-2021/TS-FS-001-Emergency-Broadcast.ashx"
+  kind: regulation
+  jurisdiction: AE
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "a5776742439647dcd8f48e12ab968c501162c686b67b331ce1a9473f22e3c737"
+  supports: [R7, R2, R3]
+  quotes:
+    - text: "Mobile devices shall support receiving and displaying emergency alerts in Arabic and English."
+      locator: "§4.2 Specifications, requirement 6, PDF p.4"
+    - text: "Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator."
+      locator: "§4.2 Specifications, requirement 7, PDF p.4"
+    - text: "Inclusion of phone numbers and URLs is permitted, and they should be clickable."
+      locator: "§4.2 Specifications, requirement 13, PDF p.4"
+  notes: >-
+    Linked as "TS FS 001 Emergency Broadcast" from TDRA's Type Approval page, Technical Standards tab
+    (https://tdra.gov.ae/en/About/tdra-sectors/telecommunication/departments/technology-development-affairs-department/type-approval).
+    Version 2.0 is dated 25 Nov 2019; the version table says v2.0 "Updated National Emergency Crisis and Disaster Management
+    Authority comments" and v1.0 was issued 01 Jan 2016. Handsets entering the UAE must comply from 31 Dec 2019 (§6).
+    Tables 1 and 2 give per-class channel IDs (primary block 4370-4381, 4396, 4398; secondary block 4383-4394, 4397, 4399),
+    Arabic and English class titles, and separate classes for Test Alert (class 5, default Off, user opt-out allowed) and
+    Exercise (class 6, default On, no opt-out). §3 defines CBS area as "as small as one cell and as big as the entire network".
+    It names Arabic and English but no primary/secondary assignment, and it sets no page or character limit, so the
+    "1 page" rule in TDRA-TS040 (secondary) is not in this current spec. It is the full primary text behind TDRA-2017-CB.
+
+- id: UAE-PORTAL-EWS
+  title: "Handling emergencies (section 'National Early Warning System')"
+  publisher: "UAE Government official portal (u.ae)"
+  date: null
+  url: "https://u.ae/en/information-and-services/justice-safety-and-the-law/Safety/handling-emergencies"
+  kind: official-page
+  jurisdiction: AE
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "3df362af92cf2cf00a4e83e71ae2f18eb7fdf36ed440e6a36bc13f0c62da46b9"
+  supports: [R4, G2]
+  quotes:
+    - text: "Sending warning messages is limited to entities responsible for the safety of individuals in the UAE."
+      locator: "section 'National Early Warning System', 'Entities authorised to send warning messages'"
+    - text: "The EWS involves sending text messages to people to warn them of the dangerous weather conditions and instruct them on procedures to be followed to stay safe."
+      locator: "section 'National Early Warning System'"
+  notes: >-
+    Primary government source for the issuer list that UAE-ISSUERS (Gulf News) reports. The page then lists: National
+    Emergency Crisis and Disaster Management Authority, Ministry of Interior, Police of the seven emirates, Ministry of
+    Health and Prevention (list items, so not quoted as one string). It says the EWS project started in 2017. The page
+    shows no update date. It gives no rule on how these entities coordinate, who approves a message, or languages.
+    HTML page; later fetches will usually give a different hash.
+
+- id: DXB-DECREE-4-2021
+  title: "Decree No. (4) of 2021 Concerning the Supreme Committee of Emergency, Crisis, and Disaster Management in the Emirate of Dubai"
+  publisher: "Government of Dubai (Supreme Legislation Committee, dlp.dubai.gov.ae)"
+  date: "2021-01-26"
+  url: "https://dlp.dubai.gov.ae/Legislation%20Reference/2021/Decree%20No.%20(4)%20of%202021%20Concerning%20the%20Supreme%20Committee%20of%20Emergency.html"
+  kind: regulation
+  jurisdiction: AE-DU
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "01512f26dd2dc8b7292be2f1dc949fd6c64041715c6660195135d5b5fd4d4192"
+  supports: [R4, G2]
+  quotes:
+    - text: "determine the levels of escalation and warning required to deal with each Risk, Emergency, Crisis, or Disaster"
+      locator: "Article (5)(a)(4), Functions of the SCCDM"
+    - text: "The SCCDM is the only Government Entity authorised to give statements to the media in the event of Risks, Emergencies, Crises, or Disasters."
+      locator: "Article (10)(a), Official Spokesperson"
+    - text: "In case of conflict, the Arabic text will prevail."
+      locator: "footnote [1] to the title (English version disclaimer)"
+  notes: >-
+    Emirate-level law. Article (5)(a)(5) requires the committee (SCCDM) to coordinate with NCEMA on classifying emergency
+    levels. The English text is the Supreme Legislation Committee's translation; the Arabic original prevails. It sets
+    warning levels as a committee duty but does not say who drafts or approves an individual public alert, and says
+    nothing about cell broadcast or AI.
+
+- id: DXB-DECREE-48-2024
+  title: "Decree No. (48) of 2024 Establishing the Dubai Resilience Centre"
+  publisher: "Government of Dubai (Supreme Legislation Committee, dlp.dubai.gov.ae)"
+  date: "2024-09-04"
+  url: "https://dlp.dubai.gov.ae/Legislation%20Reference/2024/Decree%20No.%20(48)%20of%202024%20Establishing%20Resilience%20Centre.html"
+  kind: regulation
+  jurisdiction: AE-DU
+  status: verified-primary
+  fetched_at: "2026-11-09"
+  sha256: "33fa2af796c9af9a5d694f2e7b0d5a036ad0b941c61cab5477e04d7ba6e6aa65"
+  supports: [G2, G5, R4]
+  quotes:
+    - text: "establish a unified early warning regulation for the Emirate and submit the same to the SCCDM for approval"
+      locator: "Article (5), Functions of the DRC, item 12"
+    - text: "prepare reports on the assessment of the Emirate's situation during and after Incidents; propose the necessary plans to ensure Recovery; identify lessons learned"
+      locator: "Article (5), Functions of the DRC, item 13"
+  notes: >-
+    Emirate-level law. Gives the Dubai Resilience Centre the task of writing a unified early warning regulation; no such
+    regulation was found in public (searched dlp.dubai.gov.ae via web search, 9 Nov 2026). Item 13 is a general
+    after-incident lessons-learned duty, not a rule on correcting a false public alert. English translation; the
+    Arabic original prevails.

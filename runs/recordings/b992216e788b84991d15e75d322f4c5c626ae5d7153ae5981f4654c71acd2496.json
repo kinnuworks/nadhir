@@ -1,0 +1,114 @@
+{
+ "key": "b992216e788b84991d15e75d322f4c5c626ae5d7153ae5981f4654c71acd2496",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions tonight until 10:00 Wednesday\",\n  \"description\": \"Fog warning: thick fog is expected in western regions of the UAE. Visibility may drop to zero at times from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Drive with extreme caution. More: https://alerts.example.ae\",\n  \"instruction\": \"If you drive, slow down, keep a safe distance from other vehicles and follow the modified speed limits. Follow all traffic safety guidelines.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنعدم الرؤية في المناطق الغربية الليلة حتى الساعة 10:00 يوم الأربعاء\",\n  \"description\": \"تحذير من الضباب: يُتوقع ضباب كثيف في المناطق الغربية من دولة الإمارات. قد تنعدم الرؤية أحيانًا من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. قُد بحذر شديد. للمزيد: https://alerts.example.ae\",\n  \"instruction\": \"إذا كنت تقود، خفّف سرعتك، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة. اتبع جميع إرشادات السلامة المرورية.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert review requirements', 'machine translated alert human verification', 'fog visibility warning protective action wording'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0038] DotEmarat Policy EN (p.12):\n11. Eligibility Requirements Restricted Zones There are no . (dotEmarat) . (dotEmarat) Arabic ccTLD Restricted Zones at this time. 12. Policy review The .aeDA may update this Policy at any time in its complete discretion, including for the purpose of clarification.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0005] DotEmarat Policy EN (p.2):\n8.6. . (dotEmarat) Domain Name Variants 6 8.7. Reserved Names List 7 9. Eligibility Requirements 7 10. Eligibility Requirements for 11. Eligibility Requirements 12. Policy review 8 . (dotEmarat) – Unrestricted Zone 8 . (dotEmarat) Restricted Zones 8 Appendix A – Language Tables 9 Table of Allowed Arabic Letters 9 Table of Allowed Numbers and Special Characters Table 10 Active Variant Table 11 ii\n\n[ON-PICKERING-2020#0103] Investigation into the emergency alerts sent on January 12, 2020 (Pre-scripted messages):\nThe PEOC did not have any French language templates. Procedures existed for submitting an emergency French translation request. The service standard for emergency French translation was to respond within 30 minutes. On January 12, 2020, as the first alert was sent in error, translation was not considered. The PEOC did not submit an emergency French language request for the second alert.\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[ON-PICKERING-2020#0138] Investigation into the emergency alerts sent on January 12, 2020 (Area of conern: System verification/ testing process):\nArea of conern: System verification/ testing process Modified the Alert Ready System verification sequence to minimize the potential for human error. All messages used to test the Alert Ready system now clearly indicate they are test messages.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[ITU-UAE:01_AI_Strategy_and_Governance/MOCAI_AI_Ethics#0064] MOCAI AI Ethics (p.12):\nc In the case that critical decision are life and death decisions, these decisions should be supported by further validation and verification via a human operator. d Facilitate traceability and auditability of AI systems, particularly in critical contexts or situations.\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in every field. The headline, description and instruction carry the same hazard (thick fog, visibility may drop to zero at times) and the same area (western regions of the UAE). The times and dates match: 21:30 Tuesday 17 February until 10:00 Wednesday 18 February. The URL is the same. The protective actions match: slow down, keep a safe distance, follow the modified speed limits, follow traffic safety guidelines, drive with extreme caution. Nothing was added, dropped or weakened. The Arabic was machine translated, so a named person who reads Arabic must still check and approve it before it is sent; this review does not approve it.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4651,
+  "output_tokens": 579,
+  "at": "2026-11-09T15:52:10Z"
+ }
+}

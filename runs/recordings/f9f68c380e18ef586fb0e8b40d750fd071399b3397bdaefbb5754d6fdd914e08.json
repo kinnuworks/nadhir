@@ -1,0 +1,138 @@
+{
+ "key": "f9f68c380e18ef586fb0e8b40d750fd071399b3397bdaefbb5754d6fdd914e08",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-fog-2026-02-17\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"unknown-sender@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender identifier authorized originator', 'alert originator authentication unauthorized sender', 'UAE early warning issuing authority'):\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[X1303BIS#0046] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\nsender cap.alert.sender.identifier The identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[CAP12#0070] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\n(1) A number or string uniquely identifying this message, assigned by the sender. (2) MUST NOT include spaces, commas or restricted characters (< and &). sender cap. alert. sender. identifier\n\n[CAP12#0071] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nThe identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name.\n\n[CAPCP#0123] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #2. <sender> should be descriptive):\nRecommendation #2. <sender> should be descriptive Element: <sender> Use: Required Type: Technical Value: user-defined Description: Identifies the originator of the alert message Notes: Example: Element: <sender> Use: Required Type: Policy\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.\n\n[UAE-PORTAL-EWS#0015] Handling emergencies (section 'National Early Warning System') (Crime, safety and security):\nMinistry of Climate Change and Environment on hotline 8003050 Dubai Municipality on hotline 800900 Local municipalities across the UAE Emirates Animal Welfare Society on 9712-5010054. To report human rights issues, use the eServices from:\n\n[ITU-UAE:02_Data_Protection/2.3_UAE_Health_Data_Law_Federal_Law_2_of_2019#0040] UAE Federal Law No. 2 of 2019 on the Use of ICT in Health Fields (Health Data Law) (ICT in Health Fields Law and Regulations, and Federal Ministerial Decision No 51 of 2021 Cases Allowing the Storage and Transfer of Medical Data and Information):\nArticle 13 of the ICT in Health Fields Law states that the Health Information and data related to the health services provided in the UAE may not be stored, processed, generated or transferred outside the UAE, unless in the cases defined by virtue of a decision issued by the Health Authority of the relevant emirate in coordination with the Federal Ministry of Health.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert is an Actual, public alert in a live console for a real event, but its sender, unknown-sender@nadhir.example, is not in the issuer register. The only registered issuer is demo-national-authority@nadhir.example. Only an authorised entity may send warning messages, and the drafter cannot fix this by swapping in another identity, so a person must decide whether this originator may issue. All other checks pass: the area matches the area drawn for event uae-fog-2026-02-17, there are no active alerts from higher authorities, and msgType Alert needs no references.",
+  "objections": [
+   {
+    "issue": "The sender is not in the issuer register. The register lists only demo-national-authority@nadhir.example, so this originator has no authorisation for any area or category. Sending warnings is limited to authorised entities, and this alert would go out live as Actual.",
+    "field": "alert.sender",
+    "blocking": true,
+    "fix": "A person must confirm the originator's authority. Either the alert is re-issued under a sender listed in the issuer register, with that issuer's approval, or the sender is formally added to the register before release.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "UAE-PORTAL-EWS#0027",
+      "quote": "Sending warning messages is limited to entities responsible for the safety of individuals in the UAE."
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0071",
+      "quote": "Identifies the originator of this alert."
+     },
+     {
+      "kind": "view",
+      "ref": "issuer_register",
+      "quote": "Demo national authority (stands in for the real issuer)"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 3316,
+  "output_tokens": 843,
+  "at": "2026-11-09T16:24:44Z"
+ }
+}

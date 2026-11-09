@@ -1,0 +1,133 @@
+{
+ "key": "3d1f397c779da2b3486c25f9091cb2fe45993e98198df8bd360e6b599c0b1bc7",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Missile launched from North Korea toward the east; projected to pass over northern Japan (Hokkaido / Aomori).\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"ミサイル発射情報 (missile launch information)\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"\",\n  \"description\": \"\",\n  \"instruction\": \"\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency values definitions', 'missile alert J-Alert overflight warning failures', 'empty headline description instruction CAP requirements'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[FCC-HI-2018#0056] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\nEmployee 4 and Employee 2 discussed their plan their plan to conduct a [ballistic missile alert] drill at the end of their shift. Employee 4 prepared a recording of PACOM [ballistic missile alert] notification from the [ballistic missile alert] checklist manual. Employee 4 discussed leaving the [State Warning Point] area while Employee 2 told the dayshift about the previous shift change drill.” HI-EMA Report at 3. The HI-EMA Report stated that at 8:03 a.m., “The incoming day shift entered the [State Warning Point]. Employee 4 met with Employee 5 and discussed the [ballistic missile alert] drill.” Id.\n\n[FCC-HI-2018#0060] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\noutside the [State Warning Point] area calling into the [State Warning Point secure telephone equipment]. Employee 2 activated the [secure telephone equipment] speaker. At this time, it was announced loud and clear, ‘EXERCISE, EXERCISE, EXERCISE,’ and then concluded with, ‘EXERCISE, EXERCISE, EXERCISE,’ which is a normal procedure for all drills including this [ballistic missile alert] drill. Both day and night shift began executing the [ballistic missile alert] checklist. Employee 2 recorded the time of the simulated ballistic missile impact. Employee 3 started the Countdown timer. Employee 2 simulated activating the [ballistic missile alert] wail tone siren and verbally indicated completion of that action.” Id. at 3. 55 The incoming warning officers who received this message and who are cooperating with the FCC investigation\n\n[FCC-HI-2018#0055] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\nalert notification with elements of the EAS message that would be used for an actual ballistic missile threat. The warning officers and shift supervisor on duty for the midnight shift ran this iteration of HI-EMA’s ballistic missile preparedness drill internally without incident just hours prior to transmission of the false alert. 53 The HI-EMA Report found that at 8:00 a.m., “In preparation for the [ballistic missile alert] response drill,\n\n[FCC-HI-2018#0088] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nAccording to the Hawaii Preparedness Report, “A complete comprehensive annex or plan to address the Ballistic Missile Preparedness (BMP) threat had not been fully developed prior to commencement of missile alert siren testing and internal missile alert drills[,]” and that this approach contradicted HI-EMA’s all hazards protocols. Hawaii Preparedness Report at 1. 75 The ballistic missile checklist was intended for use in connection with a real ballistic missile attack. 76 The HI-EMA Report states, “Notification for Step 1 of the [ballistic missile alert] checklist is used for actual\n\n[CAPCP#0058] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\neffective onset expires senderName Recommendation #4 (A <senderName> is strongly recommended) headline description instruction web contact parameter Recommendation #7 (Indicate when an update message contains non-substantive content changes.) Recommendation #6 (Indicate automated translation of free form text)\n\n[CAPCP#0153] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #7. Indicate when an update message contains non-substantive content changes):\nThe addition, removal, or change of the following elements may be considered non-substantive: <audience>, <headline>, <description>, <instruction>, <web>, <contact>, <parameter>, <areaDesc>, and <resource> blocks. Both sending and receiving systems are free to impose additional constraints on what they consider to be non-substantive changes.\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Severity Extreme and certainty Likely are consistent with a verified launch and a projected overflight. However, the headline and description are empty, so the alert does not state the hazard, its direction or the affected places (Hokkaido / Aomori) given in the verified input. The drafter can fix this.",
+  "objections": [
+   {
+    "issue": "Headline and description are empty. The alert does not state the hazard facts from the verified input: a launch from North Korea toward the east, projected to pass over northern Japan (Hokkaido / Aomori). Recipients cannot tell which places are affected.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Fill the headline and description with the verified facts only. For example, headline: 'Missile launched from North Korea – projected to pass over Hokkaido / Aomori'. Description: 'A missile was launched from North Korea toward the east and is projected to pass over northern Japan (Hokkaido / Aomori).' Add no unverified details such as an impact point or time.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "projected to pass over northern Japan (Hokkaido / Aomori)"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0077",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4330,
+  "output_tokens": 1125,
+  "at": "2026-11-09T15:44:18Z"
+ }
+}

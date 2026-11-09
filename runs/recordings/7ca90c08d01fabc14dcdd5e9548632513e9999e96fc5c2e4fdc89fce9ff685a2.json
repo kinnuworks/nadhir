@@ -1,0 +1,161 @@
+{
+ "key": "7ca90c08d01fabc14dcdd5e9548632513e9999e96fc5c2e4fdc89fce9ff685a2",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Kenneth Fire: evacuation warning for individuals near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley.\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Evacuation Warning\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"EVACUATION WARNING\",\n  \"description\": \"NEW: This is an emergency message from the Los Angeles County Fire Department. An EVACUATION WARNING has been issued in your area. Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\",\n  \"instruction\": \"Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency evacuation warning', 'wildfire evacuation alert area description specificity', 'FCC report erroneous wildfire evacuation alert Los Angeles'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[ESTR-AICNHM#0297] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.72):\nf. Please provide a short description of communications technologies that benefit or result from this use case. There are several IoT equipment (remote sensing satellites, monitors, social media apps, etc.) for supporting the wildfire detection and risk assessment system. These communication technologies enable to reduce labour and business costs by predicting wildfire risk and marking high risk areas in advance, reporting wildfire immediately, predicting wildfire spread, guiding fight wildfire accurately, and rescuing trapped people quickly and safely.\n\n[LA-2025#0022] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.9):\n(Federal Emergency Management Agency [FEMA]) Los Angeles County may have avoided damage to people outside the impacted Kenneth Fire area had their message included more information on the location or the timing of the danger. This additional information is also important for people who have older phones, where geotargeting is not precise on those devices. A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,” instead of “An EVACUATION WARNING has been issued for your area.” In questioning, Los Angeles County states, “The County has and currently does identify specific locations and neighborhoods in its emergency alerts,” 20 however, this specific case raises an area for improvement.\n\n[ESTR-AICNHM#0308] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.74):\nMultimodal databases and artificial intelligence for airborne wildfire detection and monitoring. c. Please provide a short description of the use case. AI methods for wildfire detection and monitoring and data annotation pipelines.\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[LA-2025#0012] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.6):\nIMPACT To protect life and property during emergencies, appropriately timed, targeted, and understandable emergency alert messages can mean the difference between life and death. However, unclear messages, sent to the wrong locations, multiple times, and after the emergency has passed, can lead to alert fatigue and erosion of public trust. Due to the incorrect warning, millions who were never under any wildfire danger were unnecessarily alarmed and confused, causing distress in a dangerous time of out-of-control wildfires. This had serious implications for public safety and well-being at a time of intense distress for our community. Further, the incident raises a serious risk that future alerts could be ignored or downplayed by more recipients, putting lives at risk. CONGRESSIONAL INVESTIGATION On February 3, 2025, Congressman Robert Garcia (CA-42) and thirteen Members of Congress representing Los Angeles County sent oversight letters seeking answers regarding the erroneous evacuation warnings. Letters were addressed to:\n\n[FCC-16-127#0809] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.143):\nKristin Card Kristin Card Krown Manufacturing Krown Manufacturing Lew Pettit Lew Pettit Lloyd Colston Lloyd Colston Lloyd Ewing Lloyd Ewing Los Angeles Emergency Management Department Los Angeles EMD Mark Maxwell\n\n[LA-2025#0011] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nLos Angeles Office of Emergency Management Wireless Emergency Alert 9. March 27, 2025, Response by Genasys Inc Chief Executive Officer to February 3, 2025, Congressional oversight letter. 10. https://www.cnn.com/2025/01/16/us/evacuation-warnings-vulnerabilities-la-fires/index.html 11. https://www.latimes.com/california/story/2025-01-09/emergency-alert-text-message-los-angeles-fire",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the verified bulletin on the event type, and its severity, urgency and certainty are reasonable. However, it drops the affected places: it says \"your area\" instead of Calabasas, Agoura Hills and West Hills. It also never names the hazard (the Kenneth Fire). The drafter can fix both.",
+  "objections": [
+   {
+    "issue": "The alert does not name the affected places. The verified input limits the warning to people near Calabasas, Agoura Hills and West Hills in the western San Fernando Valley. The alert only says \"issued in your area\". Generic wording like this caused the Kenneth Fire false-alert harm when geotargeting was imprecise.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Replace \"has been issued in your area\" with \"has been issued for areas near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley\". Add the places to the headline, e.g. \"EVACUATION WARNING – Calabasas, Agoura Hills, West Hills\".",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "individuals near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "An EVACUATION WARNING has been issued in your area."
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0022",
+      "quote": "A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,” instead of “An EVACUATION WARNING has been issued for your area.”"
+     }
+    ]
+   },
+   {
+    "issue": "The alert never says what the hazard is. The verified input names the Kenneth Fire (a wildfire), but the description and headline only say \"Remain vigilant of any threats\". Recipients cannot tell what danger they are being warned about.",
+    "field": "description",
+    "blocking": false,
+    "fix": "State the hazard explicitly, e.g. \"An EVACUATION WARNING has been issued due to the Kenneth Fire for areas near Calabasas...\". Consider \"Kenneth Fire Evacuation Warning\" in the headline.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "Kenneth Fire: evacuation warning"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Remain vigilant of any threats and be ready to evacuate."
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0022",
+      "quote": "had their message included more information on the location or the timing of the danger"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4284,
+  "output_tokens": 1152,
+  "at": "2026-11-09T15:44:37Z"
+ }
+}

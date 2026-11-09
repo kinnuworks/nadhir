@@ -45,8 +45,8 @@ AGENTS = {
         "name": "Network operator and regulator reviewer",
         "stands_for": "the telecom regulator and mobile operators (cell broadcast delivery)",
         "mandate": ("You check that the message can be delivered and read on a handset: required languages present, "
-                    "the length per language in cell broadcast pages, encoding, and that the first page carries the "
-                    "hazard and the action."),
+                    "no language over the 15-page cell broadcast maximum, the encoding, and that the first page "
+                    "carries the hazard and the action."),
         "sees": "each language's phone text with its character count, encoding and page count, and the profile's required languages",
     },
     "arabic": {
@@ -59,11 +59,18 @@ AGENTS = {
     },
 }
 
+# Known problems the gate already reports on every alert. Raising them again on every draft is noise.
+RECORDED_GAPS = {"UAE": [
+    "G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the "
+    "page count on every alert and the approvers see it. Object to length only above the 15-page maximum."]}
+
 PLAN_SYSTEM = """You are the {name}, standing in for {stands_for}. {mandate}
 You see only {sees}. You do not see anything else about this alert.
 Before you review, search the knowledge base for the rules and guidance you need. It holds standards
 (CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past
-alert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each)."""
+alert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning
+page, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.
+Write up to 3 short keyword queries (3 to 8 words each)."""
 
 PLAN_SCHEMA = {
     "type": "object",
@@ -83,7 +90,8 @@ Every objection needs evidence. Each evidence item is a word-for-word quote (at 
 clause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind
 "clause", ref = its id) or the material you were shown (kind "view", ref = the field name). Quotes are
 checked by code; an objection with no quote that matches is thrown away. Do not object to things
-outside your mandate. Do not repeat the same issue twice.
+outside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already
+reported to the approvers on every alert; do not object to them again.
 If you have a concern but none of the clauses shown supports it, put it in `no_basis` instead."""
 
 REVIEW_SCHEMA = {
@@ -157,7 +165,9 @@ def views(scn: dict, xml: str, fields: dict | None = None, versions: list | None
         "operator": {
             "profile": scn.get("profile", "UAE"),
             "required_languages": {"UAE": ["ar", "en"]}.get(scn.get("profile", "UAE"), []),
-            "handset_advice": "UAE handset spec summary: message should be limited to 1 page" if scn.get("profile", "UAE") == "UAE" else None,
+            "handset_spec": ("TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page "
+                             "limit. 3GPP TS 23.041 allows up to 15 pages.") if scn.get("profile", "UAE") == "UAE" else None,
+            "recorded_gaps": RECORDED_GAPS.get(scn.get("profile", "UAE"), []),
             "phone_text": [{"language": lang, "text": i.get("description") or "", **_pages(i.get("description") or "")}
                            for lang, i in by_lang.items()],
         },
@@ -172,15 +182,17 @@ def _flat(view) -> str:
     return json.dumps(view, ensure_ascii=False)
 
 
-def review_one(role: str, view: dict, salt: str) -> dict:
+def review_one(role: str, view: dict, salt: str, local_first: bool = False) -> dict:
     a = AGENTS[role]
+    view_is_uae = local_first
     shown = json.dumps(view, ensure_ascii=False, indent=1)
     plan, pmeta = call_json(PLAN_SYSTEM.format(**a), "What you can see:\n" + shown, PLAN_SCHEMA,
                             salt=f"{salt}:plan", effort="low")
     queries = [q for q in plan.get("queries", []) if q.strip()][:3]
     clauses, seen = [], set()
     for q in queries:
-        for h in retrieval.search(q, k=4):
+        hits = retrieval.search_local_first(q) if view_is_uae else retrieval.search(q, k=4)
+        for h in hits:
             if h["id"] not in seen:
                 seen.add(h["id"])
                 clauses.append({**h, "query": q})
@@ -221,7 +233,8 @@ def review(scn: dict, xml: str, fields: dict | None, versions: list | None, salt
     v = views(scn, xml, fields, versions)
     roles = [r for r in (roles or list(AGENTS)) if v.get(r) is not None]
     with ThreadPoolExecutor(max_workers=len(roles) or 1) as pool:
-        futs = {r: pool.submit(review_one, r, v[r], f"{salt}:{r}") for r in roles}
+        uae = scn.get("profile", "UAE") == "UAE"
+        futs = {r: pool.submit(review_one, r, v[r], f"{salt}:{r}", uae) for r in roles}
         return [futs[r].result() for r in roles]
 
 

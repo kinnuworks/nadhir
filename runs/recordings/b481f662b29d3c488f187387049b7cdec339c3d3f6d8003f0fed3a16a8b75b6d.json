@@ -1,0 +1,33 @@
+{
+ "key": "b481f662b29d3c488f187387049b7cdec339c3d3f6d8003f0fed3a16a8b75b6d",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fog warning: drive with extreme caution, keep a safe distance and obey modified speed limits. Fog may cut visibility to zero at times in western regions of the UAE from 21:30 Tue 17 Feb until 10:00 Wed 18 Feb. Source: NCM.\",\n   \"characters\": 222,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تحذير من الضباب: قُد بحذر شديد، وحافظ على مسافة آمنة، والتزم بحدود السرعة المعدّلة. قد يؤدي الضباب إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من الإمارات العربية المتحدة من الساعة 21:30 يوم الثلاثاء 17 فبراير حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: NCM.\",\n   \"characters\": 274,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 7\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "3GPP TS 23.041 cell broadcast page limit encoding",
+   "TDRA UAE emergency alert Arabic English handset",
+   "cell broadcast first page hazard action truncation"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1089,
+  "output_tokens": 70,
+  "at": "2026-11-09T15:51:03Z"
+ }
+}

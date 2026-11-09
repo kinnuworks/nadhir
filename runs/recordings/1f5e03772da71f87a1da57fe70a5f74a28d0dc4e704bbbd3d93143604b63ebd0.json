@@ -1,0 +1,33 @@
+{
+ "key": "1f5e03772da71f87a1da57fe70a5f74a28d0dc4e704bbbd3d93143604b63ebd0",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Cabinet Secretariat (via J-Alert)\": {\n   \"name\": \"Cabinet Secretariat (via J-Alert)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Hokkaido (07:27); Aomori Prefecture added at 07:29\",\n  \"codes\": [\n   [\n    \"JIS-X0401\",\n    \"01\"\n   ],\n   [\n    \"JIS-X0401\",\n    \"02\"\n   ]\n  ],\n  \"drawn_for_event\": \"jalert-2022\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Cabinet Secretariat (via J-Alert)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Safety\"\n  ],\n  \"event\": \"ミサイル発射情報 (missile launch information)\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Hokkaido; Tokyo island municipalities (Izu Islands, Ogasawara Islands)\",\n  \"codes\": [\n   [\n    \"JIS-X0401\",\n    \"01\"\n   ],\n   [\n    \"JIS-X0401\",\n    \"13\"\n   ]\n  ],\n  \"polygons\": [\n   \"32.4,139.0 34.8,139.0 34.8,140.5 32.4,140.5 32.4,139.0\",\n   \"24.2,141.0 27.8,141.0 27.8,142.4 24.2,142.4 24.2,141.0\"\n  ],\n  \"headline\": null\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP area must match requested target area",
+   "alert area mismatch wrong region warned",
+   "missile alert J-Alert area error correction"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1222,
+  "output_tokens": 49,
+  "at": "2026-11-09T16:04:53Z"
+ }
+}

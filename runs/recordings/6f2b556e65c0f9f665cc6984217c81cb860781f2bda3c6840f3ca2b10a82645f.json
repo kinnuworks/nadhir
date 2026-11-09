@@ -1,0 +1,127 @@
+{
+ "key": "6f2b556e65c0f9f665cc6984217c81cb860781f2bda3c6840f3ca2b10a82645f",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog and low visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"Fog may reduce visibility in western regions tonight until 10:00 Wed 18 Feb\",\n  \"description\": \"Fog may form in several western regions of the UAE. Visibility is expected to drop, possibly to zero at times, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Take extra care where fog is thick.\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow all traffic safety guidelines. Strictly obey modified speed limits, especially where fog is thick.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty severity urgency definitions', 'NCM fog warning colour levels', 'alert area description vague regions'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0376] 3.2 TDRA Consumer Protection Regulations v2 (p.63):\n25.9. Subject to the provisions of 25.4, Licensees may offer such enhanced directories as the Licensee sees fit. Such enhanced services could for instance include bold, boxed, or colour listings and may include addition information such as logos, location plans and maps, directions etc. Licensees may charge Subscribers for such enhanced services at the Licensee’s published rates provided that the Subscriber is informed that the Subscriber may opt for a free of charge basic level service.\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0210] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.110):\nPart 3: BCM Toolkit • • • • • • • Location of business impact Incident description List of buildings, facilities, work areas affected by such incident Description of incident impact on business operations and critical activities Current Status Event log Sample (Event Log)\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0115] UAE National Air Quality Agenda 2031 (p.16):\nPollutants released within many of the countries in the region have the potential to cause impacts long distances away from the point of emission (including across national borders). Therefore, the UAE should continue to participate in regional forums and alliances which have the potential to reduce the impacts of transboundary pollution, however effective multilateral participation across several key priority areas shall be targeted. One such area relates to implementing an integrated approach to addressing air pollution and climate change as a linked problem.\n\n[FCC-23-88#0258] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.46):\nhttps://www.irs.gov/charities-non-profits/exempt-organizations-business-master-file-extract-eo-bmf. The IRS Exempt Organization Business Master File (EO BMF) Extract provides information on all registered taxexempt/non-profit organizations. The data utilized for purposes of this description was extracted from the IRS EO BMF data for businesses for the tax year 2020 with revenue less than or equal to $50,000, for Region 1-Northeast Area (58,577), Region 2-Mid-Atlantic and Great Lakes Areas (175,272), and Region 3-Gulf Coast and Pacific Coast Areas (213,840) which includes the continental U.S., Alaska, and Hawaii. This data does not include information for Puerto Rico. 22 See 5 U.S.C. § 601(5). 23 See 13 U.S.C. § 161.\n\n[CAPCP#0101] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #8. <area> blocks are required):\nRule #8. <area> blocks are required Element: <area> Use: Optional Type: Technical Value: Description: Area sub-element container Notes: Example: Element: <area> Use: Required Type: Technical Value: Description: 1 An <area> block is required for each <info> block.\n\n[ESTR-AICNHM#0261] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.67):\nd. Please provide a short description of the datasets. In our study of the region of Nainital, the landslide inventory map (LIM) has been downloaded for the region from the Buksh portal provided by the geological survey of India at a scale of 1:100000. Geological data of various regions in India can be downloaded from this portal.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the verified NCM bulletin. It covers the same hazard (fog and low visibility, possibly zero at times), the same window (21:30 Tue 17 Feb to 10:00 Wed 18 Feb) and the same area wording (several western regions). Its advice also follows the bulletin. Certainty 'Possible' fits the bulletin's 'potential fog formation' wording, and the alert contains no unverified material.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Moderate severity cannot be checked against NCM's own warning colour level. The bulletin as reported by WAM does not state a colour (yellow, orange or red), so it is unclear whether Moderate or Severe matches the official level.",
+    "searched_for": "NCM fog warning colour levels mapped to CAP severity"
+   },
+   {
+    "concern": "The bulletin says visibility is 'expected to deteriorate', which could support certainty 'Likely' rather than 'Possible'. However, fog formation itself is described as 'potential'. No UAE or WMO clause shown settles which value applies.",
+    "searched_for": "CAP certainty definitions in a UAE or WMO profile (Possible vs Likely)"
+   },
+   {
+    "concern": "The area 'several western regions' is as vague as the source bulletin. No clause shown requires naming specific emirates or areas when the bulletin does not.",
+    "searched_for": "alert area description vague regions"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4094,
+  "output_tokens": 788,
+  "at": "2026-11-09T16:14:07Z"
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "key": "5fecb5a57c6672ae7af45f77c621e2287774dbfb1a028c7b166680bba6867629",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India. Please ignore this message as no action is required from your end. This message has been sent to test Pan-India Emergency Alert System being implemented by National Disaster Management Authority. It aims to enhance public safety and provide timely alerts during emergencies.\",\n   \"characters\": 402,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 5\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "cell broadcast page limit GSM-7 characters per page",
+   "test message cell broadcast first page hazard action",
+   "3GPP TS 23.041 CBS message pages encoding"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 731,
+  "output_tokens": 66,
+  "at": "2026-11-09T15:43:53Z"
+ }
+}

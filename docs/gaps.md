@@ -19,12 +19,13 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Searched.** UAE AI Charter, Dubai AI ethics guidance (DUBAI-AI-ETHICS), press explainers of the UAE early warning system (UAE-ISSUERS, UAE-KT-2026, UAE-NAT-2026), the TDRA handset specs (TDRA-TS040, TDRA-2017-CB). Khaleej Times notes the decision chain "has, however, not been revealed to the public" (UAE-KT-2026).
 - **Evidence.** In the Hawaii 2018 replay, the alert went out with one operator. The gate's R1 (two named people for a high-impact live alert) is the rule the FCC recommended afterwards: "Require more than one credentialed person to validate the message content prior to transmission" (FCC-HI-2018).
 - **Global example.** The FCC Hawaii recommendations (2018). The MHEWS report's call for "human-in-the-loop governance frameworks" (MHEWS-2026).
+- **Found since.** The official portal (UAE-PORTAL-EWS) says sending warnings "is limited to entities responsible for the safety of individuals in the UAE" and names NCEMA, the Ministry of Interior, the emirates' police forces and the Ministry of Health and Prevention, but not who approves a message. Dubai Decree No. 48 of 2024 (DXB-DECREE-48-2024) tasks the Dubai Resilience Centre to "establish a unified early warning regulation for the Emirate"; we found no published regulation.
 - **Proposal.** A published two-person rule for high-impact alerts, with a named reviewer for any AI-drafted or machine-translated text, written so a gate like R1 and R9 can check it.
 
 ## G3. Machine translation of alerts: no UAE rule, and the US is split (policy)
 
-- **Missing.** UAE handsets must show Arabic and English (TDRA-TS040, secondary). Nothing public says whether either language, or any third language, may be machine translated, or who must check it.
-- **Searched.** TDRA-TS040, TDRA-2017-CB, UAE AI Charter, ETSI EU-Alert (ETSI-EUALERT).
+- **Missing.** UAE handsets must show Arabic and English (TDRA-TSFS001, TDRA's TS FS 001 v2.0). Nothing public says whether either language, or any third language, may be machine translated, or who must check it.
+- **Searched.** TDRA-TSFS001, TDRA-TS040, TDRA-2017-CB, UAE-PORTAL-EWS, UAE AI Charter, ETSI EU-Alert (ETSI-EUALERT).
 - **Global example.** The US is split. The FCC declined machine translation for Wireless Emergency Alerts (FCC-23-88) and then said "We do not—and cannot—revisit the viability of machine translation" (FCC-DA-25-12). Instead it published human-vetted templates in 13 languages, Arabic included. Meanwhile the National Weather Service uses AI translation for its products (NWS-AI-TRANSLATION).
 - **Evidence.** In our UAE scenarios the translator agent chose machine translation for Arabic over the US vetted template. The gate held every such alert until a named Arabic reader approved the wording (R9). It also checks that every number and time in the translation matches the source.
 - **Proposal.** A UAE rule: alert text in any language comes from a vetted template, or a named person who reads that language approves it. Record which, in the alert (G1).
@@ -46,7 +47,7 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 ## G6. Vetted multilingual templates don't fit cell broadcast page limits (standards, found by the prototype)
 
 - **Missing.** No rule ties alert templates to the bearer they travel on.
-- **Evidence.** Filled in, the FCC's vetted Arabic dust storm template is 384 characters. Arabic needs UCS-2 encoding on cell broadcast, at 41 characters a page (TS23038), so this is 10 pages. The English version is 4 pages in GSM-7. The UAE handset spec summary says "Message should be limited to 1 page maximum" (TDRA-TS040, secondary). The templates were written for the US WEA limit of 360 characters (FCC-16-127), not for cell broadcast pages.
+- **Evidence.** Filled in, the FCC's vetted Arabic dust storm template is 384 characters. Arabic needs UCS-2 encoding on cell broadcast, at 41 characters a page (TS23038), so this is 10 pages. The English version is 4 pages in GSM-7. The templates were written for the US WEA limit of 360 characters (FCC-16-127), not for cell broadcast pages. No UAE text sets a page budget either: TDRA's current handset spec (TDRA-TSFS001, TS FS 001 v2.0, 2019) requires Arabic and English but sets no page limit, while a 2015 summary of an earlier version says "Message should be limited to 1 page maximum" (TDRA-TS040, secondary).
 - **Proposal.** Template sets that state their bearer and length per script, so a country adopting them for cell broadcast knows the cost in pages. Gate rule R6 counts pages per language.
 
 ## G7. CAP status and US test practice conflict (standards, found by the prototype)

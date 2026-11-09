@@ -1,0 +1,119 @@
+{
+ "key": "4d503f6b3758e197761094281535cc732f97fbe9674c769653ee48cb565df162",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE - Blowing dust: visibility under 3,000 m in some coastal and inland areas. Drive with caution on external and open roads; visibility can drop suddenly. Northwesterly winds, occasionally strong, until 18:00 today, 16 Feb. Source: NCM.\",\n   \"characters\": 242,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين - غبار متطاير: الرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية. قُد بحذر على الطرق الخارجية والمكشوفة؛ فقد تنخفض الرؤية فجأة. رياح شمالية غربية، قوية أحياناً، حتى الساعة 18:00 اليوم، 16 فبراير. المصدر: NCM.\",\n   \"characters\": 220,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('TDRA cell broadcast handset Arabic English', '3GPP TS 23.041 page limit UCS-2', 'alert first page hazard action'):\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0047] 3.2 TDRA Consumer Protection Regulations v2 (p.10):\n3.2.2. shall be written in the Arabic language or in the English Language as preferred by the Consumer or in circumstances where the preference is unknown, the information shall be written in both languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0263] 3.2 TDRA Consumer Protection Regulations v2 (p.45):\n(c) fixed-line telephone handsets including cordless handsets; (d) bespoke devices which are necessary to access or receive the specific Telecommunications Services(s) supplied by the Licensees; or (e) any other device or category of device as may be specified by the TDRA from time to time.\n\n[TDRA-TSFS001#0008] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nTechnical Requirements 4.1 Mobile technical specification ETSI TS 123 041 4.2 Digital cellular telecommunications system (Phase 2+) (GSM); Universal Mobile Telecommunications System (UMTS); Technical realization of Cell Broadcast Service (CBS) (3GPP TS 23.041 version 15.3.0 Release 15)\n\n[TDRA-TSFS001#0012] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.5):\nThe ability for the user to enable/disable receiving any alerts on this message ID/class. If set to yes, User Opt- then the user should be able to opt-in/out and the option can out be displayed in the settings page of the phone. If set to no, that means the user should not be able to opt-out, and that he/she will receive the alert if sent to this message ID This field describes if we want to show or hide the Settings warning/emergency alerts in the phone. If hidden, that Page means we don't want the user to see it listed in a settings page. Notes: 1.) Class 8 is meant for implementation on preconfigured devices, and shall not be implemented on commercial mobiles 2.) The above list is only applicable on mobile devices with limited specifications (e.g. Featured Phones) and that has limited resources.\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0273] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.60):\n9.3.19 CBS-Message-Information-Page n This parameter is of a fixed length of 82 octets and carries up to and including 82 octets of user information. Where the user information is less than 82 octets, the remaining octets must be filled with padding (see 3GPP TS 23.038 [3]). The content of a CBS-Message-Information-Page is passed transparently from the CBC to the MS/UE. In GSM the CBS-Message-Information-Page n becomes the 'Content of Message' parameter at the MS.\n\n[TS23041#0333] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.70):\n9.4.1.1 General Description Each page of a CBS Message sent to the MS by the BTS is a fixed block of 88 octets as coded in 3GPP TS 44.012 [7]. This is sent on the channel allocated as CBCH by 3GPP TS 45.002 [8]. The 88 octets of the CBS Message are formatted as described in clause 9.3.2.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0079] API First Guideline (p.34):\nRun time rules and actions need to be implemented to assure the confidentiality using web service level security. The actions to be applied depend on the sensitivity of the data transferred and transactions performed in the services. The following table shows the runtime actions based on the above categorization.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0101] UAE National Air Quality Agenda 2031 (p.15):\n6.3 Key Programs and Action 6.3.1. Outdoor Air Quality Table (3) sets out the first strategic goal for outdoor air quality in the UAE and includes eight key programs along with the action required to achieve the strategic goal.\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[WMO-CAP-GUIDE#0004] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nPublic and First Responder Action: People receive the alert through multiple communication channels and take appropriate action based on the guidance provided. First responders may receive tailored alerts to support emergency coordination and response. CAP Resources Explore a comprehensive collection of resources on the Common Alerting Protocol (CAP), including online courses, toolkits, guidelines and documents on the CAP implementation. Explore CAP Resources\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Both required languages (ar, en) are present. Neither exceeds the 15-page cell broadcast maximum: English is 3 pages in GSM-7 and Arabic is 6 pages in UCS-2. The encodings suit each script. Page length is already recorded as gap G6. One concern, that the first page does not fully carry the action, has no supporting clause, so it is listed under no_basis.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The first page does not carry the action. At about 93 GSM-7 characters per page, the English page 1 ends mid-way through 'Drive with caution'. At 41 UCS-2 characters per page, the Arabic page 1 holds only the hazard and visibility ('تمرين - غبار متطاير: الرؤية أقل من 3,000 م'), and the action 'قُد بحذر' falls on a later page. A handset that shows only the first page would lose the action.",
+    "searched_for": "alert first page hazard action; TDRA cell broadcast handset Arabic English; 3GPP TS 23.041 page limit UCS-2. No returned clause requires the hazard and action to sit on the first page."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5441,
+  "output_tokens": 885,
+  "at": "2026-11-09T16:11:37Z"
+ }
+}

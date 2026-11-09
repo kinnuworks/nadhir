@@ -81,7 +81,7 @@ class Index:
                 self.post[t].append(k)
 
     def search(self, query: str, k: int = 5, collections: set[str] | None = None,
-               exclude_docs: set[str] | None = None) -> list[dict]:
+               exclude_docs: set[str] | None = None, only_docs: set[str] | None = None) -> list[dict]:
         q = Counter(tokens(query))
         scores: dict[int, float] = defaultdict(float)
         matched: dict[int, int] = defaultdict(int)
@@ -100,6 +100,8 @@ class Index:
             if collections and doc.get("collection") not in collections:
                 continue
             if exclude_docs and c["doc"] in exclude_docs:
+                continue
+            if only_docs is not None and c["doc"] not in only_docs:
                 continue
             if matched[d] < min(MIN_TERMS, len(q)) or s < MIN_SCORE:
                 continue
@@ -122,6 +124,26 @@ def index() -> Index:
     if DOCS.exists():
         docs = {d["id"]: d for d in json.loads(DOCS.read_text(encoding="utf-8"))}
     return Index(clauses, docs)
+
+
+@lru_cache(maxsize=1)
+def uae_docs() -> frozenset:
+    """Documents that are UAE texts: the organisers' UAE dataset plus our sources with a UAE jurisdiction."""
+    import yaml
+    ids = {d for d, meta in index().docs.items() if meta.get("collection") == "itu-sandbox-uae"}
+    src = ROOT / "kb" / "sources.yaml"
+    if src.exists():
+        for x in (yaml.safe_load(src.read_text(encoding="utf-8")) or {}).get("sources", []):
+            if str(x.get("jurisdiction", "")).startswith("AE"):
+                ids.add(x["id"])
+    return frozenset(ids)
+
+
+def search_local_first(query: str, k: int = 3, k_local: int = 2) -> list[dict]:
+    """Top hits from UAE texts, then the top hits overall: a UAE reviewer reads UAE rules first."""
+    local = index().search(query, k_local, only_docs=set(uae_docs()))
+    seen = {h["id"] for h in local}
+    return local + [h for h in index().search(query, k + k_local) if h["id"] not in seen][:k]
 
 
 def search(query: str, k: int = 5, **kw) -> list[dict]:

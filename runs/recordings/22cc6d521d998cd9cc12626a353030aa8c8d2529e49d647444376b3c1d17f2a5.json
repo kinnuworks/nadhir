@@ -1,0 +1,114 @@
+{
+ "key": "22cc6d521d998cd9cc12626a353030aa8c8d2529e49d647444376b3c1d17f2a5",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"EXTREME DANGER: Dusty winds reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Actual Exercise msgType Alert', 'CAP area areaDesc geocode polygon requirements', 'UAE national emergency authority alert issuing powers'):\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[CAPCP#0076] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nNotes: Processing of “Ack” or “Error” messages is optional, and systems may impose their own associated rules. Example: (for public distribution) <alert .. > ... <status>Actual</status> <msgType>Alert</msgType> <source>Environment Canada</source> <scope>Public</scope>\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group\n\n[CAP12#0084] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nnote cap. alert. note. text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> “Exercise” and <msgType> “Error”.\n\n[CAPCP#0068] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area>\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[X1303BIS#0125] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.36):\nSOUTHWEST AT 5 MPH. HAIL...INTENSE RAIN AND STRONG DAMAGING WINDS ARE LIKELY WITH THIS STORM.</description> <instruction>TAKE COVER IN A SUBSTANTIAL SHELTER UNTIL THE STORM PASSES.</instruction> <contact>BARUFFALDI/JUSKIE</contact> <area> <areaDesc>EXTREME NORTH CENTRAL TUOLUMNE COUNTY IN CALIFORNIA, EXTREME NORTHEASTERN CALAVERAS COUNTY IN CALIFORNIA, SOUTHWESTERN ALPINE COUNTY IN CALIFORNIA</areaDesc> <polygon>38.47,-120.14 38.34,-119.95 38.52,-119.74 38.62,-119.89 38.47,-120.14</polygon> <geocode> <valueName>SAME</valueName> <value>006109</value> </geocode> <geocode> <valueName>SAME</valueName> <value>006009</value> </geocode> <geocode> <valueName>SAME</valueName> <value>006003</value> </geocode> </area> </info> </alert>\n\n[CAP12#0132] Common Alerting Protocol Version 1.2 (3.2.4 \"area\" Element and Sub-elements):\nareaDesc cap. alertInfoArea. areaDesc. text The text describing the affected area of the alert message (REQUIRED) A text description of the affected area. polygon cap. alertInfoArea. polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[ON-PICKERING-2020#0092] Investigation into the emergency alerts sent on January 12, 2020 (Procedures):\nAccording to the EMO Alert Ready policy, there was no requirement for a PEOC supervisor to review or approve an alert. However, in interviews, EMO staff demonstrated a common understanding of authority and approval levels for issuing an alert during a real emergency. The DO has the authority to compose and send an alert, but the Duty Operations Chief has the authority to approve it. The approval process can include verbal consultation and e-mail communications.\n\n[UAE-PORTAL-EWS#0034] Handling emergencies (section 'National Early Warning System') (Power and water supply failure):\nPower and water supply failure Emergency numbers: If you are in: Abu Dhabi, call 8002332 - Abu Dhabi Distribution Company. Dubai, call 991 - DEWA Sharjah, call 991 - Sharjah Electricity, Water and Gas Authority\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register at level 1, with all areas and categories allowed. The alert area and codes match the area requested for event uae-dust-2026-03-04. Status Actual fits a real event on the live console. No higher-authority alerts are active, so there is no overreach. The message is a new Alert, so it needs no reference to an earlier alert.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4315,
+  "output_tokens": 281,
+  "at": "2026-11-09T15:55:43Z"
+ }
+}

@@ -1,0 +1,131 @@
+{
+ "key": "daff5098d26af18235bfd8c5aa767d30917ff67c2986cb0dcfbd21ea1ab4d1dc",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Eastern, southern and western areas (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae] ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Network operator and regulator reviewer objects (phone_text): Neither the English nor the Arabic phone text contains a recommended action for recipients (for example, avoid flooded wadis and low-lying areas, drive with care, follow NCM updates). The first page carries the hazard but no action, so the alert does not tell people what to do. Fix: Add a short protective-action sentence to both languages and place it early, so it falls on the first page with the hazard. For example, EN: 'Avoid wadis and flooded areas, drive carefully.' AR: 'تجنبوا الأودية والمناطق المغمورة وقودوا بحذر.' Keep it to a few words so the page counts stay low and well under 15. [cites Common Alerting Protocol Version 1.2, 3.2.2 \"info\" Element and Sub-elements]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Convective clouds and rain",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Possible",
+  "headline": "NCM alert: rain, heavy at times, possible in eastern, southern and western areas until 21:00 Saturday",
+  "description": "Avoid wadis and flooded areas, drive carefully. NCM alert: convective clouds with light to moderate rain, heavy at times, possible in some eastern, southern and western areas and parts of the interior, Sat 22 Aug 13:30 to 21:00.",
+  "instruction": "Avoid wadis, flooded and low-lying areas, and drive carefully. Follow NCM updates and https://alerts.example.ae.",
+  "left_out": [],
+  "note_for_reviewer": "I put the reviewer's protective action first in the phone text. The NCM source does not mention flooding, so 'flooded areas' is advice only and not a forecast. Urgency is Expected and certainty Possible because the NCM wording is a possibility in effect from 13:30; this draft is English only, so the Arabic text with the suggested action still needs to be produced and checked separately."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1716,
+  "output_tokens": 1027,
+  "at": "2026-11-09T15:54:14Z"
+ }
+}

@@ -1,0 +1,119 @@
+{
+ "key": "81c2abf9d568416bf3793d1a44db2de8845bf66609c3b87572d8c9978bcccb15",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust and sand: visibility below 2,000 m, drive with caution\",\n  \"description\": \"Blowing dust and sand: visibility below 2,000 m. Drive with caution on open roads. Fresh to strong northwesterly winds in some coastal and inland areas, Abu Dhabi, until 19:00 today, 4 March. Source: NCM.\",\n  \"instruction\": \"Take extra care when driving on open roads because visibility may drop suddenly. Follow updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"غبار ورمال متطايرة: مدى الرؤية أقل من 2,000 م، توخَّوا الحذر أثناء القيادة\",\n  \"description\": \"غبار ورمال متطايرة: مدى الرؤية أقل من 2,000 م. توخَّوا الحذر أثناء القيادة على الطرق المفتوحة. رياح شمالية غربية نشطة إلى قوية على بعض المناطق الساحلية والداخلية، أبوظبي، حتى الساعة 19:00 اليوم، 4 مارس. المصدر: NCM.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر عند القيادة على الطرق المفتوحة لأن مدى الرؤية قد ينخفض فجأة. تابعوا التحديثات على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert verification', 'machine translated alert language review requirements', 'CAP multilingual info block language'):\n\n[ON-PICKERING-2020#0138] Investigation into the emergency alerts sent on January 12, 2020 (Area of conern: System verification/ testing process):\nArea of conern: System verification/ testing process Modified the Alert Ready System verification sequence to minimize the potential for human error. All messages used to test the Alert Ready system now clearly indicate they are test messages.\n\n[ON-PICKERING-2020#0103] Investigation into the emergency alerts sent on January 12, 2020 (Pre-scripted messages):\nThe PEOC did not have any French language templates. Procedures existed for submitting an emergency French translation request. The service standard for emergency French translation was to respond within 30 minutes. On January 12, 2020, as the first alert was sent in error, translation was not considered. The PEOC did not submit an emergency French language request for the second alert.\n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[FCC-FR-2025#0025] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\n13. In requiring support for these templates, we make conforming edits to reflect the changes to the English versions that are discussed above. All commenters on the proposed Haitian Creole, Hindi, and Russian templates agreed that they were accurate and clear as written. We also did not receive any feedback on the proposed Arabic, Portuguese, or Italian templates. Because no commenter identified any sources of confusion or inaccuracy, we adopt the Arabic, Haitian Creole, Hindi, Italian, Portuguese, and Russian templates with only minor changes developed in consultation with the Commission's contracted professional translation service to further improve clarity. 14. Commenters recommended revisions to the Chinese, German, Tagalog, Vietnamese, French, Korean, and Spanish templates. In considering these recommendations in consultation with the Commission's contracted professional translation service, we make changes to the templates that correct errors, simplify phrasing, avoid awkwardness, improve readability, and increase comprehension. We reject some changes to the templates offered by commenters that would introduce confusion, make the templates more difficult to read, or diverge from the meaning of the English template.\\4\\ We also reject the revisions of commenters that translated the fillable fields, as the contents of those fields will be decided upon by the alert originators that send template alerts and will not be translated, as discussed below. ---------------------------------------------------------------------------\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[FCC-23-88#0239] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.43):\nNeed for, and Objectives of, the Final Rules 2. In this Third Report and Order, the Commission adopts rules to empower alert originators to enhance the utility of Wireless Emergency Alerts (WEA) as an alerting tool, making WEA more accessible and enabling WEA to provide more personalized alerts. Specifically, we require Participating Commercial Mobile Service Providers (Participating CMS Providers) to enable alerting authorities to display translated Alert Message content via the use of emergency alert message templates. In addition, our efforts to make WEA messages more accessibility extend to the deaf and hard of hearing community pursuant to our requirement that Participating CMS Providers’ WEA-capable mobile devices support templates in American Sign Language (ASL). We conclude that enabling the display of translated Alert Message content via the use of emergency alert message templates will allow alert originators to inform those communities that primarily speak a language other than English or Spanish of emergencies and save more lives. The Commission also adopts rules to require Participating CMS Providers’ WEA-capable mobile devices to support the presentation of WEA messages that link the recipient to a native mapping application. This requirement will allow alert originators to personalize alerts, spurring people to take protective action more quickly and to understand whether an alert applies to their them.\n\n[FCC-23-88#0403] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nThis may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero”). 212 AT&T Comments at 32; CTIA Comments at 21; Verizon Comments at 3, 5. We also note that this Report and Order adopts fewer than all the 2023 WEA FNPRM’s proposed requirements. 213 See 5 U.S.C. § 801(a)(1)(A). 214 See 5 U.S.C. § 604(b).\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[CAP12#0087] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n3.2.2 \"info\" Element and Sub-elements info cap. alertInfo. info. group The container for all component parts of the info sub-element of the alert message (OPTIONAL) (1) Multiple occurrences are permitted within a single <alert>. If targeting of multiple <info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. Each set of <info> blocks containing the same language identifier SHALL be treated as a separate sequence.\n\n[CAPCP#0056] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nincidents Info Rule #4 (Alert messages intended for public distribution must include an <info> block) language Rule #5 (<info> blocks must specify the content language) category event Rule #2 (Constraint of one subject event per alert message)\n\n[CAPCP#0078] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nRule #5. <info> blocks must specify the content language Element: <language> Use: Optional Type: Policy Value: Defined by RFC 3066 Description: The code denoting the language of the <info> blocks sub-elements within the alert message.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic headline, description and instruction match the English in meaning. The visibility figure (below 2,000 m), the area (some coastal and inland areas, Abu Dhabi), the end time (until 19:00 today, 4 March), the wind (fresh to strong northwesterly), the hazard (blowing dust and sand) and the protective action (take extra care when driving on open roads; visibility may drop suddenly) all agree, and the URL is unchanged. The Arabic was produced by machine translation, so a named person who reads Arabic must still review and approve it before it is sent; this review does not replace that sign-off.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The source is left as the Latin acronym 'NCM' in the Arabic description ('المصدر: NCM'). Some Arabic-only readers may not recognise it. The human reviewer may want the Arabic name (المركز الوطني للأرصاد) added. The meaning does not differ from the English.",
+    "searched_for": "Clauses requiring source or agency names to be localised in translated alert text; none of the clauses shown addresses this."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4861,
+  "output_tokens": 720,
+  "at": "2026-11-09T15:46:18Z"
+ }
+}

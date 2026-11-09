@@ -1,0 +1,171 @@
+{
+ "key": "8556c38cab75da6f6917b6e522f03bf65243cd590c4be82eee78b91175ff9165",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": null\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Alerta Extremo\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"Alerta Extremo\",\n  \"description\": \"Defesa Civil: misantropi4\",\n  \"instruction\": \"\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty Unknown severity Extreme consistency', 'erroneous test alert sent as Actual', 'alert description instruction required content'):\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[FCC-16-127#0262] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.44):\nin accordance with our Alert Message requirements will ensure that emergency managers have the opportunity to test in an environment that mirrors actual alert conditions and evaluate, for example, the accuracy with which various Participating CMS Providers geo-target Alert Messages in their community. Unlike other Alert Messages, however, consumers will not receive State/Local WEA Tests by default. Participating CMS Providers should provide their subscribers with the option to receive State/Local WEA Tests, and subscribers would have to affirmatively select this option in order to receive these test messages.281 According to CTIA, “[t]his way, unwanted test messages will not disturb wireless consumers who could become confused or annoyed by test messages and opt out of WEA entirely.”282 We also agree with Sprint that making State/Local WEA Tests available on an opt-in basis minimizes any risk of call center congestion.283 Another respect in which a State/Local WEA Test will differ from an actual Alert Message is that we require State/Local WEA Tests to include conspicuous language sufficient to make clear to the public that the message is, in fact, only a test. This will minimize any chance that such test messages might be misconstrued as actual Alert Messages. 66. The 24-hour delivery window that currently applies to RMTs under Section 10.350(a)(2) will not apply to State/Local WEA Tests.\n\n[IPAWS-OPEN#0024] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.21):\n1,324 • WEAs sent by NCMEC 1,357 • WEAs sent by state/local 13,118 • Total Emergency Alert System (EAS) messages sent 11,920 • EAS, including tests, sent by state/local 1,198 • EAS non-test sent by state/local\n\n[FCC-23-88#0149] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.25):\ninformation on differences that may exist between how live messages and test messages are handled and disseminated, so it is difficult to have confidence in the results of tests sent using the test system”). Alerting authorities still may use State/Local WEA Tests at their discretion to assess WEA’s performance. To the extent that alert originators are able to use these tests to generate data about WEA performance, that data should be representative of WEA’s actual performance during an emergency because Participating CMS Providers are required to transmit State/Local WEA Tests in a manner that complies with the Alert Message Requirements specified in Subpart D. See 47 CFR § 10.350(c). Aside from the fact that the public does not receive State/Local WEA Tests by default, Participating CMS Providers transmit them like any other Alert Message. September 2022 WEA Performance Exercise, 14-19 (Apr. 24, 2023) https://docs.fcc.gov/public/attachments/DOC-392829A1.pdf. We direct the Bureau to develop translations of the survey materials in the 13 languages we require Participating CMS Providers to support for multilingual alerting as well as ASL. 136\n\n[IPAWS-PROFILE#0049] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nThe <description> and <instruction> elements may refer to future events or actions.. expires REQUIRED. description Messages SHOULD have meaningful values for the <description>. The content in <description> may be truncated and therefore it is recommended that essential information be addressed first.\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[CAPCP#0058] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\neffective onset expires senderName Recommendation #4 (A <senderName> is strongly recommended) headline description instruction web contact parameter Recommendation #7 (Indicate when an update message contains non-substantive content changes.) Recommendation #6 (Indicate automated translation of free form text)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert is marked Actual with Extreme severity, but it names no hazard, time or place. The only event input has empty text, so there is no hazard bulletin behind it. The description 'misantropi4' looks like test or erroneous content. Nothing in this alert can be checked against hazard facts, and it should not go out as an Actual Extreme alert. A person must decide whether this is a false or test alert and whether to stop it.",
+  "objections": [
+   {
+    "issue": "The alert names no hazard event. The event and headline say only 'Alerta Extremo', and the description is a meaningless string rather than a description of a hazard. The only input has null text, so there is no bulletin to support any hazard. The content looks like a test or erroneous message sent as Actual.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Hold the alert. A person must confirm with the issuing authority whether a real hazard exists. If one does, redraft the event, headline and description from the verified bulletin, giving the hazard, times and areas. If not, cancel the alert and treat it as a false alert.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Defesa Civil: misantropi4"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0077",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     },
+     {
+      "kind": "clause",
+      "ref": "IPAWS-PROFILE#0049",
+      "quote": "Messages SHOULD have meaningful values for the <description>."
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0149",
+      "quote": "The script and content for actual emergency alerts versus test alerts should be clearly distinguishable."
+     }
+    ]
+   },
+   {
+    "issue": "Severity Extreme and urgency Immediate claim an extraordinary threat to life or property, but no verified input supports this. Certainty is Unknown, so the alert asserts maximum severity while admitting it does not know whether the event exists. Severity is set higher than any bulletin supports.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Set severity, urgency and certainty only from a verified hazard bulletin. With no bulletin, Extreme/Immediate cannot be supported and the alert should not be issued.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "severity",
+      "quote": "Extreme"
+     },
+     {
+      "kind": "view",
+      "ref": "certainty",
+      "quote": "Unknown"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "Extraordinary threat to life or property"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "\"Unknown\" – Certainty unknown"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4379,
+  "output_tokens": 1448,
+  "at": "2026-11-09T16:03:59Z"
+ }
+}

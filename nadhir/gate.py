@@ -19,7 +19,8 @@ P_APPROVED_BY, P_APPROVAL_COUNT = P + "ApprovedBy", P + "ApprovalCount"
 AI_VALUES = {"none", "assisted", "translated", "generated"}
 
 PROFILES = {
-    # max_pages: 3GPP TS 23.041 allows up to 15 pages; the UAE handset spec summary says 1 page.
+    # max_pages: 3GPP TS 23.041 allows up to 15 pages. advised_pages: a 2015 summary of the TDRA handset spec
+    # (TDRA-TS040, secondary) says 1 page; the current primary spec (TDRA-TSFS001, 2019) sets no page limit.
     "UAE": {"languages": ["ar", "en"], "max_pages": 15, "advised_pages": 1, "max_chars": None,
             "gazetteer": ["Abu Dhabi", "Dubai", "Sharjah", "Ajman", "Umm Al Quwain", "Ras Al Khaimah",
                           "Fujairah", "Al Ain", "Khor Fakkan", "Kalba", "Liwa", "Ruwais", "Hatta",
@@ -31,12 +32,12 @@ PROFILES = {
 RULES = {
     "R0": ("Valid CAP 1.2 (ITU-T X.1303bis) message", ["CAP12", "X1303BIS", "CAPXSD"]),
     "R1": ("Two named people approve a high-impact live alert", ["FCC-HI-2018", "UAE-AI-CHARTER"]),
-    "R2": ("Status matches reality: no drill sent live, no 'not a drill' in a drill", ["FCC-HI-2018", "INDIA-2023", "CAP12"]),
+    "R2": ("Status matches reality: no drill sent live, no 'not a drill' in a drill", ["FCC-HI-2018", "INDIA-2023", "CAP12", "TDRA-TSFS001"]),
     "R3": ("Area sent is the area requested, for this event", ["LA-2025", "JALERT-2022", "CAP12"]),
-    "R4": ("Sender may warn for this hazard and area", ["UAE-ISSUERS", "SEOUL-2023"]),
+    "R4": ("Sender may warn for this hazard and area", ["UAE-PORTAL-EWS", "UAE-ISSUERS", "SEOUL-2023"]),
     "R5": ("Signed by a registered originator key", ["CAP12", "IPAWS-OPEN", "BRAZIL-2026"]),
     "R6": ("Fits the cell broadcast page budget", ["TS23041", "TS23038", "TDRA-TS040", "FCC-16-127"]),
-    "R7": ("Required languages present", ["TDRA-TS040", "TDRA-2017-CB"]),
+    "R7": ("Required languages present", ["TDRA-TSFS001", "TDRA-TS040", "TDRA-2017-CB"]),
     "R8": ("AI involvement and approvers recorded in the alert", ["CAPCP", "ESTR-AICNHM", "MHEWS-2026", "UAE-AI-CHARTER"]),
     "R9": ("Machine translation: vetted template or named language approver", ["FCC-DA-25-12", "FCC-23-88"]),
     "R10": ("Corrections reference the alert they correct", ["CAP12", "FCC-HI-2018"]),

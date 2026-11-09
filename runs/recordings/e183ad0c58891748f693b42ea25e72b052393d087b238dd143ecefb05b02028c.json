@@ -1,0 +1,119 @@
+{
+ "key": "e183ad0c58891748f693b42ea25e72b052393d087b238dd143ecefb05b02028c",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Scheduled monthly test of the Emergency Alert System for Florida TV and radio broadcasters. No hazard.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Test\",\n  \"severity\": \"Unknown\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"TEST\",\n  \"description\": \"This is a TEST of the Emergency Alert System. No action is required.\",\n  \"instruction\": \"No action is required.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Actual versus Test Exercise', 'FCC EAS test misidentified as actual alert', 'required monthly test EAS message coding'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[IPAWS-PROFILE#0040] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nTable 1: CAP v1.2 IPAWS Profile Specification and Profile Note CAP Element Profile Specification (Normative) Profile Note (Non-Normative) Elements in boldface are REQUIRED. (Subcommittee) (Subcommittee) status A value of \"Actual\" SHALL be used for messages intended for dissemination to the public, including test messages intended for delivery to the public.\n\n[FCC-HI-2018#0036] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.8):\nrequired weekly test, as well as for practice/demonstration warnings);47 CFR § 11.45 (prohibits the transmission of false or deceptive EAS messages other than in an actual National, State or Local Area emergency or authorized test of the EAS); 47 CFR § 10.350(a)(4) (end-to-end testing, i.e., testing of the WEA from the Federal Alert Gateway to\n\n[FCC-HI-2018#0152] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\n Carefully consider the use and frequency of no-notice drills and ensure appropriate supervision of no-notice drills and consistency with internal test protocols.  Consult with SECCs on a regular basis—at least annually—to ensure that EAS procedures, including initiation and cancellation of actual alerts and tests, are mutually understood, agreed upon, and documented in the State EAS Plan.\n\n[IPAWS-PROFILE#0041] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nSome exchange partners may elect not to transmit certain messages of <status> “Actual” based on the <eventCode> values of the messages. For example, CMAS may not carry EAS required weekly test messages.\n\n[FCC-HI-2018#0032] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.8):\nSpecifically, the Commission requires EAS Participants to support national tests as scheduled by the Commission in consultation with FEMA, as well as monthly and weekly tests as set forth in their respective State EAS Plans.32 For WEA, the Commission requires wireless providers that elect to provide WEA to participate in monthly tests of their alert transmission capability and periodic tests of their connection to FEMA’s IPAWS.33 In addition, effective May 2019, the Commission will require these wireless providers to support end-to-end WEA tests initiated by federal, state, and local emergency managers and capable of being received by members of the public.34 End-to-end WEA testing will help to ensure that emergency managers have the opportunity to test in an environment that mirrors actual alert conditions and evaluate, for example, the accuracy with which wireless providers can target WEA messages to the areas in their communities actually affected by an emergency.35 To safeguard against confusing the public, the Commission also requires both EAS and WEA test messages that are distributed to the public to include conspicuous language sufficient to make clear to the public that the message is, in fact, only a test.36 29 See 47 CFR §§ 10.10(f), 10.240 (notification to new subscribers of non-participation in WEA).\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[FCC-HI-2018#0025] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.7):\narchitecture of the EAS to distribute voluntary weather-related and other emergency alerts.24 10. The EAS is maintained and administered in each state by State Emergency Communication Committees (SECCs), non-governmental voluntary groups usually comprised of representatives of broadcasters and other EAS Participants (such as cable television service providers), and occasionally, representatives of state and local government. SECCs are chaired by an EAS Participant, usually a representative of the state broadcast association. SECCs draft EAS Plans that govern how EAS alerts are propagated within their respective states.25 State EAS Plans not only set forth the distribution plans for the daisy-chain of broadcast stations that would distribute the Presidential alert and other EAS alerts, but also schedule and coordinate the monthly EAS tests that EAS Participants are required to conduct. In most states, the SECC coordinates with the state emergency management agencies that initiate alerts for the state and its communities, regardless of whether that agency is a formal member of the SECC. The State EAS Plans are reviewed by the Bureau to ensure that they are consistent with the Commission’s rules and must be approved by the Chief of the Bureau.26 B.\n\n[TS23041#0369] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.76):\n4380 111C CMAS CBS Message Identifier for the Required Monthly Test. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the verified input: a scheduled monthly EAS test with no hazard. 'Event: Test', 'Unknown' severity, urgency and certainty, and the 'This is a TEST' wording all fit a no-hazard test. The bulletin supports no hazard facts, and the alert claims none. Status 'Actual' is consistent with the IPAWS rule for test messages delivered to the public. Nothing within my mandate needs a fix.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The verified input limits the test to Florida TV and radio broadcasters, but the alert text names no area and no test date or time. If the area and time fields are carried elsewhere, approvers may want to confirm they say Florida and the scheduled test window. None of the clauses shown requires a test message to state its area or time in the text.",
+    "searched_for": "required monthly test EAS message coding; CAP status Actual versus Test Exercise"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4211,
+  "output_tokens": 539,
+  "at": "2026-11-09T16:04:09Z"
+ }
+}

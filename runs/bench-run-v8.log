@@ -1,0 +1,15 @@
+brazil-2026: as sent blocked ['R1', 'R4', 'R5'] expected ['R5'] match=True agents caught []
+florida-test-2023: as sent blocked ['R2'] expected ['R2'] match=True agents caught ['R2']
+hawaii-2018: as sent blocked ['R1', 'R2', 'R10 (correction)'] expected ['R2', 'R1', 'R10'] match=True agents caught ['R2']
+india-test-2023: as sent blocked ['R2'] expected ['R2'] match=True agents caught ['R2']
+jalert-2022: as sent blocked ['R3'] expected ['R3'] match=True agents caught ['R3']
+la-county-2025: as sent blocked ['R3', 'R10 (correction)'] expected ['R3'] match=True agents caught ['R3']
+pickering-2020: as sent blocked ['R1', 'R2'] expected ['R2', 'R1', 'R10'] match=True agents caught ['R10', 'R2']
+seoul-2023: as sent blocked ['R3', 'R4'] expected ['R4'] match=True agents caught ['R4']
+taiwan-2024: as sent release [] expected ['R11'] match=False agents caught ['R11']
+uae-dust-2026-03-04: 0/3 first drafts broke a rule (none); with the gate: 3/3 released after redraft and approval, 0 held
+uae-dust-drill: 0/3 first drafts broke a rule (none); with the gate: 3/3 released after redraft and approval, 0 held
+uae-fog-2026-02-17: 0/3 first drafts broke a rule (none); with the gate: 3/3 released after redraft and approval, 0 held
+uae-rain-2026-08-22: 0/3 first drafts broke a rule (none); with the gate: 3/3 released after redraft and approval, 0 held
+official finding matched: 8/9
+BENCH_DONE 0

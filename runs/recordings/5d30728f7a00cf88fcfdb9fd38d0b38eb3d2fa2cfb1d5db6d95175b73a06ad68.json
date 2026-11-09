@@ -1,0 +1,33 @@
+{
+ "key": "5d30728f7a00cf88fcfdb9fd38d0b38eb3d2fa2cfb1d5db6d95175b73a06ad68",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in some coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE - NOT A REAL ALERT. NCM: active to occasionally strong northwesterly winds raising dust and sand, visibility below 3,000 m in some coastal and inland areas, from 10:30 until 18:00 on 16 Feb 2026. Exercise target area: Abu Dhabi (demo zone).\",\n  \"instruction\": \"EXERCISE: Take care, especially when driving on external and open roads, as blowing dust can suddenly reduce visibility. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير يحد من الرؤية في بعض المناطق الساحلية والداخلية حتى 18:00\",\n  \"description\": \"تمرين - ليس تنبيهًا حقيقيًا. NCM: رياح شمالية غربية نشطة إلى قوية أحيانًا مثيرة للغبار والرمال، والرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية، من 10:30 حتى 18:00 بتاريخ 16 فبراير 2026. المنطقة المستهدفة بالتمرين: أبوظبي (منطقة تجريبية).\",\n  \"instruction\": \"تمرين: يرجى توخي الحذر، خاصة أثناء القيادة على الطرق الخارجية والمكشوفة، إذ قد يؤدي الغبار المتطاير إلى تدني الرؤية بشكل مفاجئ. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation review emergency alert accuracy",
+   "multilingual alert machine translation human review",
+   "exercise test message labeling CAP"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1101,
+  "output_tokens": 52,
+  "at": "2026-11-09T15:48:32Z"
+ }
+}

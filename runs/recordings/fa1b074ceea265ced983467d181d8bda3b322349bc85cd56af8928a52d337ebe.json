@@ -1,0 +1,161 @@
+{
+ "key": "fa1b074ceea265ced983467d181d8bda3b322349bc85cd56af8928a52d337ebe",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Defesa Civil Nacional\": {\n   \"name\": \"Defesa Civil Nacional\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"\",\n  \"codes\": [],\n  \"drawn_for_event\": \"brazil-2026\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"unknown (not a registered originator)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Alerta Extremo\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Multiple regions of Brazil (cities and states as reported)\",\n  \"codes\": [\n   [\n    \"ISO3166-2\",\n    \"BR-PR\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-SP\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-RJ\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-DF\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-BA\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-PA\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-MS\"\n   ],\n   [\n    \"ISO3166-2\",\n    \"BR-AC\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Alerta Extremo\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender identifier authorized originator', 'unauthorized alert originator false alert FCC', 'CAP area description geocode mismatch requested area'):\n\n[X1303BIS#0046] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\nsender cap.alert.sender.identifier The identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[CAP12#0070] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\n(1) A number or string uniquely identifying this message, assigned by the sender. (2) MUST NOT include spaces, commas or restricted characters (< and &). sender cap. alert. sender. identifier\n\n[CAP12#0071] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nThe identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name.\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[LA-2025#0003] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.2):\nKey policy recommendations include improved federal funding for local alerting infrastructure, the Federal Emergency Management Agency (FEMA) should provide enhanced training and certification for Alert Originators, standardization of third-party software, implementation of location-aware maps in WEA messages, and finalization of FCC performance standards. These measures are necessary to restore public trust in emergency communications and ensure alerts are accurate, timely, and targeted.\n\n[FCC-HI-2018#0140] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nthe live alert templates.120 Further, while HI-EMA’s alert origination software did display a message to confirm the alert originator’s intent to transmit alerts and tests (a “speedbump”), it did not display that message in a way that enables the alert originator to review their message while they confirm their intent to transmit it, nor did the speedbump clearly specify whether the alert originator is about to send a test or a live alert. HI-EMA’s alert origination software vendor intends to clearly differentiate its test environment from its live alert environment (e.g., color coding and alphabetizing their templates, and adding information to its final confirmation prompt (speedbump) that makes clear whether the alert about to be sent is a live alert). This will make it more difficult for a warning officer to accidentally choose the wrong alert message template, or to transmit a false alert.121 \n\n[FCC-HI-2018#0074] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.13):\nTwitter Password, Washington Post (Jan. 23, 2018), https://www.washingtonpost.com/news/morningmix/wp/2018/01/23/hawaii-governor-didnt-correct-false-missile-alert-sooner-because-he-didnt-know-his-twitterpassword/?utm_term=.6068396c37e8 (attributing the delay between when the Governor learned that the alert was false and his issuance of public notice to the fact that the Governor did not know his Twitter password). 64 In initiating an EAS message, the alert originator encodes a message using EAS Protocol.\n\n[LA-2025#0013] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.6):\nFrom latimes.com Genasys, Inc., the software company used by the County for mapping targets and issuing Wireless Emergency Alerts (WEA) Los Angeles County The Federal Emergency Management Agency (FEMA) The Federal Communications Commission (FCC) All four entities responded to the oversight letters by the requested 12 deadline of April 1, 2025. KEY FINDINGS 1. The initial false alert is believed to be caused by technology issues with third-party technology vendor Genasys. In sending an alert, an Alert Originator designates a broad geographic area (geocode), like a county, where they have permission to send alerts.Within this geocode, a more precise geographic area (polygon) can be used to target alerts to only the area impacted by the threat. 12. https://robertgarcia.house.gov/media/press-releases/congressman-robert-garcia-leads-los-angeles-county-members-demand-answers\n\n[CAPCP#0068] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area>\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[CAPCP#0098] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #7. Location References are required):\n<info> ... <area> ... <geocode> <valueName>profile:CAP-CP:Location:1.0</valueName> <value>3506</value> </geocode> <geocode> <valueName>PostalCode:2011</valueName> <value>M4R2S8</value> </geocode> ... </area> ... </info> (In the third example, the first <geocode> uses a value from a previous CAP-CP Location References list while the second <geocode> uses a value from a later CAP-CP Location References list)\n\n[CAPCP#0097] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #7. Location References are required):\n<info> ... <area> ... <geocode> <valueName>profile:CAP-CP:Location:1.0</valueName> <value>3506</value> </geocode> <geocode> <valueName>profile:CAP-CP:Location:1.0</valueName> <value>3507004</value> </geocode> ... </area> ... </info> (The second example uses a <geocode> from two location reference lists. The recipient is to identify to the appropriate reference list from the <valueName> entry for their purposes.)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "This live, real-event Actual alert at Extreme severity comes from a sender that is not in the issuer register. The only registered issuer is Defesa Civil Nacional. A person must confirm who is actually originating this alert before it can go anywhere. The alert's area also cannot be checked: the requested area is empty, while the alert targets eight states with a vague description.",
+  "objections": [
+   {
+    "issue": "The sender is not a registered originator. The issuer register lists only Defesa Civil Nacional. A live Actual alert at Extreme severity from an unidentified originator cannot be authorised; a person or the national authority must confirm who is issuing it.",
+    "field": "sender",
+    "blocking": true,
+    "fix": "Escalate to Defesa Civil Nacional. Confirm the real originator. If it is authorised, reissue with the registered sender identifier; otherwise do not send.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.sender",
+      "quote": "unknown (not a registered originator)"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0071",
+      "quote": "Identifies the originator of this alert. Guaranteed by assigner to be unique globally"
+     },
+     {
+      "kind": "view",
+      "ref": "console_environment",
+      "quote": "live"
+     }
+    ]
+   },
+   {
+    "issue": "The requested area drawn for this event is empty (no description, no codes). The alert instead targets eight states (PR, SP, RJ, DF, BA, PA, MS, AC) with the vague description 'cities and states as reported'. Nothing confirms that this is the area requested for the event.",
+    "field": "area",
+    "blocking": true,
+    "fix": "Get the requested area for event brazil-2026 with explicit codes. Match the alert's codes and areaDesc to it, replacing 'as reported' with the actual named areas.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "Multiple regions of Brazil (cities and states as reported)"
+     },
+     {
+      "kind": "view",
+      "ref": "requested_area.drawn_for_event",
+      "quote": "brazil-2026"
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0013",
+      "quote": "an Alert Originator designates a broad geographic area (geocode), like a county, where they have permission to send alerts"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4652,
+  "output_tokens": 1054,
+  "at": "2026-11-09T16:03:54Z"
+ }
+}

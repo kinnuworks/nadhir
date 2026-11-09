@@ -1,0 +1,137 @@
+{
+ "key": "34d55d222b1fc91fd0f3ec25cbee36792da46d95dc60267c41fd909b350cc126",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): Coastal and inland areas, Abu Dhabi (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-16, https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced] ABU DHABI, 16th February, 2026 (WAM) -- The National Centre of Meteorology (NCM) warned today of active to occasionally strong northwesterly winds, raising dust and sand and reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas. The Centre stated in a statement issued today that the weather conditions began at 10:30 and will continue until 18:00, urging the public to exercise caution, particularly when driving on external and open roads, due to the risk of sudden drops in visibility caused by blowing dust.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Met office reviewer objects (description): Wind strength is overstated. The bulletin describes winds as 'active to occasionally strong', but the alert says simply 'Strong northwesterly winds'. Fix: Change to 'Active to occasionally strong northwesterly winds are raising dust and sand.' | Met office reviewer objects (headline): The affected area does not match the bulletin. NCM (a national centre) warns of 'some coastal and inland areas' without naming an emirate; 'ABU DHABI' is only the WAM dateline. The alert limits the hazard to 'coastal and inland areas of Abu Dhabi', which the bulletin does not support and which may leave out affected areas elsewhere. Fix: Remove 'of Abu Dhabi' from the headline and description and use the bulletin's wording 'some coastal and inland areas' (or name the areas explicitly, if NCM gives them). | Network operator and regulator reviewer objects (phone_text): Neither the English nor the Arabic phone text tells people what to do. Both describe the hazard (dust, sand, visibility below 3,000 m) and then stop, ending with a statement about the hazard. There is no protective action, so the first page does not carry hazard and action together. Fix: Add a short protective action right after the hazard line in both languages so it lands on the first page. For example, in English: 'Drive slowly, use low-beam lights, keep your distance; people with breathing problems stay indoors.' Add an equivalent in Arabic placed early in the text. Keep both languages well under 15 pages. [cites Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates, p.21]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Blowing dust and sand with reduced visibility",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "headline": "EXERCISE: Blowing dust reduces visibility below 3,000 m in some coastal and inland areas until 18:00",
+  "description": "EXERCISE - NOT A REAL ALERT. NCM: Active to occasionally strong northwesterly winds are raising dust and sand, reducing visibility to under 3,000 m in some coastal and inland areas until 18:00 today (16 Feb). Drive with caution, especially on external and open roads.",
+  "instruction": "EXERCISE: Drive slowly and with caution, especially on external and open roads, because visibility can drop suddenly. More information: https://alerts.example.ae",
+  "left_out": [
+   "No unverified inputs were received, so nothing was excluded on verification grounds.",
+   "The suggested advice 'people with breathing problems stay indoors' was not used. The NCM bulletin does not mention a health risk, so adding it would introduce a hazard that is not in the verified inputs.",
+   "The suggested 'use low-beam lights' and 'keep your distance' were not used. The bulletin's only advice is to exercise caution when driving on external and open roads, so the instruction stays close to that wording.",
+   "'Abu Dhabi' was removed as the area name. In the bulletin it is only the WAM dateline; NCM says 'some coastal and inland areas' without naming an emirate.",
+   "An Arabic version was not drafted here because this output is English only. The Arabic phone text needs the same fixes: hazard and protective action on the first page, and no limit to Abu Dhabi."
+  ],
+  "note_for_reviewer": "The bulletin gives 18:00 without a timezone or date, so I assumed UAE local time on 16 Feb 2026. Please also confirm whether the operator's demo target area should still be described as 'Abu Dhabi' in the area polygon now that the text follows NCM's 'some coastal and inland areas'."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 2053,
+  "output_tokens": 1614,
+  "at": "2026-11-09T16:10:27Z"
+ }
+}

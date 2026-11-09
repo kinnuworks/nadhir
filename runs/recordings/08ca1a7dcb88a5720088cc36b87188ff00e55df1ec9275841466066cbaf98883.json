@@ -1,0 +1,33 @@
+{
+ "key": "08ca1a7dcb88a5720088cc36b87188ff00e55df1ec9275841466066cbaf98883",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust and sand reducing visibility in coastal and inland areas until 19:00\",\n  \"description\": \"NCM warning: fresh to strong northwesterly winds are causing blowing dust and sand. Visibility is below 2,000 m in some coastal and inland areas. Conditions continue until 19:00 today, 4 March.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop suddenly. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"غبار ورمال متطايرة تقلل مدى الرؤية في المناطق الساحلية والداخلية حتى الساعة 19:00\",\n  \"description\": \"تحذير من المركز الوطني للأرصاد (NCM): رياح شمالية غربية نشطة إلى قوية تتسبب في تطاير الغبار والرمال. مدى الرؤية أقل من 2,000 م في بعض المناطق الساحلية والداخلية. تستمر هذه الأحوال حتى الساعة 19:00 اليوم، 4 مارس.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر، خاصة عند القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية فجأة. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert human review",
+   "machine translation public warning accuracy",
+   "NCM dust visibility warning Arabic terminology"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1050,
+  "output_tokens": 54,
+  "at": "2026-11-09T16:08:15Z"
+ }
+}

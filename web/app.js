@@ -150,3 +150,19 @@ fetch("/web/results/ablation.json").then((r) => r.json()).then((a) => {
       ${c.agents_named.length ? `<td class="pass">${c.agents_named.map((h) => esc(h.by + ": " + h.issue)).join("<br>")}</td>` : mark(false)}</tr>`).join("")}</table></details>
     <p class="muted">${esc(a.note)}</p>`;
 }).catch(() => { $("ablationOut").textContent = "Ablation results not built yet."; });
+
+$("feedBtn").onclick = async () => {
+  $("feedStatus").textContent = "Fetching the feed…";
+  $("feedOut").innerHTML = "";
+  const r = await post("/api/feed", { feed: $("feed").value });
+  $("feedStatus").textContent = "";
+  if (r.error) { $("feedOut").innerHTML = `<p class="fail">${esc(r.feed || "")} ${esc(r.error)}</p>`; return; }
+  $("feedOut").innerHTML = `<p><strong>${esc(r.feed)}</strong>: ${r.checked} alert(s) checked${r.unreadable ? `, ${r.unreadable} could not be fetched` : ""}.
+    Held: ${r.held}. Signed: ${r.signed}. Record AI involvement or an approver: ${r.with_ai_or_approver_record}.
+    Too long for one cell broadcast message as written: ${r.too_long_for_cell_broadcast}.</p>
+    <table><tr><th>Alert</th><th>Sent</th><th>Status / type</th><th>Languages</th><th>Result</th></tr>
+    ${r.alerts.map((a) => a.error ? `<tr><td colspan="5" class="muted">${esc(a.link)}: ${esc(a.error)}</td></tr>` :
+      `<tr><td>${esc(a.headline || a.event || a.identifier)}</td><td>${esc(a.sent)}</td><td>${esc(a.status)} / ${esc(a.msgType)}</td><td>${esc(a.languages.join(", "))}</td>
+       <td class="${a.failed.length ? "fail" : "pass"}">${a.failed.length ? "held: " + esc(a.verdicts.filter((v) => a.failed.includes(v.rule)).map((v) => v.rule + " " + v.detail).join("; ")) : "passes these rules"}${a.too_long_for_cell_broadcast ? `<br><span class="muted">note: over 15 cell broadcast pages as written</span>` : ""}</td></tr>`).join("")}</table>
+    <p class="muted">${esc(r.note)}</p>`;
+};

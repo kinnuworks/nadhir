@@ -1,0 +1,151 @@
+{
+ "key": "aa4c1d496eb01962f0c004019b917c81d325710d2f40a7d5a450b0c39dd0c788",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n   \"characters\": 221,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('TDRA cell broadcast Arabic English mandatory', '3GPP TS 23.041 UCS-2 page length', 'alert first page hazard protective action'):\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0047] 3.2 TDRA Consumer Protection Regulations v2 (p.10):\n3.2.2. shall be written in the Arabic language or in the English Language as preferred by the Consumer or in circumstances where the preference is unknown, the information shall be written in both languages.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-2017-CB#0001] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nOptional Show the class Banner(s)/Title(s) in the setting menu عرض عنوان الفئة في صفحة الخيارات Mandatory Mandatory Notifications/Settings Banner(s)/Title(s) Popup Banner(s)/Title(s) عنوان صفحة الخيارات عنوان صفحة عرض الرسالة Mandatory Mandatory\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[TDRA-2017-CB#0002] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nMandatory Mandatory السلوك Behavior Enabled by Default? Ability to Disable by the user? حالة التفعيل تمكين املستخدم من تفعيل إلغاء استقبال الرسائل؟ Channel ID (Secondary Language) الصوت Sound الشاشة Popup alert on screen\n\n[TDRA-TSFS001#0008] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nTechnical Requirements 4.1 Mobile technical specification ETSI TS 123 041 4.2 Digital cellular telecommunications system (Phase 2+) (GSM); Universal Mobile Telecommunications System (UMTS); Technical realization of Cell Broadcast Service (CBS) (3GPP TS 23.041 version 15.3.0 Release 15)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0004] UAE National Strategy for AI 2031 (p.3):\nSECTORS THROUGH DEPLOYMENT OF AI Page 22 Page 22 Existing Assets Page 23 Emerging Sectors Page 25 Proof-of-Concept Support in Priority Sectors Page 26 OBJECTIVE 3: DEVELOP A FERTILE ECOSYSTEM FOR AI\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0079] API First Guideline (p.34):\nRun time rules and actions need to be implemented to assure the confidentiality using web service level security. The actions to be applied depend on the sensitivity of the data transferred and transactions performed in the services. The following table shows the runtime actions based on the above categorization.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0101] UAE National Air Quality Agenda 2031 (p.15):\n6.3 Key Programs and Action 6.3.1. Outdoor Air Quality Table (3) sets out the first strategic goal for outdoor air quality in the UAE and includes eight key programs along with the action required to achieve the strategic goal.\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[MHEWS-2026#0059] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.17):\nWhen deployed together across the early warning value cycle, these capabilities can transform fragmented technical systems into integrated, people-centred early warning ecosystems that translate knowledge and data into timely protective action. Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Two blocking problems the drafter can fix. The required Arabic text is missing: only English is present, but the UAE profile requires Arabic and English. The English text names the hazard but gives no protective action. The English page count (221 characters, GSM-7, 3 pages) is within the 15-page maximum.",
+  "objections": [
+   {
+    "issue": "Arabic, a required language, is missing. The phone_text has only an English entry, but the profile requires both Arabic (ar) and English (en), and UAE handset specifications require alerts in both.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Add an Arabic phone_text entry (UCS-2) with the same content as the English, including the protective action. Keep it within 15 pages.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TDRA-TS040#0001",
+      "quote": "Messages should support both English and Arabic languages."
+     },
+     {
+      "kind": "view",
+      "ref": "handset_spec",
+      "quote": "handsets must show alerts in Arabic and English"
+     }
+    ]
+   },
+   {
+    "issue": "The message gives no protective action. The English text describes the hazard (dust and sand, visibility under 2,000 metres), the time and the source, but never tells people what to do. The first page therefore carries the hazard but not the action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Put a short protective action on the first page, in both languages, right after the hazard. For example: drive with caution, keep a safe distance, avoid outdoor activity, and people with respiratory conditions should stay indoors.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "FCC-DA-25-12#0114",
+      "quote": "coupled with a description of the threat and the protective action the public should take"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4445,
+  "output_tokens": 974,
+  "at": "2026-11-09T16:20:14Z"
+ }
+}

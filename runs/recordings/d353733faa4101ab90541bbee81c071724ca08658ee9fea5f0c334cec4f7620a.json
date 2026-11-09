@@ -1,0 +1,33 @@
+{
+ "key": "d353733faa4101ab90541bbee81c071724ca08658ee9fea5f0c334cec4f7620a",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE – Blowing dust and sand reducing visibility in some coastal and inland areas\",\n  \"description\": \"EXERCISE. Active to occasionally strong northwesterly winds are raising dust and sand in some coastal and inland areas. Drive with caution, especially on external and open roads. Visibility may drop suddenly below 3,000 m until 18:00 on 16 Feb.\",\n  \"instruction\": \"EXERCISE. Take care when driving, especially on external and open roads, because visibility can drop suddenly. Follow updates from the National Centre of Meteorology and https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين – غبار ورمال متطايرة تقلل مدى الرؤية في بعض المناطق الساحلية والداخلية\",\n  \"description\": \"تمرين. رياح شمالية غربية نشطة إلى قوية أحياناً تثير الغبار والرمال في بعض المناطق الساحلية والداخلية. يرجى القيادة بحذر، خاصة على الطرق الخارجية والمكشوفة. قد ينخفض مدى الرؤية فجأة إلى أقل من 3,000 م حتى الساعة 18:00 يوم 16 فبراير.\",\n  \"instruction\": \"تمرين. توخوا الحذر أثناء القيادة، خاصة على الطرق الخارجية والمكشوفة، لأن مدى الرؤية قد ينخفض فجأة. تابعوا التحديثات من المركز الوطني للأرصاد و https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert verification",
+   "machine translation public warning human review",
+   "exercise alert message labeling requirements"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1063,
+  "output_tokens": 47,
+  "at": "2026-11-09T15:49:23Z"
+ }
+}

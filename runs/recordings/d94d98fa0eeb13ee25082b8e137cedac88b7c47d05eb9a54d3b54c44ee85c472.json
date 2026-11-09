@@ -1,0 +1,148 @@
+{
+ "key": "d94d98fa0eeb13ee25082b8e137cedac88b7c47d05eb9a54d3b54c44ee85c472",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation must match English alert', 'cell broadcast message length character limit', 'machine translated alert human review requirement'):\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0025] DotEmarat Policy EN (p.9):\n8.5.2.3. 8.5.2.4. 8.5.2.5. 8.5.2.6. 8.5.2.7. be in Unicode Normalisation Form C (NFC); consist only of Unicode Code Points present in the Tables of Allowed Letters, Numbers and Special Characters defined in Appendix A; not begin with a digit (English ASCII or Arabic digits); not contain both English ASCII AND Arabic digits; neither begin with nor end with a dash; not contain a dash in the third and fourth positions (e.g. ; and not include a space (e.g. ).\n\n[FCC-16-127#0510] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.85):\nChinese,558 French or French Creole,559 Tagalog,560 Vietnamese,561 Korean,562 Arabic,563 Russian,564 and African languages.565 English-speaking ability varies greatly, even among speakers of the top ten languages in the United States.566 According to recent census data, “less than 50 percent of those who spoke Korean, Chinese, or Vietnamese spoke English ‘very well.’”567 According to the ACS Language Report, “[p]eople who cannot speak English ‘very well’ can be helped with translation services, education, or assistance in accessing government services.”568 b.\n\n[FCC-FR-2025#0025] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\n13. In requiring support for these templates, we make conforming edits to reflect the changes to the English versions that are discussed above. All commenters on the proposed Haitian Creole, Hindi, and Russian templates agreed that they were accurate and clear as written. We also did not receive any feedback on the proposed Arabic, Portuguese, or Italian templates. Because no commenter identified any sources of confusion or inaccuracy, we adopt the Arabic, Haitian Creole, Hindi, Italian, Portuguese, and Russian templates with only minor changes developed in consultation with the Commission's contracted professional translation service to further improve clarity. 14. Commenters recommended revisions to the Chinese, German, Tagalog, Vietnamese, French, Korean, and Spanish templates. In considering these recommendations in consultation with the Commission's contracted professional translation service, we make changes to the templates that correct errors, simplify phrasing, avoid awkwardness, improve readability, and increase comprehension. We reject some changes to the templates offered by commenters that would introduce confusion, make the templates more difficult to read, or diverge from the meaning of the English template.\\4\\ We also reject the revisions of commenters that translated the fillable fields, as the contents of those fields will be decided upon by the alert originators that send template alerts and will not be translated, as discussed below. ---------------------------------------------------------------------------\n\n[CAPCP#0133] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #3. Use established <event> values):\nWhen creating public alert messages in languages other than English or French, a translation of the list to the appropriate language should be conducted in advance for inclusion in alerts.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0152] 3.2 TDRA Consumer Protection Regulations v2 (p.27):\nthe concerned Subscriber has paid for or is expected to pay for; and (b) the concerned Subscriber has reported the service outage to the concerned Licensee; and (c) the length of time that the Telecommunications Service is unavailable exceeds the limits given in these Regulations.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0062] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.15):\nallocation of serial numbers; - modifying or deleting CBS messages held by the BSC/RNC/eNodeB/NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a BSC/RNC/eNodeB/NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]); - determining the set of cells to which a CBS message should be broadcast, and indicating within the Serial Number the geographical scope of each CBS message;\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0015] AI Guide v1 (p.6):\n10 2014 Amazon Echo was introduced. Figure 1. Peaks and Troughs in AI Science Over Time With the advent of the programmable computer in the wake of World War II, Alan Turing introduced the Turing test in 1950, which considered the question, “Can machines think?” while working at the University of Manchester. The test involves a human interrogator who converses with a human and a machine that generates human-like language. If the interrogator is unable to distinguish between the human and the machine, then the machine would have passed the test of being able to act like a human. Since then, the Turing test has become an important concept in the 10\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic headline and instruction match the English, and the times, dates, place and source in the description also match. However, the machine-translated Arabic description adds a paragraph that is not in the English, repeated three times. It brings in protective actions the English does not give: avoid going out except when absolutely necessary, keep windows closed, check your vehicle before driving, follow official bulletins and avoid rumours. Telling people to stay home changes the protective action, which in English is only to drive carefully. This needs fixing before a named Arabic reader signs off.",
+  "objections": [
+   {
+    "issue": "The Arabic description adds advice that the English does not contain, and repeats it three times. The added text tells people to avoid going out except when absolutely necessary and to keep windows closed. The English only tells people to drive with extreme caution, keep a safe distance and follow reduced speed limits. This changes the protective action and makes the Arabic message much longer than the English.",
+    "field": "arabic.description",
+    "blocking": true,
+    "fix": "Delete all three copies of the paragraph beginning 'ننصح الجميع بمتابعة النشرات الجوية'. The Arabic description should end after 'المصدر: المركز الوطني للأرصاد الجوية.', matching the English description. If the issuing authority wants that advice, add it to the English first and then translate it once. A named Arabic reader should then confirm the corrected text.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة"
+     },
+     {
+      "kind": "view",
+      "ref": "english.instruction",
+      "quote": "Drive with extreme caution."
+     },
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0064",
+      "quote": "may garble or change the meaning of the intended message"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5917,
+  "output_tokens": 1198,
+  "at": "2026-11-09T16:25:21Z"
+ }
+}

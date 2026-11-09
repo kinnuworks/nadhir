@@ -1,0 +1,119 @@
+{
+ "key": "e077a81dfe860138c7550a3a8018a2617fe49773b4ce2aa6ebcdd43f396fa7c7",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Al Ain (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-ALAIN\"\n   ]\n  ],\n  \"drawn_for_event\": \"demo-14b184ecbe\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and sand with fresh to strong winds\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Al Ain (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-ALAIN\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"NCM warning: fresh to strong winds at times and blowing dust reducing visibility until 19:00 today, 4 Mar\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender authority status Actual msgType Alert', 'UAE early warning issuing authority NCEMA', 'alert area geocode polygon target requested area'):\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.\n\n[ITU-UAE:05_Business_Continuity/5.1_NCEMA_7000_2021_BCM_Standard#0002] AE/SCNS/NCEMA 7000:2021 — Business Continuity Management Standard (p.2):\nNCEMA 7000 SELF-ASSESSMENT CHECKLIST By law, it is mandatory to implement Business Continuity Management (BCM) in the UAE. This is equally applicable to all entities. NCEMA (National Emergency Crisis and Disaster Management Authority) has developed the AE/SCNS/ NCEMA 7000:2015 standard (known as NCEMA 7000 in short). NCEMA has also developed training courses around this standard and the organisational certifications can also be achieved. This document has been provided to you as complimentary input from Continuity & Resilience (CORE) as your starting point to see your maturity and conduct a self-assessment. The checklist contains 86 major questions, 209 total questions in 22 sections/ categories. __________________________________________________________________________________\n\n[UAE-PORTAL-EWS#0015] Handling emergencies (section 'National Early Warning System') (Crime, safety and security):\nMinistry of Climate Change and Environment on hotline 8003050 Dubai Municipality on hotline 800900 Local municipalities across the UAE Emirates Animal Welfare Society on 9712-5010054. To report human rights issues, use the eServices from:\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Guide_to_Access_Government_Information_2017#0003] Guide to Access Government Information 2017 (p.2):\nSection 2: The Target Group The target group of this guide are the individuals, who are looking for information about the decisions and procedures of the government authorities, researches in various areas, application and software solution developers, consultants and private sector institutions concerned with reports, research and information.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[FCC-16-127#0688] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.119):\nA Participating CMS Provider must transmit any Alert Message that is specified by a geocode, circle, or polygon to an area not larger than the provider's approximation of coverage for the Counties or County Equivalents with which that geocode, circle, or polygon intersects that best approximates the specified geocode, circle, or polygon. If, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates the specified geocode, circle, or polygon, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site. If, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area. (b) Upon request from an emergency management agency, a Participating CMS Provider will disclose information regarding their capabilities for geo-targeting Alert Messages. A Participating CMS Provider is only required to disclose this information to an emergency management agency insofar as it would pertain to Alert Messages initiated by that emergency management agency, and only so long as the emergency management agency offers confidentiality protection at least equal to that provided by the federal FOIA. 10. Add a new Section 10.480: § 10.480 Language support.\n\n[FCC-16-127#0213] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.36):\nDiscussion 52. We narrow our WEA geo-targeting requirement from the current county-level standard to a polygon-level standard. Specifically, we amend Section 10.450 to state that a Participating CMS Provider must transmit any Alert Message that is specified by a geocode, circle, or polygon to an area that best approximates the specified geocode, circle, or polygon.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within my mandate, nothing is wrong. The sender is in the issuer register at level 1 with all areas and categories. The alert's area and codes (Al Ain demo zone, DEMO-ZONE/AUH-ALAIN) match the area requested for event demo-14b184ecbe. Status 'Actual' fits a real event on a live console. It is a new Alert, so it needs no references. No active alert from a higher authority could be overreached.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The headline attributes the warning to NCM, but the sender is the national authority. Relaying a meteorological warning under the national issuer is likely fine. Whether the headline should name the originating agency is a content question outside my mandate, and no clause shown sets a rule on it.",
+    "searched_for": "A clause requiring the attribution in the alert text to match the CAP sender or issuing authority"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5086,
+  "output_tokens": 503,
+  "at": "2026-11-09T16:27:48Z"
+ }
+}

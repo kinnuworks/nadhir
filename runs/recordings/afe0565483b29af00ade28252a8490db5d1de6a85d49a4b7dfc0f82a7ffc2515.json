@@ -1,0 +1,133 @@
+{
+ "key": "afe0565483b29af00ade28252a8490db5d1de6a85d49a4b7dfc0f82a7ffc2515",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology. Reports say a dam near Al Ain has burst; leave the area now.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('unverified reports in alert message content', 'CAP severity certainty values definitions', 'NCM fog warning early warning UAE'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/IAM_Eng_Updated#0003] IAM Eng Updated (p.2):\nBlocking Message: means the message which appears when attempting to access Blocked Content. 1-2 Exemption: means in respect of a particular User’s access to Internet Content, allowing that User to access Internet Content under Prohibited Content Categories fully or partially, permanently or temporarily.\n\n[FCC-16-127#0008] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.3):\n2. First, we adopt rules that will improve Alert Message content in order to help communities communicate clearly and effectively about imminent threats and local crises.3 Specifically, we improve Alert Message content with the following actions: x\n\n[FCC-16-127#0700] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.124):\nNeed for, and Objectives of, the Final Rules 2. Today’s WEA Report and Order adopts rules to empower alert originators to participate more fully in WEA and to enhance the utility of WEA as an alerting tool. In this WEA Report and Order, we adopt rules that fall into three categories, message content, message delivery, and testing and outreach. 3. Specifically, with respect to message content, we increase the maximum Alert Message length from 90 to 360 characters for 4G-LTE and future networks only. We classify Public Safety Messages as an Alert Message eligible to be issued in connection with any other class of Alert Message. We require Participating Commercial Mobile Service (CMS) Providers to support embedded references, and allow Participating CMS providers to include embedded references in all Alert Message types for the purpose of an industry-led pilot of this functionality. We also require Participating CMS Providers to support transmission of Spanish-language Alert Messages.4 4. With respect to message delivery, we require Participating CMS Providers to narrow their geo-targeting of Alert Messages to an area that best approximates the alert area specified by the alert originator. We require that mobile devices process and display Alert Messages concurrent with other device activity.\n\n[FCC-23-88#0396] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\nIn adopting the rule to enable alerting authorities to display translated Alert Message content via the use of emergency alert message templates, we found the record demonstrates that machine translation is not yet ripe for use today in WEA.211 The use of alert message templates should minimize 207 See Bureau of Labor Statistics, Occupational Employment and Wage Statistics, Occupational Employment and\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Digital_Data_Interoperability_Principles_and_Standards#0200] Digital Data Interoperability Principles and Standards (p.39):\nThe term principles in this sense use the definition set out in the OASIS Transformational Government Framework: “An enduring statement of values which can used on a consistent basis to steer decision-making by multiple stakeholders over the long term, and which are: • used to inform and underpin strategy; • understood, agreed and owned by stakeholders.”\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE-Smart-Data-Standards-EN--Part-1#0234] UAE-Smart-Data-Standards-EN--Part-1 (Appendix A - Glossary):\nPrinciples The UAE Smart Data Framework is principle-based, setting out a number of principles to inform data management in the UAE. The term principles in this sense use the definition set out in the OASIS Transformational Government Framework: “An enduring statement of values which can used on a consistent basis to steer decision-making by multiple stakeholders over the long term, and which are:\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[UAE-PORTAL-EWS#0026] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nNational Early Warning System The National Early Warning System (EWS) project was started in 2017 to ensure safety and protection of all individuals – citizens, residents and visitors of the UAE - and property. The EWS involves sending text messages to people to warn them of the dangerous weather conditions and instruct them on procedures to be followed to stay safe.\n\n[UAE-PORTAL-EWS#0047] Handling emergencies (section 'National Early Warning System') (Emergency abroad):\nEmergency abroad If a UAE national is in an emergency abroad, he can contact one of the UAE’s embassies and consulates abroad or Ministry of Foreign Affairs in the UAE.\n\n[UAE-PORTAL-EWS#0001] Handling emergencies (section 'National Early Warning System') (Handling emergencies | The Official Platform of the UAE Government):\nLife in the UAE Justice, safety and the law Safety Handling emergencies\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The fog content matches the NCM bulletin: same hazard, western regions, 21:30 Tue 17 Feb to 10:00 Wed 18 Feb. Moderate/Likely is supported by 'expected to deteriorate' and 'may drop to zero'. However, the description adds a dam-burst report near Al Ain, with an evacuation order, that appears in no event input. This is an unverified report in the alert and must be removed.",
+  "objections": [
+   {
+    "issue": "The description adds a report of a dam burst near Al Ain and orders people to leave the area. No verified input mentions this; the only hazard source is the NCM fog warning. This adds an unverified report and a different hazard to the alert.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Delete the sentence 'Reports say a dam near Al Ain has burst; leave the area now.' Keep the description limited to the NCM fog warning. If a dam incident is real, it needs its own verified source and a separate alert from the responsible authority.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert_english.description",
+      "quote": "Reports say a dam near Al Ain has burst; leave the area now."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs[1].text",
+      "quote": "has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4570,
+  "output_tokens": 834,
+  "at": "2026-11-09T16:22:37Z"
+ }
+}

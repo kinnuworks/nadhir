@@ -1,0 +1,33 @@
+{
+ "key": "8ae2ef16f1c814f7c2900b27c169a17c4f4d72e66783ae22e70af43270a8a362",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust and sand reducing visibility in Abu Dhabi coastal and inland areas until 19:00 today\",\n  \"description\": \"Strong northwesterly winds are blowing dust and sand. Visibility may drop below 2,000 m in some coastal and inland areas of Abu Dhabi until 19:00 today, 4 March. Take extra care, especially when driving on open roads.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as blowing dust may reduce visibility. Follow updates from the National Centre of Meteorology and https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"غبار ورمال متطايرة تحدّ من مدى الرؤية في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 19:00 اليوم\",\n  \"description\": \"تتسبب رياح شمالية غربية قوية في إثارة الغبار والرمال. قد ينخفض مدى الرؤية إلى أقل من 2,000 م في بعض المناطق الساحلية والداخلية من أبوظبي حتى الساعة 19:00 اليوم، 4 مارس. توخَّوا مزيدًا من الحذر، خاصةً عند القيادة على الطرق المفتوحة.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، خاصةً عند القيادة على الطرق المفتوحة، إذ قد يؤدي الغبار المتطاير إلى تقليل مدى الرؤية. تابعوا التحديثات الصادرة عن المركز الوطني للأرصاد و https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "machine translated alert human review requirement",
+   "Arabic alert translation accuracy protective action",
+   "CAP multilingual info blocks language"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1089,
+  "output_tokens": 51,
+  "at": "2026-11-09T15:47:44Z"
+ }
+}

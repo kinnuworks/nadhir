@@ -1,0 +1,33 @@
+{
+ "key": "c27a425dca300e92a2edf0566c8e452efe5d5a5730aacc38ad2759c26ff85bb3",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM rain alert: convective clouds, rain heavy at times, 13:30-21:00 Saturday\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, heavy at times, are possible in some eastern, southern and western areas and parts of the interior. In effect 13:30 to 21:00 on Saturday 22 August.\",\n  \"instruction\": \"Take extra care if you go out during the rain. Follow official updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه أمطار من NCM: سحب ركامية، وأمطار غزيرة أحياناً، 13:30-21:00 يوم السبت\",\n  \"description\": \"تنبيه من NCM: من المحتمل تشكّل سحب ركامية مصحوبة بأمطار خفيفة إلى متوسطة، تكون غزيرة أحياناً، على بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول من 13:30 إلى 21:00 يوم السبت 22 أغسطس.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر إذا خرجت أثناء هطول الأمطار. تابع التحديثات الرسمية على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "UAE Arabic English alert language requirements",
+   "machine translation emergency alert human review",
+   "cell broadcast Arabic message character limits"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1038,
+  "output_tokens": 52,
+  "at": "2026-11-09T16:14:49Z"
+ }
+}

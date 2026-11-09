@@ -1,0 +1,119 @@
+{
+ "key": "58e6af77d65b57dda0ddf37bd1fe8cd5282eaa3cd30722818f3e5c0b8c65647e",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Dusty winds reducing visibility across the UAE until 19:00\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender authorization issuer area status Actual', 'alert area matches requested geographic area', 'FCC false alert wrong area issuance failure'):\n\n[CAPAU#0044] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.12):\n<alert> ... <sender>example@dfes.wa.gov.au</sender> <info> <senderName>Western Australia Police </senderName> ... </alert> status REQUIRED Notes: Technical 1) Value of “Actual” SHALL be used when messages are intended for public dissemination. Example: CAP v1.2 Standard\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[IPAWS-OPEN#0047] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.38):\nMatching the Geographic Area – • Many-to-one messaging Multilingual – • Alert delivery in less than 3 seconds, or your pizza is free Multimedia Alerting – • Some of these were added in the latest FCC Report & Order\n\n[FCC-16-127#0221] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.37):\n224 See infra Section IV.B.3 (Matching the Geographic Target Area). 225 See, e.g., NPSTC Comments at 5; Ventura County Sheriff EMS Comments at 4; USGS Comments at 2. 226 See NYCEM Comments at 12.\n\n[FCC-16-127#0624] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.105):\nMultilingual Alerting We seek comment on reasonable timelines for Participating CMS Providers to support the transmission of WEA Alert Messages in various languages Matching the Geographic Target Area Within 42 months of the rules’ publication in the Federal Register, or within 24 months of the completion of all relevant standards, whichever is sooner\n\n[FCC-16-127#0781] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.137):\n7 See supra Section IV.A.4 (Earthquake Alert Prioritization). 8 See supra Section IV.A.5 (Disaster Relief Messaging). 9 See supra Section IV.B.1 (Multimedia Alerting). 10 See supra Section IV.B.2 (Multilingual Alerting); see also supra Section IV.B.3 (Matching the Geographic Target Area). 11 See supra Section IV.B.4 (WEA on 5G Networks).\n\n[FCC-HI-2018#0019] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.6):\n7. With respect to lessons learned, the facts and circumstances surrounding the Hawaii false missile alert provide valuable insights into measures that stakeholders can take to minimize and mitigate the risk of false alerts. The report identifies best practices, first and foremost, to guard against the issuance of false alerts, and second, if a false alert is nonetheless issued, to swiftly correct the misinformation and mitigate the consequences. The Bureau will continue to work with Hawaii, as well as with other federal, state, local, Tribal and territorial officials, to promote awareness of these best practices and to help ensure our nation’s alerting systems are reliable and effective. II.\n\n[FCC-HI-2018#0131] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\nNEXT STEPS 38. The facts and circumstances surrounding this false alert, both leading up to the alert as well as after-action efforts to address confusion and misinformation, provide insights into how the alert origination process may be improved going forward. Below, the Bureau highlights HI-EMA’s lessons learned and corrective measures, as well as the Bureau’s recommendations to safeguard against the issuance of false alerts and to mitigate their harmful effects if they do occur. A.\n\n[FCC-16-127#0322] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.53):\n354 See id. 355 CSRIC IV WEA Messaging Report at 45 (recommending that that a WEA cell broadcast geo-targeting best practices standard be completed within one year after the issuance of the FCC Report & Order, and that Participating CMS Providers implement this standard within two years after the issuance of the FCC Report & Order); see also id. at 8 (stating that “the algorithms for mapping the intended alert area to the relevant cell sites/sectors in the CMSP network are considered proprietary and there is no standard method to perform this mapping. Each CMSP handles the mapping in their own proprietary manner, since the geo-targeting capabilities is dependent upon each individual CMSP cell site topology”); Verizon Comments at 12 (“Existing geo-targeting techniques that superimpose alert areas with network architecture coverage already ensure that WEAs closely target the affected consumers.”). 356\n\n[FCC-HI-2018#0010] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.4):\nConsistent with its protocol, the FCC Operations Center contacted the U.S. Department of Homeland Security (DHS) National Operations Center, which confirmed the alert was false. The FCC Operations Center contacted Bureau leadership at 1:42 p.m. (EST) to ensure they were aware of the incident and the DHS confirmation of the alert as false. During this time, Bureau leadership was also in touch with the Federal Emergency Management Agency (FEMA) concerning the false alert. Federal Communications Commission (Commission) Chairman Ajit Pai immediately directed the Bureau to investigate the facts and circumstances around the transmission of the January 13th false alert. Specifically, Chairman Pai instructed the Bureau to start a full investigation into this event, focusing on two key questions: “What went wrong? And what needs to be done to stop a similar mistake from happening in the future?”9 5. On January 18, 2018, the Bureau dispatched two investigators to Hawaii. On January 18 and 19, 2018, the Bureau investigators met with HI-EMA staff, United States Pacific Command (PACOM), the Hawaii State Emergency Communications Committee (Hawaii SECC), and Hawaii legislators.10 Between January 18, 2018 and January 26, 2018, Bureau staff also interviewed alert 6 In a memo to the Bureau staff, the National Association of the Deaf detailed the experiences of its Board of",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Nothing within the issuing-authority mandate is wrong. The sender is in the issuer register with all areas and all categories. The alert area and codes match the area drawn for this event. The status is Actual, which fits a real event on a live console. It is a new Alert, so it needs no references. There are no active alerts from other authorities for it to overreach.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The headline says \"across the UAE\", but the target area is limited to coastal and inland Abu Dhabi (demo zone). The text may suggest a wider area than the one actually targeted. Headline wording is probably for the content reviewer.",
+    "searched_for": "A clause requiring the headline or description to match the targeted alert area. The clauses shown only mention 'Matching the Geographic Area' as a delivery capability, not as a rule about message text."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5221,
+  "output_tokens": 501,
+  "at": "2026-11-09T15:47:00Z"
+ }
+}

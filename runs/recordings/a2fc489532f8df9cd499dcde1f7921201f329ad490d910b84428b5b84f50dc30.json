@@ -1,0 +1,133 @@
+{
+ "key": "a2fc489532f8df9cd499dcde1f7921201f329ad490d910b84428b5b84f50dc30",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology. Dubai and Sharjah are also affected.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty likely severity moderate definitions', 'alert area must match hazard bulletin', 'NCM fog warning UAE early warning'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Deepfake_Guide_2021#0023] AI Deepfake Guide 2021 (p.7):\n3. Skin color change during the clip 4. Repetitive blinking or no blinking at all 5. Lip movements do not match the audible speech 6. Distortion in the area surrounding the face Although physiological examination of videos is possible, it can be slow and unreliable. The most accurate approach to detect forged contents is through a systematic screening of the deepfakes using AI-based tools that need to be regularly updated.\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0527] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nCommenters indicate that the suppression of the Alert Messages on mobile devices that are outside of the target area (geo-fencing) would allow Participating CMS Providers to match the target area specified by alert originators.583 We seek comment on this analysis, including any alternative approaches that Participating CMS Providers could use to match the target area or to implement a device-based approach to geo-targeting. The record indicates that technical issues, such as potential increases in message delivery latency, and reductions in the amount of data available for Alert Message text, can be resolved.584 We seek comment on how Participating CMS Providers will address these issues in conversation with other relevant WEA stakeholders. We seek comment on feasible methods Participating CMS Providers could use to mitigate sources of alert delivery latency that may be implicated by geo-targeting Alert Messages to an area that matches the target area specified by the alert originator.585 Participating CMS Providers and ATIS agree that meeting such an accurate geo-targeting standard could cause message delivery delay due to the device needing to determine its location before displaying the message, and due to network constraints.586 ATIS states that “the only currently readily 580 We anticipate that variations in geo-targeting accuracy due to the size of the target area can be controlled through alert originator best practices.\n\n[FCC-16-127#0523] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\nDiscussion 139. As we emphasize above, more granular geo-targeting remains a critical need for both consumers and emergency managers. Accordingly, we propose to require Participating CMS Providers to match the target area specified by alert originators. We anticipate that this may require Participating CMS Providers to leveraging the location sense of WEA-capable mobile devices on their networks. In the following paragraphs, we seek comment on how we should define “matching” the target area for purposes of any such requirement, as well as on steps that alert initiators and Participating CMS Providers can take to minimize alert delivery latency and maximize the amount of data available for other Alert Message content. We also seek comment on the readiness of innovations that could allow alert initiators to geo-target more flexibly, and to smaller areas. 140.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[UAE-PORTAL-EWS#0026] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nNational Early Warning System The National Early Warning System (EWS) project was started in 2017 to ensure safety and protection of all individuals – citizens, residents and visitors of the UAE - and property. The EWS involves sending text messages to people to warn them of the dangerous weather conditions and instruct them on procedures to be followed to stay safe.\n\n[UAE-PORTAL-EWS#0047] Handling emergencies (section 'National Early Warning System') (Emergency abroad):\nEmergency abroad If a UAE national is in an emergency abroad, he can contact one of the UAE’s embassies and consulates abroad or Ministry of Foreign Affairs in the UAE.\n\n[UAE-PORTAL-EWS#0001] Handling emergencies (section 'National Early Warning System') (Handling emergencies | The Official Platform of the UAE Government):\nLife in the UAE Justice, safety and the law Safety Handling emergencies\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The hazard, timing (21:30 Tue 17 Feb to 10:00 Wed 18 Feb), severity (Moderate) and certainty (Likely) all match the NCM bulletin. However, the description adds Dubai and Sharjah as affected areas. The verified bulletin does not support this; it covers only western regions of the UAE.",
+  "objections": [
+   {
+    "issue": "The alert adds affected places that the NCM bulletin does not name. The bulletin limits the fog and low-visibility warning to western regions, but the description also says Dubai and Sharjah are affected. No verified input supports that.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Delete the sentence 'Dubai and Sharjah are also affected.' Keep the area as stated by NCM: 'several western regions of the UAE'.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Dubai and Sharjah are also affected."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "significantly reduced horizontal visibility across several western regions of the UAE"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5009,
+  "output_tokens": 711,
+  "at": "2026-11-09T16:23:18Z"
+ }
+}

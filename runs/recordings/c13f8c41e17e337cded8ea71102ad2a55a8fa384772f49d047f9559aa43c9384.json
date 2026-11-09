@@ -1,0 +1,148 @@
+{
+ "key": "c13f8c41e17e337cded8ea71102ad2a55a8fa384772f49d047f9559aa43c9384",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('machine translation alert added content review', 'translated alert protective action consistency', 'cell broadcast Arabic message length limit'):\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-23-88#0396] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\nIn adopting the rule to enable alerting authorities to display translated Alert Message content via the use of emergency alert message templates, we found the record demonstrates that machine translation is not yet ripe for use today in WEA.211 The use of alert message templates should minimize 207 See Bureau of Labor Statistics, Occupational Employment and Wage Statistics, Occupational Employment and\n\n[FCC-DA-25-12#0024] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.5):\nWe find that avoiding confusion about the meaning of a tsunami alert where they are used nationwide outweighs ensuring consistency of the tsunami template with the City of Berkeley’s emergency policies. 11. We decline to adopt generic templates that would warn the public to either evacuate or shelter-in-place, as initially proposed. 28 We agree with commenters that these templates are unlikely to effectively alert the public, risking panic due to their vagueness. As Art Botterell and ATIS note, generic templates instructing the public to take a specific protective action without providing essential details about why the warning was issued would be likely to cause confusion. 29 ATIS cites research indicating that such detail, including a description of the threat giving rise to the need to take protective action, is a key component to an effective warning. 30 Without this context, we agree with ATIS that recipients of generic alerts are less likely to take action and receiving such a warning may make a situation worse. 31 24\n\n[FCC-FR-2025#0015] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57289):\nMove to high ground or inland now.'' Because NWS's ``Tsunami Warnings'' advise the public to move inland, rather than evacuate inland areas, implementing the City of Berkeley's proposed templates would create a conflict with NWS's alerts and potentially create confusion. We find that avoiding confusion about the meaning of a tsunami alert where they are used nationwide outweighs ensuring consistency of the tsunami template with the City of Berkeley's emergency policies. 6. We decline to adopt generic templates that would warn the public to either evacuate or shelter-in-place, as initially proposed. We agree with commenters that these templates are unlikely to effectively alert the public, risking panic due to their vagueness. As Art Botterell and ATIS note, generic templates instructing the public to take a specific protective action without providing essential details about why the warning was issued would be likely to cause confusion. ATIS cites research indicating that such detail, including a description of the threat giving rise to the need to take protective action, is a key component to an effective warning. Without this context, we agree with ATIS that recipients of generic alerts are less likely to take action and receiving such a warning may make a situation worse.\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[FCC-23-88#0239] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.43):\nNeed for, and Objectives of, the Final Rules 2. In this Third Report and Order, the Commission adopts rules to empower alert originators to enhance the utility of Wireless Emergency Alerts (WEA) as an alerting tool, making WEA more accessible and enabling WEA to provide more personalized alerts. Specifically, we require Participating Commercial Mobile Service Providers (Participating CMS Providers) to enable alerting authorities to display translated Alert Message content via the use of emergency alert message templates. In addition, our efforts to make WEA messages more accessibility extend to the deaf and hard of hearing community pursuant to our requirement that Participating CMS Providers’ WEA-capable mobile devices support templates in American Sign Language (ASL). We conclude that enabling the display of translated Alert Message content via the use of emergency alert message templates will allow alert originators to inform those communities that primarily speak a language other than English or Spanish of emergencies and save more lives. The Commission also adopts rules to require Participating CMS Providers’ WEA-capable mobile devices to support the presentation of WEA messages that link the recipient to a native mapping application. This requirement will allow alert originators to personalize alerts, spurring people to take protective action more quickly and to understand whether an alert applies to their them.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0062] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.15):\nallocation of serial numbers; - modifying or deleting CBS messages held by the BSC/RNC/eNodeB/NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a BSC/RNC/eNodeB/NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]); - determining the set of cells to which a CBS message should be broadcast, and indicating within the Serial Number the geographical scope of each CBS message;\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0285] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.63):\n9.3.26 Warning Period This parameter indicates the length of the period during which the ETWS emergency message is to be broadcasted in the BSC. This parameter is applicable for GSM only.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic headline and instruction match the English. Numbers, time, date, places, wind direction and source in the Arabic description also match. However, the machine-translated Arabic description adds a paragraph that is not in the English, and repeats it three times. The added text includes protective actions the English never gives: avoid going out except in extreme necessity, keep windows closed, check vehicles before driving, and avoid rumours. This changes the protective action for Arabic readers and must be removed. A named Arabic-reading person must still approve the final text.",
+  "objections": [
+   {
+    "issue": "The Arabic description contains an added paragraph, repeated three times, with no English counterpart. It tells the public to stay indoors except in extreme necessity ('avoid going out except for absolute necessity'), keep windows closed, check vehicle safety and avoid rumours. The English only advises taking extra care, especially when driving on open roads. Arabic readers would get a stronger and different protective action from English readers. This is the material inaccuracy risk the authorities cite for unreviewed machine translation.",
+    "field": "arabic.description",
+    "blocking": true,
+    "fix": "Delete everything in the Arabic description after 'المصدر: المركز الوطني للأرصاد.' so it ends at the source statement, matching the English description. Leave the Arabic instruction unchanged, since it already matches the English instruction. Have a named Arabic reader confirm the result before release.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة"
+     },
+     {
+      "kind": "view",
+      "ref": "english.instruction",
+      "quote": "Take extra care, especially when driving on open roads"
+     },
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "Source: National Centre of Meteorology."
+     },
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-DA-25-12#0102",
+      "quote": "the inaccurate translation may seriously misinform WEA recipients during an emergency."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 6002,
+  "output_tokens": 1375,
+  "at": "2026-11-09T15:58:35Z"
+ }
+}

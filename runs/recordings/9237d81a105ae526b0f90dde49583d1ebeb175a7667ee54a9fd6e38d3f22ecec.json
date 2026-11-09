@@ -1,0 +1,33 @@
+{
+ "key": "9237d81a105ae526b0f90dde49583d1ebeb175a7667ee54a9fd6e38d3f22ecec",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE - Blowing dust: drive with caution on external and open roads. Active to occasionally strong northwesterly winds cut visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi, 10:30 to 18:00, 16 Feb 2026. Sudden visibility drops possible.\",\n   \"characters\": 263,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين - غبار متطاير: يرجى القيادة بحذر على الطرق الخارجية والمفتوحة. رياح شمالية غربية نشطة إلى قوية أحيانًا تخفض الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية في أبوظبي، من 10:30 إلى 18:00، 16 فبراير 2026. احتمال انخفاض مفاجئ في الرؤية.\",\n   \"characters\": 251,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 7\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "TDRA cell broadcast handset Arabic English display",
+   "3GPP TS 23.041 page limit UCS-2 encoding",
+   "cell broadcast first page hazard action"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1153,
+  "output_tokens": 66,
+  "at": "2026-11-09T16:09:41Z"
+ }
+}

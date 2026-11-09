@@ -1,0 +1,114 @@
+{
+ "key": "8b4fa3d14d3e0ec0053891180f120a37a6a5b039d0ad330e690b4b071116fc88",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Eastern, southern and western areas (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"UAE-E-S-W\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-rain-2026-08-22\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Convective clouds and rain\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Eastern, southern and western areas (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"UAE-E-S-W\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Rain alert: possible heavy rain at times, Saturday 13:30 to 21:00\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Actual Exercise msgType references', 'alert originator authorization issuing authority area', 'CAP area geocode polygon requirement'):\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0048] Federal Decree No 46 of 2021 on Electronic Transactions (p.17):\nArticle (12) Attribution 1. An Electronic Document is considered issued by the Originator if he has issued it himself. 2. In the relationship between the Originator and Addressee, an Electronic Document shall be considered issued by the Originator in the following cases: a. If it is sent by a person who has the authority to act on behalf of the Originator. b. If it is sent by an electronic medium automated and programmed to operate automatically by or on behalf of the Originator. 3. In the relationship between the Originator and Addressee, the Addressee shall have the right to consider the Electronic Document as issued by the Originator and to act on this basis in the following cases: a. If the Addressee correctly applies a procedure previously approved by the Originator for the purpose of ensuring that the Electronic Document has been issued by the Originator for this purpose. b. If the Electronic Document received by the Addressee has resulted from the actions of a person who, based on his relationship with the Originator or any agent of the Originator, can access a method used by the Originator to prove that the Electronic Document is issued thereby.\n\n[LA-2025#0037] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.14):\nTragically, at least 18 people died in the Eaton Fire in Altadena, and at least 12 people in the Palisades Fire in Pacific Palisades.30 The deaths from the Eaton Fire occurred west of Lake Avenue, where residents did not receive an evacuation order until around 3:30 a.m. on January 8, 2025. This is a serious issue and deserves an independent investigation. Reports currently do not indicate an issue with the IPAWS emergency alert system,31, 32 and thus are not covered by this Congressional Report. We expect the independent after-action review by the McChrystal Group, ordered by the Los Angeles County Board of Supervisors, to cover these issues and any necessary recommendations related to a lack of a timely evacuation warning for the Eaton Fire in Altadena. GLOSSARY Alerting Authority – A government agency (local, state, tribal, or territorial) certified by FEMA to issue public alerts using IPAWS. Alert Originator – A trained and authorized individual at an Alerting Authority who is responsible for creating, configuring, and sending emergency alert messages using platforms such as IPAWS. Alert Originators determine the content of the message, select appropriate delivery channels, and define the geographic area (via geocode and/or polygon) to receive the alert. ALERT Software – A Genasys, Inc.\n\n[CAP12#0113] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ntext The text naming the originator of the alert message (OPTIONAL) The human-readable name of the agency or authority issuing this alert. headline cap. alertInfo. headline. text The text headline of the alert message (OPTIONAL)\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[CAPCP#0119] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\nExample: Element: Use: Optional Type: Technical Value: Description: CAP-CP requires either a CAP-CP <geocode> value, or the use of optional <polygon> and <circle> values. When either or both <polygon> and <circle> values are present in an area block, the combination of these <polygon> and <circle> values alone is considered a more accurate representation of the alert area than the CAP supported combination of all <polygon>, <circle> and <geocode> values together. This distinction allows for CAP originators to support alerting systems that require geocodes and still be able to more accurately represent the threat area with GIS constructs all in one CAP message. E.g. Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[CAPCP#0115] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n(2) MAY contain one or multiple instances of <polygon>, <circle> and/or <geocode>. If multiple <polygon>, <circle> and/or <geocode> elements are included, the location described by this <area> element is the union of those represented by the included elements.\n\n[CAPCP#0122] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n</geocode> ... </area> </info> The <polygon> provided is a more accurate representation of the alert area than is the combination of boundary files associated with the <geocode> values included in the alert.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register at level 1, with all areas and all categories allowed. The alert area matches the requested area, which was drawn for this event (uae-rain-2026-08-22): same description and same code. Status \"Actual\" fits a real event on the live console. The message type is \"Alert\", so no reference is needed. No higher authority has an active alert to overreach, and there are no earlier alerts. Nothing within my mandate is wrong.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4776,
+  "output_tokens": 173,
+  "at": "2026-11-09T15:53:53Z"
+ }
+}

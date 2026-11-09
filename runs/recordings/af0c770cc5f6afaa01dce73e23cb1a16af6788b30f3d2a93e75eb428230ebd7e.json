@@ -1,0 +1,143 @@
+{
+ "key": "af0c770cc5f6afaa01dce73e23cb1a16af6788b30f3d2a93e75eb428230ebd7e",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n   \"characters\": 190,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n   \"characters\": 234,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('TDRA cell broadcast handset Arabic English display', '3GPP TS 23.041 page limit UCS-2 encoding', 'alert first page hazard protective action guidance'):\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0047] 3.2 TDRA Consumer Protection Regulations v2 (p.10):\n3.2.2. shall be written in the Arabic language or in the English Language as preferred by the Consumer or in circumstances where the preference is unknown, the information shall be written in both languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[TDRA-TSFS001#0008] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nTechnical Requirements 4.1 Mobile technical specification ETSI TS 123 041 4.2 Digital cellular telecommunications system (Phase 2+) (GSM); Universal Mobile Telecommunications System (UMTS); Technical realization of Cell Broadcast Service (CBS) (3GPP TS 23.041 version 15.3.0 Release 15)\n\n[TDRA-TSFS001#0012] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.5):\nThe ability for the user to enable/disable receiving any alerts on this message ID/class. If set to yes, User Opt- then the user should be able to opt-in/out and the option can out be displayed in the settings page of the phone. If set to no, that means the user should not be able to opt-out, and that he/she will receive the alert if sent to this message ID This field describes if we want to show or hide the Settings warning/emergency alerts in the phone. If hidden, that Page means we don't want the user to see it listed in a settings page. Notes: 1.) Class 8 is meant for implementation on preconfigured devices, and shall not be implemented on commercial mobiles 2.) The above list is only applicable on mobile devices with limited specifications (e.g. Featured Phones) and that has limited resources.\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23038#0052] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.14):\nMessage coding: GSM 7 bit default alphabet 8 bit data Bit 1 0 0 1 1 Bit 0 Message Class: 0 No message class. 1 Class 1 user defined. 0 Class 2 user defined. 1 Class 3 default meaning: TE specific (see 3GPP TS 27.005 [8]) NOTE 1: The language indication shall appear at the start of each Message Information Page (see 3GPP TS 23.041 [5]) and the language indication on each Message Information Page shall be for the same language. NOTE 2: Message text in Hebrew, Arabic and Russian cannot be encoded in the GSM 7-bit default alphabet. For these languages UCS2 encoding shall be used. These codings may also be used for USSD and MMI/display purposes.\n\n[TS23041#0280] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.62):\nThe encoding of the Warning-Type parameter is as shown below. The warning type value shall be mutually exclusive and binary encoded. 7 6 Octet 1 5 4 3 Warning Type Value\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE-Smart-Data-Standards-EN--Part-1#0098] UAE-Smart-Data-Standards-EN--Part-1 (Rules for Opening and Sharing Classified Data):\nReferences to Implementation Guide Guidance Note 3: Prioritization describes how to prioritize which datasets to classify first. A best practice process for classifying data in accordance with this Specification is described in Guidance Note: 5.1 Classifying data\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Digital_Data_Interoperability_Principles_and_Standards#0079] Digital Data Interoperability Principles and Standards (p.19):\nReferences to Implementation Guide • Guidance Note 3: Prioritization describes how to prioritize which digital datasets to classify first. A best practice process for classifying digital data in accordance with this Specification is described in Guidance Note: 5.1 Classifying digital data\n\n[MHEWS-2026#0572] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.134):\nAI Avatars for Localised Emergency Communication Canada AI-Based Tidal Surge Forecasting Preparedness and crisis communication AI-generated avatars deliver trusted government safety messages in more than 170 languages using video communication. By automating multilingual messaging and localized preparedness guidance, the system enhances accessible warning dissemination (Pillar 3) and supports public awareness and protective action during emergencies (Pillar 4). Further information: https://www. pelmorex.com/en/media-hub/the-weather-network-launches-its-first-advertising-campaign-using-an-ai-assisted-avatar/ Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[WMO-CAP-GUIDE#0004] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nPublic and First Responder Action: People receive the alert through multiple communication channels and take appropriate action based on the guidance provided. First responders may receive tailored alerts to support emergency coordination and response. CAP Resources Explore a comprehensive collection of resources on the Common Alerting Protocol (CAP), including online courses, toolkits, guidelines and documents on the CAP implementation. Explore CAP Resources",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present. Encoding is correct: English is GSM-7, and Arabic is UCS-2 as 3GPP requires. Both are within the 15-page maximum (3 and 6 pages). However, neither language gives any protective action, on the first page or anywhere else. The text states the hazard, area, time and source but never tells people what to do. The drafter can fix this.",
+  "objections": [
+   {
+    "issue": "No protective action appears anywhere in either language, so the first page carries the hazard but not the action. The alert only describes the fog and its timing, and never says what people should do (for example, avoid unnecessary travel, drive slowly with low-beam lights, keep a safe distance). The CAP guidance expects people to act on the guidance the alert provides.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Add a short protective action in both English and Arabic, placed right after the hazard so it falls on the first page. For example: 'Fog warning: zero visibility possible in western UAE. Avoid travel; if driving, slow down, use low beams, keep distance.' Then give the times and source. In Arabic, keep the hazard and action within the first 41-character page as far as possible, e.g. 'ضباب كثيف: تجنب القيادة، وإن اضطررت فخفف السرعة' followed by details. Keep each language at 15 pages or fewer.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "WMO-CAP-GUIDE#0004",
+      "quote": "take appropriate action based on the guidance provided"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Source: National Center for Meteorology."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "I found no UAE or 3GPP clause that explicitly requires the first cell broadcast page to contain both the hazard and the action. My objection relies on general CAP guidance that alerts should give action guidance.",
+    "searched_for": "alert first page hazard protective action guidance"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5120,
+  "output_tokens": 1084,
+  "at": "2026-11-09T16:11:51Z"
+ }
+}

@@ -67,7 +67,7 @@
       "left_out": [],
       "translation": [],
       "log": "runs/bench/logs/florida-test-2023-run1.jsonl",
-      "log_check": "7 records, chain intact, head 19923c3017f7",
+      "log_check": "7 records, chain intact, head 4c91d6d2e02c",
       "english": {
        "headline": "TEST ONLY: Florida Emergency Alert System monthly test",
        "description": "THIS IS A TEST. This is the scheduled monthly test of the Emergency Alert System for Florida TV and radio broadcasters. There is no emergency and no hazard.",
@@ -129,7 +129,7 @@
       ],
       "translation": [],
       "log": "runs/bench/logs/hawaii-2018-run1.jsonl",
-      "log_check": "7 records, chain intact, head 1319fe0ea05d",
+      "log_check": "7 records, chain intact, head 57a9e97e0731",
       "english": {
        "headline": "EXERCISE EXERCISE EXERCISE - Internal State Warning Point drill - no real threat",
        "description": "EXERCISE EXERCISE EXERCISE. Internal HI-EMA State Warning Point drill simulating a ballistic missile alert for the State of Hawaii. There is NO real threat. Staff drill only. EXERCISE EXERCISE EXERCISE.",
@@ -185,7 +185,7 @@
       ],
       "translation": [],
       "log": "runs/bench/logs/india-test-2023-run1.jsonl",
-      "log_check": "7 records, chain intact, head 9470b9fa548a",
+      "log_check": "7 records, chain intact, head 05d52c2c189a",
       "english": {
        "headline": "TEST: Pan-India Emergency Alert System test by DoT and NDMA",
        "description": "This is a TEST message from the Department of Telecommunications with NDMA, testing the Pan-India Emergency Alert System by cell broadcast. There is no emergency and no hazard.",
@@ -241,7 +241,7 @@
       ],
       "translation": [],
       "log": "runs/bench/logs/jalert-2022-run1.jsonl",
-      "log_check": "7 records, chain intact, head 762fb9689f5d",
+      "log_check": "7 records, chain intact, head 3ecf6506487b",
       "english": {
        "headline": "Missile launched from North Korea, may pass over Hokkaido and Aomori",
        "description": "Missile launched from North Korea toward the east. It is projected to pass over northern Japan: Hokkaido and Aomori Prefecture. Take shelter now.",
@@ -298,7 +298,7 @@
       ],
       "translation": [],
       "log": "runs/bench/logs/la-county-2025-run1.jsonl",
-      "log_check": "7 records, chain intact, head a3491b4764ce",
+      "log_check": "7 records, chain intact, head 580109d18e54",
       "english": {
        "headline": "Kenneth Fire: Evacuation Warning near Calabasas, Agoura Hills and West Hills",
        "description": "LA County OEM: Evacuation WARNING due to the Kenneth Fire for people near Calabasas, Agoura Hills and West Hills in the western San Fernando Valley. Be ready to leave.",
@@ -365,7 +365,7 @@
       ],
       "translation": [],
       "log": "runs/bench/logs/pickering-2020-run1.jsonl",
-      "log_check": "9 records, chain intact, head 7c4965828b3b",
+      "log_check": "9 records, chain intact, head e8b2edb581a0",
       "english": {
        "headline": "EXERCISE ONLY: Emergency Management Ontario practice alert, no emergency",
        "description": "EXERCISE ONLY. This is a routine practice message from Emergency Management Ontario for the Alert Ready training system. There is no nuclear incident and no emergency.",
@@ -427,7 +427,7 @@
       ],
       "translation": [],
       "log": "runs/bench/logs/seoul-2023-run1.jsonl",
-      "log_check": "7 records, chain intact, head c2f320f7e33f",
+      "log_check": "7 records, chain intact, head 61f37b4dfbee",
       "english": {
        "headline": "Civil defence alert in effect for Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun",
        "description": "A real civil defence alert (경계경보) is now in effect for Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon. This is not a drill. No end time has been given.",
@@ -482,7 +482,7 @@
       "left_out": [],
       "translation": [],
       "log": "runs/bench/logs/taiwan-2024-run1.jsonl",
-      "log_check": "7 records, chain intact, head 594f2c879b4f",
+      "log_check": "7 records, chain intact, head 8884c4c2a564",
       "english": {
        "headline": "Satellite launch rocket passed over Taiwan; possible debris risk",
        "description": "At 15:03 a Long March rocket carrying a satellite, launched from Xichang Satellite Launch Center, passed from Tainan over Taitung outside the atmosphere, off its notified launch path. Falling debris is possible.",

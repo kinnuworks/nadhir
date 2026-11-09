@@ -1,0 +1,174 @@
+{
+ "key": "820d212244cbf5c1eb15ea14c8856c6e85c5dc9a0dcfb96de4abb3b6c385f609",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"None. The report says the duty officer \\\"was not acting on any information concerning any nuclear incident\\\"; the action was the routine shift-change practice alert, meant for the Alert Ready training system.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Nuclear power plant incident\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Incident at the Pickering Nuclear Generating Station\",\n  \"description\": \"This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the Pickering Nuclear Generating Station. An incident was reported at the Pickering Nuclear Generating Station. There has been NO abnormal release of radioactivity from the station and emergency staff are responding to the situation. People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions.\",\n  \"instruction\": \"People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise versus Actual', 'false alert training system sent live', 'certainty Observed without verified hazard'):\n\n[CAP12#0153] Common Alerting Protocol Version 1.2 (3.4 XML Schema):\n<element name = \"sent\"> <simpleType> <restriction base = \"xs:dateTime\"> <pattern value = \"\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d[-,+]\\d\\d:\\d\\d\"/> </restriction> </simpleType> </element> <element name = \"status\"> <simpleType> <restriction base = \"xs:string\"> <enumeration value = \"Actual\"/> <enumeration value = \"Exercise\"/>\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group\n\n[ON-PICKERING-2020#0085] Investigation into the emergency alerts sent on January 12, 2020 (Live and training systems):\nLive and training systems The Alert Ready system has a training system and a live system. As the names suggest, the former is for users to practice sending alerts; the latter is for real events. The process for issuing an alert on the training system closely mimics the live system, however the training alert terminates in the system after the final prompt.\n\n[ON-PICKERING-2020#0086] Investigation into the emergency alerts sent on January 12, 2020 (Live and training systems):\nLogin credentials for the live and training systems are the same. Both training and live systems can be open simultaneously on the same device. The user interface is visually similar for both systems. They are differentiated largely by font and background colour and the words ‘training’ and ‘live.’ Prompts are pushed to the user throughout the alert issuance process on both systems, with the prompts on the live system indicating that a live alert will be issued should the user continue. The prompts on the training system largely mimic those on the live system.\n\n[ON-PICKERING-2020#0089] Investigation into the emergency alerts sent on January 12, 2020 (Findings):\nThe training system is similar to the live system in order to simulate issuing a real alert. The process and prompts are nearly identical with the exception of a final confirmation prompt on the live system. Despite different font and background colours, the live and training system interfaces are similar. The login credentials are the same for both training and live systems.\n\n[ON-PICKERING-2020#0013] Investigation into the emergency alerts sent on January 12, 2020 (Key findings):\nOn January 12, 2020, the DO logged in to the Alert Ready live system, believed they had switched to the training system, selected a pre-scripted nuclear template for the PNGS and accidentally sent a live alert.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAP12#0102] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: “Observed” – Determined to have occurred or to be ongoing “Likely” - Likely (p > ~50%)\n\n[CAP12#0165] Common Alerting Protocol Version 1.2 (3.4 XML Schema):\n</restriction> </simpleType> </element> <element name = \"certainty\"> <simpleType> <restriction base = \"xs:string\"> <enumeration value = \"Observed\"/> <enumeration value = \"Likely\"/> <enumeration value = \"Possible\"/> <enumeration value = \"Unlikely\"/> <enumeration value = \"Unknown\"/>\n\n[CAP12#0030] Common Alerting Protocol Version 1.2 (1.3.2 <info>):\n1.3.2 <info> The <info> segment describes an anticipated or actual event in terms of its urgency (time available to prepare), severity (intensity of impact) and certainty (confidence in the observation or prediction), as well as providing both categorical and textual descriptions of the subject event. It may also provide instructions for appropriate response by message recipients and various other details (hazard duration, technical parameters, contact information, links to additional information sources, etc.) Multiple <info> segments may be used to describe differing parameters (e.g., for different probability or intensity “bands”) or to provide the information in multiple languages.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The only verified input says there is no nuclear incident: this is a routine practice alert meant for the training system. The alert, however, is marked Actual, Observed and Severe, and its description says an incident was reported at Pickering. That repeats the January 2020 false-alert pattern. A person must stop this from going out live and confirm it goes only to the training system as an exercise. The drafter cannot fix this simply by editing fields.",
+  "objections": [
+   {
+    "issue": "Status is Actual for what the verified input and context describe as a shift-change practice alert meant for the training system. Actual means every targeted member of the public is expected to act.",
+    "field": "status",
+    "blocking": true,
+    "fix": "A person must confirm that this goes only to the Alert Ready training system and not to the live system. If any CAP message is produced, it must use status Exercise and put the exercise identifier in the note.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "Actionable only by designated exercise participants; exercise identifier should appear in <note>"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "meant for the Alert Ready training system"
+     },
+     {
+      "kind": "clause",
+      "ref": "ON-PICKERING-2020#0013",
+      "quote": "believed they had switched to the training system, selected a pre-scripted nuclear template for the PNGS and accidentally sent a live alert"
+     }
+    ]
+   },
+   {
+    "issue": "Certainty Observed, together with Severe and Immediate, asserts a nuclear incident that has occurred or is ongoing. No verified input supports any hazard; the verified record says there was no information about any nuclear incident.",
+    "field": "certainty",
+    "blocking": true,
+    "fix": "Do not issue any live hazard assertion. Severity, urgency and certainty must not claim an observed incident when no hazard bulletin supports one.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "\"Observed\" – Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "was not acting on any information concerning any nuclear incident"
+     }
+    ]
+   },
+   {
+    "issue": "The description states as fact that an incident was reported at Pickering and that emergency staff are responding. No verified input contains any such report; this is pre-scripted template text.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Remove the incident claims and the claim that emergency staff are responding. Any exercise text must be clearly marked as an exercise and never sent to the public.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "An incident was reported at the Pickering Nuclear Generating Station"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "the action was the routine shift-change practice alert"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 3891,
+  "output_tokens": 1781,
+  "at": "2026-11-09T15:44:55Z"
+ }
+}

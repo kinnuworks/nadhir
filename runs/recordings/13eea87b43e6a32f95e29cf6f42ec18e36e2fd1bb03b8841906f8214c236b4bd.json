@@ -1,0 +1,135 @@
+{
+ "key": "13eea87b43e6a32f95e29cf6f42ec18e36e2fd1bb03b8841906f8214c236b4bd",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Eastern, southern and western areas (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae] ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Met office reviewer objects (headline): The headline says the rain affects \"eastern, southern and western areas\" with no qualifier. The bulletin limits it to \"some\" of those areas plus parts of the interior. As written, the headline overstates the area affected and leaves out the interior. Fix: Change the headline to: \"NCM alert: rain, heavy at times, possible in some eastern, southern, western and interior areas\". | Network operator and regulator reviewer objects (phone_text): Neither the English nor the Arabic phone text contains any protective action. Both describe the hazard (convective clouds, rain, areas, validity time) but give no instruction, so the first page cannot carry the action. Fix: Add a short protective action at the start of both language versions, right after the hazard. For example, in English: 'Avoid valleys and flooded roads, drive carefully.' Use the equivalent wording in Arabic. Keep the action within the first page (about 93 GSM-7 characters for en, 41 UCS-2 characters for ar), and move the area and time detail later in the message. [cites Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates, p.21]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Rain alert",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Possible",
+  "headline": "NCM alert: rain, heavy at times, possible in some eastern, southern, western and interior areas",
+  "description": "Rain, heavy at times, possible. Avoid valleys and flooded roads, drive carefully. Where: some eastern, southern and western areas and parts of the interior. In effect Sat 22 Aug, 13:30 to 21:00. Source: NCM. Info: alerts.example.ae",
+  "instruction": "Stay away from valleys and flooded roads, and drive carefully. Follow updates from NCM and alerts.example.ae.",
+  "left_out": [
+   "No unverified inputs were received, so none were excluded.",
+   "Arabic phone text: not drafted here because this task produces the English alert only. The Arabic version still needs the protective action at the start, within about 41 UCS-2 characters, as the network reviewer asked.",
+   "Time zone: the bulletin gives 13:30 to 21:00 without a time zone, so none was added."
+  ],
+  "note_for_reviewer": "The protective action wording (valleys, flooded roads, drive carefully) comes from the network reviewer's example, not from the NCM bulletin, which mentions no flooding. Please confirm this advice is acceptable. I chose certainty Possible and severity Moderate because the bulletin speaks of the possibility of rain that may become heavy at times."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1842,
+  "output_tokens": 1455,
+  "at": "2026-11-09T15:53:30Z"
+ }
+}

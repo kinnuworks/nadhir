@@ -1,0 +1,148 @@
+{
+ "key": "545f7d2f058b0ca411fe002c8a667f9343e30775bc35d7b68c0a279d230d332a",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation must match English meaning', 'machine translated alert human review UAE', 'alert text added protective actions not in source'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0025] DotEmarat Policy EN (p.9):\n8.5.2.3. 8.5.2.4. 8.5.2.5. 8.5.2.6. 8.5.2.7. be in Unicode Normalisation Form C (NFC); consist only of Unicode Code Points present in the Tables of Allowed Letters, Numbers and Special Characters defined in Appendix A; not begin with a digit (English ASCII or Arabic digits); not contain both English ASCII AND Arabic digits; neither begin with nor end with a dash; not contain a dash in the third and fourth positions (e.g. ; and not include a space (e.g. ).\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[FCC-FR-2025#0025] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\n13. In requiring support for these templates, we make conforming edits to reflect the changes to the English versions that are discussed above. All commenters on the proposed Haitian Creole, Hindi, and Russian templates agreed that they were accurate and clear as written. We also did not receive any feedback on the proposed Arabic, Portuguese, or Italian templates. Because no commenter identified any sources of confusion or inaccuracy, we adopt the Arabic, Haitian Creole, Hindi, Italian, Portuguese, and Russian templates with only minor changes developed in consultation with the Commission's contracted professional translation service to further improve clarity. 14. Commenters recommended revisions to the Chinese, German, Tagalog, Vietnamese, French, Korean, and Spanish templates. In considering these recommendations in consultation with the Commission's contracted professional translation service, we make changes to the templates that correct errors, simplify phrasing, avoid awkwardness, improve readability, and increase comprehension. We reject some changes to the templates offered by commenters that would introduce confusion, make the templates more difficult to read, or diverge from the meaning of the English template.\\4\\ We also reject the revisions of commenters that translated the fillable fields, as the contents of those fields will be decided upon by the alert originators that send template alerts and will not be translated, as discussed below. ---------------------------------------------------------------------------\n\n[FCC-16-127#0510] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.85):\nChinese,558 French or French Creole,559 Tagalog,560 Vietnamese,561 Korean,562 Arabic,563 Russian,564 and African languages.565 English-speaking ability varies greatly, even among speakers of the top ten languages in the United States.566 According to recent census data, “less than 50 percent of those who spoke Korean, Chinese, or Vietnamese spoke English ‘very well.’”567 According to the ACS Language Report, “[p]eople who cannot speak English ‘very well’ can be helped with translation services, education, or assistance in accessing government services.”568 b.\n\n[FCC-DA-25-12#0085] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.16):\n114 Because the CDI-produced templates prioritize ASL grammatical structures—consistent with the recommendations in the record—captions in proper English grammar would not contemporaneously match the information as presented in ASL, and this dissonance could cause confusion in an emergency situation. Further, the need for English captions is mitigated because we require the fillable English version of the template to be displayed following the ASL template. G.\n\n[UAE-AI-CHARTER#0004] The UAE Charter for the Development & Use of Artificial Intelligence (p.3):\nGeneral Principles of the Charter: 1. Strengthening Human-Machine Ties: The UAE aims to enhance the harmonious and beneficial relationship between AI and humans, ensuring that all AI developments prioritize human well-being and progress.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/1.2_UAE_AI_Charter_2024#0004] UAE Charter for the Development and Use of Artificial Intelligence (10 July 2024) (p.3):\nGeneral Principles of the Charter: 1. Strengthening Human-Machine Ties: The UAE aims to enhance the harmonious and beneficial relationship between AI and humans, ensuring that all AI developments prioritize human well-being and progress.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.3_UAE_5G_Rollout_Policy#0006] UAE 5G Rollout Policy & TDRA 5G Framework (The Fifth Generation - 5G | The Official Portal of the UAE Government):\nCollection: Archive Team: URLs TIMESTAMPS The Wayback Machine - https://web.archive.org/web/20240530082354/https://u.ae/en/about-the-uae/science-and-technology/the-fifth-generation-5g استمع العربية Other languages Accessibility Help Disclaimer: You are using Google Translate. The UAE mGovernment is not responsible for the accuracy of information in the translated language. Powered by Google Home Information and services About the UAE Your voice Media UAsk Beta About the UAE Science and technology The Fifth Generation - 5G\n\n[ITU-UAE:01_AI_Strategy_and_Governance/1.4_Dubai_Universal_Blueprint_for_AI_2024#0006] Dubai Universal Blueprint for Artificial Intelligence (April 2024) (Hamdan bin Mohammed launches Dubai Universal Blueprint for Artificial Intelligence):\nHe added, “In recent years, the evolution of artificial intelligence has accelerated, presenting numerous opportunities for nations and governments adept at utilising it, while posing challenges to those unable to keep pace. This has necessitated swift and adaptive action plans responsive to rapid changes in technology and artificial intelligence.”\n\n[ITU-UAE:06_Environment_and_Sustainability/6.5_UAE_National_Climate_Change_Plan_2017-2050#0006] UAE National Climate Change Plan 2017-2050 (national-climate-change-plan-of-the-uae - Objectives):\nEnhance the UAE’s economic diversification agenda through innovative solutions - as the UAE continues to invest in non-oil sectors with high growth potential, the Climate Change Plan will facilitate a stronger growth momentum in key emerging sectors. This will be achieved by deploying innovative measures to generate high added value for the emerging industries, encouraging job creations in green businesses and leveraging the mutual supportive relationship between climate action and economic diversification.\n\n[CAP12#0078] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nsource. identifier The text identifying the source of the alert message (OPTIONAL) The particular source of this alert; e.g., an operator or a specific device. scope cap. alert. scope. code\n\n[X1303BIS#0051] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nsource cap.alert.source.identifier The text identifying the source of the alert message (OPTIONAL) The particular source of this alert; e.g., an operator or a specific device. scope cap.alert.scope.code The code denoting the intended distribution of the alert message (REQUIRED)\n\n[CAPCP#0156] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #7. Indicate when an update message contains non-substantive content changes):\nWhen a change has occurred between <info> blocks where some free form text content may have been added or modified, the value of “text” should be used in the <info> block(s) where applicable.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic headline, instruction, and most of the description match the English. Times (19:00, 4 March), visibility (under 2,000 metres), wind direction, areas, source and URL all agree. However, the Arabic description adds a paragraph, repeated three times, that has no counterpart in the English. It tells people to follow official bulletins, ignore rumours, check their vehicles, avoid going out except in extreme necessity, and keep windows closed. These are protective actions the English does not give, and 'avoid going out' is much stronger than the English 'take extra care'. The added text must be removed. The Arabic is machine translated, so a named Arabic-reading person must still review it before release.",
+  "objections": [
+   {
+    "issue": "The Arabic description adds a block of protective actions not in the English, repeated three times. It includes 'avoid going out except for extreme necessity' and 'keep windows closed', which change the protective action from 'take extra care when driving' to near shelter-in-place advice. The Arabic and English readers would get different instructions.",
+    "field": "arabic.description",
+    "blocking": true,
+    "fix": "Delete all three copies of the sentence beginning 'ننصح الجميع بمتابعة النشرات الجوية'. End the Arabic description after 'المصدر: المركز الوطني للأرصاد.' so it matches the English. Then have a named Arabic-reading reviewer confirm the corrected text.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة"
+     },
+     {
+      "kind": "view",
+      "ref": "english.instruction",
+      "quote": "Take extra care, especially when driving on open roads"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-FR-2025#0025",
+      "quote": "diverge from the meaning of the English template"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5547,
+  "output_tokens": 1180,
+  "at": "2026-11-09T16:21:19Z"
+ }
+}

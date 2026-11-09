@@ -1,0 +1,148 @@
+{
+ "key": "11f350c1ced1ae1fb72b0af7c74d8b1e68ee55cab905e5e4894ac4aed4bb7edf",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"NCM fog warning: thick fog may cut visibility to zero at times in western regions of the UAE. Drive with extreme caution, keep a safe distance and follow modified speed limits. From 21:30 Tue 17 Feb until 10:00 Wed 18 Feb.\",\n   \"characters\": 222,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تحذير من الضباب صادر عن المركز الوطني للأرصاد (NCM): قد يؤدي الضباب الكثيف إلى انعدام الرؤية أحيانًا في المناطق الغربية من دولة الإمارات. قُد بحذر شديد، وحافظ على مسافة آمنة، والتزم بحدود السرعة المعدّلة. من 21:30 الثلاثاء 17 فبراير حتى 10:00 الأربعاء 18 فبراير.\",\n   \"characters\": 262,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 7\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('3GPP TS 23.041 cell broadcast page limit', 'UCS-2 Arabic cell broadcast characters per page', 'TDRA handset alert Arabic English requirements'):\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[TS23041#0256] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\nPRESENCE M M O The information above is repeated for the number of cells in the list. To each cell in the list the information element No-of-Broadcasts-completed is associated. This information element is related to the particular referenced cell in the list and contains the number of times a CBS message (i.e. all pages of a\n\n[TS23041#0255] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\n9.3.10 No-of-Broadcasts-Completed-List This parameter is a list indicating the number of times that the CBS message (i.e. all pages of the CBS message) has been sent to each cell in the Cell-List for broadcast over the air interface. The cells in the list are described as per clause 9.3.11. Description of list elements: PARAMETER Cell Identifier No-of-Broadcasts-completed No-of-Broadcasts-Compl-Info\n\n[TS23041#0241] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.55):\n9.3.4 Number-of-Pages This parameter enables the number of pages in the CBS message to be indicated. 9.3.5 Cell-List The cell-list identifies a sequence of one or more cells to which the primitives apply. The following applies for GSM only: The cells in the list are described in 3GPP TS 48.008 [13] and can be identified by the CBC or BSC in LAC and CI format or CI format only. In addition (see 3GPP TS 48.008 [13]) it is possible for the CBC to refer to all cells in a LAC or in a complete BSC. If supplied, the Cell-List parameter must refer to at least one cell. The following applies for UMTS only:\n\n[TS23041#0043] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.11):\n2 General description The CBS service is analogous to the Teletex service offered on television, in that like Teletex, it permits a number of unacknowledged general CBS messages to be broadcast to all receivers within a particular region. CBS messages are broadcast to defined geographical areas known as cell broadcast areas. These areas may comprise of one or more cells, or may comprise the entire PLMN or SNPN. Individual CBS messages will be assigned their own geographical coverage areas by mutual agreement between the information provider and the PLMN or SNPN operator. CBS messages may originate from a number of Cell Broadcast Entities (CBEs), which are connected to the Cell Broadcast Centre. CBS messages are then sent from the CBC to the cells, in accordance with the CBS's coverage requirements. A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters. Other Data Coding Schemes may also be used, as described in 3GPP TS 23.038 [3]. Up to 15 of these pages may be concatenated to form a CBS messagee. Each page of such CBS message will have the same message identifier (indicating the source of the message), and the same serial number. Using this information, the MS/UE is able to identify and ignore re-broadcasts of already received messages.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0049] DotEmarat Policy EN (p.16):\nUnicode Name ARABIC LETTER ALEF WITH MADDA ABOVE ARABIC LETTER ALEF WITH HAMZA ABOVE ARABIC LETTER ALEF WITH HAMZA BELOW ARABIC LETTER ALEF Character Arabic Letter Heh Group Unicode Code Point Unicode Name U+0647 ARABIC LETTER HEH U+0629 ARABIC LETTER TEH MARBUTA Character # Arabic Letter Yeh Group Unicode Code Point Unicode Name U+064A ARABIC LETTER YEH U+0649 ARABIC LETTER ALEF MAKSURA AEDA-POL-016 Character & %\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0047] 3.2 TDRA Consumer Protection Regulations v2 (p.10):\n3.2.2. shall be written in the Arabic language or in the English Language as preferred by the Consumer or in circumstances where the preference is unknown, the information shall be written in both languages.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0263] 3.2 TDRA Consumer Protection Regulations v2 (p.45):\n(c) fixed-line telephone handsets including cordless handsets; (d) bespoke devices which are necessary to access or receive the specific Telecommunications Services(s) supplied by the Licensees; or (e) any other device or category of device as may be specified by the TDRA from time to time.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Both required languages (ar, en) are present. Encodings suit the scripts: GSM-7 for English and UCS-2 for Arabic. Both stay within the 15-page maximum (en 3 pages, ar 7 pages). The problem is the first page. In both languages it carries only the hazard and issuer, and the protective action falls on later pages. In English, page 1 (93 GSM-7 characters) ends at \"…western regions of the UAE.\" and \"Drive with extreme caution\" starts page 2. In Arabic, page 1 (about 41 UCS-2 characters) holds only \"تحذير من الضباب صادر عن المركز الوطني للأرصاد\", so the action \"قُد بحذر شديد\" lands around page 4. The drafter can fix this by reordering the text.",
+  "objections": [
+   {
+    "issue": "The first page does not carry the action in either language. English page 1 holds only the hazard sentence (\"NCM fog warning: thick fog may cut visibility to zero at times in western regions of the UAE.\" is about 93 characters, one full GSM-7 page). The action \"Drive with extreme caution\" starts on page 2. Arabic page 1 holds only the issuer line (about 41 UCS-2 characters). The action \"قُد بحذر شديد\" appears about 140 characters in, on roughly page 4 of 7. A person who reads only the first page learns there is fog but not what to do.",
+    "field": "phone_text",
+    "blocking": false,
+    "fix": "Put the hazard and the action at the start of each language so both fit on page 1, and move the issuer and the times later. English (within 93 characters), e.g. \"Thick fog, western UAE: drive with extreme caution, keep safe distance, follow speed limits.\" then NCM and the times. Arabic (within about 41 characters), e.g. \"ضباب كثيف: قُد بحذر شديد\" first, then the area, the other actions, the issuer and the times.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "TS23041#0043",
+      "quote": "A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "in western regions of the UAE. Drive with extreme caution"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "تحذير من الضباب صادر عن المركز الوطني للأرصاد (NCM)"
+     },
+     {
+      "kind": "view",
+      "ref": "recorded_gaps",
+      "quote": "Arabic most of all (UCS-2, 41 characters a page)"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "I found no clause that explicitly requires the protective action to appear on the first cell broadcast page. The objection rests on my mandate and on the page arithmetic from the page-size clause.",
+    "searched_for": "3GPP TS 23.041 cell broadcast page limit; TDRA handset alert Arabic English requirements"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4862,
+  "output_tokens": 1717,
+  "at": "2026-11-09T15:52:04Z"
+ }
+}

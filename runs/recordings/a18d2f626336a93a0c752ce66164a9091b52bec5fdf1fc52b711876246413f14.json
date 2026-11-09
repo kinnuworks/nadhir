@@ -1,0 +1,136 @@
+{
+ "key": "a18d2f626336a93a0c752ce66164a9091b52bec5fdf1fc52b711876246413f14",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Western region (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility] ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Network operator and regulator reviewer objects (phone_text): There is no protective action in either language. The phone text describes the hazard (fog, visibility possibly dropping to zero), the area, the time window and the source, but never tells recipients what to do. My mandate requires the first page to carry both the hazard and the action. Fix: Add a short protective action right after the hazard statement, in both English and Arabic, so it falls on page 1. For example: 'Drive slowly, keep a safe distance, use low-beam lights and avoid travel if possible.' Then recount the pages and keep them within 15 (Arabic UCS-2 is 41 characters a page). [cites Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates, p.21]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Fog and low visibility warning",
+  "urgency": "Expected",
+  "severity": "Severe",
+  "certainty": "Likely",
+  "headline": "Fog warning: visibility may drop to zero in western UAE, 21:30 Tue to 10:00 Wed",
+  "description": "NCM fog warning: thick fog may cut visibility to zero at times in western regions of the UAE. Drive with extreme caution, keep a safe distance and follow modified speed limits. From 21:30 Tue 17 Feb until 10:00 Wed 18 Feb.",
+  "instruction": "Drive with extreme caution, follow traffic safety guidelines and keep a safe distance from other vehicles. Strictly follow modified speed limits, especially in thick fog.",
+  "left_out": [
+   "No inputs were marked unverified, so none were dropped for that reason.",
+   "Reviewer's suggested 'use low-beam lights' and 'avoid travel if possible': not in the verified NCM statement, so not added.",
+   "Arabic version and page recount: this draft is English only as instructed; Arabic text must be produced and paged (UCS-2, 41 characters a page, max 15 pages) separately.",
+   "Issuer site https://alerts.example.ae: not added to keep the phone text short."
+  ],
+  "note_for_reviewer": "I moved the protective action onto the first page using only NCM's wording (extreme caution, safe distance, modified speed limits) and left out the reviewer's low-beam and avoid-travel advice because the source does not support it. Severity 'Severe' reflects possible zero visibility on roads, and the operator-chosen western demo zone is assumed to match NCM's 'several western regions'; please confirm both."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1780,
+  "output_tokens": 1116,
+  "at": "2026-11-09T15:51:36Z"
+ }
+}

@@ -1,0 +1,143 @@
+{
+ "key": "9f8289dcb278f04c5eff0182b82bccb7e8d729631618ba9072eae20f2df2793f",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"unknown-sender@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender identifier authorized issuer verification', 'unauthorized alert origination authentication failure FCC', 'UAE emergency alert issuing authority accreditation'):\n\n[X1303BIS#0046] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\nsender cap.alert.sender.identifier The identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[CAP12#0070] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\n(1) A number or string uniquely identifying this message, assigned by the sender. (2) MUST NOT include spaces, commas or restricted characters (< and &). sender cap. alert. sender. identifier\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[X1303BIS#0045] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\n(3) In addition to the specified subelements, may contain one or more <info> blocks. identifier cap.alert.identifier.identifier The identifier of the alert message (REQUIRED) (1) A number or string uniquely identifying this message, assigned by the sender. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0080] Federal Decree No 46 of 2021 on Electronic Transactions (p.32):\nArticle (30) Responsibilities of the Signatory A Signatory shall be held responsible for the consequences of the failure thereof if the following measures are not observed: 1. Exercising due diligence to avoid any unauthorized use of the Electronic Signature or Seal Creation Data.\n\n[Y3172#0108] Recommendation ITU-T Y.3172: Architectural framework for machine learning in future networks including IMT-2020 (p.26):\nrequirements and mechanisms in IP-based networks should be applied [ITU-T Y.2701] [ITU-T Y.3101]. It is required to prevent from unauthorized access to, and data leaking from, an ML pipeline, whether or not they have a malicious intention, with implementation of mechanisms regarding authentication and authorization, external attack protection, etc.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0078] Federal Decree No 46 of 2021 on Electronic Transactions (p.31):\nArticle (29) Responsibilities of the Relying Party 1. A Relying Party shall be held responsible for the consequences of the failure thereof to take the necessary measures to ensure the validity and enforceability of an Authentication Certificate and to observe any restrictions thereon. 2. A Relying Party shall be held responsible for the consequences of the failure thereof to take the necessary measures to ensure the validity and enforceability of a Digital Identity when using it. 3. A Relying Party, in order to trust and rely on an Electronic Signature or Electronic Seal, shall observe the following:\n\n[FCC-HI-2018#0101] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.18):\n87 All alert origination software vendors the Bureau interviewed offered their clients a pause, or “speedbump,” at the end of the alert origination process to confirm whether they were sure that they wanted to send the message. Some alert origination software displays message text to the user at time they confirm transmission, others, like HI-EMA’s software, do not. All alert origination software vendors the Bureau interviewed conducted systems training with a designated client representative who was then responsible for training other client employees. Likewise, all alert origination software vendors the Bureau interviewed provided clients the ability to assign individualized login credentials. Two alert origination software vendors pointed out, however, that they make this functionality optional, and their clients can choose not to utilize it. Similarly, all alert origination software vendors that the Bureau interviewed, including HI-EMA’s vendor, offer the ability to cancel an erroneously sent alert with a single click of a button that is clearly presented upon alert transmission. 88 The Hawaii Preparedness Report noted that the State Warning Point’s “established [b]allistic [m]issile [a]lert\n\n[ON-PICKERING-2020#0092] Investigation into the emergency alerts sent on January 12, 2020 (Procedures):\nAccording to the EMO Alert Ready policy, there was no requirement for a PEOC supervisor to review or approve an alert. However, in interviews, EMO staff demonstrated a common understanding of authority and approval levels for issuing an alert during a real emergency. The DO has the authority to compose and send an alert, but the Duty Operations Chief has the authority to approve it. The approval process can include verbal consultation and e-mail communications.\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[CAP12#0113] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ntext The text naming the originator of the alert message (OPTIONAL) The human-readable name of the agency or authority issuing this alert. headline cap. alertInfo. headline. text The text headline of the alert message (OPTIONAL)\n\n[CAPAU#0100] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.29):\nedxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved. Example: The Bureau of Meteorology issues a cyclone warning using a CAP message. The Bureau has no authority to issue evacuation notices, so an alternate authority like Emergency Management Queensland (EMQ) would redistribute the cyclone warning with an <instruction> element included.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert's sender (unknown-sender@nadhir.example) is not in the issuer register, which lists only demo-national-authority@nadhir.example. This is an Actual, Public alert in a live console for a real event, so it cannot be treated as authorised. The area matches the one drawn for event uae-dust-2026-03-04. The status Actual fits the real-event context. There are no active higher-authority alerts and no correction references to check. A person must confirm who is actually issuing this alert.",
+  "objections": [
+   {
+    "issue": "The sender is not in the issuer register. The only registered issuer is demo-national-authority@nadhir.example, so this sender has no authority to issue a live Actual alert. The drafter should not simply swap in the registered identity. A person must confirm whether the registered authority is actually issuing this alert, or whether the sender needs to be added to the register by the issuing authority.",
+    "field": "sender",
+    "blocking": true,
+    "fix": "Stop the release. Have the responsible authority confirm the real originator. Either reissue under a registered sender identity that genuinely represents the issuer, or have the authority register this sender before any release.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.sender",
+      "quote": "unknown-sender@nadhir.example"
+     },
+     {
+      "kind": "view",
+      "ref": "issuer_register",
+      "quote": "Demo national authority (stands in for the real issuer)"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0046",
+      "quote": "Identifies the originator of this alert."
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPAU#0100",
+      "quote": "The Bureau has no authority to issue evacuation notices"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4146,
+  "output_tokens": 983,
+  "at": "2026-11-09T15:57:59Z"
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "key": "6f84b83459c11b50c383f2a502bfb7d3e6e6688dbb6b1539906886fddafd4d3a",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Rain alert\",\n  \"headline\": \"NCM alert: rain, heavy at times, possible in some eastern, southern, western and interior areas\",\n  \"description\": \"Rain, heavy at times, possible. Avoid valleys and flooded roads, drive carefully. Where: some eastern, southern and western areas and parts of the interior. In effect Sat 22 Aug, 13:30 to 21:00. Source: NCM. Info: alerts.example.ae\",\n  \"instruction\": \"Stay away from valleys and flooded roads, and drive carefully. Follow updates from NCM and alerts.example.ae.\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": []\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "تنبيه من NCM: أمطار تكون غزيرة أحياناً، محتملة على بعض المناطق الشرقية والجنوبية والغربية والداخلية",
+    "description": "أمطار تكون غزيرة أحياناً، محتملة. تجنبوا الأودية والطرق المغمورة بالمياه، وقودوا بحذر. المناطق: بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول السبت 22 أغسطس، من 13:30 إلى 21:00. المصدر: NCM. للمعلومات: alerts.example.ae",
+    "instruction": "ابتعدوا عن الأودية والطرق المغمورة بالمياه، وقودوا بحذر. تابعوا التحديثات من NCM وalerts.example.ae."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 977,
+  "output_tokens": 690,
+  "at": "2026-11-09T15:53:37Z"
+ }
+}

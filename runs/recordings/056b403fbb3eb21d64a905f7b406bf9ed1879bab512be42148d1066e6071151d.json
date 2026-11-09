@@ -1,0 +1,161 @@
+{
+ "key": "056b403fbb3eb21d64a905f7b406bf9ed1879bab512be42148d1066e6071151d",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Kenneth Fire: evacuation warning for individuals near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley.\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Evacuation Warning\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"EVACUATION WARNING\",\n  \"description\": \"NEW: This is an emergency message from the Los Angeles County Fire Department. An EVACUATION WARNING has been issued in your area. Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\",\n  \"instruction\": \"Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency evacuation warning', 'FCC report wildfire evacuation alert errors', 'alert area description event name required'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[FCC-23-88#0040] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.7):\n6-7; T-Mobile 2016 Comments at 2-4, 8-9; Verizon, Comments, PS Docket Nos. 15-91 and 15-94, at 4 (Rec. Dec. 8, 2016). 35 Dakin Andone, CNN, Californians say they didn’t receive emergency wildfire alerts (Oct. 15, 2017),\n\n[ESTR-AICNHM#0301] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.73):\nThe project's model elements contain computer vision (CV) and natural language processing (NLP) techniques, AI systems can help to reduce wildfire loss significantly. In detail, the wildfire AI system includes an object detection model, image classification model, image segmentation model and so on, which can reduce labour and business costs by predicting wildfire risk and marking high risk areas in advance, reporting wildfire immediately, predicting wildfire spread and guiding fight wildfire accurately, and rescuing trapped people quickly and safely. What's more, AI systems can assess wildfire damage and generate restoration plans precisely after a disaster. For the purposes of this proposal, however, we are focusing on wildfire detection and risk mapping.\n\n[ESTR-AICNHM#0297] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.72):\nf. Please provide a short description of communications technologies that benefit or result from this use case. There are several IoT equipment (remote sensing satellites, monitors, social media apps, etc.) for supporting the wildfire detection and risk assessment system. These communication technologies enable to reduce labour and business costs by predicting wildfire risk and marking high risk areas in advance, reporting wildfire immediately, predicting wildfire spread, guiding fight wildfire accurately, and rescuing trapped people quickly and safely.\n\n[CAPCP#0102] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #8. <area> blocks are required):\n2 <areaDesc> is a textual description of the area defined by the combination of area elements, and like <event>, may not necessarily be a name found associated with the Location References document.\n\n[CAPCP#0103] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #8. <area> blocks are required):\nNotes: Area descriptions (like events) will need to be translated by the originator of the message for messages with both English and French <info> blocks in cases where the location name is not associated with the Location References document.\n\n[CAPCP#0101] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #8. <area> blocks are required):\nRule #8. <area> blocks are required Element: <area> Use: Optional Type: Technical Value: Description: Area sub-element container Notes: Example: Element: <area> Use: Required Type: Technical Value: Description: 1 An <area> block is required for each <info> block.\n\n[CAPAU#0109] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.33):\nOPTIONAL Notes: Technical 1) MUST include a minimum of one recognised <geocode> value. 2) Where multiple <area> elements are used, consolidation of <area> elements into as few <area> elements as possible is RECOMMENDED. 3) Area descriptions (like events) MUST be translated by the message producer in cases where the name is not derived from the preferred Location Reference source to ensure the intended audience for the message recognises the area being described.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the verified input on the type of action, an evacuation warning. Severity Severe, Urgency Expected and Certainty Likely are within what the input supports. However, the alert never names the hazard (the Kenneth Fire) and never says which places the warning covers. It says only 'in your area', while the verified input limits the warning to people near Calabasas, Agoura Hills and West Hills. The drafter should add both.",
+  "objections": [
+   {
+    "issue": "The alert does not name the hazard. The verified input says the warning is for the Kenneth Fire, but the headline and description name no fire or hazard. Recipients cannot tell what threat the warning is about.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Name the hazard in the headline and description, e.g. headline 'EVACUATION WARNING – Kenneth Fire' and description 'An EVACUATION WARNING has been issued due to the Kenneth Fire…'.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "Kenneth Fire: evacuation warning for individuals near Calabasas"
+     },
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "EVACUATION WARNING"
+     }
+    ]
+   },
+   {
+    "issue": "The alert does not say which places are covered. The verified input limits the warning to people near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley. The alert says only 'issued in your area'. The Kenneth Fire false alert happened because a warning meant only for the fire's evacuation area went out without that limit being stated.",
+    "field": "description",
+    "blocking": true,
+    "fix": "State the affected area in the description and the area description, e.g. 'for areas near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley'. Do not use the generic 'in your area'.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "An EVACUATION WARNING has been issued in your area."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley"
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0018",
+      "quote": "clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The input gives no issue time or valid period, so I cannot check whether the alert's times match the incident timeline.",
+    "searched_for": "Effective, onset or expiry times in the event inputs or the alert fields"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4227,
+  "output_tokens": 1244,
+  "at": "2026-11-09T16:05:24Z"
+ }
+}

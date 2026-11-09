@@ -1,0 +1,119 @@
+{
+ "key": "123d817472fa72b30482f855d867b6801aa4fd9138f710bf37ea6584b96d0b14",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender status msgType references rules', 'UAE early warning issuing authority', 'cell broadcast alert area targeting authority'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE-Smart-Data-Standards-EN--Part-1#0233] UAE-Smart-Data-Standards-EN--Part-1 (Appendix A - Glossary):\nPrimary Registries It is a register or electronic registers or databases containing data on the rights, transactions or status of individuals or companies. It is also any regulatory or administrative data to be referenced or relied upon as an accurate and reliable data source or necessary for the implementation of procedures and services.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE-Smart-Data-Standards-EN--Part-1#0084] UAE-Smart-Data-Standards-EN--Part-1 (Introduction to the Data Classification Standard):\nStandard Inter-dependencies The rules that should apply to the publication of data once classified are set out in [DC2] Rules for Opening and Sharing Classified Data. References to Implementation Guide\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.\n\n[UAE-PORTAL-EWS#0015] Handling emergencies (section 'National Early Warning System') (Crime, safety and security):\nMinistry of Climate Change and Environment on hotline 8003050 Dubai Municipality on hotline 800900 Local municipalities across the UAE Emirates Animal Welfare Society on 9712-5010054. To report human rights issues, use the eServices from:\n\n[ITU-UAE:02_Data_Protection/2.3_UAE_Health_Data_Law_Federal_Law_2_of_2019#0040] UAE Federal Law No. 2 of 2019 on the Use of ICT in Health Fields (Health Data Law) (ICT in Health Fields Law and Regulations, and Federal Ministerial Decision No 51 of 2021 Cases Allowing the Storage and Transfer of Medical Data and Information):\nArticle 13 of the ICT in Health Fields Law states that the Health Information and data related to the health services provided in the UAE may not be stored, processed, generated or transferred outside the UAE, unless in the cases defined by virtue of a decision issued by the Health Authority of the relevant emirate in coordination with the Federal Ministry of Health.\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[TDRA-TSFS001#0001] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.1):\nTECHNICAL SPECIFICATION Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) TS FS 001, Version 2.0 Document Date: November 25, 2019 Telecommunications Regulatory Authority (TRA) P O Box 26662, Abu Dhabi, United Arab Emirates (UAE) www.tra.gov.ae\n\n[FCC-16-127#0207] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.35):\nNarrowing Geo-targeting Requirements a. Background 50. Under Section 10.450 of the Commission’s WEA rules, Participating CMS Providers may not transmit Alert Messages to areas larger than the county or county equivalents with which the target area of the Alert Message overlaps.210 In the WEA First Report and Order, we concluded that it would be premature to require geo-targeting to areas smaller than a county, despite many commenters’ statements that cell broadcast technology could already support geo-targeting at the sub-county level, because not all carriers were expected to employ cell broadcast to deliver Alert Messages, and because NWS was currently only targeting its Alert Messages at the county level.211 In the WEA NPRM, we proposed to narrow our WEA geo-targeting requirement such that any Alert Message that is specified by a geocode, circle, or polygon must be transmitted to an area not larger than the specified area.212 If, however, a Participating CMS Provider is unable to accurately match the geocode, circle, or polygon provided by the emergency manager, we proposed to retain the current backstop that the Participating CMS Provider may geo-target the Alert Message to an area that approximates the desired alert area, but is no larger than a single transmission site.213 51.\n\n[ETSI-EUALERT#0053] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.11):\n5.7 Device-Based Geo-Fencing Device-Based Geo-Fencing (DBGF) allows the presentation of the warning message to be limited to UEs that are inside the targeted warning notification area. This will effectively eliminate the effect of overshoot of the radio signal for cell broadcast outside the targeted warning notification area. DBGF is specified in ETSI TS 123 041 [1] for E-UTRAN and NG-RAN. EU-Alert shall support DBGF.\n\n[FCC-16-127#0522] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\n3. FCC 16-127 Matching the Geographic Target Area a. Background 138. While our geo-targeting requirement, as amended above, will improve WEA geotargeting by facilitating the delivery of Alert Messages to a more granular polygon level, the limitations of cell broadcast-based geo-targeting may result in continued over-alerting.573 According to CSRIC IV, the “ideal case” from an alert originator perspective would be where “all WEA-enabled mobile devices in the geographic area affected by an emergency event would receive the WEA Alert Message broadcast, and no mobile devices outside the defined alert area would receive those particular WEA Alert Message broadcasts.”574 “However,” CSRIC IV reports, “this ideal case cannot be realized using currently deployed cell broadcast alone.”575 CSRIC V recommends that the Commission collaborate with WEA stakeholders to develop standards and implement systems that support enhanced, device-based geotargeting.576 CSRIC V recommends that the Commission set a goal that Participating CMS Providers geo-target Alert Messages in a manner that includes “100% of the targeted devices within the specified alert area with not more than .10 mile overshoot,” and states that WEA stakeholders, including Participating CMS Providers, “have committed to working to close the gap between current capabilities and aspirational goals.”577 b.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "No issues within the issuing-authority mandate. The sender is in the issuer register at level 1, with all areas and all categories allowed. The alert's area description and codes exactly match the requested area drawn for this event. The status 'Actual' fits a real event on a live console. As a new Alert, it needs no references. No active alerts from other authorities could be overreached.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The registered sender is a demo stand-in ('Demo national authority') with a demo-zone area, but the console is live and the context is a real event. Approvers may want to confirm that a real authorised entity (e.g. NCEMA) stands behind this issuance. Because the register entry explicitly stands in for the real issuer, I have no clause-backed basis to object.",
+    "searched_for": "A clause requiring the live-environment sender to be the actual authorised UAE entity rather than a registered stand-in"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5618,
+  "output_tokens": 629,
+  "at": "2026-11-09T16:06:40Z"
+ }
+}

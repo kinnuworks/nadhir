@@ -1,0 +1,33 @@
+{
+ "key": "a511d4da4fab5999efff6830ab67ba6237dde53955093290c8771bc679e901f5",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility across the UAE until 19:00\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand across the UAE. Visibility is below 2,000 metres in some coastal and inland areas. Until 19:00 today, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, because blowing dust can suddenly reduce visibility. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح محمّلة بالغبار تحدّ من مدى الرؤية في أنحاء الإمارات حتى الساعة 19:00\",\n  \"description\": \"تهبّ رياح شمالية غربية منعشة إلى قوية تثير الغبار والرمال في أنحاء دولة الإمارات. ينخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. حتى الساعة 19:00 اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد.\",\n  \"instruction\": \"توخَّ مزيدًا من الحذر، ولا سيما عند القيادة على الطرق المفتوحة، لأن الغبار المتطاير قد يحدّ فجأة من مدى الرؤية. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert review guidance",
+   "WMO wind terminology fresh strong Beaufort translation",
+   "multilingual alert machine translation errors FCC"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1016,
+  "output_tokens": 63,
+  "at": "2026-11-09T15:46:54Z"
+ }
+}

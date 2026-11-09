@@ -1,0 +1,114 @@
+{
+ "key": "1a637a93f4b14cf410286ebf129f4821ab3b475184cd9f9ea561a651b9d7643d",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae\",\n   \"text\": \"ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Convective clouds and rainfall\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"Rain alert: possible convective clouds with rain, heavy at times, Saturday 13:30 to 21:00\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, which may become heavy at times, are possible in some eastern, southern and western areas and parts of the interior. In effect Saturday from 13:30 until 21:00.\",\n  \"instruction\": \"Take extra care outdoors and on the roads during rain. Follow official updates at https://alerts.example.ae.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty Possible severity Moderate definitions', 'NCM weather alert levels rainfall UAE', 'alert onset expires times match bulletin'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[ITU-UAE:01_AI_Strategy_and_Governance/MOCAI_AI_Ethics#0020] MOCAI AI Ethics (p.6):\nNotes: 1. 2. 10 This definition applies regardless of whether the AI system was developed in-house or procured. It is possible for organizations to be both an AI developer organization and an AI operator organization.\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[UAE-PORTAL-EWS#0046] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead on the website of National Center of Meteorology: What you should do before heavy rains, floods and thunderbolts Awareness messages prior to sand storms. Find digital services to get latest updates on weather conditions and environmental status. Weather-related health awareness guides Promoting Health and Safety Post Rainfall (PDF, 3.05 MB) Promoting Health and Safety Post Rainfall (in Urdu, 2.68 MB) Mosquito Bites (PDF, 1.97 MB)\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0047] UAE National Air Quality Agenda 2031 (p.9):\nfederal standards, though concentrations of ground-level O3 were more frequently recorded at levels in excess of the standard. It has been determined that ground-level O3 is the main driver of potential non-attainment of the set API. Despite having met the targets for particulate matter less than 10 microns in diameter (PM10) for the past years, the country experiences high concentrations of PM10 in the atmosphere from natural sources due to the geographic location and weather patterns of the UAE. This makes it difficult to evaluate the improvement from other mitigation measures implemented. Changes in the PM10 indicator correlate better to the weather conditions experienced in that year in the UAE. This is the main reason why the indicator for particulate matter less than 10 microns in diameter (PM10) is separated from the gaseous pollutants indicator.\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[ESTR-AICNHM#0239] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.62):\nResult of applying neural network (NN) and CART to the database are the customised alerts according to each communities' necessities. In this use case the landslide forecast is developed to study the scenarios under different rainfall levels and to define the risk components maps, i.e., to declare the areas that must be rescued, be alert or monitored more closely for emergency communication and derived actions. In this project a qualification of realtime detection of rainfall (via the sensor networks in selected meteo stations) inside the fuzzy system is provided. This system is installed in the central meteostation (the best communicated, with more economic and human resources).\n\n[ESTR-AICNHM#0140] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.42):\nA dashboard represents three alert levels: normal, warning and danger. The water level sensors, weather stations, and soil moisture sensors are used to monitor and detect flash floods. The dashboard is used for emergency communication purposes.\n\n[CAP12#0263] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n· Changed CAP namespace to URN form · Tightened usage of dateTime formats in <sent>, <effective>, <onset> and <expiration> · Corrected schema to correct value of “CBRNE” in <event> · Conformed examples in Appendix A to new namespace.\n\n[CAP12#0142] Common Alerting Protocol Version 1.2 (3.3.2 DateTime Data Type):\n3.3.2 DateTime Data Type All [dateTime] elements (<sent>, <effective>, <onset>, and <expires>) SHALL be specified in the form \"YYYY-MM-DDThh:mm:ssXzh:zm\" where: YYYY indicates the year MM indicates the month DD indicates the day\n\n[CAP12#0264] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n1.1 2005-04-28 Elysa Jones Technical Committee approved the v. 1.1 draft with the following additional changes: · Normative language added to specify uniqueness of <identifier> · Change [dateTime] format for <sent>, <effective>, <onset> and <expires> elements",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the verified NCM bulletin. The hazard is convective clouds with light to moderate rain that may become heavy at times. The timing is Saturday 13:30 to 21:00. The areas are some eastern, southern and western areas and parts of the interior. Certainty 'Possible' fits the bulletin's 'possibility' wording. Severity 'Moderate' (possible threat to life or property) is not stronger than the bulletin supports. The alert contains no unverified reports.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4288,
+  "output_tokens": 478,
+  "at": "2026-11-09T16:16:53Z"
+ }
+}

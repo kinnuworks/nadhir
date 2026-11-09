@@ -1,0 +1,156 @@
+{
+ "key": "9731a0e81b13cd6b4e2f7b399a286a00064600465884725da242023bbd34e46e",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Disregard the earlier alert\",\n  \"description\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n  \"instruction\": \"No action is needed.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP msgType Cancel erroneous alert', 'false alert retraction correction FCC report', 'NCM fog warning visibility alert UAE'):\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0029] 3.2 TDRA Consumer Protection Regulations v2 (p.7):\n2.1.21. “PAYG Hard Cap Limit” means - the monetary value of the PAYG Hard Cap. 2.1.22. “Penalty-Free Service Cancellation Period” means - the period of time, as further defined in Article 12 of these Regulations, during which period a Subscriber can, in certain circumstances, cancel a contract for the supply of Telecommunications Services and exit that contract without incurring an early exit fee that would otherwise be imposed;\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0075] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nFor alert messages intended for public distribution, a <msgType> of “Alert”, “Update”and sometimes “Cancel” does affect the intended message to the public, and therefore an <info> block is required. For alert messages with a <msgType> of “Ack” or “Error”, an info block is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0415] 3.2 TDRA Consumer Protection Regulations v2 (p.70):\nIn the event that any statement made by a Licensee is misquoted in the media, to the extent that the misquote does, or may, result in an apparent breach of these Regulations, the Licensee shall take reasonable steps to procure a retraction or correction or other appropriate remedial action concerning the\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree-Law_34_of_2021_Cybercrimes#0016] Federal Decree-Law 34 of 2021 Cybercrimes (p.7):\nEstablishment Child : Every person under the age of eighteen calendar years. Child Pornography : Electronic Advertisement : Misleading Advertisement : Data or Information Processing : User : Writs of correction and removal of false data\n\n[FCC-HI-2018#0155] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.26):\nAPPENDIX A ILLUSTRATION OF FALSE ALERT AND CORRECTION ON EAS AND WEA\n\n[FCC-HI-2018#0135] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\n Third, HI-EMA has created templates for EAS and WEA messages that officers may use to correct a false alarm. This will ensure that, were such an event to occur again, the public could receive notice of the correction more quickly. Prior to the January 13, 2018, false alert, HI-EMA did not have protocols or training in place with respect to how to issue a correction to an alert, or what to do in the event a false alert was initiated.119\n\n[FCC-HI-2018#0157] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.28):\nAPPENDIX C ILLUSTRATION OF CORRECTIONS ON SOCIAL MEDIA\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[ITU-UAE:04_Cybersecurity/4.1_UAE_National_Cybersecurity_Strategy_2019#0025] UAE National Cybersecurity Strategy 2019 (p.26):\nEmergency services Health Services Transportation Food & Agriculture And 2 vehicles for the National Incident Response plan National Incident Response Committee (NRC) Take strategic decisions related to the National Incident Response program Cyber Intelligence Unit (CIU) Enable intelligence sharing between agencies for better visibility over cybersecurity threats\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[ESTR-AICNHM#0042] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.15):\nThe ways that AI can support forecasting include using AI to downscale numerical weather predictions as presented during the focus group workshop on 15 March 2021, 7 to develop a fog forecasting model based on the meteorological aerodrome report (METAR) visibility data from the last 20-40 years at the daily and seasonal scale as presented during the focus group workshop on 30 August 2021, 8 to support hail forecasting (whereby ML, classifiers, and transfer learning are combined with the reanalysis data [b-Hersbach]), and to assist in the automatic detection and prediction of snow avalanches [b-Thüring]. Among the topic group use cases (clause 8), there are many additional examples of how AI is being used in forecasting.9",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert tells the public to disregard an earlier weather alert as sent in error and says no action is needed. No input supports this. The only verified hazard input is an active NCM fog warning for western regions, 21:30 on 17 Feb to 10:00 on 18 Feb, with visibility possibly dropping to zero. A retraction would contradict the bulletin. Whether any earlier alert was truly erroneous, and whether a separate correct fog warning must go out, is for the issuing authority to decide.",
+  "objections": [
+   {
+    "issue": "The description says an earlier alert was sent in error. No event input reports such an error. The verified NCM bulletin confirms a live fog hazard over this period, so the alert contradicts the bulletin and rests on an unverified claim.",
+    "field": "description",
+    "blocking": true,
+    "fix": "A person at the issuing authority must confirm whether an earlier alert was actually erroneous. If it was a genuine fog alert, do not retract it. Issue or keep a fog warning matching NCM: fog and reduced visibility, possibly zero, across several western regions, from 21:30 on 17 Feb until 10:00 on 18 Feb. If a true cancellation is needed, it must reference the specific erroneous message as a Cancel and must not imply the NCM fog hazard is void.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "it was sent in error"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0050",
+      "quote": "\"Cancel\" – Cancels the earlier message(s) identified in <references>"
+     }
+    ]
+   },
+   {
+    "issue": "The instruction 'No action is needed' contradicts NCM's advice to motorists during the warning period. It understates the hazard, and it is inconsistent with the alert's own severity Moderate and certainty Likely for a fog warning.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Unless the authority confirms there is no fog hazard, replace this with NCM's advice. Drivers should exercise extreme caution, keep a safe distance, and follow the modified speed limits in thick fog.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "No action is needed."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "The Center has urged motorists to exercise extreme caution on the roads"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4439,
+  "output_tokens": 1461,
+  "at": "2026-11-09T16:24:32Z"
+ }
+}

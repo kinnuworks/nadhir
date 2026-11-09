@@ -1,0 +1,148 @@
+{
+ "key": "4e58419ef2ecfc161a14d033b98d2f74b14d61b752efdc55945119741a399f71",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the Pickering Nuclear Generating Station. An incident was reported at the Pickering Nuclear Generating Station. There has been NO abnormal release of radioactivity from the station and emergency staff are responding to the situation. People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions.\",\n   \"characters\": 516,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page limit GSM-7 encoding', 'first page hazard and action wording', 'false alarm nuclear alert Pickering lessons'):\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0182] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.43):\n9.2.3 GSM only [In the case of multipage CBS messages, the individual pages are considered as independent by the BSC scheduling algorithm]. KILL Request/Indication PARAMETER Message-Identifier Old-Serial-Number Cell-List GSM only [Channel Indicator\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[CAPAU#0097] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.29):\nProfile Specification Type Profile Specification Normative Non-Normative expected to understand: a) text associated with <event>, b) text associated with <areaDesc> value(s), and c) the word “to” followed by value for <expires>. 2) The full text, or at least the first ten words, of this element could be used in the construction of recorded audio or text-tospeech audio. 3) The full text, or at least the first 60 characters, of this element could be used in the construction of video display text. description\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0014] DotEmarat Policy EN (p.6):\n4.3. 5. Except for Domain Names allocated prior to . (dotEmarat) Public Launch Date, and those Domain Names, words and phrases which may be placed on the Reserved List, Domain Names are allocated on a ‘first come, first served basis’ which means that where two or more Applicants are seeking a Domain Name Licence in respect of a particular Domain Name and they all meet the Eligibility Requirements, that Applicant whose Application is accepted by the .aeDA first will be granted the Domain Name Licence.\n\n[LA-2025#0001] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.1):\nSOUNDING THE ALARM: Lessons from the Kenneth Fire False Alerts May 12, 2025\n\n[LA-2025#0018] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nTwenty minutes after the false alert, LACOEM issued a new alert, noting the error in the initial message and clarifying the evacuation warning was meant only to apply to the Kenneth Fire evacuation area.16\n\n[ON-PICKERING-2020#0074] Investigation into the emergency alerts sent on January 12, 2020 (Box 1: Planned maintenance outage at Pickering Nuclear Generating Station):\nBox 1: Planned maintenance outage at Pickering Nuclear Generating Station On January 12, 2020, Unit 1 at Pickering Nuclear Generating Station was on a planned maintenance outage and was therefore out of service in a shutdown position. At 1:21 am, there was a momentary loss of power to some equipment on this Unit resulting in an internal notification. OPG provided a courtesy update to the Canadian Nuclear Safety Commission (CNSC) regarding this loss of power.\n\n[ON-PICKERING-2020#0106] Investigation into the emergency alerts sent on January 12, 2020 (Findings):\nFindings The PEOC only maintained templates with pre-scripted messaging for nuclear alerts. The PNERP required that nuclear emergency bulletins be pre-scripted for each reactor facility and notification category, as far as practical. The alert issued in error included a pre-scripted template maintained by the PEOC for the Pickering Nuclear Generating Station.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The English text can be delivered: 516 GSM-7 characters across 6 pages, well under the 15-page cell broadcast maximum, and no languages are required by the GENERIC profile. However, the first GSM-7 page (about 93 characters) holds only the preamble 'This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the…'. It carries neither the hazard (the incident at Pickering) nor the action (no protective action needed). Pages can be scheduled and displayed independently, so a reader who sees only page 1 learns of a nuclear bulletin with no hazard or action. That is a fixable drafting issue.",
+  "objections": [
+   {
+    "issue": "The first page carries neither the hazard nor the action. The opening ~93 GSM-7 characters are spent on the issuing authority and the 10 km applicability boundary. The incident statement and the 'DO NOT need to take any protective actions' instruction do not appear until pages 2–4. Multipage cell broadcast pages are handled independently, so the first page must stand on its own. Here it would show a nuclear bulletin with no hazard or action, which risks alarm or misreading.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Reorder so that page 1 (the first ~90 characters) states the hazard and the action together, for example: 'Pickering Nuclear incident: NO radiation release. NO action needed by public. Ontario emergency bulletin.' Then put the 10 km applicability, the responder details and 'stay tuned to local media' on later pages. Keep the total under 15 pages in GSM-7.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the Pickering Nuclear Generating Station."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "DO NOT need to take any protective actions at this time"
+     },
+     {
+      "kind": "clause",
+      "ref": "TS23041#0182",
+      "quote": "the individual pages are considered as independent by the BSC scheduling algorithm"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPAU#0097",
+      "quote": "at least the first 60 characters, of this element could be used in the construction of video display text"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The wording closely matches the pre-scripted Pickering template that was issued in error on January 12, 2020. Whether this bulletin should be broadcast at all, given it advises no action, is a decision for people and is outside the deliverability mandate. No clause shown supports objecting on that basis.",
+    "searched_for": "Criteria limiting cell broadcast use for no-action or informational nuclear bulletins"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5132,
+  "output_tokens": 1408,
+  "at": "2026-11-09T15:44:55Z"
+ }
+}

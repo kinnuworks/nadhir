@@ -1,0 +1,194 @@
+{
+ "key": "c35ab45fcd6cea706bc1d137a92ef82ea51e079e1b84dcf5685929a21a97c20b",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"15:03: a Long March carrier rocket carrying a satellite, launched from the Xichang Satellite Launch Center, entered Taiwan's air defence identification zone, passed from Tainan over Taitung outside the atmosphere, on a path that differed from the satellite launch path notified by the US FAA; possible risk from debris.\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Air raid alert (air threat warning)\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"[Air raid Alert]\",\n  \"description\": \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\",\n  \"instruction\": \"be aware\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP event type severity certainty consistency', 'alert wording mismatch hazard misidentified missile', 'rocket debris public warning message content'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[FCC-HI-2018#0088] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nAccording to the Hawaii Preparedness Report, “A complete comprehensive annex or plan to address the Ballistic Missile Preparedness (BMP) threat had not been fully developed prior to commencement of missile alert siren testing and internal missile alert drills[,]” and that this approach contradicted HI-EMA’s all hazards protocols. Hawaii Preparedness Report at 1. 75 The ballistic missile checklist was intended for use in connection with a real ballistic missile attack. 76 The HI-EMA Report states, “Notification for Step 1 of the [ballistic missile alert] checklist is used for actual\n\n[TW-2024-CNA#0001] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nThe MND explained that the mistake was made due to a failure to update the English wording used in the emergency text message\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0056] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\nEmployee 4 and Employee 2 discussed their plan their plan to conduct a [ballistic missile alert] drill at the end of their shift. Employee 4 prepared a recording of PACOM [ballistic missile alert] notification from the [ballistic missile alert] checklist manual. Employee 4 discussed leaving the [State Warning Point] area while Employee 2 told the dayshift about the previous shift change drill.” HI-EMA Report at 3. The HI-EMA Report stated that at 8:03 a.m., “The incoming day shift entered the [State Warning Point]. Employee 4 met with Employee 5 and discussed the [ballistic missile alert] drill.” Id.\n\n[IPAWS-PROFILE#0051] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nresourceDesc (1) A value of “EAS Broadcast Content” SHALL be used to indicate that the elements of a <resource> block are intended for EAS broadcast. (2) EAS broadcast audio and video content SHOULD match the message's textual content.\n\n[TS23041#0438] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.87):\n9.4.3.2 86 ETSI TS 123 041 V18.3.0 (2024-02) Message Parameter Parameter Message Identifier Serial Number CB Data {Warning Message Content E-UTRAN}, Data Coding Scheme Warning Area Coordinates (O) The table gives a high-level description of the warning message content. The format of the warning message is described in 3GPP TS 36.331 [36]. For ETWS, the description of the warning message content is only applicable for the secondary notification. Description of the ETWS Primary Notification message is specified in clause 9.4.3.3.\n\n[TS23041#0120] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.30):\nETSI TS 123 041 V18.3.0 (2024-02) The UE indicates the contents of the \"warning message\" to the user. If the Warning Area Coordinates are present, and if the UE is unable to determine its location: The UE indicates the contents of the \"warning message\" to the user. If the Warning Area Coordinates are present, and the UE determines it is inside the Warning Area Coordinates: The UE indicates the contents of the \"warning message\" to the user. If the Warning Area Coordinates are present, and the UE determines it is outside the Warning Area Coordinates: The UE does not indicate the contents of the \"warning message\" to the user. The UE shall store the \"warning message\" in the list of \"warning messages\" to be checked for geo-fencing during a UE implementation specific time which shall not be greater than 24 hours. Upon expiration of the UE implementation specific time, the UE shall remove the stored \"warning message\" from the list of \"warning messages\" to be checked for geo-fencing. If the \"warning message\" is a geo-fencing trigger message (see clause 9.4.1.2.2) then: -\n\n[TS23041#0085] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.19):\n2) UEs with user interface which support the ePWS language-independent content functionality and which are incapable of displaying text-based warning messages should be capable of mapping message identifiers of received warning messages to language-independent contents stored in those UEs. When a warning message is received, such a UE should be capable of displaying of a language-independent content stored in the UE mapped from the message identifier of the received warning message.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert names the wrong hazard. The verified input describes a Long March carrier rocket carrying a satellite that passed outside the atmosphere and posed a possible debris risk. The alert calls it a missile flyover and an air raid alert. Severity and certainty are set higher than the verified 'possible risk from debris' supports. The location wording also does not match the verified path.",
+  "objections": [
+   {
+    "issue": "The hazard is misidentified. The verified input describes a satellite carrier rocket with possible debris risk, but the alert calls it a 'Missile' and an 'Air raid alert'. This matches the documented failure to update the English wording of the emergency text message.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Replace 'Missile flyover' with wording that matches the input, e.g. 'Long March carrier rocket carrying a satellite, launched from Xichang, passed over southern Taiwan outside the atmosphere; possible risk from falling debris.' Make the event and headline match: a rocket/space-launch debris alert, not an air raid alert.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Missile flyover Taiwan airspace"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "a Long March carrier rocket carrying a satellite"
+     },
+     {
+      "kind": "view",
+      "ref": "event",
+      "quote": "Air raid alert (air threat warning)"
+     },
+     {
+      "kind": "clause",
+      "ref": "TW-2024-CNA#0001",
+      "quote": "failure to update the English wording used in the emergency text message"
+     }
+    ]
+   },
+   {
+    "issue": "Severity and certainty overstate the public hazard. The flyover itself was observed, but the threat to people is given only as 'possible risk from debris'. That supports a possible threat, not a Severe, Observed one.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Set severity to Moderate (possible threat to life or property) and certainty to Possible for the debris hazard. If the issuing authority has more information, cite it in the alert.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "possible risk from debris"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0101",
+      "quote": "Possible threat to life or property"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "view",
+      "ref": "certainty",
+      "quote": "Observed"
+     }
+    ]
+   },
+   {
+    "issue": "Place wording does not match the input. The alert says the object flew over 'Taiwan airspace'. The verified input says it passed from Tainan over Taitung outside the atmosphere.",
+    "field": "description",
+    "blocking": false,
+    "fix": "State the verified path: passed from Tainan over Taitung, outside the atmosphere.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "passed from Tainan over Taitung outside the atmosphere"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Missile flyover Taiwan airspace"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The alert gives no time of the event, while the verified input gives 15:03.",
+    "searched_for": "clause requiring event time in alert text"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4529,
+  "output_tokens": 2028,
+  "at": "2026-11-09T16:06:29Z"
+ }
+}

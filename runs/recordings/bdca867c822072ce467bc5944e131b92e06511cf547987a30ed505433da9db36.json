@@ -1,0 +1,166 @@
+{
+ "key": "bdca867c822072ce467bc5944e131b92e06511cf547987a30ed505433da9db36",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"현재 시각, 백령면·대청면에 실제 경계경보 발령. 경보 미수신 지역은 자체적으로 실제 경계경보를 발령\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"경계경보 (air-raid alert)\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"\",\n  \"description\": \"오늘 6시 32분 서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록 해주시기 바란다\",\n  \"instruction\": \"대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록\"\n }\n}\n\nKnowledge base clauses returned by your searches ('alert area must match hazard bulletin', 'CAP certainty severity values definitions', 'false alert wrong area FCC report'):\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0527] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nCommenters indicate that the suppression of the Alert Messages on mobile devices that are outside of the target area (geo-fencing) would allow Participating CMS Providers to match the target area specified by alert originators.583 We seek comment on this analysis, including any alternative approaches that Participating CMS Providers could use to match the target area or to implement a device-based approach to geo-targeting. The record indicates that technical issues, such as potential increases in message delivery latency, and reductions in the amount of data available for Alert Message text, can be resolved.584 We seek comment on how Participating CMS Providers will address these issues in conversation with other relevant WEA stakeholders. We seek comment on feasible methods Participating CMS Providers could use to mitigate sources of alert delivery latency that may be implicated by geo-targeting Alert Messages to an area that matches the target area specified by the alert originator.585 Participating CMS Providers and ATIS agree that meeting such an accurate geo-targeting standard could cause message delivery delay due to the device needing to determine its location before displaying the message, and due to network constraints.586 ATIS states that “the only currently readily 580 We anticipate that variations in geo-targeting accuracy due to the size of the target area can be controlled through alert originator best practices.\n\n[FCC-16-127#0523] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\nDiscussion 139. As we emphasize above, more granular geo-targeting remains a critical need for both consumers and emergency managers. Accordingly, we propose to require Participating CMS Providers to match the target area specified by alert originators. We anticipate that this may require Participating CMS Providers to leveraging the location sense of WEA-capable mobile devices on their networks. In the following paragraphs, we seek comment on how we should define “matching” the target area for purposes of any such requirement, as well as on steps that alert initiators and Participating CMS Providers can take to minimize alert delivery latency and maximize the amount of data available for other Alert Message content. We also seek comment on the readiness of innovations that could allow alert initiators to geo-target more flexibly, and to smaller areas. 140.\n\n[FCC-16-127#0698] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.123):\nIf, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates matches the target area, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site that best approximates the target area. 9. Add a new Section 10.490: § 10.490 Multimedia support. Participating CMS Providers are required to support the transmission of hazard symbols and thumbnail-sized photos in Public Safety Messages. 10. Amend introductory paragraph and add a new paragraph (h) of § 10.500 to read as follows: § 10.500 General requirements. WEA mobile device functionality is dependent on the capabilities of a Participating CMS Provider's delivery technologies. Mobile devices are required to perform the following functions: *** (h) Preservation of Alert Messages in a consumer-accessible format and location at least until the Alert Message expires.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[CAPCP#0082] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nUTF-8 is the recommended encoding for XML documents in order to support a wide range of languages and accented characters. Defined CAP element values, such as those defined for <urgency>, <severity>, <certainty>, <responseType>, etc. are in English only, and are always used as specified by CAP within all <info> blocks. (Defined values are values standardized in advance and are coded values used to initiate actions on the part of auto-processing systems – any use of the these defined values as a display element should be confined to using the value as an index into a language based lookup table to find the appropriate word or words, including English).\n\n[FCC-HI-2018#0010] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.4):\nConsistent with its protocol, the FCC Operations Center contacted the U.S. Department of Homeland Security (DHS) National Operations Center, which confirmed the alert was false. The FCC Operations Center contacted Bureau leadership at 1:42 p.m. (EST) to ensure they were aware of the incident and the DHS confirmation of the alert as false. During this time, Bureau leadership was also in touch with the Federal Emergency Management Agency (FEMA) concerning the false alert. Federal Communications Commission (Commission) Chairman Ajit Pai immediately directed the Bureau to investigate the facts and circumstances around the transmission of the January 13th false alert. Specifically, Chairman Pai instructed the Bureau to start a full investigation into this event, focusing on two key questions: “What went wrong? And what needs to be done to stop a similar mistake from happening in the future?”9 5. On January 18, 2018, the Bureau dispatched two investigators to Hawaii. On January 18 and 19, 2018, the Bureau investigators met with HI-EMA staff, United States Pacific Command (PACOM), the Hawaii State Emergency Communications Committee (Hawaii SECC), and Hawaii legislators.10 Between January 18, 2018 and January 26, 2018, Bureau staff also interviewed alert 6 In a memo to the Bureau staff, the National Association of the Deaf detailed the experiences of its Board of\n\n[LA-2025#0009] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.5):\nLACOEM then takes the targeted areas developed in Genasys’ EVAC software and inputs that targeted geographic area in Genasys’ ALERT software, which is used to send out the alert messages over multiple channels, including IPAWS, to the specified areas of concern. IPAWS WEA messages use standardized formatting, and in 2019, the FCC expanded messages from 90 to 360 characters (for 4G LTE network technology and beyond).\n\n[FCC-HI-2018#0140] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nthe live alert templates.120 Further, while HI-EMA’s alert origination software did display a message to confirm the alert originator’s intent to transmit alerts and tests (a “speedbump”), it did not display that message in a way that enables the alert originator to review their message while they confirm their intent to transmit it, nor did the speedbump clearly specify whether the alert originator is about to send a test or a live alert. HI-EMA’s alert origination software vendor intends to clearly differentiate its test environment from its live alert environment (e.g., color coding and alphabetizing their templates, and adding information to its final confirmation prompt (speedbump) that makes clear whether the alert about to be sent is a live alert). This will make it more difficult for a warning officer to accidentally choose the wrong alert message template, or to transmit a false alert.121 \n\n[LA-2025#0033] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.12):\nmajor improvement for the public to be able to understand their relative location to the warning area. The FCC gave mobile carriers three years to implement the maps, with an effective deadline of December 15, 2026. When fully implemented by mobile carriers, this will be a major improvement for the public to be able to understand their relative location to the warning area. 25. https://www.cnn.com/2025/01/16/us/evacuation-warnings-vulnerabilities-la-fires/index.html 26. https://www.fcc.gov/sites/default/files/CSRIC8-Report-WEA-API032123.pdf 27. https://www.fcc.gov/document/fcc-adopts-rules-improve-accessibility-wireless-emergency-alerts",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert names the wrong place. The verified bulletin issues a real air-raid alert (경계경보) for 백령면·대청면, but the alert says 서울지역. The bulletin also tells areas that did not receive the alert to issue their own; whether that covers Seoul is a decision for the issuing authority, not the drafter. The alert also states a clock time (6시 32분) that the bulletin does not give.",
+  "objections": [
+   {
+    "issue": "The alert area does not match the bulletin. The only verified input names 백령면·대청면, but the alert describes an air-raid alert for the Seoul area. Seoul does not appear anywhere in the inputs. The bulletin's line telling non-receiving areas to self-issue the alert is ambiguous, and it does not let the drafter retarget the alert to Seoul.",
+    "field": "description",
+    "blocking": true,
+    "fix": "The issuing authority must confirm the intended area. Unless it confirms Seoul, replace 서울지역 with 백령면·대청면, as the bulletin states.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "백령면·대청면에 실제 경계경보 발령"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "오늘 6시 32분 서울지역에 경계경보 발령"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "경보 미수신 지역은 자체적으로 실제 경계경보를 발령"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0523",
+      "quote": "match the target area specified by alert originators"
+     }
+    ]
+   },
+   {
+    "issue": "The alert gives an issuance time (오늘 6시 32분) that is not in the bulletin. The bulletin says only '현재 시각' (the current time).",
+    "field": "description",
+    "blocking": false,
+    "fix": "Remove the specific time, or use the issuance time exactly as confirmed by the bulletin source.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "오늘 6시 32분 서울지역에 경계경보 발령"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "현재 시각, 백령면·대청면에 실제 경계경보 발령"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Certainty is set to 'Possible' (not likely) while severity is set to 'Extreme'. The bulletin does not state how certain the threat is, so I cannot confirm whether 'Possible' understates it. The source should confirm the certainty.",
+    "searched_for": "CAP certainty severity values definitions"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5533,
+  "output_tokens": 1515,
+  "at": "2026-11-09T16:06:04Z"
+ }
+}

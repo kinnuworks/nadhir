@@ -1,0 +1,114 @@
+{
+ "key": "7b73a892534a11c364d2fb9125f2991c643467a1c1020e5048ad1f035ea2cca0",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust and low visibility in coastal and inland areas of Abu Dhabi until 18:00\",\n  \"description\": \"EXERCISE - Strong northwesterly winds are raising dust and sand. Visibility is below 3,000 m in some coastal and inland areas of Abu Dhabi until 18:00 today, 16 Feb. Visibility can drop suddenly.\",\n  \"instruction\": \"Drive with caution, especially on external and open roads, and be ready for sudden drops in visibility. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير وانخفاض في مدى الرؤية في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00\",\n  \"description\": \"تمرين - رياح شمالية غربية قوية تثير الغبار والرمال. مدى الرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00 اليوم، 16 فبراير. قد ينخفض مدى الرؤية بشكل مفاجئ.\",\n  \"instruction\": \"قُد بحذر، خاصة على الطرق الخارجية والمفتوحة، وكن مستعداً لانخفاض مفاجئ في مدى الرؤية. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert human review', 'machine translation alert language requirements UAE', 'exercise test alert labeling cell broadcast'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0058] AI Guide v1 (p.17):\nSimilar innovations are taking place with AI in medicine. Machines are being trained to spot abnormalities and diagnose disease. Doctors will be able to speed through MRI’s and X-rays thanks to AI driven image recognition. Aided by AI, Doctors can focus on deeper issues related to patient care, where machine translation can also help remove language barriers between doctor and patient. While the medical industry is nowhere close to replacing doctors with robots, AI is already a valuable tool enabling doctors to treat patients holistically. AI is actively deployed in the healthcare sector in the UAE. The Ministry of Health and Prevention uses AI to enhance medical fitness examinations for new residents. Image recognition algorithms 32\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[MHEWS-2026#0349] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nprogramme that adapts neural machine translation tools to specialized weather terminology through a patented training process. The system enables large language models to generate more accurate and context-sensitive translations of weather alerts in languages such as Chinese, Spanish, and Vietnamese (Khurana et al., 2023). Similarly, Canada’s national public alerting system Alert Ready integrates AI-powered translation directly into alert-authoring software to enable real-time bilingual alerts across hazard types (Box 17).\n\n[TDRA-2017-CB#0013] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nYes Discard the alert by acknowledgement 4392 4379 Displayed الرسالة التجريبية Test Alerts رسالة تجريبية Test Alert No Yes Yes 10.5 Simple Tone (Similar to SMS) OR Audio Signal (Sound in Mute Mode is not required)\n\n[TDRA-2017-CB#0014] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nNo OR Yes No Action By User OR Discard the alert by acknowledgement 4393 4380 Hidden تمارين Exercises تمرين Exercise Yes No Yes 10.5 Audio signal OR whistle tone (Even if mute mode) Yes Discard the alert by acknowledgement 4394 4381\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[ETSI-EUALERT#0045] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.10):\nRequired Monthly Test EU-Test State/Local Test EU-Exercise Exercise EU-Reserved Reserved for CMSP use EU-Geo-fencing trigger message Geo-fencing trigger Comment Broadcasting of level 1 alerts where opt-out is not allowed. Broadcasting of level 2 alerts where opt-out is allowed. Broadcasting of level 3 alerts where opt-out is allowed. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Allocated for Amber (child abduction) alerts. Users should be able to opt-in to these messages. Allocated for monthly test messages that may or may not involve the general public and may or may not require special UEs. Allocated for messages used for proficiency training and public outreach. Users may be able to opt-in to these messages. Allocated for use during exercises. Its use is for further study. Reserved for operator specific use. In EU-Alert this MI is reserved for national government requests to operators. Allocated for geo-fencing trigger message for DeviceBased Geo-Fencing.\n\n[INDIA-2023#0002] Today's emergency alert: here's what you need to know (nationwide Cell Broadcast sample test) (article body, quoted message text):\n\"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning across the headline, description and instruction. The exercise label (تمرين) is present. The hazard matches: northwesterly winds raising dust and sand, low visibility. The figures match: below 3,000 m, until 18:00 today, 16 Feb. The places match: coastal and inland areas of Abu Dhabi. The warning that visibility can drop suddenly is kept. The protective action is fully preserved: drive with caution, especially on external and open roads, and be ready for sudden drops in visibility. The update URL is unchanged. The Arabic was produced by machine translation, so a named person who reads Arabic must still review and approve it before sending. This review does not replace that sign-off.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5004,
+  "output_tokens": 685,
+  "at": "2026-11-09T16:10:04Z"
+ }
+}

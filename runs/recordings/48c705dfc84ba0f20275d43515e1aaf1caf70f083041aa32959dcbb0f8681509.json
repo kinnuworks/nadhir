@@ -1,0 +1,123 @@
+{
+ "key": "48c705dfc84ba0f20275d43515e1aaf1caf70f083041aa32959dcbb0f8681509",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"US\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.\",\n   \"characters\": 88,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('WEA message length character limit', 'cell broadcast GSM-7 page 93 characters', 'Hawaii false ballistic missile alert FCC report'):\n\n[FCC-16-127#0042] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.8):\nIII. FCC 16-127 REPORT AND ORDER A. Alert Message Content 1. Increasing Maximum Alert Message Length from 90 to 360 Characters a. Background 9. Under Section 10.430 of the Commission’s rules, WEA Alert Messages are limited to 90 characters.28 In the WEA First Report and Order, the Commission concluded that a 90-character limit was appropriate to serve the public interest “at this initial stage” because it enabled all currently existing systems (mostly 2G and 3G networks defined herein as “legacy” networks)29 to transmit Alert Messages with minimal change.30 Further, the Commission reasoned that an initial 90-character limit was advisable because a person receiving a WEA Alert Message could choose to seek out additional information from other media sources should the Alert Message be insufficient.31 In the WEA NPRM, we proposed extending the character limit to 360 for those networks and devices for which it is technically feasible, while continuing to allow the delivery of 90-character messages on legacy networks and devices.32 10.\n\n[FCC-16-127#0073] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.13):\nadopt today, no matter how an alert originator transmits a WEA Alert Message, members of their community in the target area will receive a version of it. Figure. 2: Our Approach to Expanding the Character Limit 15. Increasing the maximum character length for WEA Alert Messages will produce valuable public safety benefits. Emergency managers state that the current 90-character limit is insufficient to communicate clearly with the public because 90-character Alert Messages rely on difficult-to-understand jargon and abbreviations.59 Expanding the character limit will reduce reliance on these potentially confusing terms and will allow emergency managers to provide their communities with information that is clear and effective at encouraging swift protective action.60 The value of this benefit will be increased 59\n\n[FCC-16-127#0069] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.12):\nCSRIC IV supports the coexistence of different message-length standards for legacy and 4G networks. Cf. CSRIC IV WEA Messaging Report at 44 (“It is recommended that the industry modify existing CMAS/WEA standards to support coexistence of both the legacy 90 characters of displayable text for use on 2nd and 3rd Generation CMS Provider Infrastructure, and a message length of 280 displayable characters for 4G LTE CMS Provider Infrastructure including the addressing of backward compatibility issues.”); see also FEMA Mar. 17, 2016 Ex Parte Letter (“Under CAP parameters, there is a single identification number for each alert message. A single alert message may contain both 90 and 360 character message elements for display on WEA capable devices. Devices would process both and display a message dependent upon the device capability and the network to which the devices are connected. Each character length message may have a unique identifier that a device would identify. A device on a 4G LTE network would get both messages and display the correct message, while a legacy network would only receive a 90 character message.”). 55\n\n[FCC-16-127#0054] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.10):\nwe find that a 360-character maximum for Alert Message text\u0003“is appropriate for disseminating official, targeted, immediate, and actionable information.”41 We note that establishing 360 characters as the maximum character length leaves emergency managers free to issue Alert Messages that are shorter than 360 characters in appropriate situations. We defer to emergency managers’ experience and best practices to determine the appropriate message length for their particular needs. 12. We also find that expanding the maximum character length to 360 for 4G-LTE networks is technically feasible.\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0043] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.11):\n2 General description The CBS service is analogous to the Teletex service offered on television, in that like Teletex, it permits a number of unacknowledged general CBS messages to be broadcast to all receivers within a particular region. CBS messages are broadcast to defined geographical areas known as cell broadcast areas. These areas may comprise of one or more cells, or may comprise the entire PLMN or SNPN. Individual CBS messages will be assigned their own geographical coverage areas by mutual agreement between the information provider and the PLMN or SNPN operator. CBS messages may originate from a number of Cell Broadcast Entities (CBEs), which are connected to the Cell Broadcast Centre. CBS messages are then sent from the CBC to the cells, in accordance with the CBS's coverage requirements. A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters. Other Data Coding Schemes may also be used, as described in 3GPP TS 23.038 [3]. Up to 15 of these pages may be concatenated to form a CBS messagee. Each page of such CBS message will have the same message identifier (indicating the source of the message), and the same serial number. Using this information, the MS/UE is able to identify and ignore re-broadcasts of already received messages.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0182] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.43):\n9.2.3 GSM only [In the case of multipage CBS messages, the individual pages are considered as independent by the BSC scheduling algorithm]. KILL Request/Indication PARAMETER Message-Identifier Old-Serial-Number Cell-List GSM only [Channel Indicator\n\n[FCC-HI-2018#0017] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.5):\nSee also Hawaii Emergency Management Agency, FAQs Related to Ballistic Missile False Alert (Jan. 13, 2018 revised Jan. 31, 2018), http://dod.hawaii.gov/hiema/faqs-related-tothe-ballistic-missile-false-alert/; Hawaii Emergency Management Agency, Statement on Missile Launch False Alarm (Jan. 13, 2018), https://dod.hawaii.gov/hiema/files/2018/01/20180113-NR-HI-EMA-statement-on-missilelaunch-false-alarm.pdf. As discussed above, this report will use the facts as determined in the FCC investigation but note in footnotes any discrepancies with the HI-EMA Report and the Hawaii Preparedness Report. 15 See State releases heavily redacted recording of HI-EMA’s missile mistake test, Hawaii News Now, (Mar. 14,\n\n[FCC-HI-2018#0088] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nAccording to the Hawaii Preparedness Report, “A complete comprehensive annex or plan to address the Ballistic Missile Preparedness (BMP) threat had not been fully developed prior to commencement of missile alert siren testing and internal missile alert drills[,]” and that this approach contradicted HI-EMA’s all hazards protocols. Hawaii Preparedness Report at 1. 75 The ballistic missile checklist was intended for use in connection with a real ballistic missile attack. 76 The HI-EMA Report states, “Notification for Step 1 of the [ballistic missile alert] checklist is used for actual\n\n[ON-PICKERING-2020#0117] Investigation into the emergency alerts sent on January 12, 2020 (Box 2: 2018 Hawaii false ballistic missile alert):\nBox 2: 2018 Hawaii false ballistic missile alert On January 13, 2018 at 8:07 am local time, the Hawaii Emergency Management Agency (HI-EMA) issued an emergency alert to Hawaii residents that read “Emergency Alert: BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL”. At 8:45 am, a second alert was issued stating that the first alert was false and that there was no missile threat or danger to Hawaii residents.\n\n[FCC-HI-2018#0093] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nThe HI-EMA Report finds that the ballistic missile alert checklist did not include a response protocol in the event of a false-ballistic missile message, although there was a cancel message, which stopped further ballistic missile messages. Id. The HI-EMA Report further finds that the HI-EMA Preparedness Branch previously identified the need to revise the [ballistic missile alert] checklist to include a “Deactivation” section or “‘All Clear EAS message.’” Id. The HI-EMA Report states: “Had the protocol [for sending an all clear message] been developed within the last 2 months [between November 29, 2017 and January 29, 2018, the HI-EMA Report’s publication date], the delay in sending out an official notification over WEA/EAS that the alert was false would not have happened on January 13, 2018.” On this latter point, the Bureau infers that the HI-EMA Report reiterates that the establishment of a false alert response protocol in the ballistic missile alert checklist would have reduced any delay in issuing a CEM. An “all clear” message, however, could also be used to notify the public of a ballistic missile interception without effect to Hawaii. See Hawaii Preparedness Report at 1. 78 HI-EMA Report at 9. 79 Id.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Deliverable as drafted. The single English text is 88 characters in GSM-7 on 1 page. That is within the 93-character cell broadcast page and the 15-page maximum, and under the legacy 90-character WEA limit. No languages are required for this profile. The first page carries both the hazard (ballistic missile threat to Hawaii) and the action (seek immediate shelter).",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The text is word-for-word the January 13, 2018 Hawaii false ballistic missile alert. Whether this alert is genuine and authorised is a decision for the approvers. It falls outside my delivery and readability mandate, and no clause shown makes it a handset delivery defect.",
+    "searched_for": "Clauses on verifying that an alert is authentic, or on reuse of past false-alert text, as a carrier or regulator delivery requirement"
+   },
+   {
+    "concern": "No Spanish version is provided. The US profile lists no required languages, and none of the clauses shown sets a language requirement for WEA delivery.",
+    "searched_for": "WEA language requirements (e.g., Spanish) in FCC 16-127 or the 3GPP clauses shown"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5872,
+  "output_tokens": 634,
+  "at": "2026-11-09T16:04:25Z"
+ }
+}

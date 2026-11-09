@@ -1,0 +1,138 @@
+{
+ "key": "755b39b107c08cb7adaee47c4e8b178053f8e4896df64f49ff2aefa30ed3a6b7",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"ko\",\n   \"text\": \"오늘 6시 32분 서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록 해주시기 바란다\",\n   \"characters\": 78,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 2\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast UCS-2 page length characters', 'first page hazard and action wording', 'alert message missing reason hazard confusion'):\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0296] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.64):\nThe content of Warning Message Content E-UTRAN IE consists of the following parameters: PARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.36 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20 Repetition-Period E-UTRAN This parameter is applicable for E-UTRAN only. ETSI PRESENCE M M M O O : O O\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[CAPAU#0097] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.29):\nProfile Specification Type Profile Specification Normative Non-Normative expected to understand: a) text associated with <event>, b) text associated with <areaDesc> value(s), and c) the word “to” followed by value for <expires>. 2) The full text, or at least the first ten words, of this element could be used in the construction of recorded audio or text-tospeech audio. 3) The full text, or at least the first 60 characters, of this element could be used in the construction of video display text. description\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0014] DotEmarat Policy EN (p.6):\n4.3. 5. Except for Domain Names allocated prior to . (dotEmarat) Public Launch Date, and those Domain Names, words and phrases which may be placed on the Reserved List, Domain Names are allocated on a ‘first come, first served basis’ which means that where two or more Applicants are seeking a Domain Name Licence in respect of a particular Domain Name and they all meet the Eligibility Requirements, that Applicant whose Application is accepted by the .aeDA first will be granted the Domain Name Licence.\n\n[FCC-16-127#0043] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.8):\nThe majority of commenters support expanding the maximum character length for Alert Messages to 360 characters because it will increase the quality of information available to the public during emergencies and reduce public confusion caused by difficult-to-understand abbreviations.33 Most commenters agree, however, that legacy networks cannot support transmission of a 360-character message.34 To address this issue, FEMA recommends that in cases where the alert originator does not independently generate a 90-character maximum, free-form text message, the Integrated Public Alert and Warning System (IPAWS) will automatically generate a 90-character maximum message from the CAP parameters of the Alert Message (such as “hazard,” “location” and “time”) in order to provide a transmittable Alert Message to customers on legacy networks.35 According to FEMA, this practice is 28\n\n[MHEWS-2026#0044] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.13):\ntable of contents Glossary Artificial Intelligence (AI) A set of technologies and techniques that enable machines to perform tasks requiring intelligence, including perception, reasoning, learning, and decision-making, complementing human capabilities. Anticipatory Action Acting ahead of predicted hazards to prevent or reduce acute humanitarian impacts before they fully unfold Automated decision systems Refers to a decision made by a system without human intervention, often based on analytics models and predefined strategies. These decisions can carry risks such as incorrect outcomes, missed opportunities, and wasted resources. Common Alerting Protocol (CAP) An international standard format for exchanging emergency alerts and public warnings across different communication systems. Impact-Based Forecasting (IBF) A forecasting approach that translates hazard information into expected impacts on people, infrastructure, and systems, enabling actionable decision-making.\n\n[CAPAU#0079] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.22):\n3) The CAP-AU Profile SHALL constrain each alert message to one single value from an authorised <eventCode> list in order to avoid any potential confusion or difficulty handling a single alert message containing multiple events.\n\n[CAPCP#0065] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\nExample: Element: N/A Use: Required Type: Policy Value: Description: To avoid any potential confusion, and consistent with other profiles of CAP, CAP-CP constrains each alert message to one subject event.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Korean text is UCS-2, 78 characters over 2 pages, well under the 15-page limit, and the GENERIC profile requires no languages, so delivery is fine. The problem is content: the message never names the hazard. It says only that a 경계경보 (alert-level warning) was issued for Seoul and tells people to prepare to evacuate. It does not say what the threat is, where to go, or how. Readers of the first page cannot tell why they should act. The drafter can fix this by stating the hazard and a concrete action early in the text.",
+  "objections": [
+   {
+    "issue": "The hazard is never named. The text gives only the warning level (경계경보 발령) and a vague action (prepare to evacuate) with no destination or method. A handset reader, and especially the first page, therefore carries neither the hazard nor an actionable instruction. That risks public confusion rather than protective action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Put the hazard type (for example, the specific threat behind the 경계경보) and a concrete action (for example, where to shelter or evacuate to) in the opening words, so both fall within the first UCS-2 page of about 41 characters. A suggested shape is: '[위험 유형] 경계경보: 서울지역 주민은 즉시 가까운 [대피소/지하시설]로 대피하십시오'. Move the time and the priority for children and the elderly after that.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0043",
+      "quote": "generate a 90-character maximum message from the CAP parameters of the Alert Message"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "No clause shown explicitly requires the first cell broadcast page to contain both the hazard and the action. The page-split check relies on the 82-octet page size, which gives about 41 UCS-2 characters per page.",
+    "searched_for": "first page hazard and action wording; cell broadcast UCS-2 page length characters"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4946,
+  "output_tokens": 1573,
+  "at": "2026-11-09T16:06:05Z"
+ }
+}

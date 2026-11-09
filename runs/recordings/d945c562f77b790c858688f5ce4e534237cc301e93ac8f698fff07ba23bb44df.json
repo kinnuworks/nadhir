@@ -1,0 +1,92 @@
+{
+ "key": "d945c562f77b790c858688f5ce4e534237cc301e93ac8f698fff07ba23bb44df",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Fog and low visibility warning\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western UAE, 21:30 Tue to 10:00 Wed\",\n  \"description\": \"NCM fog warning: thick fog may cut visibility to zero at times in western regions of the UAE. Drive with extreme caution, keep a safe distance and follow modified speed limits. From 21:30 Tue 17 Feb until 10:00 Wed 18 Feb.\",\n  \"instruction\": \"Drive with extreme caution, follow traffic safety guidelines and keep a safe distance from other vehicles. Strictly follow modified speed limits, especially in thick fog.\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": []\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "تحذير من الضباب: قد تنعدم الرؤية في المناطق الغربية من الإمارات، من 21:30 الثلاثاء حتى 10:00 الأربعاء",
+    "description": "تحذير من الضباب صادر عن المركز الوطني للأرصاد (NCM): قد يؤدي الضباب الكثيف إلى انعدام الرؤية أحيانًا في المناطق الغربية من دولة الإمارات. قُد بحذر شديد، وحافظ على مسافة آمنة، والتزم بحدود السرعة المعدّلة. من 21:30 الثلاثاء 17 فبراير حتى 10:00 الأربعاء 18 فبراير.",
+    "instruction": "قُد بحذر شديد، واتبع إرشادات السلامة المرورية، وحافظ على مسافة آمنة من المركبات الأخرى. التزم بدقة بحدود السرعة المعدّلة، خاصةً في الضباب الكثيف."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 998,
+  "output_tokens": 866,
+  "at": "2026-11-09T15:51:45Z"
+ }
+}

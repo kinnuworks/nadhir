@@ -121,7 +121,13 @@ def handle_check(body: dict) -> dict:
     return pipeline.check_pasted(xml, profile)
 
 
-ROUTES = {"/api/draft": handle_draft, "/api/approve": handle_approve, "/api/check": handle_check}
+def handle_feed(body: dict) -> dict:
+    from . import feeds
+    return feeds.check_feed(str(body.get("feed", "")))
+
+
+ROUTES = {"/api/draft": handle_draft, "/api/approve": handle_approve, "/api/check": handle_check,
+          "/api/feed": handle_feed}
 
 
 def dispatch(path: str, raw: bytes) -> tuple[int, dict]:

@@ -1,0 +1,119 @@
+{
+ "key": "fbcb64309dd898d75382d3a7cb033c32764e260911d8eb42779f22ae2580beae",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Blowing dust and sand: visibility below 2,000 m. Drive with caution on open roads. Fresh to strong northwesterly winds in some coastal and inland areas, Abu Dhabi, until 19:00 today, 4 March. Source: NCM.\",\n   \"characters\": 204,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"غبار ورمال متطايرة: مدى الرؤية أقل من 2,000 م. توخَّوا الحذر أثناء القيادة على الطرق المفتوحة. رياح شمالية غربية نشطة إلى قوية على بعض المناطق الساحلية والداخلية، أبوظبي، حتى الساعة 19:00 اليوم، 4 مارس. المصدر: NCM.\",\n   \"characters\": 215,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('3GPP TS 23.041 cell broadcast page limit encoding', 'TDRA cell broadcast Arabic English handset requirements', 'alert first page hazard action FCC lessons'):\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0280] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.62):\nThe encoding of the Warning-Type parameter is as shown below. The warning type value shall be mutually exclusive and binary encoded. 7 6 Octet 1 5 4 3 Warning Type Value\n\n[TS23041#0068] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.16):\nallocation of serial numbers; - modifying or deleting CBS messages held by the NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]);\n\n[TS23041#0256] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\nPRESENCE M M O The information above is repeated for the number of cells in the list. To each cell in the list the information element No-of-Broadcasts-completed is associated. This information element is related to the particular referenced cell in the list and contains the number of times a CBS message (i.e. all pages of a\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0047] 3.2 TDRA Consumer Protection Regulations v2 (p.10):\n3.2.2. shall be written in the Arabic language or in the English Language as preferred by the Consumer or in circumstances where the preference is unknown, the information shall be written in both languages.\n\n[LA-2025#0036] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.14):\nCALL TO ACTION Congress and federal agencies must act now to close identified gaps in alerting system performance, certification, and public communication. The lessons from the Kenneth Fire should not only inform reforms, but serve as a catalyst to modernize the nation's alerting infrastructure before the next disaster strikes. ALTADENA NOT COVERED IN THIS REPORT\n\n[LA-2025#0035] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.13):\nThe idea of moving from a unique alert identifier issued by each carrier to a single alert identifier for each alert regardless of carrier, would be an example of an action the FCC can initiate in concert with FEMA. Similarly, with guidance on alert timing, or the potential for the FCC to recommend fixes to network issues that are discovered that lead to duplicate messages. The FCC’s April 2023 Notice of Proposed Rulemaking also included establishing Wireless Emergency Alert performance minimums, stating that the public will benefit from improved and targeted usage of WEA alert messages, and that greater accuracy in sending alert messages will result in less overshoot, which in turn will mean that fewer people will receive alert messages not intended for them. However, this rule was never finalized. 29 28. https://www.gao.gov/products/gao-20-294 29. https://docs.fcc.gov/public/attachments/FCC-23-30A1_Rcd.pdf\n\n[FCC-16-127#0008] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.3):\n2. First, we adopt rules that will improve Alert Message content in order to help communities communicate clearly and effectively about imminent threats and local crises.3 Specifically, we improve Alert Message content with the following actions: x\n\n[MHEWS-2026#0477] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.114):\nCoordinating among actors with different information needs and mandates; learning which interventions transfer across contexts; maintaining shared situational awareness Integrate meteorological observations, satellite data, vulnerability assessments, and social media into unified situation reports; generate tailored dashboards; analyze after-action reviews to identify transferrable lessons",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Both required languages (ar, en) are present. Encodings are appropriate: GSM-7 for English and UCS-2 for Arabic. Page counts (3 and 6) are within the 15-page cell broadcast maximum. Length beyond one page is already recorded as gap G6. The English first page carries both hazard and action. The Arabic first page likely carries only the hazard, but none of the clauses shown sets a first-page content rule, so I have recorded that under no_basis.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Arabic UCS-2 pages hold about 41 characters, so Arabic page 1 holds only 'غبار ورمال متطايرة: مدى الرؤية أقل من 2,0…'. The hazard is cut mid-number and the action (توخَّوا الحذر أثناء القيادة) falls on page 2. Shortening the opening, for example to 'غبار ورمال: توخَّوا الحذر أثناء القيادة', would put hazard and action on the first page.",
+    "searched_for": "A clause requiring the first page or segment of a cell broadcast alert to carry the hazard and the protective action (searched: 'alert first page hazard action FCC lessons'). Only general FCC content and lessons-learned text was returned."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4273,
+  "output_tokens": 924,
+  "at": "2026-11-09T15:46:21Z"
+ }
+}

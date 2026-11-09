@@ -1,0 +1,114 @@
+{
+ "key": "8d01578c7733e99cf98395369b5d1d6df599de38e1fd2fbb96332552d29dece0",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions tonight until 10:00 Wednesday\",\n  \"description\": \"Fog warning: thick fog is expected in western regions of the UAE. Visibility may drop to zero at times from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Drive with extreme caution. More: https://alerts.example.ae\",\n  \"instruction\": \"If you drive, slow down, keep a safe distance from other vehicles and follow the modified speed limits. Follow all traffic safety guidelines.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنعدم الرؤية في المناطق الغربية الليلة حتى الساعة 10:00 يوم الأربعاء\",\n  \"description\": \"تحذير من الضباب: يُتوقع ضباب كثيف في المناطق الغربية من دولة الإمارات. قد تنعدم الرؤية أحيانًا من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. قُد بحذر شديد. للمزيد: https://alerts.example.ae\",\n  \"instruction\": \"إذا كنت تقود، خفّف سرعتك، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة. اتبع جميع إرشادات السلامة المرورية.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic English alert translation review', 'machine translation emergency alert human review', 'cell broadcast Arabic language alert UAE'):\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0025] DotEmarat Policy EN (p.9):\n8.5.2.3. 8.5.2.4. 8.5.2.5. 8.5.2.6. 8.5.2.7. be in Unicode Normalisation Form C (NFC); consist only of Unicode Code Points present in the Tables of Allowed Letters, Numbers and Special Characters defined in Appendix A; not begin with a digit (English ASCII or Arabic digits); not contain both English ASCII AND Arabic digits; neither begin with nor end with a dash; not contain a dash in the third and fourth positions (e.g. ; and not include a space (e.g. ).\n\n[FCC-16-127#0510] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.85):\nChinese,558 French or French Creole,559 Tagalog,560 Vietnamese,561 Korean,562 Arabic,563 Russian,564 and African languages.565 English-speaking ability varies greatly, even among speakers of the top ten languages in the United States.566 According to recent census data, “less than 50 percent of those who spoke Korean, Chinese, or Vietnamese spoke English ‘very well.’”567 According to the ACS Language Report, “[p]eople who cannot speak English ‘very well’ can be helped with translation services, education, or assistance in accessing government services.”568 b.\n\n[FCC-FR-2025#0025] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\n13. In requiring support for these templates, we make conforming edits to reflect the changes to the English versions that are discussed above. All commenters on the proposed Haitian Creole, Hindi, and Russian templates agreed that they were accurate and clear as written. We also did not receive any feedback on the proposed Arabic, Portuguese, or Italian templates. Because no commenter identified any sources of confusion or inaccuracy, we adopt the Arabic, Haitian Creole, Hindi, Italian, Portuguese, and Russian templates with only minor changes developed in consultation with the Commission's contracted professional translation service to further improve clarity. 14. Commenters recommended revisions to the Chinese, German, Tagalog, Vietnamese, French, Korean, and Spanish templates. In considering these recommendations in consultation with the Commission's contracted professional translation service, we make changes to the templates that correct errors, simplify phrasing, avoid awkwardness, improve readability, and increase comprehension. We reject some changes to the templates offered by commenters that would introduce confusion, make the templates more difficult to read, or diverge from the meaning of the English template.\\4\\ We also reject the revisions of commenters that translated the fillable fields, as the contents of those fields will be decided upon by the alert originators that send template alerts and will not be translated, as discussed below. ---------------------------------------------------------------------------\n\n[CAPCP#0133] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #3. Use established <event> values):\nWhen creating public alert messages in languages other than English or French, a translation of the list to the appropriate language should be conducted in advance for inclusion in alerts.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0125] AI Guide v1 (p.38):\nAI GUIDE • GLOSSARY OF KEY TERMS 7. GLOSSARY OF KEY TERMS Artificial Intelligence The theory and development of computer systems able to perform tasks normally requiring human intelligence, such as visual perception, speech recognition, decision-making, and translation between languages. General AI General AI refers to a machine that can perform any intellectual, physical and even emotional task that a human being could. Narrow AI Narrow AI is artificial intelligence that is focused on one narrow task. Machine Learning Machine learning is an application of AI that provides systems the ability to automatically learn and improve from experience without being explicitly programmed. Deep Learning Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[TDRA-2017-CB#0002] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nMandatory Mandatory السلوك Behavior Enabled by Default? Ability to Disable by the user? حالة التفعيل تمكين املستخدم من تفعيل إلغاء استقبال الرسائل؟ Channel ID (Secondary Language) الصوت Sound الشاشة Popup alert on screen\n\n[TDRA-TSFS001#0010] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nThe cell broadcast (CB) shall be enabled for GSM, UMTS, LTE, 5G and any future radio technologies. 12. The message IDs (Channel IDs) will be according to the CMAS/WEA for both, the primary and the secondary language (See Table1 AND Table 2) 13. Inclusion of phone numbers and URLs is permitted, and they should be clickable.Mobile phones behavior.\n\n[TDRA-TSFS001#0005] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n2 Scope The Government of the United Arab Emirates developed a National Public Warning Service (UAEAlert) which will use the cell broadcast technology to disseminate warning alerts issued by authorities to the public in times of crisis and therefore is required to have effective, high quality communication methods and systems to meet this need. One of the channels is the mobile networks in the UAE through Cell Broadcast technology. The main scope of this specification is to enable Cell Broadcast service in all mobile devices operating in the UAE mobile networks.\n\n[TDRA-2017-CB#0003] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\n)املدة (ثانية Duration)sound( النوع Type االشتراطات Mute mode Requirments االهتزاز Vibration مالحظات Notes Channel ID (Primary Language) القناة الرئيسية القناة الثانوية )(اللغة الرئيسية) (اللغة الثانوية Hidden تحذير طارئ وطني الرسائل التحذيرية الوطنية National Emergency National Emergency Alerts Alert",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic headline, description and instruction match the English in meaning. Times (21:30 tonight, 10:00 Wednesday), dates (Tue 17 Feb, Wed 18 Feb), place (western regions of the UAE), hazard (thick fog, visibility may drop to zero at times) and URL are all carried over correctly. The protective actions are complete and correct: slow down, keep a safe distance from other vehicles, follow the modified speed limits, follow all traffic safety guidelines, and drive with extreme caution. I found no difference in meaning. The Arabic was produced by machine translation, so a named person who reads Arabic must still approve it before sending.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5965,
+  "output_tokens": 558,
+  "at": "2026-11-09T16:13:30Z"
+ }
+}

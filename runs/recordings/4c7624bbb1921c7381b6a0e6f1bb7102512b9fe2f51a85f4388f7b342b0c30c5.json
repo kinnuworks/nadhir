@@ -1,0 +1,138 @@
+{
+ "key": "4c7624bbb1921c7381b6a0e6f1bb7102512b9fe2f51a85f4388f7b342b0c30c5",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\",\n   \"characters\": 58,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast page limit GSM-7 encoding', 'alert message first sentence hazard protective action', 'air raid missile alert wording instructions'):\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0182] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.43):\n9.2.3 GSM only [In the case of multipage CBS messages, the individual pages are considered as independent by the BSC scheduling algorithm]. KILL Request/Indication PARAMETER Message-Identifier Old-Serial-Number Cell-List GSM only [Channel Indicator\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0171] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.41):\n9.2.2 WRITE-REPLACE Request/Indication PARAMETER REFERENCE PRESENCE (UMTS/GSM) Message-Identifier 9.3.1 M/M Old-Serial-Number 9.3.2 O/O New-Serial-Number 9.3.3 M/M Cell-List 9.3.5.1 M/M GSM only [Channel Indicator 9.3.6 O] (note 1) Category 9.3.7 O/C (note 2) Repetition-Period 9.3.8 M/C (note 2) No-of-Broadcasts-Requested 9.3.9 M/C (note 2) Number-of-Pages 9.3.4 M/C (note 2) Data Coding Scheme 9.3.18 M/C (note 2) CBS-Message-Information-Page 1 9.3.19 M/C (note 2) CBS-Message-Information-Length 1 9.3.20 M/C (note 2) CBS-Message-Information-Page 2 9.3.19 O/O CBS-Message-Information-Length 2 9.3.20 O/O : : CBS-Message-Information-Page n 9.3.19 O/O CBS-Message-Information-Length n 9.3.20 O/O Paging-ETWS-Indicator 9.3.23 O/O (note 1) Warning-Type 9.3.24 O/C (note 3) Warning-Security-Information 9.3.25 O/C (note 3) GSM only [Warning Period 9.3.26 C] (note 3) UMTS only [Broadcast Message Content 9.3.48 O] (note 4) Validity Indicator NOTE 1: Only one of these two optional parameters may be simultaneously present in the primitive. The Channel Indicator parameter is included if the primitive contains a CBS message. The Paging-ETWS-Indicator parameter is included if the primitive contains an ETWS emergency message. NOTE 2: In GSM this parameter is included if the Channel Indicator parameter is present in the primitive.\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[EU-ALERT#1323] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system (ANNEX XIII - CORRELATION TABLE):\nArticle 48(1) Article 5(2) second subparagraph first sentence Article 48(2) Article 5(2) third subparagraph Article 48(5) Article 5(2) second subparagraph second sentence Article 48(3) — — — — Article 48(4)\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[FCC-16-127#0489] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.81):\nPursuant to the approach we propose to adopt, emergency management agencies could use Public Safety Messages to transmit thumbnail-sized images of evacuation routes in connection with Imminent Threat Alerts, an image of the face of a missing child after an AMBER Alert, or specific instructions for protective action to the access and functional needs community through the use of hazard symbols. We invite commenters to offer additional use cases where this functionality could help meet the public’s need for actionable, multimedia-enabled content during emergencies. 127. With respect to the potential for alert delivery latency, we observe that, according to the ATIS Feasibility Study for LTE WEA Message Length, WEA Alert Message segments can be transmitted\n\n[TW-2024-CNA#0002] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nThe English part of the template that read \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\" was not changed.\n\n[TW-2024-CNA#0003] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nA search of the PWS system found no templates for satellite launches so the message was likely based on a template from the \"Missile air raid alert\" category.\n\n[FCC-HI-2018#0003] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.3):\nI. EXECUTIVE SUMMARY 1. “This is not a drill.” This phrase has regrettable resonance in Hawaii. Its history dates to another weekend morning, Sunday, December 7, 1941, when a U.S. naval officer sent out the following message warning of a Japanese attack: “AIR RAID ON PEARL HARBOR X THIS IS NOT DRILL.”1 2. This phrase was again used in Hawaii on January 13, 2018. At 8:07 a.m. Hawaii Standard Time (HST), on-duty warning officers of the State of Hawaii Emergency Management Agency (HI-EMA) sought to conduct an internal exercise of their ballistic missile defense drill using the Emergency Alert System (EAS) and Wireless Emergency Alerts (WEA).2 The exercise went awry, resulting in HI-EMA sending the following message throughout Hawaii: BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.3 3. This false emergency alert resulted in 38 minutes of confusion, fear and uncertainty for the residents of Hawaii.4 Although some suspected that the alert was a mistake, in part due to the absence of air-raid sirens, and made calls or checked social media to confirm the alert’s authenticity,5 for many Hawaiians, the false alert created the expectation that a missile strike could be only minutes away. According to the Bureau’s investigation, it took HI-EMA until 8:20 a.m.\n\n[FCC-HI-2018#0004] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.3):\n(HST), 13 minutes after the 1 See Library of Congress, This Day in History – December 7, Air Raid on Pearl Harbor, https://www.loc.gov/item/today-in-history/december-07/ (last visited Mar. 28, 2018). 2 HI-EMA is the emergency management agency for the State of Hawaii.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert is deliverable: one GSM-7 page of 58 characters, well under the 15-page limit, and the profile requires no languages. However, the first page names a hazard but gives no protective action; 'be aware' tells people nothing to do. The drafter should add a concrete action. The text also matches word for word the English template left unchanged in Taiwan's 2024 'missile flyover' mishap, which the approvers should be aware of.",
+  "objections": [
+   {
+    "issue": "The first page carries the hazard (missile flyover) but no actionable protective instruction. 'be aware' is not a protective action, so the recipient is not told what to do.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Replace 'be aware' with a specific protective action, for example 'Take shelter indoors now, away from windows' or 'No action needed, stay informed' if no threat to the public exists. Keep it on the first page within GSM-7 characters.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Missile flyover Taiwan airspace, be aware"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-DA-25-12#0114",
+      "quote": "coupled with a description of the threat and the protective action the public should take"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The English text is identical to an unedited 'Missile air raid alert' template that was sent in error during the 2024 Taiwan satellite-launch mishap. This suggests the wording may be a stale template that does not describe the actual event. Whether the hazard is accurate is outside my delivery mandate, so approvers should confirm the event and the template choice.",
+    "searched_for": "air raid missile alert wording instructions; clauses on template reuse / hazard accuracy within the operator delivery mandate"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4994,
+  "output_tokens": 1003,
+  "at": "2026-11-09T16:06:20Z"
+ }
+}

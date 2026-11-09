@@ -1,0 +1,138 @@
+{
+ "key": "ed049c8ba6e5a8c44d355a9b90167ecaf9c85ddd701760280ac7e05f46db73ef",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 12:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP alert expires onset times match bulletin', 'CAP certainty severity likely moderate definitions', 'fog low visibility warning WMO guidance'):\n\n[CAP12#0263] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n· Changed CAP namespace to URN form · Tightened usage of dateTime formats in <sent>, <effective>, <onset> and <expiration> · Corrected schema to correct value of “CBRNE” in <event> · Conformed examples in Appendix A to new namespace.\n\n[CAP12#0110] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(2) Alphabetic timezone designators such as “Z” MUST NOT be used. The timezone for UTC MUST be represented as “-00:00”. expires cap. alertInfo. expires. time The expiry time of the information of the alert message (OPTIONAL)\n\n[CAP12#0109] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\nonset cap. alertInfo. onset. time The expected time of the beginning of the subject event of the alert message (OPTIONAL) (1) The date and time SHALL be represented in the DateTime Data Type (See Implementation Notes) format (e.g., “2002-05-24T16:49:00-07:00” for 24 May 2002 at 16: 49 PDT).\n\n[X1303BIS#0073] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.21):\nonset cap.alertInfo.onset.time The expected time of the beginning of the subject event of the alert message (OPTIONAL) (1) The date and time shall be represented in the DateTime Data Type (See Implementation Notes) format (e.g., \"2002-05-24T16:49:0007:00\" for 24 May 2002 at 16: 49 PDT). (2) Alphabetic timezone designators such as \"Z\" must not be used. The timezone for UTC must be represented as \"-00:00\".\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[MHEWS-2026#0578] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.135):\nNoor GenAI Voice Assistant Pakistan Disaster preparedness information A generative AI voice assistant accessible through basic mobile phones provides spoken disaster guidance in Urdu via a toll-free number. The offline design ensures that early warning information remains accessible in low-connectivity and low-literacy environments. By enabling conversational access to trusted guidance, the system strengthens last-mile warning communication (Pillar 3) and supports community preparedness and protective decision-making (Pillar 4). Further information: https://viamo.io/\n\n[MHEWS-2026#0043] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.12):\nInternational Telecommunication Union UAV Unmanned Aerial Vehicle LLMs Large Language Models WFP World Food Programme LMICs Low- and Middle-Income Countries WMO World Meteorological Organization xAI Explainable Artificial Intelligence Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[EW4ALL-P3#0025] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (About EW4All):\nLaunch webinar: Methodological Guidance on Conducting After Event Reviews of Early Warning Systems, 4 August 2026, Online EW4All webinar series (co-organized by UNDRR, WMO, ITU, and IFRC): Accelerating cell broadcast for effective early warning systems in Africa, 24 July 2026, Online | see BDT Director's Tweet\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the NCM bulletin on hazard, area, severity and certainty. However, it gives the wrong end time: it says the warning runs until 12:00 Wednesday, but the bulletin says until 10:00 AM Wednesday 18 February.",
+  "objections": [
+   {
+    "issue": "The end time does not match the bulletin. The alert extends the warning to 12:00 Wed 18 Feb, but NCM's warning period ends at 10:00 AM Wednesday 18 February. The expiry time of the alert information must reflect the bulletin's validity period.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Change 'until 12:00 Wed 18 Feb' to 'until 10:00 Wed 18 Feb', matching the NCM bulletin. Make sure any expires time in the CAP message is set to 10:00 local time (+04:00) on 18 Feb 2026.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "until 12:00 Wed 18 Feb"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs[1].text",
+      "quote": "starting from 21:30 tonight until 10:00 AM Wednesday, February 18"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0110",
+      "quote": "The expiry time of the information of the alert message"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4271,
+  "output_tokens": 699,
+  "at": "2026-11-09T15:58:48Z"
+ }
+}

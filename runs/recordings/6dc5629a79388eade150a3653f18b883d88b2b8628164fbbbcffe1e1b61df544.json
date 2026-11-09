@@ -1,0 +1,119 @@
+{
+ "key": "6dc5629a79388eade150a3653f18b883d88b2b8628164fbbbcffe1e1b61df544",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reduces visibility below 3,000 m in some coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE - NOT A REAL ALERT. NCM: Active to occasionally strong northwesterly winds are raising dust and sand, reducing visibility to under 3,000 m in some coastal and inland areas until 18:00 today (16 Feb). Drive with caution, especially on external and open roads.\",\n  \"instruction\": \"EXERCISE: Drive slowly and with caution, especially on external and open roads, because visibility can drop suddenly. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: الغبار المتطاير يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية حتى 18:00\",\n  \"description\": \"تمرين - ليس تنبيهاً حقيقياً. NCM: رياح شمالية غربية نشطة وقوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية حتى 18:00 اليوم (16 فبراير). قُد بحذر، خاصة على الطرق الخارجية والمفتوحة.\",\n  \"instruction\": \"تمرين: قُد ببطء وبحذر، خاصة على الطرق الخارجية والمفتوحة، لأن مدى الرؤية قد ينخفض فجأة. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation alert machine translation review', 'exercise alert message marking language', 'cell broadcast Arabic English bilingual requirements'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0032] DotEmarat Policy EN (p.11):\n8.6.8.4. 8.6.8.5. The maximum number of Active Variant . (dotEmarat) Arabic Domain Names must not exceed five (5) in total. Requests to activate two (2) or more . (dotEmarat) Arabic Domain Names Variants may be subject to review by the .aeDA. For example: by Registering , the Registrant may request to activate . The remaining inactive Variants will remain blocked from Registration and can be activate upon Registrant request.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0085] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nFurthermore, in this case, the midnight shift supervisor deviated from the abovereferenced procedure by creating a new script that blended elements from 1) the standard drill initiation message script (i.e., the ballistic missile checklist language that used the phrase “real world,” and preceded and followed the message with “exercise, exercise, exercise”) and 2) the EAS message for alerting the public to an actual missile attack (a message that used the phrase “This is not a drill.”).76 71 One emergency management agency the Bureau interviewed acknowledged that if a warning officer conducted a\n\n[ON-PICKERING-2020#0107] Investigation into the emergency alerts sent on January 12, 2020 (Findings):\nThe PEOC did not have a pre-scripted template for an “End Alert” message on January 12, 2020. Both PEOC alerts sent on January 12, 2020 were issued in English only. The PEOC did not have any French language templates. The PEOC did not initiate emergency translation procedures to issue either alert in French. Identical pre-scripted templates are used on both the Alert Ready live and training systems. No distinctive labelling such as “EXERCISE, EXERCISE, EXERCISE...” is applied to the training system.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[ON-PICKERING-2020#0104] Investigation into the emergency alerts sent on January 12, 2020 (Pre-scripted messages):\nEMO staff explained that character limitations within the Alert Ready system may impact the ability to issue alerts in a bilingual format. Wireless Intrusive alerts are limited to 600 characters and Broadcast Intrusive alerts are limited to 900 characters. Some of the current English nuclear templates contain in excess of 600 characters. EMO was exploring possible solutions to this issue, but a resolution was not documented as of January 12, 2020.\n\n[MHEWS-2026#0350] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nBox 17. AI-Powered Translation for Bilingual Emergency Alerts Alert Ready, Canada’s national public alerting system operated by Pelmorex Corp., in partnership with federal and provincial emergency management agencies, integrates AI-powered neural machine translation within CAP-enabled alerting infrastructure to enable real-time bilingual alerts in English and French. Many regional authorities lack the capacity to translate alerts rapidly during fast-moving emergencies, but this AI translation tool is embedded directly in alert-authoring software. The system uses machine learning-powered language models to instantly translate alert content between English and French, enabling authorities to issue bilingual alerts for all hazard types—including AMBER alerts, floods, wildfires, earthquakes, extreme weather events, and public safety threats. Alert distributors such as radio stations, television services, and wireless providers can then extract content in the language relevant to their audience. The AI-based tool generates translations significantly faster than human translators, which is especially valuable during emergencies outside normal business hours. Implementation requires comprehensive testing and validation to ensure accuracy, and some jurisdictions have specific Official Languages requirements that must be incorporated. Looking ahead, Pelmorex is exploring extending the tool to support selected Indigenous languages and piloting integration into its public-facing mobile application, which would allow users to view emergency messages in their preferred language, beyond Canada’s two official languages. Further information: https://www.pelmorex.com/en/products-and-solutions/alerting/alerting-system/\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0025] DotEmarat Policy EN (p.9):\n8.5.2.3. 8.5.2.4. 8.5.2.5. 8.5.2.6. 8.5.2.7. be in Unicode Normalisation Form C (NFC); consist only of Unicode Code Points present in the Tables of Allowed Letters, Numbers and Special Characters defined in Appendix A; not begin with a digit (English ASCII or Arabic digits); not contain both English ASCII AND Arabic digits; neither begin with nor end with a dash; not contain a dash in the third and fourth positions (e.g. ; and not include a space (e.g. ).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning across the headline, description and instruction. The EXERCISE marking (تمرين / ليس تنبيهاً حقيقياً) appears in all three fields. Numbers and times match: under 3,000 m, until 18:00, today 16 Feb. The hazard (northwesterly winds, active to occasionally strong, raising dust and sand) and the areas (some coastal and inland areas) are the same. The protective action is also the same: drive slowly and with caution, especially on external and open roads, because visibility can drop suddenly. The URL is identical. The Arabic was machine-translated, so a named person who reads Arabic must still sign it off before it is sent.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The agency abbreviation 'NCM' is left in Latin script in the Arabic description, and Arabic readers may not recognise it. The Arabic name (المركز الوطني للأرصاد) could be used instead. This is a matter of style and clarity, not a difference in meaning.",
+    "searched_for": "A clause requiring agency names or acronyms to be localised in Arabic alert text"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5326,
+  "output_tokens": 713,
+  "at": "2026-11-09T16:10:47Z"
+ }
+}

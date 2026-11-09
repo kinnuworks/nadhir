@@ -1,0 +1,141 @@
+{
+ "key": "e82ea49e5ebb11db14dea5737b50b8d403d67991883407d916c2340ae02b8838",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"ja\",\n   \"text\": \"\",\n   \"characters\": 0,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast empty message text page limit', '3GPP cell broadcast UCS-2 encoding Japanese characters', 'alert first page hazard and action'):\n\n[TS23041#0207] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.49):\n9.2.20 WRITE-REPLACE-WARNING-INDICATION Request/Indication PARAMETER Message Type Message Identifier Serial-Number Broadcast Scheduled Area List Broadcast Scheduled Area List NG-RAN Broadcast Empty Area List Broadcast Empty Area List NG-RAN REFERENCE 9.3.28 9.3.1 9.3.3 9.3.40 9.3.58 9.3.44 9.3.60\n\n[TS23041#0211] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.50):\n9.2.21 STOP-WARNING-INDICATION Request/Indication PARAMETER Message Type Message Identifier Serial-Number Broadcast Cancelled Area List Broadcast Empty Area List Broadcast Cancelled Area List NG-RAN Broadcast Empty Area List NG-RAN REFERENCE 9.3.28 9.3.1 9.3.3 9.3.42 9.3.44 9.3.59 9.3.60 PRESENCE M M M O O O O\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[TS23041#0123] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.30):\n- if the list of \"warning messages\" to be checked for geo-fencing stored at the UE is empty, the UE shall discard the geo-fencing trigger message. If a language-independent content mapped to an event or a disaster (e.g. character such as Unicode based pictogram mapping to a disaster) is included as part of user information contained in the content of a CBSMessage-Information-Page transparently passed from CBC to UEs: -\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0280] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.62):\nThe encoding of the Warning-Type parameter is as shown below. The warning type value shall be mutually exclusive and binary encoded. 7 6 Octet 1 5 4 3 Warning Type Value\n\n[FCC-23-88#0036] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.6):\nTelecommunications Industry Solutions, Comments, PS Docket Nos. 15-91 and 15-94, at 7-8 (Rec. Dec. 8, 2016) (ATIS 2016 Comments) (“[S]upport for [ideographic] languages would require service providers to switch from GSM 7-bit encoding to basic Unicode (UCS-2) character set . . . ATIS notes that requiring the use of the UCS-2 character set would decrease the number of display characters to less than half of the 360 character maximum”); AT&T, Reply, PS Docket Nos. 15-91 and 15-94, at 3 (Rec. Jan. 9, 2017) (AT&T 2016 Reply); CTIA, Comments, PS Docket Nos. 15-91 and 15-94, at 9 (Rec. Dec. 8, 2016) (CTIA 2016 Comments); Microsoft, Comments, PS Docket Nos. 15-91 and 15-94, at 9 (Rec. Dec. 8, 2016) (Microsoft 2016 Comments); T-Mobile, Comments, PS Docket Nos. 15-91 and 15-94, at 3-4, 9-10 (Rec. Dec. 8, 2016) (T-Mobile 2016 Comments).\n\n[TS23038#0024] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.7):\n[10] ISO/IEC 10646: \"Information technology; Universal Multiple-Octet Coded Character Set (UCS)\". [11] 3GPP TS 24.090: \"Unstructured Supplementary Service Data (USSD); Stage 3\". [12] ISO 639: \"Code for the representation of names of languages\".\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[WMO-CAP-GUIDE#0004] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nPublic and First Responder Action: People receive the alert through multiple communication channels and take appropriate action based on the guidance provided. First responders may receive tailored alerts to support emergency coordination and response. CAP Resources Explore a comprehensive collection of resources on the Common Alerting Protocol (CAP), including online courses, toolkits, guidelines and documents on the CAP implementation. Explore CAP Resources\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[ITU-AIR2#0106] AI Ready – Analysis Towards a Standardized Readiness Framework, Report 2.0 (p.29):\n• Ecosystem readiness/ability to develop AI skills and AI talents. o skills gap analysis: an important output of the framework would be to identify what skills are currently lacking. • AI awareness and adoption levels among end-users. o inference-to-action latency: average time from first inference to human action. E.g., Detection-to-dispatch latency for fire brigades: average time from first detection to brigade mobilization. o decisions on human actions based on AI alerts: number and percentage of incidents where humans decided to act based on AI-based alerts. e.g., Fire brigades' decision to act following AI-based alerts. o number of citizens trained with AI-related skills – effectiveness of AI training programs.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The only language version (Japanese) cannot be delivered or read as drafted. Its phone text is empty (0 characters), so the first page carries neither the hazard nor the action. It is also set to GSM-7, which cannot carry Japanese (ideographic) characters; Japanese needs UCS-2. The drafter can fix both. The page count is within limits and the GENERIC profile requires no specific languages.",
+  "objections": [
+   {
+    "issue": "The Japanese message has no text at all (0 characters), so handsets would receive a blank alert. The first page carries neither the hazard nor the protective action.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Write the Japanese alert text so that the first page states the hazard and the required action. Then re-run the character and page count.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "\"text\": \"\", \"characters\": 0"
+     }
+    ]
+   },
+   {
+    "issue": "Japanese is set to GSM-7 encoding. GSM-7 cannot represent Japanese ideographic characters; UCS-2 is required. UCS-2 also roughly halves the characters available per page, so the page count must be recomputed.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Set the Japanese version's encoding to UCS-2 and recompute characters and pages under UCS-2. Keep the hazard and action within the first page and the total within the page limit.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0036",
+      "quote": "languages would require service providers to switch from GSM 7-bit encoding to basic Unicode (UCS-2) character set"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4585,
+  "output_tokens": 1411,
+  "at": "2026-11-09T16:05:07Z"
+ }
+}

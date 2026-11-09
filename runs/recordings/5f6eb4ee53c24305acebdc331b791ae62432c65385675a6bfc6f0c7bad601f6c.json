@@ -1,0 +1,33 @@
+{
+ "key": "5f6eb4ee53c24305acebdc331b791ae62432c65385675a6bfc6f0c7bad601f6c",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland Abu Dhabi until 18:00\",\n  \"description\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, reducing visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi. Until 18:00 today, 16 Feb 2026. Source: NCM.\",\n  \"instruction\": \"Take care, especially when driving on external and open roads, as visibility can drop suddenly. More: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير يقلل مدى الرؤية في المناطق الساحلية والداخلية من أبوظبي حتى الساعة 18:00\",\n  \"description\": \"تمرين - رياح شمالية غربية نشطة إلى قوية أحياناً تثير الغبار والرمال، مما يقلل مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية من أبوظبي. حتى الساعة 18:00 اليوم، 16 فبراير 2026. المصدر: NCM.\",\n  \"instruction\": \"توخوا الحذر، خاصة عند القيادة على الطرق الخارجية والمفتوحة، إذ قد ينخفض مدى الرؤية فجأة. للمزيد: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic alert translation machine review requirement",
+   "UAE cell broadcast Arabic English language",
+   "exercise alert message prefix wording"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1080,
+  "output_tokens": 53,
+  "at": "2026-11-09T16:10:54Z"
+ }
+}

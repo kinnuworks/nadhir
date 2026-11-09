@@ -1,0 +1,138 @@
+{
+ "key": "4e8816550f1f720c8025418954a3c77638490bf47655b4740226ee9ac7989c43",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"All of the UAE\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"UAE-ALL\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP area must match requested alert area', 'alert area overreach wider than event', 'UAE early warning issuing authority area'):\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Deepfake_Guide_2021#0023] AI Deepfake Guide 2021 (p.7):\n3. Skin color change during the clip 4. Repetitive blinking or no blinking at all 5. Lip movements do not match the audible speech 6. Distortion in the area surrounding the face Although physiological examination of videos is possible, it can be slow and unreliable. The most accurate approach to detect forged contents is through a systematic screening of the deepfakes using AI-based tools that need to be regularly updated.\n\n[IPAWS-OPEN#0047] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.38):\nMatching the Geographic Area – • Many-to-one messaging Multilingual – • Alert delivery in less than 3 seconds, or your pizza is free Multimedia Alerting – • Some of these were added in the latest FCC Report & Order\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[TS23041#0115] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.28):\nThe list of TAIs is only used by the MME. The MME uses it for selecting which eNodeBs to forward the WriteReplace Warning Request message to. If the Write-Replace Warning Request message is sent to reload cells served by an eNodeB, for which the CBC has previously received a Restart Indication (see clause 15A.1 of TS 23.007 [38]), the CBC shall include the Global eNB ID IE with the identity of this eNodeB in the Write-Replace Warning Request message. The Warning Area List shall be a list of Cell IDs or a list of TAIs or one or more Emergency Area IDs. The Warning Area List is only used by the eNodeB. The eNodeB is configured with the TAI(s) and Cell ID(s) it serves and the Emergency Area ID(s) that it belongs to. The eNodeB checks for any match of the contents of the Warning Area List with these IDs to identify the cells where to distribute the warning message. The Warning Area List is an optional information element. If the Warning Area is absent, it shall be interpreted as \"all cells on\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0210] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.110):\nPart 3: BCM Toolkit • • • • • • • Location of business impact Incident description List of buildings, facilities, work areas affected by such incident Description of incident impact on business operations and critical activities Current Status Event log Sample (Event Log)\n\n[ON-PICKERING-2020#0049] Investigation into the emergency alerts sent on January 12, 2020 (Sequence of events):\nSequence of events Determining the sequence of events that occurred in relation to the alert issued on January 12, 2020 The following timeline includes information obtained from interviews, e-mails, staff notes, PEOC audio logs, cellphone call logs and text messages. The timeline describes events involving EMO staff, other SOLGEN staff, wider OPS staff and external stakeholders.\n\n[ON-PICKERING-2020#0125] Investigation into the emergency alerts sent on January 12, 2020 (EMO internal communications):\nEMO internal communications Internal EMO communications from January 12, 2020 are reconsidered here insofar as they impacted external communications with wider government and stakeholders. Reference Sequence of Events for additional context.\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0088] UAE National Air Quality Agenda 2031 (p.13):\n• General Civil Aviation Authority • Ministry of Energy and Infrastructure • Ministry of Health and Prevention • Sharjah Environment and Protected Areas Authority • Umm Al Quwain Municipality • Beea’h - Sharjah",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the issuer register with national scope. Status Actual fits the real-event context and the live console. No higher-authority alert is active, and no references are needed for a new Alert. However, the alert's area (All of the UAE, UAE-ALL) is far wider than the area requested for this event (coastal and inland Abu Dhabi, AUH-COAST-INLAND). The drafter must narrow it.",
+  "objections": [
+   {
+    "issue": "The alert targets the whole country, but the area drawn for event uae-dust-2026-03-04 covers only coastal and inland Abu Dhabi. The alert area overreaches the requested area.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Set areaDesc to 'Coastal and inland areas, Abu Dhabi (demo zone)' and codes to [['DEMO-ZONE','AUH-COAST-INLAND']] to match the requested area. If a nationwide alert is really intended, a new area must be requested for the event first.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "All of the UAE"
+     },
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "Coastal and inland areas, Abu Dhabi (demo zone)"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0526",
+      "quote": "geo-target Alert Messages to an area that matches the target area"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4669,
+  "output_tokens": 878,
+  "at": "2026-11-09T16:19:47Z"
+ }
+}

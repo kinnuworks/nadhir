@@ -1,0 +1,161 @@
+{
+ "key": "013484c2588d7dffbe735bf33ae34b5977cb3fd9962904f4cc95c3befa0d0a97",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology. Reports say a dam near Al Ain has burst; leave the area now.\",\n   \"characters\": 282,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 4\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد. تفيد التقارير بانهيار سد قرب العين؛ غادروا المنطقة فوراً.\",\n   \"characters\": 287,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 7\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast first page hazard action', 'unverified reports in public warning messages', '3GPP TS 23.041 UCS-2 page limits'):\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[TS23041#0255] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\n9.3.10 No-of-Broadcasts-Completed-List This parameter is a list indicating the number of times that the CBS message (i.e. all pages of the CBS message) has been sent to each cell in the Cell-List for broadcast over the air interface. The cells in the list are described as per clause 9.3.11. Description of list elements: PARAMETER Cell Identifier No-of-Broadcasts-completed No-of-Broadcasts-Compl-Info\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[MHEWS-2026#0379] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nTechniques such as text mining, topic modelling, and Named Entity Recognition are widely used for sentiment and emotion analysis across disasters including floods, hurricanes, typhoons, and snowstorms. Although research is extensive, operational application in early warning systems remains limited. NLP-based sentiment analysis can reveal when warning messages lack clarity or empathy, affecting communication effectiveness, and help authorities refine future messaging and communication strategies (Salley et al., 2025). AI for detecting and mitigating disaster misinformation Misinformation is a significant challenge during disasters. False or misleading information may include rumours, unverified reports, exaggerated hazard impacts (such as false earthquake predictions), or fraudulent aid claims (Komendantova & Erokhin, 2025). Such misinformation can generate confusion and panic, discourage affected populations from seeking assistance, and disrupt relief and rescue operations. To address this, NLP and machine-learning approaches are being developed to detect and mitigate false information. For example, sentiment analysis can identify sudden surges in negative discourse linked to misinformation spread (Komendantova & Erokhin, 2025), while deep learning models, including convolutional neural networks, are used to detect manipulated or fake images (Hamid et al., 2023). The effectiveness of AI-based misinformation management relies on digital data. Many AI approaches rely on large volumes of information from online platforms such as social media, messaging services, and digital news sources.\n\n[ESTR-AICNHM#0104] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.35):\nThis suggestion is aligned with aspects of the use case entitled \"Proposal of an AI chatbot use case as a multihazard communication technology.\" The proponents note that \"anyone can easily post information on SNS, so it is also recognized that false rumours and unverified information can easily confuse/mislead the real world and that it is not easy to obtain the desired information.\" In the use case called \"AI enabled citizen-centric decision support system for disaster managers,\" the model categorizes information received into actionable classes from social networks and other agencies. 8\n\n[FCC-16-127#0464] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.77):\nable to process and transmit these Alert Messages fast enough for them to provide timely warning to the public, particularly to those that are closest to the epicenter.504 To be effective, it is crucial that these messages are delivered as rapidly as possible because, in order to be effective, they must be delivered to the public in advance of fast-travelling seismic waves.505 ATIS states that it would be technically feasible to transmit earthquake-related Alert Messages from the Alert Gateway upon receipt in order to expedite their transmission to the public.506 AT&T states, however that “[w]ithout a re-design of the entire system, it is not possible to prioritize WEA messages on anything other than a FIFO basis.”507 b.\n\n[ETSI-EUALERT#0037] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nAlert messages to warn citizens of an imminent emergency situation • Advisory messages of lesser urgency • Amber alerts (child abduction alerts) • Test messages The Alert messages may have four levels of severity: •\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0273] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.60):\n9.3.19 CBS-Message-Information-Page n This parameter is of a fixed length of 82 octets and carries up to and including 82 octets of user information. Where the user information is less than 82 octets, the remaining octets must be filled with padding (see 3GPP TS 23.038 [3]). The content of a CBS-Message-Information-Page is passed transparently from the CBC to the MS/UE. In GSM the CBS-Message-Information-Page n becomes the 'Content of Message' parameter at the MS.\n\n[TS23041#0333] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.70):\n9.4.1.1 General Description Each page of a CBS Message sent to the MS by the BTS is a fixed block of 88 octets as coded in 3GPP TS 44.012 [7]. This is sent on the channel allocated as CBCH by 3GPP TS 45.002 [8]. The 88 octets of the CBS Message are formatted as described in clause 9.3.2.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "Both required languages (ar, en) are present. Pages are 4 (GSM-7) and 7 (UCS-2), within the 15-page cell broadcast maximum, and the encodings fit each script. Two problems remain. First, both language versions end with an unverified report of a different hazard, a dam burst near Al Ain, with an evacuation order. The dust and sand warning, attributed to the National Centre of Meteorology, does not support this report. A person must decide whether it is confirmed and belongs in this alert at all. Second, the first page carries the dust hazard but no protective action for it. The only action, 'leave the area now', is on the last page and belongs to the unverified dam claim.",
+  "objections": [
+   {
+    "issue": "Both language versions contain an unattributed, unverified report of a separate hazard (dam burst near Al Ain) with an evacuation instruction. It is appended to a dust and sand visibility warning, and the cited source (National Centre of Meteorology) does not cover it. Broadcasting unverified reports can confuse and mislead the public. Whether this claim is confirmed and should be sent, and under whose authority, needs a decision by a person.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "The issuing authority must confirm or remove the dam-burst sentence in both en and ar. If it is confirmed, issue it as a separate alert with its own verified source, hazard and action. If it is not confirmed, delete it.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Reports say a dam near Al Ain has burst; leave the area now."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "تفيد التقارير بانهيار سد قرب العين؛ غادروا المنطقة فوراً."
+     },
+     {
+      "kind": "clause",
+      "ref": "ESTR-AICNHM#0104",
+      "quote": "false rumours and unverified information can easily confuse/mislead the real world"
+     },
+     {
+      "kind": "clause",
+      "ref": "MHEWS-2026#0379",
+      "quote": "False or misleading information may include rumours, unverified reports"
+     }
+    ]
+   },
+   {
+    "issue": "The first page carries the hazard (dust and sand, reduced visibility) but no protective action for it. Readers who see only page 1 get no instruction. The only action in the text comes at the end and relates to the unverified dam report, not the dust hazard.",
+    "field": "phone_text",
+    "blocking": false,
+    "fix": "Rewrite both en and ar so the first page states the hazard and a dust-storm action together. For example, open with: 'Dust storm, visibility under 2,000 m until 19:00: avoid driving, stay indoors.' Put the timing and source after that.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Requirement that the first cell broadcast page carry both the hazard and the action; no shown clause states this rule directly.",
+    "searched_for": "cell broadcast first page hazard action"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5474,
+  "output_tokens": 1571,
+  "at": "2026-11-09T15:56:14Z"
+ }
+}

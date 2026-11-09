@@ -1,0 +1,33 @@
+{
+ "key": "2744e484499214fde6fd62bc666c692050ea0eedeba42c6a8508c6f171bb43ba",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning for several western regions of the UAE: visibility may drop to zero, 21:30 Tue 17 Feb to 10:00 Wed 18 Feb\",\n  \"description\": \"Fog warning: fog may form in several western regions of the UAE. Drive with extreme caution. Visibility significantly reduced, may drop to zero from 21:30 Tue 17 Feb until 10:00 Wed 18 Feb. More: https://alerts.example.ae\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow all traffic safety guidelines. Strictly obey modified speed limits, especially where fog is thick.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب في عدة مناطق غربية من دولة الإمارات: قد تنعدم الرؤية، من 21:30 الثلاثاء 17 فبراير حتى 10:00 الأربعاء 18 فبراير\",\n  \"description\": \"تحذير من الضباب: قد يتشكل الضباب في عدة مناطق غربية من دولة الإمارات. قُد بحذر شديد. انخفاض كبير في مدى الرؤية، وقد تنعدم الرؤية من 21:30 الثلاثاء 17 فبراير حتى 10:00 الأربعاء 18 فبراير. للمزيد: https://alerts.example.ae\",\n  \"instruction\": \"قُد بحذر شديد، وحافظ على مسافة آمنة من المركبات الأخرى، واتبع جميع إرشادات السلامة المرورية. التزم تمامًا بحدود السرعة المعدّلة، خاصة حيث يكون الضباب كثيفًا.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "machine translation alert review human verification",
+   "CAP language info block Arabic translation",
+   "fog warning protective action wording"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1109,
+  "output_tokens": 44,
+  "at": "2026-11-09T15:52:45Z"
+ }
+}

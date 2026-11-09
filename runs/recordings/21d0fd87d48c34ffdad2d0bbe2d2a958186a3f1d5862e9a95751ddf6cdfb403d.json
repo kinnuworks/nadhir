@@ -1,0 +1,123 @@
+{
+ "key": "21d0fd87d48c34ffdad2d0bbe2d2a958186a3f1d5862e9a95751ddf6cdfb403d",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog and low visibility warning\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western UAE, 21:30 Tue to 10:00 Wed\",\n  \"description\": \"NCM fog warning: thick fog may cut visibility to zero at times in western regions of the UAE. Drive with extreme caution, keep a safe distance and follow modified speed limits. From 21:30 Tue 17 Feb until 10:00 Wed 18 Feb.\",\n  \"instruction\": \"Drive with extreme caution, follow traffic safety guidelines and keep a safe distance from other vehicles. Strictly follow modified speed limits, especially in thick fog.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty values definitions', 'fog low visibility warning severity level WMO', 'alert consistency with official hazard bulletin'):\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[CAPCP#0082] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nUTF-8 is the recommended encoding for XML documents in order to support a wide range of languages and accented characters. Defined CAP element values, such as those defined for <urgency>, <severity>, <certainty>, <responseType>, etc. are in English only, and are always used as specified by CAP within all <info> blocks. (Defined values are values standardized in advance and are coded values used to initiate actions on the part of auto-processing systems – any use of the these defined values as a display element should be confined to using the value as an index into a language based lookup table to find the appropriate word or words, including English).\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.1_UAE_Digital_Government_Strategy_2025#0028] UAE Digital Government Strategy 2025 (Ministry/Agency specific):\nMaturity Level Sub Indicator 1 Very low level of maturity 2 Low level of maturity 3 Average level of maturity 4 High level of maturity 5 Very high level of maturity The objective is 100 per cent - very high level of maturity for all UAE government entities on both federal and local levels by 2025.\n\n[ESTR-AICNHM#0431] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.93):\nORI uses NLP, ML, chatbots and customisation options to align to user preferences. ORI provides and prioritizes some forecasted alerts such as hurricane tracks, flood warnings and wildfire prone conditions. By assigning red (high severity), orange (medium severity) and yellow (low severity) to each alert, users can make a judgment on which alerts to monitor and which to analyse deeper for mitigation. ORI does not use sensor-based detection of events at this time – it is primarily for helping disaster relief leaders to prioritize which crisis to respond to first.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[MHEWS-2026#0043] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.12):\nInternational Telecommunication Union UAV Unmanned Aerial Vehicle LLMs Large Language Models WFP World Food Programme LMICs Low- and Middle-Income Countries WMO World Meteorological Organization xAI Explainable Artificial Intelligence Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[MHEWS-2026#0306] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.78):\nAI also presents opportunities to counter misinformation and personalise warnings without compromising consistency or trust in official communication. However, the effectiveness of AI-enabled early warning systems is constrained by persistent digital and connectivity gaps. Around 2.2 billion people remain offline, limiting access to digital warnings and reducing the representativeness of datasets used to train AI systems.\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022\n\n[MHEWS-2026#0157] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.42):\nBox 3 illustrates an operationally grounded application of AI in linking hazard signals to sectoral exposure and sensitivity. The model does not replace physical hazard forecasting; rather, it learns how hazard anomalies translate into agriculturally relevant concern zones, preserving uncertainty and interpretability. Its contribution lies in scaling expert judgement and enhancing consistency in risk monitoring.\n\n[MHEWS-2026#0394] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.98):\nAI hallucinations and reliability Generative AI may produce incorrect or fabricated outputs, including false hazard information or misleading imagery. Inaccurate warning messages or supporting information could trigger unnecessary panic, reduce credibility of alerts, or undermine trust in official communication channels.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the NCM bulletin: same hazard (fog and low visibility, possibly to zero at times), the same window (21:30 Tue 17 Feb to 10:00 Wed 18 Feb), the same area (western regions of the UAE) and the same driving advice. The bulletin says visibility is 'expected to deteriorate', which supports certainty 'Likely'. Zero visibility on roads and the call for 'extreme caution' support severity 'Severe'. Neither value goes beyond what the bulletin says, and no unverified reports are used.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The headline says 'western UAE', while the bulletin says 'several western regions'. This is slightly broader, but the description uses the closer wording 'western regions of the UAE'. The bulletin names no specific regions, so nothing more precise can be checked.",
+    "searched_for": "clause requiring the alert area to match the bulletin's named regions exactly"
+   },
+   {
+    "concern": "Severity 'Severe' is a judgement call. The bulletin gives no explicit warning level (for example, an NCM colour code) to confirm it against.",
+    "searched_for": "NCM or WMO mapping of fog warning levels to CAP severity"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4594,
+  "output_tokens": 739,
+  "at": "2026-11-09T15:51:56Z"
+ }
+}

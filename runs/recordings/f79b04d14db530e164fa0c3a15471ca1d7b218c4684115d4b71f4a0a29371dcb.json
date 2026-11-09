@@ -1,0 +1,148 @@
+{
+ "key": "f79b04d14db530e164fa0c3a15471ca1d7b218c4684115d4b71f4a0a29371dcb",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility across the UAE until 19:00\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand across the UAE. Visibility is below 2,000 metres in some coastal and inland areas. Until 19:00 today, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, because blowing dust can suddenly reduce visibility. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح محمّلة بالغبار تحدّ من مدى الرؤية في أنحاء الإمارات حتى الساعة 19:00\",\n  \"description\": \"تهبّ رياح شمالية غربية منعشة إلى قوية تثير الغبار والرمال في أنحاء دولة الإمارات. ينخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. حتى الساعة 19:00 اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد.\",\n  \"instruction\": \"توخَّ مزيدًا من الحذر، ولا سيما عند القيادة على الطرق المفتوحة، لأن الغبار المتطاير قد يحدّ فجأة من مدى الرؤية. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert review guidance', 'WMO wind terminology fresh strong Beaufort translation', 'multilingual alert machine translation errors FCC'):\n\n[ON-PICKERING-2020#0103] Investigation into the emergency alerts sent on January 12, 2020 (Pre-scripted messages):\nThe PEOC did not have any French language templates. Procedures existed for submitting an emergency French translation request. The service standard for emergency French translation was to respond within 30 minutes. On January 12, 2020, as the first alert was sent in error, translation was not considered. The PEOC did not submit an emergency French language request for the second alert.\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-HI-2018#0142] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.24):\nBureau Recommendations 40. After reviewing the facts that form the basis of this report, the Bureau offers several recommendations below to provide guidance to state, local, Tribal and territorial emergency alert originators and managers about “lessons learned” from the Bureau’s investigation. The Bureau recommends that state, local, Tribal and territorial emergency management agencies and other authorized state entities take the following actions: \n\n[NWS-AI-TRANSLATION#0002] From Binary to Bilingual: How the National Weather Service is Using Artificial Intelligence to Develop a Comprehensive Translation Program (Abstract):\nThe NWS has partnered with LILT, whose patented training process enables large language models (LLMs) to adapt neural machine translation (NMT) tools for weather terminology and messaging.\n\n[MHEWS-2026#0348] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) terminology can be difficult to translate with accuracy and timeliness. Recognising these barriers, researchers and practitioners are continuously trying to use AI technologies to improve the translation and dissemination of early warning communication. Operational applications are already emerging. For example, the National Weather Service in the United States has collaborated with the AI translation platform Lilt to develop an automated emergency-weather translation\n\n[MHEWS-2026#0349] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nprogramme that adapts neural machine translation tools to specialized weather terminology through a patented training process. The system enables large language models to generate more accurate and context-sensitive translations of weather alerts in languages such as Chinese, Spanish, and Vietnamese (Khurana et al., 2023). Similarly, Canada’s national public alerting system Alert Ready integrates AI-powered translation directly into alert-authoring software to enable real-time bilingual alerts across hazard types (Box 17).\n\n[MHEWS-2026#0003] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.2):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) Within the scope and under the terms of this licence, you may copy, redistribute and adapt the work for non-commercial purposes, provided the work is appropriately cited, as indicated below. In any use of this work, there should be no suggestion that International Telecommunication Union (ITU), United Nations Office for Disaster Risk Reduction (UNDRR), World Meteorological Organization (WMO), and International Federation of Red Cross and Red Crescent Societies (IFRC) endorses any specific organization, products or services. The unauthorized use of ITU, UNDRR, WMO or IFRC names or logos is not permitted. If you adapt the work under this license, then you must license your work under the same or equivalent Creative Commons licence. If you create a translation of this work, you should add the following disclaimer along with the suggested citation: “This translation was not created by the International Telecommunication Union (ITU), United Nations Office for Disaster Risk Reduction (UNDRR), World Meteorological Organization (WMO) or the International Federation of Red Cross and Red Crescent Societies (IFRC). Neither ITU, UNDRR, WMO nor the IFRC are responsible for the content or accuracy of this translation. The original English edition shall be the binding and authentic edition”.\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic matches the English on times (19:00, 4 March), visibility (below 2,000 metres), areas, source, link and the protective action (take extra care when driving on open roads). One wording error should be fixed. The machine translation rendered the meteorological term 'fresh' (a Beaufort wind force) as 'منعشة', which means 'refreshing/pleasant'. That misstates the hazard and makes it sound pleasant. A named Arabic-reading reviewer must still approve the text.",
+  "objections": [
+   {
+    "issue": "In the English, 'Fresh' is the technical wind-strength term (fresh breeze). The machine translation rendered it literally as 'منعشة' ('refreshing, invigorating'). This gives the hazard a pleasant tone and does not convey wind strength. It is the kind of terminology error expected from unreviewed machine translation of weather alerts.",
+    "field": "arabic.description",
+    "blocking": true,
+    "fix": "Replace 'رياح شمالية غربية منعشة إلى قوية' with 'رياح شمالية غربية نشطة إلى قوية', the standard Arabic meteorological wording for fresh to strong winds. Have the named Arabic reviewer confirm it.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "رياح شمالية غربية منعشة إلى قوية"
+     },
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "Fresh to strong northwesterly winds"
+     },
+     {
+      "kind": "clause",
+      "ref": "MHEWS-2026#0348",
+      "quote": "terminology can be difficult to translate with accuracy and timeliness"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The source is rendered as 'المركز الوطني للأرصاد'. The authority's official Arabic name is usually 'المركز الوطني للأرصاد الجوية'. This is minor and does not change the meaning, but the reviewer may want to use the official name.",
+    "searched_for": "Clauses on rendering official agency names in translated alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 5077,
+  "output_tokens": 1450,
+  "at": "2026-11-09T15:47:09Z"
+ }
+}

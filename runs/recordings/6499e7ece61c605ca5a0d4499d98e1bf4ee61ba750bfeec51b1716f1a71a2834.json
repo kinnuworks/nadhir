@@ -1,0 +1,92 @@
+{
+ "key": "6499e7ece61c605ca5a0d4499d98e1bf4ee61ba750bfeec51b1716f1a71a2834",
+ "system": "You translate public warning messages.\nFor each target language, first look at the vetted templates provided. When a template's hazard is the same\nhazard as the alert's event, you must use it, even if its wording is longer or more general than the English: return method \"template\", its id, and the slot values. Slot values stay as in the English\nalert (agency name, place, time, URL), because the vetted templates keep their fill-in elements untranslated.\nIf the English gives no URL, use the issuer's public site given in the input. Only if no template fits, translate the\nEnglish text yourself (method \"machine\"). Keep every number and time exactly as in the English.\nNever add information that is not in the English text.",
+ "user": "{\n \"english\": {\n  \"event\": \"Blowing dust and sand – reduced visibility\",\n  \"headline\": \"EXERCISE – Blowing dust and sand reducing visibility in some coastal and inland areas\",\n  \"description\": \"EXERCISE. Active to occasionally strong northwesterly winds are raising dust and sand in some coastal and inland areas. Drive with caution, especially on external and open roads. Visibility may drop suddenly below 3,000 m until 18:00 on 16 Feb.\",\n  \"instruction\": \"EXERCISE. Take care when driving, especially on external and open roads, because visibility can drop suddenly. Follow updates from the National Centre of Meteorology and https://alerts.example.ae.\"\n },\n \"target_languages\": [\n  \"ar\"\n ],\n \"vetted_templates\": []\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "versions": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "language": {
+       "type": "string"
+      },
+      "method": {
+       "type": "string",
+       "enum": [
+        "template",
+        "machine"
+       ]
+      },
+      "template_id": {
+       "type": "string"
+      },
+      "slots": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "slot": {
+          "type": "string"
+         },
+         "value": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "slot",
+         "value"
+        ],
+        "additionalProperties": false
+       }
+      },
+      "headline": {
+       "type": "string"
+      },
+      "description": {
+       "type": "string"
+      },
+      "instruction": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "language",
+      "method",
+      "template_id",
+      "slots",
+      "headline",
+      "description",
+      "instruction"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "versions"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "versions": [
+   {
+    "language": "ar",
+    "method": "machine",
+    "template_id": "",
+    "slots": [],
+    "headline": "تمرين – غبار ورمال متطايرة تقلل مدى الرؤية في بعض المناطق الساحلية والداخلية",
+    "description": "تمرين. رياح شمالية غربية نشطة إلى قوية أحياناً تثير الغبار والرمال في بعض المناطق الساحلية والداخلية. يرجى القيادة بحذر، خاصة على الطرق الخارجية والمكشوفة. قد ينخفض مدى الرؤية فجأة إلى أقل من 3,000 م حتى الساعة 18:00 يوم 16 فبراير.",
+    "instruction": "تمرين. توخوا الحذر أثناء القيادة، خاصة على الطرق الخارجية والمكشوفة، لأن مدى الرؤية قد ينخفض فجأة. تابعوا التحديثات من المركز الوطني للأرصاد و https://alerts.example.ae."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1004,
+  "output_tokens": 756,
+  "at": "2026-11-09T15:49:20Z"
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "key": "7946f21fec882ebfe7c12d0a84a52058f52d15ee376832f8afe1f44571606267",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Seoul Metropolitan Government\": {\n   \"name\": \"Seoul Metropolitan Government\",\n   \"level\": 2,\n   \"areas\": [\n    \"KR-ADM=11\",\n    \"polygon:37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  },\n  \"Ministry of the Interior and Safety\": {\n   \"name\": \"Ministry of the Interior and Safety\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [\n  {\n   \"sender\": \"Ministry of the Interior and Safety\",\n   \"name\": \"Ministry of the Interior and Safety\",\n   \"level\": 1,\n   \"event\": \"air-raid alert\",\n   \"geocodes\": [\n    [\n     \"KR-ADM\",\n     \"28720\"\n    ]\n   ]\n  }\n ],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon (area named in the ministry's alert)\",\n  \"codes\": [\n   [\n    \"KR-ADM\",\n    \"28720\"\n   ]\n  ],\n  \"drawn_for_event\": \"seoul-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Seoul Metropolitan Government\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Security\"\n  ],\n  \"event\": \"경계경보 (air-raid alert)\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Seoul (entire city)\",\n  \"codes\": [\n   [\n    \"KR-ADM\",\n    \"11\"\n   ]\n  ],\n  \"polygons\": [\n   \"37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76\"\n  ],\n  \"headline\": null\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP area mismatch requested area alert', 'higher authority active alert overreach local issuer', 'Seoul 2023 air-raid alert erroneous issuance'):\n\n[X1303BIS#0091] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nContext.class.attribute. representation Definition and (Optionality) area cap.alertInfoArea.area. group The container for all component parts of the area sub-element of the info sub-element of the alert message (OPTIONAL) areaDesc cap.alertInfoArea.areaDesc. text\n\n[X1303BIS#0092] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nThe text describing A text description of the affected area. the affected area of the alert message (REQUIRED) polygon cap.alertInfoArea.polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[CAP12#0132] Common Alerting Protocol Version 1.2 (3.2.4 \"area\" Element and Sub-elements):\nareaDesc cap. alertInfoArea. areaDesc. text The text describing the affected area of the alert message (REQUIRED) A text description of the affected area. polygon cap. alertInfoArea. polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[CAPCP#0069] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\n</info> (2) (Not Acceptable) <alert ...> ... <info> ... <event>Thunderstorm</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>thunderstorm</value> </eventCode> ... <area> <areaDesc>area 1</areaDesc> <geocode>...</geocode> </area> </info> <info> ... <event>Tornado</event> ... <eventCode> <valueName>profile:CAP-CP:Event:1.0</valueName> <value>tornado</value> </eventCode> ... <area> <areaDesc>area 2</areaDesc> <geocode>...</geocode> </area> </info>\n\n[ON-PICKERING-2020#0045] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nSource: Public Safety Canada, 2020 Under this framework, the PEOC is an alert issuer. Alert issuers submit their alerts to the alert aggregator and issuers are responsible for the content of alert messages. The PEOC issues alerts on behalf of Ontario municipalities, First Nations and the Government of Ontario. The Ontario Provincial Police issues AMBER alerts directly to the alert aggregator; similarly, Environment Canada issues weather alerts directly to the alert aggregator.\n\n[ON-PICKERING-2020#0044] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nAn authorized issuer enters the alert into the NAAD System. The NAAD System ensures quick and secure delivery of alerts to the Distributors, exactly as provided by the Issuer. The Public receives alerts through various channels and responds appropriately to the emergency or situation.\n\n[IPAWS-OPEN#0022] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.20):\nAuthorities with Public Alerting (as of October 12, 2018) 1,169 Total IPAWS Public Alerting Authorities: 1093* Local (*includes 19 military bases) 68 State-wide 3 Territory 3 Tribal 3 Federal Counties in Green have at least one local authority with IPAWS Public Alerting Access More than 69.1% of the population are covered by a local alerting authority\n\n[ON-PICKERING-2020#0081] Investigation into the emergency alerts sent on January 12, 2020 (The Alert Ready system):\nThe Alert Ready system is a public-private partnership between FPT governments and the broadcasting and telecommunications industries (See Background for more details). All authorized alert issuers have access to the same Pelmorex Corp. (Pelmorex) operated system; however, some alert issuers have invested in custom interfaces to tailor the user experience to their needs. EMO's PEOC does not have a tailored interface, rather it uses the system provided by Pelmorex.\n\n[TW-2024-CNA#0002] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nThe English part of the template that read \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\" was not changed.\n\n[TW-2024-CNA#0003] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nA search of the PWS system found no templates for satellite launches so the message was likely based on a template from the \"Missile air raid alert\" category.\n\n[FCC-HI-2018#0004] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.3):\n(HST), 13 minutes after the 1 See Library of Congress, This Day in History – December 7, Air Raid on Pearl Harbor, https://www.loc.gov/item/today-in-history/december-07/ (last visited Mar. 28, 2018). 2 HI-EMA is the emergency management agency for the State of Hawaii.\n\n[FCC-HI-2018#0003] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.3):\nI. EXECUTIVE SUMMARY 1. “This is not a drill.” This phrase has regrettable resonance in Hawaii. Its history dates to another weekend morning, Sunday, December 7, 1941, when a U.S. naval officer sent out the following message warning of a Japanese attack: “AIR RAID ON PEARL HARBOR X THIS IS NOT DRILL.”1 2. This phrase was again used in Hawaii on January 13, 2018. At 8:07 a.m. Hawaii Standard Time (HST), on-duty warning officers of the State of Hawaii Emergency Management Agency (HI-EMA) sought to conduct an internal exercise of their ballistic missile defense drill using the Emergency Alert System (EAS) and Wireless Emergency Alerts (WEA).2 The exercise went awry, resulting in HI-EMA sending the following message throughout Hawaii: BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.3 3. This false emergency alert resulted in 38 minutes of confusion, fear and uncertainty for the residents of Hawaii.4 Although some suspected that the alert was a mistake, in part due to the absence of air-raid sirens, and made calls or checked social media to confirm the alert’s authenticity,5 for many Hawaiians, the false alert created the expectation that a missile strike could be only minutes away. According to the Bureau’s investigation, it took HI-EMA until 8:20 a.m.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "Seoul Metropolitan Government is sending an Actual, Extreme air-raid alert to all of Seoul (KR-ADM 11). The area requested for this event is Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon (KR-ADM 28720), which is the area in the Ministry's active alert. Seoul is not registered for that area, so the drafter cannot simply retarget the alert. Sending it to Seoul would also extend a higher authority's air-raid alert to a city that authority did not cover. A person, together with the Ministry of the Interior and Safety, must decide whether this alert goes out at all.",
+  "objections": [
+   {
+    "issue": "The alert's target area (all of Seoul, KR-ADM 11) does not match the area requested for this event (Ongjin-gun, Incheon, KR-ADM 28720). Seoul's register entry covers only KR-ADM=11 and the Seoul polygon, so Seoul cannot cover the requested area either.",
+    "field": "alert.areaDesc",
+    "blocking": true,
+    "fix": "Do not send for Seoul. A person must confirm which authority should alert KR-ADM 28720 (the Ministry already has). Seoul may issue only if a Seoul-specific threat is separately confirmed and an area is requested for it.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon (area named in the ministry's alert)"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "Seoul (entire city)"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0132",
+      "quote": "The text describing the affected area of the alert message"
+     }
+    ]
+   },
+   {
+    "issue": "A level-2 local authority is issuing an Actual, Extreme air-raid alert that overreaches the active level-1 Ministry air-raid alert. The Ministry's alert covers only KR-ADM 28720, and this alert extends it to the whole of Seoul without the higher authority's decision.",
+    "field": "alert.event",
+    "blocking": true,
+    "fix": "Hold the alert. Get a decision from the Ministry of the Interior and Safety (level 1) on whether Seoul is under threat before any air-raid alert is sent to Seoul.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "active_alerts_from_other_authorities",
+      "quote": "Ministry of the Interior and Safety"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.event",
+      "quote": "경계경보 (air-raid alert)"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "No knowledge base clause shown sets out the rule that a lower-level issuer must not extend a higher authority's active alert to a wider area.",
+    "searched_for": "higher authority active alert overreach local issuer"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4513,
+  "output_tokens": 1614,
+  "at": "2026-11-09T16:06:04Z"
+ }
+}

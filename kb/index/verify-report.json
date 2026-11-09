@@ -1,6 +1,6 @@
 {
-  "checked": 55,
-  "found": 54,
+  "checked": 70,
+  "found": 69,
   "not_found": [
     {
       "id": "TDRA-2017-CB",
@@ -23,8 +23,6 @@
     "NWS-AI-TRANSLATION",
     "NWS-NHC-2026",
     "NWS-PAUSE",
-    "ON-PICKERING-2020",
-    "FL-2023-FDEM",
     "FL-2023-WGCU",
     "TW-2024-MND",
     "TW-2024-TWN",

@@ -1,0 +1,170 @@
+{
+ "key": "731955d78176fa80bdc195c1880de7dbc0df0c7425646aea6727eb82729fd055",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology. Reports say a dam near Al Ain has burst; leave the area now.\",\n   \"characters\": 251,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية. تفيد التقارير بانهيار سد قرب العين؛ غادروا المنطقة فوراً.\",\n   \"characters\": 292,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 8\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('cell broadcast first page hazard action', 'CAP single hazard per alert message', 'unverified reports in alert message FCC'):\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[TS23041#0255] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\n9.3.10 No-of-Broadcasts-Completed-List This parameter is a list indicating the number of times that the CBS message (i.e. all pages of the CBS message) has been sent to each cell in the Cell-List for broadcast over the air interface. The cells in the list are described as per clause 9.3.11. Description of list elements: PARAMETER Cell Identifier No-of-Broadcasts-completed No-of-Broadcasts-Compl-Info\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[CAPCP#0035] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Constraint of one subject event per alert message):\nConstraint of one subject event per alert message The Reference Standard allows for the inclusion of multiple subject events within a single CAP alert message, but specifies only one unique CAP message identifier is required. Therefore, a situational change to any one of the subject events, triggering a new CAP message update, would give the appearance of a change to any and all of the other subject events within the update message. Further, given that event values will be used for the purpose of filtering, routing, validating, and other needs within the community; systems could have difficulty handling a single alert message containing multiple subject events when the information associated to a subset of the subject events may be changing. To avoid any potential confusion, the CAP-CP limits each CAP alert message to one subject event value.\n\n[CAPCP#0064] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #2. Constraint of one subject event per alert message):\nRule #2. Constraint of one subject event per alert message Element: N/A Use: Type: Value: Description: Notes: CAP places no restrictions on the number of different subject event per alert message\n\n[CAPCP#0007] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Table of contents):\nCAP-CP Rules Rule #1. CAP-CP message must be valid CAP Rule #2. Constraint of one subject event per alert message Rule #3. The CAP-CP version for an alert message must be identified\n\n[CAPAU#0079] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.22):\n3) The CAP-AU Profile SHALL constrain each alert message to one single value from an authorised <eventCode> list in order to avoid any potential confusion or difficulty handling a single alert message containing multiple events.\n\n[FCC-16-127#0302] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.49):\n329 WEA NPRM, 30 FCC Rcd at 13819, paras. 82, 84 (including extending the maximum WEA message length, establishing a new Alert message classification, and including embedded references in WEA Alert Messages among our WEA message content rules). 330 See id. at 13819, para. 82.\n\n[FCC-16-127#0008] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.3):\n2. First, we adopt rules that will improve Alert Message content in order to help communities communicate clearly and effectively about imminent threats and local crises.3 Specifically, we improve Alert Message content with the following actions: x\n\n[FCC-23-88#0396] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\nIn adopting the rule to enable alerting authorities to display translated Alert Message content via the use of emergency alert message templates, we found the record demonstrates that machine translation is not yet ripe for use today in WEA.211 The use of alert message templates should minimize 207 See Bureau of Labor Statistics, Occupational Employment and Wage Statistics, Occupational Employment and\n\n[FCC-16-127#0072] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.12):\n57 This is the same approach that FEMA IPAWS currently takes to generating a 90-character Alert Message from the CAP parameters of an Alert Message that contains no free-form text. 58 See infra Figure 2 (Our Approach to Expanding the Character Limit).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "Both required languages (ar, en) are present. Page counts (en 3, ar 8) are within the 15-page cell broadcast maximum, and the encodings are consistent with the text (GSM-7 for English, UCS-2 for Arabic). Delivery is not the problem; content is. The fog message carries a second, unverified hazard: 'Reports say a dam near Al Ain has burst'. Its evacuation order, 'leave the area now', is the only action in the alert and comes at the very end, not on the first page. Whether a dam burst is real and needs its own evacuation alert is a decision for a person or the issuing authority, not the drafter, so I am escalating.",
+  "objections": [
+   {
+    "issue": "Two different hazards are in one alert: a fog warning, and an unverified report of a dam burst near Al Ain with an evacuation instruction. The dam claim is attributed only to 'reports'. The source cited (National Center for Meteorology) covers the fog, not the dam. A person needs to decide whether the dam burst is confirmed. If it is, it needs its own alert from the responsible authority. If it is not, it must be removed before anyone acts on it.",
+    "field": "phone_text",
+    "blocking": true,
+    "fix": "Before sending, have the issuing authority confirm or reject the dam burst report. Remove it from the fog alert in both languages. If it is confirmed, issue a separate dam-burst evacuation alert with its own source and area.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Reports say a dam near Al Ain has burst; leave the area now."
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "تفيد التقارير بانهيار سد قرب العين"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPAU#0079",
+      "quote": "SHALL constrain each alert message to one single value from an authorised <eventCode> list in order to avoid any potential confusion"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPCP#0035",
+      "quote": "the CAP-CP limits each CAP alert message to one subject event value."
+     }
+    ]
+   },
+   {
+    "issue": "The first page names the fog hazard but gives no protective action. The only action in the alert, 'leave the area now', is at the end of the text: page 3 of 3 in English and the last of 8 pages in Arabic. That action belongs to the dam report, not the fog. A reader who sees only page 1 gets no instruction for the fog.",
+    "field": "phone_text",
+    "blocking": false,
+    "fix": "Put a fog-specific action on the first page of each language, for example 'avoid driving; if you must, slow down and use low-beam lights'. Then give the time window and source.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE"
+     },
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "leave the area now"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "None of the clauses shown sets a requirement that the first cell broadcast page must carry both the hazard and the action. The first-page objection relies on my mandate and the alert text only.",
+    "searched_for": "cell broadcast first page hazard action"
+   },
+   {
+    "concern": "None of the clauses returned addresses unverified or rumoured information ('reports say') in an alert message.",
+    "searched_for": "unverified reports in alert message FCC"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4593,
+  "output_tokens": 1721,
+  "at": "2026-11-09T16:00:00Z"
+ }
+}

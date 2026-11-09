@@ -1,0 +1,143 @@
+{
+ "key": "f0cc805a4fef325fd5720c856da454105f6b7b0150d6771237724c75f152b376",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology. Flash flooding is expected in low-lying areas.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد. من المتوقع حدوث سيول مفاجئة في المناطق المنخفضة.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation emergency alert human review', 'machine translation public warning accuracy', 'multilingual alert protective action consistency'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Adoption_Guidelines_in_Government_Services#0024] AI Adoption Guidelines in Government Services (p.13):\nArtificial Intelligence Data Analytics Natural Language Processing Machine Learning Deep Learning Big Data Computer Vision SUPERVISED LEARNING UNSUPERVISED LEARNING REINFORCEMENT LEARNING Figure 4 – Types of Machine Learning Algorithms Figure 3 - AI and Underlying Domains Versus Data Analytics and Big Data Some examples of machine learning include predictive systems that can forecast what is likely to happen, natural language processing that can comprehend speech and text in close to real time and computer vision that can understand visual inputs with extraordinary accuracy. 24 One of the real strengths of machine learning is that there are different types of learning algorithms which can be used, including supervised, unsupervised, and reinforcement learning.\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.\n\n[FCC-23-88#0064] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\n29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (stating that “the truth is that things can go awfully wrong” with machine translation); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message. This may be especially problematic for place names that may become incomprehensible if improperly translated (e.g., Shoemaker Road might be translated as the nonexistent Camino del Zapatero.”). 59 Attorneys General Comments at 5. 60 NYPSC Reply at 2. 61 AT&T Comments at 10-11 (“AT&T is encouraged that native software-based machine language translation\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0026] UAE Public Policy Development Guidebook (p.14):\nPublic Policy Public policy comprises government-established guidelines that steer decision-making and action. It establishes a framework for decision-makers, defining preferred courses of action in specific situations. Policies are typically long-term and maintain consistency throughout each government's term, focusing on specific areas or issues.\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0044] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.33):\nPart 1: Specifications 8.11.4 Inconsistency The entity shall address its BC capability’s in consistency with this Standard, through preventive and corrective actions. 8.11.5 Preventive and Corrective Actions Preventive and corrective actions shall be aligned with the Business Continuity Policy and BCM objectives at the acceptable level of risk, as may be determined by Top Management. 8.11.5.1 Preventive Actions: a. The priority of preventive actions shall be based on the results of the entity’s risk assessment and BIA. b. Preventive actions should be commensurate with the potential impact of the emergency, crisis or disaster. c. The preventive actions standard should define the necessary requirements. 8.11.5.2 Corrective Actions: The entity shall take required action to eliminate the causes of nonconformity with the Business Continuity Management policies, procedures and plans and prevent their recurrence. The procedures shall explain and document corrective actions, defining points and causes of non-conformity and recording all action taken.\n\n[FCC-DA-25-12#0024] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.5):\nWe find that avoiding confusion about the meaning of a tsunami alert where they are used nationwide outweighs ensuring consistency of the tsunami template with the City of Berkeley’s emergency policies. 11. We decline to adopt generic templates that would warn the public to either evacuate or shelter-in-place, as initially proposed. 28 We agree with commenters that these templates are unlikely to effectively alert the public, risking panic due to their vagueness. As Art Botterell and ATIS note, generic templates instructing the public to take a specific protective action without providing essential details about why the warning was issued would be likely to cause confusion. 29 ATIS cites research indicating that such detail, including a description of the threat giving rise to the need to take protective action, is a key component to an effective warning. 30 Without this context, we agree with ATIS that recipients of generic alerts are less likely to take action and receiving such a warning may make a situation worse. 31 24\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[FCC-FR-2025#0015] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57289):\nMove to high ground or inland now.'' Because NWS's ``Tsunami Warnings'' advise the public to move inland, rather than evacuate inland areas, implementing the City of Berkeley's proposed templates would create a conflict with NWS's alerts and potentially create confusion. We find that avoiding confusion about the meaning of a tsunami alert where they are used nationwide outweighs ensuring consistency of the tsunami template with the City of Berkeley's emergency policies. 6. We decline to adopt generic templates that would warn the public to either evacuate or shelter-in-place, as initially proposed. We agree with commenters that these templates are unlikely to effectively alert the public, risking panic due to their vagueness. As Art Botterell and ATIS note, generic templates instructing the public to take a specific protective action without providing essential details about why the warning was issued would be likely to cause confusion. ATIS cites research indicating that such detail, including a description of the threat giving rise to the need to take protective action, is a key component to an effective warning. Without this context, we agree with ATIS that recipients of generic alerts are less likely to take action and receiving such a warning may make a situation worse.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The Arabic matches the English in meaning. The hazard (dust and sand from fresh to strong northwesterly winds), the visibility figure (under 2,000 metres), the areas (coastal and inland), the end time (19:00, 4 March), the source, the flash-flood sentence, the protective action (take extra care when driving on open roads) and the URL all carry over without change. However, the Arabic was produced by machine translation. A named person who reads Arabic must confirm it before the alert is sent, and I cannot give that approval. A separate point: the English itself contains a flash-flood sentence that does not fit this dust alert and gives no matching protective action. The Arabic reproduces that sentence faithfully. It is outside my mandate and is recorded under no_basis.",
+  "objections": [
+   {
+    "issue": "The Arabic text was produced by machine translation and has not yet been confirmed by a human reviewer who reads Arabic. The guidance shown says machine-translated alert text risks material inaccuracies and needs human review. My comparison found no difference in meaning, but it does not replace sign-off by a named Arabic reader.",
+    "field": "arabic_produced_by",
+    "blocking": true,
+    "fix": "Before release, a named Arabic-reading reviewer at the issuing authority must confirm the Arabic headline, description and instruction. If the alert is issued before that review, mark the Arabic as automated translation and send an update once a human has reviewed it.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts."
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPCP#0144",
+      "quote": "free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The English description ends with 'Flash flooding is expected in low-lying areas.' This does not fit a dust and low-visibility alert, and the instruction gives no protective action for flooding. The Arabic translates the sentence accurately, so there is no translation difference. The content issue in the source should be checked by the drafter or approver.",
+    "searched_for": "Clauses on internal consistency of hazard description versus protective action within a single-language alert; none in my mandate covers source-text content errors."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 6295,
+  "output_tokens": 1555,
+  "at": "2026-11-09T16:19:19Z"
+ }
+}

@@ -1,42 +1,44 @@
-F01 uae-dust-2026-03-04: rules ['R11'] | agents 2 hit(s) of 3 objection(s)
-F02 uae-dust-2026-03-04: rules ['R9'] | agents 1 hit(s) of 3 objection(s)
-F03 uae-dust-2026-03-04: rules - | agents 1 hit(s) of 4 objection(s)
-F04 uae-dust-2026-03-04: rules - | agents 3 hit(s) of 6 objection(s)
-F05 uae-dust-2026-03-04: rules ['R11'] | agents 4 hit(s) of 6 objection(s)
+F01 uae-dust-2026-03-04: rules ['R11'] | agents 2 hit(s) of 2 objection(s)
+F02 uae-dust-2026-03-04: rules ['R9'] | agents 2 hit(s) of 3 objection(s)
+F03 uae-dust-2026-03-04: rules - | agents 1 hit(s) of 3 objection(s)
+F04 uae-dust-2026-03-04: rules - | agents 2 hit(s) of 3 objection(s)
+F05 uae-dust-2026-03-04: rules ['R11'] | agents 2 hit(s) of 3 objection(s)
 F06 uae-dust-2026-03-04: rules ['R11'] | agents 2 hit(s) of 4 objection(s)
-F07 uae-dust-2026-03-04: rules ['R11'] | agents 2 hit(s) of 4 objection(s)
-F08 uae-dust-2026-03-04: rules ['R3'] | agents 1 hit(s) of 3 objection(s)
-F09 uae-dust-2026-03-04: rules - | agents 1 hit(s) of 4 objection(s)
-F12 uae-dust-2026-03-04: rules ['R7'] | agents 1 hit(s) of 3 objection(s)
-F13 uae-dust-2026-03-04: rules ['R10'] | agents 3 hit(s) of 4 objection(s)
-F14 uae-dust-2026-03-04: rules ['R4'] | agents 1 hit(s) of 4 objection(s)
-F15 uae-dust-2026-03-04: rules - | agents 2 hit(s) of 6 objection(s)
-F16 uae-dust-2026-03-04: rules - | agents 1 hit(s) of 4 objection(s)
-F01 uae-fog-2026-02-17: rules ['R11'] | agents 2 hit(s) of 3 objection(s)
-F02 uae-fog-2026-02-17: rules ['R9'] | agents 1 hit(s) of 3 objection(s)
-F03 uae-fog-2026-02-17: rules - | agents 1 hit(s) of 4 objection(s)
-F04 uae-fog-2026-02-17: rules - | agents 2 hit(s) of 6 objection(s)
-F05 uae-fog-2026-02-17: rules ['R11'] | agents 3 hit(s) of 5 objection(s)
+F07 uae-dust-2026-03-04: rules ['R11'] | agents 2 hit(s) of 3 objection(s)
+F08 uae-dust-2026-03-04: rules ['R3'] | agents 1 hit(s) of 2 objection(s)
+F09 uae-dust-2026-03-04: rules - | agents 1 hit(s) of 2 objection(s)
+F12 uae-dust-2026-03-04: rules ['R7'] | agents 1 hit(s) of 2 objection(s)
+F13 uae-dust-2026-03-04: rules ['R10'] | agents 3 hit(s) of 3 objection(s)
+F14 uae-dust-2026-03-04: rules ['R4'] | agents 1 hit(s) of 2 objection(s)
+F15 uae-dust-2026-03-04: rules - | agents 3 hit(s) of 4 objection(s)
+F16 uae-dust-2026-03-04: rules - | agents 1 hit(s) of 3 objection(s)
+F01 uae-fog-2026-02-17: rules ['R11'] | agents 1 hit(s) of 2 objection(s)
+F02 uae-fog-2026-02-17: rules ['R9'] | agents 1 hit(s) of 2 objection(s)
+F03 uae-fog-2026-02-17: rules - | agents 1 hit(s) of 2 objection(s)
+F04 uae-fog-2026-02-17: rules - | agents 2 hit(s) of 5 objection(s)
+F05 uae-fog-2026-02-17: rules ['R11'] | agents 2 hit(s) of 4 objection(s)
 F06 uae-fog-2026-02-17: rules ['R11'] | agents 1 hit(s) of 3 objection(s)
-F07 uae-fog-2026-02-17: rules ['R11'] | agents 2 hit(s) of 3 objection(s)
-F08 uae-fog-2026-02-17: rules ['R3'] | agents 1 hit(s) of 3 objection(s)
-F09 uae-fog-2026-02-17: rules - | agents 1 hit(s) of 3 objection(s)
-F12 uae-fog-2026-02-17: rules ['R7'] | agents 1 hit(s) of 2 objection(s)
-F13 uae-fog-2026-02-17: rules ['R10'] | agents 4 hit(s) of 5 objection(s)
-F14 uae-fog-2026-02-17: rules ['R4'] | agents 1 hit(s) of 4 objection(s)
-F15 uae-fog-2026-02-17: rules - | agents 2 hit(s) of 4 objection(s)
-F16 uae-fog-2026-02-17: rules - | agents 1 hit(s) of 4 objection(s)
-F10 uae-dust-drill: rules ['R2'] | agents 2 hit(s) of 4 objection(s)
-F11 uae-dust-drill: rules ['R2'] | agents 2 hit(s) of 7 objection(s)
+F07 uae-fog-2026-02-17: rules ['R11'] | agents 1 hit(s) of 2 objection(s)
+F08 uae-fog-2026-02-17: rules ['R3'] | agents 1 hit(s) of 2 objection(s)
+F09 uae-fog-2026-02-17: rules - | agents 1 hit(s) of 2 objection(s)
+F12 uae-fog-2026-02-17: rules ['R7'] | agents 1 hit(s) of 1 objection(s)
+F13 uae-fog-2026-02-17: rules ['R10'] | agents 2 hit(s) of 3 objection(s)
+F14 uae-fog-2026-02-17: rules ['R4'] | agents 0 hit(s) of 2 objection(s)
+F15 uae-fog-2026-02-17: rules - | agents 2 hit(s) of 5 objection(s)
+F16 uae-fog-2026-02-17: rules - | agents 1 hit(s) of 3 objection(s)
+F10 uae-dust-drill: rules ['R2'] | agents 1 hit(s) of 3 objection(s)
+F11 uae-dust-drill: rules ['R2'] | agents 3 hit(s) of 6 objection(s)
 {
  "cases": 30,
  "named": {
   "none": 0,
   "rules": 20,
-  "agents": 30,
+  "agents": 29,
   "both": 30
  },
- "only_rules": [],
+ "only_rules": [
+  "F14"
+ ],
  "only_agents": [
   "F03",
   "F04",
@@ -46,8 +48,9 @@ F11 uae-dust-drill: rules ['R2'] | agents 2 hit(s) of 7 objection(s)
  ],
  "neither": [],
  "clean_drafts": 12,
- "clean_objections": 35,
+ "clean_objections": 20,
  "clean_drafts_with_objection": 12,
- "dropped_for_bad_quotes": 2,
- "objections_total": 121
+ "dropped_for_bad_quotes": 1,
+ "objections_total": 86
 }
+ABL_DONE 0

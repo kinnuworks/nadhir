@@ -1,0 +1,33 @@
+{
+ "key": "20c78471d170a24bc9e65ea5f5f01afb11854bb8353ffd1bfd88353a35b771e0",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE policy texts. Write up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust and sand: visibility below 2,000 m, drive with caution\",\n  \"description\": \"Blowing dust and sand: visibility below 2,000 m. Drive with caution on open roads. Fresh to strong northwesterly winds in some coastal and inland areas, Abu Dhabi, until 19:00 today, 4 March. Source: NCM.\",\n  \"instruction\": \"Take extra care when driving on open roads because visibility may drop suddenly. Follow updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"غبار ورمال متطايرة: مدى الرؤية أقل من 2,000 م، توخَّوا الحذر أثناء القيادة\",\n  \"description\": \"غبار ورمال متطايرة: مدى الرؤية أقل من 2,000 م. توخَّوا الحذر أثناء القيادة على الطرق المفتوحة. رياح شمالية غربية نشطة إلى قوية على بعض المناطق الساحلية والداخلية، أبوظبي، حتى الساعة 19:00 اليوم، 4 مارس. المصدر: NCM.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر عند القيادة على الطرق المفتوحة لأن مدى الرؤية قد ينخفض فجأة. تابعوا التحديثات على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation emergency alert verification",
+   "machine translated alert language review requirements",
+   "CAP multilingual info block language"
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1000,
+  "output_tokens": 47,
+  "at": "2026-11-09T15:46:09Z"
+ }
+}

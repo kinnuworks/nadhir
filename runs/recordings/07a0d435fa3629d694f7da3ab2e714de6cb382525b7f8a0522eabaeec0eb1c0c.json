@@ -1,0 +1,169 @@
+{
+ "key": "07a0d435fa3629d694f7da3ab2e714de6cb382525b7f8a0522eabaeec0eb1c0c",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"No-notice internal drill message played by phone to the State Warning Point. The FCC report says it contained the text of an EAS message for a live ballistic missile alert, including \\\"this is not a drill\\\", and the words \\\"Exercise, Exercise, Exercise\\\" at the beginning and end.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Civil Defense Warning (EAS event code CDW)\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"BALLISTIC MISSILE THREAT INBOUND TO HAWAII.\",\n  \"description\": \"BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.\",\n  \"instruction\": \"SEEK IMMEDIATE SHELTER.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise versus Actual', 'Hawaii false ballistic missile alert drill', 'certainty Observed unverified threat drill message'):\n\n[CAP12#0153] Common Alerting Protocol Version 1.2 (3.4 XML Schema):\n<element name = \"sent\"> <simpleType> <restriction base = \"xs:dateTime\"> <pattern value = \"\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d[-,+]\\d\\d:\\d\\d\"/> </restriction> </simpleType> </element> <element name = \"status\"> <simpleType> <restriction base = \"xs:string\"> <enumeration value = \"Actual\"/> <enumeration value = \"Exercise\"/>\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group\n\n[ON-PICKERING-2020#0117] Investigation into the emergency alerts sent on January 12, 2020 (Box 2: 2018 Hawaii false ballistic missile alert):\nBox 2: 2018 Hawaii false ballistic missile alert On January 13, 2018 at 8:07 am local time, the Hawaii Emergency Management Agency (HI-EMA) issued an emergency alert to Hawaii residents that read “Emergency Alert: BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL”. At 8:45 am, a second alert was issued stating that the first alert was false and that there was no missile threat or danger to Hawaii residents.\n\n[FCC-HI-2018#0055] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\nalert notification with elements of the EAS message that would be used for an actual ballistic missile threat. The warning officers and shift supervisor on duty for the midnight shift ran this iteration of HI-EMA’s ballistic missile preparedness drill internally without incident just hours prior to transmission of the false alert. 53 The HI-EMA Report found that at 8:00 a.m., “In preparation for the [ballistic missile alert] response drill,\n\n[FCC-HI-2018#0088] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nAccording to the Hawaii Preparedness Report, “A complete comprehensive annex or plan to address the Ballistic Missile Preparedness (BMP) threat had not been fully developed prior to commencement of missile alert siren testing and internal missile alert drills[,]” and that this approach contradicted HI-EMA’s all hazards protocols. Hawaii Preparedness Report at 1. 75 The ballistic missile checklist was intended for use in connection with a real ballistic missile attack. 76 The HI-EMA Report states, “Notification for Step 1 of the [ballistic missile alert] checklist is used for actual\n\n[FCC-HI-2018#0056] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.11):\nEmployee 4 and Employee 2 discussed their plan their plan to conduct a [ballistic missile alert] drill at the end of their shift. Employee 4 prepared a recording of PACOM [ballistic missile alert] notification from the [ballistic missile alert] checklist manual. Employee 4 discussed leaving the [State Warning Point] area while Employee 2 told the dayshift about the previous shift change drill.” HI-EMA Report at 3. The HI-EMA Report stated that at 8:03 a.m., “The incoming day shift entered the [State Warning Point]. Employee 4 met with Employee 5 and discussed the [ballistic missile alert] drill.” Id.\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[FCC-HI-2018#0092] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nsupervisor deviated from the script for initiating an internal drill. See Press Conference, Missile Alarm Live Stream, at 53:42, http://dod.hawaii.gov/hiema/false-alarm-incidents-internal-investigation-complete-release-of-results-andactions/ (last visited Mar. 28, 2018). The investigator also noted that the midnight shift supervisor “combined” elements from two messages to initiate the internal drill (1) one message includes the phrase “real world” and (2) a second message includes “This is not a drill.” Id. at 27:16. The investigator noted that supervisors had the flexibility to create drill initiation messages. Id. at 53:42. The investigator observed that the phrase “exercise, exercise, exercise” preceded and followed the drill initiation message transmitted to the State Warning Point. Id. In HI-EMA’s audio recording of the drill initiation message preceding the false alert, the phrase “exercise, exercise, exercise” can be heard at the beginning of the recording, followed by a high-pitch sound, then the phrase “This is not a drill,” then a second high-pitch sound, and concluding with the phrase “exercise, exercise, exercise.” See HIEMA Audio File, supra note 15. 77 HI-EMA Report at 8.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert should not go out as written. The only verified input is a no-notice internal drill message, but the alert presents a live, observed ballistic missile threat to the public: status Actual, certainty Observed, severity Extreme, and the words \"THIS IS NOT A DRILL\". No input reports a real missile, so no hazard fact supports any public alert. Whether to send anything, and how to stop or correct this one, is for a person to decide.",
+  "objections": [
+   {
+    "issue": "The status is Actual, but the only verified input is an internal drill message. Actual means the alert is actionable by the whole public. A drill message may only be actionable by the designated exercise participants.",
+    "field": "status",
+    "blocking": true,
+    "fix": "Do not issue a public Actual alert. If anything is sent, use status Exercise, limit it to the drill participants, and put an exercise identifier in the note. A person must decide whether any message is sent at all.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "No-notice internal drill message played by phone to the State Warning Point"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "Actionable only by designated exercise participants"
+     }
+    ]
+   },
+   {
+    "issue": "The certainty is Observed and the severity is Extreme, which assert that a missile threat has been determined to be happening. No input reports an actual missile. The input describes only a drill script copied from the checklist meant for a real attack.",
+    "field": "certainty",
+    "blocking": true,
+    "fix": "Do not assert an Observed or Extreme missile threat. No real hazard is reported in the inputs.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0088",
+      "quote": "The ballistic missile checklist was intended for use in connection with a real ballistic missile attack."
+     }
+    ]
+   },
+   {
+    "issue": "The description says the event is not a drill and leaves out the 'Exercise, Exercise, Exercise' framing that came before and after the source message. This reverses the meaning of the input.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Remove \"THIS IS NOT A DRILL\". Any drill traffic must clearly say it is an exercise.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "THIS IS NOT A DRILL."
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-HI-2018#0092",
+      "quote": "preceded and followed the drill initiation message transmitted to the State Warning Point"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4637,
+  "output_tokens": 1569,
+  "at": "2026-11-09T16:04:34Z"
+ }
+}

@@ -1,0 +1,161 @@
+{
+ "key": "95c797f8fd79ff44b37feff4c71a5799efa389ae809a8f922816f5769360f169",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"현재 시각, 백령면·대청면에 실제 경계경보 발령. 경보 미수신 지역은 자체적으로 실제 경계경보를 발령\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"경계경보 (air-raid alert)\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"\",\n  \"description\": \"오늘 6시 32분 서울지역에 경계경보 발령, 국민 여러분께서는 대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록 해주시기 바란다\",\n  \"instruction\": \"대피할 준비를 하시고 어린이와 노약자가 우선 대피할 수 있도록\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty severity value definitions', 'alert area mismatch wrong location issued', 'air raid alert false warning review'):\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0228] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<?xml version = \"1.0\" encoding = \"UTF-8\"?> <alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.2\"> <identifier>KSTO1055887203</identifier> <sender>KSTO@NWS.NOAA.GOV</sender> <sent>2003-06-17T14:57:00-07:00</sent> <status>Actual</status> <msgType>Alert</msgType> <scope>Public</scope> <info> <category>Met</category> <event>SEVERE THUNDERSTORM</event> <responseType>Shelter</responseType> <urgency>Immediate</urgency> <severity>Severe</severity> <certainty>Observed</certainty> <eventCode> <valueName>SAME</valueName> <value>SVR</value> </eventCode> <expires>2003-06-17T16:00:00-07:00</expires>\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[LA-2025#0022] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.9):\n(Federal Emergency Management Agency [FEMA]) Los Angeles County may have avoided damage to people outside the impacted Kenneth Fire area had their message included more information on the location or the timing of the danger. This additional information is also important for people who have older phones, where geotargeting is not precise on those devices. A more precise description of the affected area could have been accomplished with language such as, “An EVACUATION WARNING has been issued for Calabasas/Agoura Hills,” instead of “An EVACUATION WARNING has been issued for your area.” In questioning, Los Angeles County states, “The County has and currently does identify specific locations and neighborhoods in its emergency alerts,” 20 however, this specific case raises an area for improvement.\n\n[FL-2023-FDEM#0002] Florida Division of Emergency Management Issues Updates on Emergency Response in Florida (Florida Division of Emergency Management Issues Updates on Emergency Response in Florida):\nFlorida Division of Emergency Management Issues Updates on Emergency Response in Florida In response to the accidental alert Florida Division of Emergency Management (FDEM) issued this tweet and statement: Emergency alert testing directives originate from the federal government. This morning's test was supposed to be a test of televised emergency alerts, which the Florida Association of Broadcasters normally schedules for very early in the morning because that is when the fewest people are watching TV (to minimize disruption). Florida contracts with a company called EverBridge to provide the technical coding and instructions required to push out emergency alerts. Everbridge sent the wrong technical specifications for this alert – which ultimately pushed the alert over the Wireless Emergency Alert system (cellphones).\n\n[FCC-23-88#0237] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.42):\n§ 10.500 General requirements. ***** (i) For Alert Messages with a target area specified by a circle or polygon, when a device has location services enabled and has granted location permissions to its native mapping application, Participating CMS Providers must support the presentation of a map along with an emergency alert message that includes at least (1) the shape of the target area, (2) the user’s location relative to the target area, and (3) a geographical representation of a target area in which both the targeted area and user are located. *****\n\n[FCC-23-88#0098] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.17):\nIntegrating Location-Aware Maps into Alert Messages 30. To help people personalize threats that potentially affect them, we require WEA-capable mobile devices to support the presentation of Alert Messages that link the recipient to a native mapping application on their mobile device to depict the recipient’s geographic position relative to the emergency incident. The map must include the following features: the overall geographic area, the contour of the area subject to the emergency alert within that geographic area, and the alert recipient’s location relative to these geographic areas. We require this functionality only on devices that have access to a mapping application, 94 where the Alert Message’s target area is specified by a circle or polygon, and where the device has enabled location services and has granted location permissions to its native mapping application. 31. The record demonstrates a compelling public safety need for WEA messages to include location-aware maps.95 Location-aware maps will personalize threats so recipients will more quickly understand whether an alert applies to them and hasten protective actions. The Portland Regional 92 See generally Amendments to Part 11 of the Commission’s Rules Regarding the Emergency Alert System, Second\n\n[FCC-HI-2018#0003] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.3):\nI. EXECUTIVE SUMMARY 1. “This is not a drill.” This phrase has regrettable resonance in Hawaii. Its history dates to another weekend morning, Sunday, December 7, 1941, when a U.S. naval officer sent out the following message warning of a Japanese attack: “AIR RAID ON PEARL HARBOR X THIS IS NOT DRILL.”1 2. This phrase was again used in Hawaii on January 13, 2018. At 8:07 a.m. Hawaii Standard Time (HST), on-duty warning officers of the State of Hawaii Emergency Management Agency (HI-EMA) sought to conduct an internal exercise of their ballistic missile defense drill using the Emergency Alert System (EAS) and Wireless Emergency Alerts (WEA).2 The exercise went awry, resulting in HI-EMA sending the following message throughout Hawaii: BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.3 3. This false emergency alert resulted in 38 minutes of confusion, fear and uncertainty for the residents of Hawaii.4 Although some suspected that the alert was a mistake, in part due to the absence of air-raid sirens, and made calls or checked social media to confirm the alert’s authenticity,5 for many Hawaiians, the false alert created the expectation that a missile strike could be only minutes away. According to the Bureau’s investigation, it took HI-EMA until 8:20 a.m.\n\n[FCC-HI-2018#0004] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.3):\n(HST), 13 minutes after the 1 See Library of Congress, This Day in History – December 7, Air Raid on Pearl Harbor, https://www.loc.gov/item/today-in-history/december-07/ (last visited Mar. 28, 2018). 2 HI-EMA is the emergency management agency for the State of Hawaii.\n\n[TW-2024-CNA#0002] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nThe English part of the template that read \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\" was not changed.\n\n[TW-2024-CNA#0003] Taiwan's military apologizes over 'missile flyover' message mishap (article body):\nA search of the PWS system found no templates for satellite launches so the message was likely based on a template from the \"Missile air raid alert\" category.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The alert names the wrong place. The verified incident timeline says the air-raid alert was issued for 백령면·대청면, but the alert says 서울지역. Sending a real air-raid alert to an area the source does not name needs a decision by the issuing authority. The alert also gives a specific time (6시 32분) that is not in the verified input.",
+  "objections": [
+   {
+    "issue": "The alert area does not match the verified input. The input issues the air-raid alert for 백령면·대청면 (Baengnyeong/Daecheong). The alert tells the public that Seoul is under the alert. The input's line about areas that did not receive the alert issuing their own does not make Seoul the alerted area. Whether Seoul should be alerted at all is for the authority to decide.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Get the issuing authority to confirm the target area. Unless the authority confirms Seoul, restate the area as 백령면·대청면, as the verified input says.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "백령면·대청면에 실제 경계경보 발령"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "서울지역에 경계경보 발령"
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0022",
+      "quote": "A more precise description of the affected area could have been accomplished"
+     }
+    ]
+   },
+   {
+    "issue": "The alert states an issuance time of 6:32 today. The verified input only says '현재 시각' and gives no clock time, so the time is unsupported.",
+    "field": "description",
+    "blocking": false,
+    "fix": "Remove the specific time, or replace it with the issuance time once the authority confirms it.",
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "오늘 6시 32분 서울지역에"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "현재 시각, 백령면·대청면에 실제 경계경보"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Certainty 'Possible' (p <= ~50%) has no stated basis. The input confirms only that the alert was issued, not how likely an attack is, so 'Unknown' may fit better. I am raising this as a concern only because no clause directly settles which value applies.",
+    "searched_for": "CAP certainty severity value definitions"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 4882,
+  "output_tokens": 1281,
+  "at": "2026-11-09T15:45:09Z"
+ }
+}

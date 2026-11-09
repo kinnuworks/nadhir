@@ -1,0 +1,138 @@
+{
+ "key": "db9b501d623d8c7635a755afabc91dc1d45ae1ad4f83ba10cbba4df1929f6364",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-fog-2026-02-17\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"unknown-sender@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP sender identifier authorized issuer', 'unauthorized sender alert origination authentication', 'alert originator credentials verification failure'):\n\n[X1303BIS#0046] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\nsender cap.alert.sender.identifier The identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[CAP12#0070] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\n(1) A number or string uniquely identifying this message, assigned by the sender. (2) MUST NOT include spaces, commas or restricted characters (< and &). sender cap. alert. sender. identifier\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[X1303BIS#0045] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\n(3) In addition to the specified subelements, may contain one or more <info> blocks. identifier cap.alert.identifier.identifier The identifier of the alert message (REQUIRED) (1) A number or string uniquely identifying this message, assigned by the sender. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[Y3172#0108] Recommendation ITU-T Y.3172: Architectural framework for machine learning in future networks including IMT-2020 (p.26):\nrequirements and mechanisms in IP-based networks should be applied [ITU-T Y.2701] [ITU-T Y.3101]. It is required to prevent from unauthorized access to, and data leaking from, an ML pipeline, whether or not they have a malicious intention, with implementation of mechanisms regarding authentication and authorization, external attack protection, etc.\n\n[CAP12#0185] Common Alerting Protocol Version 1.2 (3.5.3 ASN.1 Schema):\n-- from all messages from -- this sender, in a format defined by the sender and -- identified in the \"sender\" field below. sender String, -- The globally unambiguous identification of the sender.\n\n[FCC-HI-2018#0134] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.23):\n Second, HI-EMA instituted a two-person activation/verification rule for tests as well as for actual missile launch notifications. This will provide an additional quality control to help prevent mistakes. On January 13, 2018, HI-EMA only required one credentialed warning officer to initiate the alert.118\n\n[MHEWS-2026#0273] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.71):\nA key requirement is therefore the systematic identification and correction of such AI-specific failure modes. Because these issues may not trigger model failure, verification frameworks must include targeted diagnostics, automated input and consistency checks, and operational safeguards to ensure their detection before outputs are used in decision-making.\n\n[ON-PICKERING-2020#0082] Investigation into the emergency alerts sent on January 12, 2020 (The Alert Ready system):\nThe Alert Ready system users can access the system from different devices (computer, smartphone, etc.) with credentials managed by Pelmorex and issued to PEOC Duty Officers (DOs) through EMO. EMO is responsible for ensuring access credentials are kept up-to-date, and that credentials are cancelled when an employee quits, is terminated or is on extended leave.\n\n[FCC-16-127#0407] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.67):\nVerizon Comments at 5 (stating that upgrades to the FEMA gateway, which service providers do not control, will be necessary to initiate end-to-end testing and implementation. Software used by alert originators will require new standards and upgrades to facilitate the FEMA alert gateway’s verification and transmission of the message to service providers.”). 436",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The sender 'unknown-sender@nadhir.example' is not in the issuer register. The only registered issuer is demo-national-authority@nadhir.example. The area matches the one drawn for event uae-fog-2026-02-17. Status Actual fits the real-event, live context. There are no active higher-authority alerts and this is not a correction. Because the sender is unregistered, a person must decide whether this originator may issue at all.",
+  "objections": [
+   {
+    "issue": "The alert's sender is not listed in the issuer register, so this Actual, Public alert on the live console comes from an originator with no recorded authority. The drafter should not simply relabel the sender to the registered authority without confirmation, since that would misstate who originated the alert.",
+    "field": "sender",
+    "blocking": true,
+    "fix": "A person at the issuing authority should confirm who is originating this alert. Either the alert is reissued under a registered sender identity by someone authorized to use it, or the sender is added to the issuer register through the proper process before release.",
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0046",
+      "quote": "Identifies the originator of this alert."
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0185",
+      "quote": "The globally unambiguous identification of the sender."
+     },
+     {
+      "kind": "view",
+      "ref": "issuer_register",
+      "quote": "Demo national authority (stands in for the real issuer)"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 3300,
+  "output_tokens": 919,
+  "at": "2026-11-09T16:01:44Z"
+ }
+}
