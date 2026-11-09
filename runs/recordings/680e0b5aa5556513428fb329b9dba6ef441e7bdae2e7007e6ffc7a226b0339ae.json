@@ -1,0 +1,167 @@
+{
+ "key": "680e0b5aa5556513428fb329b9dba6ef441e7bdae2e7007e6ffc7a226b0339ae",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"[Air raid Alert] Missile flyover Taiwan airspace, be aware\",\n   \"characters\": 58,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('3GPP cell broadcast page limit GSM-7 UCS-2 characters per page', 'cell broadcast first page hazard and protective action', 'required languages multilingual cell broadcast alert delivery handset'):\n\n[TS23038#0081] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.21):\n6.2 20 ETSI TS 123 038 V18.0.0 (2024-05) Character sets and coding This section provides list of character sets and codings to be supported by SMS, CBS, USSD and IEs included in NAS messages as specified in 3GPP TS 24.008 [20] and 3GPP TS 24.301 [21]. Implementation of the GSM 7 bit default alphabet is mandatory. Support of other character sets is optional. It should be noted that support of Latin and non-Latin languages by GSM 7 bit default alphabet is limited. It is therefore essential to introduce UCS 2 character set in mobile stations, SCs and systems handling SMSs, CBSs, USSDs, and IEs included in NAS messages.\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0182] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.43):\n9.2.3 GSM only [In the case of multipage CBS messages, the individual pages are considered as independent by the BSC scheduling algorithm]. KILL Request/Indication PARAMETER Message-Identifier Old-Serial-Number Cell-List GSM only [Channel Indicator\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[TS23041#0255] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\n9.3.10 No-of-Broadcasts-Completed-List This parameter is a list indicating the number of times that the CBS message (i.e. all pages of the CBS message) has been sent to each cell in the Cell-List for broadcast over the air interface. The cells in the list are described as per clause 9.3.11. Description of list elements: PARAMETER Cell Identifier No-of-Broadcasts-completed No-of-Broadcasts-Compl-Info\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TS23041#0137] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.33):\n4. Emergency Broadcast Response 5. Write-Replace Warning Request 6. Cell Broadcast delivery 6. Write-Replace Warning Response 8. NonUeN2InfoNotify (Write-Replace Warning Indication NG-RAN) 7. User Alerting 9. Record success/failure of message delivery in trace record\n\n[TS23041#0128] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.31):\n3. Stop Warning Confirm 4. Stop Emergency Broadcast Response 5. Kill Request 6. Stop Cell Broadcast delivery 6. Kill Response 7. Stop Warning Indication 8. Record success/failure of message delivery in trace record",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The message is deliverable: one language in GSM-7, 58 characters, 1 page, well within the 15-page maximum. The profile is GENERIC with no required languages, so there is no missing-language issue. The first page carries only a vague hazard and no protective action, which affects readability on the handset.",
+  "objections": [
+   {
+    "issue": "The first page names a hazard (missile flyover) but gives no action for the recipient. 'Be aware' is not a protective action. The first page must carry both the hazard and the action.",
+    "field": "phone_text",
+    "blocking": false,
+    "fix": "Add a clear protective action to the single page, for example 'Take shelter indoors now and follow official instructions'. The text should stay well under 93 GSM-7 characters per page, or use extra pages if needed.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Missile flyover Taiwan airspace, be aware"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "No required languages are specified for the GENERIC profile, so there is nothing to check for missing languages.",
+    "searched_for": "required languages multilingual cell broadcast alert delivery handset"
+   },
+   {
+    "concern": "No clause was found requiring the hazard and the action to appear on the first page of a cell broadcast.",
+    "searched_for": "cell broadcast first page hazard and protective action"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5057,
+  "output_tokens": 471,
+  "at": "2026-11-09T17:06:55Z"
+ }
+}

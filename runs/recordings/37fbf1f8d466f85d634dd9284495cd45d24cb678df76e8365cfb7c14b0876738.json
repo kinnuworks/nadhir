@@ -1,0 +1,168 @@
+{
+ "key": "37fbf1f8d466f85d634dd9284495cd45d24cb678df76e8365cfb7c14b0876738",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Los Angeles County Office of Emergency Management (LACOEM)\": {\n   \"name\": \"Los Angeles County Office of Emergency Management (LACOEM)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"006037\"\n   ]\n  ],\n  \"drawn_for_event\": \"la-county-2025\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Los Angeles County Office of Emergency Management (LACOEM)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Fire\"\n  ],\n  \"event\": \"Evacuation Warning\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Los Angeles County\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"006037\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"EVACUATION WARNING\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 alert area matches requested polygon geocode', 'FCC report over-broad alert area county-wide wireless emergency alert', 'CAP status Actual Exercise Alert msgType Update Cancel references'):\n\n[CAPCP#0119] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\nExample: Element: Use: Optional Type: Technical Value: Description: CAP-CP requires either a CAP-CP <geocode> value, or the use of optional <polygon> and <circle> values. When either or both <polygon> and <circle> values are present in an area block, the combination of these <polygon> and <circle> values alone is considered a more accurate representation of the alert area than the CAP supported combination of all <polygon>, <circle> and <geocode> values together. This distinction allows for CAP originators to support alerting systems that require geocodes and still be able to more accurately represent the threat area with GIS constructs all in one CAP message. E.g. Use of a location code for an entire city, with a polygon representing an alert that is specific to just a few blocks.\n\n[CAPCP#0122] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n</geocode> ... </area> </info> The <polygon> provided is a more accurate representation of the alert area than is the combination of boundary files associated with the <geocode> values included in the alert.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[CAPCP#0115] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n(2) MAY contain one or multiple instances of <polygon>, <circle> and/or <geocode>. If multiple <polygon>, <circle> and/or <geocode> elements are included, the location described by this <area> element is the union of those represented by the included elements.\n\n[LA-2025#0013] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.6):\nFrom latimes.com Genasys, Inc., the software company used by the County for mapping targets and issuing Wireless Emergency Alerts (WEA) Los Angeles County The Federal Emergency Management Agency (FEMA) The Federal Communications Commission (FCC) All four entities responded to the oversight letters by the requested 12 deadline of April 1, 2025. KEY FINDINGS 1. The initial false alert is believed to be caused by technology issues with third-party technology vendor Genasys. In sending an alert, an Alert Originator designates a broad geographic area (geocode), like a county, where they have permission to send alerts.Within this geocode, a more precise geographic area (polygon) can be used to target alerts to only the area impacted by the threat. 12. https://robertgarcia.house.gov/media/press-releases/congressman-robert-garcia-leads-los-angeles-county-members-demand-answers\n\n[FCC-16-127#0226] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.38):\nNWS May 21, 2016 Ex Parte at 2. 234 See 47 CFR § 10.450 (providing that “[i]f, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area”). 235\n\n[FCC-16-127#0325] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.53):\nFor example, if the polygonal target area for an Alert Message were to be larger than the propagation area of a single transmission site, but smaller than a county, it would be preferable for a CMS Provider not able to provide its best approximation of the polygonal alert area to overshoot the target area by geo-targeting the Alert Message to the county level than to undershoot the target area by geo-targeting the Alert Message to a single transmission site. 360\n\n[FCC-23-88#0127] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.22):\nWe limit the number of WEA Performance and Public Awareness Tests that Participating CMS Providers must support each year by county or county equivalent (for example, by Tribal land), rather than by alerting authority, as proposed.123 We agree with King County and CTIA that limiting the number of permissible tests by alerting authority may be insufficient to mitigate the risk of alerting fatigue because people in counties over which alerting authorities have overlapping jurisdictions could\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPAU#0058] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.17):\nProfile Specification Type Profile Specification Normative Non-Normative <status>Actual</status> <msgType>Update</msgType> ... <references>example@bom.gov.au,IDS20210, 2011-05-11T00:35:00+09:30 example@bom.gov.au,IDS20211,2011-0511T02:00:00+09:30</references> ... <info> ... <expires>2011-0511T06:00:00+09:30</expires> ... </info> </alert> Example D. A further subsequent UPDATE message with a 3 hour <expires> time referencing the most recent two messages as the earliest one has expired and should not be playing anymore for two possible reasons – a) it has been superseded, or b) it has expired: <alert> <identifier>IDS20213</identifier> <sender>example@bom.gov.au</sender> <sent>2011-05-11T04:00:00+09:30</sent> <status>Actual</status> <msgType>Update</msgType> ... edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the register and is authorised for all areas, and status Actual fits a real event on a live console. There is no active alert from a higher authority and this is a new Alert, so no references are needed. The alert area is wrong, though. The requested area is the Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills, drawn for this event. The alert instead targets all of Los Angeles County (SAME 006037) with no polygon, so it is far broader than the requested area.",
+  "objections": [
+   {
+    "issue": "The alert targets the whole of Los Angeles County with an empty polygon list. The area requested for this event is the Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills. The alert area therefore does not match the requested area and would reach people well outside the threatened zone.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Attach the drawn Kenneth Fire polygon to the alert and set areaDesc to the requested area description. Keep the county SAME code only as the permitted geocode, with the polygon narrowing the target. Do not send until the polygon is present.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "requested_area",
+      "quote": "Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills"
+     },
+     {
+      "kind": "view",
+      "ref": "alert",
+      "quote": "\"areaDesc\": \"Los Angeles County\""
+     },
+     {
+      "kind": "clause",
+      "ref": "LA-2025#0013",
+      "quote": "a more precise geographic area (polygon) can be used to target alerts to only the area impacted by the threat"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5410,
+  "output_tokens": 585,
+  "at": "2026-11-09T17:06:19Z"
+ }
+}

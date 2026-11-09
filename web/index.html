@@ -25,7 +25,7 @@
 <body>
 <h1>Nadhir</h1>
 <p><strong>For alerting authorities: AI drafts the public warning, and cited rules, institution reviewers and two people decide whether it goes out.</strong></p>
-<p>One AI agent drafts the alert and another translates it into Arabic. Neither can send anything. Twelve fixed rules check it, each quoting a public policy or official investigation. Four more agents, standing in for the met office, the issuing authority, the network operator and an Arabic reviewer, each see only their part, search an 11,572-clause knowledge base (UAE texts first) and must quote it word for word. People approve last. Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named (<a href="#replays">see all nine replays</a>, three of them held out from the rules).</p>
+<p>One AI agent drafts the alert and another translates it into Arabic. Neither can send anything. Twelve fixed rules check it, each quoting a public policy or official investigation. Four more agents on a different AI model, standing in for the met office, the issuing authority, the network operator and an Arabic reviewer, each see only their part, search an 11,572-clause knowledge base (UAE texts first) and must quote it word for word. People approve last. Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named (<a href="#replays">see all nine replays</a>, three of them held out from the rules).</p>
 
 <h2 id="try">1. Draft and check a warning</h2>
 <p class="muted">The inputs are prefilled with a real UAE National Center of Meteorology dust warning (4 March 2026, as published by WAM) and a made-up rumour marked unverified. Edit them or write your own. The issuer and target zones are demo stand-ins.</p>
@@ -45,6 +45,10 @@
 
 <h2 id="ablation">3. Which layer catches what</h2>
 <p class="muted">We injected known faults into real AI drafts, one fault at a time, each copying a failure type from the record. The same faulty alert then went to the 12 rules alone, the four institution agents alone, and both together.</p>
+<h3>Pre-registered faults (written outside the build)</h3>
+<p class="muted">A second set of 24 faults, with the words that count as naming each one, was written by someone who saw only the four drafts, and committed before the run. These results are reported as they came out.</p>
+<div id="preregOut">Loading…</div>
+<h3>Our own fault set</h3>
 <div id="ablationOut">Loading…</div>
 
 <h2 id="paste">4. Check real alerts now</h2>
@@ -56,10 +60,11 @@
 </select></label></div>
 <button id="feedBtn">Check this feed now</button> <span id="feedStatus" class="muted"></span>
 <div id="feedOut"></div>
-<h3>Or paste one alert</h3>
+<h3>Or paste one alert: a second reader before you send</h3>
 <p class="muted">Paste a CAP 1.2 XML alert, for example one from a public feed. Rules that need the issuer's own console (approvals, keys, requested area) show as pending.</p>
 <textarea id="xml" style="min-height:140px" placeholder="&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;…"></textarea>
 <label>Profile <select id="profile" style="width:auto"><option>GENERIC</option><option>UAE</option><option>US</option></select></label>
+<label><input type="checkbox" id="review" style="width:auto"> Also ask the reviewer agents to read it (about 20 seconds; met office, network operator, Arabic)</label>
 <button id="check">Check alert</button>
 <div id="checkOut"></div>
 

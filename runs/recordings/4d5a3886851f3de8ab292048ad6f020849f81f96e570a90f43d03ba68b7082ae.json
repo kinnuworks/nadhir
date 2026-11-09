@@ -1,0 +1,139 @@
+{
+ "key": "4d5a3886851f3de8ab292048ad6f020849f81f96e570a90f43d03ba68b7082ae",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-fog-2026-02-17\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Fog / Low Visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions tonight until 10:00 Wednesday\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender identity status Actual Exercise Test', 'CAP msgType Update Cancel references required', 'UAE national emergency authority alert issuing authority cell broadcast'):\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0139] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.78):\nA Test and Exercise Report should be completed immediately after the completion of each Exercise. This report should, at a minimum, contain: • Management Summary • Introduction • Background • Results summary • Summary of exclusions and issues • Corrective and Preventive Action Plan • Independent observer report (See ‘BC Toolkit 1 – Templates’ for a Test and Exercise Report template).\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0138] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.78):\nPart 2: Guide on, which would have the greatest impact on continuity of the entity’s critical activities. The frequency of tests and exercises are dependent upon the nature, size and complexity of the organization. Each member of the entity’s Incident Management Team, including representatives, should participate in an exercise at least every 12 months. Other events which may initiate the requirement for an exercise include significant changes in the entity’s: • Location or facilities • Operating environment • Tools and technology • Key personnel • Suppliers and service providers • Outsource partners • Use or purchase of critical assets • Business objectives • Rules & Regulations • Standards A Test and Exercise Plan should be documented before each test, highlighting the: • Objectives: • Success criteria; • Timetable and schedule of activities; • Resources used; • Risks; • Assumptions; • Exclusions. • (See ‘BC Toolkit 1 – Templates’ for a Test and Exercise Plan template).\n\n[CAPAU#0044] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.12):\n<alert> ... <sender>example@dfes.wa.gov.au</sender> <info> <senderName>Western Australia Police </senderName> ... </alert> status REQUIRED Notes: Technical 1) Value of “Actual” SHALL be used when messages are intended for public dissemination. Example: CAP v1.2 Standard\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Accessibility_Policy_English#0032] Accessibility Policy English (p.12):\nArticle (13) Amendments to the Policy • This policy is subject to periodic review and updates, where a dated notice will be available about “New Update”, and the concerned government entities must review the new terms and conditions, which are effective immediately after the publication of the new policy on the Competent Authority’s website. • This policy may be amended, canceled or replaced at any time by the Competent Authority\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0274] 3.2 TDRA Consumer Protection Regulations v2 (p.47):\nLicensees shall offer Subscribers simple functionality to cancel or block any additional value-added services which are provided by default to Subscribers, upon subscription to main Telecommunications Services, and which are: ancillary to those main Telecommunications Services; and generate usage charges when used. Licensees shall make information about this functionality available in an easily accessible manner and free of charge. Provided that such functionality is consistent with this sub-article, in some cases Subscribers may be required to manually configure their equipment or service to cancel or block a value-added service.\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[TDRA-TSFS001#0005] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n2 Scope The Government of the United Arab Emirates developed a National Public Warning Service (UAEAlert) which will use the cell broadcast technology to disseminate warning alerts issued by authorities to the public in times of crisis and therefore is required to have effective, high quality communication methods and systems to meet this need. One of the channels is the mobile networks in the UAE through Cell Broadcast technology. The main scope of this specification is to enable Cell Broadcast service in all mobile devices operating in the UAE mobile networks.\n\n[TDRA-TSFS001#0001] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.1):\nTECHNICAL SPECIFICATION Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) TS FS 001, Version 2.0 Document Date: November 25, 2019 Telecommunications Regulatory Authority (TRA) P O Box 26662, Abu Dhabi, United Arab Emirates (UAE) www.tra.gov.ae\n\n[TDRA-TSFS001#0003] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.2):\nUpdated National Emergency Crisis and Disaster Management Authority comments. TABLE OF CONTENTS 1 GENERAL REQUIREMENTS 3 2 SCOPE 3 3 DEFINITIONS 3 4 TECHNICAL REQUIREMENTS 4 4.1 4.2 4.3 4.4 MOBILE TECHNICAL SPECIFICATION 4 SPECIFICATIONS 4 FEATURE PHONES 5 SMART PHONES 6 5 VALIDITY OF STANDARDS 7 6 EFFECTIVE DATE 7\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[TDRA-TSFS001#0002] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.2):\nVERSION CONTROL Version: Issue Date: Reason for Issuance: 1.0 01 January 2016 First version Draft, 0.1 12 September 2019 First draft issued to Mobile vendors for comment 2.0 November 25, 2019",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register (level 1, all areas and categories). The alert area matches the area requested for event uae-fog-2026-02-17 (Western region demo zone, code AUH-WEST). The status Actual fits a real event on the live console. The msgType is Alert, so no references are needed. There are no active alerts from other authorities to overreach, and no earlier alerts to conflict with.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5438,
+  "output_tokens": 156,
+  "at": "2026-11-09T17:10:29Z"
+ }
+}

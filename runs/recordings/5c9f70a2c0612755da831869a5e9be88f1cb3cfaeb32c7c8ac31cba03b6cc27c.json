@@ -1,0 +1,144 @@
+{
+ "key": "5c9f70a2c0612755da831869a5e9be88f1cb3cfaeb32c7c8ac31cba03b6cc27c",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Al Ain (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-ALAIN\"\n   ]\n  ],\n  \"drawn_for_event\": \"demo-14b184ecbe\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and sand / reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Al Ain (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-ALAIN\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"NCM warning: blowing dust and sand reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender identification authority issuer register', 'CAP status Actual Exercise Test drill msgType Update Cancel references', 'UAE early warning authority issuing alerts area Abu Dhabi'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0070] Federal Decree No 46 of 2021 on Electronic Transactions (p.28):\n1. To be provided by one or more Qualified Trust Service Providers. 2. Ensuring the identification of the sender based on a high level of security and trust, as specified by the Executive Regulations of this Decree Law. 3. Ensuring the identification of the Addressee before the data is delivered. 4. Signing or sealing the sent data with a Reliable Electronic Signature or a Reliable Electronic Seal by a Qualified Trust Service Provider or by any other method specified by the Executive Regulations of this Decree Law. 5. Notifying both the sender and recipient of any necessary change in the sent data as required by the service. 6. Stamping the time of sending and receiving data and any alterations thereto with a Qualified Electronic Time Stamp. 7. Any other conditions specified by the Executive Regulations of this Decree Law.\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[CAP12#0185] Common Alerting Protocol Version 1.2 (3.5.3 ASN.1 Schema):\n-- from all messages from -- this sender, in a format defined by the sender and -- identified in the \"sender\" field below. sender String, -- The globally unambiguous identification of the sender.\n\n[CAPCP#0128] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #2. <sender> should be descriptive):\n... <sender>operations-center@EMO@gnb.ca</sender> ... Note: The example is not a real value. The following is an example of an issuing authority that uses a third party to create the actual CAP message file on their behalf. ... ControlCenter@third-party.ca ... Note: The example is not a real value.\n\n[CAPCP#0138] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #4. A <senderName> is strongly recommended):\n... <sender>Montreal@gc.ca</sender>... <info> ... <language>en-CA</language> <senderName>Environment Canada</senderName> .. </info> <info> .. <language>fr-CA</language> <senderName>Environnement Canada</senderName> .. </info> 2) In this case, the issuing authority for the Alert is not the same entity that creates the CAP message file ... <sender>ControlCenter@third-party.ca<sender> ... <info> ... <language>en-CA</language> <senderName>Environment Canada</senderName> .. </info> <info> .. <language>fr-CA</language> <senderName>Environnement Canada</senderName> .. </info>\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0139] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.78):\nA Test and Exercise Report should be completed immediately after the completion of each Exercise. This report should, at a minimum, contain: • Management Summary • Introduction • Background • Results summary • Summary of exclusions and issues • Corrective and Preventive Action Plan • Independent observer report (See ‘BC Toolkit 1 – Templates’ for a Test and Exercise Report template).\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0138] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.78):\nPart 2: Guide on, which would have the greatest impact on continuity of the entity’s critical activities. The frequency of tests and exercises are dependent upon the nature, size and complexity of the organization. Each member of the entity’s Incident Management Team, including representatives, should participate in an exercise at least every 12 months. Other events which may initiate the requirement for an exercise include significant changes in the entity’s: • Location or facilities • Operating environment • Tools and technology • Key personnel • Suppliers and service providers • Outsource partners • Use or purchase of critical assets • Business objectives • Rules & Regulations • Standards A Test and Exercise Plan should be documented before each test, highlighting the: • Objectives: • Success criteria; • Timetable and schedule of activities; • Resources used; • Risks; • Assumptions; • Exclusions. • (See ‘BC Toolkit 1 – Templates’ for a Test and Exercise Plan template).\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPAU#0058] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.17):\nProfile Specification Type Profile Specification Normative Non-Normative <status>Actual</status> <msgType>Update</msgType> ... <references>example@bom.gov.au,IDS20210, 2011-05-11T00:35:00+09:30 example@bom.gov.au,IDS20211,2011-0511T02:00:00+09:30</references> ... <info> ... <expires>2011-0511T06:00:00+09:30</expires> ... </info> </alert> Example D. A further subsequent UPDATE message with a 3 hour <expires> time referencing the most recent two messages as the earliest one has expired and should not be playing anymore for two possible reasons – a) it has been superseded, or b) it has expired: <alert> <identifier>IDS20213</identifier> <sender>example@bom.gov.au</sender> <sent>2011-05-11T04:00:00+09:30</sent> <status>Actual</status> <msgType>Update</msgType> ... edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0010] UAE National Air Quality Agenda 2031 (p.5):\n• Abu Dhabi Airports • Abu Dhabi Public Health Center • Environment Agency - Abu Dhabi • Environment Protection and Development Authority - RAK • Abu Dhabi Department of Municipalities and Transport • Etihad Rail • Abu Dhabi Quality and Conformity Council\n\n[UAE-PORTAL-EWS#0034] Handling emergencies (section 'National Early Warning System') (Power and water supply failure):\nPower and water supply failure Emergency numbers: If you are in: Abu Dhabi, call 8002332 - Abu Dhabi Distribution Company. Dubai, call 991 - DEWA Sharjah, call 991 - Sharjah Electricity, Water and Gas Authority\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority\n\n[UAE-PORTAL-EWS#0035] Handling emergencies (section 'National Early Warning System') (Power and water supply failure):\nother emirates, call 8003392 or send a WhatsApp message on +9718003392 - Etihad Water and Electricity. Abu Dhabi Abu Dhabi Distribution Company has a round-the-clock call center to respond to electricity-related issues on 8002332. Customers can communication via chat service too.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0011] UAE National Air Quality Agenda 2031 (p.5):\n• Fujairah Environment Authority • Ajman Municipality & Planning Department • General Civil Aviation Authority • Abu Dhabi Waste Management Center (Tadweer) • Bee’ah • Department of Civil Aviation & Sharjah Airport Authority • Department of Health Abu Dhabi • Dibba Al Fujairah Municipality • Dubai Airports",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within the issuing authority mandate nothing is wrong. The sender is in the issuer register at level 1 with all areas and categories, and the alert area (Al Ain demo zone, DEMO-ZONE/AUH-ALAIN) matches the area drawn for this event. Status Actual fits the context 'real event'. There are no active alerts from other authorities to overreach, and msgType Alert is an original message, so no references are needed.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The WMO Register of Alerting Authorities entry for the UAE shows a blank authorization basis and alerting area, so the real-world authority of the sender cannot be confirmed from it. This is outside the issuer register I was given.",
+    "searched_for": "CAP 1.2 sender identification authority issuer register"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5706,
+  "output_tokens": 275,
+  "at": "2026-11-09T17:23:53Z"
+ }
+}

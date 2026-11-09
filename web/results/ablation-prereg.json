@@ -1,0 +1,752 @@
+{
+ "summary": {
+  "cases": 24,
+  "named": {
+   "none": 0,
+   "rules": 14,
+   "agents": 23,
+   "both": 24
+  },
+  "only_rules": [
+   "P12"
+  ],
+  "only_agents": [
+   "P02",
+   "P03",
+   "P04",
+   "P09",
+   "P14",
+   "P16",
+   "P18",
+   "P21",
+   "P22",
+   "P24"
+  ],
+  "neither": [],
+  "terms_matching_clean_drafts": 0
+ },
+ "note": "Faults and matching terms written outside the build and committed before the run (bench/faults-preregistered.yaml); reported as they came out.",
+ "cases": [
+  {
+   "fault": "P01",
+   "title": "End date moved a week later (25 Feb instead of 18 Feb), English only",
+   "copies": "wrong date in a warning's validity period (stale or mistyped expiry, as in alerts left active past the event)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R11",
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The end time in the description contradicts the bulletin. The bulletin gives 10:00 on Wednesday 18 February and the alert says 25 Feb, which misstates the hazard period by seven days.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "End date differs between English and Arabic. English: 'until 10:00 Wed 25 Feb'. Arabic: 'حتى الساعة 10:00 يوم الأربعاء 18 فبراير' (until 10:00 Wednesday 18 February). The meaning of the validity period differs by a week. 18 Feb is the day after 17 Feb, which is plausible for an overnight fog warning, so the English may be the erroneous one. The date must be confirmed against the source.",
+     "field": "description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P02",
+   "title": "Arabic description says eastern regions instead of western",
+   "copies": "machine translation changing the place (cross-language mismatch in bilingual alerts)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The two language versions name different regions: English says 'western regions' but Arabic says 'المناطق الشرقية' (eastern regions). The two required languages must carry the same alert, and a reader of one version could misjudge whether they are at risk.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Arabic description says eastern regions (المناطق الشرقية) instead of western regions (المناطق الغربية), contradicting the English description and the Arabic headline.",
+     "field": "arabic.description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P03",
+   "title": "Protective action reversed to normal speed limits in fog",
+   "copies": "reversed or unsafe protective action",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The alert instruction contradicts the bulletin's speed guidance. The bulletin says to adhere strictly to modified speed limits in fog, but the alert says to keep to normal speed limits.",
+     "field": "instruction",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The protective action differs in meaning. English: 'keep to normal speed limits in fog'. Arabic: 'التزم بحدود السرعة المخفّضة' means 'adhere to the reduced speed limits'. This adds a claim that reduced limits apply, which the English does not say. Drivers may look for reduced limits that are not posted, or read it as a different instruction.",
+     "field": "instruction",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P04",
+   "title": "Danger understated as light mist reducing visibility slightly",
+   "copies": "understated danger (downplayed warnings, e.g. early messaging before 2021 Western Europe floods)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The headline and description downplay the hazard. NCM says visibility will deteriorate significantly and may drop to zero. The alert describes light mist and a slight dip in visibility, which contradicts the bulletin.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The headline repeats the downplaying wording ('may dip slightly'). It is not consistent with the bulletin's 'significantly reduced' visibility and its call for extreme caution.",
+     "field": "headline",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The first page of each language states the hazard but gives no action to take. The text goes from the hazard to the time window and the source, with no instruction such as reducing speed or taking care when driving. The alert fails the check that the first page carries both hazard and action.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic headline overstates the hazard: 'visibility may drop to zero' versus the English 'visibility may dip slightly'.",
+     "field": "headline",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic description says 'dense fog' and 'visibility down to zero at times'; the English says 'light mist' and 'slightly'. Severity is reversed, and the hazard is changed from light mist to dense fog.",
+     "field": "description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P05",
+   "title": "Real fog event sent as an exercise",
+   "copies": "drill/test/real confusion in reverse (real warning marked as test so phones suppress it)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R2"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "Status does not fit the context. The context is a real event on the live console, but the alert is marked Exercise, with an EXERCISE: headline prefix. A real warning would go out as a drill and the public would not be expected to act on it.",
+     "field": "status",
+     "policy_cited": true
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The English headline is labelled 'EXERCISE:' but the Arabic headline has no equivalent label (تمرين). Arabic readers would take this as a real warning, and the protective action would look live rather than an exercise.",
+     "field": "arabic.headline",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P06",
+   "title": "Sender not in the issuer register",
+   "copies": "wrong or spoofed sender (unauthorised originator)",
+   "scenario": "uae-fog-2026-02-17",
+   "rules_named": [
+    "R4"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert sender is not in the issuer register, so authority to issue this alert cannot be confirmed. The register lists only demo-national-authority@nadhir.example.",
+     "field": "sender",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P07",
+   "title": "Possible heavy rain exaggerated into certain torrential rain and flash floods",
+   "copies": "exaggerated danger / certainty inflated beyond the source forecast",
+   "scenario": "uae-rain-2026-08-22",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Headline claims torrential rain and certain flash floods. The bulletin reports only light to moderate rain, possibly heavy at times, and no flash flooding. This is a higher hazard and higher certainty than the bulletin supports. It also conflicts with the alert's own certainty field, 'Possible'.",
+     "field": "headline",
+     "policy_cited": true
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The description states 'Flash flooding is certain', an unsupported hazard claim. The bulletin does not mention flash flooding, and the claimed certainty contradicts 'Possible'.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The first page of each language does not carry both the hazard and the action. The English text opens with a generic weather description and puts 'Flash flooding is certain' last, so it falls on the final page. No protective action appears in either language. The Arabic text omits the flash flooding statement entirely, so the two languages differ in hazard content.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic headline changes certainty and hazard. English says torrential rain and flash floods are certain; Arabic says there is a possibility of rain that is sometimes heavy, with no mention of flash floods or torrential rain.",
+     "field": "headline",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic description omits the sentence \"Flash flooding is certain.\", so the flash flood hazard and its certainty are missing from the Arabic.",
+     "field": "description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P08",
+   "title": "End time 12:00, before the 13:30 start",
+   "copies": "wrong or contradictory times",
+   "scenario": "uae-rain-2026-08-22",
+   "rules_named": [
+    "R11",
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description states the alert period ends at 12:00, but the verified NCM bulletin gives 21:00 on Saturday. The stated window is wrong and would mislead the public about when the hazard ends.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The English and Arabic validity end times do not match (English 12:00, Arabic 21:00). On a handset the two language versions give contradictory information, and the English end time is earlier than its start time (13:30 to 12:00 on the same day). The two versions must say the same thing in a readable form.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The end time of the validity period differs between the two texts. English gives 12:00 and Arabic gives 21:00 (9 pm). One of them is wrong, and people would act on the wrong expiry. The English may itself be wrong, because 13:30 to 12:00 on the same Saturday is not a coherent span. The Arabic reviewer cannot tell which end time is correct.",
+     "field": "description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P09",
+   "title": "Arabic instruction tells drivers to enter standing water carefully",
+   "copies": "mistranslation that reverses a protective action",
+   "scenario": "uae-rain-2026-08-22",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The protective action is reversed. English \"avoid standing water\" became \"enter standing water with caution\" (ادخل المياه الراكدة بحذر), which could lead people into flooded areas.",
+     "field": "instruction",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P10",
+   "title": "Area replaced with northern emirates, not the requested area",
+   "copies": "wrong area targeted (zone or polygon mismatch with the requested area)",
+   "scenario": "uae-rain-2026-08-22",
+   "rules_named": [
+    "R3"
+   ],
+   "agents_named": [
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The alert's target area (Northern emirates: Ras Al Khaimah and Fujairah, code UAE-N) is not the area requested and drawn for this event (Eastern, southern and western areas, code UAE-E-S-W). The headline also names eastern, southern and western areas, so the area fields contradict the headline. As written, the alert would warn the wrong population and leave the intended area without a warning.",
+     "field": "alert.areaDesc / alert.codes",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P11",
+   "title": "Sent as an Update claiming to replace an earlier message, with no reference to it",
+   "copies": "unlinked correction (Update/Cancel without references to the original)",
+   "scenario": "uae-rain-2026-08-22",
+   "rules_named": [
+    "R10"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description says the alert replaces an earlier message, but the NCM bulletin and the inputs mention no earlier message or update. This is an unsupported claim about the bulletin's status.",
+     "field": "description",
+     "policy_cited": true
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The English description says this message replaces the earlier one. The Arabic description leaves this out, so Arabic readers are not told the earlier message is superseded and may keep acting on it.",
+     "field": "description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P12",
+   "title": "Arabic version missing",
+   "copies": "missing language (alerts sent only in English to a mostly Arabic-reading or mixed public)",
+   "scenario": "uae-rain-2026-08-22",
+   "rules_named": [
+    "R7"
+   ],
+   "agents_named": [],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": false,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P13",
+   "title": "Drill sent as Actual with EXERCISE labels removed",
+   "copies": "Hawaii 2018 ballistic missile drill sent live",
+   "scenario": "uae-dust-drill",
+   "rules_named": [
+    "R2"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Alert status is 'Actual' but the event context is EXERCISE / DRILL. The alert does not say it is an exercise, so the status misrepresents the nature of the message. Separately, 'Immediate' urgency with 'Observed' certainty is supported by the bulletin, which says conditions began at 10:30 and are ongoing.",
+     "field": "status",
+     "policy_cited": false
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "Status 'Actual' does not fit the context 'EXERCISE / DRILL'. The console environment is 'live', so a drill sent as Actual would be actionable by all recipients as a real alert.",
+     "field": "status",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P14",
+   "title": "Arabic text drops the exercise label while English keeps it",
+   "copies": "test/real label lost in translation (Arabic readers see a live warning)",
+   "scenario": "uae-dust-drill",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The English headline and description are marked \"EXERCISE\", but the Arabic headline and description are not. The Arabic reads as a real dust warning. This changes the meaning for Arabic readers and could cause real-world reaction to an exercise.",
+     "field": "arabic.headline",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P15",
+   "title": "Visibility figure changed from 3,000 m to 300 m",
+   "copies": "wrong number in a warning (dropped digit)",
+   "scenario": "uae-dust-drill",
+   "rules_named": [
+    "R11",
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Visibility threshold is misstated: alert says under 300 m, but the verified bulletin says less than 3,000 metres. This overstates the hazard by a factor of ten.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Numeric mismatch: English says visibility under 300 m, Arabic says under 3,000 m. The Arabic overstates visibility tenfold and understates the danger to drivers.",
+     "field": "arabic.description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P16",
+   "title": "Wind direction changed to southeasterly",
+   "copies": "wrong hazard detail (direction of travel reversed, as in wrong storm-track messaging)",
+   "scenario": "uae-dust-drill",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Wind direction contradicts the verified NCM bulletin. The bulletin says northwesterly; the alert says southeasterly.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Wind direction mistranslated. English says 'southeasterly' but the Arabic says 'شمالية غربية' (northwesterly), the opposite direction.",
+     "field": "description",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P17",
+   "title": "Headline end time 08:00 contradicts 18:00 in the body",
+   "copies": "contradictory details within one alert",
+   "scenario": "uae-dust-drill",
+   "rules_named": [
+    "R11",
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Headline end time (08:00) contradicts the bulletin and the description (18:00). This misstates the hazard duration.",
+     "field": "headline",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The headline end time differs between the English and Arabic. English says \"until 08:00\" and Arabic says \"حتى الساعة 18:00\". The English description says 18:00, so the English headline and description disagree. The Arabic follows the description, not the headline. The English source needs to be corrected by a person, and the Arabic must then match it.",
+     "field": "headline",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P18",
+   "title": "Instruction says open roads are the safest option",
+   "copies": "unsafe protective action (sending people toward the hazard)",
+   "scenario": "uae-dust-drill",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The instruction says driving on external and open roads is the safest option because visibility stays clearer there. The bulletin says the opposite: caution is needed on external and open roads because of sudden visibility drops from blowing dust. The alert adds an unsupported claim and misstates the hazard.",
+     "field": "instruction",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The Arabic instruction reverses the meaning of the English instruction. English: driving on external and open roads is the safest option because visibility is clearer there. Arabic: be careful, especially when driving on external and open roads, because visibility may drop suddenly. The Arabic treats those roads as the dangerous ones, while the English recommends them as safer. The English advice itself looks questionable and may be a source error, but that is outside my mandate. I can only report that the two versions differ in meaning on the protective action, and a person should decide which is correct.",
+     "field": "instruction",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P19",
+   "title": "Unverified dam-burst rumour added with an evacuation order",
+   "copies": "unverified social-media claim broadcast as official (rumour amplification)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Unverified rumour (dam burst near Al Ain) is stated as fact in the description. The bulletin says nothing about it, and the only source is an unverified social media post.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "Instruction tells people to leave the Al Ain area now. It is based only on the unverified rumour and is not supported by the NCM bulletin, which advises only caution while driving. It adds a hazard and a place that the bulletin does not mention.",
+     "field": "instruction",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "English and Arabic phone texts are not equivalent. English has an extra sentence ('A dam near Al Ain has burst.') that is missing from Arabic. Handset users reading the two required languages would receive different hazards, and the dam-burst statement contradicts the dust/wind warning.",
+     "field": "phone_text[en].text",
+     "policy_cited": true
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The English instruction says 'Leave the Al Ain area now.' and the English description says a dam near Al Ain has burst. Neither appears in the Arabic. The Arabic therefore differs from the English in meaning on the protective action and on the hazard. It is unclear which version is intended, since the sentences look unrelated to the dust warning and may have been inserted by mistake. A person must decide whether they belong in both languages or neither.",
+     "field": "instruction",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P20",
+   "title": "Arabic visibility figure becomes 20,000 metres",
+   "copies": "number corrupted in translation, understating danger",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R9"
+   ],
+   "agents_named": [
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Visibility figure mistranslated: English says under 2,000 metres, Arabic says under 20,000 metres (ten times larger). This understates the severity of the hazard and could lead drivers to underestimate the danger. The error is in a machine-translated text with no recorded human check.",
+     "field": "description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P21",
+   "title": "Instruction says visibility is not expected to drop",
+   "copies": "understated danger contradicting the source",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The instruction says 'visibility is not expected to drop', but the bulletin warns of blowing dust reducing visibility to under 2,000 m, with the conditions ongoing, and urges caution because visibility may be reduced. The phrase understates the hazard and contradicts the bulletin.",
+     "field": "instruction",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Meaning differs in the instruction. English says visibility is 'not expected to drop'; Arabic says visibility 'may drop' due to blowing dust. The two texts give opposite statements about visibility, and the English also contradicts its own description (visibility already under 2,000 m).",
+     "field": "instruction",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P22",
+   "title": "Date changed to 4 February",
+   "copies": "stale date carried over from an older alert template",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The description gives the date as 4 February, but the verified NCM bulletin is dated 4th March 2026. The wrong date misstates when the hazard is happening and could confuse or mislead the public.",
+     "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither the English nor the Arabic text tells the public what to do. The first page names the hazard, but no protective action appears anywhere in the message, so a recipient reading page 1 gets no action.",
+     "field": "phone_text",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "Month mistranslated: English gives the date as 4 February, but the Arabic gives 4 مارس (March). A reader could take the alert to apply on a different date.",
+     "field": "description",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P23",
+   "title": "Hazard changed to thunderstorms with hail",
+   "copies": "wrong hazard type (wrong event code or template picked)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [
+    "R11"
+   ],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "The event field and headline name a different hazard (thunderstorms and hail) from the one in the bulletin (blowing dust and sand, reduced visibility). The bulletin says nothing about thunderstorms or hail. The alert's own description is about dust, so the alert contradicts itself.",
+     "field": "event",
+     "policy_cited": false
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The target area was drawn for a different event (a dust event) than the one in the alert (thunderstorms and hail). The area cannot be confirmed as the one requested for this event.",
+     "field": "areaDesc",
+     "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The headlines describe different hazards. The English headline says thunderstorms with hail. The Arabic headline says dust-raising winds that reduce visibility. The English description and instruction, and the Arabic text, are all about blowing dust. A reader of the English headline would expect storm and hail hazards and a different protective action. The Arabic headline is faithful to the English body text, not to the English headline.",
+     "field": "headline",
+     "policy_cited": false
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": true,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  },
+  {
+   "fault": "P24",
+   "title": "Severity raised to Extreme for a moderate dust event",
+   "copies": "exaggerated severity in CAP metadata (over-alerting that triggers top-level phone alerts)",
+   "scenario": "uae-dust-2026-03-04",
+   "rules_named": [],
+   "agents_named": [
+    {
+     "by": "Met office reviewer",
+     "issue": "Severity 'Extreme' is higher than the NCM bulletin supports. The bulletin only urges caution because of reduced visibility in some areas, which does not describe an extraordinary threat to life or property.",
+     "field": "severity",
+     "policy_cited": true
+    }
+   ],
+   "named_by": {
+    "none": false,
+    "rules": false,
+    "agents": true,
+    "both": true
+   },
+   "clean_also": 0
+  }
+ ]
+}

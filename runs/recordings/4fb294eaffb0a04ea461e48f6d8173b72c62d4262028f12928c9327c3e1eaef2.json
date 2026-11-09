@@ -1,0 +1,34 @@
+{
+ "key": "4fb294eaffb0a04ea461e48f6d8173b72c62d4262028f12928c9327c3e1eaef2",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Missile launched from North Korea toward the east; projected to pass over northern Japan (Hokkaido / Aomori).\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"ミサイル発射情報 (missile launch information)\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"\",\n  \"description\": \"\",\n  \"instruction\": \"\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP severity urgency certainty definitions Extreme Immediate Likely",
+   "missile launch alert wording J-Alert lessons",
+   "CAP 1.2 headline description instruction required fields",
+   "WMO guidance hazard alert consistency with official bulletin"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 755,
+  "output_tokens": 92,
+  "at": "2026-11-09T17:05:56Z"
+ }
+}

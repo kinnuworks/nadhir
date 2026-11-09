@@ -1,0 +1,144 @@
+{
+ "key": "fe0c1ed7fdad4c3feaf28455ee5be785a60735c20293d279b6c4c9ca8e6d79ee",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"profile\": \"US\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.\",\n   \"characters\": 88,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('3GPP cell broadcast page limit 15 pages GSM-7 UCS-2', 'WEA 360 character limit first page hazard action', 'FCC Hawaii false missile alert report lessons'):\n\n[TS23041#0182] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.43):\n9.2.3 GSM only [In the case of multipage CBS messages, the individual pages are considered as independent by the BSC scheduling algorithm]. KILL Request/Indication PARAMETER Message-Identifier Old-Serial-Number Cell-List GSM only [Channel Indicator\n\n[TS23041#0241] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.55):\n9.3.4 Number-of-Pages This parameter enables the number of pages in the CBS message to be indicated. 9.3.5 Cell-List The cell-list identifies a sequence of one or more cells to which the primitives apply. The following applies for GSM only: The cells in the list are described in 3GPP TS 48.008 [13] and can be identified by the CBC or BSC in LAC and CI format or CI format only. In addition (see 3GPP TS 48.008 [13]) it is possible for the CBC to refer to all cells in a LAC or in a complete BSC. If supplied, the Cell-List parameter must refer to at least one cell. The following applies for UMTS only:\n\n[TDRA-TSFS001#0008] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nTechnical Requirements 4.1 Mobile technical specification ETSI TS 123 041 4.2 Digital cellular telecommunications system (Phase 2+) (GSM); Universal Mobile Telecommunications System (UMTS); Technical realization of Cell Broadcast Service (CBS) (3GPP TS 23.041 version 15.3.0 Release 15)\n\n[TS23041#0089] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.21):\nSMS BROADCAST REQUEST 3 3 SMS BROADCAST REQUEST 4 4 Figure 3 With the SMS BROADCAST COMMAND mode of operation, the BSC sends to the BTS in one single message the 88 octet fixed length CBS page. The BTS then splits the page into four 22 octet blocks, adds the sequence number (see 3GPP TS 44.012 [7]) and transmits the four resulting blocks on the air. Figure 4 illustrates the protocol architecture and the scope of the various GSM Specifications for the SMS BROADCAST COMMAND mode of operation.\n\n[FCC-16-127#0042] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.8):\nIII. FCC 16-127 REPORT AND ORDER A. Alert Message Content 1. Increasing Maximum Alert Message Length from 90 to 360 Characters a. Background 9. Under Section 10.430 of the Commission’s rules, WEA Alert Messages are limited to 90 characters.28 In the WEA First Report and Order, the Commission concluded that a 90-character limit was appropriate to serve the public interest “at this initial stage” because it enabled all currently existing systems (mostly 2G and 3G networks defined herein as “legacy” networks)29 to transmit Alert Messages with minimal change.30 Further, the Commission reasoned that an initial 90-character limit was advisable because a person receiving a WEA Alert Message could choose to seek out additional information from other media sources should the Alert Message be insufficient.31 In the WEA NPRM, we proposed extending the character limit to 360 for those networks and devices for which it is technically feasible, while continuing to allow the delivery of 90-character messages on legacy networks and devices.32 10.\n\n[IPAWS-OPEN#0032] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.26):\nWEA Algorithm Breakdown • Cell carriers need to accommodate both the new and old WEA standards • New WEA supports 360 character English and 360 character Spanish • Old WEA supports 90 character English and (oddly) will also support 90 character Spanish • Alerting Authorities should have flexibility to take advantage of 360 Spanish, but if they don’t use the new features, they run the risk of people not receiving any alert • AOSPs should provide User input fields for all capabilities, but with only the 90 character English <CMAMtext> required\n\n[IPAWS-OPEN#0038] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.29):\nWEA Changes to Support English and Spanish Multi-Lingual <info> blocks • English – <info> block = <language> = <en-US> – Vendors will still be required to carry 90 character <CMAMText> – Option for <CMAMlongtext> which will support 360 characters – The 90 character text will be sent to current devices not upgraded for 360 characters and to non-LTE capable phones or all phones connected to non-LTE capable towers – The 360 character text will be sent via LTE to all 360 character compatible devices – If no <CMAMlongtext> is provided in the origination CAP message, the 90 character <CMAMtext> will be copied by IPAWS into the 360 character element that is sent to the carriers\n\n[FCC-16-127#0311] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.51):\nSee Verizon Comments at 5; ATIS Comments at 21-22. For example, common to any commenters’ support for expanding the character limit to 360 for 4G-LTE and future networks is the completion of Alliance for Telecommunications Industry Standards (ATIS) standards, the incorporation of those standards into new technologies, and the incorporation of new technologies into existing networks— a process commenters agree is feasible, but would take at least 30 months. See, e.g., AT&T Comments at 7 (“Support for both 90 and 360character messages will require changes to the interface between the FEMA IPAWS (‘Integrated Public Alert and Warning System’) and the CMSP network, and changes to the CMSP infrastructure. The changes will first require modifications to industry standards, followed by development, testing, and deployment of the changes.”); T-Mobile Comments at 4; Verizon Comments at 6 (“the Commission should expand the allowable WEA character limits to 360 characters for messages on LTE networks and on devices first offered to consumers 30 months after adoption of new rules”); Microsoft Reply at 3 (“Before requiring implementation, the Commission should allow at least 24 months after standards have been completed and accepted to allow for the technology to be developed, tested, and implemented in devices and networks.”).\n\n[FCC-HI-2018#0123] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.21):\nfalse, East Bay Times (Jan. 14, 2018 updated Jan. 15, 2018), https://www.eastbaytimes.com/2018/01/14/as-missilewarning-brought-chaos-police-dispatch-tried-to-relay-that-its-only-a-drill/. 106 Id. 107 Id. Chas Danner, The Frightening Lessons From Hawaii’s False Missile Alert, N.Y. Mag. (Jan. 15, 2018), http://nymag.com/daily/intelligencer/2018/01/the-frightening-lessons-from-hawaiis-false-missile-alert.html (reporting that Honolulu’s 911 system was quickly overwhelmed with 5,000 calls, only half went through). 108 Email from Courtney Taguba, Executive Director, Enhanced-911 Board, State of Hawaii Department of\n\n[FCC-HI-2018#0017] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.5):\nSee also Hawaii Emergency Management Agency, FAQs Related to Ballistic Missile False Alert (Jan. 13, 2018 revised Jan. 31, 2018), http://dod.hawaii.gov/hiema/faqs-related-tothe-ballistic-missile-false-alert/; Hawaii Emergency Management Agency, Statement on Missile Launch False Alarm (Jan. 13, 2018), https://dod.hawaii.gov/hiema/files/2018/01/20180113-NR-HI-EMA-statement-on-missilelaunch-false-alarm.pdf. As discussed above, this report will use the facts as determined in the FCC investigation but note in footnotes any discrepancies with the HI-EMA Report and the Hawaii Preparedness Report. 15 See State releases heavily redacted recording of HI-EMA’s missile mistake test, Hawaii News Now, (Mar. 14,\n\n[FCC-HI-2018#0111] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.19):\nNews Now (Jan. 15, 2018), http://www.hawaiinewsnow.com/story/37269695/if-you-didnt-get-the-false-missilealert-this-might-be-why. 96 Chas Danner, The Frightening Lessons From Hawaii’s False Missile Alert, N.Y. Mag. (Jan. 15, 2018), http://nymag.com/daily/intelligencer/2018/01/the-frightening-lessons-from-hawaiis-false-missile-alert.html (suggesting that many consumers did not receive the notification and “officials aren’t sure why . . . [and] “it seems likely that if the threat had been real, the system still wouldn’t have worked as intended”); Jennifer Sinco Kelleher & Brian Melley, Missile-alert mistake feeds doubts about a real emergency, Haw. Trib. (Jan. 15, 2018), http://www.hawaiitribune-herald.com/2018/01/15/hawaii-news/missile-alert-mistake-feeds-doubts-about-a-realemergency/ (explaining that consumers have become skeptic in “the government’s ability to keep them informed in a real emergency” and will likely think twice before taking action on future advisories).\n\n[FCC-HI-2018#0019] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.6):\n7. With respect to lessons learned, the facts and circumstances surrounding the Hawaii false missile alert provide valuable insights into measures that stakeholders can take to minimize and mitigate the risk of false alerts. The report identifies best practices, first and foremost, to guard against the issuance of false alerts, and second, if a false alert is nonetheless issued, to swiftly correct the misinformation and mitigate the consequences. The Bureau will continue to work with Hawaii, as well as with other federal, state, local, Tribal and territorial officials, to promote awareness of these best practices and to help ensure our nation’s alerting systems are reliable and effective. II.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "Within the delivery mandate, the single English message is deliverable. It is 88 characters in GSM-7 on 1 page, well under the 15-page maximum and within the 90-character legacy WEA limit. The first page carries both the hazard (ballistic missile threat inbound to Hawaii) and the action (seek immediate shelter). The US profile lists no required languages, so no language is missing. No handset_spec was supplied, but that is not a defect in the text itself.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The US profile has an empty required_languages list and no handset_spec, so I cannot check language coverage (for example Spanish) or handset-specific rendering. This is a profile configuration matter for people to decide, not a defect in the message.",
+    "searched_for": "WEA 360 character limit first page hazard action; required language rules for US profile"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5660,
+  "output_tokens": 291,
+  "at": "2026-11-09T17:05:36Z"
+ }
+}

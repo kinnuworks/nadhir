@@ -24,6 +24,8 @@ if _env.exists():
 REC_DIR = Path(os.environ.get("NADHIR_RECORDINGS", ROOT / "runs" / "recordings"))
 MODEL = os.environ.get("NADHIR_MODEL", "claude-opus-5-5")
 EFFORT = os.environ.get("NADHIR_EFFORT", "medium")
+# The institution reviewers run on a different model from the drafter, so the two don't share blind spots.
+REVIEW_MODEL = os.environ.get("NADHIR_REVIEW_MODEL", "claude-sonnet-5-5")
 
 
 class ModelError(RuntimeError):
@@ -36,13 +38,14 @@ def _key(model, system, user, schema, salt):
 
 
 def call_json(system: str, user: str, schema: dict, *, salt: str = "", mode: str | None = None,
-              effort: str | None = None) -> tuple[dict, dict]:
+              effort: str | None = None, model: str | None = None) -> tuple[dict, dict]:
     """Ask the model for JSON that matches `schema`. Returns (data, meta).
 
     `salt` separates repeated runs of the same prompt (run 1, 2, 3) so each has its own recording.
     """
     mode = mode or os.environ.get("NADHIR_LLM", "auto")
-    key = _key(MODEL, system, user, schema, salt)
+    model = model or MODEL
+    key = _key(model, system, user, schema, salt)
     path = REC_DIR / f"{key}.json"
     if mode in ("auto", "replay") and path.exists():
         rec = json.loads(path.read_text(encoding="utf-8"))
@@ -57,7 +60,7 @@ def call_json(system: str, user: str, schema: dict, *, salt: str = "", mode: str
     client = anthropic.Anthropic()
     try:
         resp = client.beta.messages.create(
-            model=MODEL,
+            model=model,
             max_tokens=16000,
             betas=["server-side-fallback-2026-07-01"],
             fallbacks="default",

@@ -1,0 +1,163 @@
+{
+ "key": "472f52a5a7b3a4a8f1519f6181434dafa406baa5c067071e46103893635201a9",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM alert: rain, heavy at times, possible in eastern, southern and western areas\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, possibly heavy at times, in some eastern, southern and western areas and parts of the interior. In effect Saturday 22 Aug 2026, 13:30 to 21:00.\",\n  \"instruction\": \"Take extra care when driving in rain and avoid standing water. Follow updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه NCM: احتمال هطول أمطار تكون غزيرة أحياناً على المناطق الشرقية والجنوبية والغربية\",\n  \"description\": \"تنبيه NCM: سحب ركامية مصحوبة بأمطار خفيفة إلى متوسطة، قد تكون غزيرة أحياناً، على بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول يوم السبت 22 أغسطس 2026، من 13:30 إلى 21:00.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر أثناء القيادة تحت المطر وادخل المياه الراكدة بحذر. تابع آخر التحديثات على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation of protective action instruction in alerts', 'CAP 1.2 multilingual alert language consistency instruction', 'UAE early warning rain flooding avoid standing water wadi'):\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.\n\n[FCC-DA-25-12#0114] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.21):\nWe reiterate our belief that form-fillable templates that incorporate the name of the sender, the location, and the time of the disaster (coupled with a description of the threat and the protective action the public should take) create more effective alerts and is consistent with social science research on effective alerting. 160 Further, including a URL hyperlinking to further information “can further reduce milling and protective action delay.” 161 Research indicates that more specific information about the unfolding emergency helps the public better respond and take more effective protective action. 162 The Bureau finds that fillable templates provides the best way to balance technological capability with more effective alert messaging. More effective alerting results in better public response in\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPCP#0148] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\n<alert ... > ... <info> <language>en-CA</language> ... <instruction>Take shelter as threatening or hazardous conditions arrive. </instruction> <parameter> <valueName>profile:CAP-CP:1.0:AutoTranslated</valueName> <value>Yes</value> </parameter> ... </info> <info> <language>fr-CA</language> ... <responseType>Shelter</responseType> <instruction>En menaçant des approches de temps, prenez l'abri à l'intérieur et surveillez la radio locale pour d'autres mises à jour\n\n[CAPAU#0071] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.21):\nOPTIONAL Note: Technical It is RECOMMENDED that alert message producers include response types when applicable, along with a corresponding <instruction> value. Using <responseType> allows for automated dissemination in all included languages, of the actions the end user is expected to take when instructions may not be available, or not available in all languages\n\n[CAPAU#0099] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.29):\nOPTIONAL Notes: Technical 1) Should be completed by alert message producers to improve clarity and provide public with direction concerning what actions to take in order to stay out of harm’s way. 2) In circumstances where the <instruction> information is to be added by an alternate authority; the message producer will distribute the initial alert message (without an <instruction> element included) and the alternate authority will receive that\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[UAE-PORTAL-EWS#0046] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead on the website of National Center of Meteorology: What you should do before heavy rains, floods and thunderbolts Awareness messages prior to sand storms. Find digital services to get latest updates on weather conditions and environmental status. Weather-related health awareness guides Promoting Health and Safety Post Rainfall (PDF, 3.05 MB) Promoting Health and Safety Post Rainfall (in Urdu, 2.68 MB) Mosquito Bites (PDF, 1.97 MB)\n\n[ESTR-AICNHM#0138] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.42):\nThis use case is for an early warning system. We use a dashboard to improve the early warning system communication. Specifically, flash floods include the following model inputs: Geographical position, water level, soil moisture, standard depth, perimeter, hydraulic radius, area, velocity, and have the flow model output.\n\n[FL-2023-FDEM#0044] Florida Division of Emergency Management Issues Updates on Emergency Response in Florida (Weather Outlook):\nWeather Outlook Sunday, November 8, 2026 ... Cool and Dry Conditions Continue to Spread Across the State Following Cold-Frontal Passage; No Rain Chances Forecast Across the State... High Risk for Rip Currents Along East Coast... Minor Coastal Flooding in Southeast Florida and the Florida Keys Today...Tracking Moderate to Major River Flooding Along Peace River and St. Johns River Basin; Flood Warnings in Effect... More Details\n\n[MHEWS-2026#0213] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.57):\nSandmæl et al., 2023). Moreover, NASA has published an open-source software that uses ML methods to automatically detect severe convective storm cloud-top features—such as overshooting tops and above-anvil cirrus plumes— from geostationary satellite (Cooney et al., 2025). In a similar manner, flood detection from earth observation is supported by ML workflows that classify water and inundation extent from satellite imagery to enable timely rescue operations, as documented by UN-SPIDER in its compilation of flood detection and mapping ML applications (UNOOSA, n.d.).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic instruction changes the protective action. English says to avoid standing water; Arabic says to enter standing water with caution (\"ادخل المياه الراكدة بحذر\"), which tells people to go into it. The headline, description, numbers, times, places and hazard match the English. The Arabic is machine translated, so a named Arabic reader must still approve it.",
+  "objections": [
+   {
+    "issue": "The protective action is reversed. English \"avoid standing water\" became \"enter standing water with caution\" (ادخل المياه الراكدة بحذر), which could lead people into flooded areas.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Change the second sentence to: \"وتجنَّب المياه الراكدة\". Full instruction: \"توخَّ مزيداً من الحذر أثناء القيادة تحت المطر وتجنَّب المياه الراكدة. تابع آخر التحديثات على https://alerts.example.ae.\" A named Arabic reader must approve it.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "avoid standing water"
+     },
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "وادخل المياه الراكدة بحذر"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4576,
+  "output_tokens": 453,
+  "at": "2026-11-09T17:19:01Z"
+ }
+}

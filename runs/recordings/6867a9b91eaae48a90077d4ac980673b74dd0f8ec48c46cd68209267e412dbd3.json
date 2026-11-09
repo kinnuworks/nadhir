@@ -1,0 +1,173 @@
+{
+ "key": "6867a9b91eaae48a90077d4ac980673b74dd0f8ec48c46cd68209267e412dbd3",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced\",\n   \"text\": \"ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": false,\n   \"source\": \"illustrative rumour written for this test\",\n   \"text\": \"Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now\"\n  },\n  {\n   \"n\": 3,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Dusty winds reducing visibility until 21:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 21:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity urgency certainty definitions Observed Likely', 'WMO guidance blowing dust visibility warning wording', 'NCM weather alert validity time consistency with bulletin'):\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0102] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: “Observed” – Determined to have occurred or to be ongoing “Likely” - Likely (p > ~50%)\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[FCC-FR-2025#0078] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57297):\nDo not attempt to travel unless you are fleeing an area that may flood or are under an evacuation order. [URL] Severe Thunderstorm Warning [SENDING AGENCY]: A SEVERE THUNDERSTORM WARNING is in effect for [LOCATION] until [TIME] for DESTRUCTIVE 80 mile per hour winds. Take shelter inside a sturdy building, away from windows. Flying objects may be deadly to those outside a sturdy shelter. [URL] Snow Squall Warning [SENDING AGENCY]: A SNOW SQUALL WARNING is in effect for [LOCATION] until [TIME]. Slow down or delay travel! Be ready for a sudden drop to near zero visibility and icy roads in heavy snow. [URL] Dust Storm Warning [SENDING AGENCY]: A DUST STORM WARNING is in effect for [LOCATION] until [TIME]. Be ready for sudden drop to zero visibility. Pull Aside, Stay Alive! When visibility drops, pull far off the road and put your vehicle in park. Turn the lights off and keep your foot off the brake. Infants, the elderly, and those with trouble breathing urged to take precautions. [URL] Hurricane Warning [SENDING AGENCY]: A HURRICANE WARNING is in effect for [LOCATION] for dangerous and damaging winds until [TIME]. This warning is issued up to 36 hours before hazardous conditions begin. Take steps to protect life and property. Have food, water, cash, fuel, and medications for 3+ days.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Adoption_Guidelines_in_Government_Services#0094] AI Adoption Guidelines in Government Services (p.40):\nExecution When you are ready to launch the execution stage, you mobilize resources and start setting up the development environment, accessing the data, detailing the use case requirements, and developing the blueprint. You also set up agile project management working practices. Once data is made accessible, you begin data exploration activities to check for quality, representation, granularity to form a judgement on data usability. Typically, data quality dimensions cover completeness, accuracy, validity, consistency, timeliness, and uniqueness and accordingly some data cleansing activities might be required. Representation of the data is key for eliminating bias in AI models and to drive trust in the results. Accordingly, either more data needs to be collected from different sources (potentially including synthetic data) or you are ready to proceed with structuring and annotating the data. Data annotation and labeling can be a time-consuming exercise depending on the volume and sector-specific expertise required but is a critical step to prepare for model development and training.\n\n[WMO-REGISTER#0001] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nHOME WORLDWEATHER SEVERE WEATHER Public Weather Services established this register of information about alerting authorities as identified by Members. For questions, please contact us. Select a country to get started.\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[MHEWS-2026#0648] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.147):\nVannitsem, S., Bremnes, J. B., Demaeyer, J., Evans, G. R., Flowerdew, J., Hemri, S., Lerch, S., Roberts, N., Theis, S., Atencia, A., Bouallègue, Z. B., Bhend, J., Dabernig, M., Cruz, L. D., Hieta, L., Mestre, O., Moret, L., Plenković, I. O., Schmeits, M., ... Ylhaisi, J. (2021). Statistical Postprocessing for Weather Forecasts: Review, Challenges, and Avenues in a Big Data World. Bulletin of the\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert states the end time as 21:00, but the verified NCM bulletin says conditions continue until 19:00. The hazard, wind, visibility and place details otherwise match the bulletin, and the unverified dam rumour is correctly left out.",
+  "objections": [
+   {
+    "issue": "The validity end time is wrong. The alert says 21:00 in both the headline and the description, but the NCM bulletin says conditions continue until 19:00. This extends the hazard window by two hours beyond what the bulletin supports.",
+    "field": "headline",
+    "blocking": true,
+    "fix": "Change the end time to 19:00 in the headline and the description, for example 'Dusty winds reducing visibility until 19:00 today' and 'Expected until 19:00 this evening, 4 March.'",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "Dusty winds reducing visibility until 21:00 today"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "continue until 19:00 this evening"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Expected until 21:00 this evening, 4 March"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Certainty 'Observed' and urgency 'Immediate' appear consistent with the bulletin, which says conditions began at 14:55 and are ongoing. No CAP clause contradicts this.",
+    "searched_for": "CAP certainty Observed definition and NCM bulletin consistency"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5817,
+  "output_tokens": 516,
+  "at": "2026-11-09T17:12:23Z"
+ }
+}

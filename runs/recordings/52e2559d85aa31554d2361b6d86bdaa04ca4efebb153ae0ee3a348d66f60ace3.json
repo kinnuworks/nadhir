@@ -1,0 +1,139 @@
+{
+ "key": "52e2559d85aa31554d2361b6d86bdaa04ca4efebb153ae0ee3a348d66f60ace3",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust and reduced visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are causing blowing dust and sand, reducing visibility to less than 2,000 metres in some coastal and inland areas. Conditions began at 14:55 and continue until 19:00 this evening.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, due to possible reduced visibility from blowing dust.\"\n },\n \"arabic\": {\n  \"headline\": \"غبار متطاير وانخفاض في مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تتسبب الرياح الشمالية الغربية النشطة إلى القوية في إثارة الغبار والرمال، مما يؤدي إلى انخفاض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. بدأت هذه الأحوال عند الساعة 14:55 وتستمر حتى الساعة 19:00 مساء اليوم.\",\n  \"instruction\": \"توخوا مزيدًا من الحذر، لا سيما عند القيادة على الطرق المفتوحة، بسبب احتمال انخفاض مدى الرؤية نتيجة الغبار المتطاير.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review emergency alert machine translation', 'UAE cell broadcast alert language Arabic English requirements', 'CAP 1.2 multilingual alert instruction wording'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-23-88#0401] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nare mature enough at this time to be used for WEA translations, but notes that the Federal Emergency Management Agency (FEMA) and others have expressed reservations about the exclusive use of machine translations in emergency situations”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); CTIA, Reply, PS Docket Nos. 15-91 and 15-94, at 11 (rec. Aug. 21, 2023) (CTIA Reply) (“CTIA supports efforts by the Commission to evaluate the potential for machine translation that will guide future determination of any appropriate rules adopting its use”); Federal Emergency Management Agency Integrated Public Alert and Warning System Program Office Comments, PS. Docket Nos. 15-91 and 15-94, at 2 (Jul. 29, 2023) (FEMA Comments) (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”);\n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[ETSI-EUALERT#0060] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.12):\n2) The UE shall be able to maintain user EU-Alert language preferences. If the user has opted-in to receiving EU-Alert messages then these will be presented in the local language. The user may wish to receive messages in other languages than the local language as well. A typical example would be the additional selection to receive messages in English for those users that do not understand the local language, assuming that messages in English are broadcast next to messages in the local language.\n\n[FCC-23-88#0236] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.41):\nDelayed indefinitely, amend § 10.500 by revising paragraph (e) to read as follows: § 10.500 General requirements. ***** (e) Extraction of alert content in English and the subscriber-specified default language, if applicable. (1) Storing pre-scripted alerts in English, Spanish, Chinese, Tagalog, Vietnamese, Arabic, French, Korean, Russian, Haitian Creole, German, Hindi, Portuguese, and Italian. (2) Allowing the subscriber to choose to receive pre-scripted Alert Messages in American Sign Language (ASL) instead of or in addition to their mobile device’s subscriber-specified default language setting. ***** 6. Amend § 10.500 by revising paragraph (i) to read as follows:\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0432] 3.2 TDRA Consumer Protection Regulations v2 (p.74):\nThe Consumer Protection Regulations, Version 1.5, Issued 4 October 2020 and all Annexure thereto. 30.2.2. The TDRA instructions issued to Licensees on 8 December 2021 to ‘Cease and desist from using the word “fastest” in advertisements related to mobile networks’. ----\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPAU#0098] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.29):\nOPTIONAL Notes: Technical 1) Address essential information first as content may get truncated during transmission. Example: CAP v1.2 Standard 2) The full text, or at least the first ten words, of this element could be used in the construction of recorded audio or text-tospeech audio. 3) The full text, or at least the first 60 characters, of this element could be used in the construction of video display text. instruction\n\n[FCC-DA-25-12#0068] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.13):\n92 Some multilingual users, for example, may have sufficient English proficiency such that seeing the English message in close proximity to the multilingual alert would help the multilingual user associate the non-English word with the corresponding English vocabulary word for the emergency. This exposure may be important, especially in circumstances where other members of the public in the surrounding physical environment or on the ground emergency personnel may not speak the language in which the mobile device user receives the alert, but may be\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning. Headline: blowing dust, reduced visibility, until 19:00 today. Description: fresh to strong northwesterly winds, visibility under 2,000 metres, coastal and inland areas, began 14:55, continues until 19:00 this evening. Instruction: take extra care, especially when driving on open roads, due to possible reduced visibility. All numbers, times and the protective action are preserved. Minor stylistic points only: \"النشطة إلى القوية\" for \"fresh to strong\" is acceptable, and \"توخوا\" is the plural imperative, which suits a public alert. The Arabic was machine translated, so a named Arabic reader must still approve it.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5549,
+  "output_tokens": 263,
+  "at": "2026-11-09T17:08:37Z"
+ }
+}

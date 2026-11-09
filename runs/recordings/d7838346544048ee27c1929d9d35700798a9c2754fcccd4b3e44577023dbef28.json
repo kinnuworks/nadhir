@@ -1,0 +1,144 @@
+{
+ "key": "d7838346544048ee27c1929d9d35700798a9c2754fcccd4b3e44577023dbef28",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog / Low Visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions tonight until 10:00 Wednesday\",\n  \"description\": \"Fog warning: visibility may drop to zero at times in western regions from 21:30 tonight (Tue 17 Feb) until 10:00 AM Wednesday 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution, keep a safe distance from other vehicles and follow modified speed limits in thick fog. More info: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency definitions fog warning', 'NCM fog low visibility warning UAE early warning', 'alert must match meteorological bulletin times areas unverified reports'):\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.1_UAE_Digital_Government_Strategy_2025#0028] UAE Digital Government Strategy 2025 (Ministry/Agency specific):\nMaturity Level Sub Indicator 1 Very low level of maturity 2 Low level of maturity 3 Average level of maturity 4 High level of maturity 5 Very high level of maturity The objective is 100 per cent - very high level of maturity for all UAE government entities on both federal and local levels by 2025.\n\n[MHEWS-2026#0380] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nIn regions where internet access is limited, where digital literacy is low, or where communities rely primarily on offline communication channels, these systems may provide only partial visibility into the information environment. As a result, misinformation circulating through offline networks - such as word of mouth, community radio, or informal messaging groups- may remain undetected. Unequal and limited access to digital channels may cause uneven protection against misinformation. Although fake news detection research is advancing from early development toward\n\n[MHEWS-2026#0578] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.135):\nNoor GenAI Voice Assistant Pakistan Disaster preparedness information A generative AI voice assistant accessible through basic mobile phones provides spoken disaster guidance in Urdu via a toll-free number. The offline design ensures that early warning information remains accessible in low-connectivity and low-literacy environments. By enabling conversational access to trusted guidance, the system strengthens last-mile warning communication (Pillar 3) and supports community preparedness and protective decision-making (Pillar 4). Further information: https://viamo.io/\n\n[MHEWS-2026#0529] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.126):\nHuman oversight, accountability and trust In life-safety contexts, expanding AI automation raises accountability questions about who is responsible when systems fail. Limited visibility into how AI systems function can undermine confidence among both institutions and affected communities.\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[WMO-REGISTER#0002] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nWMO Register of Alerting Authorities [ home ] OID: 2.49.0.0.784.0 WMO Member: United Arab Emirates ISO 3166: AE ARE 784 Issuing Organization: Meteorological Department Hazard Categories: Geo Met Safety Security Rescue Fire Health Env Transport Infra Other\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[ESTR-AICNHM#0468] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.100):\n[b-McGovern] McGovern, A., Lagerquist, R., Gagne II, D.J., Jergensen G.E., Elmore, K.L., Homeyer, C.R., Smith, T. (2019), Making the Black Box More Transparent: Understanding the Physical Implications of Machine Learning, Bulletin of the American Meteorological Society,100(11), pp. 2175-2199. <https://doi.org/10.1175/BAMS-D-18-0195.1>\n\n[IPAWS-OPEN#0047] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.38):\nMatching the Geographic Area – • Many-to-one messaging Multilingual – • Alert delivery in less than 3 seconds, or your pizza is free Multimedia Alerting – • Some of these were added in the latest FCC Report & Order",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the NCM bulletin: same hazard (fog / low visibility), same times (21:30 tonight until 10:00 Wednesday 18 Feb), same area (western regions), and the same precautions. It states that visibility may drop to zero at times, as the bulletin does. It includes no unverified report. Severity Moderate, urgency Expected and certainty Likely are plausible for a warning of potential fog and do not overstate or understate what the bulletin supports.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The bulletin gives no explicit severity or certainty grade, so Moderate and Likely are the drafter's judgement. The wording 'potential fog formation' and 'is expected to deteriorate' is consistent with them.",
+    "searched_for": "UAE or NCM clause defining CAP severity and certainty levels for fog warnings"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5025,
+  "output_tokens": 296,
+  "at": "2026-11-09T17:10:30Z"
+ }
+}

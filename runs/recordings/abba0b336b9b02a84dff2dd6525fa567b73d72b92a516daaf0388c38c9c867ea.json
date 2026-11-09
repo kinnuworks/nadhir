@@ -1,0 +1,168 @@
+{
+ "key": "abba0b336b9b02a84dff2dd6525fa567b73d72b92a516daaf0388c38c9c867ea",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"No special precautions are needed; drive as normal.\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('CAP instruction field protective action translation consistency', 'UAE cell broadcast alert language Arabic English requirements', 'dust storm reduced visibility driving guidance warning wording'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0026] UAE Public Policy Development Guidebook (p.14):\nPublic Policy Public policy comprises government-established guidelines that steer decision-making and action. It establishes a framework for decision-makers, defining preferred courses of action in specific situations. Policies are typically long-term and maintain consistency throughout each government's term, focusing on specific areas or issues.\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0044] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.33):\nPart 1: Specifications 8.11.4 Inconsistency The entity shall address its BC capability’s in consistency with this Standard, through preventive and corrective actions. 8.11.5 Preventive and Corrective Actions Preventive and corrective actions shall be aligned with the Business Continuity Policy and BCM objectives at the acceptable level of risk, as may be determined by Top Management. 8.11.5.1 Preventive Actions: a. The priority of preventive actions shall be based on the results of the entity’s risk assessment and BIA. b. Preventive actions should be commensurate with the potential impact of the emergency, crisis or disaster. c. The preventive actions standard should define the necessary requirements. 8.11.5.2 Corrective Actions: The entity shall take required action to eliminate the causes of nonconformity with the Business Continuity Management policies, procedures and plans and prevent their recurrence. The procedures shall explain and document corrective actions, defining points and causes of non-conformity and recording all action taken.\n\n[X1303BIS#0066] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\nurgency cap.alertInfo.urgency.code \"Shelter\" – Take shelter in place or per <instruction> \"Evacuate\" – Relocate as instructed in the <instruction> \"Prepare\" – Make preparations per the <instruction> \"Execute\" – Execute a pre-planned activity identified in <instruction> \"Avoid\" – Avoid the subject event as per the <instruction> \"Monitor\" – Attend to information sources as described in <instruction> \"Assess\" – Evaluate the information in this message. (This value should NOT be used in public warning applications). \"AllClear\" – The subject event no longer poses a threat or concern and any follow on action is described in <instruction> \"None\" – No action recommended (2) Multiple instances may occur within an <info> block.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[ETSI-EUALERT#0060] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.12):\n2) The UE shall be able to maintain user EU-Alert language preferences. If the user has opted-in to receiving EU-Alert messages then these will be presented in the local language. The user may wish to receive messages in other languages than the local language as well. A typical example would be the additional selection to receive messages in English for those users that do not understand the local language, assuming that messages in English are broadcast next to messages in the local language.\n\n[FCC-23-88#0236] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.41):\nDelayed indefinitely, amend § 10.500 by revising paragraph (e) to read as follows: § 10.500 General requirements. ***** (e) Extraction of alert content in English and the subscriber-specified default language, if applicable. (1) Storing pre-scripted alerts in English, Spanish, Chinese, Tagalog, Vietnamese, Arabic, French, Korean, Russian, Haitian Creole, German, Hindi, Portuguese, and Italian. (2) Allowing the subscriber to choose to receive pre-scripted Alert Messages in American Sign Language (ASL) instead of or in addition to their mobile device’s subscriber-specified default language setting. ***** 6. Amend § 10.500 by revising paragraph (i) to read as follows:\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Adoption_Guidelines_in_Government_Services#0035] AI Adoption Guidelines in Government Services (p.17):\nAccordingly, the value of AI can be translated across key areas: Operational Efficiency: Operation Efficiency Decision Augmentation Conduit for Innovation AI applications in government services are mostly geared towards driving efficiencies, eliminating mundane tasks that can be automated, allowing public officials to dedicate their time towards more strategic, creative, and analytical activities. AI applications act as companions to public officials to bring in the relevant insights and recommendations, whether off or on the field, automate processes reducing them to single clicks based on decision rules, help them organize their work to focus on outcomes, and eventually deliver impact with higher operational efficiency.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[FCC-FR-2025#0020] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe make clarifying edits such as changing the phrase ``Urgently complete efforts to protect life and property'' to ``Take steps to protect life and property'' in the hurricane and storm surge templates and ``Do NOT go out into the calm of the hurricane eye!'' to ``Do NOT go outside if the wind calms!'' in the extreme wind template. To implement NWS's recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 11. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase ``when visibility drops'' in the dust storm template is figurative language; but does not propose an alternate phrase.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Headline and description match in meaning: wind direction, 2,000 m, 19:00, 4 March and the source are all preserved. The instruction does not match. English says no special precautions are needed and to drive as normal. Arabic says to take extra care, especially on open roads, because visibility may drop, and adds a URL. This reverses the protective action. The Arabic also adds a URL that is absent from the English.",
+  "objections": [
+   {
+    "issue": "The protective action in the Arabic contradicts the English. English: no precautions needed, drive as normal. Arabic: exercise extra caution, especially when driving on open roads, as visibility may drop due to blowing dust. The Arabic also adds a URL for updates that is not in the English. One of the two texts is wrong, and a person must decide which instruction is intended. The English 'no precautions' also sits oddly with visibility under 2,000 m.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Hold the alert. The issuing authority should decide the intended protective action (caution or no action). Then make the English and Arabic instructions say the same thing, and include the URL in both or neither. Have a named Arabic reader check the result.",
+    "uae_basis": {
+     "status": "cites_uae",
+     "ref": "TDRA-TS040#0001",
+     "quote": "Messages should support both English and Arabic languages."
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "No special precautions are needed; drive as normal."
+     },
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0116",
+      "quote": "The text describing the recommended action to be taken by recipients of the alert message"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6004,
+  "output_tokens": 608,
+  "at": "2026-11-09T17:14:23Z"
+ }
+}

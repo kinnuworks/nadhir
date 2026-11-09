@@ -1,0 +1,186 @@
+{
+ "key": "22b4e859101cdfd07afb1784cbbba7e49620cfc79ceea48be23ef765d7475480",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced\",\n   \"text\": \"ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": false,\n   \"source\": \"illustrative rumour written for this test\",\n   \"text\": \"Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now\"\n  },\n  {\n   \"n\": 3,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"No special precautions are needed; drive as normal.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity urgency certainty definitions Observed Moderate', 'UAE NCM dust reduced visibility driving caution alert', 'unverified rumour excluded from public alert instruction consistency'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0404] 3.2 TDRA Consumer Protection Regulations v2 (p.68):\n28.3.5. comply with all applicable laws of the UAE. When Persons subject to Article 28 are in doubt if something in an Advertisement will be in compliance with Article 28, they should err on the side of caution and ensure compliance. Restricted terms 28.5. The term “unlimited” (and all similar words, terms, synonyms and derivatives) shall not be used in any Advertising unless the service in question is provided\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0012] 3.2 TDRA Consumer Protection Regulations v2 (p.5):\n2.1.6. “Consumer” means - any Person, but excluding a Licensee, which person consumes or may consume a Public Telecommunications Service provided by a Licensee, and the term ‘Consumer’ includes Subscriber;\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Data_Protection_Law_Final#0408] Data Protection Law Final (p.48):\n(e) a “business day” means a calendar day, excluding Saturdays, Sundays and official public holidays; (f) a “week” shall mean a calendar week or seven (7) days, whichever is applicable in the circumstances;\n\n[ESTR-AICNHM#0104] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.35):\nThis suggestion is aligned with aspects of the use case entitled \"Proposal of an AI chatbot use case as a multihazard communication technology.\" The proponents note that \"anyone can easily post information on SNS, so it is also recognized that false rumours and unverified information can easily confuse/mislead the real world and that it is not easy to obtain the desired information.\" In the use case called \"AI enabled citizen-centric decision support system for disaster managers,\" the model categorizes information received into actionable classes from social networks and other agencies. 8\n\n[IPAWS-PROFILE#0050] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\ninstruction Messages SHOULD have meaningful values for the <instruction>. The content in <instruction> may be truncated and therefore it is recommended that essential information be addressed first. parameter * Please see Table 2 (below)\n\n[X1303BIS#0066] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\nurgency cap.alertInfo.urgency.code \"Shelter\" – Take shelter in place or per <instruction> \"Evacuate\" – Relocate as instructed in the <instruction> \"Prepare\" – Make preparations per the <instruction> \"Execute\" – Execute a pre-planned activity identified in <instruction> \"Avoid\" – Avoid the subject event as per the <instruction> \"Monitor\" – Attend to information sources as described in <instruction> \"Assess\" – Evaluate the information in this message. (This value should NOT be used in public warning applications). \"AllClear\" – The subject event no longer poses a threat or concern and any follow on action is described in <instruction> \"None\" – No action recommended (2) Multiple instances may occur within an <info> block.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the NCM bulletin on hazard, visibility and the 19:00 end time, and it leaves out the unverified dam rumour. But the instruction 'No special precautions are needed; drive as normal' contradicts the bulletin, which urges caution when driving because of reduced visibility. The alert also gives no start time (14:55) and no area beyond 'some coastal and inland areas'. Urgency 'Immediate' and certainty 'Observed' fit conditions already under way.",
+  "objections": [
+   {
+    "issue": "The instruction says no precautions are needed and to drive as normal. The NCM bulletin urges caution, especially when driving on open roads, because of reduced visibility from blowing dust. The alert therefore understates the hazard and gives the opposite of the bulletin's advice.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Replace the instruction with advice that matches the bulletin, e.g. 'Exercise caution, especially when driving on open roads, as blowing dust may reduce horizontal visibility.'",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert_english.instruction",
+      "quote": "No special precautions are needed; drive as normal."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs.1.text",
+      "quote": "exercise caution, especially while driving on open roads"
+     }
+    ]
+   },
+   {
+    "issue": "The description omits the start time (14:55). It says only 'Expected until 19:00', although the bulletin says the conditions began at 14:55 and are ongoing. 'Expected' also sits awkwardly with the 'Observed' certainty. The bulletin's wording on the 'various areas across the UAE' is likewise not fully reflected.",
+    "field": "description",
+    "blocking": false,
+    "fix": "State that the conditions began at 14:55 and continue until 19:00 on 4 March, and say 'affecting various areas across the UAE, including some coastal and inland areas'.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs.1.text",
+      "quote": "began at 14:55 and continue until 19:00 this evening"
+     },
+     {
+      "kind": "view",
+      "ref": "alert_english.description",
+      "quote": "Expected until 19:00 this evening, 4 March."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5439,
+  "output_tokens": 791,
+  "at": "2026-11-09T17:14:23Z"
+ }
+}

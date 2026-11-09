@@ -1,0 +1,144 @@
+{
+ "key": "9edb61786a4f546f29fe671316ac7a18c226aa97a67d0c1652b9356fb9d27d09",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae\",\n   \"text\": \"ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Rain and convective clouds\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"NCM alert: rain, heavy at times, possible in eastern, southern and western areas\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, possibly heavy at times, in some eastern, southern and western areas and parts of the interior. In effect Saturday 22 Aug 2026, 13:30 to 21:00.\",\n  \"instruction\": \"Take extra care when driving in rain and avoid standing water. Follow updates at https://alerts.example.ae.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity urgency certainty definitions Moderate Expected Possible', 'NCM rain convective cloud alert wording UAE', 'alert must match meteorological bulletin times areas'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[ITU-UAE:01_AI_Strategy_and_Governance/MOCAI_AI_Ethics#0020] MOCAI AI Ethics (p.6):\nNotes: 1. 2. 10 This definition applies regardless of whether the AI system was developed in-house or procured. It is possible for organizations to be both an AI developer organization and an AI operator organization.\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0111] UAE National Strategy for AI 2031 (p.23):\nCONCLUSION “We, in the UAE, have no such word as “impossible”; it does not exist in our lexicon. Such a word is used by the lazy and the weak, who fear challenges and progress. When one doubts his potential and capabilities as well as his confidence, he will lose the compass that leads him to success and excellence, thus failing to achieve his goal.” His Highness Sheikh Mohammed bin Rashid Al Maktoum UAE Vice President, Prime Minister and Ruler of Dubai The UAE is unlike any other country in its diversified population, comprising of unique talents – we aim to give this human potential the best opportunities to nourish and flourish. Given this human potential, the UAE has always aimed at not just being better, but to become the best.\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[MHEWS-2026#0213] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.57):\nSandmæl et al., 2023). Moreover, NASA has published an open-source software that uses ML methods to automatically detect severe convective storm cloud-top features—such as overshooting tops and above-anvil cirrus plumes— from geostationary satellite (Cooney et al., 2025). In a similar manner, flood detection from earth observation is supported by ML workflows that classify water and inundation extent from satellite imagery to enable timely rescue operations, as documented by UN-SPIDER in its compilation of flood detection and mapping ML applications (UNOOSA, n.d.).\n\n[MHEWS-2026#0636] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.145):\nC., ... Bengio, Y. (2022). Tackling Climate Change with Machine Learning. ACM Computing Surveys (CSUR), 55(2), 42:1-42:96. https://doi.org/10.1145/3485128 222. Rosenfeld, D., Woodley, W. L., Lerner, A., Kelman, G., & Lindsey, D. T. (2008). Satellite detection of severe convective storms by their retrieved vertical profiles of cloud particle effective radius and thermodynamic phase. Journal of Geophysical Research: Atmospheres, 113(D4). https://doi.org/10.1029/2007JD008600 223. Rossi, C., & Frisiello, A. (2024). Human-Centred Public Warnings. In Responding to Extreme Weather Events (pp. 243–274). John Wiley & Sons, Ltd. https://doi.org/10.1002/9781119741374.ch12\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[WMO-REGISTER#0002] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nWMO Register of Alerting Authorities [ home ] OID: 2.49.0.0.784.0 WMO Member: United Arab Emirates ISO 3166: AE ARE 784 Issuing Organization: Meteorological Department Hazard Categories: Geo Met Safety Security Rescue Fire Health Env Transport Infra Other\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0527] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nCommenters indicate that the suppression of the Alert Messages on mobile devices that are outside of the target area (geo-fencing) would allow Participating CMS Providers to match the target area specified by alert originators.583 We seek comment on this analysis, including any alternative approaches that Participating CMS Providers could use to match the target area or to implement a device-based approach to geo-targeting. The record indicates that technical issues, such as potential increases in message delivery latency, and reductions in the amount of data available for Alert Message text, can be resolved.584 We seek comment on how Participating CMS Providers will address these issues in conversation with other relevant WEA stakeholders. We seek comment on feasible methods Participating CMS Providers could use to mitigate sources of alert delivery latency that may be implicated by geo-targeting Alert Messages to an area that matches the target area specified by the alert originator.585 Participating CMS Providers and ATIS agree that meeting such an accurate geo-targeting standard could cause message delivery delay due to the device needing to determine its location before displaying the message, and due to network constraints.586 ATIS states that “the only currently readily 580 We anticipate that variations in geo-targeting accuracy due to the size of the target area can be controlled through alert originator best practices.\n\n[ESTR-AICNHM#0468] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.100):\n[b-McGovern] McGovern, A., Lagerquist, R., Gagne II, D.J., Jergensen G.E., Elmore, K.L., Homeyer, C.R., Smith, T. (2019), Making the Black Box More Transparent: Understanding the Physical Implications of Machine Learning, Bulletin of the American Meteorological Society,100(11), pp. 2175-2199. <https://doi.org/10.1175/BAMS-D-18-0195.1>",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the verified NCM bulletin on hazard (convective clouds with light to moderate rain, possibly heavy at times), times (Saturday 13:30 to 21:00), and areas (some eastern, southern and western areas and parts of the interior). Severity Moderate and certainty Possible are consistent with the bulletin's 'possibility' wording and the CAP definitions. No unverified reports are included.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Urgency 'Expected' for an alert effective from 13:30 the same day might be seen as slightly off from 'Future' or 'Immediate', depending on the issue time, which the bulletin does not state.",
+    "searched_for": "CAP urgency definitions and UAE/NCM rules on urgency values for rain alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5855,
+  "output_tokens": 274,
+  "at": "2026-11-09T17:11:14Z"
+ }
+}

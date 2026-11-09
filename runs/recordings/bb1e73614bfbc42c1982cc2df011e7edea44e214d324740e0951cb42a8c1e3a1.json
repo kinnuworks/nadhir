@@ -1,0 +1,163 @@
+{
+ "key": "bb1e73614bfbc42c1982cc2df011e7edea44e214d324740e0951cb42a8c1e3a1",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXTREME DANGER: Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('UAE cell broadcast Arabic English message language requirements', 'CAP 1.2 multilingual alert translation headline instruction consistency', 'UAE early warning dust storm low visibility severity wording'):\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.\n\n[ETSI-EUALERT#0060] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.12):\n2) The UE shall be able to maintain user EU-Alert language preferences. If the user has opted-in to receiving EU-Alert messages then these will be presented in the local language. The user may wish to receive messages in other languages than the local language as well. A typical example would be the additional selection to receive messages in English for those users that do not understand the local language, assuming that messages in English are broadcast next to messages in the local language.\n\n[TS23041#0384] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.79):\n1129 CMAS CBS Message Identifier for the Required Monthly Test for additional languages. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message dependent on the language indicated in the CBS message and the language indicator settings in the ME.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPCP#0058] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\neffective onset expires senderName Recommendation #4 (A <senderName> is strongly recommended) headline description instruction web contact parameter Recommendation #7 (Indicate when an update message contains non-substantive content changes.) Recommendation #6 (Indicate automated translation of free form text)\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[X1303BIS#0075] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\nsenderName cap.alertInfo.senderName. text The text naming the originator of the alert message (OPTIONAL) The human-readable name of the agency or authority issuing this alert. headline cap.alertInfo.headline.text The text headline of the alert message (OPTIONAL)\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0020] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe make clarifying edits such as changing the phrase ``Urgently complete efforts to protect life and property'' to ``Take steps to protect life and property'' in the hurricane and storm surge templates and ``Do NOT go out into the calm of the hurricane eye!'' to ``Do NOT go outside if the wind calms!'' in the extreme wind template. To implement NWS's recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 11. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase ``when visibility drops'' in the dust storm template is figurative language; but does not propose an alternate phrase.\n\n[MHEWS-2026#0380] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nIn regions where internet access is limited, where digital literacy is low, or where communities rely primarily on offline communication channels, these systems may provide only partial visibility into the information environment. As a result, misinformation circulating through offline networks - such as word of mouth, community radio, or informal messaging groups- may remain undetected. Unequal and limited access to digital channels may cause uneven protection against misinformation. Although fake news detection research is advancing from early development toward",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic matches the English on numbers (19:00, 2,000 metres, 4 March), places, wind direction, source and the protective action. One difference in meaning remains: the English headline opens with the severity label \"EXTREME DANGER:\", which the Arabic headline omits. Either the English label is overstated for this advisory-level message or the Arabic is incomplete. Because the Arabic was machine translated, a named Arabic reader must still approve it.",
+  "objections": [
+   {
+    "issue": "The English headline begins with \"EXTREME DANGER:\" and the Arabic headline has no equivalent. The two headlines therefore convey different urgency. Arabic readers get a plain advisory, while English readers get an extreme-severity warning. The body and instruction of both versions say only \"take extra care\", so the English label may be the error. Whichever is wrong, the two versions must say the same thing.",
+    "field": "headline",
+    "blocking": true,
+    "fix": "The drafter or a person should decide the intended severity. If \"EXTREME DANGER\" is not intended, remove it from the English headline so it matches the Arabic and the instruction. If it is intended, add an accurate Arabic equivalent (for example \"خطر شديد:\") and have a named Arabic reader approve it.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "EXTREME DANGER: Dusty winds reducing visibility until 19:00 today"
+     },
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5314,
+  "output_tokens": 581,
+  "at": "2026-11-09T17:12:50Z"
+ }
+}

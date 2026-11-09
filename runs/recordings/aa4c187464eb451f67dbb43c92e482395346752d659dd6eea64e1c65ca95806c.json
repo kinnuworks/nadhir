@@ -1,0 +1,204 @@
+{
+ "key": "aa4c187464eb451f67dbb43c92e482395346752d659dd6eea64e1c65ca95806c",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may dip slightly in western regions\",\n  \"description\": \"Fog warning: light mist may reduce visibility slightly across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('fog warning visibility severity wording UAE alert', 'machine translation Arabic alert human review requirement', 'CAP instruction protective action driving fog guidance'):\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[CAP12#0255] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n· Wording change to <severity> “Minor” · Schema changed to allow only one <EncryptedData> element and changed Security Note section to allow multiple <Signature> elements Various editorial corrections and clarifications\n\n[FCC-FR-2025#0020] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe make clarifying edits such as changing the phrase ``Urgently complete efforts to protect life and property'' to ``Take steps to protect life and property'' in the hurricane and storm surge templates and ``Do NOT go out into the calm of the hurricane eye!'' to ``Do NOT go outside if the wind calms!'' in the extreme wind template. To implement NWS's recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 11. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase ``when visibility drops'' in the dust storm template is figurative language; but does not propose an alternate phrase.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0125] AI Guide v1 (p.38):\nAI GUIDE • GLOSSARY OF KEY TERMS 7. GLOSSARY OF KEY TERMS Artificial Intelligence The theory and development of computer systems able to perform tasks normally requiring human intelligence, such as visual perception, speech recognition, decision-making, and translation between languages. General AI General AI refers to a machine that can perform any intellectual, physical and even emotional task that a human being could. Narrow AI Narrow AI is artificial intelligence that is focused on one narrow task. Machine Learning Machine learning is an application of AI that provides systems the ability to automatically learn and improve from experience without being explicitly programmed. Deep Learning Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0119] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.68):\nThe entity’s Communications Plan should provide instruction and guidance required to Top Management, Executives, Staff and Public Relations personnel on how to communicate approved messages with internal and external stakeholders before, during and after business disruption.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[X1303BIS#0066] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\nurgency cap.alertInfo.urgency.code \"Shelter\" – Take shelter in place or per <instruction> \"Evacuate\" – Relocate as instructed in the <instruction> \"Prepare\" – Make preparations per the <instruction> \"Execute\" – Execute a pre-planned activity identified in <instruction> \"Avoid\" – Avoid the subject event as per the <instruction> \"Monitor\" – Attend to information sources as described in <instruction> \"Assess\" – Evaluate the information in this message. (This value should NOT be used in public warning applications). \"AllClear\" – The subject event no longer poses a threat or concern and any follow on action is described in <instruction> \"None\" – No action recommended (2) Multiple instances may occur within an <info> block.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[CAP12#0116] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ninstruction cap. alertInfo. instruction. text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL) An extended human readable instruction to targeted recipients. If different instructions are intended for different recipients, they should be represented by use of multiple <info> blocks.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic does not match the English on the hazard severity. The English says light mist may reduce visibility slightly; the Arabic says dense fog may reduce visibility to zero at times. This is a serious mistranslation and is likely a machine translation error. Times, dates, place, source and the protective action match. The Arabic was machine translated and needs human review.",
+  "objections": [
+   {
+    "issue": "The Arabic headline overstates the hazard: 'visibility may drop to zero' versus the English 'visibility may dip slightly'.",
+    "field": "headline",
+    "blocking": true,
+    "fix": "Change the Arabic headline to match the English, e.g. 'تحذير من الضباب: قد تنخفض الرؤية قليلًا في المناطق الغربية'. Alternatively, if the Arabic reflects the true forecast, correct the English source and have both versions re-approved.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.headline",
+      "quote": "visibility may dip slightly in western regions"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.headline",
+      "quote": "قد تنخفض الرؤية إلى الصفر في المناطق الغربية"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic description says 'dense fog' and 'visibility down to zero at times'; the English says 'light mist' and 'slightly'. Severity is reversed, and the hazard is changed from light mist to dense fog.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Retranslate: 'قد يؤدي الضباب الخفيف إلى انخفاض طفيف في الرؤية في المناطق الغربية من دولة الإمارات'. Keep the times, date and source as they are. A human Arabic reader must approve it.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "light mist may reduce visibility slightly across western regions"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic was produced by machine translation and carries a material inaccuracy; it needs human translator review before release, as the mismatch shows.",
+    "field": "arabic_produced_by",
+    "blocking": true,
+    "fix": "Have a named human Arabic reader review and correct the full Arabic text before it is sent. Where the CAP profile allows, flag the info block as automated translation until reviewed.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0061",
+      "quote": "relying on software to translate WEAs without review by a human translator may cause material inaccuracies"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5893,
+  "output_tokens": 969,
+  "at": "2026-11-09T17:18:02Z"
+ }
+}

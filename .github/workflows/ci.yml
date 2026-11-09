@@ -22,6 +22,9 @@ jobs:
           cp runs/bench/ablation.json /tmp/ablation-committed.json
           python -m nadhir.ablation
           python scripts/compare_ablation.py /tmp/ablation-committed.json runs/bench/ablation.json
+          cp runs/bench/ablation-prereg.json /tmp/prereg-committed.json
+          python -m nadhir.ablation --prereg
+          python scripts/compare_ablation.py /tmp/prereg-committed.json runs/bench/ablation-prereg.json
       - name: Check every knowledge-base quote against the indexed clauses
         run: python kb/index/verify.py --check
       - name: Verify every audit log's hash chain

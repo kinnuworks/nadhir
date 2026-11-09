@@ -68,7 +68,7 @@ def test_uncited_objections_are_dropped(monkeypatch):
     scn = _scn()
     xml, fields, versions = _xml(scn)
 
-    def fake(system, user, schema, salt="", mode=None, effort=None):
+    def fake(system, user, schema, salt="", mode=None, effort=None, model=None):
         if "queries" in schema["properties"]:
             return {"queries": ["credentialed person validate"]}, {}
         return {"position": "object", "summary": "s", "no_basis": [], "objections": [
@@ -95,7 +95,7 @@ def test_all_objections_dropped_means_agree(monkeypatch):
     scn = _scn()
     xml, fields, versions = _xml(scn)
 
-    def fake(system, user, schema, salt="", mode=None, effort=None):
+    def fake(system, user, schema, salt="", mode=None, effort=None, model=None):
         if "queries" in schema["properties"]:
             return {"queries": ["anything"]}, {}
         return {"position": "escalate", "summary": "s", "no_basis": [], "objections": [
@@ -105,3 +105,27 @@ def test_all_objections_dropped_means_agree(monkeypatch):
     monkeypatch.setattr(institutions, "call_json", fake)
     r = institutions.review_one("issuer", institutions.views(scn, xml, fields, versions)["issuer"], "t")
     assert r["position"] == "agree" and not r["objections"] and len(r["dropped"]) == 1
+
+
+def test_uae_basis_is_checked(monkeypatch):
+    _fake_index(monkeypatch)
+    monkeypatch.setattr(retrieval, "uae_docs", lambda: frozenset({"AR"}))
+    scn = _scn()
+    xml, fields, versions = _xml(scn)
+
+    def fake(system, user, schema, salt="", mode=None, effort=None, model=None):
+        if "queries" in schema["properties"]:
+            return {"queries": ["رسائل انذار العربيه", "credentialed person validate"]}, {}
+        ev = [{"kind": "view", "ref": "arabic", "quote": "غبار متطاير حتى الساعة"}]
+        return {"position": "object", "summary": "s", "no_basis": [], "objections": [
+            {"issue": "a", "field": "f", "blocking": True, "fix": "f", "evidence": ev,
+             "uae_basis": {"status": "cites_uae", "ref": "AR#0001", "quote": "رسائل الإنذار المبكر باللغتين العربية والإنجليزية"}},
+            {"issue": "b", "field": "f", "blocking": True, "fix": "f", "evidence": ev,
+             "uae_basis": {"status": "cites_uae", "ref": "FCC-HI-2018#0001", "quote": "more than one credentialed person to validate"}},
+            {"issue": "c", "field": "f", "blocking": True, "fix": "f", "evidence": ev,
+             "uae_basis": {"status": "none_applies", "ref": "", "quote": ""}},
+        ]}, {}
+
+    monkeypatch.setattr(institutions, "call_json", fake)
+    r = institutions.review_one("arabic", institutions.views(scn, xml, fields, versions)["arabic"], "t", True)
+    assert [o["uae_basis"]["status"] for o in r["objections"]] == ["cites_uae", "unchecked", "none_applies"]

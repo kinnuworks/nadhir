@@ -1,0 +1,33 @@
+{
+ "key": "183d543a9a0adcd2a0b8fb6200a4fd4aec5e44ec5970cedcfa4eb4c59f48d1b8",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Los Angeles County Office of Emergency Management (LACOEM)\": {\n   \"name\": \"Los Angeles County Office of Emergency Management (LACOEM)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Kenneth Fire evacuation warning area near Calabasas, Agoura Hills and West Hills\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"006037\"\n   ]\n  ],\n  \"drawn_for_event\": \"la-county-2025\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Los Angeles County Office of Emergency Management (LACOEM)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Fire\"\n  ],\n  \"event\": \"Evacuation Warning\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Los Angeles County\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"006037\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"EVACUATION WARNING\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP 1.2 alert area matches requested polygon geocode",
+   "FCC report over-broad alert area county-wide wireless emergency alert",
+   "CAP status Actual Exercise Alert msgType Update Cancel references"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1077,
+  "output_tokens": 81,
+  "at": "2026-11-09T17:06:14Z"
+ }
+}

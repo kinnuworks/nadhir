@@ -1,0 +1,144 @@
+{
+ "key": "7b8b36397db394de3eed597042fc702b97436b6715bcba07ca8e7068fb78710a",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('TDRA cell broadcast handset Arabic message requirements', 'CAP 1.2 multilingual alert translation instruction consistency', 'fog warning low visibility driving advice alert wording'):\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0263] 3.2 TDRA Consumer Protection Regulations v2 (p.45):\n(c) fixed-line telephone handsets including cordless handsets; (d) bespoke devices which are necessary to access or receive the specific Telecommunications Services(s) supplied by the Licensees; or (e) any other device or category of device as may be specified by the TDRA from time to time.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[CAPCP#0142] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nType: Policy Value: a <valueName> of “profile:CAP-CP:1.0:AutoTranslated” and a <value> of “yes” or “no” Description: Automated translation is any kind of machine based translation of free form text or the assembly of phrases based on pre-set values where a human translator has not been involved. The purpose of this rule is to support advanced distribution decisions associated with multilingual messages.\n\n[CAPCP#0058] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\neffective onset expires senderName Recommendation #4 (A <senderName> is strongly recommended) headline description instruction web contact parameter Recommendation #7 (Indicate when an update message contains non-substantive content changes.) Recommendation #6 (Indicate automated translation of free form text)\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0089] UAE National Strategy for AI 2031 (p.18):\nEmployment Transition Support Workers with low digital skills (60% of the workforce) AI experts (0.2%) Professionals with expert digital skills (5%) Funding secondments overseas Short couses on specific techniques Skills training for 60% of the workforce with low digital skills would benefit from more robust data on current skills in the labor force and current job openings. The AI Office supports the Minister of State for Higher Education and Advanced Skills in their efforts to improve this data collection, and champions efforts to develop a series of career advice tools and services to help current and future workers make more informed choices.\n\n[MHEWS-2026#0380] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nIn regions where internet access is limited, where digital literacy is low, or where communities rely primarily on offline communication channels, these systems may provide only partial visibility into the information environment. As a result, misinformation circulating through offline networks - such as word of mouth, community radio, or informal messaging groups- may remain undetected. Unequal and limited access to digital channels may cause uneven protection against misinformation. Although fake news detection research is advancing from early development toward\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0081] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57298):\nMake sure pets do not drink water that has not been boiled. [URL] 911 Outage Alert [SENDING AGENCY]: A 9-1-1 OUTAGE ALERT is in effect for [LOCATION]. Please contact police, fire, medical, or other emergency services directly at their local phone numbers in case of emergency. If you dial 9-1-1, you may not get help. [URL] Avalanche Warning [SENDING AGENCY]: An AVALANCHE WARNING is in effect in [LOCATION] until [TIME]. Unstable, fast-moving snow can happen quickly, causing injury or death and can block roads and damage property in affected areas. LEAVE areas near [LOCATION]. DO NOT return to area after evacuation until directed by local officials. Travel in the area is not recommended. Avalanches may run long distances. [URL] Fire Warning [SENDING AGENCY]: A FIRE WARNING in [LOCATION] is in effect until [TIME]. Evacuate your family and pets now, do not delay. Visibility in area will be reduced and roads can become blocked. If you do not leave now, you could be trapped, injured, or killed. LEAVE areas near [LOCATION]. Expect reduced visibility, heavy smoke, and difficulty breathing. Be careful when driving. Watch for public safety personnel operating in the area and follow their instructions. [URL] Hazardous Materials Warning [SENDING AGENCY]: HAZARDOUS MATERIALS were released at [TIME] in [LOCATION].",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning. The hazard (thick fog, visibility possibly dropping to zero at times), the western regions of the UAE, the times (21:30 tonight, Tue 17 Feb, until 10:00 Wed 18 Feb), the source (National Center for Meteorology) and the protective actions (drive with extreme caution, keep a safe distance, follow reduced speed limits) are all rendered faithfully. The URL is unchanged. The Arabic was machine translated, so a named Arabic reader must still approve it.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The Arabic was produced by machine translation and has not been human-verified. This is a process point, not a meaning difference.",
+    "searched_for": "UAE or TDRA requirement for human review of machine-translated Arabic in alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5383,
+  "output_tokens": 286,
+  "at": "2026-11-09T17:18:24Z"
+ }
+}

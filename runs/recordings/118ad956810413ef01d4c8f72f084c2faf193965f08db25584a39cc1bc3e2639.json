@@ -1,0 +1,139 @@
+{
+ "key": "118ad956810413ef01d4c8f72f084c2faf193965f08db25584a39cc1bc3e2639",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-08-22, https://www.wam.ae/en/article/c1v24bo-ncm-forecasts-light-heavy-rain-across-several-uae\",\n   \"text\": \"ABU DHABI, 22nd August, 2026 (WAM) -- The National Centre of Meteorology (NCM) issued an alert over the possibility of convective cloud formation accompanied by light to moderate rainfall, which may become heavy at times. The alert is in effect from 13:30 on Saturday until 21:00 the same day. The NCM said the weather conditions are expected to affect some eastern, southern and western areas, extending to parts of the country's interior.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Rain and convective clouds\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"NCM alert: possible rain, heavy at times, Saturday 13:30 to 21:00\",\n  \"description\": \"NCM alert: convective clouds may bring light to moderate rain, heavy at times, to some eastern, southern and western areas and parts of the interior. In effect Saturday 13:30 to 21:00.\",\n  \"instruction\": \"Take care if you are outdoors or driving while it rains. Follow official updates at https://alerts.example.ae.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty Possible severity Moderate definitions', 'NCM convective cloud rainfall alert wording', 'CAP urgency Expected onset effective expires times'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[ITU-UAE:01_AI_Strategy_and_Governance/MOCAI_AI_Ethics#0020] MOCAI AI Ethics (p.6):\nNotes: 1. 2. 10 This definition applies regardless of whether the AI system was developed in-house or procured. It is possible for organizations to be both an AI developer organization and an AI operator organization.\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[MHEWS-2026#0213] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.57):\nSandmæl et al., 2023). Moreover, NASA has published an open-source software that uses ML methods to automatically detect severe convective storm cloud-top features—such as overshooting tops and above-anvil cirrus plumes— from geostationary satellite (Cooney et al., 2025). In a similar manner, flood detection from earth observation is supported by ML workflows that classify water and inundation extent from satellite imagery to enable timely rescue operations, as documented by UN-SPIDER in its compilation of flood detection and mapping ML applications (UNOOSA, n.d.).\n\n[MHEWS-2026#0636] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.145):\nC., ... Bengio, Y. (2022). Tackling Climate Change with Machine Learning. ACM Computing Surveys (CSUR), 55(2), 42:1-42:96. https://doi.org/10.1145/3485128 222. Rosenfeld, D., Woodley, W. L., Lerner, A., Kelman, G., & Lindsey, D. T. (2008). Satellite detection of severe convective storms by their retrieved vertical profiles of cloud particle effective radius and thermodynamic phase. Journal of Geophysical Research: Atmospheres, 113(D4). https://doi.org/10.1029/2007JD008600 223. Rossi, C., & Frisiello, A. (2024). Human-Centred Public Warnings. In Responding to Extreme Weather Events (pp. 243–274). John Wiley & Sons, Ltd. https://doi.org/10.1002/9781119741374.ch12\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0152] 3.2 TDRA Consumer Protection Regulations v2 (p.27):\nthe concerned Subscriber has paid for or is expected to pay for; and (b) the concerned Subscriber has reported the service outage to the concerned Licensee; and (c) the length of time that the Telecommunications Service is unavailable exceeds the limits given in these Regulations.\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0070] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.46):\nadditional resources that can be called on to provide aid and support. This may include the activation of teams from other Entities to assist in response, including requesting additional help from local authorities, or escalation of incident management to teams outside the area of impact. As the impact of an emergency or crisis or disaster becomes more severe, it can require more resources for initial response than for normal operations. In some cases, the need for support from Human Resources, IT and Building Services may be two or three times greater than it is normally. At the same time, there will be a decrease in certain levels of performance, or “turnaround”, for activities most impacted by the disruption. In this case, the department shall prioritize its tasks and adjust its expectations of what work will be completed and how long it will take to complete such work as long as it is operating in ‘crisis mode’. The Business Impact Analysis can be used to adjust expectations for the level of performance, time to recover, and the resources required to restore continuity of operations. Until such requirements are met, the entity will need to prioritize allocation of its limited resources and adjust performance expectations across its business units, departments and operations. (For more details, see section 8.8 on BCM plan).\n\n[CAP12#0263] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n· Changed CAP namespace to URN form · Tightened usage of dateTime formats in <sent>, <effective>, <onset> and <expiration> · Corrected schema to correct value of “CBRNE” in <event> · Conformed examples in Appendix A to new namespace.\n\n[CAP12#0109] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\nonset cap. alertInfo. onset. time The expected time of the beginning of the subject event of the alert message (OPTIONAL) (1) The date and time SHALL be represented in the DateTime Data Type (See Implementation Notes) format (e.g., “2002-05-24T16:49:00-07:00” for 24 May 2002 at 16: 49 PDT).\n\n[CAPAU#0141] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.41):\ncorrected <expires> time in the example; added examples to <urgency> and <severity>; clarified Notes for <urgency>, <severity> and <certainty>; fixed typos in <effective> and <resource> elements; clarified Notes for <urgency>, <severity> and <certainty> c. Add term “Layer” and definition to 1.3 d. Additional changes to Table 1: removed Note 2 from <alert>; added recommendation to Note 1 of <sender>; changed Note 3 of <sender> to use message identifier and source element; removed Note 4 and Example 4 of <sender>; changed <source> to <sender> and corrected placement of <sender> in Example A of <msgType>; removed Note 3 and renumber subsequent notes of <info>; added clarification of what must be identical in multilingual messages of <info>; deleted Note 2 and Note 3 and moved examples from <event> to <eventCode>; clarified Note 3 and Note 4 of <eventCode>; changed <effective> and <expires> from REQUIRED to OPTIONAL; clarified Note 1 and removed Note 2 from <expires>; reworded Note 1 and removed Note 4 in <effective>; changed <effective> Examples A and B; corrected Note 2 of <instruction>; added sentence to Note 1 of <parameter>; corrected Note 2 of <parameter>; corrected Note 3 of <parameter>; removed Note 15 and 16 from <parameter>; removed Notes 1, 2, 3 from <resource>; corrected URN in example of <area>; removed Note 2 of <area>; removed Note 6 of <area>;",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the NCM bulletin. It gives the same hazard (convective cloud with light to moderate rain, heavy at times), the same window (Saturday 13:30 to 21:00), and the same areas (some eastern, southern and western areas and parts of the interior). Severity Moderate and certainty Possible are consistent with the bulletin's wording (\"possibility\", \"may become heavy\") and the CAP definitions. The alert contains no unverified report.",
+  "objections": [],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5604,
+  "output_tokens": 180,
+  "at": "2026-11-09T17:12:06Z"
+ }
+}

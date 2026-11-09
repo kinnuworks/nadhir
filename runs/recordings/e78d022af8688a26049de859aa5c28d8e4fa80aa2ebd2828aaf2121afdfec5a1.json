@@ -1,0 +1,163 @@
+{
+ "key": "e78d022af8688a26049de859aa5c28d8e4fa80aa2ebd2828aaf2121afdfec5a1",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الشرقية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review emergency alert language consistency', 'TDRA cell broadcast handset spec Arabic message text', 'fog warning visibility driving instruction early warning UAE'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0005] DotEmarat Policy EN (p.2):\n8.6. . (dotEmarat) Domain Name Variants 6 8.7. Reserved Names List 7 9. Eligibility Requirements 7 10. Eligibility Requirements for 11. Eligibility Requirements 12. Policy review 8 . (dotEmarat) – Unrestricted Zone 8 . (dotEmarat) Restricted Zones 8 Appendix A – Language Tables 9 Table of Allowed Arabic Letters 9 Table of Allowed Numbers and Special Characters Table 10 Active Variant Table 11 ii\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Accessibility_Policy_English#0037] Accessibility Policy English (p.13):\n3. Provide text to sign language translation Government entities need to provide sign language feature to make services and products available to People of Determination with hearing challenges Senior Citizenry.\n\n[ON-PICKERING-2020#0103] Investigation into the emergency alerts sent on January 12, 2020 (Pre-scripted messages):\nThe PEOC did not have any French language templates. Procedures existed for submitting an emergency French translation request. The service standard for emergency French translation was to respond within 30 minutes. On January 12, 2020, as the first alert was sent in error, translation was not considered. The PEOC did not submit an emergency French language request for the second alert.\n\n[FCC-FR-2025#0023] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nC. Template Language in 13 Additional Languages 12. We adopt the multilingual templates located in Appendix D. In the WEA Multilingual Public Notice, the Bureau proposed translations in Arabic, Chinese (Simplified), French, German, Haitian Creole, Hindi, Italian, Korean, Portuguese, Russian, Spanish, Tagalog, and Vietnamese, which were developed through a contracted professional translation service. In addition to the comments submitted into the record, the Bureau worked with the Consumer and Governmental Affairs Bureau to acquire feedback from native language speakers and communities representing the populations these alerts are intended to reach. We received feedback on these templates from language teachers and members of local, state, and national organizations representing communities of language speakers. The comments we received were evaluated with the assistance of the Commission's contracted professional translation services. Based on this feedback, we adopt templates in the written forms of the 13 most commonly spoken languages in the United States after English. Accordingly, as required in the 2023 WEA Report and Order, when an alerting authority chooses to send a template-based multilingual alert message, the WEA-capable mobile device must be able to extract and display the relevant template in the subscriber's default language, provided that the default language is one of the 13 languages that we adopt templates for today.\\3\\ ---------------------------------------------------------------------------\n\n[FCC-DA-25-12#0038] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.8):\nC. DA 25-12 Template Language in 13 Additional Languages 17. We adopt the multilingual templates located in Appendix D. In the WEA Multilingual Public Notice, the Bureau proposed translations in Arabic, Chinese (Simplified), French, German, Haitian Creole, Hindi, Italian, Korean, Portuguese, Russian, Spanish, Tagalog, and Vietnamese, which were developed through a contracted professional translation service. In addition to the comments submitted into the record, the Bureau worked with the Consumer and Governmental Affairs Bureau to acquire feedback from native language speakers and communities representing the populations these alerts are intended to reach. We received feedback on these templates from language teachers and members of local, state, and national organizations representing communities of language speakers. 49 The comments we received were evaluated with the assistance of the Commission’s contracted professional translation services. 50 Based on this feedback, we adopt templates in the written forms of the 13 most commonly spoken languages in the United States after English. Accordingly, as required in the 2023 WEA Report and Order, when an alerting authority chooses to send a template-based multilingual alert message, the WEA-capable mobile device must be able to extract and display the relevant template in the subscriber’s default language, provided that the default language is one of the 13 languages that we adopt templates for today. 51 18.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0263] 3.2 TDRA Consumer Protection Regulations v2 (p.45):\n(c) fixed-line telephone handsets including cordless handsets; (d) bespoke devices which are necessary to access or receive the specific Telecommunications Services(s) supplied by the Licensees; or (e) any other device or category of device as may be specified by the TDRA from time to time.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[UAE-PORTAL-EWS#0028] Handling emergencies (section 'National Early Warning System') (Road accidents):\nRoad accidents Call the police on 999 (from anywhere in the UAE). Inform them about the accident, mention your location and wait for their instructions. If it is a minor accident and no one is hurt, you can move your car to the shoulder lane to avoid blocking traffic. You should wait for the police at a minimum distance of 15 metres away from your car.\n\n[FCC-FR-2025#0081] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57298):\nMake sure pets do not drink water that has not been boiled. [URL] 911 Outage Alert [SENDING AGENCY]: A 9-1-1 OUTAGE ALERT is in effect for [LOCATION]. Please contact police, fire, medical, or other emergency services directly at their local phone numbers in case of emergency. If you dial 9-1-1, you may not get help. [URL] Avalanche Warning [SENDING AGENCY]: An AVALANCHE WARNING is in effect in [LOCATION] until [TIME]. Unstable, fast-moving snow can happen quickly, causing injury or death and can block roads and damage property in affected areas. LEAVE areas near [LOCATION]. DO NOT return to area after evacuation until directed by local officials. Travel in the area is not recommended. Avalanches may run long distances. [URL] Fire Warning [SENDING AGENCY]: A FIRE WARNING in [LOCATION] is in effect until [TIME]. Evacuate your family and pets now, do not delay. Visibility in area will be reduced and roads can become blocked. If you do not leave now, you could be trapped, injured, or killed. LEAVE areas near [LOCATION]. Expect reduced visibility, heavy smoke, and difficulty breathing. Be careful when driving. Watch for public safety personnel operating in the area and follow their instructions. [URL] Hazardous Materials Warning [SENDING AGENCY]: HAZARDOUS MATERIALS were released at [TIME] in [LOCATION].\n\n[FCC-DA-25-12#0158] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.30):\n911 Outage Alert [SENDING AGENCY]: A 9-1-1 OUTAGE ALERT is in effect for [LOCATION]. Please contact police, fire, medical, or other emergency services directly at their local phone numbers in case of emergency. If you dial 9-1-1, you may not get help. [URL] [SENDING AGENCY]: An AVALANCHE WARNING is in effect in [LOCATION] until [TIME]. Unstable, fast-moving snow can happen quickly, causing injury or death and can block roads and damage property in affected areas. LEAVE areas near [LOCATION]. DO NOT return to area after evacuation until directed by local officials. Travel in the area is not recommended. Avalanches may run long distances. [URL] [SENDING AGENCY]: A FIRE WARNING in [LOCATION] is in effect until [TIME]. Evacuate your family and pets now, do not delay. Visibility in area will be reduced and roads can become blocked. If you do not leave now, you could be trapped, injured, or killed. LEAVE areas near [LOCATION]. Expect reduced visibility, heavy smoke, and difficulty breathing. Be careful when driving. Watch for public safety personnel operating in the area and follow their instructions. [URL] [SENDING AGENCY]: HAZARDOUS MATERIALS were released at [TIME] in [LOCATION]. Exposure may cause difficulty breathing, loss of coordination, burning sensation in eyes, nose, throat, or lungs, nausea, and possibly death. LEAVE areas near [LOCATION].\n\n[FCC-DA-25-12#0154] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.29):\nSevere Thunderstorm Warning [SENDING AGENCY]: A SEVERE THUNDERSTORM WARNING is in effect for [LOCATION] until [TIME] for DESTRUCTIVE 80 mile per hour winds. Take shelter inside a sturdy building, away from windows. Flying objects may be deadly to those outside a sturdy shelter. [URL] [SENDING AGENCY]: A SNOW SQUALL WARNING is in effect for [LOCATION] until [TIME]. Slow down or delay travel! Be ready for a sudden drop to near zero visibility and icy roads in heavy snow. [URL] [SENDING AGENCY]: A DUST STORM WARNING is in effect for [LOCATION] until [TIME]. Be ready for sudden drop to zero visibility. Pull Aside, Stay Alive! When visibility drops, pull far off the road and put your vehicle in park. Turn the lights off and keep your foot off the brake. Infants, the elderly, and those with trouble breathing urged to take precautions. [URL] [SENDING AGENCY]: A HURRICANE WARNING is in effect for [LOCATION] for dangerous and damaging winds until [TIME]. This warning is issued up to 36 hours before hazardous conditions begin. Take steps to protect life and property. Have food, water, cash, fuel, and medications for 3+ days. FOLLOW INSTRUCTIONS FROM LOCAL OFFICIALS. [URL] [SENDING AGENCY]: A STORM SURGE WARNING is in effect for [LOCATION] for the danger of life-threatening flooding until [TIME].",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic description changes the place: English says western regions, but the Arabic description says \"المناطق الشرقية\" (eastern regions). The Arabic headline correctly says western. This is a location error that could send drivers in the wrong areas to ignore the warning or alarm the wrong population. Times, dates, source, visibility, and the driving instruction match the English.",
+  "objections": [
+   {
+    "issue": "Arabic description says eastern regions (المناطق الشرقية) instead of western regions (المناطق الغربية), contradicting the English description and the Arabic headline.",
+    "field": "arabic.description",
+    "blocking": true,
+    "fix": "Replace \"المناطق الشرقية\" with \"المناطق الغربية\" in the Arabic description, then have a named Arabic reader confirm it.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic.description",
+      "quote": "في المناطق الشرقية من دولة الإمارات"
+     },
+     {
+      "kind": "view",
+      "ref": "english.description",
+      "quote": "across western regions of the UAE"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6684,
+  "output_tokens": 386,
+  "at": "2026-11-09T17:17:41Z"
+ }
+}

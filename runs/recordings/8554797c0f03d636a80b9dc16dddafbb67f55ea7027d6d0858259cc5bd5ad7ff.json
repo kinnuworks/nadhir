@@ -1,0 +1,33 @@
+{
+ "key": "8554797c0f03d636a80b9dc16dddafbb67f55ea7027d6d0858259cc5bd5ad7ff",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Planned test of the Pan-India Emergency Alert System (cell broadcast) by DoT with NDMA. No hazard.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Test\",\n  \"event\": \"Test of Pan-India Emergency Alert System\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"Emergency alert: Extreme\",\n  \"description\": \"This is a SAMPLE TESTING MESSAGE sent through Cell Broadcasting System by Department of Telecommunication, Government of India. Please ignore this message as no action is required from your end. This message has been sent to test Pan-India Emergency Alert System being implemented by National Disaster Management Authority. It aims to enhance public safety and provide timely alerts during emergencies.\",\n  \"instruction\": \"Please ignore this message as no action is required from your end.\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP 1.2 status Test severity certainty values for exercise alerts",
+   "cell broadcast test message severity Extreme presidential alert test",
+   "WMO guidance alert severity certainty consistent with hazard bulletin"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 916,
+  "output_tokens": 81,
+  "at": "2026-11-09T17:05:42Z"
+ }
+}

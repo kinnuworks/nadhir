@@ -1,0 +1,201 @@
+{
+ "key": "76582dddd3c4aad24b32e1aaafa16c00994498cee59349647606c9a63be9d159",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced\",\n   \"text\": \"ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": false,\n   \"source\": \"illustrative rumour written for this test\",\n   \"text\": \"Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now\"\n  },\n  {\n   \"n\": 3,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Disregard the earlier alert\",\n  \"description\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n  \"instruction\": \"No action is needed.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 Cancel message type reference earlier alert', 'alert correction retraction wording sent in error', 'NCM dust visibility warning UAE alert severity certainty'):\n\n[ITU-UAE:02_Data_Protection/2.4_UAE_Federal_Open_Data_Policy#0016] UAE Federal Open Data Policy & DGov Open-Data Specifications (Message Us):\nMessage Us Email * Name Message * Cancel Submit\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0299] 3.2 TDRA Consumer Protection Regulations v2 (p.50):\n25 Subscribers who are juridical Persons 26 This includes all existing and new bundles 27 The Hard Cap applies to the type of data specified in the data bundle. For example, if the data bundle is for ‘Social Data’ only, then the Hard Cap shall apply to ‘Social Data’ only. However, if the data bundle applies to all data types, then the Hard Cap shall also apply to all data types.\n\n[CAPCP#0105] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nRule #9. An Update or Cancel message should minimally include references to all active messages Element: <references> Use: Optional Type: Technical Value: Description: An element that lists earlier message(s) referenced by the alert message.\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAP12#0076] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nCode Values: “Alert” - Initial information requiring attention by targeted recipients “Update” - Updates and supercedes the earlier message(s) identified in <references> “Cancel” - Cancels the earlier message(s) identified in <references>\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0415] 3.2 TDRA Consumer Protection Regulations v2 (p.70):\nIn the event that any statement made by a Licensee is misquoted in the media, to the extent that the misquote does, or may, result in an apparent breach of these Regulations, the Licensee shall take reasonable steps to procure a retraction or correction or other appropriate remedial action concerning the\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0153] API First Guideline (p.58):\n5. Technical Guidelines ⁞ 5.3.2⁝ Types of Errors Errors and exceptions could occur while processing the request/ response within the Service Provider. As a principal, it is recommended to handle the exceptions wherever possible and to pass appropriate response messages to the invoking services. This helps in understanding the error scenarios better and resolving the issues without delays. The exceptions can occur within the service hosted by the Service Provider. These exceptions/errors should be handled as detailed out in the section below and appropriate error codes and descriptions should be sent to the invoking service. Service Providers should handle these errors appropriately. The following type of exceptions can happen at service level: 1} Business Validation Failures 2} Technical Validation Failures 3} System Failures\n\n[ON-PICKERING-2020#0055] Investigation into the emergency alerts sent on January 12, 2020 (Sequence of events):\n7:37 a.m. Cabinet Office queried SOLGEN and Ministry of Energy, Northern Development and Mines (ENDM) executives requesting an explanation for the alert. 7:39 a.m. PEOC sent an e-mail to an internal group of emergency management staff advising that “A NAAD System alert was sent out in error. Retraction Process has begun!”\n\n[ON-PICKERING-2020#0094] Investigation into the emergency alerts sent on January 12, 2020 (Terminology):\nTerminology Pelmorex Corp. (Pelmorex) and EMO documentation and communication referred to varying terminology to describe potential corrective action for an alert sent in error. PEOC staff and Ministry of the Solicitor General management referred to “retracting” the alert. During this investigation, a retraction definition or process could not be found.\n\n[ON-PICKERING-2020#0127] Investigation into the emergency alerts sent on January 12, 2020 (Communications with government and stakeholders):\nCommunications with government and stakeholders As the first alert was sent in error, the PEOC could not notify EMO management and stakeholders in advance. EMO staff experienced a high volume of queries from federal, provincial and municipal officials seeking information and clarification regarding the first alert. Stakeholders were variously told that the alert was issued in error, that there was a technical malfunction and that a retraction was underway. Between the issuance of the two alerts, some stakeholders re-contacted the EMO staff, growing increasingly frustrated with the lack of corrective action and related messaging for the public.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0068] UAE National Air Quality Agenda 2031 (p.11):\nIncluding mineral dust and naturally occurring aerosols. 23 16 have an influence on local-scale air circulation, and thus on pollutant levels experienced by receptors. • Inadequate communication and identification of clear roles and responsibilities within intra- and inter-emirate level stakeholders.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert does not match the NCM bulletin. It tells the public to disregard an earlier alert sent in error, but the bulletin shows an active, real dust and visibility hazard. The alert is also marked as an Actual, Immediate, Observed, Moderate event while its text withdraws the hazard. It gives no times or places, and it tells people no action is needed while NCM urges caution when driving. The unverified dam-burst rumour is correctly left out.",
+  "objections": [
+   {
+    "issue": "The alert says a real, verified hazard alert was sent in error and that no action is needed. NCM's bulletin says the dust and reduced visibility are real and urges caution on open roads. The retraction content contradicts the bulletin, and nothing in the inputs shows an earlier alert was wrong. If a cancellation is really intended, a person must decide that, and it must be sent as a Cancel message referencing the earlier alert, not as an Actual alert.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Remove the 'sent in error' and 'no action needed' wording. Restate the NCM hazard: active fresh to strong northwesterly winds, blowing dust and sand, visibility below 2,000 m in some coastal and inland areas, from 14:55 to 19:00 on 4 March 2026, with a caution to drivers on open roads. If a cancellation is genuinely intended, escalate to a person to decide and send it as msgType Cancel with references.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "it was sent in error"
+     },
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "No action is needed."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "urged members of the public to exercise caution"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0076",
+      "quote": "Cancels the earlier message(s) identified in <references>"
+     }
+    ]
+   },
+   {
+    "issue": "The headline and event fields conflict. The status is Actual, with Immediate urgency and Observed certainty, but the headline says to disregard the alert. The headline also carries none of the bulletin's hazard, time window or places.",
+    "field": "headline",
+    "blocking": false,
+    "fix": "Use a headline that states the hazard, for example 'Blowing dust and reduced visibility across the UAE until 19:00'. Keep the status, urgency and certainty consistent with the bulletin.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "Disregard the earlier alert"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "continue until 19:00 this evening"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Whether the severity of Moderate is supported by the bulletin. The bulletin gives no severity rating.",
+    "searched_for": "NCM dust visibility warning UAE alert severity certainty"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5272,
+  "output_tokens": 987,
+  "at": "2026-11-09T17:14:06Z"
+ }
+}

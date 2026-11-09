@@ -1,0 +1,191 @@
+{
+ "key": "7e6bb05d79c33df12f886806ec2b5cfe2c758994409221664a7c8e4687799c37",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"EXTREME DANGER: Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency definitions Observed Likely', 'fog low visibility warning severity level guidance WMO', 'UAE NCM alert wording accuracy hazard times'):\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0102] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: “Observed” – Determined to have occurred or to be ongoing “Likely” - Likely (p > ~50%)\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.1_UAE_Digital_Government_Strategy_2025#0028] UAE Digital Government Strategy 2025 (Ministry/Agency specific):\nMaturity Level Sub Indicator 1 Very low level of maturity 2 Low level of maturity 3 Average level of maturity 4 High level of maturity 5 Very high level of maturity The objective is 100 per cent - very high level of maturity for all UAE government entities on both federal and local levels by 2025.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0015] API First Guideline (p.9):\nUAE Government API First Guidlines 1.4. Scope This document aims to be a useful tool in planning and implementing digital transformation in UAE government entities and organizations. It contains a set of high-level guidelines with design and implementation guidance, along with low-level API best practices to guide government entities in their development of APIs. This document will help ensure that government services are: • Interoperable with other platforms and services. Less likely to be locked to a particular vendor or technology. More future-proof and easier to update and test. • •\n\n[MHEWS-2026#0578] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.135):\nNoor GenAI Voice Assistant Pakistan Disaster preparedness information A generative AI voice assistant accessible through basic mobile phones provides spoken disaster guidance in Urdu via a toll-free number. The offline design ensures that early warning information remains accessible in low-connectivity and low-literacy environments. By enabling conversational access to trusted guidance, the system strengthens last-mile warning communication (Pillar 3) and supports community preparedness and protective decision-making (Pillar 4). Further information: https://viamo.io/\n\n[ESTR-AICNHM#0431] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.93):\nORI uses NLP, ML, chatbots and customisation options to align to user preferences. ORI provides and prioritizes some forecasted alerts such as hurricane tracks, flood warnings and wildfire prone conditions. By assigning red (high severity), orange (medium severity) and yellow (low severity) to each alert, users can make a judgment on which alerts to monitor and which to analyse deeper for mitigation. ORI does not use sensor-based detection of events at this time – it is primarily for helping disaster relief leaders to prioritize which crisis to respond to first.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE-Smart-Data-Standards-EN--Part-1#0052] UAE-Smart-Data-Standards-EN--Part-1 (Principle 7: Data quality):\nPrinciple 7: Data quality In order to enable the efficient and effective delivery of customer-centric services, improve the accuracy of evidence-based decision-making, and build confidence in both, Entities should manage and improve data quality over time. This means that:\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[MHEWS-HL#0003] Highlights: Leveraging AI to Enhance Multi-Hazard Early Warning Systems (p.1):\n• AI advances hazard detection and forecasting in terms of speed, accuracy, and cost-efficiency; enabling better prediction of high-impact events and more frequent updates. It increasingly supports impact forecasting by linking hazard data with exposure and vulnerability information and enhances real-time monitoring and early warnings while complementing human decision-making. However, gaps in data coverage, regional bias, and limited operational integration remain, requiring stronger frameworks for transparency and human interpretability. o\n\n[ESTR-AICNHM#0034] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.13):\n6.1 Alerts and early warning systems Alerts and early warning systems (EWS) are tools that can save lives and infrastructure and assist disaster managers and government authorities in disaster management. EWS can be decomposed into four key elements: risk information, continuous monitoring to provide (near) real-time detection and (short lead time) forecasts, reliable communications media to disseminate warning messages in a systematic manner to targeted populations [b-UNDP], and clear instructions on how targeted populations should respond [b-NIDM]. Risk information encompasses details about the natural hazard, exposure and vulnerability [b-Trogrlić]. Hazard maps are a tool that can provide such risk information. To learn more about how AI can create (and can leverage) hazard maps (see clauses 6.3 and 8). Among the topic group use cases (clause 8), there are ample examples of how AI is being used to support continuous monitoring and (near) real-time detection of natural hazards.3 As acknowledged in [b-WMO], monitoring and detection are critical for the timely generation of warnings that provide communities an opportunity to react. The use case proponents name a higher speed and accuracy of (near) real-time detection and (short lead time) forecasts as advantages of AI.4 Furthermore, a distributed learning approach can offer robustness against network failures.5 These use cases are analysed to derive the best practices",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the NCM bulletin on hazard, region and times. Severity is 'Extreme' and certainty is 'Observed', and the bulletin supports neither. It describes a warning of potential fog and visibility that is 'expected to deteriorate' and 'may drop to zero at times', which is a forecast. The headline's 'EXTREME DANGER' wording also goes beyond the bulletin.",
+  "objections": [
+   {
+    "issue": "Certainty 'Observed' means the event has occurred or is ongoing. The bulletin gives a forecast of potential fog starting at 21:30 tonight, so certainty is overstated. Likely or Possible fits better.",
+    "field": "certainty",
+    "blocking": true,
+    "fix": "Change certainty from Observed to Possible (the bulletin says 'potential fog formation'), or to Likely if the NCM confirms fog is probable. Set urgency to Expected if onset is still in the future.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "CAP12#0102",
+      "quote": "“Observed” – Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs.1",
+      "quote": "potential fog formation and significantly reduced horizontal visibility"
+     }
+    ]
+   },
+   {
+    "issue": "Severity 'Extreme' and the headline 'EXTREME DANGER' are not supported by the bulletin. The bulletin gives no severity level and only urges motorists to exercise extreme caution. The visibility drop to zero is qualified by 'may' and 'at times'.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Align severity with the NCM warning level (e.g. Moderate or Severe if the NCM states its level). Remove 'EXTREME DANGER' from the headline and use neutral wording such as 'Fog warning: visibility may drop to zero in western regions'.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert_english.headline",
+      "quote": "EXTREME DANGER: Fog warning: visibility may drop to zero"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs.1",
+      "quote": "may drop to zero at times"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Urgency 'Immediate' may be too high if the onset at 21:30 is still in the future. The UAE and CAP clauses returned contain no urgency definition.",
+    "searched_for": "CAP urgency definitions Immediate Expected"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5590,
+  "output_tokens": 856,
+  "at": "2026-11-09T17:15:12Z"
+ }
+}

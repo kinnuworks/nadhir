@@ -1,0 +1,168 @@
+{
+ "key": "8460affa0056a09ce90bf24259fa9ac77dfb1f04b8dc08412da3ad7f49c9754c",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"لا داعي لاتخاذ أي احتياطات، ويمكنكم القيادة بشكل طبيعي.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic instruction contradicts English protective action fog warning', 'TDRA cell broadcast handset Arabic message requirements', 'CAP 1.2 multilingual alert instruction consistency translation'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0025] DotEmarat Policy EN (p.9):\n8.5.2.3. 8.5.2.4. 8.5.2.5. 8.5.2.6. 8.5.2.7. be in Unicode Normalisation Form C (NFC); consist only of Unicode Code Points present in the Tables of Allowed Letters, Numbers and Special Characters defined in Appendix A; not begin with a digit (English ASCII or Arabic digits); not contain both English ASCII AND Arabic digits; neither begin with nor end with a dash; not contain a dash in the third and fourth positions (e.g. ; and not include a space (e.g. ).\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[FCC-23-88#0066] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.12):\ndata, in addition to English templates.62 These languages include: Spanish, Chinese, Tagalog, Vietnamese, Arabic, French, Korean, Russian, Haitian Creole, German, Hindi, Portuguese, and Italian.63 This action is consistent with the request of numerous members of Congress who wrote a letter urging the Commission to make WEA capable of multilingual alerting.64 We agree with the County of San Diego, the Language and Accessibility in Alert and Warning Workgroup (LAAWW), and Michigan State Police Emergency Management and Homeland Security Division’s Operations Management Section (Michigan State Police OMS) that the 13 languages for which we require support today would help make WEA content available to people who primarily speak a language other than English or Spanish for the first time.65 We also agree with the Attorneys General that this change will most directly benefit those who have historically been underserved by WEA.66 We believe that this action will mitigate a risk observed by researchers that individuals who primarily speak a language other than English or Spanish may not understand evacuation notices or instructions, raising the risk of harm. 20. In addition, we require Participating CMS Providers’ WEA-capable mobile devices to support templates in ASL.\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0263] 3.2 TDRA Consumer Protection Regulations v2 (p.45):\n(c) fixed-line telephone handsets including cordless handsets; (d) bespoke devices which are necessary to access or receive the specific Telecommunications Services(s) supplied by the Licensees; or (e) any other device or category of device as may be specified by the TDRA from time to time.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[CAPCP#0142] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nType: Policy Value: a <valueName> of “profile:CAP-CP:1.0:AutoTranslated” and a <value> of “yes” or “no” Description: Automated translation is any kind of machine based translation of free form text or the assembly of phrases based on pre-set values where a human translator has not been involved. The purpose of this rule is to support advanced distribution decisions associated with multilingual messages.\n\n[CAPCP#0058] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\neffective onset expires senderName Recommendation #4 (A <senderName> is strongly recommended) headline description instruction web contact parameter Recommendation #7 (Indicate when an update message contains non-substantive content changes.) Recommendation #6 (Indicate automated translation of free form text)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The Arabic instruction contradicts the English protective action. English says drive with extreme caution, keep a safe distance and follow reduced speed limits. Arabic says 'No need to take any precautions, and you may drive normally.' This is dangerous in a fog warning where visibility may drop to zero. The Arabic also omits the updates URL. Headline and description match the English in meaning, including numbers, times and place. The Arabic was machine translated and no named Arabic reader has approved it, so it must not be sent. A person must decide on correcting and approving it.",
+  "objections": [
+   {
+    "issue": "Arabic instruction reverses the protective action. It tells people no precautions are needed and normal driving is fine, whereas English instructs extreme caution, a safe distance and reduced speed. It also omits the updates link.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Replace the Arabic instruction with a faithful translation, e.g. 'قودوا بحذر شديد. حافظوا على مسافة أمان واتبعوا حدود السرعة المخفضة أثناء الضباب. للتحديثات: https://alerts.example.ae'. Have a named Arabic reader approve it before sending.",
+    "uae_basis": {
+     "status": "cites_uae",
+     "ref": "TDRA-TSFS001#0009",
+     "quote": "Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator."
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog."
+     },
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "لا داعي لاتخاذ أي احتياطات، ويمكنكم القيادة بشكل طبيعي."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Machine translation without human review of safety-critical text; no UAE clause shown requires human verification, though CAP-CP asks issuers to flag auto-translated elements.",
+    "searched_for": "UAE requirement for human verification of machine-translated alert text"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4910,
+  "output_tokens": 700,
+  "at": "2026-11-09T17:15:01Z"
+ }
+}

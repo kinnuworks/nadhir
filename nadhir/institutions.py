@@ -18,7 +18,7 @@ import math
 from concurrent.futures import ThreadPoolExecutor
 
 from . import cap, retrieval
-from .llm import call_json
+from .llm import REVIEW_MODEL, call_json
 
 GSM7 = set("@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&'()*+,-./0123456789:;<=>?¡ABCDEFGHIJKLMNOPQRSTUVWXYZ"
            "ÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà^{}\\[~]|€")
@@ -92,7 +92,12 @@ clause, at least 3 for the alert or inputs) from either a knowledge base clause 
 checked by code; an objection with no quote that matches is thrown away. Do not object to things
 outside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already
 reported to the approvers on every alert; do not object to them again.
-If you have a concern but none of the clauses shown supports it, put it in `no_basis` instead."""
+If you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.
+
+For every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,
+UAE-, DXB-) speaks to this issue, set status "cites_uae" with its id and a word-for-word quote; otherwise set
+status "none_applies" with empty ref and quote. Say "none_applies" honestly: it tells the regulator where UAE
+texts are silent."""
 
 REVIEW_SCHEMA = {
     "type": "object",
@@ -106,13 +111,17 @@ REVIEW_SCHEMA = {
                 "field": {"type": "string"},
                 "blocking": {"type": "boolean"},
                 "fix": {"type": "string"},
+                "uae_basis": {"type": "object", "properties": {
+                    "status": {"type": "string", "enum": ["cites_uae", "none_applies"]},
+                    "ref": {"type": "string"}, "quote": {"type": "string"}},
+                    "required": ["status", "ref", "quote"], "additionalProperties": False},
                 "evidence": {"type": "array", "items": {
                     "type": "object",
                     "properties": {"kind": {"type": "string", "enum": ["clause", "view"]},
                                    "ref": {"type": "string"}, "quote": {"type": "string"}},
                     "required": ["kind", "ref", "quote"], "additionalProperties": False}},
             },
-            "required": ["issue", "field", "blocking", "fix", "evidence"], "additionalProperties": False}},
+            "required": ["issue", "field", "blocking", "fix", "uae_basis", "evidence"], "additionalProperties": False}},
         "no_basis": {"type": "array", "items": {
             "type": "object",
             "properties": {"concern": {"type": "string"}, "searched_for": {"type": "string"}},
@@ -187,7 +196,7 @@ def review_one(role: str, view: dict, salt: str, local_first: bool = False) -> d
     view_is_uae = local_first
     shown = json.dumps(view, ensure_ascii=False, indent=1)
     plan, pmeta = call_json(PLAN_SYSTEM.format(**a), "What you can see:\n" + shown, PLAN_SCHEMA,
-                            salt=f"{salt}:plan", effort="low")
+                            salt=f"{salt}:plan", effort="low", model=REVIEW_MODEL)
     queries = [q for q in plan.get("queries", []) if q.strip()][:3]
     clauses, seen = [], set()
     for q in queries:
@@ -200,7 +209,7 @@ def review_one(role: str, view: dict, salt: str, local_first: bool = False) -> d
     kb_text = "\n\n".join(f"[{c['id']}] {c['title']} ({c['locator']}):\n{c['text']}" for c in clauses) or "(no clause scored high enough)"
     user = ("What you can see:\n" + shown + "\n\nKnowledge base clauses returned by your searches "
             f"({', '.join(repr(q) for q in queries)}):\n\n" + kb_text)
-    data, rmeta = call_json(REVIEW_SYSTEM.format(**a), user, REVIEW_SCHEMA, salt=f"{salt}:review")
+    data, rmeta = call_json(REVIEW_SYSTEM.format(**a), user, REVIEW_SCHEMA, salt=f"{salt}:review", model=REVIEW_MODEL)
     kept, dropped = [], []
     by_id = {c["id"]: c for c in clauses}
     flat = _flat(view)
@@ -213,6 +222,14 @@ def review_one(role: str, view: dict, salt: str, local_first: bool = False) -> d
                               "collection": c["collection"]})
             elif e["kind"] == "view" and retrieval.quote_in(e["quote"], flat, min_words=3):
                 ok_ev.append(e)
+        ub = o.get("uae_basis") or {"status": "none_applies", "ref": "", "quote": ""}
+        if ub.get("status") == "cites_uae":
+            c = by_id.get(ub.get("ref"))
+            if not (c and c["doc"] in retrieval.uae_docs() and retrieval.quote_in(ub.get("quote", ""), c["text"])):
+                ub = {**ub, "status": "unchecked", "why": "UAE quote not found word for word in a UAE clause shown"}
+            else:
+                ub = {**ub, "title": c["title"], "locator": c["locator"], "url": c["url"]}
+        o = {**o, "uae_basis": ub}
         if ok_ev:
             kept.append({**o, "evidence": ok_ev, "policy_cited": any(e["kind"] == "clause" for e in ok_ev),
                          "unchecked_evidence": len(o.get("evidence", [])) - len(ok_ev)})

@@ -1,0 +1,168 @@
+{
+ "key": "b89fd22475828825a644c86453aa76c0ee7c8ce92ea1ae5774c2fdf1be6a59d5",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Florida Division of Emergency Management\": {\n   \"name\": \"Florida Division of Emergency Management\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"test\",\n \"requested_area\": {\n  \"areaDesc\": \"State of Florida (broadcast EAS test only)\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"012000\"\n   ]\n  ],\n  \"drawn_for_event\": \"florida-test-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Florida Division of Emergency Management\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Test\",\n  \"severity\": \"Unknown\",\n  \"areaDesc\": \"State of Florida\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"012000\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"TEST\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise Test Actual drill alert', 'issuer authority register area permission alert originator', 'FCC EAS test alert mislabeled actual status failure'):\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0085] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nFurthermore, in this case, the midnight shift supervisor deviated from the abovereferenced procedure by creating a new script that blended elements from 1) the standard drill initiation message script (i.e., the ballistic missile checklist language that used the phrase “real world,” and preceded and followed the message with “exercise, exercise, exercise”) and 2) the EAS message for alerting the public to an actual missile attack (a message that used the phrase “This is not a drill.”).76 71 One emergency management agency the Bureau interviewed acknowledged that if a warning officer conducted a\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[ON-PICKERING-2020#0045] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nSource: Public Safety Canada, 2020 Under this framework, the PEOC is an alert issuer. Alert issuers submit their alerts to the alert aggregator and issuers are responsible for the content of alert messages. The PEOC issues alerts on behalf of Ontario municipalities, First Nations and the Government of Ontario. The Ontario Provincial Police issues AMBER alerts directly to the alert aggregator; similarly, Environment Canada issues weather alerts directly to the alert aggregator.\n\n[ON-PICKERING-2020#0044] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nAn authorized issuer enters the alert into the NAAD System. The NAAD System ensures quick and secure delivery of alerts to the Distributors, exactly as provided by the Issuer. The Public receives alerts through various channels and responds appropriately to the emergency or situation.\n\n[LA-2025#0013] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.6):\nFrom latimes.com Genasys, Inc., the software company used by the County for mapping targets and issuing Wireless Emergency Alerts (WEA) Los Angeles County The Federal Emergency Management Agency (FEMA) The Federal Communications Commission (FCC) All four entities responded to the oversight letters by the requested 12 deadline of April 1, 2025. KEY FINDINGS 1. The initial false alert is believed to be caused by technology issues with third-party technology vendor Genasys. In sending an alert, an Alert Originator designates a broad geographic area (geocode), like a county, where they have permission to send alerts.Within this geocode, a more precise geographic area (polygon) can be used to target alerts to only the area impacted by the threat. 12. https://robertgarcia.house.gov/media/press-releases/congressman-robert-garcia-leads-los-angeles-county-members-demand-answers\n\n[IPAWS-PROFILE#0041] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nSome exchange partners may elect not to transmit certain messages of <status> “Actual” based on the <eventCode> values of the messages. For example, CMAS may not carry EAS required weekly test messages.\n\n[FCC-16-127#0209] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.35):\nSee CMSAAC Report at 66. 209 See 47 CFR § 11.35 (requiring EAS Participants to “determine the cause of any failure to receive . . . required tests or activations,” indicating reasons why a test was not received in a log, and requiring such a log to be maintained for two years); 47 CFR § 11.61(3)(iv) (requiring EAS Participants to log tests results in the Electronic Test Reporting System (ETRS)). 210\n\n[FCC-HI-2018#0036] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.8):\nrequired weekly test, as well as for practice/demonstration warnings);47 CFR § 11.45 (prohibits the transmission of false or deceptive EAS messages other than in an actual National, State or Local Area emergency or authorized test of the EAS); 47 CFR § 10.350(a)(4) (end-to-end testing, i.e., testing of the WEA from the Federal Alert Gateway to\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the register with wildcard area and category, and the area matches the requested one (SAME 012000, State of Florida). However, the alert status is \"Actual\" while the context is EXERCISE / DRILL in a test console environment, so a drill would go out as a live alert. The status must be changed.",
+  "objections": [
+   {
+    "issue": "Status is \"Actual\" although the context is an exercise/drill in a test environment. A drill must stay a drill; the alert would be actionable by all recipients.",
+    "field": "alert.status",
+    "blocking": true,
+    "fix": "Change status from \"Actual\" to \"Exercise\" (with an exercise identifier in note) or \"Test\" as appropriate for the broadcast EAS test, so it is not actionable as a real alert.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.status",
+      "quote": "\"status\": \"Actual\""
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Actual\" – Actionable by all targeted recipients"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4653,
+  "output_tokens": 417,
+  "at": "2026-11-09T17:05:29Z"
+ }
+}

@@ -1,0 +1,168 @@
+{
+ "key": "77e57bc3e270a3c5d61f9c0fbdeceee4142a8e179bafaf30d157b438dd301ebe",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Thunder Rain\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"Thunder Rain\",\n  \"description\": \"Scattered rain that might be thundery at times causing drop in horizontal visibility over some areas, with fresh winds might exceed 50 km/h leading to rough sea.\",\n  \"instruction\": \"Take appropriate action\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity urgency certainty definitions Moderate Expected Possible', 'UAE early warning thunderstorm rain alert wording National Center of Meteorology', 'WMO guidance impact-based warnings hazard bulletin consistency alert instruction'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[ITU-UAE:01_AI_Strategy_and_Governance/MOCAI_AI_Ethics#0020] MOCAI AI Ethics (p.6):\nNotes: 1. 2. 10 This definition applies regardless of whether the AI system was developed in-house or procured. It is possible for organizations to be both an AI developer organization and an AI operator organization.\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[UAE-PORTAL-EWS#0046] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead on the website of National Center of Meteorology: What you should do before heavy rains, floods and thunderbolts Awareness messages prior to sand storms. Find digital services to get latest updates on weather conditions and environmental status. Weather-related health awareness guides Promoting Health and Safety Post Rainfall (PDF, 3.05 MB) Promoting Health and Safety Post Rainfall (in Urdu, 2.68 MB) Mosquito Bites (PDF, 1.97 MB)\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[CAP12#0229] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<senderName>NATIONAL WEATHER SERVICE SACRAMENTO CA</senderName> <headline>SEVERE THUNDERSTORM WARNING</headline> <description> AT 254 PM PDT...NATIONAL WEATHER SERVICE DOPPLER RADAR INDICATED A SEVERE THUNDERSTORM OVER SOUTH CENTRAL ALPINE COUNTY...OR ABOUT 18 MILES SOUTHEAST OF KIRKWOOD...MOVING SOUTHWEST AT 5 MPH. HAIL...INTENSE RAIN AND STRONG DAMAGING WINDS ARE LIKELY WITH THIS STORM.</description>\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[UAE-ISSUERS#0001] UAE Early Warning System: How it works and why you get alerts (section 'Who can send these alerts?'):\nOnly government entities involved in national emergency management are authorised to issue alerts.\n\n[WMO-REGISTER#0002] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nWMO Register of Alerting Authorities [ home ] OID: 2.49.0.0.784.0 WMO Member: United Arab Emirates ISO 3166: AE ARE 784 Issuing Organization: Meteorological Department Hazard Categories: Geo Met Safety Security Rescue Fire Health Env Transport Infra Other\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0069] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.45):\nThe entity’s Recovery Plan provides instruction and guidance to return to normal duties after an emergency, crisis or disaster. An Independent Information Technology Disaster Recovery (ITDR) plan should be developed to support continuity of the entity’s main activities and those pertaining to IT infrastructure. The ITDR Plan provides instruction and guidance to Information Technology (IT) personnel to regain access to and use information, data, and communications systems required to perform the entity’s main activities. The ITDR Plan is developed by the IT Department, or its related vendors to maintain IT and telecommunications systems. (For more details, see Sections 8.8.2 and 8.8.3) A.6.2.F Ensure capability of continuity and sustainability of main / essential services and functions Plans should be developed that allow a certain level of response that suits the severity of emergency, crisis or disaster. Rather than start with a full invocation at the outset of every incident, the entity should activate its incident management teams to a level appropriate to the scale of the event and the amount of information available regarding the impact of the emergency, crisis and disaster. To prepare for situations that may result in lack of resources needed to respond to a larger emergency, crisis or disaster, the entity should identify\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022\n\n[MHEWS-2026#0652] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.148):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) 289. 290. 291. 292. 293. 294. 295. 296. 297. 298. 299. wfp-somalia-anticipatory-action-and-integrated-climate-risk-updated-november-2023 WFP. (2024). WFP’s evidence base on Anticipatory Action 2015-2024. World Food Programme. https://www.wfp.org/publications/ wfps-evidence-base-anticipatory-action-2015-2024 WFP. (2025). 2025 - Anticipatory action in Somalia: Evidence and lessons learned from 2023 and 2024 activations. https://www. wfp.org/publications/2025-anticipatory-action-somalia-evidenc e-and-lessons-learned-2023-and-2024 Wilson, H. J., & Daugherty, P. R. (2018, July 1). Collaborative Intelligence: Humans and AI Are Joining Forces. Harvard Business Review. https://hbr.org/2018/07/ collaborative-intelligence-humans-and-ai-are-joining-forces WMO. (2015). WMO guidelines on multi-hazard impactbased forecast and warning services. World Meteorological Organization. https://library.wmo.int/viewer/54669 WMO. (2018). Manual on flood forecasting and warning. https://www.preventionweb.net/publication/ manual-flood-forecasting-and-warning WMO. (2021a). Guidelines on Multi-hazard Impact-based Forecast and Warning Services Part II: Putting Multi-Hazard IBFWS into Practice. https://reliefweb.int/report/world/wmoguidelines-multi-hazard-impact-based-forecast-and-warningservices-part-ii-putting WMO. (2021b). WMO Guidelines on Multi-hazard Impact-based Forecast and Warning Services. https://library.wmo.int/records/ item/57739-wmo-guidelines-on-multi-hazard-impact-basedforecast-and-warning-services WMO. (2022). Early Warnings for All Executive Action Plan 2023-2027. https://library.wmo.int/records/ item/58209-early-warnings-for-all WMO. (2023a). Guide to Instruments and Methods of Observation (WMO-No. 8). World Meteorological Organization. https://wmo.int/ guide-instruments-and-methods-of-observation-wmo-no-8-0 WMO. (2023b). Overview of the Early Warnings for All: Executive Action Plan 2023–2027. World Meteorological Organization. https://wmo.int/media/magazine-article/overview-of-early-warnings-all-executive-action-plan-2023-2027 WMO. (2024). EW4All National Roadmap Template. World\n\n[EW4ALL-P3#0057] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (About EW4All):\nLeveraging the Common Alerting Protocol and Cell Broadcast Technology for Advancing EW4All, Joint article for WMO Bulletin, October 2025 The technology dividend: Empowering and protecting communities through early warnings, Joint blog, October 2025",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "No hazard bulletin or verified event inputs were supplied (event_inputs is empty), so I cannot check the alert's hazard, times, places, severity, certainty or the 50 km/h wind and sea claims against a source. A person must supply the bulletin or decide whether the alert may go out. I also found that the alert gives no times or areas, which is a gap against any bulletin.",
+  "objections": [
+   {
+    "issue": "No hazard bulletin or verified inputs were provided, so the alert's content (thundery rain, reduced visibility, winds above 50 km/h, rough sea, Moderate/Possible) cannot be verified against the national met centre's bulletin. In addition, the alert states no onset or end time and no affected area ('some areas' is not a place), and it does not tie the 'Expected' urgency to any time.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Provide the NCM hazard bulletin with times and areas, then redraft the alert to match it: name the areas and validity period, and confirm severity, certainty and the wind figure against the bulletin. Without it, a person must decide whether to hold the alert.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "causing drop in horizontal visibility over some areas"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0101",
+      "quote": "Possible threat to life or property"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The instruction 'Take appropriate action' is vague and gives no protective guidance. This is mainly a message-content issue rather than a hazard-fact one.",
+    "searched_for": "WMO guidance impact-based warnings hazard bulletin consistency alert instruction"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5603,
+  "output_tokens": 585,
+  "at": "2026-11-09T17:04:18Z"
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "key": "427922654a0ff901525afb1400cb98ae06440128657e47d7c3041e42c9d84849",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced\",\n   \"text\": \"ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": false,\n   \"source\": \"illustrative rumour written for this test\",\n   \"text\": \"Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now\"\n  },\n  {\n   \"n\": 3,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology. Dubai and Sharjah are also affected.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity urgency certainty definitions Observed Immediate', 'WMO guidance impact-based warnings blowing dust visibility', 'unverified reports excluded from public alert messages'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_Public_Policy_Development_Guidebook#0028] UAE Public Policy Development Guidebook (p.15):\nLegislation Laws and regulatory decisions issued by legislative authorities are designed to govern specific sectors. They formalize rules and regulations, serving as tools for enforcing policies, when necessary. In some cases, a legislation may necessitate a pre-existing policy to regulate its articles and provisions. However, a legislation can also be drafted based on other inputs without the immediate requirement of a specific policy, depending on the nature and urgency of the topic at hand.\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[CAP12#0228] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<?xml version = \"1.0\" encoding = \"UTF-8\"?> <alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.2\"> <identifier>KSTO1055887203</identifier> <sender>KSTO@NWS.NOAA.GOV</sender> <sent>2003-06-17T14:57:00-07:00</sent> <status>Actual</status> <msgType>Alert</msgType> <scope>Public</scope> <info> <category>Met</category> <event>SEVERE THUNDERSTORM</event> <responseType>Shelter</responseType> <urgency>Immediate</urgency> <severity>Severe</severity> <certainty>Observed</certainty> <eventCode> <valueName>SAME</valueName> <value>SVR</value> </eventCode> <expires>2003-06-17T16:00:00-07:00</expires>\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0125] UAE National Air Quality Agenda 2031 (p.18):\nDevelop and adopt sector-specific guidelines for controlling odor impacts Reduce odor emissions arising from industrial and manufacturing activities. Operators to develop emission reduction plans Operators to develop emission reduction plans Develop and adopt sub-sector-specific guidance Operators to develop emission reduction plans\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022\n\n[MHEWS-2026#0652] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.148):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) 289. 290. 291. 292. 293. 294. 295. 296. 297. 298. 299. wfp-somalia-anticipatory-action-and-integrated-climate-risk-updated-november-2023 WFP. (2024). WFP’s evidence base on Anticipatory Action 2015-2024. World Food Programme. https://www.wfp.org/publications/ wfps-evidence-base-anticipatory-action-2015-2024 WFP. (2025). 2025 - Anticipatory action in Somalia: Evidence and lessons learned from 2023 and 2024 activations. https://www. wfp.org/publications/2025-anticipatory-action-somalia-evidenc e-and-lessons-learned-2023-and-2024 Wilson, H. J., & Daugherty, P. R. (2018, July 1). Collaborative Intelligence: Humans and AI Are Joining Forces. Harvard Business Review. https://hbr.org/2018/07/ collaborative-intelligence-humans-and-ai-are-joining-forces WMO. (2015). WMO guidelines on multi-hazard impactbased forecast and warning services. World Meteorological Organization. https://library.wmo.int/viewer/54669 WMO. (2018). Manual on flood forecasting and warning. https://www.preventionweb.net/publication/ manual-flood-forecasting-and-warning WMO. (2021a). Guidelines on Multi-hazard Impact-based Forecast and Warning Services Part II: Putting Multi-Hazard IBFWS into Practice. https://reliefweb.int/report/world/wmoguidelines-multi-hazard-impact-based-forecast-and-warningservices-part-ii-putting WMO. (2021b). WMO Guidelines on Multi-hazard Impact-based Forecast and Warning Services. https://library.wmo.int/records/ item/57739-wmo-guidelines-on-multi-hazard-impact-basedforecast-and-warning-services WMO. (2022). Early Warnings for All Executive Action Plan 2023-2027. https://library.wmo.int/records/ item/58209-early-warnings-for-all WMO. (2023a). Guide to Instruments and Methods of Observation (WMO-No. 8). World Meteorological Organization. https://wmo.int/ guide-instruments-and-methods-of-observation-wmo-no-8-0 WMO. (2023b). Overview of the Early Warnings for All: Executive Action Plan 2023–2027. World Meteorological Organization. https://wmo.int/media/magazine-article/overview-of-early-warnings-all-executive-action-plan-2023-2027 WMO. (2024). EW4All National Roadmap Template. World\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0012] 3.2 TDRA Consumer Protection Regulations v2 (p.5):\n2.1.6. “Consumer” means - any Person, but excluding a Licensee, which person consumes or may consume a Public Telecommunications Service provided by a Licensee, and the term ‘Consumer’ includes Subscriber;\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Data_Protection_Law_Final#0408] Data Protection Law Final (p.48):\n(e) a “business day” means a calendar day, excluding Saturdays, Sundays and official public holidays; (f) a “week” shall mean a calendar week or seven (7) days, whichever is applicable in the circumstances;\n\n[FCC-16-127#0101] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\nMessages can be issued as Imminent Threat Alerts.87 The term “Imminent Threat Alert” is defined in our rules as “an alert that meets a minimum value for each of three CAP elements: Urgency, Severity, and Certainty.”88 Public Safety Messages would not fit within this definition because the “severity” and “urgency” elements of an Imminent Threat Alert describe the underlying imminently threatening emergency condition, whereas Public Safety Messages are intended to provide supplemental instructions about how to protect life or property during an AMBER Alert, Presidential Alert, or Imminent Threat Alert. We anticipate that this separate and broader applicability for Public Safety Messages will make them more versatile emergency management tools than if we were to limit such Alert Messages to the preexisting definition of an Imminent Threat Alert. 23. In addition to tailoring the scope of emergency managers’ use of Public Safety Messages, we also take steps to ensure that the public receives Public Safety Messages in an appropriate manner.\n\n[FCC-16-127#0090] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.16):\n(Continued from previous page) Public Safety Messages as Imminent Threat Alerts because the required elements of “urgency,” “severity” and “certainty” describe the underlying alert condition, not the supplemental instructions that Public Safety Messages are intended to provide). 76\n\n[FCC-16-127#0464] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.77):\nable to process and transmit these Alert Messages fast enough for them to provide timely warning to the public, particularly to those that are closest to the epicenter.504 To be effective, it is crucial that these messages are delivered as rapidly as possible because, in order to be effective, they must be delivered to the public in advance of fast-travelling seismic waves.505 ATIS states that it would be technically feasible to transmit earthquake-related Alert Messages from the Alert Gateway upon receipt in order to expedite their transmission to the public.506 AT&T states, however that “[w]ithout a re-design of the entire system, it is not possible to prioritize WEA messages on anything other than a FIFO basis.”507 b.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert mostly matches the NCM bulletin on hazard, times and visibility. However, it adds an affected-area claim (Dubai and Sharjah) that the bulletin does not support. The bulletin also does not support the certainty and severity labels as given.",
+  "objections": [
+   {
+    "issue": "The alert names Dubai and Sharjah as affected, but the verified bulletin only says 'various areas across the UAE' and 'some coastal and inland areas'. The bulletin does not name these emirates, so the alert adds a place claim the source does not support.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Delete 'Dubai and Sharjah are also affected.' Use the bulletin's wording: 'various areas across the UAE', 'some coastal and inland areas'. Add named areas only if the NCM bulletin names them.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Dubai and Sharjah are also affected."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "affecting various areas across the UAE"
+     }
+    ]
+   },
+   {
+    "issue": "The alert is labelled Urgency Immediate and Severity Moderate. The bulletin gives no severity grading. It only urges caution while driving. The alert's 'Moderate' severity is therefore the drafter's own judgement and is not backed by the bulletin. The bulletin also describes 'expected' conditions, while the alert says they are blowing now. Observed is defensible because conditions began at 14:55 and are continuing, but the headline should say that clearly.",
+    "field": "severity",
+    "blocking": false,
+    "fix": "Confirm with NCM that the Moderate grade matches the bulletin's warning level. If NCM gives no level, align the label to the bulletin's caution-level language. Keep the times as stated: began 14:55, continuing until 19:00.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "severity",
+      "quote": "Moderate"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "It urged members of the public to exercise caution"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The unverified dam-burst rumour was correctly left out of the alert. No objection is needed.",
+    "searched_for": "unverified reports excluded from public alert messages"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6566,
+  "output_tokens": 799,
+  "at": "2026-11-09T17:13:25Z"
+ }
+}

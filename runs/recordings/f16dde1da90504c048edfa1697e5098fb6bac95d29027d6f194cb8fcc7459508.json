@@ -1,0 +1,191 @@
+{
+ "key": "f16dde1da90504c048edfa1697e5098fb6bac95d29027d6f194cb8fcc7459508",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"None. The report says the duty officer \\\"was not acting on any information concerning any nuclear incident\\\"; the action was the routine shift-change practice alert, meant for the Alert Ready training system.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Nuclear power plant incident\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Incident at the Pickering Nuclear Generating Station\",\n  \"description\": \"This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the Pickering Nuclear Generating Station. An incident was reported at the Pickering Nuclear Generating Station. There has been NO abnormal release of radioactivity from the station and emergency staff are responding to the situation. People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions.\",\n  \"instruction\": \"People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise versus Actual test alert', 'false alert nuclear incident drill sent in error retraction', 'CAP certainty Observed severity must match bulletin'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[IPAWS-PROFILE#0040] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nTable 1: CAP v1.2 IPAWS Profile Specification and Profile Note CAP Element Profile Specification (Normative) Profile Note (Non-Normative) Elements in boldface are REQUIRED. (Subcommittee) (Subcommittee) status A value of \"Actual\" SHALL be used for messages intended for dissemination to the public, including test messages intended for delivery to the public.\n\n[ON-PICKERING-2020#0133] Investigation into the emergency alerts sent on January 12, 2020 (Conclusion):\nDuring routine shift change procedures, the DO logged in to the Alert Ready live system, believed they had switched to the training system, selected a pre-scripted nuclear message for the Pickering Nuclear Generating Station saved by the PEOC in a system template folder, and accidentally sent a live alert. The DO was not acting on any information concerning any nuclear incident. The DO immediately recognized the error and proceeded to seek corrective action from PEOC supervisors.\n\n[ON-PICKERING-2020#0076] Investigation into the emergency alerts sent on January 12, 2020 (Findings):\nFindings The first alert was issued as a result of human error. Employee 1 accidentally issued an alert on the live system, instead of the training system. Employee 1 was not acting on any information concerning a nuclear incident.\n\n[ON-PICKERING-2020#0118] Investigation into the emergency alerts sent on January 12, 2020 (Box 2: 2018 Hawaii false ballistic missile alert):\nA subsequent investigation of the incident revealed that the first alert was sent during routine shift change drills at HI-EMA, and that the employee who sent the alert claimed that they were unaware that they were participating in a drill.\n\n[ON-PICKERING-2020#0006] Investigation into the emergency alerts sent on January 12, 2020 (Executive summary):\nOn January 12, 2020, the PEOC issued an emergency alert via the Alert Ready system to Ontarians reporting an incident at the Pickering Nuclear Generating Station (PNGS). A second alert was issued 108 minutes later advising that the previous alert had been sent in error. Later that day, the Solicitor General announced a full investigation into the alerts.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[CAP12#0102] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: “Observed” – Determined to have occurred or to be ongoing “Likely” - Likely (p > ~50%)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert reports a nuclear incident at Pickering as an actual, observed, severe, immediate event, but the only verified input says there was no incident. It was a routine practice alert sent by mistake. The alert is not supported by the bulletin and should not go out as Actual.",
+  "objections": [
+   {
+    "issue": "Hazard, severity, urgency and certainty are not supported by the verified input. The input says there was no nuclear incident, yet the alert states an incident was reported, with status Actual, severity Severe, urgency Immediate and certainty Observed.",
+    "field": "certainty",
+    "blocking": true,
+    "fix": "Withdraw the incident claim. Do not issue the alert as Actual/Observed. If a message is needed, send a correction saying the earlier alert was sent in error and there is no incident at Pickering. Otherwise keep the content as Exercise/Test only.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "was not acting on any information concerning any nuclear incident"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "An incident was reported at the Pickering Nuclear Generating Station."
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "Determined to have occurred or to be ongoing"
+     }
+    ]
+   },
+   {
+    "issue": "Status is Actual although the context is EXERCISE / DRILL and the source was a training-system practice message. An Exercise or Test status is the one the facts support.",
+    "field": "status",
+    "blocking": true,
+    "fix": "Do not send this to the public. If kept as a drill, set status to Exercise and identify it as an exercise in the note and text.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "Actionable only by designated exercise participants; exercise identifier should appear in <note>"
+     },
+     {
+      "kind": "clause",
+      "ref": "ON-PICKERING-2020#0133",
+      "quote": "accidentally sent a live alert"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4541,
+  "output_tokens": 708,
+  "at": "2026-11-09T17:06:28Z"
+ }
+}

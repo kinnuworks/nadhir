@@ -1,0 +1,33 @@
+{
+ "key": "30c1c654b9f891affef1f0f783d2b93963ce03723d65384abac807b47e0ab1dd",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions tonight until 10:00 Wednesday\",\n  \"description\": \"Fog warning: thick fog is expected in western regions of the UAE. Visibility may drop to zero at times from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Drive with extreme caution. More: https://alerts.example.ae\",\n  \"instruction\": \"If you drive, slow down, keep a safe distance from other vehicles and follow the modified speed limits. Follow all traffic safety guidelines.\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنعدم الرؤية في المناطق الغربية الليلة حتى الساعة 10:00 يوم الأربعاء\",\n  \"description\": \"تحذير من الضباب: يُتوقع ضباب كثيف في المناطق الغربية من دولة الإمارات. قد تنعدم الرؤية أحيانًا من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. قُد بحذر شديد. للمزيد: https://alerts.example.ae\",\n  \"instruction\": \"إذا كنت تقود، خفّف سرعتك، وحافظ على مسافة آمنة من المركبات الأخرى، والتزم بحدود السرعة المعدّلة. اتبع جميع إرشادات السلامة المرورية.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation review machine translated emergency alerts",
+   "TDRA cell broadcast handset Arabic message requirements",
+   "fog warning visibility protective action wording UAE"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1103,
+  "output_tokens": 65,
+  "at": "2026-11-09T17:10:34Z"
+ }
+}

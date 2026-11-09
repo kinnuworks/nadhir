@@ -245,3 +245,12 @@ def _declared_ai(xml: str) -> dict:
     inv = params.get(gate.P_AI, "none")
     mt = [x for x in (params.get(gate.P_MT) or "").split(",") if x]
     return {"involvement": inv if inv in gate.AI_VALUES else "none", "machine_translated": mt}
+
+
+def review_pasted(xml: str, profile: str = "UAE") -> list[dict]:
+    """Second reader for any CAP alert: the reviewers that need no issuer console (met office on the text
+    alone, network operator, Arabic) read it, search the knowledge base and object with checked quotes."""
+    import hashlib
+    scn = {"profile": profile, "inputs": [], "issuers": {}, "requested_area": None, "exercise": False}
+    salt = "paste:" + hashlib.sha256(xml.encode()).hexdigest()[:16]
+    return institutions.review(scn, xml, None, None, salt=salt, roles=["met", "operator", "arabic"])

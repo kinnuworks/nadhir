@@ -1,0 +1,195 @@
+{
+ "key": "366675157d9ff60f8aa11ce9c18d0767926d294d20d9b547283f8ecc9103132c",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Thunder Rain\",\n  \"description\": \"Scattered rain that might be thundery at times causing drop in horizontal visibility over some areas, with fresh winds might exceed 50 km/h leading to rough sea.\",\n  \"instruction\": \"Take appropriate action\"\n },\n \"arabic\": {\n  \"headline\": \"أمطار رعدية\",\n  \"description\": \"من المتوقع أن تتأثر البلاد  بأمطار متفرقة تكون رعدية أحيانا مع انخفاض في الرؤية الأفقية على بعض المناطق مصحوبة بنشاط في الرياح قد تصل سرعتها إلى أكثر من ٥٠ كم/ساعة وارتفاع الأمواج البحرية ﻷكثر من 6 أقدام.\",\n  \"instruction\": \"اتخاذ التدابير اللازمة\"\n },\n \"arabic_produced_by\": \"unknown\"\n}\n\nKnowledge base clauses returned by your searches ('UAE early warning alert Arabic translation review', 'CAP 1.2 multilingual alert info blocks language consistency', 'TDRA cell broadcast handset spec message language requirements'):\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[UAE-ISSUERS#0001] UAE Early Warning System: How it works and why you get alerts (section 'Who can send these alerts?'):\nOnly government entities involved in national emergency management are authorised to issue alerts.\n\n[MHEWS-2026#0348] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) terminology can be difficult to translate with accuracy and timeliness. Recognising these barriers, researchers and practitioners are continuously trying to use AI technologies to improve the translation and dissemination of early warning communication. Operational applications are already emerging. For example, the National Weather Service in the United States has collaborated with the AI translation platform Lilt to develop an automated emergency-weather translation\n\n[MHEWS-2026#0349] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.88):\nprogramme that adapts neural machine translation tools to specialized weather terminology through a patented training process. The system enables large language models to generate more accurate and context-sensitive translations of weather alerts in languages such as Chinese, Spanish, and Vietnamese (Khurana et al., 2023). Similarly, Canada’s national public alerting system Alert Ready integrates AI-powered translation directly into alert-authoring software to enable real-time bilingual alerts across hazard types (Box 17).\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[TDRA-TSFS001#0013] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\n4.4 Smart phones All smart phones shall implement the following behaviors: Table 2 Smart phones behaviours: Cell Broadcast Information UAE-Alert Information User Equipment (UE)/Mobile Devices Requirements MsgID (Primary Block) MsgID (Secondary Block)\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[CAP12#0087] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n3.2.2 \"info\" Element and Sub-elements info cap. alertInfo. info. group The container for all component parts of the info sub-element of the alert message (OPTIONAL) (1) Multiple occurrences are permitted within a single <alert>. If targeting of multiple <info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. Each set of <info> blocks containing the same language identifier SHALL be treated as a separate sequence.\n\n[CAPCP#0056] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nincidents Info Rule #4 (Alert messages intended for public distribution must include an <info> block) language Rule #5 (<info> blocks must specify the content language) category event Rule #2 (Constraint of one subject event per alert message)\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic adds a sea-wave height claim (more than 6 feet) that is not in the English, and renders the wind figure as 'more than 50 km/h' where the English says 'might exceed 50 km/h'. The English also gives no protective action beyond 'take appropriate action', and the Arabic matches that vagueness. How the Arabic was produced is unknown, so a named Arabic reader must check it.",
+  "objections": [
+   {
+    "issue": "The Arabic says sea waves will rise to more than 6 feet (وارتفاع الأمواج البحرية لأكثر من 6 أقدام). The English only says 'leading to rough sea' and gives no wave height. This is a number added in the Arabic with no source in the English. Either the English is incomplete or the Arabic is wrong.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Delete the wave-height figure from the Arabic and use a plain equivalent of 'rough sea' (مما يؤدي إلى اضطراب البحر). If the 6-foot figure is a real forecast, the issuing authority must confirm it and add it to the English too.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "leading to rough sea"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "وارتفاع الأمواج البحرية ﻷكثر من 6 أقدام"
+     }
+    ]
+   },
+   {
+    "issue": "The wind speed is stated more firmly in the Arabic than in the English. 'Might exceed 50 km/h' becomes 'may reach a speed of more than 50 km/h' (قد تصل سرعتها إلى أكثر من ٥٠), which is clumsy. The Arabic also mixes Arabic-Indic digits (٥٠) with Western digits (6) in the same text, which is inconsistent. 'Fresh winds' is rendered as 'wind activity' (نشاط في الرياح), which is not the same meaning.",
+    "field": "description",
+    "blocking": false,
+    "fix": "Use 'رياح قوية/منعشة قد تتجاوز سرعتها 50 كم/ساعة' and use one digit style throughout.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "with fresh winds might exceed 50 km/h"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "مصحوبة بنشاط في الرياح قد تصل سرعتها إلى أكثر من ٥٠ كم/ساعة"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The protective action ('Take appropriate action' / اتخاذ التدابير اللازمة) is generic in both languages. It is consistent between them, but it does not tell the public what to do. This is outside Arabic-English fidelity.",
+    "searched_for": "UAE clause requiring specific protective action wording in alerts"
+   },
+   {
+    "concern": "How the Arabic was produced is 'unknown'. It is unclear whether it was machine-translated or human-written, so a named Arabic reader must confirm it.",
+    "searched_for": "UAE rule on labelling or human review of machine translation"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4593,
+  "output_tokens": 1072,
+  "at": "2026-11-09T17:04:20Z"
+ }
+}

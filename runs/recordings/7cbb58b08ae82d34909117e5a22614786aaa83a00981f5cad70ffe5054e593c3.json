@@ -1,0 +1,144 @@
+{
+ "key": "7cbb58b08ae82d34909117e5a22614786aaa83a00981f5cad70ffe5054e593c3",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"This is a Province of Ontario emergency bulletin which applies to people within ten (10) kilometres of the Pickering Nuclear Generating Station. An incident was reported at the Pickering Nuclear Generating Station. There has been NO abnormal release of radioactivity from the station and emergency staff are responding to the situation. People near the Pickering Nuclear Generating Station DO NOT need to take any protective actions at this time. Remain tuned to local media for further information and instructions.\",\n   \"characters\": 516,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 6\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('3GPP cell broadcast page limit 15 pages 93 characters', 'cell broadcast GSM-7 UCS-2 encoding character limits', 'first page hazard and protective action cell broadcast message'):\n\n[TS23041#0043] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.11):\n2 General description The CBS service is analogous to the Teletex service offered on television, in that like Teletex, it permits a number of unacknowledged general CBS messages to be broadcast to all receivers within a particular region. CBS messages are broadcast to defined geographical areas known as cell broadcast areas. These areas may comprise of one or more cells, or may comprise the entire PLMN or SNPN. Individual CBS messages will be assigned their own geographical coverage areas by mutual agreement between the information provider and the PLMN or SNPN operator. CBS messages may originate from a number of Cell Broadcast Entities (CBEs), which are connected to the Cell Broadcast Centre. CBS messages are then sent from the CBC to the cells, in accordance with the CBS's coverage requirements. A CBS page comprises of 82 octets, which, using the default character set, equates to 93 characters. Other Data Coding Schemes may also be used, as described in 3GPP TS 23.038 [3]. Up to 15 of these pages may be concatenated to form a CBS messagee. Each page of such CBS message will have the same message identifier (indicating the source of the message), and the same serial number. Using this information, the MS/UE is able to identify and ignore re-broadcasts of already received messages.\n\n[TS23038#0053] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.15):\nETSI TS 123 038 V18.0.0 (2024-05) The message length specified in this subclause is not applicable for UTRAN, E-UTRAN, and NG-RAN, but only applicable for GSM. See 3GPP TS 24.090 [11] for specific coding values applicable to USSD for MS originated USSD messages and MS terminated USSD messages. USSD messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The message can then consist of up to 182 user characters. Cell Broadcast messages using the default alphabet are coded with the GSM 7-bit default alphabet given in clause 6.2.1. The Message Information Page then consists of 93 user characters. If the GSM 7 bit default alphabet extension mechanism is used then the number of displayable characters will reduce by one for every instance where the GSM 7 bit default alphabet extension table is usedCell Broadcast Messages Information Page using 8-bit data have user-defined coding, and will each be 82 octets in length. UCS2 character set indicates that the message is coded in UCS2 [10]. The General notes specified in clause 6.1.1 override any contrary specification in UCS2, so for example even in UCS2 a <CR> character will cause the MS to return to the beginning of the current line and overwrite any existing text with the characters which follow the <CR>.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[FCC-23-88#0036] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.6):\nTelecommunications Industry Solutions, Comments, PS Docket Nos. 15-91 and 15-94, at 7-8 (Rec. Dec. 8, 2016) (ATIS 2016 Comments) (“[S]upport for [ideographic] languages would require service providers to switch from GSM 7-bit encoding to basic Unicode (UCS-2) character set . . . ATIS notes that requiring the use of the UCS-2 character set would decrease the number of display characters to less than half of the 360 character maximum”); AT&T, Reply, PS Docket Nos. 15-91 and 15-94, at 3 (Rec. Jan. 9, 2017) (AT&T 2016 Reply); CTIA, Comments, PS Docket Nos. 15-91 and 15-94, at 9 (Rec. Dec. 8, 2016) (CTIA 2016 Comments); Microsoft, Comments, PS Docket Nos. 15-91 and 15-94, at 9 (Rec. Dec. 8, 2016) (Microsoft 2016 Comments); T-Mobile, Comments, PS Docket Nos. 15-91 and 15-94, at 3-4, 9-10 (Rec. Dec. 8, 2016) (T-Mobile 2016 Comments).\n\n[TS23038#0081] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.21):\n6.2 20 ETSI TS 123 038 V18.0.0 (2024-05) Character sets and coding This section provides list of character sets and codings to be supported by SMS, CBS, USSD and IEs included in NAS messages as specified in 3GPP TS 24.008 [20] and 3GPP TS 24.301 [21]. Implementation of the GSM 7 bit default alphabet is mandatory. Support of other character sets is optional. It should be noted that support of Latin and non-Latin languages by GSM 7 bit default alphabet is limited. It is therefore essential to introduce UCS 2 character set in mobile stations, SCs and systems handling SMSs, CBSs, USSDs, and IEs included in NAS messages.\n\n[TS23038#0097] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.24):\n6.2.1.2 6.2.1.2.1 23 ETSI TS 123 038 V18.0.0 (2024-05) National Language Identifier Introduction The national language tables are used for adding the special characters of certain languages that cannot be expressed using the GSM default 7 bit alphabet. The principle is to use the National Language Identifier to indicate to a receiving entity that the message has been encoded using a national language table. Both single shift and locking shift mechanisms are defined. The single shift mechanism, as defined in subclause 6.2.1.2.2, applies to a single character and it replaces the GSM 7 bit default alphabet extension table defined in subclause 6.2.1.1 with a National Language Single Shift Table (see subclause A.2). The locking shift mechanism, as defined in subclause 6.2.1.2.3, applies throughout the message, or the current segment in case of a concatenated message, and it replaces the GSM 7 bit default alphabet defined in subclause 6.2.1 with a National Language Locking Shift Table (see subclause A.3) that defines the whole character set needed for the language. In case that several languages are used, which require different national language tables, it is recommended to encode the message in UCS-2, however it is possible to use both single shift and locking shift with the corresponding tables in a single message.\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[TS23041#0437] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.86):\nNOTE: Parameter Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 ... CBS-Message-Information-Page n CBS-Message-Information-Length n n equal to or less than 15 The octets in the above table are transmitted in order, starting with octet 1. The bits within these octets are numbered 0 to 7; bit 0 is the low order bit and is transmitted first. 9.4.3 E-UTRAN 9.4.3.1 General Description The warning message may be segmented within E-UTRAN for transmission over radio interface.\n\n[TS23041#0451] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.89):\nETSI TS 123 041 V18.3.0 (2024-02) In the case where Compression applies only to a single 'CBS-Message-Information-Page', the compression header shall be the first octet in that 'CBS-Message-Information-Page' and the compression footer shall immediately follow the compressed data stream. Any remaining octets after the compression footer shall contain padding up to and including the 82nd octet position. However, if the 82nd octet position contains the compression footer then there is no padding. In the case where compression applies across multiple 'CBS-Message-Information-Page's, the compression header shall be present only in the first octet position of the first 'CBS-Message-Information-Page'. The compression footer shall immediately follow the compressed data stream which will terminate within the last 'CBS-Message-Infirmation-Page'. Any remaining octets after the compression footer in the last 'CBS-Message-Information-Page' shall contain padding up to and including the 82nd octet position in the last 'CBS-Message-Information-Page'. However, if the 82nd octet position of the last 'CBS-Message-Information-Page' contains the compression footer then there is no padding. If it is required to convey different blocks of information which are to be treated by the MS/UE as though they were physically independent pages rather than concatenated information then page break characters (see 3GPP TS 23.038 [3]) may be inserted in the character stream prior to compression.\n\n[TS23041#0255] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.57):\n9.3.10 No-of-Broadcasts-Completed-List This parameter is a list indicating the number of times that the CBS message (i.e. all pages of the CBS message) has been sent to each cell in the Cell-List for broadcast over the air interface. The cells in the list are described as per clause 9.3.11. Description of list elements: PARAMETER Cell Identifier No-of-Broadcasts-completed No-of-Broadcasts-Compl-Info",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The single English phone text is 516 characters in GSM-7 and is shown as 6 pages, within the 15-page maximum (TS 23.041: up to 15 pages of 93 characters). 516 characters needs 6 pages at 93 per page, so the count is consistent. No languages are required by the profile, so none is missing. GSM-7 is the mandatory default encoding. The first page opens with the hazard (an emergency bulletin about an incident at the Pickering station), and the protective-action statement (no action needed) follows in the same short text. Nothing within the delivery mandate needs fixing.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The message is long (6 pages) and the 'no action needed' instruction falls after the first page, so it may not appear on the first page of the handset display.",
+    "searched_for": "first page hazard and protective action cell broadcast message"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6529,
+  "output_tokens": 297,
+  "at": "2026-11-09T17:06:27Z"
+ }
+}

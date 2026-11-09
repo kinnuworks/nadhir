@@ -1,0 +1,33 @@
+{
+ "key": "d151f2e5f354674bb2d41d015fb7a5dc0b975ff8500ec7badee5af17a708baaa",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland areas until 08:00\",\n  \"description\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00.\",\n  \"instruction\": \"Take care, especially when driving on external and open roads, as visibility can drop suddenly. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير يحد من الرؤية في المناطق الساحلية والداخلية حتى الساعة 18:00\",\n  \"description\": \"تمرين - رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية، أبوظبي (منطقة تجريبية). تستمر هذه الأحوال حتى الساعة 18:00.\",\n  \"instruction\": \"يرجى توخي الحذر، خاصة أثناء القيادة على الطرق الخارجية والمكشوفة، إذ قد تنخفض الرؤية بشكل مفاجئ. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP alert translation consistency multilingual headline description instruction",
+   "UAE early warning blowing dust low visibility driving advice",
+   "cell broadcast handset Arabic message language requirements TDRA"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1066,
+  "output_tokens": 73,
+  "at": "2026-11-09T17:20:53Z"
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "key": "024464582490fa76c5668deed2b0f653f51108333dc87ee9f208a032f1ed874d",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Disregard the earlier alert\",\n  \"description\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n  \"instruction\": \"No action is needed.\"\n },\n \"arabic\": {\n  \"headline\": \"تجاهلوا التنبيه السابق\",\n  \"description\": \"تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ.\",\n  \"instruction\": \"لا يلزم اتخاذ أي إجراء.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('cancellation message alert sent in error wording', 'CAP 1.2 Cancel msgType references earlier alert', 'machine translation Arabic emergency alert human review UAE'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0120] API First Guideline (p.48):\n5. Technical Guidelines Attributes/Feature Guidelines/Recommendations Error Handling Service Providers are recommended to handle all the exceptions related to the service and send appropriate response codes and descriptions in the response. The error codes and descriptions need to be shared with Service Consumers Service Providers are recommended to handle all the exceptions that could occur when invoking the published service API Consumers should implement appropriate retry mechanism when invoking a service API Appropriate alerts/notifications should be configured Service Provider should implement an error handling framework defined for handling error/exceptions The following details are logged in a service specific log file in case of an error: » Error Code » Error Message (stack trace) » Transaction ID » Timestamp » Consumer application For Publish-Subscribe scenarios, a retry mechanism is implemented in case the message delivery to the subscribing service fails\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0153] API First Guideline (p.58):\n5. Technical Guidelines ⁞ 5.3.2⁝ Types of Errors Errors and exceptions could occur while processing the request/ response within the Service Provider. As a principal, it is recommended to handle the exceptions wherever possible and to pass appropriate response messages to the invoking services. This helps in understanding the error scenarios better and resolving the issues without delays. The exceptions can occur within the service hosted by the Service Provider. These exceptions/errors should be handled as detailed out in the section below and appropriate error codes and descriptions should be sent to the invoking service. Service Providers should handle these errors appropriately. The following type of exceptions can happen at service level: 1} Business Validation Failures 2} Technical Validation Failures 3} System Failures\n\n[ON-PICKERING-2020#0096] Investigation into the emergency alerts sent on January 12, 2020 (Terminology):\nThe NAADS Issuer User Guide provides instructions for “cancelling” an alert which advises “all parties” that an alert was cancelled and no longer in effect. It was not clear to whom “all parties” referred. The User Guide does not address an alert sent in error.\n\n[LA-2025#0017] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.8):\nAlmost immediately, LACOEM noticed the message was sent county-wide in error, and cancelled the alert 2 minutes and 47 seconds later. 15 Los Angeles Office of Emergency Management Wireless Emergency Alert\n\n[ON-PICKERING-2020#0060] Investigation into the emergency alerts sent on January 12, 2020 (Sequence of events):\n7:54 a.m. The Pelmorex employee told Employee 2 that no action is required, including a cancellation. The Pelmorex employee confirmed that The Weather Network issued a broadcast message advising that the alert was sent in error. The Pelmorex employee asked about sending out their own Twitter message to the public. Employee 2 advised that they would confer with a supervisor and call Pelmorex back.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0029] 3.2 TDRA Consumer Protection Regulations v2 (p.7):\n2.1.21. “PAYG Hard Cap Limit” means - the monetary value of the PAYG Hard Cap. 2.1.22. “Penalty-Free Service Cancellation Period” means - the period of time, as further defined in Article 12 of these Regulations, during which period a Subscriber can, in certain circumstances, cancel a contract for the supply of Telecommunications Services and exit that contract without incurring an early exit fee that would otherwise be imposed;\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAP12#0076] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nCode Values: “Alert” - Initial information requiring attention by targeted recipients “Update” - Updates and supercedes the earlier message(s) identified in <references> “Cancel” - Cancels the earlier message(s) identified in <references>\n\n[CAPCP#0105] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nRule #9. An Update or Cancel message should minimally include references to all active messages Element: <references> Use: Optional Type: Technical Value: Description: An element that lists earlier message(s) referenced by the alert message.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0125] AI Guide v1 (p.38):\nAI GUIDE • GLOSSARY OF KEY TERMS 7. GLOSSARY OF KEY TERMS Artificial Intelligence The theory and development of computer systems able to perform tasks normally requiring human intelligence, such as visual perception, speech recognition, decision-making, and translation between languages. General AI General AI refers to a machine that can perform any intellectual, physical and even emotional task that a human being could. Narrow AI Narrow AI is artificial intelligence that is focused on one narrow task. Machine Learning Machine learning is an application of AI that provides systems the ability to automatically learn and improve from experience without being explicitly programmed. Deep Learning Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning. Headline: 'تجاهلوا التنبيه السابق' = 'Disregard the earlier alert'. Description: 'تجاهلوا تنبيه الطقس السابق لهذه المنطقة، فقد أُرسل عن طريق الخطأ' = 'Disregard the earlier weather alert for this area; it was sent in error'. Instruction: 'لا يلزم اتخاذ أي إجراء' = 'No action is needed'. There are no numbers, times or places to check, and the protective action (none needed, disregard the earlier alert) is preserved. The Arabic was machine translated, so a named Arabic reader must still approve it. I do not object because the Arabic is faithful.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Machine translation without human review could introduce inaccuracies. The text here is accurate, but a named Arabic reader must still approve it.",
+    "searched_for": "UAE requirement for human review of machine-translated Arabic emergency alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5487,
+  "output_tokens": 357,
+  "at": "2026-11-09T17:14:01Z"
+ }
+}

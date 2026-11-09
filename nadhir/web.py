@@ -118,7 +118,15 @@ def handle_check(body: dict) -> dict:
     if not xml.strip():
         return {"error": "paste a CAP XML alert"}
     profile = body.get("profile") if body.get("profile") in ("UAE", "US", "GENERIC") else "GENERIC"
-    return pipeline.check_pasted(xml, profile)
+    out = pipeline.check_pasted(xml, profile)
+    if body.get("review"):
+        try:
+            out["reviews"] = pipeline.review_pasted(xml, profile if profile != "US" else "GENERIC")
+        except ModelError as e:
+            out["review_error"] = str(e)
+        except Exception:
+            out["review_error"] = "the reviewers could not read this alert"
+    return out
 
 
 def handle_feed(body: dict) -> dict:

@@ -1,0 +1,186 @@
+{
+ "key": "07902eb0635c3fde601e2befaf53bdf4bc4d5288fb01d0b1a2936e9d1c42ec20",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة. ننصح الجميع بمتابعة النشرات الجوية الصادرة عن الجهات الرسمية بشكل مستمر، والابتعاد عن الشائعات، والتأكد من سلامة المركبات قبل القيادة، وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('TDRA cell broadcast Arabic message length limit characters', 'CAP 1.2 instruction element protective action guidance translation', 'fog warning visibility driving advice alert wording'):\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0152] 3.2 TDRA Consumer Protection Regulations v2 (p.27):\nthe concerned Subscriber has paid for or is expected to pay for; and (b) the concerned Subscriber has reported the service outage to the concerned Licensee; and (c) the length of time that the Telecommunications Service is unavailable exceeds the limits given in these Regulations.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0049] DotEmarat Policy EN (p.16):\nUnicode Name ARABIC LETTER ALEF WITH MADDA ABOVE ARABIC LETTER ALEF WITH HAMZA ABOVE ARABIC LETTER ALEF WITH HAMZA BELOW ARABIC LETTER ALEF Character Arabic Letter Heh Group Unicode Code Point Unicode Name U+0647 ARABIC LETTER HEH U+0629 ARABIC LETTER TEH MARBUTA Character # Arabic Letter Yeh Group Unicode Code Point Unicode Name U+064A ARABIC LETTER YEH U+0649 ARABIC LETTER ALEF MAKSURA AEDA-POL-016 Character & %\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23041#0317] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.68):\nPARAMETER Number-of-Pages CBS-Message-Information-Page 1 CBS-Message-Information-Length 1 CBS-Message-Information-Page 2 CBS-Message-Information-Length 2 ... CBS-Message-Information-Page n CBS-Message-Information-Length n NOTE: n equal to or less than 15 9.3.52 67 REFERENCE 9.3.4 9.3.19 9.3.20 9.3.19 9.3.20 9.3.19 9.3.20\n\n[TS23041#0062] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.15):\nallocation of serial numbers; - modifying or deleting CBS messages held by the BSC/RNC/eNodeB/NG-RAN node; - initiating broadcast by sending fixed length CBS messages to a BSC/RNC/eNodeB/NG-RAN node for each language provided by the cell, and where necessary padding the pages to a length of 82 octets (see 3GPP TS 23.038 [3]); - determining the set of cells to which a CBS message should be broadcast, and indicating within the Serial Number the geographical scope of each CBS message;\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0119] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.68):\nThe entity’s Communications Plan should provide instruction and guidance required to Top Management, Executives, Staff and Public Relations personnel on how to communicate approved messages with internal and external stakeholders before, during and after business disruption.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPCP#0147] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nExample: (In the following alert, the instruction was auto generated in English by software interpreting a responseType rather than the free form sentence generated by a person in French. In situations where the first language text is not so simple as exampled, interpretations can be problematic. Therefore, a simple parameter element is used to flag the auto translation activity of the originator)\n\n[CAPAU#0099] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.29):\nOPTIONAL Notes: Technical 1) Should be completed by alert message producers to improve clarity and provide public with direction concerning what actions to take in order to stay out of harm’s way. 2) In circumstances where the <instruction> information is to be added by an alternate authority; the message producer will distribute the initial alert message (without an <instruction> element included) and the alternate authority will receive that\n\n[X1303BIS#0066] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\nurgency cap.alertInfo.urgency.code \"Shelter\" – Take shelter in place or per <instruction> \"Evacuate\" – Relocate as instructed in the <instruction> \"Prepare\" – Make preparations per the <instruction> \"Execute\" – Execute a pre-planned activity identified in <instruction> \"Avoid\" – Avoid the subject event as per the <instruction> \"Monitor\" – Attend to information sources as described in <instruction> \"Assess\" – Evaluate the information in this message. (This value should NOT be used in public warning applications). \"AllClear\" – The subject event no longer poses a threat or concern and any follow on action is described in <instruction> \"None\" – No action recommended (2) Multiple instances may occur within an <info> block.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0081] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57298):\nMake sure pets do not drink water that has not been boiled. [URL] 911 Outage Alert [SENDING AGENCY]: A 9-1-1 OUTAGE ALERT is in effect for [LOCATION]. Please contact police, fire, medical, or other emergency services directly at their local phone numbers in case of emergency. If you dial 9-1-1, you may not get help. [URL] Avalanche Warning [SENDING AGENCY]: An AVALANCHE WARNING is in effect in [LOCATION] until [TIME]. Unstable, fast-moving snow can happen quickly, causing injury or death and can block roads and damage property in affected areas. LEAVE areas near [LOCATION]. DO NOT return to area after evacuation until directed by local officials. Travel in the area is not recommended. Avalanches may run long distances. [URL] Fire Warning [SENDING AGENCY]: A FIRE WARNING in [LOCATION] is in effect until [TIME]. Evacuate your family and pets now, do not delay. Visibility in area will be reduced and roads can become blocked. If you do not leave now, you could be trapped, injured, or killed. LEAVE areas near [LOCATION]. Expect reduced visibility, heavy smoke, and difficulty breathing. Be careful when driving. Watch for public safety personnel operating in the area and follow their instructions. [URL] Hazardous Materials Warning [SENDING AGENCY]: HAZARDOUS MATERIALS were released at [TIME] in [LOCATION].\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic headline, times, place, hazard and instruction match the English. However, the Arabic description has extra content not in the English: a paragraph of advice repeated three times. It adds new protective actions (avoid going out except for extreme necessity, keep windows closed, check vehicles, ignore rumours) that the authority never approved. The repetition also makes the message much longer, which risks truncation in cell broadcast. The machine-translated text needs to be corrected and re-checked by a named Arabic reader.",
+  "objections": [
+   {
+    "issue": "The Arabic description adds a paragraph of advice absent from the English: follow official bulletins, avoid rumours, check vehicle safety, avoid going out except in extreme necessity, keep windows closed. This changes the protective action, since the English says only to drive with extreme caution. The paragraph is also repeated three times verbatim.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Delete all the added sentences, including the three repeats. Keep the Arabic description as a faithful translation of the English only: from 'تحذير من الضباب' to 'المصدر: المركز الوطني للأرصاد الجوية.' If extra advice is wanted, the issuing authority must add it to the English and approve it.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "وتجنب الخروج إلا للضرورة القصوى، وإبقاء النوافذ مغلقة"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Source: National Center for Meteorology."
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic is machine translation and has no recorded human check. The unsupported additions and the repetition show it was not reviewed. A named Arabic reader must approve the corrected text before release.",
+    "field": "description",
+    "blocking": false,
+    "fix": "After removing the added text, have a named Arabic-reading approver check the whole Arabic text.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic_produced_by",
+      "quote": "machine translation"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The repeated Arabic text makes the message far longer than the English and may exceed the cell broadcast Arabic length limit. No clause shown gives a UAE character limit.",
+    "searched_for": "TDRA cell broadcast Arabic message length limit characters"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6640,
+  "output_tokens": 814,
+  "at": "2026-11-09T17:16:56Z"
+ }
+}

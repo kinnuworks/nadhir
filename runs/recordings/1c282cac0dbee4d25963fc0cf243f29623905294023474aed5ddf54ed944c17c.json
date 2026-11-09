@@ -1,0 +1,191 @@
+{
+ "key": "1c282cac0dbee4d25963fc0cf243f29623905294023474aed5ddf54ed944c17c",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM alert: torrential rain and flash floods certain in eastern, southern and western areas\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, possibly heavy at times, in some eastern, southern and western areas and parts of the interior. In effect Saturday 22 Aug 2026, 13:30 to 21:00.  Flash flooding is certain.\",\n  \"instruction\": \"Take extra care when driving in rain and avoid standing water. Follow updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه NCM: احتمال هطول أمطار تكون غزيرة أحياناً على المناطق الشرقية والجنوبية والغربية\",\n  \"description\": \"تنبيه NCM: سحب ركامية مصحوبة بأمطار خفيفة إلى متوسطة، قد تكون غزيرة أحياناً، على بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول يوم السبت 22 أغسطس 2026، من 13:30 إلى 21:00.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر أثناء القيادة تحت المطر وتجنّب المياه الراكدة. تابع آخر التحديثات على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('CAP certainty field Observed Likely Possible wording in headline', 'flash flood alert translation consistency certainty wording', 'UAE early warning rain flood protective action advice'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0130] API First Guideline (p.51):\nAll API naming in URLs (including the name of your API, namespaces and resources) should: Hosting your API • use nouns rather than verbs • be short, simple and clearly understandable • be human-guessable, avoiding technical or specialist terms where possible • use hyphens rather than underscores as word separators for multiword names For example: [api-name].apis.government.ae\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Adoption_Guidelines_in_Government_Services#0021] AI Adoption Guidelines in Government Services (p.12):\nPrescriptive Analytics: This type of analytics allows users to prescribe several different possible actions, guiding them towards a solution to help answer the “What should we do?” question. Prescriptive analytics attempts to study and quantify the effect of future decisions to advise on possible outcomes before the decisions are made. It predicts not only what will happen, but also why it will happen, providing recommendations regarding actions that will take advantage of the predictions. In other words, prescriptive analytics predicts multiple outcomes and scenarios and allows entities to assess several possible outcomes based upon their actions. Prescriptive analytics is relatively complex to administer, and most entities are not yet using it. However, when implemented correctly, it can have a large impact on how entities make decisions.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAP12#0103] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Possible” - Possible but not likely (p <= ~50%) “Unlikely” - Not expected to occur (p ~ 0) “Unknown” - Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of “Very Likely” SHOULD be treated as equivalent to “Likely”.\n\n[CAP12#0165] Common Alerting Protocol Version 1.2 (3.4 XML Schema):\n</restriction> </simpleType> </element> <element name = \"certainty\"> <simpleType> <restriction base = \"xs:string\"> <enumeration value = \"Observed\"/> <enumeration value = \"Likely\"/> <enumeration value = \"Possible\"/> <enumeration value = \"Unlikely\"/> <enumeration value = \"Unknown\"/>\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[FCC-DA-25-12#0153] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.29):\nFlash Flood Warning [SENDING AGENCY]: A FLASH FLOOD WARNING is in effect for [LOCATION] until [TIME]. This is a dangerous and life-threatening situation. Do not attempt to travel unless you are fleeing an area that may flood or are under an evacuation order. [URL]\n\n[FCC-DA-25-12#0152] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.29):\nFlash Flood Emergency [SENDING AGENCY]: A FLASH FLOOD EMERGENCY is in effect for [LOCATION] until [TIME]. This is an extremely dangerous and life-threatening situation. Do not attempt to travel unless you are fleeing an area that may flood or are under an evacuation order. [URL]\n\n[FCC-DA-25-12#0293] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.69):\nVietnamese Templates Tornado Emergency Tornado Warning Flash Flood Emergency Flash Flood Warning Severe Thunderstorm Warning Snow Squall Warning Dust Storm Warning Hurricane Warning Storm Surge Warning\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[UAE-PORTAL-EWS#0046] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead on the website of National Center of Meteorology: What you should do before heavy rains, floods and thunderbolts Awareness messages prior to sand storms. Find digital services to get latest updates on weather conditions and environmental status. Weather-related health awareness guides Promoting Health and Safety Post Rainfall (PDF, 3.05 MB) Promoting Health and Safety Post Rainfall (in Urdu, 2.68 MB) Mosquito Bites (PDF, 1.97 MB)\n\n[MHEWS-2026#0231] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.62):\nFloods are the world’s most common disaster stemming from natural hazards, causing thousands of fatalities and disrupting millions of lives annually. Timely predictions are essential to empower governments and humanitarian organizations to strengthen early warning systems and implement Anticipatory Action programmes—taking protective measures before disaster strikes to save lives and livelihoods.\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[MHEWS-2026#0059] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.17):\nWhen deployed together across the early warning value cycle, these capabilities can transform fragmented technical systems into integrated, people-centred early warning ecosystems that translate knowledge and data into timely protective action. Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic does not match the English on certainty. The English headline says torrential rain and flash floods are \"certain\", and the description ends \"Flash flooding is certain.\" The Arabic headline softens this to \"احتمال\" (possibility of) heavy rain at times, and omits flash floods. The Arabic description omits the flash flood sentence entirely. The Arabic therefore understates the hazard. The English headline also conflicts with its own description (light to moderate rain, possibly heavy), so a person should settle which wording is correct, but the Arabic must match the approved English.",
+  "objections": [
+   {
+    "issue": "The Arabic headline changes certainty and hazard. English says torrential rain and flash floods are certain; Arabic says there is a possibility of rain that is sometimes heavy, with no mention of flash floods or torrential rain.",
+    "field": "headline",
+    "blocking": true,
+    "fix": "Align the Arabic headline with the approved English. If the English stands, render it as: تنبيه NCM: أمطار غزيرة جداً وسيول جارفة مؤكدة على المناطق الشرقية والجنوبية والغربية. If the English is wrong, correct the English first and then retranslate.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "torrential rain and flash floods certain"
+     },
+     {
+      "kind": "view",
+      "ref": "headline",
+      "quote": "احتمال هطول أمطار تكون غزيرة أحياناً"
+     }
+    ]
+   },
+   {
+    "issue": "The Arabic description omits the sentence \"Flash flooding is certain.\", so the flash flood hazard and its certainty are missing from the Arabic.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Add the translation of the final sentence at the end of the Arabic description: ومن المؤكد حدوث سيول جارفة. Resolve first with the English authors whether \"certain\" is intended.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Flash flooding is certain."
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "ساري المفعول يوم السبت 22 أغسطس 2026، من 13:30 إلى 21:00."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The English headline (torrential rain, flash floods certain) is inconsistent with the English description (light to moderate rain, possibly heavy at times). This is an English-side issue outside the Arabic mandate.",
+    "searched_for": "CAP certainty wording and flash flood alert translation consistency"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4791,
+  "output_tokens": 885,
+  "at": "2026-11-09T17:18:40Z"
+ }
+}

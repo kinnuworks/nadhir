@@ -1,0 +1,144 @@
+{
+ "key": "c7da187f0a79091cfdd24d26035e8eb668d1e39a2814d1963f6e6bff90b23428",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Rain alert: possible heavy rain at times, Saturday 13:30 to 21:00\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, which may become heavy at times, are possible in some eastern, southern and western areas and parts of the interior. In effect Saturday 22 Aug, 13:30 to 21:00.\",\n  \"instruction\": \"Take care if you are outdoors or driving while it rains. Follow official updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه أمطار: احتمال هطول أمطار غزيرة أحياناً، السبت من 13:30 إلى 21:00\",\n  \"description\": \"تنبيه من NCM: يُحتمل تشكّل سحب ركامية مصحوبة بأمطار خفيفة إلى متوسطة قد تكون غزيرة أحياناً، على بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول يوم السبت 22 أغسطس، من 13:30 إلى 21:00.\",\n  \"instruction\": \"توخَّ الحذر إذا كنت في الخارج أو تقود سيارتك أثناء هطول الأمطار. تابع التحديثات الرسمية على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic machine translation emergency alert review human approval', 'UAE cell broadcast Arabic English message language requirements', 'CAP 1.2 multilingual alert instruction translation consistency'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0125] AI Guide v1 (p.38):\nAI GUIDE • GLOSSARY OF KEY TERMS 7. GLOSSARY OF KEY TERMS Artificial Intelligence The theory and development of computer systems able to perform tasks normally requiring human intelligence, such as visual perception, speech recognition, decision-making, and translation between languages. General AI General AI refers to a machine that can perform any intellectual, physical and even emotional task that a human being could. Narrow AI Narrow AI is artificial intelligence that is focused on one narrow task. Machine Learning Machine learning is an application of AI that provides systems the ability to automatically learn and improve from experience without being explicitly programmed. Deep Learning Deep learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-FR-2025#0058] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57295):\naccuracy of a translation requires human intervention'', as ``the inaccurate translation may seriously misinform WEA recipients during an emergency.'' The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation ``present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety. In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. We remind commenters that the Commission has stated that it ``will continue to examine the feasibility of machine translation technologies and its application'' to multilingual WEA. 39. We disagree with commenters who argue that additional study is needed before the Bureau can adopt multilingual templates. These commenters focus on the need to engage different stakeholders in developing multilingual WEA to find the best path forward that properly balances the interests of all interested parties. The Bureau believes it has satisfied these concerns through the notice-and-comment process, as it has received the kind of input envisioned by these commenters across a wide variety of stakeholders.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.\n\n[ETSI-EUALERT#0060] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.12):\n2) The UE shall be able to maintain user EU-Alert language preferences. If the user has opted-in to receiving EU-Alert messages then these will be presented in the local language. The user may wish to receive messages in other languages than the local language as well. A typical example would be the additional selection to receive messages in English for those users that do not understand the local language, assuming that messages in English are broadcast next to messages in the local language.\n\n[TS23041#0384] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.79):\n1129 CMAS CBS Message Identifier for the Required Monthly Test for additional languages. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message dependent on the language indicated in the CBS message and the language indicator settings in the ME.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0300] 3.2 TDRA Consumer Protection Regulations v2 (p.51):\n16.11. In circumstances where 16.9.3 applies, there will be no Hard Cap for such Subscribers provided always that the Licensee has recorded that Subscriber’s instructions to have the Hard Cap removed. 16.12. The Subscriber shall not be charged for the mechanism by which the Subscriber selects any of the options available in 16.9.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[CAPCP#0142] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nType: Policy Value: a <valueName> of “profile:CAP-CP:1.0:AutoTranslated” and a <value> of “yes” or “no” Description: Automated translation is any kind of machine based translation of free form text or the assembly of phrases based on pre-set values where a human translator has not been involved. The purpose of this rule is to support advanced distribution decisions associated with multilingual messages.\n\n[CAPCP#0058] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\neffective onset expires senderName Recommendation #4 (A <senderName> is strongly recommended) headline description instruction web contact parameter Recommendation #7 (Indicate when an update message contains non-substantive content changes.) Recommendation #6 (Indicate automated translation of free form text)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning. Headline: heavy rain at times, Saturday 13:30 to 21:00. Description: convective clouds, light to moderate rain that may become heavy at times, eastern, southern and western areas and parts of the interior, Saturday 22 August, 13:30 to 21:00. Instruction: take care outdoors or driving while it rains, follow official updates at the same URL. Numbers, times, places and the protective action are the same. The Arabic was machine translated, so a named Arabic reader must still approve it before sending. I cannot approve it.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The Arabic was machine translated. Two minor points for the human Arabic approver: 'NCM' is left in Latin script in the Arabic text, and the weekday is given in the Arabic without the English 'Saturday' appearing twice. Neither changes the meaning.",
+    "searched_for": "UAE requirement on Arabic naming of the issuing authority or on machine-translated alert text"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5772,
+  "output_tokens": 348,
+  "at": "2026-11-09T17:11:23Z"
+ }
+}

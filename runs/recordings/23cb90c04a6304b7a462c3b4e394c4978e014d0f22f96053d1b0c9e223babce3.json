@@ -1,0 +1,168 @@
+{
+ "key": "23cb90c04a6304b7a462c3b4e394c4978e014d0f22f96053d1b0c9e223babce3",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review emergency alert machine translation', 'exercise test alert labelling cell broadcast', 'fog warning visibility driving protective action wording'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0025] AI Guide v1 (p.8):\n3 SUPER AI A machine with cognitive abilities that surpasses human intelligence. A machine that can perform specific human tasks. LEFT BRAIN VIRTUAL COMPANIONS REAL TIME UNIVERSAL TRANSLATION THOUGHT CONTROLLED GAMING\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-23-88#0401] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nare mature enough at this time to be used for WEA translations, but notes that the Federal Emergency Management Agency (FEMA) and others have expressed reservations about the exclusive use of machine translations in emergency situations”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); CTIA, Reply, PS Docket Nos. 15-91 and 15-94, at 11 (rec. Aug. 21, 2023) (CTIA Reply) (“CTIA supports efforts by the Commission to evaluate the potential for machine translation that will guide future determination of any appropriate rules adopting its use”); Federal Emergency Management Agency Integrated Public Alert and Warning System Program Office Comments, PS. Docket Nos. 15-91 and 15-94, at 2 (Jul. 29, 2023) (FEMA Comments) (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”);\n\n[FCC-23-88#0398] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.68):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); ATIS Comments at 3 (“ATIS WTSC is not in a position to comment on whether machine translation technologies (continued )\n\n[TDRA-2017-CB#0013] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nYes Discard the alert by acknowledgement 4392 4379 Displayed الرسالة التجريبية Test Alerts رسالة تجريبية Test Alert No Yes Yes 10.5 Simple Tone (Similar to SMS) OR Audio Signal (Sound in Mute Mode is not required)\n\n[TDRA-2017-CB#0014] UAE TRA Technical Specifications and Behavior of Mobile Phones for cell broadcast (UAE-Alert classes and channel IDs) (p.1):\nNo OR Yes No Action By User OR Discard the alert by acknowledgement 4393 4380 Hidden تمارين Exercises تمرين Exercise Yes No Yes 10.5 Audio signal OR whistle tone (Even if mute mode) Yes Discard the alert by acknowledgement 4394 4381\n\n[ON-PICKERING-2020#0021] Investigation into the emergency alerts sent on January 12, 2020 (Key findings):\nIdentical pre-scripted templates were used on both the Alert Ready live and training systems. No distinctive labelling such as “EXERCISE, EXERCISE, EXERCISE...” was used on the training system. EMO Training on the Use of the Alert Ready System\n\n[ETSI-EUALERT#0041] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.9):\nEU-Monthly Test • EU-Test • EU-Exercise • EU-Reserved • EU-Geo-fencing trigger message EU-Monthly Test messages may be broadcast with a separate Message Identifier, but test messages may also be broadcast on a regular basis as an EU-Alert message to the general public. Test messages could for example be broadcast at the same time as the monthly test of the sirens is done. UEs may be made available with the capability of receiving EU-Monthly Test messages. The ability of a UE to receive and present EU-Monthly Test message is an optional capability. EU-Test messages may be used for proficiency training of alert originators and public outreach, and shall allow opt-in by the user.\n\n[ETSI-EUALERT#0045] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.10):\nRequired Monthly Test EU-Test State/Local Test EU-Exercise Exercise EU-Reserved Reserved for CMSP use EU-Geo-fencing trigger message Geo-fencing trigger Comment Broadcasting of level 1 alerts where opt-out is not allowed. Broadcasting of level 2 alerts where opt-out is allowed. Broadcasting of level 3 alerts where opt-out is allowed. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Broadcasting of advisory messages. Users should be able to opt-out from these messages. Allocated for Amber (child abduction) alerts. Users should be able to opt-in to these messages. Allocated for monthly test messages that may or may not involve the general public and may or may not require special UEs. Allocated for messages used for proficiency training and public outreach. Users may be able to opt-in to these messages. Allocated for use during exercises. Its use is for further study. Reserved for operator specific use. In EU-Alert this MI is reserved for national government requests to operators. Allocated for geo-fencing trigger message for DeviceBased Geo-Fencing.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic matches the English on numbers, times, place, hazard and protective action (21:30, 10:00, 17/18 Feb, western regions, zero visibility, drive with extreme caution, safe distance, reduced speed limits, URL). One meaning difference: the English headline begins with 'EXERCISE:' but the Arabic headline omits it, so the Arabic reads as a real fog warning. The Arabic was machine translated, so a named Arabic reader must still approve it.",
+  "objections": [
+   {
+    "issue": "The English headline is labelled 'EXERCISE:' but the Arabic headline has no equivalent label (تمرين). Arabic readers would take this as a real warning, and the protective action would look live rather than an exercise.",
+    "field": "arabic.headline",
+    "blocking": true,
+    "fix": "Start the Arabic headline with the exercise label, e.g. 'تمرين: تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية'.",
+    "uae_basis": {
+     "status": "cites_uae",
+     "ref": "TDRA-2017-CB#0014",
+     "quote": "تمارين Exercises تمرين Exercise"
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.headline",
+      "quote": "EXERCISE: Fog warning: visibility may drop to zero in western regions"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.headline",
+      "quote": "تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية"
+     },
+     {
+      "kind": "clause",
+      "ref": "TDRA-2017-CB#0014",
+      "quote": "تمارين Exercises تمرين Exercise"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5956,
+  "output_tokens": 577,
+  "at": "2026-11-09T17:18:14Z"
+ }
+}

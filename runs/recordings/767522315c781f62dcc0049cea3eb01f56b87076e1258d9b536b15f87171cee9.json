@@ -1,0 +1,168 @@
+{
+ "key": "767522315c781f62dcc0049cea3eb01f56b87076e1258d9b536b15f87171cee9",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Coastal and inland areas, Abu Dhabi (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-COAST-INLAND\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-dust-2026-03-04\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"All of the UAE\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"UAE-ALL\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender authorization area scope status Actual Exercise', 'alert area must match requested event area over-broad targeting', 'CAP msgType Update Cancel references correction original alert'):\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[ITU-UAE:05_Business_Continuity/5.1_NCEMA_7000_2021_BCM_Standard#0012] AE/SCNS/NCEMA 7000:2021 — Business Continuity Management Standard (p.5):\nSection B: Scope Question SubNo. Question Series Question Response (some organisations have this process, but the actual identification of Interested Parties and their BC requirements is not done according to this). 8\n\n[CAP12#0228] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<?xml version = \"1.0\" encoding = \"UTF-8\"?> <alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.2\"> <identifier>KSTO1055887203</identifier> <sender>KSTO@NWS.NOAA.GOV</sender> <sent>2003-06-17T14:57:00-07:00</sent> <status>Actual</status> <msgType>Alert</msgType> <scope>Public</scope> <info> <category>Met</category> <event>SEVERE THUNDERSTORM</event> <responseType>Shelter</responseType> <urgency>Immediate</urgency> <severity>Severe</severity> <certainty>Observed</certainty> <eventCode> <valueName>SAME</valueName> <value>SVR</value> </eventCode> <expires>2003-06-17T16:00:00-07:00</expires>\n\n[CAP12#0232] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<?xml version = \"1.0\" encoding = \"UTF-8\"?> <alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.2\"> <identifier>TRI13970876.2</identifier> <sender>trinet@caltech.edu</sender> <sent>2003-06-11T20:56:00-07:00</sent> <status>Actual</status> <msgType>Update</msgType> <scope>Public</scope> <references>trinet@caltech.edu,TRI13970876.1,2003-06-11T20:30:00-07:00</references> <info> <category>Geo</category> <event>Earthquake</event> <urgency>Past</urgency> <severity>Minor</severity> <certainty>Observed</certainty> <senderName>Southern California Seismic Network (TriNet) operated by Caltech and USGS</senderName>\n\n[CAP12#0236] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<alert xmlns = \"urn:oasis:names:tc:emergency:cap:1.2\"> <identifier>KAR0-0306112239-SW</identifier> <sender>KARO@CLETS.DOJ.CA.GOV</sender> <sent>2003-06-11T22:39:00-07:00</sent> <status>Actual</status> <msgType>Alert</msgType> <source>SW</source> <scope>Public</scope> <info> <language>en-US</language> <category>Rescue</category> <event>Child Abduction</event> <urgency>Immediate</urgency> <severity>Severe</severity> <certainty>Likely</certainty> <eventCode> <valueName>SAME</valueName> <value>CAE</value> </eventCode> <senderName>Los Angeles Police Dept - LAPD</senderName> <headline>Amber Alert in Los Angeles County</headline>\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0112] API First Guideline (p.45):\nUAE Government API First Guidlines ⁞ 5.1.2⁝ GraphQL APIs GraphQL is a language for querying databases from client-side applications. It provides a set of tools that operated over a single endpoint using HTTP. On the backend, GraphQL specifies to the API how to present the data to the client. GraphQL redefines developers’ work with APIs offering more flexibility and speed to market; it improves client-server interactions by enabling the former to make precise data requests and obtain no more and no less, but exactly what they need. GraphQL offer Strongly Typed Scheme for API Queries. It ensures there is no Over-Fetching on Under-Fetching of data saving time and bandwidth. Unlike REST it requires no versioning and it elegantly handles mutations, filtering, sorting and pagination etc. It transforms the shape of the response using the GraphQL execution library to match the shape of the query\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[FCC-16-127#0526] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nFurther, would an alternative accuracy requirement be appropriate for non-nationwide Participating CMS Providers? We seek comment on any alternative approaches to defining “matching” for the purposes of assessing compliance with our proposed requirement.580 In circumstances where Participating CMS Providers are unable to match the target area, we propose that they should be required to provide their best approximation of the target area, as we require in the Order. We seek comment on this approach. 141. The record indicates that it will be technically feasible for Participating CMS Providers to comply with our requirement that they geo-target Alert Messages to an area that matches the target area, given appropriate time for the development of relevant standards and network modifications.581 We expect that Participating CMS Providers will be able to geo-fence their transmission of Alert Messages by transmitting target area coordinates to 100 percent of mobile devices in the target area, erring on the side of over-inclusion where necessary.582 WEA-capable mobile devices would receive the Alert Message, including the target area coordinates, and determine whether they are currently located within the area those coordinates describe. If and only if the mobile device is within the target area, it would display the Alert Message to the subscriber.\n\n[FCC-16-127#0527] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.88):\nCommenters indicate that the suppression of the Alert Messages on mobile devices that are outside of the target area (geo-fencing) would allow Participating CMS Providers to match the target area specified by alert originators.583 We seek comment on this analysis, including any alternative approaches that Participating CMS Providers could use to match the target area or to implement a device-based approach to geo-targeting. The record indicates that technical issues, such as potential increases in message delivery latency, and reductions in the amount of data available for Alert Message text, can be resolved.584 We seek comment on how Participating CMS Providers will address these issues in conversation with other relevant WEA stakeholders. We seek comment on feasible methods Participating CMS Providers could use to mitigate sources of alert delivery latency that may be implicated by geo-targeting Alert Messages to an area that matches the target area specified by the alert originator.585 Participating CMS Providers and ATIS agree that meeting such an accurate geo-targeting standard could cause message delivery delay due to the device needing to determine its location before displaying the message, and due to network constraints.586 ATIS states that “the only currently readily 580 We anticipate that variations in geo-targeting accuracy due to the size of the target area can be controlled through alert originator best practices.\n\n[FCC-16-127#0522] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\n3. FCC 16-127 Matching the Geographic Target Area a. Background 138. While our geo-targeting requirement, as amended above, will improve WEA geotargeting by facilitating the delivery of Alert Messages to a more granular polygon level, the limitations of cell broadcast-based geo-targeting may result in continued over-alerting.573 According to CSRIC IV, the “ideal case” from an alert originator perspective would be where “all WEA-enabled mobile devices in the geographic area affected by an emergency event would receive the WEA Alert Message broadcast, and no mobile devices outside the defined alert area would receive those particular WEA Alert Message broadcasts.”574 “However,” CSRIC IV reports, “this ideal case cannot be realized using currently deployed cell broadcast alone.”575 CSRIC V recommends that the Commission collaborate with WEA stakeholders to develop standards and implement systems that support enhanced, device-based geotargeting.576 CSRIC V recommends that the Commission set a goal that Participating CMS Providers geo-target Alert Messages in a manner that includes “100% of the targeted devices within the specified alert area with not more than .10 mile overshoot,” and states that WEA stakeholders, including Participating CMS Providers, “have committed to working to close the gap between current capabilities and aspirational goals.”577 b.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.4_TDRA_Spectrum_Management_White_Paper_2023#0020] 3.4 TDRA Spectrum Management White Paper 2023 (p.8):\n4.1. Current Approach to Authorizing Spectrum Use TDRA’s current spectrum management tool dates from 2008 (which itself is an update of the original 2005 system). It has been subject to many updates since then. Key aspects of the original specification and subsequent development were minimal wait times for applicants and good visibility for management of the status of applications. TDRA, and the UAE government generally, places great emphasis on customer experience. As such, its systems and processes are designed to make authorisation applications as straightforward for stakeholders as possible. The TDRA provides an authorisation portal on its web site for users to apply for spectrum use as demand dictates (noting that some spectrum usage is also authorised through general authorisations or exemptions). It is also possible to modify, renew and cancel authorisations via the TDRA web site and all spectrum authorisations are now electronic. The UAE telecommunications sector is characterised as a duopoly with two main licensees: e& by Etisalat and du. There are also sector specific licensees which hold licences for specific services. To provide public telecommunications services within the UAE, applicants need to obtain a telecommunications licence.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Accessibility_Policy_English#0032] Accessibility Policy English (p.12):\nArticle (13) Amendments to the Policy • This policy is subject to periodic review and updates, where a dated notice will be available about “New Update”, and the concerned government entities must review the new terms and conditions, which are effective immediately after the publication of the new policy on the Competent Authority’s website. • This policy may be amended, canceled or replaced at any time by the Competent Authority\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is registered at level 1 with all areas and categories, and no higher-authority alert is active. The status and context fit: a real event is sent as Actual and the msgType is Alert with no references needed. The alert targets 'All of the UAE' (UAE-ALL), but the area requested and drawn for event uae-dust-2026-03-04 is only the Abu Dhabi coastal and inland demo zone (AUH-COAST-INLAND). That is over-broad targeting and the drafter can fix it.",
+  "objections": [
+   {
+    "issue": "The alert area is wider than the area requested for this event. The request is the Abu Dhabi coastal and inland zone, but the alert targets all of the UAE, so people outside the requested area would receive it.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Set areaDesc to 'Coastal and inland areas, Abu Dhabi (demo zone)' and codes to DEMO-ZONE / AUH-COAST-INLAND, matching the requested area. If a nationwide alert is really intended, a person at the issuing authority must decide that and redraw the area for the event.",
+    "uae_basis": {
+     "status": "cites_uae",
+     "ref": "UAE-KT-2026#0001",
+     "quote": "a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network"
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert.areaDesc",
+      "quote": "All of the UAE"
+     },
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "Coastal and inland areas, Abu Dhabi (demo zone)"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.codes",
+      "quote": "UAE-ALL"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6679,
+  "output_tokens": 583,
+  "at": "2026-11-09T17:13:36Z"
+ }
+}

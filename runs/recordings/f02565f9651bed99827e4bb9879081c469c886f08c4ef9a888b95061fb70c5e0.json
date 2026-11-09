@@ -1,0 +1,168 @@
+{
+ "key": "f02565f9651bed99827e4bb9879081c469c886f08c4ef9a888b95061fb70c5e0",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust and sand reducing visibility until 19:00 today\",\n  \"description\": \"NCM warns of fresh to strong northwesterly winds at times, causing blowing dust and sand. Visibility below 2,000 metres in some coastal and inland areas across the UAE. From 14:55 until 19:00 this evening, 4 March 2026.\",\n  \"instruction\": \"Take care, especially when driving on open roads, as blowing dust may reduce visibility. Check https://alerts.example.ae for updates.\"\n },\n \"arabic\": {\n  \"headline\": \"غبار ورمال متطايرة تحد من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"يحذر المركز الوطني للأرصاد (NCM) من رياح شمالية غربية نشطة إلى قوية أحياناً، تتسبب في تطاير الغبار والرمال. انخفاض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية في أنحاء دولة الإمارات. من الساعة 14:55 حتى الساعة 19:00 مساء اليوم، 4 مارس 2026.\",\n  \"instruction\": \"توخَّ الحذر، خاصة عند القيادة على الطرق المفتوحة، إذ قد يؤدي الغبار المتطاير إلى انخفاض مدى الرؤية. تابع https://alerts.example.ae للاطلاع على آخر المستجدات.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review cell broadcast alert wording', 'UAE NCM blowing dust visibility alert protective action driving', 'CAP 1.2 multilingual alert info blocks language consistency'):\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[TDRA-TSFS001#0014] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\nClass Class Title (Arabic) Class Title (English) Audio Attention Type 4370 4383 Class 1 تحذير طارئ وطني National Emergency Alert Audio Signal 4371 4384 Class 2 تحذير طارئ Emergency Alert\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-HI-2018#0116] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.20):\nthe Hawaii archipelago. In reviewing these coverage maps, AT&T, Sprint, T-Mobile, and Verizon appear to provide coverage throughout Hawaii but offer weak to no signal coverage in interior parts of the archipelago, including some State Parks and remote mountainous areas. 101 HI-EMA Report at 4 and 8. 102 See Alliance for Telecommunications Industry Solutions, Cell Broadcast Entity (CBE) to Cell Broadcast Center\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.4_TDRA_Spectrum_Management_White_Paper_2023#0005] 3.4 TDRA Spectrum Management White Paper 2023 (p.3):\n1. Executive Summary This TDRA “Spectrum Agility” White Paper presents a future-looking perspective on an agile and sustainable spectrum management regime for the next decade in the UAE. TDRA, by enhancing its spectrum management system and implementing the best available spectrum management solutions, promotes further industry development in line with UAE Digital Government Strategy and objectives. The White Paper considers more efficient and effective use of advanced, data driven spectrum management solutions generally and their potential impact for the UAE. TDRA has a mission to make spectrum available for innovative wireless services, as they play a major role in the significant transitions in which the UAE is engaged. In its endeavour to contribute to its objectives, TDRA cooperates and collaborates with all its strategic partners. This White Paper is intended for all stakeholders interested in future wireless opportunities and the evolution towards agile spectrum management systems. It provides insights into the driving forces for change and possible approaches to reaching the UAE’s digital goals. The following driving forces are explored:    \n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[TDRA-TSFS001#0013] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\n4.4 Smart phones All smart phones shall implement the following behaviors: Table 2 Smart phones behaviours: Cell Broadcast Information UAE-Alert Information User Equipment (UE)/Mobile Devices Requirements MsgID (Primary Block) MsgID (Secondary Block)\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[CAP12#0087] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n3.2.2 \"info\" Element and Sub-elements info cap. alertInfo. info. group The container for all component parts of the info sub-element of the alert message (OPTIONAL) (1) Multiple occurrences are permitted within a single <alert>. If targeting of multiple <info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. Each set of <info> blocks containing the same language identifier SHALL be treated as a separate sequence.\n\n[CAPCP#0056] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nincidents Info Rule #4 (Alert messages intended for public distribution must include an <info> block) language Rule #5 (<info> blocks must specify the content language) category event Rule #2 (Constraint of one subject event per alert message)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic is accurate on numbers, times, places and hazard. Numbers 2,000, 14:55, 19:00, 4 March 2026 and the URL match. The instruction is a generic 'take care' in both languages, so the Arabic faithfully mirrors it. One minor wording difference: 'fresh' is rendered as 'نشطة' (active), which is a loose rendering of the wind strength term. The Arabic was machine translated, so a named Arabic reader must approve it. This is a non-blocking wording issue.",
+  "objections": [
+   {
+    "issue": "English 'fresh to strong northwesterly winds at times' is rendered 'رياح شمالية غربية نشطة إلى قوية أحياناً'. 'نشطة' (active) is the conventional Arabic meteorological term for fresh winds, but a machine translation may not be consistent with NCM usage, and 'أحياناً' attaches to 'strong' only, narrowing 'at times' slightly. A human Arabic reader should confirm the term against NCM's standard wording.",
+    "field": "description",
+    "blocking": false,
+    "fix": "Have the named Arabic reviewer confirm 'نشطة إلى قوية أحياناً' against NCM's standard Arabic wind terminology, since the text was machine translated.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "arabic",
+      "quote": "رياح شمالية غربية نشطة إلى قوية أحياناً"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-23-88#0063",
+      "quote": "machine translation produces materially less accurate results when used to translate from English"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "Protective action is only generic 'take care' in both languages; this is a content issue in the English source, not an Arabic-English difference.",
+    "searched_for": "UAE clause on required protective action wording for dust alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5626,
+  "output_tokens": 646,
+  "at": "2026-11-09T17:08:08Z"
+ }
+}

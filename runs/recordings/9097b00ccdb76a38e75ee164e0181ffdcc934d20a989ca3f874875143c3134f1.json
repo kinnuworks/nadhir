@@ -1,0 +1,209 @@
+{
+ "key": "9097b00ccdb76a38e75ee164e0181ffdcc934d20a989ca3f874875143c3134f1",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Disregard the earlier alert\",\n  \"description\": \"Disregard the earlier weather alert for this area; it was sent in error.\",\n  \"instruction\": \"No action is needed.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 Cancel message type reference earlier alert', 'alert correction retraction wording sent in error FCC', 'NCM fog warning visibility western regions UAE'):\n\n[ITU-UAE:02_Data_Protection/2.4_UAE_Federal_Open_Data_Policy#0016] UAE Federal Open Data Policy & DGov Open-Data Specifications (Message Us):\nMessage Us Email * Name Message * Cancel Submit\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0299] 3.2 TDRA Consumer Protection Regulations v2 (p.50):\n25 Subscribers who are juridical Persons 26 This includes all existing and new bundles 27 The Hard Cap applies to the type of data specified in the data bundle. For example, if the data bundle is for ‘Social Data’ only, then the Hard Cap shall apply to ‘Social Data’ only. However, if the data bundle applies to all data types, then the Hard Cap shall also apply to all data types.\n\n[CAPCP#0105] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nRule #9. An Update or Cancel message should minimally include references to all active messages Element: <references> Use: Optional Type: Technical Value: Description: An element that lists earlier message(s) referenced by the alert message.\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAP12#0076] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nCode Values: “Alert” - Initial information requiring attention by targeted recipients “Update” - Updates and supercedes the earlier message(s) identified in <references> “Cancel” - Cancels the earlier message(s) identified in <references>\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0415] 3.2 TDRA Consumer Protection Regulations v2 (p.70):\nIn the event that any statement made by a Licensee is misquoted in the media, to the extent that the misquote does, or may, result in an apparent breach of these Regulations, the Licensee shall take reasonable steps to procure a retraction or correction or other appropriate remedial action concerning the\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0153] API First Guideline (p.58):\n5. Technical Guidelines ⁞ 5.3.2⁝ Types of Errors Errors and exceptions could occur while processing the request/ response within the Service Provider. As a principal, it is recommended to handle the exceptions wherever possible and to pass appropriate response messages to the invoking services. This helps in understanding the error scenarios better and resolving the issues without delays. The exceptions can occur within the service hosted by the Service Provider. These exceptions/errors should be handled as detailed out in the section below and appropriate error codes and descriptions should be sent to the invoking service. Service Providers should handle these errors appropriately. The following type of exceptions can happen at service level: 1} Business Validation Failures 2} Technical Validation Failures 3} System Failures\n\n[ON-PICKERING-2020#0055] Investigation into the emergency alerts sent on January 12, 2020 (Sequence of events):\n7:37 a.m. Cabinet Office queried SOLGEN and Ministry of Energy, Northern Development and Mines (ENDM) executives requesting an explanation for the alert. 7:39 a.m. PEOC sent an e-mail to an internal group of emergency management staff advising that “A NAAD System alert was sent out in error. Retraction Process has begun!”\n\n[ON-PICKERING-2020#0094] Investigation into the emergency alerts sent on January 12, 2020 (Terminology):\nTerminology Pelmorex Corp. (Pelmorex) and EMO documentation and communication referred to varying terminology to describe potential corrective action for an alert sent in error. PEOC staff and Ministry of the Solicitor General management referred to “retracting” the alert. During this investigation, a retraction definition or process could not be found.\n\n[ON-PICKERING-2020#0127] Investigation into the emergency alerts sent on January 12, 2020 (Communications with government and stakeholders):\nCommunications with government and stakeholders As the first alert was sent in error, the PEOC could not notify EMO management and stakeholders in advance. EMO staff experienced a high volume of queries from federal, provincial and municipal officials seeking information and clarification regarding the first alert. Stakeholders were variously told that the alert was issued in error, that there was a technical malfunction and that a retraction was underway. Between the issuance of the two alerts, some stakeholders re-contacted the EMO staff, growing increasingly frustrated with the lack of corrective action and related messaging for the public.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0049] UAE National Strategy for AI 2031 (p.11):\nThis objective relies heavily on achieving the other seven. Those objectives are necessary but not sufficient to deliver the UAE as a destination for AI talent and investment. The UAE is aiming to host key international conferences and forums on AI making it a hub for global experts and entrepreneurs. With this, the UAE will become the center of AI startups in the region.\n\n[ESTR-AICNHM#0279] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.70):\nThe main challenge in our field is obtaining reliable ground truth data to train our models. Avalanches are relatively rare events and mostly occur during periods of bad visibility. \"Limitations of predicting snow avalanche hazards in large data sparse regions\" High-level questions\n\n[ESTR-AICNHM#0042] ITU-T Technical Report ESTR.AICNHM: Artificial intelligence for communications: Towards natural disaster management (p.15):\nThe ways that AI can support forecasting include using AI to downscale numerical weather predictions as presented during the focus group workshop on 15 March 2021, 7 to develop a fog forecasting model based on the meteorological aerodrome report (METAR) visibility data from the last 20-40 years at the daily and seasonal scale as presented during the focus group workshop on 30 August 2021, 8 to support hail forecasting (whereby ML, classifiers, and transfer learning are combined with the reanalysis data [b-Hersbach]), and to assist in the automatic detection and prediction of snow avalanches [b-Thüring]. Among the topic group use cases (clause 8), there are many additional examples of how AI is being used in forecasting.9\n\n[MHEWS-2026#0380] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nIn regions where internet access is limited, where digital literacy is low, or where communities rely primarily on offline communication channels, these systems may provide only partial visibility into the information environment. As a result, misinformation circulating through offline networks - such as word of mouth, community radio, or informal messaging groups- may remain undetected. Unequal and limited access to digital channels may cause uneven protection against misinformation. Although fake news detection research is advancing from early development toward",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert is a retraction of an earlier alert, but the hazard bulletin (verified input 1) shows the fog warning is real and current. The alert tells people to disregard a valid NCM fog warning, which contradicts the bulletin. Its status, severity, urgency and certainty fields are also inconsistent with a cancellation, and it omits the hazard, times and places.",
+  "objections": [
+   {
+    "issue": "The alert says to disregard the earlier alert as sent in error and that no action is needed. The verified NCM bulletin confirms a live fog warning with visibility possibly dropping to zero and urges extreme caution. The alert contradicts the bulletin and could lead motorists to ignore a real hazard.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Remove the retraction wording. Restate the NCM fog warning: fog and sharply reduced visibility across several western regions of the UAE, from 21:30 on 17 Feb until 10:00 on 18 Feb 2026, with visibility possibly dropping to zero. A cancellation is only valid if NCM withdraws its warning; if the retraction is genuinely intended, escalate to a person to confirm with NCM.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Disregard the earlier weather alert for this area"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "visibility is expected to deteriorate—and may drop to zero at times"
+     }
+    ]
+   },
+   {
+    "issue": "The instruction 'No action is needed' contradicts the NCM advice to exercise extreme caution, keep a safe distance and follow modified speed limits. The headline likewise omits the hazard, places and times.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Replace the instruction with the NCM driving advice: exercise extreme caution, keep a safe distance from other vehicles, and adhere to modified speed limits, especially in thick fog. Change the headline to name the fog warning for western UAE and its validity period.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "No action is needed."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "The Center has urged motorists to exercise extreme caution on the roads."
+     }
+    ]
+   },
+   {
+    "issue": "The fields describe an active Actual fog warning (Moderate, Expected, Likely) while the text is a retraction. In CAP a retraction should be a Cancel message that references the earlier message, not an Actual fog warning with Moderate and Likely values. The bulletin gives no basis for the severity and certainty ratings either way.",
+    "field": "status",
+    "blocking": false,
+    "fix": "If the alert is a fog warning, remove the retraction text and keep the values consistent with the bulletin. If it is a genuine cancellation, use msgType Cancel with a reference to the earlier alert, after a person confirms the NCM withdrawal.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0050",
+      "quote": "Cancels the earlier message(s) identified in <references>"
+     },
+     {
+      "kind": "view",
+      "ref": "event",
+      "quote": "Fog warning"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4949,
+  "output_tokens": 1119,
+  "at": "2026-11-09T17:16:28Z"
+ }
+}

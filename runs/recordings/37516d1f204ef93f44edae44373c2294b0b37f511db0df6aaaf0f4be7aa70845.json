@@ -1,0 +1,168 @@
+{
+ "key": "37516d1f204ef93f44edae44373c2294b0b37f511db0df6aaaf0f4be7aa70845",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Department of Telecommunications, Government of India\": {\n   \"name\": \"Department of Telecommunications, Government of India\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Test areas chosen by DoT (reported as received across India on 10 Oct 2023)\",\n  \"codes\": [\n   [\n    \"ISO3166-1\",\n    \"IN\"\n   ]\n  ],\n  \"drawn_for_event\": \"india-test-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Department of Telecommunications, Government of India\",\n  \"status\": \"Test\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Test of Pan-India Emergency Alert System\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"India (as reported)\",\n  \"codes\": [\n   [\n    \"ISO3166-1\",\n    \"IN\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Emergency alert: Extreme\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 status Test Exercise Draft drill alert', 'issuer register authority area of jurisdiction alert validation', 'CAP msgType Update Cancel references correction'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0047] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.10):\nThe ballistic missile alert checklist specifies, however, that the transmission is a test message. Under the drill procedures, the test message should be sent only to FEMA IPAWS—it should never be transmitted to consumer phones, radios, or televisions. 48 A no-notice drill is a preparedness exercise that begins without prior warning to the warning officer initiating the\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[ON-PICKERING-2020#0045] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nSource: Public Safety Canada, 2020 Under this framework, the PEOC is an alert issuer. Alert issuers submit their alerts to the alert aggregator and issuers are responsible for the content of alert messages. The PEOC issues alerts on behalf of Ontario municipalities, First Nations and the Government of Ontario. The Ontario Provincial Police issues AMBER alerts directly to the alert aggregator; similarly, Environment Canada issues weather alerts directly to the alert aggregator.\n\n[ON-PICKERING-2020#0044] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nAn authorized issuer enters the alert into the NAAD System. The NAAD System ensures quick and secure delivery of alerts to the Distributors, exactly as provided by the Issuer. The Public receives alerts through various channels and responds appropriately to the emergency or situation.\n\n[FCC-23-88#0152] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.26):\n“[a]lerting authorities benefit from knowing which CMS providers support WEA, in which geographic areas, and for which mobile devices.”140 CTIA argues that “[n]o evidence suggests that the public is unaware that WEA is available in virtually every area of the country,”141 but that statement disregards the alerting authorities’ perspective that they need nuanced information about WEA’s availability, specifically if WEA is not available in every CMS network in their alert and warning jurisdiction or in every geographic area in their alert and warning jurisdiction, so that they can make alternative arrangements to deliver emergency communications.142 While we acknowledge CTIA’s perspective that much of the information that the WEA Database will contain is already publicly available,143 the record shows that we can significantly increase this information’s utility by aggregating it in one place. The New York State Division of Homeland Security and Emergency Services, for example, states that WEA participation “information is cumbersome for each alerting authority to gather, so having this available and up-to-date in one location would be a significant improvement over current practice.”144 To the extent that this information is already publicly available, however, we agree with Verizon that it will be minimally burdensome to provide.145 Aggregating this information in the WEA Database will also directly benefit consumers.\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.\n\n[CAPCP#0106] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nNotes: The normative copy in CAP requires <references> for “Update” and “Cancel” values, however, it is not enforced in the schema. Example: Element: <references> Use: Required Type: Policy Value: Description:",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is registered at level 1 with all areas and categories, the area (India, ISO3166-1 IN) matches the requested area, there are no active alerts from higher authorities, and an Alert needs no references. The one problem is status: the context is an exercise/drill, but the alert is marked Test. The console environment is live, so a Test alert could be mistaken for the wrong kind of message.",
+  "objections": [
+   {
+    "issue": "The context is EXERCISE / DRILL but the alert status is \"Test\". In CAP, Exercise is for designated exercise participants, while Test is for technical testing only. The status should match the context, so a drill must be marked as an exercise.",
+    "field": "alert.status",
+    "blocking": true,
+    "fix": "Set status to \"Exercise\" and put the exercise identifier in <note>. If this is really a technical test, correct the context to say so and confirm the console environment is not live.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note>"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Test\" – Technical testing only, all recipients disregard"
+     },
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4820,
+  "output_tokens": 489,
+  "at": "2026-11-09T17:05:54Z"
+ }
+}

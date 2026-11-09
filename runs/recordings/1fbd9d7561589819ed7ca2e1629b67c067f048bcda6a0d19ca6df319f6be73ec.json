@@ -1,0 +1,148 @@
+{
+ "key": "1fbd9d7561589819ed7ca2e1629b67c067f048bcda6a0d19ca6df319f6be73ec",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"drawn_for_event\": \"uae-fog-2026-02-17\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Western region (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-WEST\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender authorization issuer register', 'CAP status Actual Exercise Test drill msgType Update Cancel references', 'UAE early warning issuing authority national emergency alerts'):\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[WMO-REGISTER#0006] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nCBRNE: Chemical, Biological, Radiological, Nuclear or High-Yield Explosive threat or attack Other: Other events Authorized registry editors may proceed to the editing page by clicking here. Back to top © World Meteorological Organization, 7bis, avenue de la Paix, Case postale 2300, CH-1211 Geneva 2, Switzerland Tel.: + 41(0) 22 730 81 11 / Fax: + 41(0) 22 730 81 81 - Copyright | Privacy Policy | Disclaimer | Map disclaimer\n\n[ON-PICKERING-2020#0044] Investigation into the emergency alerts sent on January 12, 2020 (Alert Ready – Emergency Alert system):\nAn authorized issuer enters the alert into the NAAD System. The NAAD System ensures quick and secure delivery of alerts to the Distributors, exactly as provided by the Issuer. The Public receives alerts through various channels and responds appropriately to the emergency or situation.\n\n[ON-PICKERING-2020#0081] Investigation into the emergency alerts sent on January 12, 2020 (The Alert Ready system):\nThe Alert Ready system is a public-private partnership between FPT governments and the broadcasting and telecommunications industries (See Background for more details). All authorized alert issuers have access to the same Pelmorex Corp. (Pelmorex) operated system; however, some alert issuers have invested in custom interfaces to tailor the user experience to their needs. EMO's PEOC does not have a tailored interface, rather it uses the system provided by Pelmorex.\n\n[X1303BIS#0046] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.15):\nsender cap.alert.sender.identifier The identifier of the sender of the alert message (REQUIRED) (1) Identifies the originator of this alert. Guaranteed by assigner to be unique globally; e.g., may be based on an Internet domain name. (2) Must not include spaces, commas or restricted characters (< and &).\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0139] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.78):\nA Test and Exercise Report should be completed immediately after the completion of each Exercise. This report should, at a minimum, contain: • Management Summary • Introduction • Background • Results summary • Summary of exclusions and issues • Corrective and Preventive Action Plan • Independent observer report (See ‘BC Toolkit 1 – Templates’ for a Test and Exercise Report template).\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0138] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.78):\nPart 2: Guide on, which would have the greatest impact on continuity of the entity’s critical activities. The frequency of tests and exercises are dependent upon the nature, size and complexity of the organization. Each member of the entity’s Incident Management Team, including representatives, should participate in an exercise at least every 12 months. Other events which may initiate the requirement for an exercise include significant changes in the entity’s: • Location or facilities • Operating environment • Tools and technology • Key personnel • Suppliers and service providers • Outsource partners • Use or purchase of critical assets • Business objectives • Rules & Regulations • Standards A Test and Exercise Plan should be documented before each test, highlighting the: • Objectives: • Success criteria; • Timetable and schedule of activities; • Resources used; • Risks; • Assumptions; • Exclusions. • (See ‘BC Toolkit 1 – Templates’ for a Test and Exercise Plan template).\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPAU#0058] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.17):\nProfile Specification Type Profile Specification Normative Non-Normative <status>Actual</status> <msgType>Update</msgType> ... <references>example@bom.gov.au,IDS20210, 2011-05-11T00:35:00+09:30 example@bom.gov.au,IDS20211,2011-0511T02:00:00+09:30</references> ... <info> ... <expires>2011-0511T06:00:00+09:30</expires> ... </info> </alert> Example D. A further subsequent UPDATE message with a 3 hour <expires> time referencing the most recent two messages as the earliest one has expired and should not be playing anymore for two possible reasons – a) it has been superseded, or b) it has expired: <alert> <identifier>IDS20213</identifier> <sender>example@bom.gov.au</sender> <sent>2011-05-11T04:00:00+09:30</sent> <status>Actual</status> <msgType>Update</msgType> ... edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.\n\n[UAE-ISSUERS#0001] UAE Early Warning System: How it works and why you get alerts (section 'Who can send these alerts?'):\nOnly government entities involved in national emergency management are authorised to issue alerts.\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register (level 1, all areas, all categories). The alert area (Western region, DEMO-ZONE/AUH-WEST) matches the area drawn for event uae-fog-2026-02-17. The status Actual fits the context 'real event' on a live console. There are no active alerts from other authorities to overreach. The msgType is Alert, so no references are required.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The sender address is a demo authority on an example domain, not a real registered UAE entity such as NCEMA. The register entry says it stands in for the real issuer, so this looks like an intended demo set-up, not an authorisation fault.",
+    "searched_for": "UAE clauses on which entities are authorised to send warnings, compared with the sender identity in the issuer register"
+   },
+   {
+    "concern": "The WMO register entry for the UAE Meteorological Department has a blank authorization basis and alerting area. This is a gap in an external register and does not show that this sender may not issue this alert.",
+    "searched_for": "WMO alerting authority authorization basis for a Met category alert"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5282,
+  "output_tokens": 368,
+  "at": "2026-11-09T17:15:24Z"
+ }
+}

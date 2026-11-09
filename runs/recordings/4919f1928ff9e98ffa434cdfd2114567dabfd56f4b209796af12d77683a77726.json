@@ -1,0 +1,168 @@
+{
+ "key": "4919f1928ff9e98ffa434cdfd2114567dabfd56f4b209796af12d77683a77726",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM alert: rain, heavy at times, possible in eastern, southern and western areas\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, possibly heavy at times, in some eastern, southern and western areas and parts of the interior. In effect Saturday 22 Aug 2026, 13:30 to 12:00.\",\n  \"instruction\": \"Take extra care when driving in rain and avoid standing water. Follow updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه NCM: احتمال هطول أمطار تكون غزيرة أحياناً على المناطق الشرقية والجنوبية والغربية\",\n  \"description\": \"تنبيه NCM: سحب ركامية مصحوبة بأمطار خفيفة إلى متوسطة، قد تكون غزيرة أحياناً، على بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول يوم السبت 22 أغسطس 2026، من 13:30 إلى 21:00.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر أثناء القيادة تحت المطر وتجنّب المياه الراكدة. تابع آخر التحديثات على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation of alert text review before broadcast', 'validity period time expiry alert CAP effective expires', 'TDRA cell broadcast handset spec Arabic message language'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Executive_Council_Resolution_No._(3)_of_2019_Regulating_Test_Runs_of_Autonomous_Vehicles_in_the_Emirate_of_Dubai#0018] Executive Council Resolution No. (3) of 2019 Regulating Test Runs of Autonomous Vehicles in the Emirate of Dubai (p.7):\n©2019 The Supreme Legislation Committee in the Emirate of Dubai [1] Every effort has been made to produce an accurate and complete English version of this legislation. However, for the purpose of its interpretation and application, reference must be made to the original Arabic text. In case of conflict, the Arabic text will prevail.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Law_No._(9)_of_2023_Regulating_the_Operation_of_Autonomous_Vehicles_in_the_Emirate_of_Dubai#0060] Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai (p.13):\n©2023 The Supreme Legislation Committee in the Emirate of Dubai [1] Every effort has been made to produce an accurate and complete English version of this legislation. However, for the purpose of its interpretation and application, reference must be made to the original Arabic text. In case of conflict, the Arabic text will prevail. https://dlp.dubai.gov.ae/Legislation Reference/2023/Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles.html#:~:text=No Autonomous Ve...\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[CAPCP#0143] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nWhen automated language translation of free form text content in an <info> block has taken place, a single instance of this parameter should be used with a value of “yes”.\n\n[CAPCP#0142] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nType: Policy Value: a <valueName> of “profile:CAP-CP:1.0:AutoTranslated” and a <value> of “yes” or “no” Description: Automated translation is any kind of machine based translation of free form text or the assembly of phrases based on pre-set values where a human translator has not been involved. The purpose of this rule is to support advanced distribution decisions associated with multilingual messages.\n\n[ITU-UAE:02_Data_Protection/2.1_PDPL_Federal_Decree-Law_45_of_2021#0046] UAE Federal Decree-Law No. 45 of 2021 — Personal Data Protection Law (PDPL) (p.11):\n1. 処理の範囲、主体、処理の目的と性質、個人 データの種類、データ主体のカテゴリーを特定 した管理者の指示や両者の間で締結された法 書および合意書に従って処理を行い、実行す ること。 2. 個人データを保護するための適切な技術的お よび組織的な施策および手順につき、処理手 段を定義する際、または処理自体を行う際の 設計段階で、かかる施策および手順を適用す るためのコストおよび処理の性質、範囲、目的 を考慮して、適用すること。 3. 設定された目的および期間に従って処理を行 い、期間の延長または適切な指示を行うため に 、処理が設定された期間を 超えた場合に は、管理者に通知すること。 4. 処理期間終了後にデータを消去するか、管理 者に引き渡すこと。 4. erase the data after expiry of the Processing period or hand it over to the Controller.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0029] 3.2 TDRA Consumer Protection Regulations v2 (p.7):\n2.1.21. “PAYG Hard Cap Limit” means - the monetary value of the PAYG Hard Cap. 2.1.22. “Penalty-Free Service Cancellation Period” means - the period of time, as further defined in Article 12 of these Regulations, during which period a Subscriber can, in certain circumstances, cancel a contract for the supply of Telecommunications Services and exit that contract without incurring an early exit fee that would otherwise be imposed;\n\n[CAP12#0110] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(2) Alphabetic timezone designators such as “Z” MUST NOT be used. The timezone for UTC MUST be represented as “-00:00”. expires cap. alertInfo. expires. time The expiry time of the information of the alert message (OPTIONAL)\n\n[X1303BIS#0074] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\nTable 7-2 – \"info\" element and sub-elements Element name Context.class.attribute. representation Definition and (Optionality) expires cap.alertInfo.expires.time The expiry time of the information of the alert message (OPTIONAL) (1) The date and time shall be represented in the DateTime Data Type (See Implementation Notes) format (e.g., \"2002-05-24T16:49:0007:00\" for 24 May 2002 at 16:49 PDT). (2) Alphabetic timezone designators such as \"Z\" must not be used. The timezone for UTC must be represented as \"-00:00\". (3) If this item is not provided, each recipient is free to set its own policy as to when the message is no longer in effect.\n\n[CAPAU#0092] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.28):\nProfile Specification Type Profile Specification Normative Non-Normative consider whether the message consumer is capable of converting UTC to the correct local time. </info> </alert> Example B. Invalid formats: <expires></expires> <expires>0</expires> <expires>0000-00-00T00:00:0000:00</expires> <expires>””</expires> <expires>2011-05-13T07:00:00</expires> (missing UTC zone)\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0263] 3.2 TDRA Consumer Protection Regulations v2 (p.45):\n(c) fixed-line telephone handsets including cordless handsets; (d) bespoke devices which are necessary to access or receive the specific Telecommunications Services(s) supplied by the Licensees; or (e) any other device or category of device as may be specified by the TDRA from time to time.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic matches the English in hazard, areas and protective action, but the validity end time differs. English says \"13:30 to 12:00\" and Arabic says \"من 13:30 إلى 21:00\". The Arabic was machine translated and no human has reviewed it.",
+  "objections": [
+   {
+    "issue": "The end time of the validity period differs between the two texts. English gives 12:00 and Arabic gives 21:00 (9 pm). One of them is wrong, and people would act on the wrong expiry. The English may itself be wrong, because 13:30 to 12:00 on the same Saturday is not a coherent span. The Arabic reviewer cannot tell which end time is correct.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Confirm the intended end time with the issuing forecaster or authority, then correct whichever text is wrong so the English and Arabic give the same end time. Have a named Arabic reader approve the corrected Arabic.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "In effect Saturday 22 Aug 2026, 13:30 to 12:00."
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "من 13:30 إلى 21:00"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The Arabic is machine translated with no recorded human review. A named Arabic reader must approve it before broadcast.",
+    "searched_for": "UAE rule requiring human review of Arabic translation before broadcast"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5400,
+  "output_tokens": 516,
+  "at": "2026-11-09T17:18:52Z"
+ }
+}

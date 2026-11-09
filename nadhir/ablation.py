@@ -298,7 +298,90 @@ def summarise(cases: list[dict], clean_runs: list[dict]) -> dict:
             "objections_total": sum(c["objections_total"] for c in cases)}
 
 
+PREREG = ROOT / "bench" / "faults-preregistered.yaml"
+
+
+def apply_ops(c, ops):
+    """Apply one pre-registered fault (declarative ops, see bench/faults-preregistered.yaml)."""
+    for op in ops:
+        kind = op["op"]
+        if kind in ("replace", "append"):
+            targets = [c["fields"]] if op["lang"] == "en" else c["versions"]
+            for t in targets:
+                f = op["field"]
+                if kind == "replace":
+                    if op["find"] not in (t.get(f) or ""):
+                        raise ValueError(f"find text not in {op['lang']} {f}: {op['find']!r}")
+                    t[f] = t[f].replace(op["find"], op["with"])
+                else:
+                    t[f] = (t.get(f) or "").rstrip() + " " + op["text"]
+        elif kind == "set":
+            c["fields"][op["field"]] = op["value"]
+        elif kind == "set_area":
+            c["scn_alert_area"] = {"areaDesc": op["areaDesc"], "geocodes": [[c["scn"]["requested_area"]["geocodes"][0][0], op["code"]]]}
+        elif kind == "set_areadesc":
+            c["scn_alert_area"] = {"areaDesc": op["value"], "geocodes": c["scn"]["requested_area"]["geocodes"]}
+        elif kind == "drop_language":
+            c["versions"] = [v for v in c["versions"] if not v["language"].startswith(op["lang"])]
+        elif kind == "set_sender":
+            c["sender"] = op["value"]
+        else:
+            raise ValueError(f"unknown op {kind}")
+
+
+def run_prereg() -> dict:
+    """The fault set written by someone outside the build, committed before this ran, terms unchanged."""
+    faults = yaml.safe_load(PREREG.read_text(encoding="utf-8"))
+    cases = []
+    bases = {}
+    for f in faults:
+        sid = f["scenario"]
+        if sid not in bases:
+            scn = load_scn(sid)
+            base = base_draft(scn)
+            xml0, ai0 = build(scn, base["fields"], base["versions"])
+            vs0 = gate.check(pipeline.envelope_for(scn, xml0, [], ai0), stage="review")
+            bases[sid] = (scn, base, {v.rule for v in vs0 if v.status in (gate.FAIL, gate.WARN)})
+        scn, base, clean_bad = bases[sid]
+        c = {"sid": sid, "scn": scn, "fields": copy.deepcopy(base["fields"]), "versions": copy.deepcopy(base["versions"])}
+        apply_ops(c, f["ops"])
+        xml, ai = build(scn, c["fields"], c["versions"], sender=c.get("sender"), area=c.get("scn_alert_area"))
+        env_scn = {**scn, "issuer": c["sender"]} if c.get("sender") else scn
+        rn, vs = rules_named(env_scn, xml, ai, clean_bad)
+        reviews = institutions.review(env_scn, xml, c["fields"], c["versions"], salt=f"prereg:{f['id']}:{sid}")
+        terms = [t.lower() for t in f["named_terms"]]
+        an = agents_named(reviews, terms)
+        clean_also = sum(1 for o in _clean_objections(sid) if any(_hit(t, _text(o)) for t in terms))
+        cases.append({"fault": f["id"], "title": f["title"], "copies": f.get("copies"), "scenario": sid,
+                      "rules_named": rn, "agents_named": an, "clean_also": clean_also,
+                      "named_by": {"none": False, "rules": bool(rn), "agents": bool(an), "both": bool(rn) or bool(an)},
+                      "objections_total": sum(len(r["objections"]) for r in reviews),
+                      "dropped_total": sum(len(r["dropped"]) for r in reviews),
+                      "reviews": [{k: r[k] for k in ("role", "name", "position", "summary", "objections", "dropped",
+                                                      "no_basis", "queries", "clauses")} for r in reviews],
+                      "gate": [{"rule": v.rule, "status": v.status, "detail": v.detail} for v in vs]})
+        print(f"{f['id']} {sid}: rules {rn or '-'} | agents {len(an)} hit(s)")
+    n = len(cases)
+    summary = {"cases": n, "named": {a: sum(1 for c in cases if c["named_by"][a]) for a in ("none", "rules", "agents", "both")},
+               "only_rules": sorted(c["fault"] for c in cases if c["named_by"]["rules"] and not c["named_by"]["agents"]),
+               "only_agents": sorted(c["fault"] for c in cases if c["named_by"]["agents"] and not c["named_by"]["rules"]),
+               "neither": sorted(c["fault"] for c in cases if not c["named_by"]["both"]),
+               "terms_matching_clean_drafts": sum(1 for c in cases if c["clean_also"])}
+    return {"cases": cases, "summary": summary}
+
+
 def main(argv: list[str]) -> int:
+    if "--prereg" in argv:
+        res = run_prereg()
+        res["note"] = ("Faults and matching terms written outside the build and committed before the run "
+                       "(bench/faults-preregistered.yaml); reported as they came out.")
+        (OUT / "ablation-prereg.json").write_text(json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+        slim = {"summary": res["summary"], "note": res["note"],
+                "cases": [{k: c[k] for k in ("fault", "title", "copies", "scenario", "rules_named", "agents_named", "named_by", "clean_also")}
+                          for c in res["cases"]]}
+        (WEB / "ablation-prereg.json").write_text(json.dumps(slim, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(json.dumps(res["summary"], indent=1))
+        return 0
     res = run_faults()
     clean_path = OUT / "results.json"
     clean_runs = []

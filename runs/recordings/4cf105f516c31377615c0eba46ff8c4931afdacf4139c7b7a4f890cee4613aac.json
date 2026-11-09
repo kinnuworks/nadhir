@@ -1,0 +1,148 @@
+{
+ "key": "4cf105f516c31377615c0eba46ff8c4931afdacf4139c7b7a4f890cee4613aac",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM alert: rain, heavy at times, possible Saturday 13:30 to 21:00\",\n  \"description\": \"NCM alert: convective clouds with light to moderate rain, heavy at times, possible in some eastern, southern and western areas and parts of the interior. In effect Saturday 13:30 to 21:00.\",\n  \"instruction\": \"Take extra care if you go out, and drive carefully in rain. Follow official updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه NCM: احتمال هطول أمطار، غزيرة أحياناً، يوم السبت من 13:30 إلى 21:00\",\n  \"description\": \"تنبيه NCM: سحب ركامية مصحوبة بأمطار خفيفة إلى متوسطة، غزيرة أحياناً، يُحتمل أن تشمل بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري يوم السبت من 13:30 إلى 21:00.\",\n  \"instruction\": \"توخَّ مزيداً من الحذر إذا خرجت، وقُد بحذر أثناء هطول الأمطار. تابع التحديثات الرسمية على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review of emergency alert wording', 'TDRA cell broadcast handset Arabic language message requirements', 'CAP 1.2 multilingual alert info blocks language'):\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0032] DotEmarat Policy EN (p.11):\n8.6.8.4. 8.6.8.5. The maximum number of Active Variant . (dotEmarat) Arabic Domain Names must not exceed five (5) in total. Requests to activate two (2) or more . (dotEmarat) Arabic Domain Names Variants may be subject to review by the .aeDA. For example: by Registering , the Registrant may request to activate . The remaining inactive Variants will remain blocked from Registration and can be activate upon Registrant request.\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.\n\n[FCC-23-88#0402] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.69):\nNOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical lifesaving calls-to-action”); NYPSC Reply at 2; County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul. 29, 2023) (Sonoma County Comments) (“we are concerned that automatic translation can lead to unintended and deleterious consequences”); T-Mobile Comments at 4 (“Just last fall it was noted that ‘[m]achine translation tools like Google Translate can be super handy, and Big Tech often promotes them as accurate and accessible tools that’ll break down many intra-linguistic barriers in the modern world. But the truth is that things can go awfully wrong’”); T-Mobile USA, Inc., Reply, PS Docket Nos. 15-91 and 15-94, at 3 (T-Mobile Reply); USGS Comments at 3 (“the Commission is right to be concerned about the accuracy of on-the-fly translation which may garble or change the meaning of the intended message.\n\n[ON-PICKERING-2020#0103] Investigation into the emergency alerts sent on January 12, 2020 (Pre-scripted messages):\nThe PEOC did not have any French language templates. Procedures existed for submitting an emergency French translation request. The service standard for emergency French translation was to respond within 30 minutes. On January 12, 2020, as the first alert was sent in error, translation was not considered. The PEOC did not submit an emergency French language request for the second alert.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[TDRA-TSFS001#0009] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.4):\nSpecifications The following requirements shall apply: 1. The Handset shall be configured by default to receive all emergency alerts as per TRA specification. 2. An emergency alert message shall be immediately recognizable (Emergency alerts shall be specifically recognizable as being an emergency message that cannot be mistaken for an ordinary message.) 3. The emergency alerts shall stay on the display regardless of the user setting, until the message indication is cancelled by the user. It shall be possible for the user to review the message at a later time. 4. The delivery of the emergency alert shall not preempt an active voice or data session. 5. The mobile device shall be capable to perform duplicate detection. 6. Mobile devices shall support receiving and displaying emergency alerts in Arabic and English. 7. Handsets shall only be required to receive and present emergency alerts in languages as issued by the Alert Originator. 8. It shall be possible for the emergency alerts to be displayed on the handset upon reception and without any user interaction. 9. The handset shall not support any capabilities to reply, forward or copy the received emergency alerts. 10. The handset shall be able to support concurrent reception of multiple emergency alerts. 11.\n\n[TDRA-TS040#0002] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 3):\nMessage should be limited to 1 page maximum.\n\n[IPAWS-OPEN#0019] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.16):\nSMS vs. WEA • SMS is a text message • Opt-in • Service congestion • Not specific to handset location • Your text message alert noise • WEA is cellular broadcast • No need to opt-in • No message congestion • Specific to handset location • Unique noise\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.\n\n[TDRA-TSFS001#0013] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\n4.4 Smart phones All smart phones shall implement the following behaviors: Table 2 Smart phones behaviours: Cell Broadcast Information UAE-Alert Information User Equipment (UE)/Mobile Devices Requirements MsgID (Primary Block) MsgID (Secondary Block)\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[CAP12#0087] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n3.2.2 \"info\" Element and Sub-elements info cap. alertInfo. info. group The container for all component parts of the info sub-element of the alert message (OPTIONAL) (1) Multiple occurrences are permitted within a single <alert>. If targeting of multiple <info> blocks in the same language overlaps, information in later blocks may expand but may not override the corresponding values in earlier ones. Each set of <info> blocks containing the same language identifier SHALL be treated as a separate sequence.\n\n[CAPCP#0056] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nincidents Info Rule #4 (Alert messages intended for public distribution must include an <info> block) language Rule #5 (<info> blocks must specify the content language) category event Rule #2 (Constraint of one subject event per alert message)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning. The times (13:30 to 21:00), the day (Saturday), the hazard (convective clouds, light to moderate rain, heavy at times, possible), the areas (eastern, southern, western and parts of the interior) and the protective actions (take extra care, drive carefully in rain, follow official updates at the same URL) are all rendered faithfully. The Arabic was machine translated, so a named Arabic reader must still approve it.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The Arabic was produced by machine translation, so a human Arabic reader must confirm it. The content matches the English, but no UAE clause shown requires human review of machine-translated alerts.",
+    "searched_for": "UAE or TDRA requirement for human review of machine-translated Arabic alert text"
+   },
+   {
+    "concern": "The Arabic headline begins with the Latin acronym NCM, as does the English. This is a minor stylistic point and is not a meaning difference.",
+    "searched_for": "UAE rule on using Arabic versus Latin agency acronym in Arabic alert text"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5509,
+  "output_tokens": 371,
+  "at": "2026-11-09T17:11:56Z"
+ }
+}

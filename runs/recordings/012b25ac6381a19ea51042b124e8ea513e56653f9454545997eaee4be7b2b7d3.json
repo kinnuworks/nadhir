@@ -1,0 +1,186 @@
+{
+ "key": "012b25ac6381a19ea51042b124e8ea513e56653f9454545997eaee4be7b2b7d3",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Seoul Metropolitan Government\": {\n   \"name\": \"Seoul Metropolitan Government\",\n   \"level\": 2,\n   \"areas\": [\n    \"KR-ADM=11\",\n    \"polygon:37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  },\n  \"Ministry of the Interior and Safety\": {\n   \"name\": \"Ministry of the Interior and Safety\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [\n  {\n   \"sender\": \"Ministry of the Interior and Safety\",\n   \"name\": \"Ministry of the Interior and Safety\",\n   \"level\": 1,\n   \"event\": \"air-raid alert\",\n   \"geocodes\": [\n    [\n     \"KR-ADM\",\n     \"28720\"\n    ]\n   ]\n  }\n ],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon (area named in the ministry's alert)\",\n  \"codes\": [\n   [\n    \"KR-ADM\",\n    \"28720\"\n   ]\n  ],\n  \"drawn_for_event\": \"seoul-2023\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Seoul Metropolitan Government\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Security\"\n  ],\n  \"event\": \"경계경보 (air-raid alert)\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"Seoul (entire city)\",\n  \"codes\": [\n   [\n    \"KR-ADM\",\n    \"11\"\n   ]\n  ],\n  \"polygons\": [\n   \"37.41,126.76 37.72,126.76 37.72,127.19 37.41,127.19 37.41,126.76\"\n  ],\n  \"headline\": null\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender authority area scope alert validation', 'cell broadcast alert geographic targeting area mismatch failure', 'CAP status Actual Exercise Test msgType Update Cancel references'):\n\n[CAPCP#0054] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nalert Rule #1 (CAP-CP message must be valid CAP) identifier sender Recommendation #2 (<sender> should be descriptive) sent status msgType Recommendation #7 (Indicate when an update message contains non-substantive content changes)\n\n[CAPCP#0128] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #2. <sender> should be descriptive):\n... <sender>operations-center@EMO@gnb.ca</sender> ... Note: The example is not a real value. The following is an example of an issuing authority that uses a third party to create the actual CAP message file on their behalf. ... ControlCenter@third-party.ca ... Note: The example is not a real value.\n\n[CAPCP#0138] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #4. A <senderName> is strongly recommended):\n... <sender>Montreal@gc.ca</sender>... <info> ... <language>en-CA</language> <senderName>Environment Canada</senderName> .. </info> <info> .. <language>fr-CA</language> <senderName>Environnement Canada</senderName> .. </info> 2) In this case, the issuing authority for the Alert is not the same entity that creates the CAP message file ... <sender>ControlCenter@third-party.ca<sender> ... <info> ... <language>en-CA</language> <senderName>Environment Canada</senderName> .. </info> <info> .. <language>fr-CA</language> <senderName>Environnement Canada</senderName> .. </info>\n\n[CAPAU#0043] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.12):\nProfile Specification Type Profile Specification Normative Non-Normative 3) If an alert message created by another agency is being passed through a system, such as a data aggregator, with no alterations, then the <sender> can remain as is. However, if any changes are made to the message, or if the aggregator is the authority to its clients, the <sender> value should change to reflect the aggregator, and the original message’s extended identifier (sender, identifier, sent) is to be added to the <incidents> block, with a <source> value added identifying the original sender and what was changed.\n\n[FCC-16-127#0522] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.87):\n3. FCC 16-127 Matching the Geographic Target Area a. Background 138. While our geo-targeting requirement, as amended above, will improve WEA geotargeting by facilitating the delivery of Alert Messages to a more granular polygon level, the limitations of cell broadcast-based geo-targeting may result in continued over-alerting.573 According to CSRIC IV, the “ideal case” from an alert originator perspective would be where “all WEA-enabled mobile devices in the geographic area affected by an emergency event would receive the WEA Alert Message broadcast, and no mobile devices outside the defined alert area would receive those particular WEA Alert Message broadcasts.”574 “However,” CSRIC IV reports, “this ideal case cannot be realized using currently deployed cell broadcast alone.”575 CSRIC V recommends that the Commission collaborate with WEA stakeholders to develop standards and implement systems that support enhanced, device-based geotargeting.576 CSRIC V recommends that the Commission set a goal that Participating CMS Providers geo-target Alert Messages in a manner that includes “100% of the targeted devices within the specified alert area with not more than .10 mile overshoot,” and states that WEA stakeholders, including Participating CMS Providers, “have committed to working to close the gap between current capabilities and aspirational goals.”577 b.\n\n[FCC-16-127#0215] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.36):\n216 CSRIC IV WEA Messaging Report, at 44; see also, e.g., AT&T May 6, 2015 Ex Parte at 2; T-Mobile Comments at 6; Verizon Comments at 2; CTIA Comments at 7. 217 See, e.g., Sprint Comments at 11; CTIA Comments at 7. A device-based solution entails an alert originator transmitting geographic coordinates for the target area along with the WEA message, and an end-user device using the device’s location-based technology to display only those WEA messages that are relevant to the geographic area in which the device is located. CSRIC IV WEA Messaging Report at 40. This technique is sometimes referred to as “geo-fencing.” See, e.g., NWS May 21, 2015 Ex Parte Letter at 2. FEMA agrees that “[g]eo-targeting proficiency can be improved by implementing geographical targeting for WEA broadcasts by cell-sector, including delivery of alert area specifications to the phone enabling mobile-assisted geographical targeting (aka geo-fencing), and other techniques.” FEMA Jun 18 Ex Parte Letter at 2. 218 CSRIC V, Working Group Two, Wireless Emergency Alerts – Recommendations to Improve Geo-Targeting and Offer Many-to-One Capabilities, Final Report, at 30 (2016) (CSRIC V WEA Geo-targeting Report). 219\n\n[FCC-16-127#0207] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.35):\nNarrowing Geo-targeting Requirements a. Background 50. Under Section 10.450 of the Commission’s WEA rules, Participating CMS Providers may not transmit Alert Messages to areas larger than the county or county equivalents with which the target area of the Alert Message overlaps.210 In the WEA First Report and Order, we concluded that it would be premature to require geo-targeting to areas smaller than a county, despite many commenters’ statements that cell broadcast technology could already support geo-targeting at the sub-county level, because not all carriers were expected to employ cell broadcast to deliver Alert Messages, and because NWS was currently only targeting its Alert Messages at the county level.211 In the WEA NPRM, we proposed to narrow our WEA geo-targeting requirement such that any Alert Message that is specified by a geocode, circle, or polygon must be transmitted to an area not larger than the specified area.212 If, however, a Participating CMS Provider is unable to accurately match the geocode, circle, or polygon provided by the emergency manager, we proposed to retain the current backstop that the Participating CMS Provider may geo-target the Alert Message to an area that approximates the desired alert area, but is no larger than a single transmission site.213 51.\n\n[ETSI-EUALERT#0053] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.11):\n5.7 Device-Based Geo-Fencing Device-Based Geo-Fencing (DBGF) allows the presentation of the warning message to be limited to UEs that are inside the targeted warning notification area. This will effectively eliminate the effect of overshoot of the radio signal for cell broadcast outside the targeted warning notification area. DBGF is specified in ETSI TS 123 041 [1] for E-UTRAN and NG-RAN. EU-Alert shall support DBGF.\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPAU#0058] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.17):\nProfile Specification Type Profile Specification Normative Non-Normative <status>Actual</status> <msgType>Update</msgType> ... <references>example@bom.gov.au,IDS20210, 2011-05-11T00:35:00+09:30 example@bom.gov.au,IDS20211,2011-0511T02:00:00+09:30</references> ... <info> ... <expires>2011-0511T06:00:00+09:30</expires> ... </info> </alert> Example D. A further subsequent UPDATE message with a 3 hour <expires> time referencing the most recent two messages as the earliest one has expired and should not be playing anymore for two possible reasons – a) it has been superseded, or b) it has expired: <alert> <identifier>IDS20213</identifier> <sender>example@bom.gov.au</sender> <sent>2011-05-11T04:00:00+09:30</sent> <status>Actual</status> <msgType>Update</msgType> ... edxl-cap1.2-au-v1.0-cs02 Standards Track Work Product Copyright © OASIS Open 2013. All Rights Reserved.\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Seoul Metropolitan Government (level 2) is registered only for Seoul (KR-ADM=11 and its polygon). The alert targets Seoul, but the area requested for this event is Baengnyeong-myeon and Daecheong-myeon in Ongjin-gun, Incheon (KR-ADM 28720), which is the area in the Ministry of the Interior and Safety's active level-1 air-raid alert. The alert's area does not match the requested area. The sender is also not authorised for 28720. Issuing an Actual air-raid alert for all of Seoul would go beyond the sender's remit for this event and duplicate a higher authority's alert for a different area. The drafter should retarget to the requested area, but this sender cannot cover it, so the alert should go to the Ministry or be authorised by it.",
+  "objections": [
+   {
+    "issue": "Alert area (Seoul, KR-ADM 11 with polygon) is not the area requested for this event (Ongjin-gun, KR-ADM 28720, named in the ministry's alert). An Actual air-raid alert for a different area would alarm the whole of Seoul, which is not under threat.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Replace the area with the requested area (KR-ADM 28720) and remove the Seoul code and polygon. Because Seoul is not authorised for 28720, this alert should be issued by the Ministry of the Interior and Safety or with its authorisation. Otherwise withdraw the draft.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "requested_area",
+      "quote": "Baengnyeong-myeon and Daecheong-myeon, Ongjin-gun, Incheon"
+     },
+     {
+      "kind": "view",
+      "ref": "alert",
+      "quote": "Seoul (entire city)"
+     }
+    ]
+   },
+   {
+    "issue": "The sender is outside its registered jurisdiction. Seoul Metropolitan Government is registered only for KR-ADM=11 and the Seoul polygon, and the Ministry's active level-1 air-raid alert already covers 28720. Seoul has no authority over Ongjin-gun, and issuing its own Actual air-raid alert risks conflicting with or overreaching the higher authority's alert.",
+    "field": "sender",
+    "blocking": true,
+    "fix": "Do not issue this alert from Seoul for Incheon area 28720. Defer to the Ministry's active alert, or have the Ministry issue it. If Seoul itself faces a separate threat, obtain the Ministry's confirmation first.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "issuer_register",
+      "quote": "\"level\": 2"
+     },
+     {
+      "kind": "view",
+      "ref": "active_alerts_from_other_authorities",
+      "quote": "\"event\": \"air-raid alert\""
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6405,
+  "output_tokens": 978,
+  "at": "2026-11-09T17:06:48Z"
+ }
+}

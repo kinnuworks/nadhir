@@ -1,0 +1,144 @@
+{
+ "key": "c212c83fb4d95a0e5471081bbad5faaa119160373b919ee3b6d24ce88fc72ebf",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust and sand reducing visibility in coastal and inland Abu Dhabi\",\n  \"description\": \"EXERCISE – NOT A REAL ALERT. Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi. 16 Feb, 10:30 until 18:00.\",\n  \"instruction\": \"EXERCISE. Take care, especially when driving on external and open roads, as visibility can drop suddenly. More: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار ورمال متطايرة تحدّ من مدى الرؤية في المناطق الساحلية والداخلية من أبوظبي\",\n  \"description\": \"تمرين – ليس تنبيهاً حقيقياً. رياح شمالية غربية نشطة وقوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية من أبوظبي. 16 فبراير، من 10:30 حتى 18:00.\",\n  \"instruction\": \"تمرين. يُرجى توخي الحذر، خاصة عند القيادة على الطرق الخارجية والمكشوفة، إذ قد ينخفض مدى الرؤية فجأة. للمزيد: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation of alert text machine translation review', 'cell broadcast message wording protective action instruction', 'UAE dust sand low visibility early warning driving'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Executive_Council_Resolution_No._(3)_of_2019_Regulating_Test_Runs_of_Autonomous_Vehicles_in_the_Emirate_of_Dubai#0018] Executive Council Resolution No. (3) of 2019 Regulating Test Runs of Autonomous Vehicles in the Emirate of Dubai (p.7):\n©2019 The Supreme Legislation Committee in the Emirate of Dubai [1] Every effort has been made to produce an accurate and complete English version of this legislation. However, for the purpose of its interpretation and application, reference must be made to the original Arabic text. In case of conflict, the Arabic text will prevail.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Law_No._(9)_of_2023_Regulating_the_Operation_of_Autonomous_Vehicles_in_the_Emirate_of_Dubai#0060] Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles in the Emirate of Dubai (p.13):\n©2023 The Supreme Legislation Committee in the Emirate of Dubai [1] Every effort has been made to produce an accurate and complete English version of this legislation. However, for the purpose of its interpretation and application, reference must be made to the original Arabic text. In case of conflict, the Arabic text will prevail. https://dlp.dubai.gov.ae/Legislation Reference/2023/Law No. (9) of 2023 Regulating the Operation of Autonomous Vehicles.html#:~:text=No Autonomous Ve...\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[CAPCP#0142] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nType: Policy Value: a <valueName> of “profile:CAP-CP:1.0:AutoTranslated” and a <value> of “yes” or “no” Description: Automated translation is any kind of machine based translation of free form text or the assembly of phrases based on pre-set values where a human translator has not been involved. The purpose of this rule is to support advanced distribution decisions associated with multilingual messages.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0432] 3.2 TDRA Consumer Protection Regulations v2 (p.74):\nThe Consumer Protection Regulations, Version 1.5, Issued 4 October 2020 and all Annexure thereto. 30.2.2. The TDRA instructions issued to Licensees on 8 December 2021 to ‘Cease and desist from using the word “fastest” in advertisements related to mobile networks’. ----\n\n[TS23041#0339] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.71):\nCode 0 1 0 1 Instruction to Terminal No instruction as to emergency user alert. Activate emergency user alert. No instruction as to popup. Activate popup on the display. Geographical Scope: The Geographical Scope (GS) indicates the geographical area over which the Message Code is unique, and the display mode. The CBS message is not necessarily broadcast by all cells within the geographical area. When two CBS messages are received with identical Serial Numbers/Message Identifiers in two different cells, the Geographical Scope may be used to determine if the CBS messages are indeed identical. In particular, the Geographical Scope tells the mobile if the CBS message is: -\n\n[TS23041#0174] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.42):\nETSI TS 123 041 V18.3.0 (2024-02) - This is a write request which will be interpreted by the BSC/RNC as an instruction to broadcast a new CBS message in all the cells of the Cell list.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[MHEWS-2026#0380] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nIn regions where internet access is limited, where digital literacy is low, or where communities rely primarily on offline communication channels, these systems may provide only partial visibility into the information environment. As a result, misinformation circulating through offline networks - such as word of mouth, community radio, or informal messaging groups- may remain undetected. Unequal and limited access to digital channels may cause uneven protection against misinformation. Although fake news detection research is advancing from early development toward\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English in meaning for the headline, description and instruction. It keeps the EXERCISE framing, the hazard (blowing dust and sand), the northwesterly winds that are active and occasionally strong, the visibility under 3,000 m, the areas (coastal and inland Abu Dhabi), the date and time window (16 Feb, 10:30 to 18:00), and the protective action (take care when driving on external and open roads because visibility can drop suddenly). The URL is unchanged. The Arabic was machine translated, so a named Arabic-reading person must still approve it. Nothing in the shown text is mistranslated.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The Arabic was machine translated and no human review is recorded. This is an approval-process point for the named Arabic reader, not a difference in meaning.",
+    "searched_for": "UAE requirement for human review of machine-translated Arabic alert text"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5743,
+  "output_tokens": 319,
+  "at": "2026-11-09T17:09:18Z"
+ }
+}

@@ -1,0 +1,173 @@
+{
+ "key": "9675f7740ea9a6b42234df07d38684f2912e00fdae272be0437a27f10817a838",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE - Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00.\",\n  \"instruction\": \"Take care, especially when driving on external and open roads, as visibility can drop suddenly. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"غبار متطاير يحد من الرؤية في المناطق الساحلية والداخلية حتى الساعة 18:00\",\n  \"description\": \"رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية، أبوظبي (منطقة تجريبية). تستمر هذه الأحوال حتى الساعة 18:00.\",\n  \"instruction\": \"يرجى توخي الحذر، خاصة أثناء القيادة على الطرق الخارجية والمكشوفة، إذ قد تنخفض الرؤية بشكل مفاجئ. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation review exercise alert wording UAE', 'UAE early warning blowing dust low visibility driving advice', 'cell broadcast Arabic language message requirements TDRA'):\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0201] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.106):\nPart 3: BCM Toolkit Plan Exercise and Update Training At some point, it is necessary to receive required training on a certain plan, to ensure its validity and usefulness. This training can be carried out in the form of a practical exercise or simulation. It also gives personnel implementing the plan an opportunity to get acquainted with such plan and their roles and responsibilities in implementing it, which is paramount for the success of such plan. To that end, the plan should include a training program for all personnel who may be involved in an emergency at the site, including people with special needs. The schedule should list the team members and specify their title and role Update It is also critical that a plan be reviewed and updated periodically, to ensure its consistency with changes to the entity’s organizational structure, operations, personnel, suppliers and contractors. In addition, after an exercise or activation, the plan shall be reviewed and updated by the team(s) to include information on how useful the plan was in accomplishing the entity’s objectives. Details of plan review and update can be logged in a table like the one shown below. Review Date\n\n[ON-PICKERING-2020#0107] Investigation into the emergency alerts sent on January 12, 2020 (Findings):\nThe PEOC did not have a pre-scripted template for an “End Alert” message on January 12, 2020. Both PEOC alerts sent on January 12, 2020 were issued in English only. The PEOC did not have any French language templates. The PEOC did not initiate emergency translation procedures to issue either alert in French. Identical pre-scripted templates are used on both the Alert Ready live and training systems. No distinctive labelling such as “EXERCISE, EXERCISE, EXERCISE...” is applied to the training system.\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[FCC-23-88#0063] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\ntranslation approaches should continue to be studied as they develop, and their usage not prematurely mandated”); Attorneys General Comments at 5 (“Recent evidence shows that machine translation produces materially less accurate results when used to translate from English into several other languages”); Competitive Carriers Association, Comments, PS Docket Nos. 15-91 and 15-94, at 3 (rec. Jul. 21, 2023) (CCA Comments) (“CCA members are not aware of existing machine translation technologies that are sufficiently reliable for use in emergency situations”); FEMA Comments at 2 (“FEMA IPAWS has not conducted research to determine the efficacy of machine translation, but anecdotally some AOs have indicated that it has not advanced to the point of replacing their qualified translators”); NOAA/NWS Comments at 1 (“NWS is concerned about the quality of device translation because wording is critical in conveying the message for certain alerts. The NWS has found examples where calls-to-action could be misinterpreted based on a poor, incomplete, or inconsistent translation of an NWS alert”); NYCEM Comments at 2-3 (“NYCEM has concerns about the accuracy of translations, specifically regarding critical life-saving calls-to-action”); County of Sonoma, California Department of Emergency Management and the City of Santa Rosa, California Fire Department Comments, PS Docket Nos. 15-91 and 15-94, at 1 (Jul.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0089] UAE National Strategy for AI 2031 (p.18):\nEmployment Transition Support Workers with low digital skills (60% of the workforce) AI experts (0.2%) Professionals with expert digital skills (5%) Funding secondments overseas Short couses on specific techniques Skills training for 60% of the workforce with low digital skills would benefit from more robust data on current skills in the labor force and current job openings. The AI Office supports the Minister of State for Higher Education and Advanced Skills in their efforts to improve this data collection, and champions efforts to develop a series of career advice tools and services to help current and future workers make more informed choices.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[MHEWS-2026#0380] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.95):\nIn regions where internet access is limited, where digital literacy is low, or where communities rely primarily on offline communication channels, these systems may provide only partial visibility into the information environment. As a result, misinformation circulating through offline networks - such as word of mouth, community radio, or informal messaging groups- may remain undetected. Unequal and limited access to digital channels may cause uneven protection against misinformation. Although fake news detection research is advancing from early development toward\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0047] 3.2 TDRA Consumer Protection Regulations v2 (p.10):\n3.2.2. shall be written in the Arabic language or in the English Language as preferred by the Consumer or in circumstances where the preference is unknown, the information shall be written in both languages.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[ETSI-EUALERT#0034] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.8):\n5 EU-Alert capabilities 5.1 Language The need to support Public Warning Messages in various languages is necessary for the European Public Warning System because there are many European countries that share borders where there is a frequent and significant movement of mobile subscribers across those borders, i.e. a high instance of international roaming. Emergency messages should be sent out to users in their own language but when not practicable, then in the language of the message originator. It is impractical to determine the language of the user and so messages shall be sent out in the native language of the country originating the message and subject to national requirements, in any other language or languages that the originator chooses. A CBS structure is required to accommodate the requirement to broadcast messages in multiple languages virtually simultaneously in order not to disadvantage any recipient of a message in a particular language. ETSI TS 123 041 [1] contains an assignment of Message Identifiers for EU-Alert messages in the local language, which is the same range as for CMAS messages in English. This range of Message Identifiers shall be used when the national requirements demand that the UE receive and display the EU-Alert messages in local languages unconditionally.\n\n[TS23041#0384] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.79):\n1129 CMAS CBS Message Identifier for the Required Monthly Test for additional languages. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message dependent on the language indicated in the CBS message and the language indicator settings in the ME.\n\n[TS23041#0385] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.79):\n4394 112A CMAS CBS Message Identifier for CMAS Exercise for additional languages. According to CMAS requirements (see 3GPP TS 22.268 [28]), if this Message Identifier is in the \"search list\", the ME shall attempt to receive this CBS message dependent on the language indicated in the CBS message and the language indicator settings in the ME.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic matches the English on numbers, times, places, the hazard and the protective action. The one difference in meaning is that the English opens with \"EXERCISE\" in the headline and description, but the Arabic has no equivalent marking. A recipient reading only the Arabic could take this exercise for a real alert. The Arabic was machine translated, so a named Arabic reader must still approve it.",
+  "objections": [
+   {
+    "issue": "The English headline and description are marked \"EXERCISE\", but the Arabic headline and description are not. The Arabic reads as a real dust warning. This changes the meaning for Arabic readers and could cause real-world reaction to an exercise.",
+    "field": "arabic.headline",
+    "blocking": true,
+    "fix": "Add an Arabic exercise label to the headline and description, for example \"تمرين: \" at the start of each, matching the English \"EXERCISE\" prefix.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "english.headline",
+      "quote": "EXERCISE: Blowing dust reducing visibility in coastal and inland areas until 18:00"
+     },
+     {
+      "kind": "view",
+      "ref": "arabic.headline",
+      "quote": "غبار متطاير يحد من الرؤية في المناطق الساحلية والداخلية حتى الساعة 18:00"
+     },
+     {
+      "kind": "clause",
+      "ref": "ON-PICKERING-2020#0107",
+      "quote": "No distinctive labelling such as “EXERCISE, EXERCISE, EXERCISE...” is applied to the training system."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The Arabic was machine translated, and the protective action wording (\"يرجى توخي الحذر\") is general. It matches the English \"Take care\", so no meaning difference was found. A human Arabic reader still needs to approve it.",
+    "searched_for": "UAE requirement for human review of machine-translated Arabic emergency alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6075,
+  "output_tokens": 658,
+  "at": "2026-11-09T17:19:43Z"
+ }
+}

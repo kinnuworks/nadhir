@@ -1,0 +1,196 @@
+{
+ "key": "4ed46342a8cde9e2a751f8f3dfae08f2fc574ce25d803af400b37a6a0b0b9aeb",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"HI-EMA State Warning Point\": {\n   \"name\": \"HI-EMA State Warning Point\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"State of Hawaii (internal drill; no public area was intended)\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"015000\"\n   ]\n  ],\n  \"drawn_for_event\": \"hawaii-2018\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"HI-EMA State Warning Point\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Safety\"\n  ],\n  \"event\": \"Civil Defense Warning (EAS event code CDW)\",\n  \"severity\": \"Extreme\",\n  \"areaDesc\": \"State of Hawaii\",\n  \"codes\": [\n   [\n    \"SAME\",\n    \"015000\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"BALLISTIC MISSILE THREAT INBOUND TO HAWAII.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Exercise Draft Actual drill alert', 'FCC report Hawaii false ballistic missile alert 2018', 'CAP 1.2 msgType Cancel Update references required'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0076] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\nNotes: Processing of “Ack” or “Error” messages is optional, and systems may impose their own associated rules. Example: (for public distribution) <alert .. > ... <status>Actual</status> <msgType>Alert</msgType> <source>Environment Canada</source> <scope>Public</scope>\n\n[FCC-HI-2018#0084] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nHI-EMA’s procedures for conducting a ballistic missile drill lacked adequate safeguards that might have helped to avoid the communication errors that led to the false alert.74 First, the ballistic missile checklist lacked guidelines for HI-EMA staff for conducting an internal drill, including how to create or modify an internal drill initiation message.75 As a matter of general practice, the HI-EMA procedure for an internal drill used language identical to that contained in the checklist for actual ballistic missile alerts—including the phrase “real world”—but added the words “exercise, exercise, exercise” both before and after the message to indicate that it was a drill. Use of the same language for both test and live alert initiation procedures could cause confusion among warning officers who received the message without prior notice, notwithstanding the statements at the beginning and end of the message that it was an exercise.\n\n[FCC-HI-2018#0085] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nFurthermore, in this case, the midnight shift supervisor deviated from the abovereferenced procedure by creating a new script that blended elements from 1) the standard drill initiation message script (i.e., the ballistic missile checklist language that used the phrase “real world,” and preceded and followed the message with “exercise, exercise, exercise”) and 2) the EAS message for alerting the public to an actual missile attack (a message that used the phrase “This is not a drill.”).76 71 One emergency management agency the Bureau interviewed acknowledged that if a warning officer conducted a\n\n[FCC-HI-2018#0017] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.5):\nSee also Hawaii Emergency Management Agency, FAQs Related to Ballistic Missile False Alert (Jan. 13, 2018 revised Jan. 31, 2018), http://dod.hawaii.gov/hiema/faqs-related-tothe-ballistic-missile-false-alert/; Hawaii Emergency Management Agency, Statement on Missile Launch False Alarm (Jan. 13, 2018), https://dod.hawaii.gov/hiema/files/2018/01/20180113-NR-HI-EMA-statement-on-missilelaunch-false-alarm.pdf. As discussed above, this report will use the facts as determined in the FCC investigation but note in footnotes any discrepancies with the HI-EMA Report and the Hawaii Preparedness Report. 15 See State releases heavily redacted recording of HI-EMA’s missile mistake test, Hawaii News Now, (Mar. 14,\n\n[FCC-HI-2018#0088] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.15):\nAccording to the Hawaii Preparedness Report, “A complete comprehensive annex or plan to address the Ballistic Missile Preparedness (BMP) threat had not been fully developed prior to commencement of missile alert siren testing and internal missile alert drills[,]” and that this approach contradicted HI-EMA’s all hazards protocols. Hawaii Preparedness Report at 1. 75 The ballistic missile checklist was intended for use in connection with a real ballistic missile attack. 76 The HI-EMA Report states, “Notification for Step 1 of the [ballistic missile alert] checklist is used for actual\n\n[ON-PICKERING-2020#0117] Investigation into the emergency alerts sent on January 12, 2020 (Box 2: 2018 Hawaii false ballistic missile alert):\nBox 2: 2018 Hawaii false ballistic missile alert On January 13, 2018 at 8:07 am local time, the Hawaii Emergency Management Agency (HI-EMA) issued an emergency alert to Hawaii residents that read “Emergency Alert: BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL”. At 8:45 am, a second alert was issued stating that the first alert was false and that there was no missile threat or danger to Hawaii residents.\n\n[FCC-HI-2018#0093] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nThe HI-EMA Report finds that the ballistic missile alert checklist did not include a response protocol in the event of a false-ballistic missile message, although there was a cancel message, which stopped further ballistic missile messages. Id. The HI-EMA Report further finds that the HI-EMA Preparedness Branch previously identified the need to revise the [ballistic missile alert] checklist to include a “Deactivation” section or “‘All Clear EAS message.’” Id. The HI-EMA Report states: “Had the protocol [for sending an all clear message] been developed within the last 2 months [between November 29, 2017 and January 29, 2018, the HI-EMA Report’s publication date], the delay in sending out an official notification over WEA/EAS that the alert was false would not have happened on January 13, 2018.” On this latter point, the Bureau infers that the HI-EMA Report reiterates that the establishment of a false alert response protocol in the ballistic missile alert checklist would have reduced any delay in issuing a CEM. An “all clear” message, however, could also be used to notify the public of a ballistic missile interception without effect to Hawaii. See Hawaii Preparedness Report at 1. 78 HI-EMA Report at 9. 79 Id.\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0106] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nNotes: The normative copy in CAP requires <references> for “Update” and “Cancel” values, however, it is not enforced in the schema. Example: Element: <references> Use: Required Type: Policy Value: Description:",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The sender is in the register with wildcard area and category authority, so sender authorisation is fine. However, the context is EXERCISE / DRILL and the requested area says it is an internal drill with no public area intended, yet the alert carries status Actual and scope Public targeting all of Hawaii (SAME 015000). A drill must stay a drill, and this mismatch is the failure mode of the 2018 false alert. The console environment is live, so a person must decide before anything proceeds.",
+  "objections": [
+   {
+    "issue": "Status 'Actual' with public scope contradicts the EXERCISE / DRILL context. The alert would be actionable by all recipients statewide, while the requested area states no public area was intended. A drill must not be issued as Actual.",
+    "field": "status",
+    "blocking": true,
+    "fix": "Set status to 'Exercise' (with the exercise identifier in note) and restrict scope to designated exercise participants, or, if a real alert is truly intended, have a person confirm and change the context. Do not release on the live console as Actual until resolved.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.status",
+      "quote": "Actual"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Actual\" – Actionable by all targeted recipients"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Exercise\" – Actionable only by designated exercise participants"
+     }
+    ]
+   },
+   {
+    "issue": "The alert's target area is the whole State of Hawaii (SAME 015000) with Public scope, but the requested area for this event says it was an internal drill with no public area intended. The alert area does not match the area actually requested.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Remove the public statewide area and scope, or confirm via a person that statewide public targeting is intended. For a drill, use an internal or restricted audience.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "requested_area.areaDesc",
+      "quote": "internal drill; no public area was intended"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.scope",
+      "quote": "Public"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5178,
+  "output_tokens": 793,
+  "at": "2026-11-09T17:05:39Z"
+ }
+}

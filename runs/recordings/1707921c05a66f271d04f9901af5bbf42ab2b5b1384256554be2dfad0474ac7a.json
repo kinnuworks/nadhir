@@ -1,0 +1,34 @@
+{
+ "key": "1707921c05a66f271d04f9901af5bbf42ab2b5b1384256554be2dfad0474ac7a",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"UAE\",\n \"required_languages\": [\n  \"ar\",\n  \"en\"\n ],\n \"handset_spec\": \"TDRA TS FS 001 v2.0 (2019): handsets must show alerts in Arabic and English; it sets no page limit. 3GPP TS 23.041 allows up to 15 pages.\",\n \"recorded_gaps\": [\n  \"G6: alerts run to several pages, Arabic most of all (UCS-2, 41 characters a page). The gate's R6 notes the page count on every alert and the approvers see it. Object to length only above the 15-page maximum.\"\n ],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"EXERCISE - this is a drill. Active to occasionally strong northwesterly winds are raising dust and sand. Visibility is below 3,000 m in some coastal and inland areas until 18:00 today (16 Feb). Visibility can drop suddenly.\",\n   \"characters\": 223,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 3\n  },\n  {\n   \"language\": \"ar\",\n   \"text\": \"تمرين - هذا تدريب. رياح شمالية غربية نشطة إلى قوية أحياناً تثير الغبار والرمال. الرؤية أقل من 3,000 م في بعض المناطق الساحلية والداخلية حتى الساعة 18:00 اليوم (16 فبراير). قد تنخفض الرؤية بشكل مفاجئ.\",\n   \"characters\": 199,\n   \"encoding\": \"UCS-2\",\n   \"pages\": 5\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "TDRA cell broadcast handset specification Arabic English",
+   "3GPP TS 23.041 cell broadcast 15 pages UCS-2",
+   "cell broadcast first page hazard and action",
+   "UAE early warning mobile alert language requirements"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1097,
+  "output_tokens": 88,
+  "at": "2026-11-09T17:10:00Z"
+ }
+}

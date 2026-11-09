@@ -1,0 +1,168 @@
+{
+ "key": "fcdff9f412c219a050112f01a560948e3b37576e697dacde57dc8574659d730b",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 February. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"رياح مثيرة للغبار تحدّ من مدى الرؤية حتى الساعة 19:00 اليوم\",\n  \"description\": \"تهب رياح شمالية غربية نشطة إلى قوية مثيرة للغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. ومن المتوقع أن يستمر ذلك حتى الساعة 19:00 من مساء اليوم، 4 مارس. المصدر: المركز الوطني للأرصاد.\",\n  \"instruction\": \"توخَّوا مزيدًا من الحذر، لا سيما أثناء القيادة على الطرق المفتوحة، إذ قد ينخفض مدى الرؤية بسبب الغبار المتطاير. للاطلاع على التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic month names date translation alerts', 'UAE dust wind visibility alert wording Arabic', 'cell broadcast multilingual alert translation review'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0029] DotEmarat Policy EN (p.10):\n8.6. . (dotEmarat) Domain Name Variants 8.6.1. The purpose of . (dotEmarat) Arabic Domain Name Variants is to alleviate confusion that may be caused by Arabic Characters that are similar to one another. 8.6.2. It is the intent of . (dotEmarat) Arabic Domain Name Variants that if the Variant is substituted for the . (dotEmarat) Arabic Domain Name by a user, the same end result would be achieved. 8.6.3. The Variants (if any) will be associated with the Primary . (dotEmarat) Arabic Domain Name for the term of the Domain Name Licence Period. 8.6.4. Variants are determined according to Active Variant Tables and Blocked Variant Tables as in Appendix A. 8.6.5. If Variants (if any) associated with the Primary . (dotEmarat) Arabic Domain Name they will have the same Domain Name Record as the Primary . (dotEmarat) Arabic Domain Name. 8.6.6. By default all . (dotEmarat) Arabic Domain Name Variants are not active at the time of Registration of the Primary . (dotEmarat) Arabic Domain Name, subject to Section 8.6.6 and 8.6.7. Furthermore, inactive Variants are blocked from registration. 8.6.7. Automatic activation of . (dotEmarat) Arabic Domain Name Variants: 8.6.7.1.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0011] DotEmarat Policy EN (p.5):\n2. . (dotEmarat) Arabic Purpose 2.1. 2.2. 3. . (dotEmarat) Arabic The purpose of this Policy is to define the rules that govern the granting of 2LD and 3LD Domain Name Licences under the . (dotEmarat) Arabic ccTLD. This Policy applies on . (dotEmarat) Arabic Domain Names and does not apply on .ae Domain Names. Background 3.1. AEDA-POL-016 The .aeDA manages the . (dotEmarat) Arabic ccTLD.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0049] DotEmarat Policy EN (p.16):\nUnicode Name ARABIC LETTER ALEF WITH MADDA ABOVE ARABIC LETTER ALEF WITH HAMZA ABOVE ARABIC LETTER ALEF WITH HAMZA BELOW ARABIC LETTER ALEF Character Arabic Letter Heh Group Unicode Code Point Unicode Name U+0647 ARABIC LETTER HEH U+0629 ARABIC LETTER TEH MARBUTA Character # Arabic Letter Yeh Group Unicode Code Point Unicode Name U+064A ARABIC LETTER YEH U+0649 ARABIC LETTER ALEF MAKSURA AEDA-POL-016 Character & %\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0034] DotEmarat Policy EN (p.11):\n8.6.10. Registrants of . (dotEmarat) Arabic Domain Names may not sell, rent, lease or otherwise relinquish control of to another party, any Active Variant to their . (dotEmarat) Arabic Domain Name. 8.6.11. A . (dotEmarat) Arabic Domain Name Variant may be added or removed at any time by the .aeDA at its sole discretion.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0033] DotEmarat Policy EN (p.11):\n8.6.9. Provisioning of 8.6.9.1. 8.6.9.2. . (dotEmarat) Arabic Domain Name Variants: It is the Registrant’s responsibility to ensure that any details required to ensure the correct operation of the Active Variants of the . (dotEmarat) Arabic Domain Name are in place. Active Variants must not be managed independently of the Primary . (dotEmarat) Arabic Domain Name, either in the DNS or by any other means.\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0207] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.109):\nPart 3: BCM Toolkit • • • • • • • • • • • • Dust and toxic fume masks. General stationery (pens, paper, etc.). Hazard and cordon tape. Loud Hailer (batteries to be kept sealed until used) Marker pens (for temporary signs). Message pads and flip chart paper. Mobile telephone with credit available, plus charger. Radio (batteries to be kept sealed until used) – consider wind up type Small toolkit (hammer, wrench, screwdriver and spanner set) Spare keys Torch - consider wind up type. Voice recorder\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0020] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe make clarifying edits such as changing the phrase ``Urgently complete efforts to protect life and property'' to ``Take steps to protect life and property'' in the hurricane and storm surge templates and ``Do NOT go out into the calm of the hurricane eye!'' to ``Do NOT go outside if the wind calms!'' in the extreme wind template. To implement NWS's recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 11. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase ``when visibility drops'' in the dust storm template is figurative language; but does not propose an alternate phrase.\n\n[FCC-FR-2025#0078] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57297):\nDo not attempt to travel unless you are fleeing an area that may flood or are under an evacuation order. [URL] Severe Thunderstorm Warning [SENDING AGENCY]: A SEVERE THUNDERSTORM WARNING is in effect for [LOCATION] until [TIME] for DESTRUCTIVE 80 mile per hour winds. Take shelter inside a sturdy building, away from windows. Flying objects may be deadly to those outside a sturdy shelter. [URL] Snow Squall Warning [SENDING AGENCY]: A SNOW SQUALL WARNING is in effect for [LOCATION] until [TIME]. Slow down or delay travel! Be ready for a sudden drop to near zero visibility and icy roads in heavy snow. [URL] Dust Storm Warning [SENDING AGENCY]: A DUST STORM WARNING is in effect for [LOCATION] until [TIME]. Be ready for sudden drop to zero visibility. Pull Aside, Stay Alive! When visibility drops, pull far off the road and put your vehicle in park. Turn the lights off and keep your foot off the brake. Infants, the elderly, and those with trouble breathing urged to take precautions. [URL] Hurricane Warning [SENDING AGENCY]: A HURRICANE WARNING is in effect for [LOCATION] for dangerous and damaging winds until [TIME]. This warning is issued up to 36 hours before hazardous conditions begin. Take steps to protect life and property. Have food, water, cash, fuel, and medications for 3+ days.\n\n[TDRA-TSFS001#0005] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n2 Scope The Government of the United Arab Emirates developed a National Public Warning Service (UAEAlert) which will use the cell broadcast technology to disseminate warning alerts issued by authorities to the public in times of crisis and therefore is required to have effective, high quality communication methods and systems to meet this need. One of the channels is the mobile networks in the UAE through Cell Broadcast technology. The main scope of this specification is to enable Cell Broadcast service in all mobile devices operating in the UAE mobile networks.\n\n[TDRA-TSFS001#0007] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\nthe system deployed to provide an advance and instance public warning about emergency cases and disaster situations by utilizing different channels and media’s Cell Broadcast Service (CBS) means broadcasting of messages to the mobile phones of a large number of citizens in a specific location within specific time frame. The area can be as small as one cell and as big as the entire network.\n\n[FCC-23-88#0061] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.11):\nWhile some commenters support machine translation, many suggest that it is not yet ready for utilization in WEA.58 The Attorneys General urge the Commission to support multilingual WEA through the use of pre-installed templates, rather than machine translation, because “relying on software to translate WEAs without review by a human translator may cause material inaccuracies in critically important alerts.”59 Similarly, the New York Public Service Commission states that “until machine-translated WEAs can be nearly 100% accurate, the FCC should utilize pre-scripted WEA templates that are translated to each required language by humans.”60 We also acknowledge, however, that machine translation holds promise to support more situation-specific emergency alerts in a far larger set of languages.61 Accordingly, we will continue to examine the feasibility of machine translation technologies and its application in connection with multilingual alerting. 19. As a baseline, we require Participating CMS Providers’ WEA-capable mobile devices support templates in the 13 most commonly spoken languages in the United States, based on U.S. Census 56 See USGS Comments at 2-3 (“The USGS strongly supports an option for pre-scripted alert messages in the target\n\n[FCC-DA-25-12#0102] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\nRejecting Objections to Adopting Templates 43. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities.141 However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. 142 We do not—and cannot—revisit the viability of machine translation for creating multilingual WEA alerts. 143 Consistent with the record before the Commission, many commenters take the view that “the accuracy of a translation requires human intervention”, as “the inaccurate translation may seriously misinform WEA recipients during an emergency.” 144 The Attorneys General and the City of New York argue that machine and artificial intelligence forms of translation “present a serious risk of conveying inaccurate information to the public, potentially causing confusion, panic, and increased risks to public safety.” 145 In any event, the Bureau cannot reject templates or consider machine translation as some commenters urge because this approach falls outside the scope of its authority as delegated by the Commission, which has already rejected the use of machine translation. 146 We remind commenters that the Commission has stated that it “will continue to 138\n\n[FCC-FR-2025#0057] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57294):\nI. Rejecting Objections To Adopting Templates 38. As the Commission stated in the 2023 WEA Report and Order, the use of multilingual templates improves upon available methods for sending multilingual WEA messages and will enhance the flexibility that alerting authorities have in communicating with their communities. However, some commenters continue to question the template approach already adopted by the Commission or suggest the Bureau should explore machine translation in lieu of templates. We do not--and cannot-- revisit the viability of machine translation for creating multilingual WEA alerts. Consistent with the record before the Commission, many commenters take the view that ``the",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic matches the English on the hazard, the 2,000 metre visibility, the 19:00 end time, the places, the wind description and the protective action. One date error: the English says 4 February but the Arabic says 4 مارس (March). This changes the meaning, so the Arabic must be corrected. The Arabic was machine translated, so a named Arabic reader must still approve it.",
+  "objections": [
+   {
+    "issue": "Month mistranslated: English gives the date as 4 February, but the Arabic gives 4 مارس (March). A reader could take the alert to apply on a different date.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Replace 'مارس' with 'فبراير' so the Arabic reads 'اليوم، 4 فبراير'. Then have a named Arabic reader check the full text.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Expected until 19:00 this evening, 4 February."
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "حتى الساعة 19:00 من مساء اليوم، 4 مارس."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The Arabic was machine translated with no recorded human review. The FCC texts raise accuracy concerns about machine translation, but they are US rules and do not bind the UAE. Human sign-off on the Arabic is needed.",
+    "searched_for": "UAE rules on human review of machine-translated Arabic alerts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 7164,
+  "output_tokens": 508,
+  "at": "2026-11-09T17:21:56Z"
+ }
+}

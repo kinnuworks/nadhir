@@ -52,7 +52,8 @@ function reviewsBlock(inst) {
     <table><tr><th>Reviewer (sees only)</th><th>Position</th><th>Objections, each with a quote checked word for word</th><th>Searched the knowledge base for</th></tr>
     ${rd.reviews.map((r) => `<tr><td><strong>${esc(r.name)}</strong><br><span class="muted">stands in for ${esc(r.stands_for)}</span></td>
       <td class="${r.position === "agree" ? "pass" : "pending"}">${esc(POSITION[r.position] || r.position)}</td>
-      <td>${r.objections.length ? r.objections.map((o) => `<p><strong>${esc(o.issue)}</strong> <span class="muted">[${esc(o.field)}${o.blocking ? ", blocking" : ""}]</span><br>Fix: ${esc(o.fix)}</p><ul>${o.evidence.map(evidence).join("")}</ul>`).join("") : `<span class="muted">${esc(r.summary)}</span>`}
+      <td>${r.objections.length ? r.objections.map((o) => `<p><strong>${esc(o.issue)}</strong> <span class="muted">[${esc(o.field)}${o.blocking ? ", blocking" : ""}]</span><br>Fix: ${esc(o.fix)}</p><ul>${o.evidence.map(evidence).join("")}</ul>
+        <p class="muted">UAE text on this: ${o.uae_basis && o.uae_basis.status === "cites_uae" ? `“${esc(o.uae_basis.quote)}” (${esc(o.uae_basis.title || o.uae_basis.ref)})` : "none found in the UAE texts searched"}</p>`).join("") : `<span class="muted">${esc(r.summary)}</span>`}
         ${r.dropped.length ? `<p class="muted">${r.dropped.length} objection(s) dropped: no quote matched word for word.</p>` : ""}
         ${r.no_basis.length ? `<p class="muted">No clause found to back: ${r.no_basis.map((n) => esc(n.concern)).join("; ")}</p>` : ""}</td>
       <td><span class="muted">${r.queries.map(esc).join("<br>")}</span><details><summary>${r.clauses.length} clauses read</summary>${r.clauses.map((c) => `<div class="muted">${esc(c.id)} · ${esc(c.title)} ${esc(c.locator || "")} · score ${c.score}</div>`).join("")}</details></td></tr>`).join("")}</table>`).join("");
@@ -112,9 +113,12 @@ async function approve() {
 }
 
 $("check").onclick = async () => {
-  const res = await post("/api/check", { xml: $("xml").value, profile: $("profile").value });
+  $("checkOut").innerHTML = $("review").checked ? `<p class="muted">Checking, and asking the reviewers…</p>` : "";
+  const res = await post("/api/check", { xml: $("xml").value, profile: $("profile").value, review: $("review").checked });
   $("checkOut").innerHTML = res.error ? `<p class="fail">${esc(res.error)}</p>` :
-    `<p class="decision">${DECISION_TEXT[res.decision]}</p>${verdictTable(res.verdicts)}`;
+    `<p class="decision">${DECISION_TEXT[res.decision]}</p>${verdictTable(res.verdicts)}
+     ${res.reviews ? reviewsBlock({ rounds: [{ round: 1, reviews: res.reviews }], notes: [] }) : ""}
+     ${res.review_error ? `<p class="fail">${esc(res.review_error)}</p>` : ""}`;
 };
 
 fetch("/web/results/bench.json").then((r) => r.json()).then((b) => {
@@ -166,3 +170,16 @@ $("feedBtn").onclick = async () => {
        <td class="${a.failed.length ? "fail" : "pass"}">${a.failed.length ? "held: " + esc(a.verdicts.filter((v) => a.failed.includes(v.rule)).map((v) => v.rule + " " + v.detail).join("; ")) : "passes these rules"}${a.too_long_for_cell_broadcast ? `<br><span class="muted">note: over 15 cell broadcast pages as written</span>` : ""}</td></tr>`).join("")}</table>
     <p class="muted">${esc(r.note)}</p>`;
 };
+
+fetch("/web/results/ablation-prereg.json").then((r) => r.json()).then((a) => {
+  const s = a.summary;
+  $("preregOut").innerHTML = `<table><tr><th>Setup</th><th>Faults named before broadcast (of ${s.cases})</th></tr>
+    <tr><td>No checks</td><td>0</td></tr><tr><td>12 rules only</td><td>${s.named.rules}</td></tr>
+    <tr><td>4 institution agents only</td><td>${s.named.agents}</td></tr><tr><td>Rules and agents</td><td>${s.named.both}</td></tr></table>
+    <p>Missed by both: ${esc(s.neither.join(", ") || "none")}.</p>
+    <details><summary>Every case</summary><table><tr><th>Fault</th><th>Scenario</th><th>Rules</th><th>Agents</th></tr>
+    ${a.cases.map((c) => `<tr><td>${esc(c.fault)} ${esc(c.title)}</td><td>${esc(c.scenario)}</td>
+      <td class="${c.rules_named.length ? "pass" : "fail"}">${esc(c.rules_named.join(", ") || "missed")}</td>
+      <td class="${c.agents_named.length ? "pass" : "fail"}">${c.agents_named.length ? c.agents_named.map((h) => esc(h.by + ": " + h.issue)).join("<br>") : "missed"}</td></tr>`).join("")}</table></details>
+    <p class="muted">${esc(a.note)}</p>`;
+}).catch(() => { $("preregOut").textContent = "Not built yet."; });

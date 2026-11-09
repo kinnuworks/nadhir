@@ -1,0 +1,33 @@
+{
+ "key": "ba21f1bd72702321ce7bd813a4108d41c65539a888004c760212ce267e253196",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Thunder Rain\",\n  \"description\": \"Scattered rain that might be thundery at times causing drop in horizontal visibility over some areas, with fresh winds might exceed 50 km/h leading to rough sea.\",\n  \"instruction\": \"Take appropriate action\"\n },\n \"arabic\": {\n  \"headline\": \"أمطار رعدية\",\n  \"description\": \"من المتوقع أن تتأثر البلاد  بأمطار متفرقة تكون رعدية أحيانا مع انخفاض في الرؤية الأفقية على بعض المناطق مصحوبة بنشاط في الرياح قد تصل سرعتها إلى أكثر من ٥٠ كم/ساعة وارتفاع الأمواج البحرية ﻷكثر من 6 أقدام.\",\n  \"instruction\": \"اتخاذ التدابير اللازمة\"\n },\n \"arabic_produced_by\": \"unknown\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "UAE early warning alert Arabic translation review",
+   "CAP 1.2 multilingual alert info blocks language consistency",
+   "TDRA cell broadcast handset spec message language requirements"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 879,
+  "output_tokens": 69,
+  "at": "2026-11-09T17:04:07Z"
+ }
+}

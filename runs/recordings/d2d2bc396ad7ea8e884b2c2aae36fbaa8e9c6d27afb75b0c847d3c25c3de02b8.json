@@ -1,0 +1,33 @@
+{
+ "key": "d2d2bc396ad7ea8e884b2c2aae36fbaa8e9c6d27afb75b0c847d3c25c3de02b8",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM warns of dusty northwesterly winds and reduced visibility until 19:00\",\n  \"description\": \"NCM: fresh to strong northwesterly winds are causing blowing dust and sand in various areas across the UAE. Visibility may drop below 2,000 m in some coastal and inland areas. Began 14:55 on 4 March, continuing until 19:00.\",\n  \"instruction\": \"Exercise caution, especially while driving on open roads, as blowing dust may reduce visibility. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"المركز الوطني للأرصاد (NCM) يحذر من رياح شمالية غربية مثيرة للغبار وتدني مدى الرؤية حتى الساعة 19:00\",\n  \"description\": \"المركز الوطني للأرصاد (NCM): تتسبب رياح شمالية غربية نشطة إلى قوية في إثارة الغبار والرمال في مناطق مختلفة من دولة الإمارات. وقد ينخفض مدى الرؤية إلى أقل من 2,000 متر في بعض المناطق الساحلية والداخلية. بدأت الساعة 14:55 يوم 4 مارس، وتستمر حتى الساعة 19:00.\",\n  \"instruction\": \"توخوا الحذر، خاصة أثناء القيادة على الطرق المفتوحة، إذ قد يؤدي الغبار المتطاير إلى تدني مدى الرؤية. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation review cell broadcast alert wording",
+   "UAE early warning dust storm reduced visibility driving guidance",
+   "CAP 1.2 multilingual alert info blocks instruction language"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1120,
+  "output_tokens": 73,
+  "at": "2026-11-09T17:07:19Z"
+ }
+}

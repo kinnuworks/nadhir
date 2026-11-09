@@ -1,0 +1,144 @@
+{
+ "key": "9d0de3980ab8e8f0b7fb8a1f463c7668b949b097d19fa6dbf0f6f3a136e75df1",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust warning: visibility below 2,000 m until 19:00 today\",\n  \"description\": \"NCM warns of fresh to strong northwesterly winds causing blowing dust and sand. Visibility is below 2,000 m in some coastal and inland areas of Abu Dhabi. In effect from 14:55 until 19:00 today, 4 March.\",\n  \"instruction\": \"Take care, especially when driving on open roads, as visibility may be reduced by blowing dust. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الغبار المتطاير: الرؤية أقل من 2,000 م حتى الساعة 19:00 اليوم\",\n  \"description\": \"يحذّر NCM من رياح شمالية غربية نشطة إلى قوية تتسبب في إثارة الغبار والرمال. وتقل الرؤية عن 2,000 م في بعض المناطق الساحلية والداخلية في أبوظبي. يسري التحذير من الساعة 14:55 حتى الساعة 19:00 اليوم، 4 مارس.\",\n  \"instruction\": \"توخَّ الحذر، خاصة عند القيادة على الطرق المفتوحة، إذ قد تنخفض الرؤية بسبب الغبار المتطاير. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('Arabic translation of emergency alerts review by native speaker', 'cell broadcast alert wording protective action instruction guidance', 'UAE NCM weather warning dust visibility alert terminology'):\n\n[UAE-NAT-2026#0002] UAE emergency alerts: what to do when the phone alarm sounds and how the system works (article body):\nFor the system, mobile devices must support receiving and displaying emergency alerts in Arabic and English.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0032] DotEmarat Policy EN (p.11):\n8.6.8.4. 8.6.8.5. The maximum number of Active Variant . (dotEmarat) Arabic Domain Names must not exceed five (5) in total. Requests to activate two (2) or more . (dotEmarat) Arabic Domain Names Variants may be subject to review by the .aeDA. For example: by Registering , the Registrant may request to activate . The remaining inactive Variants will remain blocked from Registration and can be activate upon Registrant request.\n\n[FCC-DA-25-12#0105] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.19):\n143 2023 WEA Report and Order, 38 FCC Rcd at 10126, para. 18 (declining to implement multilingual WEA using machine translation). FEMA Ex Parte at 7. See also John Bobel Comments (“[A]n experienced human translator will be required to ensure message correctness and emphasis[.]”); Oregon DEMAC at 2 (“Emergency alert messages need the most robust-possible translation process to ensure they have zero errors and are intelligible to people with different dialects.”); NYCEM Comments at 3 (“NYCEM believes translations for the 13 most commonly spoken languages should be completed by certified linguists of each language and vetted by native speakers.”). 144\n\n[FCC-FR-2025#0023] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nC. Template Language in 13 Additional Languages 12. We adopt the multilingual templates located in Appendix D. In the WEA Multilingual Public Notice, the Bureau proposed translations in Arabic, Chinese (Simplified), French, German, Haitian Creole, Hindi, Italian, Korean, Portuguese, Russian, Spanish, Tagalog, and Vietnamese, which were developed through a contracted professional translation service. In addition to the comments submitted into the record, the Bureau worked with the Consumer and Governmental Affairs Bureau to acquire feedback from native language speakers and communities representing the populations these alerts are intended to reach. We received feedback on these templates from language teachers and members of local, state, and national organizations representing communities of language speakers. The comments we received were evaluated with the assistance of the Commission's contracted professional translation services. Based on this feedback, we adopt templates in the written forms of the 13 most commonly spoken languages in the United States after English. Accordingly, as required in the 2023 WEA Report and Order, when an alerting authority chooses to send a template-based multilingual alert message, the WEA-capable mobile device must be able to extract and display the relevant template in the subscriber's default language, provided that the default language is one of the 13 languages that we adopt templates for today.\\3\\ ---------------------------------------------------------------------------\n\n[FCC-DA-25-12#0038] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.8):\nC. DA 25-12 Template Language in 13 Additional Languages 17. We adopt the multilingual templates located in Appendix D. In the WEA Multilingual Public Notice, the Bureau proposed translations in Arabic, Chinese (Simplified), French, German, Haitian Creole, Hindi, Italian, Korean, Portuguese, Russian, Spanish, Tagalog, and Vietnamese, which were developed through a contracted professional translation service. In addition to the comments submitted into the record, the Bureau worked with the Consumer and Governmental Affairs Bureau to acquire feedback from native language speakers and communities representing the populations these alerts are intended to reach. We received feedback on these templates from language teachers and members of local, state, and national organizations representing communities of language speakers. 49 The comments we received were evaluated with the assistance of the Commission’s contracted professional translation services. 50 Based on this feedback, we adopt templates in the written forms of the 13 most commonly spoken languages in the United States after English. Accordingly, as required in the 2023 WEA Report and Order, when an alerting authority chooses to send a template-based multilingual alert message, the WEA-capable mobile device must be able to extract and display the relevant template in the subscriber’s default language, provided that the default language is one of the 13 languages that we adopt templates for today. 51 18.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0432] 3.2 TDRA Consumer Protection Regulations v2 (p.74):\nThe Consumer Protection Regulations, Version 1.5, Issued 4 October 2020 and all Annexure thereto. 30.2.2. The TDRA instructions issued to Licensees on 8 December 2021 to ‘Cease and desist from using the word “fastest” in advertisements related to mobile networks’. ----\n\n[ON-PICKERING-2020#0014] Investigation into the emergency alerts sent on January 12, 2020 (Key findings):\nThe DO was not acting on any information concerning a nuclear incident. The DO immediately recognized the error and proceeded to seek guidance on corrective action from EMO supervisors. Despite a series of consultations with on-duty, on-call and off-duty EMO supervisors at different levels, no clear instructions were provided to the on-duty DOs in the immediate aftermath of the first alert. Supervisors were uncertain about whether or how to issue a second alert as broadcast intrusive, meaning that it would be broadcast in the same manner as the first alert.\n\n[CAP12#0226] Common Alerting Protocol Version 1.2 (4.4 Conformance as a CAP V1.2 Message Consumer):\n<instruction> A High Condition is declared when there is a high risk of terrorist attacks. In addition to the Protective Measures taken in the previous Threat Conditions, Federal departments and agencies should consider agency-specific Protective Measures in accordance with their existing plans.</instruction>\n\n[TS23041#0339] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.71):\nCode 0 1 0 1 Instruction to Terminal No instruction as to emergency user alert. Activate emergency user alert. No instruction as to popup. Activate popup on the display. Geographical Scope: The Geographical Scope (GS) indicates the geographical area over which the Message Code is unique, and the display mode. The CBS message is not necessarily broadcast by all cells within the geographical area. When two CBS messages are received with identical Serial Numbers/Message Identifiers in two different cells, the Geographical Scope may be used to determine if the CBS messages are indeed identical. In particular, the Geographical Scope tells the mobile if the CBS message is: -\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0028] API First Guideline (p.17):\nUAE Government API First Guidlines 2.2. API APIs are used in all industries. When you look at the weather app on your mobile phone, the information you see is coming from an API built by your local weather service. Their weather API takes weather prediction data and converts it into a format that app developers can use. With an API proving data, developers focus on building a user-friendly interface (in this case, your phone's weather app) without having to worry about the science behind the data.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[FCC-FR-2025#0078] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57297):\nDo not attempt to travel unless you are fleeing an area that may flood or are under an evacuation order. [URL] Severe Thunderstorm Warning [SENDING AGENCY]: A SEVERE THUNDERSTORM WARNING is in effect for [LOCATION] until [TIME] for DESTRUCTIVE 80 mile per hour winds. Take shelter inside a sturdy building, away from windows. Flying objects may be deadly to those outside a sturdy shelter. [URL] Snow Squall Warning [SENDING AGENCY]: A SNOW SQUALL WARNING is in effect for [LOCATION] until [TIME]. Slow down or delay travel! Be ready for a sudden drop to near zero visibility and icy roads in heavy snow. [URL] Dust Storm Warning [SENDING AGENCY]: A DUST STORM WARNING is in effect for [LOCATION] until [TIME]. Be ready for sudden drop to zero visibility. Pull Aside, Stay Alive! When visibility drops, pull far off the road and put your vehicle in park. Turn the lights off and keep your foot off the brake. Infants, the elderly, and those with trouble breathing urged to take precautions. [URL] Hurricane Warning [SENDING AGENCY]: A HURRICANE WARNING is in effect for [LOCATION] for dangerous and damaging winds until [TIME]. This warning is issued up to 36 hours before hazardous conditions begin. Take steps to protect life and property. Have food, water, cash, fuel, and medications for 3+ days.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The Arabic matches the English on the hazard (blowing dust and sand), the figures (2,000 m, 14:55, 19:00, 4 March), the area (coastal and inland Abu Dhabi), the wind description and the protective action (take care when driving on open roads). Nothing is added or omitted, and the URL is the same. Wording differences such as \"نشطة\" for \"fresh\" winds are acceptable. The Arabic was produced by machine translation, so a named Arabic-reading person must still approve it. This is noted for the approvers, not as an objection.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The Arabic was machine-translated. Native-speaker human sign-off is required before release, and the rendering of NCM and the Latin acronym within Arabic text should be checked by a person.",
+    "searched_for": "UAE rule on native-speaker review of Arabic translations of emergency alerts, and approved Arabic terminology for NCM weather warnings"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 6502,
+  "output_tokens": 333,
+  "at": "2026-11-09T17:07:37Z"
+ }
+}

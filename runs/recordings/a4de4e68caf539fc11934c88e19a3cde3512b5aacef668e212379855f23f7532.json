@@ -1,0 +1,135 @@
+{
+ "key": "a4de4e68caf539fc11934c88e19a3cde3512b5aacef668e212379855f23f7532",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: real event\nTarget area (chosen by the operator): Western region (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility] ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Met office reviewer objects (description): The description states 'thick fog is expected', and certainty is set to Likely. The bulletin says only 'potential fog formation' with reduced visibility 'expected to deteriorate'. Thick fog is mentioned only for 'areas experiencing thick fog', as a driving-advice condition. The alert therefore overstates certainty and the extent of thick fog. Fix: Reword to match the bulletin, e.g. 'Fog may form and visibility is expected to deteriorate in several western regions, and may drop to zero at times.' Set certainty to Possible, or keep Likely only if the NCM statement supports a probability above 50%. Otherwise leave the decision to a person. [cites Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2), p.20] | Network operator and regulator reviewer objects (phone_text): The first page does not carry the action. In English the first ~93 characters cover only the hazard and place. 'Drive with extreme caution' only appears in page 3. In Arabic (41 characters per page) page 1 holds only the start of the hazard sentence and the action 'قُد بحذر شديد' falls on page 6. A handset user who sees only page 1 gets no instruction. Fix: Reorder both language texts so that the hazard and the action come first, e.g. 'Fog warning: drive with extreme caution. Visibility may drop to zero in western UAE...'. In Arabic, put 'قُد بحذر شديد' right after the short hazard phrase, within the first 41 characters. Then place the timing and the link afterwards.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Fog and low visibility",
+  "urgency": "Expected",
+  "severity": "Moderate",
+  "certainty": "Possible",
+  "headline": "Fog warning: drive with extreme caution in western regions",
+  "description": "Fog warning: drive with extreme caution. Fog may form and visibility is expected to deteriorate in several western regions of the UAE, and may drop to zero at times, from 21:30 tonight until 10:00 AM Wednesday 18 February. More: https://alerts.example.ae",
+  "instruction": "Drive with extreme caution, keep a safe distance from other vehicles and follow modified speed limits, especially in thick fog. Follow all traffic safety guidelines.",
+  "left_out": [
+   "No unverified inputs were received, so nothing was left out for that reason.",
+   "Reviewer comments were used only to reword the alert. They added no new facts.",
+   "An Arabic text was not drafted because the task asks for one English alert. The network operator's Arabic ordering request (place 'قُد بحذر شديد' within the first 41 characters) still needs to be applied by whoever prepares the Arabic version."
+  ],
+  "note_for_reviewer": "I set certainty to Possible because the NCM bulletin says only 'potential fog formation' and gives no probability. I chose Moderate severity and Expected urgency as a judgement call for possible zero visibility starting tonight. Please confirm these values and that the operator's 'Western region (demo zone)' matches the bulletin's 'several western regions of the UAE'."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 2050,
+  "output_tokens": 1012,
+  "at": "2026-11-09T17:10:52Z"
+ }
+}

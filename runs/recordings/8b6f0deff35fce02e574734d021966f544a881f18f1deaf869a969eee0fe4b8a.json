@@ -1,0 +1,168 @@
+{
+ "key": "8b6f0deff35fce02e574734d021966f544a881f18f1deaf869a969eee0fe4b8a",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": null\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Alerta Extremo\",\n  \"severity\": \"Extreme\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"Alerta Extremo\",\n  \"description\": \"Defesa Civil: misantropi4\",\n  \"instruction\": \"\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 severity urgency certainty definitions Extreme Observed', 'alert content must match hazard bulletin verified source', 'FCC report false or unverified alert message failure'):\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[IPAWS-PROFILE#0051] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nresourceDesc (1) A value of “EAS Broadcast Content” SHALL be used to indicate that the elements of a <resource> block are intended for EAS broadcast. (2) EAS broadcast audio and video content SHOULD match the message's textual content.\n\n[MHEWS-2026#0381] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.96):\n3. 4. 5. 6. table of contents maturity, real-world deployment of AI-based false-alert detection within early warning systems remains limited, indicating significant potential for operational application (Alonso et al., 2021). In Japan, for example, AI-based systems are already being used to help filter misinformation from social media during disasters. The crisis intelligence platform Spectee Pro (Box 21) analyses social media posts, images, and other data sources to identify credible reports while filtering misleading or false content; verified information can be distributed to authorities within minutes to support emergency response (JapanGov, 2025).\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022\n\n[ITU-AIR2#0073] AI Ready – Analysis Towards a Standardized Readiness Framework, Report 2.0 (p.22):\nThis generated content marketplace should allow users to generate new services based on the resources plugged into the ecosystem, which are IP databases, multi-modal content, arXiv papers, open source models, and codes. Metrics such as the properties of this ecosystem, parameters of the datasets or models in the ecosystem, the interoperability among resources when trying to generate new content, and the ability to detect hallucination could be considered. This dimension is mapped to the open data and open-source factor, as the marketplace relies on open data and open models to generate new content. Dimension Generated content marketplace\n\n[FCC-HI-2018#0072] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.13):\nfalse alert. Id. At 8:18 a.m., the HI-EMA Report observes that the HI-DOD notified a news media outlet in order to alert the public that the ballistic missile alert message was false. Id. 62 See infra Appendix C.\n\n[FCC-HI-2018#0078] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.14):\n18. Based on its analysis of the events, the Bureau finds that a combination of human error and inadequate safeguards contributed to the false alert. 19. The primary human error was a failure to hear and/or properly understand the instructions indicating that the exercise was a test.—According to the Bureau’s investigation and the HIEMA Report, the employee who triggered the false alert claims not to have heard “Exercise, Exercise, Exercise” preceding and following the simulated PACOM message, but does claim to have heard “This is not a drill.”68 As relayed to the Bureau by HI-EMA, the employee who triggered the false alert believed that the missile threat was real. In an interview with NBC News, the employee who triggered the false alert stated: “I was 100 percent sure that it was the right decision, that it was real.”69 In other words, the employee intended to initiate a real-world emergency alert based on that employee’s mistaken belief that Hawaii had come under a ballistic missile attack. This fundamental misunderstanding played a critical role in the initiation of the false alert. 20. A misunderstanding between the midnight shift supervisor and day shift supervisor also led to the drill being run without sufficient supervision.—The Bureau’s investigators found that the midnight shift supervisor did not provide the day shift supervisor with clear notice.\n\n[FCC-HI-2018#0093] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.16):\nThe HI-EMA Report finds that the ballistic missile alert checklist did not include a response protocol in the event of a false-ballistic missile message, although there was a cancel message, which stopped further ballistic missile messages. Id. The HI-EMA Report further finds that the HI-EMA Preparedness Branch previously identified the need to revise the [ballistic missile alert] checklist to include a “Deactivation” section or “‘All Clear EAS message.’” Id. The HI-EMA Report states: “Had the protocol [for sending an all clear message] been developed within the last 2 months [between November 29, 2017 and January 29, 2018, the HI-EMA Report’s publication date], the delay in sending out an official notification over WEA/EAS that the alert was false would not have happened on January 13, 2018.” On this latter point, the Bureau infers that the HI-EMA Report reiterates that the establishment of a false alert response protocol in the ballistic missile alert checklist would have reduced any delay in issuing a CEM. An “all clear” message, however, could also be used to notify the public of a ballistic missile interception without effect to Hawaii. See Hawaii Preparedness Report at 1. 78 HI-EMA Report at 9. 79 Id.\n\n[FCC-HI-2018#0061] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.12):\nstate that they knew that this erroneous incoming message was supposed to indicate the beginning of an exercise. The HI-EMA Report notes that the warning officer who triggered the false alert logged into the alert origination software and erroneously activated the “real-world Alert Code” at 8:06 a.m. Id. The EAS event code used to indicate a real-world alert code was a Civil Defense Warning or CDW. According to the Bureau’s investigation, the employee who triggered the false alert sent out the false alert at 8:07 a.m. on the alert origination software. The HIEMA Report, however, describes the point in time when the employee who triggered the false alert logged into the alert origination software to begin the process for initiating the alert. In other words, the HI-EMA Report does not define the point in time in which the employee completed the process of triggering the false alert on the alert origination software. 56 At 8:07 a.m., according to the HI-EMA Report, “the [State Warning Point] began receiving WEA/EAS messages",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The only event input (incident timeline, verified) has no text, so there is no hazard bulletin content to check the alert against. The alert itself names no hazard, times or places. Its description is just 'Defesa Civil: misantropi4', which looks like test or junk text. It claims Extreme severity and Immediate urgency with Unknown certainty, which no bulletin supports. A person must decide whether this is a real alert or an erroneous or test message.",
+  "objections": [
+   {
+    "issue": "Severity Extreme and urgency Immediate are asserted with no bulletin content to support them. The description gives no hazard, time or area, and certainty is Unknown, which is inconsistent with an Extreme/Immediate actual alert. The text is not a hazard statement.",
+    "field": "severity",
+    "blocking": true,
+    "fix": "Withdraw the alert or obtain the actual hazard bulletin. Then restate the hazard, times, places, severity, urgency and certainty exactly as the bulletin supports, and replace the placeholder description.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "\"Extreme\" – Extraordinary threat to life or property"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Defesa Civil: misantropi4"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The alert is in Portuguese-style wording ('Alerta Extremo') and the description is unintelligible, which suggests a test or erroneous message. Language and wording are outside the hazard-facts mandate.",
+    "searched_for": "alert content must match hazard bulletin verified source"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5139,
+  "output_tokens": 565,
+  "at": "2026-11-09T17:05:16Z"
+ }
+}

@@ -1,0 +1,168 @@
+{
+ "key": "e84cd33726d515e2311a91c83bd12583ae0a2a4a5f522982cfa68937d39376c9",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"EXERCISE: Blowing dust reducing visibility in coastal and inland areas until 18:00\",\n  \"description\": \"EXERCISE - Active to occasionally strong southeasterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas, Abu Dhabi (demo zone). Conditions until 18:00.\",\n  \"instruction\": \"Take care, especially when driving on external and open roads, as visibility can drop suddenly. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تمرين: غبار متطاير يحد من الرؤية في المناطق الساحلية والداخلية حتى الساعة 18:00\",\n  \"description\": \"تمرين - رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال، مما يخفض مدى الرؤية إلى أقل من 3,000 م في بعض المناطق الساحلية والداخلية، أبوظبي (منطقة تجريبية). تستمر هذه الأحوال حتى الساعة 18:00.\",\n  \"instruction\": \"يرجى توخي الحذر، خاصة أثناء القيادة على الطرق الخارجية والمكشوفة، إذ قد تنخفض الرؤية بشكل مفاجئ. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('CAP alert translation Arabic wind direction consistency', 'TDRA cell broadcast Arabic message requirements', 'UAE early warning dust visibility driving guidance'):\n\n[ITU-UAE:06_Environment_and_Sustainability/6.6_EAD_Air_Quality_Standards_and_SOPs#0003] Environment Agency – Abu Dhabi (EAD) Air Quality Standards & SOPs (AQI - Wind Speed - Wind Direction - Humidity):\nAQI - Wind Speed - Wind Direction - Humidity\n\n[ITU-UAE:06_Environment_and_Sustainability/6.6_EAD_Air_Quality_Standards_and_SOPs#0005] Environment Agency – Abu Dhabi (EAD) Air Quality Standards & SOPs (Wind Speed - Wind Direction - Humidity - Temperature):\nWind Speed - Wind Direction - Humidity - Temperature\n\n[ITU-UAE:06_Environment_and_Sustainability/6.6_EAD_Air_Quality_Standards_and_SOPs#0006] Environment Agency – Abu Dhabi (EAD) Air Quality Standards & SOPs (Moderate - 70 - AQI - Wind Speed - Wind Direction):\nModerate - 70 - AQI - Wind Speed - Wind Direction\n\n[CAPCP#0037] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Requirements associated with event identification):\nHowever, since the CAP-CP includes rules on issues like languages, providing a coordinated Canadian event list within the CAP-CP, independent of any specific alerting system, will assist in consistency for Canadian users.\n\n[CAPCP#0146] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nConsiderations related to translation and multilingual requirements are numerous, and are to be addressed in supporting documents. Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated.\n\n[TDRA-TS040#0001] Regulatory Update: New cell handset requirements in UAE (summary of TRA Technical Specification TS040) (requirement 2):\nMessages should support both English and Arabic languages.\n\n[ITU-UAE:01_AI_Strategy_and_Governance/DotEmarat_Policy_EN#0036] DotEmarat Policy EN (p.11):\n9. Eligibility Requirements In addition to meeting the general requirements applying to . (dotEmarat) Arabic Domain Names in any as listed above, each Zone of the . . (dotEmarat) Arabic ccTLD has specific Eligibility requirements, these are listed below.\n\n[TS23041#0101] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.24):\nThe CBC shall not include the \"digital signature\" or \"timestamp\" information. NOTE 2: Due to requirements in earlier versions of this document, it is possible for \"digital signature\" and \"timestamp\" information (included in the \"Warning Security Information\" parameter) to be transmitted within the WRITE-REPLACE message. 4. The BSCs use the \"Cell list\" information to identify in which cells the warning message needs to be broadcasted. a) When the WRITE-REPLACE message contains an ETWS emergency message, the BSC/BTS: 1) shall include the ETWS emergency message within the paging message and start sending the paging messages in all paging groups for the time duration requested by the CBC in the \"warning period\"\n\n[ETSI-EUALERT#0058] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.12):\n6.1 UE requirements 6.1.0 General UE requirements UE requirements in this clause are related not only to EU-Alert messages, but to all message types, unless specifically mentioned otherwise. 6.1.1 Maintaining user preferences\n\n[TS23041#0189] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.44):\n9.2.8 STATUS-MESSAGE-QUERY Response/Confirm PARAMETER Message-Identifier Old-Serial-Number No-of-Broadcasts-Completed-List Failure-List GSM only [Channel Indicator] REFERENCE 9.3.1 9.3.2 9.3.10 9.3.14 9.3.6 PRESENCE M M O O O This primitive will be sent by the BSC/RNC to the CBC in response to a STATUS-MESSAGE-QUERY Request/Indication primitive. The No-of-Broadcasts-Completed-List, if present, may contain each cell which successfully performed the requested operation and for each of these cells the number of times this CB message has been sent to this particular cell for broadcast (parameter Number-of-Broadcasts-Completed; this parameter is not included for the cell if the old message reference is not known to the BSC/RNC, and an entry is made in the failure list). The No-of-Broadcasts-Completed-List will not be present if all cells indicated in the related STATUS-MESSAGE-QUERY Request failed the requested operation. The Failure-List may contain all cells for which the requested operation failed (e.g. because the broadcast of the requested message was never requested before or because the cells CBCH is not available). The STATUS-MESSAGE-QUERY Response/Confirm will not contain the Failure-List parameter if none of the cells in the Cell-List of the related STATUS-MESSAGE-QUERY Request failed the requested operation.\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[ITU-UAE:05_Business_Continuity/5.2_NCEMA_Crisis_Communication_Guidelines#0001] NCEMA Crisis Communication Guidelines (Abstract):\nGuidance on escalation channels and communication protocols during crisis events (including telecom outages). Prescribes how early-warning alerts should be routed to NOC, emergency services and public.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[FCC-FR-2025#0078] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57297):\nDo not attempt to travel unless you are fleeing an area that may flood or are under an evacuation order. [URL] Severe Thunderstorm Warning [SENDING AGENCY]: A SEVERE THUNDERSTORM WARNING is in effect for [LOCATION] until [TIME] for DESTRUCTIVE 80 mile per hour winds. Take shelter inside a sturdy building, away from windows. Flying objects may be deadly to those outside a sturdy shelter. [URL] Snow Squall Warning [SENDING AGENCY]: A SNOW SQUALL WARNING is in effect for [LOCATION] until [TIME]. Slow down or delay travel! Be ready for a sudden drop to near zero visibility and icy roads in heavy snow. [URL] Dust Storm Warning [SENDING AGENCY]: A DUST STORM WARNING is in effect for [LOCATION] until [TIME]. Be ready for sudden drop to zero visibility. Pull Aside, Stay Alive! When visibility drops, pull far off the road and put your vehicle in park. Turn the lights off and keep your foot off the brake. Infants, the elderly, and those with trouble breathing urged to take precautions. [URL] Hurricane Warning [SENDING AGENCY]: A HURRICANE WARNING is in effect for [LOCATION] for dangerous and damaging winds until [TIME]. This warning is issued up to 36 hours before hazardous conditions begin. Take steps to protect life and property. Have food, water, cash, fuel, and medications for 3+ days.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic description gives the wind direction as northwest (شمالية غربية), but the English says southeasterly. This is a factual mistranslation, and it matters in a hazard alert. The headline, times, visibility figure (3,000 m), place, EXERCISE label and instruction otherwise match. The Arabic was machine translated and a named Arabic reader must still approve it.",
+  "objections": [
+   {
+    "issue": "Wind direction mistranslated. English says 'southeasterly' but the Arabic says 'شمالية غربية' (northwesterly), the opposite direction.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Replace 'شمالية غربية' with 'جنوبية شرقية' so the Arabic reads 'رياح جنوبية شرقية نشطة تصبح قوية أحياناً'.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "Active to occasionally strong southeasterly winds are raising dust and sand"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "رياح شمالية غربية نشطة تصبح قوية أحياناً تثير الغبار والرمال"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAPCP#0146",
+      "quote": "Issuers who intend to use automated translation should supply supporting documentation indicating which elements are/were auto translated."
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5724,
+  "output_tokens": 489,
+  "at": "2026-11-09T17:20:02Z"
+ }
+}

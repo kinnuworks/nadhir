@@ -1,0 +1,33 @@
+{
+ "key": "57ce573b2aa0fdac82a7c97af63f3902fb75de59a6376424ae28722e4f4d06a5",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Kenneth Fire: evacuation warning for individuals near Calabasas, Agoura Hills and the West Hills community in the western San Fernando Valley.\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Evacuation Warning\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"EVACUATION WARNING\",\n  \"description\": \"NEW: This is an emergency message from the Los Angeles County Fire Department. An EVACUATION WARNING has been issued in your area. Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\",\n  \"instruction\": \"Remain vigilant of any threats and be ready to evacuate. Gather loved ones, pets, and supplies. Continue to monitor local weather, news, and the webpage alertla.org for more information.\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP 1.2 severity urgency certainty definitions",
+   "evacuation warning alert content hazard location times",
+   "wildfire evacuation alert wording past failures FCC"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 938,
+  "output_tokens": 64,
+  "at": "2026-11-09T17:06:11Z"
+ }
+}

@@ -1,0 +1,144 @@
+{
+ "key": "279f7a4b69dc00623144eaecb2c1775d355dea6bcefbf9369160e2afe141dfeb",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-02-17, https://www.wam.ae/en/article/bysbij4-fog-alert-uae-motorists-warned-low-visibility\",\n   \"text\": \"ABU DHABI, February 17, 2026 (WAM) – The National Center for Meteorology (NCM) has issued a weather warning regarding potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE. According to the NCM statement released on Tuesday, visibility is expected to deteriorate—and may drop to zero at times—starting from 21:30 tonight until 10:00 AM Wednesday, February 18. The Center has urged motorists to exercise extreme caution on the roads. Drivers are advised to follow all traffic safety guidelines, maintain a safe distance from other vehicles, and strictly adhere to modified speed limits, particularly in areas experiencing thick fog.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Fog warning\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity certainty urgency definitions guidance', 'WMO impact-based warning fog visibility severity levels', 'NCM fog warning UAE early warning page'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0061] AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1) (p.42):\nA.6.1 Requirements The primary purpose of a BCM program is to enable the entity to promptly and effectively respond to business disruption and maintain continuity of its main / essential activities. This is achieved by implementing the BCM program and developing the policy, plans, and capabilities that will enable it to achieve its emergency and crisis response objectives, ensure business continuity and recovery, as specified in its BIA. (For more details, see section 8.4 on Business Impact Analysis “BIA” Documentation). A.6.2 Requirements needed to identify “the necessary BCM Capability” can be summed up as follows A.6.2.A Identify, analyze and document potential risks The risk assessment process is initiated by identifying threats which affect the performance of main / essential activities required to accomplish an entity’s business objectives. This process can be time-consuming and involves developing a list of all threats, or can be carried out by making a list of the events most likely to disrupt operations and then the risk level of each event is assessed. For more details, see section 8.5 on Risk Assessment). A.6.2.B Determine the minimum (acceptable) level of impact on entity business. By identifying impact areas and determining the level of impact within each area, the entity can build a Table sometimes called \"Impact Severity index\" for emergency, crisis and disaster management. Impacts:\n\n[WMO-CAP-GUIDE#0012] Common Alerting Protocol (CAP) (WMO CAP site) (Update: Impact-based Forecasting and Warning Services and the Common Alerting Protocol):\nUpdate: Impact-based Forecasting and Warning Services and the Common Alerting Protocol WMO Bulletin 21 March 2022\n\n[MHEWS-2026#0652] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.148):\nLeveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) 289. 290. 291. 292. 293. 294. 295. 296. 297. 298. 299. wfp-somalia-anticipatory-action-and-integrated-climate-risk-updated-november-2023 WFP. (2024). WFP’s evidence base on Anticipatory Action 2015-2024. World Food Programme. https://www.wfp.org/publications/ wfps-evidence-base-anticipatory-action-2015-2024 WFP. (2025). 2025 - Anticipatory action in Somalia: Evidence and lessons learned from 2023 and 2024 activations. https://www. wfp.org/publications/2025-anticipatory-action-somalia-evidenc e-and-lessons-learned-2023-and-2024 Wilson, H. J., & Daugherty, P. R. (2018, July 1). Collaborative Intelligence: Humans and AI Are Joining Forces. Harvard Business Review. https://hbr.org/2018/07/ collaborative-intelligence-humans-and-ai-are-joining-forces WMO. (2015). WMO guidelines on multi-hazard impactbased forecast and warning services. World Meteorological Organization. https://library.wmo.int/viewer/54669 WMO. (2018). Manual on flood forecasting and warning. https://www.preventionweb.net/publication/ manual-flood-forecasting-and-warning WMO. (2021a). Guidelines on Multi-hazard Impact-based Forecast and Warning Services Part II: Putting Multi-Hazard IBFWS into Practice. https://reliefweb.int/report/world/wmoguidelines-multi-hazard-impact-based-forecast-and-warningservices-part-ii-putting WMO. (2021b). WMO Guidelines on Multi-hazard Impact-based Forecast and Warning Services. https://library.wmo.int/records/ item/57739-wmo-guidelines-on-multi-hazard-impact-basedforecast-and-warning-services WMO. (2022). Early Warnings for All Executive Action Plan 2023-2027. https://library.wmo.int/records/ item/58209-early-warnings-for-all WMO. (2023a). Guide to Instruments and Methods of Observation (WMO-No. 8). World Meteorological Organization. https://wmo.int/ guide-instruments-and-methods-of-observation-wmo-no-8-0 WMO. (2023b). Overview of the Early Warnings for All: Executive Action Plan 2023–2027. World Meteorological Organization. https://wmo.int/media/magazine-article/overview-of-early-warnings-all-executive-action-plan-2023-2027 WMO. (2024). EW4All National Roadmap Template. World\n\n[MHEWS-2026#0124] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.34):\nLanguage AI; analytics for loss and impact estimation; evidence synthesis NLP-based impact field extraction; document triage and summarisation; clustering of impact reports; probabilistic and machine learning-assisted regression-based loss estimation; uncertainty-aware analytics; social media mining (text and imagery) for impact signal extraction and severity classification Table 1. AI contributions to addressing risk knowledge gaps Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE_National_Strategy_for_AI_2031#0002] UAE National Strategy for AI 2031 (p.3):\nCONTENTS MINISTERIAL FORWARD Page 8 EXECUTIVE SUMMARY Page 10 WHERE THE UAE HAS OPPORTUNITIES TO LEAD Page 10 Industry Assets & Emerging Sectors Page 13 Smart Government Page 13 Data Sharing and Governance\n\n[EW4ALL-P3#0067] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (EW4All global consultation survey):\nResponses will feed into a synthesis report on the initiative, to be published in 2027. Pillar 3 Flyer ITU tools Page Content 6 EW4All Pillar 3 flyer (Q3 2026) Page Content 7 NEW: AI Solutions Catalogue for Early Warning Systems Monitoring & Evaluation of Early Warning for All EW4All Pillar 3 Toolkit EW4All Dashboard Early Warning Connectivity Map Page Content 8\n\n[EW4ALL-P3#0016] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (About EW4All):\nDisclaimer & Feedback Page Content 2 Page Content 3 Page Content 4 Page Content 5 Page Content 17 Page Content 18 Page Content 19 Page Content 20 About EW4All Events\n\n[EW4ALL-P3#0002] Early Warnings for All initiative: Pillar 3 (warning dissemination and communication) (Early Warnings for All initiative: Pillar 3):\nEarly Warnings for All initiative: Pillar 3 Rollup Image You are here Skip Navigation LinksITU > Homepage > ITU-D > ITU-D Emergency Telecommunications > Early Warnings for All initiative: Pillar 3 Share Page Content 10",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the NCM bulletin on hazard (fog and reduced visibility), times (21:30 on 17 Feb to 10:00 on 18 Feb), and area (western regions of the UAE). It includes the bulletin's \"may drop to zero at times\" wording. It adds no unverified reports. The Moderate severity and Likely certainty are not contradicted by the bulletin, and no clause shown sets a different level for this hazard.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Severity \"Moderate\" and certainty \"Likely\" are not stated in the NCM bulletin, which gives no colour level or probability. They are a reasonable reading of a warning that says visibility is \"expected\" to deteriorate and \"may drop to zero\".",
+    "searched_for": "CAP severity certainty urgency definitions guidance; WMO impact-based warning fog visibility severity levels; NCM fog warning level mapping"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5660,
+  "output_tokens": 326,
+  "at": "2026-11-09T17:15:59Z"
+ }
+}

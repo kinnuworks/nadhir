@@ -1,0 +1,33 @@
+{
+ "key": "322b11f0412e47fe124473babf95096532c9cf4a88143f2b7198a331685d6596",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Blowing dust warning: visibility below 2,000 m until 19:00 today\",\n  \"description\": \"NCM warns of fresh to strong northwesterly winds causing blowing dust and sand. Visibility is below 2,000 m in some coastal and inland areas of Abu Dhabi. In effect from 14:55 until 19:00 today, 4 March.\",\n  \"instruction\": \"Take care, especially when driving on open roads, as visibility may be reduced by blowing dust. More information: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الغبار المتطاير: الرؤية أقل من 2,000 م حتى الساعة 19:00 اليوم\",\n  \"description\": \"يحذّر NCM من رياح شمالية غربية نشطة إلى قوية تتسبب في إثارة الغبار والرمال. وتقل الرؤية عن 2,000 م في بعض المناطق الساحلية والداخلية في أبوظبي. يسري التحذير من الساعة 14:55 حتى الساعة 19:00 اليوم، 4 مارس.\",\n  \"instruction\": \"توخَّ الحذر، خاصة عند القيادة على الطرق المفتوحة، إذ قد تنخفض الرؤية بسبب الغبار المتطاير. لمزيد من المعلومات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation of emergency alerts review by native speaker",
+   "cell broadcast alert wording protective action instruction guidance",
+   "UAE NCM weather warning dust visibility alert terminology"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1058,
+  "output_tokens": 71,
+  "at": "2026-11-09T17:07:32Z"
+ }
+}

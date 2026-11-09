@@ -1,0 +1,173 @@
+{
+ "key": "674925be95587d7ad69248401d107b1772d68accd7142f0fe981fc00ace08ecc",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"NCM via WAM, 2026-03-04, https://www.wam.ae/en/article/bz19078-ncm-warns-dusty-northwesterly-winds-reduced\",\n   \"text\": \"ABU DHABI, 4th March, 2026 (WAM) -- The National Centre of Meteorology (NCM) has warned of active northwesterly winds affecting various areas across the UAE, expected to be fresh to strong at times, causing blowing dust and sand and reducing horizontal visibility to less than 2,000 metres in some coastal and inland areas. The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening. It urged members of the public to exercise caution, especially while driving on open roads, due to the possibility of reduced horizontal visibility caused by blowing dust.\"\n  },\n  {\n   \"n\": 2,\n   \"verified\": false,\n   \"source\": \"illustrative rumour written for this test\",\n   \"text\": \"Social media post (unverified): a dam near Al Ain has burst, everyone leave the area now\"\n  },\n  {\n   \"n\": 3,\n   \"verified\": true,\n   \"source\": \"issuer profile\",\n   \"text\": \"Issuer public site (demo): https://alerts.example.ae\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Dusty winds reducing visibility until 19:00 today\",\n  \"description\": \"Fresh to strong northwesterly winds are blowing dust and sand, cutting visibility to under 2,000 metres in some coastal and inland areas. Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology.\",\n  \"instruction\": \"Take extra care, especially when driving on open roads, as visibility may drop because of blowing dust. Updates: https://alerts.example.ae\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP severity urgency certainty definitions Observed Moderate', 'WMO guidance consistent hazard alert wording visibility dust', 'NCM UAE early warning unverified reports exclude from alert'):\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0106] API First Guideline (p.41):\nUAE Government API First Guidlines The priority of incidents will be classified as per the below guideline: Priority Definition Priority Level 1 — Critical Critical Business Impact Priority Level 2 — High Major Business Impact Priority Level 3 — Medium Moderate Business Impact Priority Level 4 – Low Minimal/No Business Impact\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-REGISTER#0002] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nWMO Register of Alerting Authorities [ home ] OID: 2.49.0.0.784.0 WMO Member: United Arab Emirates ISO 3166: AE ARE 784 Issuing Organization: Meteorological Department Hazard Categories: Geo Met Safety Security Rescue Fire Health Env Transport Infra Other\n\n[ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0060] UAE National Air Quality Agenda 2031 (p.10):\n• Early warning system to reduce public exposure: There is currently no system to warn the public about inevitable high-level pollution episodes (e.g. dust storms) and to provide guidance on how to reduce personal exposure to pollution.\n\n[FCC-DA-25-12#0034] Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates (p.7):\n43 We make clarifying edits such as changing the phrase “Urgently complete efforts to protect life and property” to “Take steps to protect life and property” in the hurricane and storm surge templates and “Do NOT go out into the calm of the hurricane eye!” to “Do NOT go outside if the wind calms!” in the extreme wind template.44 To implement NWS’s recommendation that we adopt emergency and warning versions of the tornado and flash flood templates, 45 we modify our proposed tornado and flash flood templates to establish two versions that include language treating each emergency with appropriate severity. 16. We reject suggestions from commenters where we disagree that their recommended alternative word or phrase is more accurate, clear, or precise. For example, Bridge argues that the phrase “when visibility drops” in the dust storm template is figurative language; but does not propose an alternate phrase. 46 We disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to “[b]e ready for a sudden drop to zero visibility.” The protective actions communicated to the public in that alert should be taken “when visibility drops,” e.g., when the visibility drops to or close to zero.\n\n[FCC-FR-2025#0021] Wireless Emergency Alerts; Amendments to Part 11 (multilingual WEA implementation), Federal Register 2025-22434 (FR p.57290):\nWe disagree that this phrase would be unclear in the context of the alert as the dust storm template warns to ``[b]e ready for a sudden drop to zero visibility.'' The protective actions communicated to the public in that alert should be taken ``when visibility drops,'' e.g., when the visibility drops to or close to zero.\\2\\ APCO also suggests a revision to the 911 template to include an additional data element of the phone number as a fillable part of the template. We reject this edit as it would require support for an additional data element for one template, and we believe the inclusion of a URL in these template alerts, as discussed below, provides enough flexibility to alert originators to include specific phone numbers to emergency services through the URL. ---------------------------------------------------------------------------\n\n[WMO-CAP-GUIDE#0001] Common Alerting Protocol (CAP) (WMO CAP site) (Common Alerting Protocol (CAP)):\nSkip to main content To WMO website Common Alerting Protocol Select your language Englishعربي中文FrançaisРусскийEspañol Search Menu Search Close the search form Common Alerting Protocol (CAP) The Common Alerting Protocol (CAP) is an international standard for issuing emergency alerts. It ensures consistent, timely, and effective communication of hazard information across different media platforms, including radio, television, the internet, mobile phones, and public signage. By using CAP, emergency alerts can quickly reach people wherever they are.\n\n[UAE-ISSUERS#0001] UAE Early Warning System: How it works and why you get alerts (section 'Who can send these alerts?'):\nOnly government entities involved in national emergency management are authorised to issue alerts.\n\n[UAE-PORTAL-EWS#0007] Handling emergencies (section 'National Early Warning System') (Crime, safety and security):\nCrime, safety and security Call 999 to report crimes and emergencies while anywhere in the UAE. You can also report through the following channels in the respective emirate. For incidents related to harassment or safety, contact:\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[FCC-23-88#0151] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.25):\nWe decline AT&T’s request that we redefine “in whole” WEA participation to exclude mobile device support. See AT&T Comments at 27-28. This issue is outside of the scope of this proceeding. 139 See PS Docket No. 08-146.\n\n[MHEWS-2026#0061] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.18):\ntable of contents This creates a direct link between data quality, governance, and trust. If data cannot be verified, and AI-driven decisions are not transparent or accountable, trust in early warning systems will erode. Governance frameworks must therefore ensure that data is validated and representative, AI outputs are explainable, decisions are traceable, and human oversight remains central. Strengthening these elements is critical to ensuring that AI-enabled early warning systems are both effective and trusted. Equity and inclusion: Uneven access to connectivity, devices, and digital services means that data-intensive or internet-based warning systems may exclude vulnerable populations. In addition, underrepresentation of certain groups in datasets, as well as potential biases e.g., related to gender, ethnicity, or socioeconomic status) in the data and AI models, can lead to unequal outcomes. Addressing these challenges requires inclusive, multi-channel communication approaches and deliberate efforts to improve data representativeness and reduce bias in AI systems. Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS) © Rokas / Adobe Stock",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert matches the verified NCM bulletin on hazard, times, places and wording, and it leaves out the unverified dam rumour. One issue remains: the certainty is not clearly supported. The bulletin says winds are 'expected' to be fresh to strong at times, but the alert says 'Observed' and writes 'are blowing' and 'cutting visibility to under 2,000 metres' as settled fact. The bulletin itself says the conditions began at 14:55 and are ongoing, so 'Observed' is partly defensible. The blocking flag is false because this is a calibration issue that the drafter can fix.",
+  "objections": [
+   {
+    "issue": "The alert states 'Observed' and plain present-tense facts, while the bulletin says winds are 'expected' to be fresh to strong at times and visibility reduced 'in some' areas. The bulletin does not state that the conditions have been measured. The alert also drops the 'at times' qualifier, so certainty and intensity read higher than the bulletin supports.",
+    "field": "certainty",
+    "blocking": false,
+    "fix": "Keep the hazard in the present tense, but restore the bulletin's qualifiers, e.g. 'fresh to strong at times'. Use certainty 'Likely', or keep 'Observed' only if the NCM confirms observations. The description should also say the conditions began at 14:55.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs.1",
+      "quote": "expected to be fresh to strong at times"
+     },
+     {
+      "kind": "view",
+      "ref": "alert_english.description",
+      "quote": "Fresh to strong northwesterly winds are blowing dust and sand"
+     },
+     {
+      "kind": "clause",
+      "ref": "FCC-16-127#0104",
+      "quote": "Observed (i.e., determined to have occurred or to be ongoing)"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The severity 'Moderate' appears consistent with a visibility warning, but no clause links severity levels to dust visibility thresholds.",
+    "searched_for": "severity thresholds for dust and visibility in UAE or WMO texts"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5455,
+  "output_tokens": 713,
+  "at": "2026-11-09T17:12:32Z"
+ }
+}

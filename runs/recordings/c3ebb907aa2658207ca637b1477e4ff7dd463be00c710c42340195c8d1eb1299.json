@@ -1,0 +1,34 @@
+{
+ "key": "c3ebb907aa2658207ca637b1477e4ff7dd463be00c710c42340195c8d1eb1299",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"NCM alert: possible rain, heavy at times, Saturday 13:30 to 21:00\",\n  \"description\": \"NCM alert: convective clouds may bring light to moderate rain, heavy at times, to some eastern, southern and western areas and parts of the interior. In effect Saturday 13:30 to 21:00.\",\n  \"instruction\": \"Take care if you are outdoors or driving while it rains. Follow official updates at https://alerts.example.ae.\"\n },\n \"arabic\": {\n  \"headline\": \"تنبيه من NCM: احتمال هطول أمطار، غزيرة أحيانًا، يوم السبت من 13:30 إلى 21:00\",\n  \"description\": \"تنبيه من NCM: قد تجلب السحب الركامية أمطارًا خفيفة إلى متوسطة، غزيرة أحيانًا، على بعض المناطق الشرقية والجنوبية والغربية وأجزاء من المناطق الداخلية. ساري المفعول يوم السبت من 13:30 إلى 21:00.\",\n  \"instruction\": \"توخَّ الحذر إذا كنت في الخارج أو تقود سيارتك أثناء هطول الأمطار. تابع التحديثات الرسمية على https://alerts.example.ae.\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "Arabic translation review cell broadcast alert wording",
+   "UAE heavy rain early warning protective actions driving",
+   "CAP 1.2 multilingual alert info blocks translation",
+   "TDRA cell broadcast Arabic message requirements"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1018,
+  "output_tokens": 86,
+  "at": "2026-11-09T17:12:02Z"
+ }
+}

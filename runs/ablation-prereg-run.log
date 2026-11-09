@@ -1,0 +1,50 @@
+P01 uae-fog-2026-02-17: rules ['R11', 'R9'] | agents 2 hit(s)
+P02 uae-fog-2026-02-17: rules - | agents 2 hit(s)
+P03 uae-fog-2026-02-17: rules - | agents 2 hit(s)
+P04 uae-fog-2026-02-17: rules - | agents 5 hit(s)
+P05 uae-fog-2026-02-17: rules ['R2'] | agents 2 hit(s)
+P06 uae-fog-2026-02-17: rules ['R4'] | agents 1 hit(s)
+P07 uae-rain-2026-08-22: rules ['R11'] | agents 5 hit(s)
+P08 uae-rain-2026-08-22: rules ['R11', 'R9'] | agents 3 hit(s)
+P09 uae-rain-2026-08-22: rules - | agents 1 hit(s)
+P10 uae-rain-2026-08-22: rules ['R3'] | agents 1 hit(s)
+P11 uae-rain-2026-08-22: rules ['R10'] | agents 2 hit(s)
+P12 uae-rain-2026-08-22: rules ['R7'] | agents 0 hit(s)
+P13 uae-dust-drill: rules ['R2'] | agents 2 hit(s)
+P14 uae-dust-drill: rules - | agents 1 hit(s)
+P15 uae-dust-drill: rules ['R11', 'R9'] | agents 2 hit(s)
+P16 uae-dust-drill: rules - | agents 2 hit(s)
+P17 uae-dust-drill: rules ['R11', 'R9'] | agents 2 hit(s)
+P18 uae-dust-drill: rules - | agents 2 hit(s)
+P19 uae-dust-2026-03-04: rules ['R11'] | agents 4 hit(s)
+P20 uae-dust-2026-03-04: rules ['R9'] | agents 1 hit(s)
+P21 uae-dust-2026-03-04: rules - | agents 2 hit(s)
+P22 uae-dust-2026-03-04: rules - | agents 3 hit(s)
+P23 uae-dust-2026-03-04: rules ['R11'] | agents 3 hit(s)
+P24 uae-dust-2026-03-04: rules - | agents 1 hit(s)
+{
+ "cases": 24,
+ "named": {
+  "none": 0,
+  "rules": 14,
+  "agents": 23,
+  "both": 24
+ },
+ "only_rules": [
+  "P12"
+ ],
+ "only_agents": [
+  "P02",
+  "P03",
+  "P04",
+  "P09",
+  "P14",
+  "P16",
+  "P18",
+  "P21",
+  "P22",
+  "P24"
+ ],
+ "neither": [],
+ "terms_matching_clean_drafts": 0
+}

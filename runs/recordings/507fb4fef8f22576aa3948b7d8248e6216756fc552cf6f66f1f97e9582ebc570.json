@@ -1,0 +1,134 @@
+{
+ "key": "507fb4fef8f22576aa3948b7d8248e6216756fc552cf6f66f1f97e9582ebc570",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Demo national authority (stands in for the real issuer)\nContext: EXERCISE / DRILL\nTarget area (chosen by the operator): Coastal and inland areas, Abu Dhabi (demo zone)\n\nEvent inputs:\n1. [verified; NCM via WAM, 2026-02-16, https://www.wam.ae/en/article/byrq247-national-centre-meteorology-warns-dust-reduced] ABU DHABI, 16th February, 2026 (WAM) -- The National Centre of Meteorology (NCM) warned today of active to occasionally strong northwesterly winds, raising dust and sand and reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas. The Centre stated in a statement issued today that the weather conditions began at 10:30 and will continue until 18:00, urging the public to exercise caution, particularly when driving on external and open roads, due to the risk of sudden drops in visibility caused by blowing dust.\n2. [verified; issuer profile] Issuer public site (demo): https://alerts.example.ae\n3. [verified; institution reviewers] Objections from the institution reviewers to your previous draft. Fix what is within the verified inputs; do not add facts: Arabic language reviewer objects (arabic_produced_by): Arabic is machine-translated and has no recorded human review. Although I found no meaning differences, a named Arabic-reading person must approve it before release. Fix: Have a named Arabic-reading reviewer at the issuing authority check and approve the Arabic text, then record that approval. [cites Wireless Emergency Alerts, Third Report and Order (FCC 23-88), p.11]",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Exercise",
+  "msgType": "Alert",
+  "category": "Met",
+  "event": "Blowing dust and sand – reduced visibility",
+  "urgency": "Immediate",
+  "severity": "Moderate",
+  "certainty": "Observed",
+  "headline": "EXERCISE: Blowing dust and sand reducing visibility in coastal and inland Abu Dhabi",
+  "description": "EXERCISE – NOT A REAL ALERT. Active to occasionally strong northwesterly winds are raising dust and sand, cutting visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi. 16 Feb, 10:30 until 18:00.",
+  "instruction": "EXERCISE. Take care, especially when driving on external and open roads, as visibility can drop suddenly. More: https://alerts.example.ae",
+  "left_out": [
+   "No unverified inputs were received, so nothing was excluded on that basis.",
+   "Arabic version: not produced in this draft. Per the reviewer objection, any Arabic text needs approval and a recorded sign-off from a named Arabic-reading reviewer at the issuing authority. A drafting tool cannot provide or record that human approval."
+  ],
+  "note_for_reviewer": "Before any Arabic version is released, a named Arabic-reading reviewer at the issuing authority must approve it and that approval must be recorded. This English draft does not resolve that objection. I set severity to Moderate and urgency to Immediate because NCM reports conditions already under way (10:30–18:00) with visibility below 3,000 m in some areas. Please confirm these values fit the exercise scenario."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1633,
+  "output_tokens": 919,
+  "at": "2026-11-09T17:09:03Z"
+ }
+}

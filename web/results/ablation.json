@@ -4,7 +4,7 @@
   "named": {
    "none": 0,
    "rules": 20,
-   "agents": 29,
+   "agents": 28,
    "both": 30
   },
   "only_rules": [
@@ -19,10 +19,10 @@
   ],
   "neither": [],
   "clean_drafts": 12,
-  "clean_objections": 20,
-  "clean_drafts_with_objection": 12,
-  "dropped_for_bad_quotes": 1,
-  "objections_total": 86
+  "clean_objections": 10,
+  "clean_drafts_with_objection": 7,
+  "dropped_for_bad_quotes": 2,
+  "objections_total": 58
  },
  "faults": [
   {
@@ -211,15 +211,9 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The alert extends the hazard end time beyond what the bulletin supports. NCM says conditions run until 19:00 this evening, but the alert says 21:00 in both the headline and the description.",
-     "field": "headline, description",
+     "issue": "The validity end time is wrong. The alert says 21:00 in both the headline and the description, but the NCM bulletin says conditions continue until 19:00. This extends the hazard window by two hours beyond what the bulletin supports.",
+     "field": "headline",
      "policy_cited": false
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text tells the public what to do. Both describe the hazard (dust and sand, visibility under 2,000 m), its duration and its source, but give no protective action, so the first page cannot carry one.",
-     "field": "phone_text",
-     "policy_cited": true
     }
    ],
    "named_by": {
@@ -239,16 +233,10 @@
    ],
    "agents_named": [
     {
-     "by": "Network operator and regulator reviewer",
-     "issue": "The two required languages contradict each other on when the hazard ends. English says 19:00 and Arabic says 21:00, so Arabic and English readers get different information from the same alert.",
-     "field": "phone_text",
-     "policy_cited": true
-    },
-    {
      "by": "Arabic language reviewer",
-     "issue": "Time mismatch: the English end time is 19:00, but the Arabic headline and description both say 21:00. Machine translation has changed a critical number.",
-     "field": "arabic.headline, arabic.description",
-     "policy_cited": true
+     "issue": "The end time is mistranslated. The English says until 19:00 and the Arabic says until 21:00 (الساعة 21:00), in both the headline and the description. This changes the time information in the alert.",
+     "field": "headline",
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -267,9 +255,9 @@
    "agents_named": [
     {
      "by": "Arabic language reviewer",
-     "issue": "The Arabic instruction reverses the protective action. English tells people to take extra care, especially when driving on open roads, because visibility may drop. The Arabic reads 'There is no need to take any precautions, and you can drive normally.' Arabic readers would be told the opposite of the call to action. This is the exact failure the knowledge base warns about for machine-translated calls to action.",
-     "field": "arabic.instruction",
-     "policy_cited": true
+     "issue": "The Arabic instruction says there is no need for any precautions and that people can drive normally. The English instructs people to take extra care, especially when driving on open roads, because of reduced visibility. This is the opposite of the protective action. The Arabic also drops the updates link https://alerts.example.ae.",
+     "field": "instruction",
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -288,15 +276,15 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "Severity is overstated. CAP 'Extreme' means an extraordinary threat to life or property, and the headline says 'EXTREME DANGER'. The NCM bulletin describes fresh to strong winds with visibility below 2,000 m in some areas and only urges the public to exercise caution, especially when driving. That fits a possible threat (Moderate), not an extraordinary one.",
+     "issue": "Severity 'Extreme' (extraordinary threat to life or property) and the headline 'EXTREME DANGER' overstate the bulletin. The NCM bulletin describes blowing dust with visibility under 2,000 m and only urges caution while driving. Urgency 'Immediate' is likewise stronger than the bulletin supports.",
      "field": "severity",
      "policy_cited": true
     },
     {
      "by": "Arabic language reviewer",
-     "issue": "Severity mismatch between the two headlines. The English opens with \"EXTREME DANGER:\" and the Arabic headline has no equivalent, so the two audiences receive different severity signals. The drafter cannot simply add or remove the label: the body text describes an advisory-level hazard (take extra care), so the English label itself may be wrong. A person must decide the intended severity.",
+     "issue": "The English headline begins with \"EXTREME DANGER:\" and the Arabic headline has no equivalent. The two headlines therefore convey different urgency. Arabic readers get a plain advisory, while English readers get an extreme-severity warning. The body and instruction of both versions say only \"take extra care\", so the English label may be the error. Whichever is wrong, the two versions must say the same thing.",
      "field": "headline",
-     "policy_cited": true
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -317,15 +305,9 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description repeats an unverified social media rumour (dam burst near Al Ain) as fact and tells people to leave the area. No verified input supports it, and it is not part of the NCM dust bulletin.",
+     "issue": "The description includes an unverified social media rumour (dam burst near Al Ain, 'leave the area now'). It is not in the NCM bulletin, and it adds a different hazard and a place the bulletin does not mention. It could cause panic and unsafe evacuation.",
      "field": "description",
-     "policy_cited": false
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "The message mixes two hazards. A second hazard, a dam burst with an evacuation instruction, is attached at the end of the dust alert and attributed only to 'Reports say'. A person must decide whether it is confirmed and whether it should go out as its own alert, with its hazard and action on page 1. It should not be buried on the last page of a weather alert.",
-     "field": "phone_text",
-     "policy_cited": false
+     "policy_cited": true
     }
    ],
    "named_by": {
@@ -346,13 +328,13 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description says flash flooding is expected in low-lying areas. The verified NCM bulletin covers only dusty northwesterly winds and reduced visibility. The only flood-related input is an unverified social media rumour about a dam near Al Ain. An unsupported, unverified hazard should not appear in the alert.",
+     "issue": "The description says flash flooding is expected in low-lying areas. The verified NCM bulletin does not mention flooding, so this is an extra hazard the bulletin does not support. It may also echo the unverified dam-burst rumour.",
      "field": "description",
-     "policy_cited": true
+     "policy_cited": false
     },
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "A second, potentially more dangerous hazard (flash flooding) is stated only in the final sentence. It lands on the last page (page 3 in English, page 7 in Arabic) and is not reflected on the first page.",
+     "issue": "The first page does not carry both the hazard and the action. The text has no protective action at all; it only describes the weather and says flash flooding is expected. In Arabic (41 characters per page), page 1 holds only the start of the wind description, so the hazard is cut off and the action is absent. The English page 1 covers only the wind and dust hazard, and the flash-flood warning sits on the last page.",
      "field": "phone_text",
      "policy_cited": false
     }
@@ -375,15 +357,9 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description adds specific places (Dubai and Sharjah) that the verified NCM bulletin does not name. The bulletin only says 'various areas across the UAE' and 'some coastal and inland areas'. This is an unsupported location claim in the alert.",
+     "issue": "The alert names Dubai and Sharjah as affected, but the verified bulletin only says 'various areas across the UAE' and 'some coastal and inland areas'. The bulletin does not name these emirates, so the alert adds a place claim the source does not support.",
      "field": "description",
      "policy_cited": false
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "The named affected areas come last, after the source line, so they fall on the final page (page 3 in en, page 7 in ar). Readers of page 1 may not learn that Dubai and Sharjah are affected.",
-     "field": "phone_text",
-     "policy_cited": true
     }
    ],
    "named_by": {
@@ -404,9 +380,9 @@
    "agents_named": [
     {
      "by": "Issuing authority reviewer",
-     "issue": "The alert targets the whole country, but the area drawn for event uae-dust-2026-03-04 covers only coastal and inland Abu Dhabi. The alert area overreaches the requested area.",
+     "issue": "The alert area is wider than the area requested for this event. The request is the Abu Dhabi coastal and inland zone, but the alert targets all of the UAE, so people outside the requested area would receive it.",
      "field": "areaDesc",
-     "policy_cited": true
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -425,9 +401,9 @@
    "agents_named": [
     {
      "by": "Issuing authority reviewer",
-     "issue": "The alert's areaDesc claims 'All emirates', but the requested area for this event is only 'Coastal and inland areas, Abu Dhabi (demo zone)'. The geocode AUH-COAST-INLAND also covers only that requested zone. The description therefore overstates the area being alerted and contradicts the codes.",
+     "issue": "The alert's areaDesc ('All emirates') does not match the area requested for this event (Abu Dhabi coastal and inland demo zone). The geocode matches the requested area, but the text would tell the public the alert covers every emirate.",
      "field": "areaDesc",
-     "policy_cited": true
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -448,7 +424,7 @@
    "agents_named": [
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "Arabic, a required language, is missing. The phone_text has only an English entry, but the profile requires both Arabic (ar) and English (en), and UAE handset specifications require alerts in both.",
+     "issue": "Arabic phone text is missing. The UAE profile requires both Arabic and English, but only an English version was supplied, so the alert cannot be delivered in both required languages.",
      "field": "phone_text",
      "policy_cited": true
     }
@@ -471,20 +447,20 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The alert tells the public to disregard the weather alert and that no action is needed. The verified NCM bulletin says blowing dust and reduced visibility are ongoing until 19:00 and urges caution. The alert therefore contradicts the verified hazard and could lead people to drop precautions during an active warning. Whether an earlier alert was actually erroneous cannot be confirmed from the inputs, so a person must decide.",
-     "field": "instruction",
+     "issue": "The alert says a real, verified hazard alert was sent in error and that no action is needed. NCM's bulletin says the dust and reduced visibility are real and urges caution on open roads. The retraction content contradicts the bulletin, and nothing in the inputs shows an earlier alert was wrong. If a cancellation is really intended, a person must decide that, and it must be sent as a Cancel message referencing the earlier alert, not as an Actual alert.",
+     "field": "description",
      "policy_cited": true
     },
     {
      "by": "Met office reviewer",
-     "issue": "The certainty, urgency and severity fields describe an observed, immediate hazard. The headline and description say the alert was sent in error. The alert therefore gives contradictory signals about whether the hazard exists.",
-     "field": "certainty",
+     "issue": "The headline and event fields conflict. The status is Actual, with Immediate urgency and Observed certainty, but the headline says to disregard the alert. The headline also carries none of the bulletin's hazard, time window or places.",
+     "field": "headline",
      "policy_cited": false
     },
     {
      "by": "Issuing authority reviewer",
-     "issue": "The headline says this message corrects or withdraws an earlier alert, but msgType is 'Alert' and references is null, so it does not identify which alert it corrects. The system also shows no earlier alerts, so recipients cannot tell what to disregard.",
-     "field": "alert.msgType / alert.references",
+     "issue": "The headline \"Disregard the earlier alert\" implies a correction or cancellation, but msgType is \"Alert\" and references is null. A correction must point to the alert it corrects. The earlier alerts list is also empty, so no target alert can be identified.",
+     "field": "references",
      "policy_cited": true
     }
    ],
@@ -503,18 +479,11 @@
    "rules_named": [
     "R4"
    ],
-   "agents_named": [
-    {
-     "by": "Issuing authority reviewer",
-     "issue": "The sender is not an authorised issuer. 'unknown-sender@nadhir.example' does not appear in the issuer register, yet the alert is a live Actual Public alert for a real event. Only authorised entities may send warning messages. The drafter should not simply swap in the registered identity, because that would misstate who the originator is.",
-     "field": "sender",
-     "policy_cited": true
-    }
-   ],
+   "agents_named": [],
    "named_by": {
     "none": false,
     "rules": true,
-    "agents": true,
+    "agents": false,
     "both": true
    }
   },
@@ -527,21 +496,15 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The instruction contradicts the verified NCM bulletin. NCM urged the public to exercise caution, especially when driving on open roads, because blowing dust reduces visibility. The alert instead says no precautions are needed and to drive as normal, which understates the hazard the bulletin describes.",
-     "field": "instruction",
-     "policy_cited": true
-    },
-    {
-     "by": "Arabic language reviewer",
-     "issue": "The protective action is reversed between languages. English: 'No special precautions are needed; drive as normal.' Arabic: 'Take extra care, especially when driving on open roads, as visibility may drop due to blowing dust.' Arabic readers would be told to act differently from English readers. This cannot be fixed by retranslating, because the English instruction itself sits oddly with a hazard that cuts visibility below 2,000 m. The issuing authority must decide the correct action; then both languages should be made to state it identically and be checked by a human Arabic reviewer.",
-     "field": "instruction",
-     "policy_cited": true
-    },
-    {
-     "by": "Arabic language reviewer",
-     "issue": "The Arabic instruction adds an updates link (https://alerts.example.ae) that does not appear anywhere in the English text. This is content present in one language only.",
+     "issue": "The instruction says no precautions are needed and to drive as normal. The NCM bulletin urges caution, especially when driving on open roads, because of reduced visibility from blowing dust. The alert therefore understates the hazard and gives the opposite of the bulletin's advice.",
      "field": "instruction",
      "policy_cited": false
+    },
+    {
+     "by": "Arabic language reviewer",
+     "issue": "The protective action in the Arabic contradicts the English. English: no precautions needed, drive as normal. Arabic: exercise extra caution, especially when driving on open roads, as visibility may drop due to blowing dust. The Arabic also adds a URL for updates that is not in the English. One of the two texts is wrong, and a person must decide which instruction is intended. The English 'no precautions' also sits oddly with visibility under 2,000 m.",
+     "field": "instruction",
+     "policy_cited": true
     }
    ],
    "named_by": {
@@ -560,8 +523,8 @@
    "agents_named": [
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "The Arabic phone text is 20 pages (UCS-2, 799 characters), over the 15-page maximum for a CBS message, so it cannot be sent as one cell broadcast. The cause is the advice sentence ('ننصح الجميع بمتابعة النشرات الجوية...') repeated three times word for word.",
-     "field": "phone_text[ar]",
+     "issue": "Arabic text is 20 pages, exceeding the 15-page maximum for a CBS message. The same 'we advise everyone to follow official weather bulletins...' sentence is repeated three times, which accounts for the excess.",
+     "field": "phone_text",
      "policy_cited": true
     }
    ],
@@ -583,7 +546,7 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The alert's end time (12:00 Wed 18 Feb) does not match the NCM bulletin's end time (10:00 AM Wed 18 Feb). The alert extends the warning period by two hours without support.",
+     "issue": "The alert says the fog lasts until 12:00 on Wed 18 Feb. The verified NCM bulletin gives 10:00 AM. This extends the hazard window by two hours beyond what the bulletin supports.",
      "field": "description",
      "policy_cited": false
     }
@@ -606,9 +569,9 @@
    "agents_named": [
     {
      "by": "Arabic language reviewer",
-     "issue": "The end time in the Arabic description is wrong. The English says the fog warning runs until 10:00 Wed 18 Feb, but the Arabic says until 12:00 (حتى الساعة 12:00). Arabic readers would think the hazard lasts two hours longer than the issuing authority stated.",
-     "field": "arabic.description",
-     "policy_cited": true
+     "issue": "The end time differs between the English and the Arabic. English gives 10:00 on Wed 18 Feb. Arabic gives 12:00 on Wednesday 18 Feb. The warning period is wrongly extended by two hours in the Arabic.",
+     "field": "description",
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -627,9 +590,9 @@
    "agents_named": [
     {
      "by": "Arabic language reviewer",
-     "issue": "The Arabic instruction contradicts the English protective action. The English says 'Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog.' The Arabic means 'There is no need to take any precautions, and you can drive normally.' This tells the public to do the opposite of the intended action during a zero-visibility fog event.",
-     "field": "arabic.instruction",
-     "policy_cited": true
+     "issue": "Arabic instruction reverses the protective action. It tells people no precautions are needed and normal driving is fine, whereas English instructs extreme caution, a safe distance and reduced speed. It also omits the updates link.",
+     "field": "instruction",
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -648,14 +611,14 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "Severity 'Extreme' and the headline prefix 'EXTREME DANGER' go beyond the bulletin. NCM issued a fog warning urging motorists to drive with caution. It does not describe an extraordinary threat to life or property, and 'EXTREME DANGER' does not appear in the bulletin.",
+     "issue": "Severity 'Extreme' and the headline 'EXTREME DANGER' are not supported by the bulletin. The bulletin gives no severity level and only urges motorists to exercise extreme caution. The visibility drop to zero is qualified by 'may' and 'at times'.",
      "field": "severity",
-     "policy_cited": true
+     "policy_cited": false
     },
     {
      "by": "Arabic language reviewer",
-     "issue": "The English headline begins with the severity prefix 'EXTREME DANGER:', but the Arabic headline starts directly with 'تحذير من الضباب'. Arabic readers lose the extreme-danger signal that English readers get.",
-     "field": "arabic.headline",
+     "issue": "The English headline begins with 'EXTREME DANGER:', but the Arabic headline starts directly with 'تحذير من الضباب' (fog warning). The Arabic omits the severity wording, so Arabic readers get a lower-severity message than English readers.",
+     "field": "headline",
      "policy_cited": false
     }
    ],
@@ -677,13 +640,13 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description adds a report of a dam burst near Al Ain and orders people to leave the area. No verified input mentions this; the only hazard source is the NCM fog warning. This adds an unverified report and a different hazard to the alert.",
+     "issue": "The description includes an unverified report (a dam near Al Ain has burst) with a 'leave the area now' order. The report is not in the NCM bulletin and is not among the verified inputs. It is a different hazard and could cause panic or dangerous evacuation.",
      "field": "description",
-     "policy_cited": false
+     "policy_cited": true
     },
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "Both language versions end with an unrelated, unattributed report of a dam burst near Al Ain and an evacuation order. Only the National Center for Meteorology is cited as source, and that is for the fog. Handsets will show this evacuation order with emergency status, so people could act on an unverified claim. If the dam report is true, it is buried on the last page of a fog warning.",
+     "issue": "First page does not carry the hazard and the action. The message opens with a fog warning and the dam-burst evacuation instruction is at the end, so on a handset it would be on the last page(s) and the first page lacks the action. The two hazards are also mixed in one message, which is confusing for readers.",
      "field": "phone_text",
      "policy_cited": false
     }
@@ -706,9 +669,15 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description says flash flooding is expected in low-lying areas. The NCM bulletin covers only fog and reduced visibility and says nothing about flooding. This adds an unsupported second hazard to the alert.",
+     "issue": "The description includes 'Flash flooding is expected in low-lying areas.' The verified NCM bulletin covers only fog and reduced visibility. It says nothing about flooding. This adds a second hazard that the bulletin does not support, and it states it as expected.",
      "field": "description",
-     "policy_cited": true
+     "policy_cited": false
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "Neither the English nor the Arabic phone text tells people what to do. The first page names the hazard (fog) but gives no action. The only other sentence, about flash flooding, is a second hazard statement, not an action.",
+     "field": "phone_text",
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -729,7 +698,7 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The alert adds affected places that the NCM bulletin does not name. The bulletin limits the fog and low-visibility warning to western regions, but the description also says Dubai and Sharjah are affected. No verified input supports that.",
+     "issue": "The description says 'Dubai and Sharjah are also affected'. The verified NCM bulletin refers only to several western regions of the UAE and does not mention Dubai or Sharjah. This adds places the bulletin does not support.",
      "field": "description",
      "policy_cited": false
     }
@@ -752,9 +721,9 @@
    "agents_named": [
     {
      "by": "Issuing authority reviewer",
-     "issue": "The alert targets the whole UAE (UAE-ALL), but the area requested for event uae-fog-2026-02-17 is the Western region (AUH-WEST). The alert's own headline also limits the hazard to western regions. Sending it nationally would over-alert people outside the affected area.",
-     "field": "alert.areaDesc",
-     "policy_cited": true
+     "issue": "The alert area is wider than the area requested for this event. The requested area is the Western region (DEMO-ZONE AUH-WEST), but the alert targets All of the UAE (UAE-ALL). The headline also speaks only of western regions, so the area contradicts the text.",
+     "field": "areaDesc",
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -773,7 +742,7 @@
    "agents_named": [
     {
      "by": "Issuing authority reviewer",
-     "issue": "The alert's areaDesc ('All emirates') does not match the area requested for this event or the alert's own geocode (DEMO-ZONE/AUH-WEST). The public-facing area description therefore claims a much wider area than the one targeted.",
+     "issue": "The alert's area description (\"All emirates\") contradicts the requested area (Western region, AUH-WEST) and the headline (western regions). The text would tell recipients that the whole country is targeted, while the codes target only the western zone. The target area must be the one requested for this event.",
      "field": "areaDesc",
      "policy_cited": false
     }
@@ -796,7 +765,7 @@
    "agents_named": [
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "The required language Arabic (ar) is missing. The only phone text is English, so Arabic-reading recipients in the UAE would get no alert they can read.",
+     "issue": "Required language Arabic (ar) is missing from the phone text; only English is supplied.",
      "field": "phone_text",
      "policy_cited": true
     }
@@ -819,14 +788,20 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description says an earlier alert was sent in error. No event input reports such an error. The verified NCM bulletin confirms a live fog hazard over this period, so the alert contradicts the bulletin and rests on an unverified claim.",
+     "issue": "The alert says to disregard the earlier alert as sent in error and that no action is needed. The verified NCM bulletin confirms a live fog warning with visibility possibly dropping to zero and urges extreme caution. The alert contradicts the bulletin and could lead motorists to ignore a real hazard.",
      "field": "description",
+     "policy_cited": false
+    },
+    {
+     "by": "Met office reviewer",
+     "issue": "The fields describe an active Actual fog warning (Moderate, Expected, Likely) while the text is a retraction. In CAP a retraction should be a Cancel message that references the earlier message, not an Actual fog warning with Moderate and Likely values. The bulletin gives no basis for the severity and certainty ratings either way.",
+     "field": "status",
      "policy_cited": true
     },
     {
      "by": "Issuing authority reviewer",
-     "issue": "The headline tells the public to disregard an earlier alert, but msgType is \"Alert\" and references is null. A correction must be a Cancel or Update that points to the message it corrects. No earlier alerts from this system exist, so it is unclear which alert is being retracted, and a stand-alone Actual alert like this could confuse the public.",
-     "field": "msgType",
+     "issue": "The headline tells recipients to disregard an earlier alert, which is a cancel/correction. The message is an initial \"Alert\" with null references, so it does not point to any alert. The system has no earlier alert on record to refer to. If this is a correction, msgType must be Update or Cancel with references. If it is a new fog warning, the headline is wrong and misleading.",
+     "field": "alert.msgType",
      "policy_cited": true
     }
    ],
@@ -862,15 +837,15 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The instruction contradicts the verified NCM bulletin. The bulletin urges motorists to take extreme caution, keep a safe distance and follow modified speed limits. The alert tells them no precautions are needed and to drive as normal. Since the instruction is the recommended action for recipients, this reverses what the hazard authority advises.",
+     "issue": "The instruction tells the public no precautions are needed and to drive as normal. The NCM bulletin urges extreme caution, a safe distance from other vehicles and strict adherence to modified speed limits. The alert therefore understates the hazard and contradicts the bulletin.",
      "field": "instruction",
-     "policy_cited": true
+     "policy_cited": false
     },
     {
      "by": "Arabic language reviewer",
-     "issue": "The protective action contradicts itself across languages. The English tells drivers that no precautions are needed and to drive as normal. The Arabic tells them to drive with extreme caution, keep a safe distance and observe reduced speed limits. For a warning that visibility may drop to zero, the English instruction appears to be wrong, and the Arabic does not translate it. The issuing authority must decide which instruction is authoritative before either version is sent.",
+     "issue": "The protective action differs. English says no precautions are needed and to drive as normal. Arabic says to drive with great caution, keep a safe distance and follow reduced speed limits. The Arabic also adds a URL for updates that is absent from the English. The Arabic also introduces 'reduced speed limits', which the English does not mention. One version is wrong and a person must decide which. The English instruction seems inconsistent with a warning of zero visibility.",
      "field": "instruction",
-     "policy_cited": true
+     "policy_cited": false
     }
    ],
    "named_by": {
@@ -889,8 +864,8 @@
    "agents_named": [
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "The Arabic text is 20 pages long, above the 15-page cell broadcast maximum, so it cannot be sent as one message. The cause is the advice paragraph (ننصح الجميع بمتابعة النشرات الجوية...) appearing three times in full.",
-     "field": "phone_text[ar]",
+     "issue": "Arabic version is 20 pages, exceeding the 15-page maximum for a CBS message. It cannot be broadcast as one message. The advice sentence is repeated three times verbatim, which causes the excess length.",
+     "field": "phone_text[ar].pages",
      "policy_cited": true
     }
    ],
@@ -911,9 +886,15 @@
    ],
    "agents_named": [
     {
-     "by": "Issuing authority reviewer",
-     "issue": "The context is an exercise or drill, but the alert carries status \"Actual\" and the console environment is live. Sent as is, the drill would reach the public as a real alert, which is the false-alarm pattern seen in Hawaii. Nothing in the headline marks it as an exercise either.",
+     "by": "Met office reviewer",
+     "issue": "Status is \"Actual\" but the context is EXERCISE / DRILL. Recipients would treat a drill as a real, actionable hazard. The bulletin itself is a real NCM warning, but the alert must be labelled according to its exercise context.",
      "field": "status",
+     "policy_cited": true
+    },
+    {
+     "by": "Issuing authority reviewer",
+     "issue": "The context is an exercise/drill but the alert status is \"Actual\". A drill must stay a drill: status should be \"Exercise\", with the exercise identifier in the note. As drafted, the alert would be actionable by all targeted recipients on a live console.",
+     "field": "alert.status",
      "policy_cited": true
     }
    ],
@@ -935,19 +916,13 @@
    "agents_named": [
     {
      "by": "Met office reviewer",
-     "issue": "The description ends with 'This is not a drill.' The event context and the alert status both mark this as an exercise, and no input supports presenting it as a real event. In an Exercise message this sentence could lead the public to treat a drill as a live warning.",
+     "issue": "The description says \"This is not a drill.\" while status is Exercise and the headline and description are marked EXERCISE. This contradicts the bulletin context and could lead recipients to treat an exercise as a real event, as in the Hawaii false alert, where mixed exercise and \"not a drill\" wording caused confusion.",
      "field": "description",
      "policy_cited": true
     },
     {
-     "by": "Network operator and regulator reviewer",
-     "issue": "The text is marked EXERCISE / تمرين and refers to a demo zone, yet ends with 'This is not a drill.' / 'هذا ليس تمريناً.' A reader on a handset gets contradictory signals about whether the alert is real.",
-     "field": "phone_text",
-     "policy_cited": false
-    },
-    {
      "by": "Arabic language reviewer",
-     "issue": "The Arabic, like the English, contradicts itself on whether the alert is real. It opens with 'تمرين' (exercise) and ends with 'هذا ليس تمريناً' (this is not an exercise/drill). The translation is faithful, but Arabic readers cannot tell whether to act. Mixing exercise labels with 'this is not a drill' contributed to the Hawaii false alert. Whether this is an exercise or a live alert is a decision for a person, not the translator.",
+     "issue": "The Arabic description ends 'هذا ليس تمريناً' (This is not an exercise), contradicting the opening 'تمرين' (Exercise) in the headline and description. Readers cannot tell whether this is a real event. The English has the same contradiction ('This is not a drill'), so the Arabic faithfully carries over an error from the English source. Recipients may ignore a real hazard or panic over a test.",
      "field": "description",
      "policy_cited": true
     }
@@ -967,50 +942,50 @@
    "objections": [
     {
      "by": "Met office reviewer",
-     "issue": "The description says winds are 'Fresh to strong' with no qualifier. The bulletin says winds are fresh to strong 'at times'. Dropping the qualifier slightly overstates the hazard compared with the bulletin.",
+     "issue": "The alert omits the bulletin's start time (14:55) and its UAE-wide scope. It says only 'until 19:00' and 'some coastal and inland areas', so the place and time information is less complete than the bulletin's. The bulletin says the conditions began at 14:55 and affect various areas across the UAE.",
      "field": "description",
      "blocking": false,
-     "fix": "Change the opening to: 'Fresh to strong at times northwesterly winds are blowing dust and sand...' (or 'Northwesterly winds, fresh to strong at times, are blowing dust and sand...').",
+     "fix": "Add that the conditions began at 14:55 on 4 March and affect various areas across the UAE, continuing until 19:00.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "view",
        "ref": "event_inputs",
-       "quote": "expected to be fresh to strong at times"
+       "quote": "The centre stated that the expected weather conditions began at 14:55 and continue until 19:00 this evening"
       },
       {
        "kind": "view",
        "ref": "description",
-       "quote": "Fresh to strong northwesterly winds are blowing dust and sand"
+       "quote": "Expected until 19:00 this evening, 4 March."
       }
      ],
      "policy_cited": false,
      "unchecked_evidence": 0
     },
     {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic text tells people what to do. Both describe the hazard (winds, dust, low visibility), the expiry time and the source, but give no protective action, so the first page cannot carry the action.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Put a short protective action right after the hazard, at the start of each language so it falls on page 1. For example, EN: 'Dust storm, visibility under 2,000 m: drive with caution or delay travel; people with breathing conditions stay indoors.' Add the matching Arabic wording at the start of the Arabic text. Recheck that both stay at or under 15 pages.",
+     "by": "Met office reviewer",
+     "issue": "Urgency 'Immediate' and severity 'Moderate' are not stated in the NCM bulletin. The bulletin asks only for caution while driving and gives no severity grade or call for immediate action. The urgency should be Expected, or the bulletin's wording should be matched, unless NCM confirms the grading.",
+     "field": "urgency",
+     "blocking": false,
+     "fix": "Set urgency to 'Expected', or get NCM to confirm Immediate and Moderate. Keep the instruction as a caution, as the bulletin words it.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
        "kind": "view",
-       "ref": "phone_text",
-       "quote": "Expected until 19:00 this evening, 4 March. Source: National Centre of Meteorology."
+       "ref": "event_inputs",
+       "quote": "It urged members of the public to exercise caution, especially while driving on open roads"
       }
      ],
-     "policy_cited": true,
-     "unchecked_evidence": 0
+     "policy_cited": false,
+     "unchecked_evidence": 1
     }
    ]
   },
@@ -1020,75 +995,28 @@
    "objections": [
     {
      "by": "Met office reviewer",
-     "issue": "The affected area is narrower than the bulletin's. NCM warns of winds affecting various areas across the UAE, with reduced visibility in some coastal and inland areas. The alert limits this to areas of Abu Dhabi only. The ABU DHABI dateline is the news agency's location, not the hazard area.",
+     "issue": "The alert says visibility is reduced in coastal and inland areas of Abu Dhabi, but the bulletin refers to various areas across the UAE and names no emirate. The place is narrowed without support from the bulletin.",
      "field": "description",
      "blocking": true,
-     "fix": "Replace 'some coastal and inland areas of Abu Dhabi' with 'some coastal and inland areas across the UAE', as the NCM bulletin says.",
+     "fix": "Say 'some coastal and inland areas across the UAE', or remove 'of Abu Dhabi'. Abu Dhabi is only the dateline of the bulletin.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
+      {
+       "kind": "view",
+       "ref": "description",
+       "quote": "coastal and inland areas of Abu Dhabi"
+      },
       {
        "kind": "view",
        "ref": "event_inputs",
        "quote": "affecting various areas across the UAE"
-      },
-      {
-       "kind": "view",
-       "ref": "description",
-       "quote": "some coastal and inland areas of Abu Dhabi"
       }
      ],
      "policy_cited": false,
-     "unchecked_evidence": 0
-    },
-    {
-     "by": "Met office reviewer",
-     "issue": "The headline states visibility is below 2,000 m without qualification. The bulletin says visibility drops below 2,000 m only in some coastal and inland areas, and that winds are strong 'at times'.",
-     "field": "headline",
-     "blocking": false,
-     "fix": "Qualify the headline, e.g. 'Blowing dust warning: visibility below 2,000 m in some areas until 19:00 today'.",
-     "evidence": [
-      {
-       "kind": "view",
-       "ref": "headline",
-       "quote": "visibility below 2,000 m until 19:00 today"
-      },
-      {
-       "kind": "view",
-       "ref": "event_inputs",
-       "quote": "less than 2,000 metres in some coastal and inland areas"
-      }
-     ],
-     "policy_cited": false,
-     "unchecked_evidence": 0
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text contains a protective action. Both describe only the hazard, visibility and timing, giving recipients no guidance to act on. The first page, about 93 GSM-7 characters in English and 41 UCS-2 characters in Arabic, therefore carries no action. In Arabic it carries only 'NCM warns of winds' and not even the dust/visibility hazard.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action, e.g. 'Drive with caution, keep distance, avoid outdoor activity; people with asthma stay indoors.' Rewrite both languages so the opening words state the hazard and the action before the issuer and timing, so they fit the first page. Example in English: 'Blowing dust and sand, visibility under 2,000 m in Abu Dhabi: drive carefully, avoid going out. NCM warning...'. Example in Arabic: 'غبار ورمال وتدني الرؤية: قُد بحذر وتجنب الخروج. ...'.",
-     "evidence": [
-      {
-       "kind": "clause",
-       "ref": "WMO-CAP-GUIDE#0004",
-       "quote": "take appropriate action based on the guidance provided",
-       "title": "Common Alerting Protocol (CAP) (WMO CAP site)",
-       "locator": "How does CAP work?",
-       "url": "https://wmo.int/site/wmo-common-alerting-protocol",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "NCM warns of fresh to strong northwesterly winds causing blowing dust and sand."
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "يحذّر NCM من رياح شمالية غربية نشطة إلى قوية"
-      }
-     ],
-     "policy_cited": true,
      "unchecked_evidence": 0
     }
    ]
@@ -1099,41 +1027,25 @@
    "objections": [
     {
      "by": "Met office reviewer",
-     "issue": "The bulletin says winds are 'fresh to strong at times'. The description drops 'at times', which makes strong winds sound continuous and slightly overstates the hazard.",
-     "field": "description",
+     "issue": "The instruction says visibility 'may drop suddenly'. The bulletin does not mention sudden drops. It only gives a possibility of reduced visibility. This adds hazard behaviour the bulletin does not support.",
+     "field": "instruction",
      "blocking": false,
-     "fix": "Change to 'NCM warning: northwesterly winds, fresh to strong at times, are causing blowing dust and sand.'",
+     "fix": "Reword to match the bulletin, e.g. 'Take extra care, especially when driving on open roads, due to possible reduced visibility from blowing dust.'",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "view",
-       "ref": "event_inputs[1].text",
-       "quote": "expected to be fresh to strong at times"
+       "ref": "instruction",
+       "quote": "as visibility may drop suddenly"
       },
       {
        "kind": "view",
-       "ref": "alert_english.description",
-       "quote": "fresh to strong northwesterly winds are causing blowing dust and sand"
-      }
-     ],
-     "policy_cited": false,
-     "unchecked_evidence": 0
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text tells people what to do. Both describe the hazard (blowing dust and sand, low visibility) and its duration, but contain no protective action. The first page therefore carries the hazard but not the action. The Arabic first page (41 UCS-2 characters) barely reaches the hazard words.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action near the start of both texts, within the first page. For example, in English: 'NCM warning: blowing dust and sand, visibility below 2,000 m. Drive with care and limit outdoor activity.' Put the Arabic equivalent within the first 41 characters as far as possible, e.g. 'غبار ورمال: قُد بحذر وقلل الخروج'. Keep both versions under 15 pages.",
-     "evidence": [
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "Conditions continue until 19:00 today, 4 March."
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "تستمر هذه الأحوال حتى الساعة 19:00 اليوم، 4 مارس."
+       "ref": "event_inputs",
+       "quote": "due to the possibility of reduced horizontal visibility caused by blowing dust"
       }
      ],
      "policy_cited": false,
@@ -1146,40 +1058,30 @@
    "run": 1,
    "objections": [
     {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text contains a recommended action for recipients. They only describe the hazard (winds raising dust and sand, visibility under 3,000 m) and its duration. The first page therefore cannot carry the action. This matters most in Arabic, where a UCS-2 page holds only about 41 characters (82 octets).",
-     "field": "phone_text",
+     "by": "Arabic language reviewer",
+     "issue": "Arabic is machine-translated and has no recorded human review. Although I found no meaning differences, a named Arabic-reading person must approve it before release.",
+     "field": "arabic_produced_by",
      "blocking": true,
-     "fix": "Add a short protective action to both languages and put it at the very start, right after 'EXERCISE -' / 'تمرين -'. For example: 'Dust storm: drive with caution, reduce speed; people with breathing conditions stay indoors.' This puts the hazard and the action on page 1. Keep the location and time details after it.",
+     "fix": "Have a named Arabic-reading reviewer at the issuing authority check and approve the Arabic text, then record that approval.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "clause",
-       "ref": "X1303BIS#0077",
-       "quote": "The text describing the recommended action to be taken by recipients of the alert message",
-       "title": "Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2)",
-       "locator": "p.22",
-       "url": "https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-X.1303bis-201403-I!!PDF-E&type=items",
+       "ref": "FCC-23-88#0061",
+       "quote": "without review by a human translator may cause material inaccuracies in critically important alerts",
+       "title": "Wireless Emergency Alerts, Third Report and Order (FCC 23-88)",
+       "locator": "p.11",
+       "url": "https://docs.fcc.gov/public/attachments/FCC-23-88A1.pdf",
        "status": "verified-primary",
        "collection": "project"
-      },
-      {
-       "kind": "clause",
-       "ref": "TS23041#0273",
-       "quote": "This parameter is of a fixed length of 82 octets and carries up to and including 82 octets of user information.",
-       "title": "3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0)",
-       "locator": "p.60",
-       "url": "https://www.etsi.org/deliver/etsi_ts/123000_123099/123041/18.03.00_60/ts_123041v180300p.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "cutting visibility to under 3,000 m in some coastal and inland areas"
       }
      ],
      "policy_cited": true,
-     "unchecked_evidence": 0
+     "unchecked_evidence": 1
     }
    ]
   },
@@ -1189,19 +1091,24 @@
    "objections": [
     {
      "by": "Met office reviewer",
-     "issue": "Wind strength is overstated. The bulletin describes winds as 'active to occasionally strong', but the alert says simply 'Strong northwesterly winds'.",
+     "issue": "The alert says 'Strong northwesterly winds', but the bulletin says 'active to occasionally strong'. Dropping the qualifier raises the stated wind intensity above what the bulletin supports.",
      "field": "description",
      "blocking": false,
-     "fix": "Change to 'Active to occasionally strong northwesterly winds are raising dust and sand.'",
+     "fix": "Reword to 'Active to occasionally strong northwesterly winds are raising dust and sand.'",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "view",
-       "ref": "event_inputs[1].text",
+       "ref": "event_inputs",
        "quote": "active to occasionally strong northwesterly winds"
       },
       {
        "kind": "view",
-       "ref": "alert_english.description",
+       "ref": "description",
        "quote": "Strong northwesterly winds are raising dust and sand"
       }
      ],
@@ -1210,59 +1117,28 @@
     },
     {
      "by": "Met office reviewer",
-     "issue": "The affected area does not match the bulletin. NCM (a national centre) warns of 'some coastal and inland areas' without naming an emirate; 'ABU DHABI' is only the WAM dateline. The alert limits the hazard to 'coastal and inland areas of Abu Dhabi', which the bulletin does not support and which may leave out affected areas elsewhere.",
+     "issue": "The alert places the hazard in 'coastal and inland areas of Abu Dhabi'. The bulletin only says 'some coastal and inland areas', and Abu Dhabi appears only in the dateline. The headline also drops 'some', which makes the affected area look wider than the bulletin states.",
      "field": "headline",
      "blocking": false,
-     "fix": "Remove 'of Abu Dhabi' from the headline and description and use the bulletin's wording 'some coastal and inland areas' (or name the areas explicitly, if NCM gives them).",
+     "fix": "Use the bulletin's wording: 'some coastal and inland areas'. Name Abu Dhabi only if NCM confirms that area. Add 'some' to the headline.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "view",
-       "ref": "event_inputs[1].text",
-       "quote": "reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas"
+       "ref": "headline",
+       "quote": "low visibility in coastal and inland areas of Abu Dhabi until 18:00"
       },
       {
        "kind": "view",
-       "ref": "alert_english.headline",
-       "quote": "coastal and inland areas of Abu Dhabi until 18:00"
-      },
-      {
-       "kind": "view",
-       "ref": "alert_english.description",
-       "quote": "some coastal and inland areas of Abu Dhabi"
+       "ref": "event_inputs",
+       "quote": "in some coastal and inland areas"
       }
      ],
      "policy_cited": false,
-     "unchecked_evidence": 0
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text tells people what to do. Both describe the hazard (dust, sand, visibility below 3,000 m) and then stop, ending with a statement about the hazard. There is no protective action, so the first page does not carry hazard and action together.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action right after the hazard line in both languages so it lands on the first page. For example, in English: 'Drive slowly, use low-beam lights, keep your distance; people with breathing problems stay indoors.' Add an equivalent in Arabic placed early in the text. Keep both languages well under 15 pages.",
-     "evidence": [
-      {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "Visibility can drop suddenly."
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "قد ينخفض مدى الرؤية بشكل مفاجئ"
-      }
-     ],
-     "policy_cited": true,
      "unchecked_evidence": 0
     }
    ]
@@ -1270,150 +1146,17 @@
   {
    "scenario": "uae-dust-drill",
    "run": 3,
-   "objections": [
-    {
-     "by": "Met office reviewer",
-     "issue": "The alert places the hazard in 'coastal and inland Abu Dhabi'. The verified NCM bulletin names no emirate and refers only to 'some coastal and inland areas'. 'ABU DHABI' in the input is the WAM dateline, not the warning area. The alert therefore changes the places covered, and people in other affected areas may wrongly think the warning does not apply to them.",
-     "field": "headline",
-     "blocking": true,
-     "fix": "Remove 'Abu Dhabi' from the headline and description and use the bulletin's wording, for example 'Blowing dust reducing visibility in some coastal and inland areas of the UAE until 18:00' and '...reducing visibility to under 3,000 m in some coastal and inland areas.' Do not name a specific emirate unless NCM specifies one.",
-     "evidence": [
-      {
-       "kind": "view",
-       "ref": "headline",
-       "quote": "reducing visibility in coastal and inland Abu Dhabi"
-      },
-      {
-       "kind": "view",
-       "ref": "description",
-       "quote": "in some coastal and inland areas of Abu Dhabi"
-      },
-      {
-       "kind": "view",
-       "ref": "event_inputs",
-       "quote": "reducing horizontal visibility to less than 3,000 metres in some coastal and inland areas"
-      }
-     ],
-     "policy_cited": false,
-     "unchecked_evidence": 0
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "No protective action appears anywhere in either language, so the first page cannot carry the action. Both texts only describe the wind, dust and visibility, plus the end time and source. In Arabic, the first 41-character page holds only the exercise tag and 'strong northwesterly winds'; the dust and visibility hazard spills onto page 2.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action right after the hazard in both languages, and put both at the very start. For example, EN: 'EXERCISE - Dust storm, visibility under 3 km, Abu Dhabi coast/inland: drive slowly, keep distance, avoid outdoor activity if you have breathing problems.' Give the matching Arabic wording, front-loaded so that 'غبار' (dust) and the action begin on page 1. Move the wind detail, end time and source after the action.",
-     "evidence": [
-      {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "reducing visibility to under 3,000 m in some coastal and inland areas of Abu Dhabi. Until 18:00 today, 16 Feb 2026. Source: NCM."
-      }
-     ],
-     "policy_cited": true,
-     "unchecked_evidence": 0
-    }
-   ]
+   "objections": []
   },
   {
    "scenario": "uae-fog-2026-02-17",
    "run": 1,
-   "objections": [
-    {
-     "by": "Met office reviewer",
-     "issue": "The place wording is broader than the bulletin. The NCM bulletin covers 'several western regions of the UAE'. The alert says 'across western regions', and the description calls the fog 'thick', which implies a wider and firmer hazard than the bulletin's 'potential fog formation'. The bulletin mentions thick fog only in its safety advice, as 'areas experiencing thick fog'.",
-     "field": "description",
-     "blocking": false,
-     "fix": "Reword to match the bulletin, for example: 'Fog may form and visibility may drop to zero at times across several western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb.' Use 'several western regions' in the headline too.",
-     "evidence": [
-      {
-       "kind": "view",
-       "ref": "event_inputs[1].text",
-       "quote": "potential fog formation and significantly reduced horizontal visibility across several western regions of the UAE"
-      },
-      {
-       "kind": "view",
-       "ref": "alert_english.description",
-       "quote": "thick fog may cut visibility to zero at times across western regions of the UAE"
-      }
-     ],
-     "policy_cited": false,
-     "unchecked_evidence": 0
-    },
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "No protective action appears anywhere in either language, so the first page carries the hazard but not the action. The alert only describes the fog and its timing, and never says what people should do (for example, avoid unnecessary travel, drive slowly with low-beam lights, keep a safe distance). The CAP guidance expects people to act on the guidance the alert provides.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action in both English and Arabic, placed right after the hazard so it falls on the first page. For example: 'Fog warning: zero visibility possible in western UAE. Avoid travel; if driving, slow down, use low beams, keep distance.' Then give the times and source. In Arabic, keep the hazard and action within the first 41-character page as far as possible, e.g. 'ضباب كثيف: تجنب القيادة، وإن اضطررت فخفف السرعة' followed by details. Keep each language at 15 pages or fewer.",
-     "evidence": [
-      {
-       "kind": "clause",
-       "ref": "WMO-CAP-GUIDE#0004",
-       "quote": "take appropriate action based on the guidance provided",
-       "title": "Common Alerting Protocol (CAP) (WMO CAP site)",
-       "locator": "How does CAP work?",
-       "url": "https://wmo.int/site/wmo-common-alerting-protocol",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "Source: National Center for Meteorology."
-      }
-     ],
-     "policy_cited": true,
-     "unchecked_evidence": 0
-    }
-   ]
+   "objections": []
   },
   {
    "scenario": "uae-fog-2026-02-17",
    "run": 2,
-   "objections": [
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text contains a protective action. Only the hazard, area, time and source are given, so the first page that handset users see does not tell them what to do.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action right after the hazard in both languages, within the first page: for example 'Avoid driving; if you must, slow down, keep distance and use low-beam lights' and its Arabic equivalent. Move or shorten the source and date details if they push the action off page 1.",
-     "evidence": [
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "Fog warning: visibility may drop to zero at times in western regions"
-      },
-      {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      }
-     ],
-     "policy_cited": true,
-     "unchecked_evidence": 0
-    }
-   ]
+   "objections": []
   },
   {
    "scenario": "uae-fog-2026-02-17",
@@ -1421,20 +1164,56 @@
    "objections": [
     {
      "by": "Met office reviewer",
-     "issue": "The description overstates the bulletin. The bulletin warns of 'potential fog formation' and mentions thick fog only 'in areas experiencing thick fog'. The alert instead says thick fog is expected across the western regions, which makes certainty and extent higher than NCM stated.",
+     "issue": "The description states 'thick fog is expected', and certainty is set to Likely. The bulletin says only 'potential fog formation' with reduced visibility 'expected to deteriorate'. Thick fog is mentioned only for 'areas experiencing thick fog', as a driving-advice condition. The alert therefore overstates certainty and the extent of thick fog.",
      "field": "description",
      "blocking": false,
-     "fix": "Reword to follow the bulletin, e.g. 'Fog may form in several western regions of the UAE, and visibility is expected to drop, possibly to zero at times, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 18 Feb. Take extra care where fog is thick.'",
+     "fix": "Reword to match the bulletin, e.g. 'Fog may form and visibility is expected to deteriorate in several western regions, and may drop to zero at times.' Set certainty to Possible, or keep Likely only if the NCM statement supports a probability above 50%. Otherwise leave the decision to a person.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "view",
-       "ref": "description",
-       "quote": "thick fog is expected in western regions of the UAE"
+       "ref": "event_inputs",
+       "quote": "potential fog formation and significantly reduced horizontal visibility"
       },
       {
        "kind": "view",
-       "ref": "event_inputs",
-       "quote": "potential fog formation and significantly reduced horizontal visibility across several western regions"
+       "ref": "alert_english.description",
+       "quote": "thick fog is expected in western regions of the UAE"
+      },
+      {
+       "kind": "clause",
+       "ref": "X1303BIS#0069",
+       "quote": "\"Likely\" – Likely (p > ~50%)",
+       "title": "Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2)",
+       "locator": "p.20",
+       "url": "https://www.itu.int/rec/dologin_pub.asp?lang=e&id=T-REC-X.1303bis-201403-I!!PDF-E&type=items",
+       "status": "verified-primary",
+       "collection": "project"
+      }
+     ],
+     "policy_cited": true,
+     "unchecked_evidence": 0
+    },
+    {
+     "by": "Network operator and regulator reviewer",
+     "issue": "The first page does not carry the action. In English the first ~93 characters cover only the hazard and place. 'Drive with extreme caution' only appears in page 3. In Arabic (41 characters per page) page 1 holds only the start of the hazard sentence and the action 'قُد بحذر شديد' falls on page 6. A handset user who sees only page 1 gets no instruction.",
+     "field": "phone_text",
+     "blocking": false,
+     "fix": "Reorder both language texts so that the hazard and the action come first, e.g. 'Fog warning: drive with extreme caution. Visibility may drop to zero in western UAE...'. In Arabic, put 'قُد بحذر شديد' right after the short hazard phrase, within the first 41 characters. Then place the timing and the link afterwards.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
+     "evidence": [
+      {
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "Drive with extreme caution."
       }
      ],
      "policy_cited": false,
@@ -1445,39 +1224,7 @@
   {
    "scenario": "uae-rain-2026-08-22",
    "run": 1,
-   "objections": [
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "No protective action in either language. The English and Arabic texts describe the hazard (convective clouds, rain, possibly heavy), the areas and the time window, but give no instruction to the public. As a result, page 1 of each message carries the hazard but no action.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action to both the English and Arabic texts, and place it early so it falls on page 1 (the first 93 GSM-7 characters in English, the first 41 UCS-2 characters in Arabic). Example: 'Avoid valleys and flooded roads; drive with care.' / 'تجنبوا الأودية والطرق المغمورة وقودوا بحذر.' After editing, re-check that the page counts stay at or below 15.",
-     "evidence": [
-      {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "In effect Saturday 22 Aug 2026, 13:30 to 21:00."
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "ساري المفعول يوم السبت 22 أغسطس 2026، من 13:30 إلى 21:00."
-      }
-     ],
-     "policy_cited": true,
-     "unchecked_evidence": 0
-    }
-   ]
+   "objections": []
   },
   {
    "scenario": "uae-rain-2026-08-22",
@@ -1485,10 +1232,15 @@
    "objections": [
     {
      "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text tells the public what to do. The first page carries only the hazard description and no protective action, which fails the first-page hazard-and-action check.",
+     "issue": "The message states the hazard, the expected rain, and the validity time, but gives no protective action for the public. The first page of each language therefore does not carry the action. In Arabic the first page ends mid-hazard, at roughly 'سحب ركامية مصحوبة'.",
      "field": "phone_text",
      "blocking": true,
-     "fix": "Add a short protective action to both languages, immediately after the hazard so it falls on page 1. For example: 'NCM alert: heavy rain possible – avoid valleys and flood-prone areas, drive carefully.' Add the Arabic equivalent early in the text, since UCS-2 pages hold only 41 characters. Keep both texts under 15 pages.",
+     "fix": "Rewrite both language versions so page 1 opens with the hazard in a few words followed by the action, for example 'Rain possible: avoid valley and flooded roads, drive carefully'. Move the area detail and times to later pages. Keep both versions under 15 pages. Do not extend the Arabic text more than needed, because it costs about 41 characters a page.",
+     "uae_basis": {
+      "status": "none_applies",
+      "ref": "",
+      "quote": ""
+     },
      "evidence": [
       {
        "kind": "view",
@@ -1496,17 +1248,12 @@
        "quote": "NCM alert: convective clouds with light to moderate rain"
       },
       {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
+       "kind": "view",
+       "ref": "phone_text",
+       "quote": "In effect Saturday 22 Aug, 13:30 to 21:00."
       }
      ],
-     "policy_cited": true,
+     "policy_cited": false,
      "unchecked_evidence": 0
     }
    ]
@@ -1514,39 +1261,7 @@
   {
    "scenario": "uae-rain-2026-08-22",
    "run": 3,
-   "objections": [
-    {
-     "by": "Network operator and regulator reviewer",
-     "issue": "Neither the English nor the Arabic phone text contains any protective action telling the public what to do. Only the hazard and the validity time are given. The first page therefore cannot carry the action. In Arabic, the 41-character first page also cuts off mid-word before the hazard is fully stated.",
-     "field": "phone_text",
-     "blocking": true,
-     "fix": "Add a short protective action in both languages and put the hazard and action first, ahead of the area and time. For example, in English: \"NCM: heavy rain risk. Avoid valleys and flood areas, drive with care.\" Give an Arabic equivalent with the hazard and action inside the first 41 characters as far as possible, then the areas and times. Keep each language within 15 pages.",
-     "evidence": [
-      {
-       "kind": "clause",
-       "ref": "FCC-DA-25-12#0114",
-       "quote": "coupled with a description of the threat and the protective action the public should take",
-       "title": "Wireless Emergency Alerts; Amendments to Part 11, Report and Order (DA 25-12), multilingual WEA templates",
-       "locator": "p.21",
-       "url": "https://docs.fcc.gov/public/attachments/DA-25-12A1.pdf",
-       "status": "verified-primary",
-       "collection": "project"
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "In effect Saturday 13:30 to 21:00."
-      },
-      {
-       "kind": "view",
-       "ref": "phone_text",
-       "quote": "ساري المفعول يوم السبت من 13:30 إلى 21:00."
-      }
-     ],
-     "policy_cited": true,
-     "unchecked_evidence": 0
-    }
-   ]
+   "objections": []
   }
  ]
 }

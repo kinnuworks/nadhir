@@ -1,0 +1,144 @@
+{
+ "key": "98bc28fff888de5e6fdcf356d691447ff85e459f498fa2ad453ce5b6a9be46a2",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"demo-national-authority@nadhir.example\": {\n   \"name\": \"Demo national authority (stands in for the real issuer)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Al Ain (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-ALAIN\"\n   ]\n  ],\n  \"drawn_for_event\": \"demo-14b184ecbe\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"demo-national-authority@nadhir.example\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Met\"\n  ],\n  \"event\": \"Blowing dust and reduced visibility\",\n  \"severity\": \"Moderate\",\n  \"areaDesc\": \"Al Ain (demo zone)\",\n  \"codes\": [\n   [\n    \"DEMO-ZONE\",\n    \"AUH-ALAIN\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"NCM warning: strong winds and blowing dust reducing visibility until 19:00 today\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender authorization issuer register status Actual', 'CAP msgType Alert references Update Cancel correction', 'UAE early warning issuing authority NCM alert area'):\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[ITU-UAE:01_AI_Strategy_and_Governance/UAE-Smart-Data-Standards-EN--Part-1#0233] UAE-Smart-Data-Standards-EN--Part-1 (Appendix A - Glossary):\nPrimary Registries It is a register or electronic registers or databases containing data on the rights, transactions or status of individuals or companies. It is also any regulatory or administrative data to be referenced or relied upon as an accurate and reliable data source or necessary for the implementation of procedures and services.\n\n[CAPAU#0044] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.12):\n<alert> ... <sender>example@dfes.wa.gov.au</sender> <info> <senderName>Western Australia Police </senderName> ... </alert> status REQUIRED Notes: Technical 1) Value of “Actual” SHALL be used when messages are intended for public dissemination. Example: CAP v1.2 Standard\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[ITU-UAE:01_AI_Strategy_and_Governance/Accessibility_Policy_English#0032] Accessibility Policy English (p.12):\nArticle (13) Amendments to the Policy • This policy is subject to periodic review and updates, where a dated notice will be available about “New Update”, and the concerned government entities must review the new terms and conditions, which are effective immediately after the publication of the new policy on the Competent Authority’s website. • This policy may be amended, canceled or replaced at any time by the Competent Authority\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0029] 3.2 TDRA Consumer Protection Regulations v2 (p.7):\n2.1.21. “PAYG Hard Cap Limit” means - the monetary value of the PAYG Hard Cap. 2.1.22. “Penalty-Free Service Cancellation Period” means - the period of time, as further defined in Article 12 of these Regulations, during which period a Subscriber can, in certain circumstances, cancel a contract for the supply of Telecommunications Services and exit that contract without incurring an early exit fee that would otherwise be imposed;\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.\n\n[UAE-KT-2026#0001] Behind the UAE alert: How warning goes from national emergency systems to your phone (section 'Not a normal text'):\nUnder standards set by the Telecommunications and Digital Government Regulatory Authority, or TDRA, a UAE-Alert can target an area ranging from a single mobile-network cell to the entire network.\n\n[UAE-PORTAL-EWS#0017] Handling emergencies (section 'National Early Warning System') (Community concerns):\nCommunity concerns For consumer issues, contact Ministry of Economy on 800 1222 or info@economy.ae Call Ahlan Dubai on +971 600 545555 or consumerrights@dubaided.gov.ae. For food safety issues, contact Abu Dhabi Agriculture and Food Safety Authority\n\n[WMO-REGISTER-RSS#0002] WMO Register of Alerting Authorities, RSS feed of all records (item 'Saudi Arabia: National Center for Meteorology'):\n<raa:capAlertFeed xml:lang=\"en\">https://ncm.gov.sa/en/cap-alerts</raa:capAlertFeed>\n\n[UAE-PORTAL-EWS#0027] Handling emergencies (section 'National Early Warning System') (National Early Warning System):\nEntities authorised to send warning messages Sending warning messages is limited to entities responsible for the safety of individuals in the UAE. Entities include: National Emergency Crisis and Disaster Management Authority Ministry of Interior Police of the seven emirates Ministry of Health and Prevention. Read more about the National Early Warning System.\n\n[UAE-PORTAL-EWS#0044] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nNatural calamities National Emergency Crisis and Disaster Management Authority (NCEMA) is the federal entity responsible for the safety of the lives of all citizens and residents on the territory of the UAE and the property of the country.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The sender is in the issuer register at level 1 with all areas and categories. The alert area (Al Ain demo zone, DEMO-ZONE/AUH-ALAIN) matches the requested area drawn for this event. Status Actual fits a real event on a live console. msgType Alert is an initial message, so no references are needed. There are no active alerts from other authorities to overreach and no earlier alerts to correct.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "The register entry is a demo stand-in and the WMO register shows no authorization basis for UAE meteorological alerting. This is not a defect in the sender-area-status checks.",
+    "searched_for": "Clause naming the NCM as an authorized UAE issuer for meteorological alerts; only the WMO entry with a blank authorization basis and the PORTAL list of entities (NCEMA, MoI, police, MoHP) were found."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4896,
+  "output_tokens": 308,
+  "at": "2026-11-09T17:23:25Z"
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "key": "35695954593bf28df51e19b7fd891df8e30b21f48835803c0d37364bdffeb015",
+ "system": "You are the Arabic language reviewer, standing in for an Arabic reviewer at the issuing authority. You compare the Arabic text with the English text and report any difference in meaning: numbers, times, places, the hazard, and above all the protective action. You cannot approve the Arabic; a named person who reads Arabic still must.\nYou see only the English and Arabic headline, description and instruction, and how the Arabic was produced. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"english\": {\n  \"headline\": \"Fog warning: visibility may drop to zero in western regions\",\n  \"description\": \"Fog warning: thick fog may cut visibility to zero at times across western regions of the UAE, from 21:30 tonight (Tue 17 Feb) until 10:00 Wed 25 Feb. Source: National Center for Meteorology.\",\n  \"instruction\": \"Drive with extreme caution. Keep a safe distance and follow reduced speed limits in fog. Updates: https://alerts.example.ae\"\n },\n \"arabic\": {\n  \"headline\": \"تحذير من الضباب: قد تنخفض الرؤية إلى الصفر في المناطق الغربية\",\n  \"description\": \"تحذير من الضباب: قد يؤدي الضباب الكثيف إلى انخفاض الرؤية إلى الصفر أحيانًا في المناطق الغربية من دولة الإمارات، من الساعة 21:30 الليلة (الثلاثاء 17 فبراير) حتى الساعة 10:00 يوم الأربعاء 18 فبراير. المصدر: المركز الوطني للأرصاد الجوية.\",\n  \"instruction\": \"قُد بحذر شديد. حافظ على مسافة آمنة والتزم بحدود السرعة المخفّضة أثناء الضباب. التحديثات: https://alerts.example.ae\"\n },\n \"arabic_produced_by\": \"machine translation\"\n}\n\nKnowledge base clauses returned by your searches ('CAP alert translation consistency multilingual info blocks', 'cell broadcast fog warning driving instruction wording', 'alert expiry time validity period end date'):\n\n[TDRA-TSFS001#0013] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.6):\n4.4 Smart phones All smart phones shall implement the following behaviors: Table 2 Smart phones behaviours: Cell Broadcast Information UAE-Alert Information User Equipment (UE)/Mobile Devices Requirements MsgID (Primary Block) MsgID (Secondary Block)\n\n[CAPCP#0144] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #6. Indicate automated translation of free form text):\nFor alert messages with multiple <info> blocks, only the <info> block(s) where this automated translation has taken place should use the parameter. When issuing an update message for an <info> block that contains free form text content that has been subsequently reviewed by a human for correct translation, replacing automated translated content, this parameter should be used with a value of “no”.\n\n[CAPCP#0083] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nContent in the <info> block, such as <description>, <resource> (ex. audio files), external <web> links, etc. should serve the needs of the language value within the <info> block. Example: (The values for <event> and <areaDesc> are translated across <info> blocks below as they are values for public display. Other public display elements not exampled below requiring translation include...<senderName>, <headline>, <description>, <instruction>, <web>, <contact>, <audience> )\n\n[CAPCP#0080] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\nMultilingual messages must use separate <info> blocks for each language, with all non free-form text elements repeated verbatim in each block. Mixing public display content or text from different languages within the same <info> block is not allowed, except for inherently multilingual content (people, places, things) that may or may not include accented characters.\n\n[TDRA-TSFS001#0006] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n3 Definitions Unless the context requires otherwise, the expressions and wordings appearing in Federal Law by Decree No. (3) of 2003 Regarding the Organisation of the Telecommunications Sector shall have the same meaning ascribed thereto in the above-mentioned Federal Law by Decree, and the following expression and wording shall have the following meanings assigned there to: Public Warning Service (UAE-Alert)\n\n[UAE-PORTAL-EWS#0045] Handling emergencies (section 'National Early Warning System') (Natural calamities):\nRead NCEMA guidelines to deal with: earthquake heavy rain, flood and thunderbolt sand storm fog. Refer to the guide for emergencies (PDF, 9 MB) for tips to survive during natural calamities and wars.\n\n[TS23041#0174] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.42):\nETSI TS 123 041 V18.3.0 (2024-02) - This is a write request which will be interpreted by the BSC/RNC as an instruction to broadcast a new CBS message in all the cells of the Cell list.\n\n[TS23041#0339] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.71):\nCode 0 1 0 1 Instruction to Terminal No instruction as to emergency user alert. Activate emergency user alert. No instruction as to popup. Activate popup on the display. Geographical Scope: The Geographical Scope (GS) indicates the geographical area over which the Message Code is unique, and the display mode. The CBS message is not necessarily broadcast by all cells within the geographical area. When two CBS messages are received with identical Serial Numbers/Message Identifiers in two different cells, the Geographical Scope may be used to determine if the CBS messages are indeed identical. In particular, the Geographical Scope tells the mobile if the CBS message is: -\n\n[ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0432] 3.2 TDRA Consumer Protection Regulations v2 (p.74):\nThe Consumer Protection Regulations, Version 1.5, Issued 4 October 2020 and all Annexure thereto. 30.2.2. The TDRA instructions issued to Licensees on 8 December 2021 to ‘Cease and desist from using the word “fastest” in advertisements related to mobile networks’. ----\n\n[ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0133] API First Guideline (p.52):\n• • Validation » Semantic validity includes only accepting input that is within an acceptable range for the given application functionality and context. For example, a start date must be before an end date when choosing date ranges Output Validation – An API must ensure that the produced output must be filtered and sanitized to prevent unintended and unexpected interpretation and operation of data at the receiving end.\n\n[ITU-UAE:02_Data_Protection/2.1_PDPL_Federal_Decree-Law_45_of_2021#0046] UAE Federal Decree-Law No. 45 of 2021 — Personal Data Protection Law (PDPL) (p.11):\n1. 処理の範囲、主体、処理の目的と性質、個人 データの種類、データ主体のカテゴリーを特定 した管理者の指示や両者の間で締結された法 書および合意書に従って処理を行い、実行す ること。 2. 個人データを保護するための適切な技術的お よび組織的な施策および手順につき、処理手 段を定義する際、または処理自体を行う際の 設計段階で、かかる施策および手順を適用す るためのコストおよび処理の性質、範囲、目的 を考慮して、適用すること。 3. 設定された目的および期間に従って処理を行 い、期間の延長または適切な指示を行うため に 、処理が設定された期間を 超えた場合に は、管理者に通知すること。 4. 処理期間終了後にデータを消去するか、管理 者に引き渡すこと。 4. erase the data after expiry of the Processing period or hand it over to the Controller.\n\n[EU-ALERT#1097] Directive (EU) 2018/1972 establishing the European Electronic Communications Code (Recast), Article 110 Public warning system (PART IV - FINAL PROVISIONS - Article 117 - Exercise of the delegation):\n3. The delegation of power referred to in Articles 75, 109 and 116 may be revoked at any time by the European Parliament or by the Council. A decision to revoke shall put an end to the delegation of the power specified in that decision. It shall take effect the day following the publication of the decision in the Official Journal of the European Union or at a later date specified therein. It shall not affect the validity of any delegated acts already in force.\n\n[CAP12#0110] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n(2) Alphabetic timezone designators such as “Z” MUST NOT be used. The timezone for UTC MUST be represented as “-00:00”. expires cap. alertInfo. expires. time The expiry time of the information of the alert message (OPTIONAL)\n\n[X1303BIS#0074] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\nTable 7-2 – \"info\" element and sub-elements Element name Context.class.attribute. representation Definition and (Optionality) expires cap.alertInfo.expires.time The expiry time of the information of the alert message (OPTIONAL) (1) The date and time shall be represented in the DateTime Data Type (See Implementation Notes) format (e.g., \"2002-05-24T16:49:0007:00\" for 24 May 2002 at 16:49 PDT). (2) Alphabetic timezone designators such as \"Z\" must not be used. The timezone for UTC must be represented as \"-00:00\". (3) If this item is not provided, each recipient is free to set its own policy as to when the message is no longer in effect.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The Arabic differs from the English on the end of the validity period. English says until 10:00 Wed 25 Feb; Arabic says until 10:00 on Wednesday 18 February. The other content (hazard, zero visibility, western regions, start time 21:30 tonight Tue 17 Feb, driving instruction, source, URL) matches. The Arabic was machine translated, so a named Arabic reader must still approve it. The English end date is itself questionable (25 Feb is a Wednesday only if 17 Feb is a Tuesday, and then it falls 8 days later, which is odd for a fog warning), so the source date should be confirmed.",
+  "objections": [
+   {
+    "issue": "End date differs between English and Arabic. English: 'until 10:00 Wed 25 Feb'. Arabic: 'حتى الساعة 10:00 يوم الأربعاء 18 فبراير' (until 10:00 Wednesday 18 February). The meaning of the validity period differs by a week. 18 Feb is the day after 17 Feb, which is plausible for an overnight fog warning, so the English may be the erroneous one. The date must be confirmed against the source.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Confirm the correct end date with the National Center for Meteorology source, then make the English and Arabic show the same end date and weekday (likely 18 Feb if the warning is overnight).",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "until 10:00 Wed 25 Feb"
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "حتى الساعة 10:00 يوم الأربعاء 18 فبراير"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5025,
+  "output_tokens": 593,
+  "at": "2026-11-09T17:17:30Z"
+ }
+}

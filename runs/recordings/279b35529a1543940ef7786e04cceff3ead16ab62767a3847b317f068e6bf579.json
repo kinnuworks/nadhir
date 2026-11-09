@@ -1,0 +1,33 @@
+{
+ "key": "279b35529a1543940ef7786e04cceff3ead16ab62767a3847b317f068e6bf579",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"event_inputs\": [],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Thunder Rain\",\n  \"severity\": \"Moderate\",\n  \"urgency\": \"Expected\",\n  \"certainty\": \"Possible\",\n  \"headline\": \"Thunder Rain\",\n  \"description\": \"Scattered rain that might be thundery at times causing drop in horizontal visibility over some areas, with fresh winds might exceed 50 km/h leading to rough sea.\",\n  \"instruction\": \"Take appropriate action\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP severity urgency certainty definitions Moderate Expected Possible",
+   "UAE early warning thunderstorm rain alert wording National Center of Meteorology",
+   "WMO guidance impact-based warnings hazard bulletin consistency alert instruction"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 730,
+  "output_tokens": 92,
+  "at": "2026-11-09T17:04:07Z"
+ }
+}
