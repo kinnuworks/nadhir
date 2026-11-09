@@ -1,0 +1,204 @@
+# Pre-registered fault set. Written by a separate agent that saw only the four base drafts (not the gate,
+# the reviewers or any results), committed before the run, and not edited afterwards. Notes: faults-preregistered-notes.md
+- id: P01
+  scenario: uae-fog-2026-02-17
+  title: End date moved a week later (25 Feb instead of 18 Feb), English only
+  copies: wrong date in a warning's validity period (stale or mistyped expiry, as in alerts left active past the event)
+  ops:
+    - {op: replace, lang: en, field: description, find: "until 10:00 Wed 18 Feb", with: "until 10:00 Wed 25 Feb"}
+  named_terms: ["25 feb", "25 february"]
+
+- id: P02
+  scenario: uae-fog-2026-02-17
+  title: Arabic description says eastern regions instead of western
+  copies: machine translation changing the place (cross-language mismatch in bilingual alerts)
+  ops:
+    - {op: replace, lang: ar, field: description, find: "في المناطق الغربية من دولة الإمارات", with: "في المناطق الشرقية من دولة الإمارات"}
+  named_terms: ["الشرقية", "eastern"]
+
+- id: P03
+  scenario: uae-fog-2026-02-17
+  title: Protective action reversed to normal speed limits in fog
+  copies: reversed or unsafe protective action
+  ops:
+    - {op: replace, lang: en, field: instruction, find: "follow reduced speed limits in fog", with: "keep to normal speed limits in fog"}
+  named_terms: ["normal speed"]
+
+- id: P04
+  scenario: uae-fog-2026-02-17
+  title: Danger understated as light mist reducing visibility slightly
+  copies: understated danger (downplayed warnings, e.g. early messaging before 2021 Western Europe floods)
+  ops:
+    - {op: replace, lang: en, field: headline, find: "may drop to zero", with: "may dip slightly"}
+    - {op: replace, lang: en, field: description, find: "thick fog may cut visibility to zero at times", with: "light mist may reduce visibility slightly"}
+  named_terms: ["slightly", "light mist", "dip"]
+
+- id: P05
+  scenario: uae-fog-2026-02-17
+  title: Real fog event sent as an exercise
+  copies: drill/test/real confusion in reverse (real warning marked as test so phones suppress it)
+  ops:
+    - {op: set, field: status, value: "Exercise"}
+    - {op: replace, lang: en, field: headline, find: "Fog warning: visibility", with: "EXERCISE: Fog warning: visibility"}
+  named_terms: ["exercise", "drill"]
+
+- id: P06
+  scenario: uae-fog-2026-02-17
+  title: Sender not in the issuer register
+  copies: wrong or spoofed sender (unauthorised originator)
+  ops:
+    - {op: set_sender, value: "ncm-alerts@nadhir-gov.example"}
+  named_terms: ["ncm-alerts", "nadhir-gov"]
+
+- id: P07
+  scenario: uae-rain-2026-08-22
+  title: Possible heavy rain exaggerated into certain torrential rain and flash floods
+  copies: exaggerated danger / certainty inflated beyond the source forecast
+  ops:
+    - {op: replace, lang: en, field: headline, find: "rain, heavy at times, possible in", with: "torrential rain and flash floods certain in"}
+    - {op: append, lang: en, field: description, text: " Flash flooding is certain."}
+  named_terms: ["torrential", "flash flood"]
+
+- id: P08
+  scenario: uae-rain-2026-08-22
+  title: End time 12:00, before the 13:30 start
+  copies: wrong or contradictory times
+  ops:
+    - {op: replace, lang: en, field: description, find: "13:30 to 21:00", with: "13:30 to 12:00"}
+  named_terms: ["12:00"]
+
+- id: P09
+  scenario: uae-rain-2026-08-22
+  title: Arabic instruction tells drivers to enter standing water carefully
+  copies: mistranslation that reverses a protective action
+  ops:
+    - {op: replace, lang: ar, field: instruction, find: "وتجنّب المياه الراكدة", with: "وادخل المياه الراكدة بحذر"}
+  named_terms: ["ادخل", "enter standing water", "into standing water", "drive through"]
+
+- id: P10
+  scenario: uae-rain-2026-08-22
+  title: Area replaced with northern emirates, not the requested area
+  copies: wrong area targeted (zone or polygon mismatch with the requested area)
+  ops:
+    - {op: set_area, areaDesc: "Northern emirates: Ras Al Khaimah and Fujairah (demo zone)", code: "UAE-N"}
+  named_terms: ["northern emirates", "ras al khaimah", "fujairah", "uae-n"]
+
+- id: P11
+  scenario: uae-rain-2026-08-22
+  title: Sent as an Update claiming to replace an earlier message, with no reference to it
+  copies: unlinked correction (Update/Cancel without references to the original)
+  ops:
+    - {op: set, field: msgType, value: "Update"}
+    - {op: append, lang: en, field: description, text: " This replaces the earlier message."}
+  named_terms: ["replaces the earlier", "no references", "msgtype update", "unlinked"]
+
+- id: P12
+  scenario: uae-rain-2026-08-22
+  title: Arabic version missing
+  copies: missing language (alerts sent only in English to a mostly Arabic-reading or mixed public)
+  ops:
+    - {op: drop_language, lang: ar}
+  named_terms: ["no arabic", "missing arabic", "arabic missing", "english only"]
+
+- id: P13
+  scenario: uae-dust-drill
+  title: Drill sent as Actual with EXERCISE labels removed
+  copies: Hawaii 2018 ballistic missile drill sent live
+  ops:
+    - {op: set, field: status, value: "Actual"}
+    - {op: replace, lang: en, field: headline, find: "EXERCISE: Blowing", with: "Blowing"}
+    - {op: replace, lang: en, field: description, find: "EXERCISE - Active", with: "Active"}
+    - {op: replace, lang: ar, field: headline, find: "تمرين: غبار", with: "غبار"}
+    - {op: replace, lang: ar, field: description, find: "تمرين - رياح", with: "رياح"}
+  named_terms: ["actual", "sent as real", "not marked as an exercise", "no exercise label"]
+
+- id: P14
+  scenario: uae-dust-drill
+  title: Arabic text drops the exercise label while English keeps it
+  copies: test/real label lost in translation (Arabic readers see a live warning)
+  ops:
+    - {op: replace, lang: ar, field: headline, find: "تمرين: غبار", with: "غبار"}
+    - {op: replace, lang: ar, field: description, find: "تمرين - رياح", with: "رياح"}
+  named_terms: ["تمرين", "arabic lacks", "arabic does not", "arabic omits"]
+
+- id: P15
+  scenario: uae-dust-drill
+  title: Visibility figure changed from 3,000 m to 300 m
+  copies: wrong number in a warning (dropped digit)
+  ops:
+    - {op: replace, lang: en, field: description, find: "under 3,000 m", with: "under 300 m"}
+  named_terms: ["300 m", "300m", "300 metres"]
+
+- id: P16
+  scenario: uae-dust-drill
+  title: Wind direction changed to southeasterly
+  copies: wrong hazard detail (direction of travel reversed, as in wrong storm-track messaging)
+  ops:
+    - {op: replace, lang: en, field: description, find: "northwesterly", with: "southeasterly"}
+  named_terms: ["southeasterly", "south-east", "southeast"]
+
+- id: P17
+  scenario: uae-dust-drill
+  title: Headline end time 08:00 contradicts 18:00 in the body
+  copies: contradictory details within one alert
+  ops:
+    - {op: replace, lang: en, field: headline, find: "until 18:00", with: "until 08:00"}
+  named_terms: ["08:00"]
+
+- id: P18
+  scenario: uae-dust-drill
+  title: Instruction says open roads are the safest option
+  copies: unsafe protective action (sending people toward the hazard)
+  ops:
+    - {op: replace, lang: en, field: instruction, find: "Take care, especially when driving on external and open roads, as visibility can drop suddenly.", with: "Driving on external and open roads is the safest option, as visibility stays clearer there."}
+  named_terms: ["safest option", "stays clearer"]
+
+- id: P19
+  scenario: uae-dust-2026-03-04
+  title: Unverified dam-burst rumour added with an evacuation order
+  copies: unverified social-media claim broadcast as official (rumour amplification)
+  ops:
+    - {op: append, lang: en, field: description, text: " A dam near Al Ain has burst."}
+    - {op: append, lang: en, field: instruction, text: " Leave the Al Ain area now."}
+  named_terms: ["dam", "al ain", "leave the"]
+
+- id: P20
+  scenario: uae-dust-2026-03-04
+  title: Arabic visibility figure becomes 20,000 metres
+  copies: number corrupted in translation, understating danger
+  ops:
+    - {op: replace, lang: ar, field: description, find: "أقل من 2,000 متر", with: "أقل من 20,000 متر"}
+  named_terms: ["20,000", "20000", "20 km"]
+
+- id: P21
+  scenario: uae-dust-2026-03-04
+  title: Instruction says visibility is not expected to drop
+  copies: understated danger contradicting the source
+  ops:
+    - {op: replace, lang: en, field: instruction, find: "as visibility may drop because of blowing dust", with: "although visibility is not expected to drop"}
+  named_terms: ["not expected to drop"]
+
+- id: P22
+  scenario: uae-dust-2026-03-04
+  title: Date changed to 4 February
+  copies: stale date carried over from an older alert template
+  ops:
+    - {op: replace, lang: en, field: description, find: "4 March", with: "4 February"}
+  named_terms: ["4 february", "february"]
+
+- id: P23
+  scenario: uae-dust-2026-03-04
+  title: Hazard changed to thunderstorms with hail
+  copies: wrong hazard type (wrong event code or template picked)
+  ops:
+    - {op: set, field: event, value: "Thunderstorms and hail"}
+    - {op: replace, lang: en, field: headline, find: "Dusty winds reducing visibility", with: "Thunderstorms with hail"}
+  named_terms: ["hail", "thunderstorm"]
+
+- id: P24
+  scenario: uae-dust-2026-03-04
+  title: Severity raised to Extreme for a moderate dust event
+  copies: exaggerated severity in CAP metadata (over-alerting that triggers top-level phone alerts)
+  ops:
+    - {op: set, field: severity, value: "Extreme"}
+  named_terms: ["extreme"]

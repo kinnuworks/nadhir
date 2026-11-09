@@ -1,0 +1,26 @@
+# Fault notes
+
+- P01: The source says the fog lasts until 10:00 Wed 18 Feb; the English now says 25 Feb, a week too long, and no longer matches the Arabic.
+- P02: The source and English say western regions; the Arabic now says eastern, so Arabic readers in the west are told they are not affected.
+- P03: The source asks drivers to follow modified (reduced) speed limits; "normal speed limits" reverses that in zero-visibility fog.
+- P04: The source says visibility may drop to zero in thick fog; "light mist, slightly" understates the danger in headline and body.
+- P05: This is a real NCM warning; marking it Exercise lets receivers suppress or ignore it.
+- P06: The sender is not the one entry in the issuer register.
+- P07: The source says light to moderate rain that may become heavy at times; "torrential", "flash floods" and "certain" exaggerate it, and the text contradicts certainty Possible.
+- P08: The source window is 13:30 to 21:00; an end time of 12:00 is before the start and cuts the warning short.
+- P09: The English says avoid standing water; the Arabic now tells drivers to go into it carefully, which is unsafe and contradicts the English.
+- P10: The requested area is eastern, southern and western areas (UAE-E-S-W); the alert now targets the northern emirates (UAE-N), which the source does not mention.
+- P11: The msgType is Update and the text says it replaces an earlier message, but there are no references to any earlier alert, so receivers cannot link the correction.
+- P12: The Arabic info block is gone; a UAE public broadcast must carry Arabic.
+- P13: The context is a drill, but status is Actual and every EXERCISE/تمرين label is removed, so the public gets a live dust warning (the Hawaii 2018 failure).
+- P14: The English still says EXERCISE, but the Arabic dropped تمرين, so Arabic readers see what looks like a real warning.
+- P15: The source says visibility under 3,000 m; 300 m overstates it tenfold.
+- P16: The source says northwesterly winds; southeasterly is the opposite direction.
+- P17: The source and body say until 18:00; the headline says 08:00, which contradicts the body and has already passed for a 10:30 start.
+- P18: The source urges caution especially on external and open roads; calling them the safest option sends drivers toward the hazard.
+- P19: The dam burst near Al Ain comes only from an unverified social media post and is outside the source; broadcasting it and an order to leave spreads a rumour as official.
+- P20: The source says under 2,000 m; the Arabic now says under 20,000 m, which understates the danger and contradicts the English.
+- P21: The source warns of possible sudden drops in visibility; "not expected to drop" contradicts it and the description.
+- P22: The event is 4 March 2026; "4 February" is a stale or wrong date that contradicts "today" and the Arabic.
+- P23: The source describes blowing dust and sand; thunderstorms with hail is the wrong hazard, and the headline now contradicts the body.
+- P24: A dust event with visibility under 2,000 m is Moderate; Extreme overstates it in the CAP metadata and may trigger the top alert tier on phones.
