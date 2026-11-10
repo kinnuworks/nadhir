@@ -13,3 +13,7 @@ audit/snapshot
 runs/bench/logs
 **/__pycache__
 kb/cache
+output
+.playwright-mcp
+.claude
+ideas

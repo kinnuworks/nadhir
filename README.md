@@ -10,7 +10,7 @@ It is for the agencies that send emergency phone alerts. In more detail:
 3. Four reviewer agents, on a different AI model from the drafter, each play one institution with its own partial view: the met office, the issuing authority, the network operator and regulator, and an Arabic-language reviewer. They search an 11,572-clause knowledge base, UAE texts first, and must quote what they rely on. Code drops any objection whose quote isn't word for word in its source.
 4. People decide. A severe alert needs two named approvers, plus a named person who reads Arabic when the Arabic was machine translated. Then the alert is signed.
 
-Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. We also ran three real failures that were added after the rules were frozen: Ontario 2020, Florida 2023 and Taiwan 2024. The rules catch the first two, and the reviewer agents catch Taiwan.
+We replayed nine real alert failures. Run on the 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. Three of the nine were added after the rules were frozen: Ontario 2020, Florida 2023 and Taiwan 2024. The rules catch the first two, and the reviewer agents catch Taiwan.
 
 It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
 

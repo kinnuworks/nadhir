@@ -1,77 +1,250 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-mood="cobalt" data-accent="cobalt">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nadhir: AI-drafted alerts, checked before broadcast</title>
-<style>
-  body { font: 16px/1.5 system-ui, sans-serif; max-width: 980px; margin: 0 auto; padding: 16px; color: #111; background: #fff; }
-  h1 { font-size: 1.6rem; margin: 0.5rem 0 0.25rem; }
-  h2 { font-size: 1.2rem; margin-top: 2rem; border-top: 1px solid #ddd; padding-top: 1rem; }
-  textarea, input, select { font: inherit; width: 100%; box-sizing: border-box; padding: 6px; }
-  textarea { min-height: 70px; }
-  button { font: inherit; padding: 6px 14px; margin: 4px 4px 4px 0; cursor: pointer; }
-  table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
-  th, td { border: 1px solid #ccc; padding: 4px 6px; text-align: left; vertical-align: top; }
-  .pass { color: #0a6b1f; } .fail { color: #b00020; font-weight: 600; } .pending, .warn { color: #8a5a00; } .na { color: #777; }
-  .row { display: flex; gap: 12px; flex-wrap: wrap; } .row > * { flex: 1 1 280px; }
-  pre { white-space: pre-wrap; word-break: break-word; background: #f6f6f6; padding: 8px; font-size: 0.8rem; max-height: 320px; overflow: auto; }
-  .muted { color: #555; font-size: 0.9rem; }
-  .decision { font-size: 1.1rem; font-weight: 600; margin: 8px 0; }
-  .ar { direction: rtl; text-align: right; }
-  details { margin: 4px 0; }
-</style>
+<meta name="description" content="An AI agent drafts a public emergency alert in English and Arabic but can't send it. Cited rules, four reviewer agents and named people decide whether it goes out.">
+<link rel="icon" type="image/png" href="/web/icon-64.png">
+<link rel="apple-touch-icon" href="/web/icon-256.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..600&family=Public+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/web/style.css">
 </head>
 <body>
-<h1>Nadhir</h1>
-<p><strong>For alerting authorities: AI drafts the public warning, and cited rules, institution reviewers and two people decide whether it goes out.</strong></p>
-<p>One AI agent drafts the alert and another translates it into Arabic. Neither can send anything. Twelve fixed rules check it, each quoting a public policy or official investigation. Four more agents on a different AI model, standing in for the met office, the issuing authority, the network operator and an Arabic reviewer, each see only their part, search an 11,572-clause knowledge base (UAE texts first) and must quote it word for word. People approve last. Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named (<a href="#replays">see all nine replays</a>, three of them held out from the rules).</p>
 
-<h2 id="try">1. Draft and check a warning</h2>
-<p class="muted">The inputs are prefilled with a real UAE National Center of Meteorology dust warning (4 March 2026, as published by WAM) and a made-up rumour marked unverified. Edit them or write your own. The issuer and target zones are demo stand-ins.</p>
-<div id="inputs"></div>
-<button id="add">Add input</button>
-<div class="row">
-  <label>Target zone (chosen by the operator, not the AI)
-    <select id="zone"><option value="al-ain">Al Ain (demo zone)</option><option value="abu-dhabi-city">Abu Dhabi city (demo zone)</option><option value="dubai">Dubai (demo zone)</option><option value="sharjah">Sharjah (demo zone)</option><option value="fujairah">Fujairah (demo zone)</option></select></label>
-  <label><input type="checkbox" id="exercise" style="width:auto"> This is a drill</label>
-</div>
-<button id="draft">Draft alert</button> <span id="draftStatus" class="muted"></span>
-<div id="draftOut"></div>
+<nav class="nav" aria-label="Main">
+  <div class="nav__bar">
+    <a class="nav__brand" href="#top"><img class="app-icon" src="/web/icon-64.png" alt="">Nadhir</a>
+    <div class="nav__links">
+      <a href="#console">Try it</a><a href="#replays">Real failures</a><a href="#layers">Layers</a><a href="#live">Live feeds</a><a href="#gaps">Gaps</a>
+    </div>
+    <a class="btn btn-ink btn-sm" href="#console">Draft an alert</a>
+  </div>
+</nav>
 
-<h2 id="replays">2. Replays of real alert failures</h2>
-<p class="muted">Each row is a real public alert failure, rebuilt from public reports. "As sent" is the real message run through the gate. The rule that blocks it is compared with what the official investigation recommended. Rows marked held out were added after the rules were frozen and were not used to write them.</p>
-<div id="bench">Loading…</div>
+<header class="hero hero--color" id="top">
+  <div class="container">
+    <div id="heroCopy">
+    <span class="badge badge--dot hero-badge">For UAE-Alert · CAP 1.2 (ITU-T X.1303bis)</span>
+    <h1>AI drafts the warning. <span class="t-muted">Rules and people decide.</span></h1>
+    <p class="lead">An AI agent writes the public alert in English and Arabic, but it can't send anything. Twelve cited rules, four reviewer agents and named people decide whether it goes out.</p>
+    <div class="cta-row">
+      <button class="btn btn-halo btn-lg" id="heroDraft" type="button">Draft the prefilled alert</button>
+      <a class="btn btn-outline btn-lg" href="#replays">See nine real failures</a>
+    </div>
+    <p class="trust"><span>No sign-up</span><span>Starts from a real UAE weather warning</span><span>Nothing here sends a real alert</span></p>
+    </div>
 
-<h2 id="ablation">3. Which layer catches what</h2>
-<p class="muted">We injected known faults into real AI drafts, one fault at a time, each copying a failure type from the record. The same faulty alert then went to the 12 rules alone, the four institution agents alone, and both together.</p>
-<h3>Pre-registered faults (written outside the build)</h3>
-<p class="muted">A second set of 24 faults, with the words that count as naming each one, was written by someone who saw only the four drafts, and committed before the run. These results are reported as they came out.</p>
-<div id="preregOut">Loading…</div>
-<h3>Our own fault set</h3>
-<div id="ablationOut">Loading…</div>
+    <div class="hero__visual bleed" id="console">
+      <div class="window console">
+        <div class="window__bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><span class="window__title">Nadhir · Alert console</span><span class="bar-tag">Demo issuer and keys, not real UAE systems</span></div>
+        <div class="console__body">
+          <div class="console__grid">
+            <section class="console__inputs" aria-label="Event inputs">
+              <div class="console__head">
+                <p class="t-title">Event inputs</p>
+                <p class="t-small">Prefilled with a real National Center of Meteorology dust warning (4 March 2026, published by WAM) and a made-up rumour marked unverified. Edit them or write your own.</p>
+              </div>
+              <div id="inputs" class="inputs"></div>
+              <button id="add" class="btn btn-ghost btn-sm" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add input</button>
+              <div class="console__controls">
+                <label class="field">Target zone <span class="t-micro">chosen by the operator, not the AI</span>
+                  <select id="zone"><option value="al-ain">Al Ain (demo zone)</option><option value="abu-dhabi-city">Abu Dhabi city (demo zone)</option><option value="dubai">Dubai (demo zone)</option><option value="sharjah">Sharjah (demo zone)</option><option value="fujairah">Fujairah (demo zone)</option></select></label>
+                <label class="toggle"><input type="checkbox" id="exercise" class="switch"> This is a drill</label>
+              </div>
+              <div class="console__go">
+                <button id="draft" class="btn btn-candy btn-lg" type="button">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 6l6 6-6 6"/></svg>Draft alert</button>
+                <span id="draftStatus" class="t-small" role="status"></span>
+              </div>
+            </section>
+            <aside class="pipeline" aria-label="What happens after you press Draft">
+              <p class="eyebrow">What happens next</p>
+              <ol class="steps" id="steps">
+                <li data-step="draft"><span class="step__dot"></span><div><b>Drafter</b><span>Writes CAP fields from verified inputs only</span></div></li>
+                <li data-step="translate"><span class="step__dot"></span><div><b>Translator</b><span>Writes the Arabic, from a vetted template if one fits</span></div></li>
+                <li data-step="rules"><span class="step__dot"></span><div><b>12 rules</b><span>Fixed code, each rule citing its source</span></div></li>
+                <li data-step="review"><span class="step__dot"></span><div><b>4 reviewer agents</b><span>Object only with a word-for-word quote</span></div></li>
+                <li data-step="people"><span class="step__dot"></span><div><b>Named people</b><span>Approve, then the alert is signed</span></div></li>
+              </ol>
+              <p class="t-micro">The issuer, zones and signing keys are demo stand-ins.</p>
+            </aside>
+          </div>
+          <div id="draftOut" class="results" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-<h2 id="paste">4. Check real alerts now</h2>
-<p class="muted">Pick a public national alert feed. The server fetches its latest alerts (up to 12) and runs the rules that need no issuer context. No AI is involved; it takes a few seconds.</p>
-<div class="row"><label>Public feed <select id="feed">
-  <option value="sau-en">Saudi Arabia, NCM (English)</option><option value="sau-ar">Saudi Arabia, NCM (Arabic)</option>
-  <option value="qat-en">Qatar (English)</option><option value="qat-ar">Qatar (Arabic)</option>
-  <option value="kwt-en">Kuwait</option><option value="can">Canada (NAAD)</option><option value="aus">Australia (BoM via WMO)</option>
-</select></label></div>
-<button id="feedBtn">Check this feed now</button> <span id="feedStatus" class="muted"></span>
-<div id="feedOut"></div>
-<h3>Or paste one alert: a second reader before you send</h3>
-<p class="muted">Paste a CAP 1.2 XML alert, for example one from a public feed. Rules that need the issuer's own console (approvals, keys, requested area) show as pending.</p>
-<textarea id="xml" style="min-height:140px" placeholder="&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;…"></textarea>
-<label>Profile <select id="profile" style="width:auto"><option>GENERIC</option><option>UAE</option><option>US</option></select></label>
-<label><input type="checkbox" id="review" style="width:auto"> Also ask the reviewer agents to read it (about 20 seconds; met office, network operator, Arabic)</label>
-<button id="check">Check alert</button>
-<div id="checkOut"></div>
+<section class="section section--alt after-bleed" id="how">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>How a warning gets out</span>
+      <h2>Four layers between the model and a phone.</h2>
+      <p class="lead">The model only proposes text. Code, reviewers and people each get a say, and every step is written to a hash-chained log that anyone can verify.</p>
+    </div>
+    <div class="grid grid-2 flow">
+      <article class="tile reveal" style="--i:0"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+        <div><p class="t-title">1. Drafter and translator</p><p>One agent turns verified inputs into CAP fields and leaves unverified ones out. A second writes the Arabic, from a vetted template when one exists, and flags machine translation for review.</p></div></article>
+      <article class="tile reveal" style="--i:1"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <div><p class="t-title">2. Twelve fixed rules</p><p>Rules R0 to R11 are plain code. Each quotes a public policy or an official investigation. A failed rule blocks the alert; a missing approval holds it.</p></div></article>
+      <article class="tile reveal" style="--i:2"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3 3-4.6 5.5-4.6s4.7 1.6 5.5 4.6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.6c2.3.1 3.8 1.5 4.5 4.4"/></svg></div>
+        <div><p class="t-title">3. Four reviewer agents</p><p>Met office, issuing authority, network operator and regulator, and an Arabic reviewer. Each sees only its part, searches 11,572 clauses (UAE texts first) and must quote its source word for word, or the objection is dropped.</p></div></article>
+      <article class="tile reveal" style="--i:3"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 10 4-1.7 7-5.6 7-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <div><p class="t-title">4. Named people</p><p>A severe alert needs two approvers, plus a named reader for machine-translated Arabic. Their roles and the AI's part are written into the alert, which is then signed.</p></div></article>
+    </div>
+  </div>
+</section>
 
-<h2 id="audit">5. What real alerts record today</h2>
-<div id="auditOut">Loading…</div>
+<section class="section" id="replays">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Real failures</span>
+      <h2>Nine real alert failures, replayed. <span class="t-muted">The official finding is the answer key.</span></h2>
+      <p class="lead">Each message was rebuilt from public reports and run through the rules exactly as it was sent. Three were added after the rules were frozen, and nobody who wrote the rules picked them.</p>
+    </div>
+    <div class="stats">
+      <div class="stat reveal" style="--i:0"><p class="stat__n t-mono">8 <span>of 9</span></p><p class="t-small">official findings caught by the rules alone</p></div>
+      <div class="stat reveal" style="--i:1"><p class="stat__n t-mono">2 <span>of 3</span></p><p class="t-small">held-out failures caught by the frozen rules</p></div>
+      <div class="stat reveal" style="--i:2"><p class="stat__n t-mono">9 <span>of 9</span></p><p class="t-small">caught by rules and reviewer agents together</p></div>
+    </div>
+    <div id="bench" class="incidents"><p class="t-small">Loading the replays…</p></div>
+  </div>
+</section>
 
-<p class="muted" style="margin-top:2rem">Open source. Demo keys and demo zones are illustrations, not real UAE systems. Nothing here sends a real alert.</p>
+<section class="section section--alt" id="layers">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Which layer catches what</span>
+      <h2>Rules catch the format. <span class="t-muted">Agents catch the meaning.</span></h2>
+      <p class="lead">We put one known fault at a time into real AI drafts, then sent the faulty alert to the rules alone, the reviewer agents alone, and both together.</p>
+    </div>
+    <div class="grid grid-2">
+      <article class="card card--raised chart-card">
+        <p class="eyebrow">Pre-registered fault set</p>
+        <p class="t-title">24 faults written by someone who saw only the drafts, committed before the run</p>
+        <div id="preregOut" class="bars"><p class="t-small">Loading…</p></div>
+      </article>
+      <article class="card card--raised chart-card">
+        <p class="eyebrow">Our own fault set</p>
+        <p class="t-title">30 faults, each copying a failure type from the public record</p>
+        <div id="ablationOut" class="bars"><p class="t-small">Loading…</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="live">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Use it today</span>
+      <h2>Check real alerts now.</h2>
+      <p class="lead">Pick a national alert feed. The server fetches its latest alerts and runs the rules that need no issuer context. No AI is involved, and it takes a few seconds.</p>
+    </div>
+    <div class="try">
+      <div class="card try__controls">
+        <label class="field">Public feed
+          <select id="feed">
+            <option value="sau-en">Saudi Arabia, NCM (English)</option><option value="sau-ar">Saudi Arabia, NCM (Arabic)</option>
+            <option value="qat-en">Qatar (English)</option><option value="qat-ar">Qatar (Arabic)</option>
+            <option value="kwt-en">Kuwait</option><option value="can">Canada (NAAD)</option><option value="aus">Australia (BoM via WMO)</option>
+          </select></label>
+        <button id="feedBtn" class="btn btn-candy" type="button">Check this feed now</button>
+        <span id="feedStatus" class="t-small" role="status"></span>
+        <p class="t-small">Up to 12 alerts per feed. Area, sender authority, approvals and keys need the issuer's own console, so they aren't checked here.</p>
+      </div>
+      <div class="stage stage--soft try__out"><div id="feedOut" class="feed-out"><p class="empty"><span>Choose a feed and press <b>Check this feed now</b>.<br>The results land here.</span></p></div></div>
+    </div>
+
+    <div class="card paste">
+      <div class="paste__head">
+        <p class="t-title">Or paste one alert: a second reader before you send</p>
+        <p class="t-small">Paste a CAP 1.2 XML alert, for example one from a public feed. Rules that need the issuer's console (approvals, keys, requested area) show as pending.</p>
+      </div>
+      <textarea id="xml" rows="7" spellcheck="false" placeholder="&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;…"></textarea>
+      <div class="paste__row">
+        <label class="field field--inline">Profile <select id="profile"><option>GENERIC</option><option>UAE</option><option>US</option></select></label>
+        <label class="toggle"><input type="checkbox" id="review" class="switch"> Also ask the reviewer agents (about 20 seconds)</label>
+        <button id="check" class="btn btn-ink" type="button">Check alert</button>
+      </div>
+      <div id="checkOut" class="results" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="audit">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>What real alerts record today</span>
+      <h2>1,711 live alerts. <span class="t-muted">None says who approved it or whether AI helped.</span></h2>
+      <p class="lead">A snapshot of eight public feeds on 8 November 2026. CAP has no field for either, which is the first gap below.</p>
+    </div>
+    <div id="auditOut" class="card card--raised table-card"><p class="t-small">Loading…</p></div>
+  </div>
+</section>
+
+<section class="section" id="gaps">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Policy and standards gaps</span>
+      <h2>Seven gaps the mapping turned up.</h2>
+      <p class="lead">Each one has sources and a global example in the repository. We also searched the organisers' UAE policy dataset, 62 documents clause by clause, for each gap; the closest clauses are about other things.</p>
+    </div>
+    <div class="bento gaps">
+      <article class="span-4 is-accent reveal"><span class="gap__id t-mono">G1 · standards (ITU-T SG17)</span><h3>CAP has no field for AI involvement or a named approver.</h3><p>In 1,711 live alerts from 8 feeds, none records either. We propose five registered parameters, signed with the alert. A draft profile is in the repository.</p></article>
+      <article class="span-2 reveal" style="--i:1"><span class="gap__id t-mono">G2 · UAE policy</span><p class="t-title">No public rule on who approves an AI-drafted public alert.</p><p class="t-small">The UAE AI Charter states principles only. Global example: the FCC's two-person recommendation after Hawaii.</p></article>
+      <article class="span-2 reveal"><span class="gap__id t-mono">G3 · UAE policy</span><p class="t-title">No rule on machine translation of alerts.</p><p class="t-small">The US is split: the FCC refuses it for phone alerts, while the National Weather Service uses AI translation.</p></article>
+      <article class="span-2 reveal" style="--i:1"><span class="gap__id t-mono">G4 · UAE policy</span><p class="t-title">No public CAP feed on the WMO register.</p><p class="t-small">The UAE record is dated 2013. Saudi Arabia, Qatar and Kuwait publish live feeds.</p></article>
+      <article class="span-2 reveal" style="--i:2"><span class="gap__id t-mono">G5 · international norm</span><p class="t-title">No norm on correcting a false alert.</p><p class="t-small">3 of 1,000 recent US alerts cancelled earlier alerts without linking to them.</p></article>
+      <article class="span-3 reveal"><span class="gap__id t-mono">G6 · standards</span><p class="t-title">Vetted templates are sized for a 360-character US limit, not cell broadcast pages.</p><p class="t-small">The FCC's Arabic dust storm template runs to 10 pages in UCS-2. No UAE text sets a page budget, and TDRA TS FS 001 v2.0 sets none.</p></article>
+      <article class="span-3 reveal" style="--i:1"><span class="gap__id t-mono">G7 · standards</span><p class="t-title">CAP status and US test practice disagree.</p><p class="t-small">246 of 1,000 US alerts marked "Actual" carry a test event code.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" id="limits">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Limits</span>
+      <h2>What this does not prove.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Are the replays the original systems?</summary><p>No. Each one is rebuilt from public reports. Where the record is silent, we assume the alert was fine. Four incidents rest on official statements rather than investigation reports, and the India case on press reports only.</p></details>
+      <details><summary>Who wrote the faults and answer keys?</summary><p>The 30-fault set and its matching terms are ours. The 24 pre-registered faults were written by a separate agent that saw only the drafts, and committed before the run. The replays use the investigators' own findings as the answer key.</p></details>
+      <details><summary>Are the reviewer agents the real institutions?</summary><p>No. They stand in for roles. Two models play the six agents: one drafts and translates, another reviews.</p></details>
+      <details><summary>What about the UAE specifics?</summary><p>The issuer register, target zones and signing keys are demo stand-ins. TDRA's 2019 UAE-Alert specification is the primary text for handset behaviour; the 2015 handset rules come from a compliance firm's summary.</p></details>
+      <details><summary>Does the Taiwan miss matter?</summary><p>Yes. The frozen rules missed it because R11 only checks AI-written text, and Taiwan's wrong English came from an old human template. The met office reviewer caught it. A grounding check should run on every alert.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section final">
+  <div class="container">
+    <img class="final__icon" src="/web/icon-256.png" alt="" width="88" height="88">
+    <h2>Try it on a real UAE warning. <span class="t-muted">It takes about a minute.</span></h2>
+    <div class="cta-row"><a class="btn btn-candy btn-lg" href="#console">Draft an alert</a><a class="btn btn-outline btn-lg" href="#live">Check a live feed</a></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <span class="nav__brand"><img class="app-icon" src="/web/icon-64.png" alt="">Nadhir</span>
+    <span>Open source. Demo keys and demo zones are illustrations, not real UAE systems. Nothing here sends a real alert.</span>
+  </div>
+</footer>
+
 <script src="/web/app.js"></script>
+<script>
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+const nav=document.querySelector('.nav'),hero=document.getElementById('heroCopy');
+if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('nav--on-color',e.isIntersecting),{rootMargin:'-40px 0px -90% 0px'}).observe(hero);
+</script>
 </body>
 </html>
