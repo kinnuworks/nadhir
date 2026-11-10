@@ -14,6 +14,8 @@ We replayed nine real alert failures. Run on the 2018 Hawaii missile alert, the 
 
 It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
 
+![The core loop on the live demo: a real NCM dust warning is drafted in English and Arabic, the rules and reviewer agents hold it for people, two approvers and an Arabic reader approve, and the signed alert is cleared](docs/media/core-loop.gif)
+
 **Live demo:** https://nadhir-gilt.vercel.app (no sign-up)
 
 **Try it in 30 seconds**
