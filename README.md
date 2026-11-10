@@ -23,6 +23,10 @@ It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert f
 2. Look at what happened. The drafter left the rumour out. The rule table shows the Arabic is machine translated, so it waits for a named person who reads Arabic (rule R9). Below it, the four institution reviewers each give a position, with the clauses they searched and the quotes they rely on. Their objections went back to the drafter once; the ones still open are listed for the approvers.
 3. Type two approver names and the name of someone who reads Arabic, tick that you read the open objections, then press **Approve**. You get the signed CAP XML, the final verdicts and the audit log with its hash chain.
 
+What step 3 ends on, from a run of the demo scenario with demo approver names (the picture shows the first five of the twelve final verdicts):
+
+![After approval: the final check reads "Cleared for broadcast", each rule shows its verdict and sources, the audit log lists 24 hash-chained records with the chain intact, and the CAP XML carries an XML signature](docs/media/released.png)
+
 **Use it on real alerts today.** Section 4 of the demo checks a live public feed (Saudi Arabia, Qatar, Kuwait, Canada or Australia): the server fetches the latest alerts and runs the rules that need no issuer context, with no AI involved, in a few seconds. Any CAP alert can also be pasted in, with the reviewers as a second reader before sending. On a real Kuwaiti alert from 8 Nov 2026, the Arabic reviewer pointed out that the Arabic gives a wave height ("more than 6 feet") that the English leaves out.
 
 ## What it found
@@ -64,7 +68,7 @@ Only the agents named 10 of them, among them the Arabic saying "eastern" where t
 
 The rules are still needed: they are deterministic, and they see what the agents never see (signatures, approver counts, the signing key).
 
-On the 12 clean drafts the agents raised 10 objections in 7 drafts, mostly the met office reviewer flagging wording a little stronger or broader than the bulletin; 6 were still open after one redraft and went to the approvers. Across both fault sets the agents made 117 objections. Each quotes checked evidence (2 were dropped because their quote didn't match); 39 also quote a knowledge-base clause and the rest quote the alert or the inputs it contradicts. The agents logged 193 further concerns they could not back with any clause; we read those as leads for policy gaps.
+On the 12 clean drafts the agents raised 10 objections in 7 drafts, mostly the met office reviewer flagging wording a little stronger or broader than the bulletin; 6 were still open after one redraft and went to the approvers. Across both fault sets the agents made 117 objections. Each quotes checked evidence (2 were dropped because their quote didn't match); 39 also quote a knowledge-base clause and the rest quote the alert or the inputs it contradicts. The agents logged 193 further concerns they could not back with any clause; we read those as leads for policy gaps. Two came up again and again. In 37 of the 54 fault cases the operator reviewer recorded that no clause requires an action on the first page, and in 30 the met office reviewer recorded that no clause sets the severity. We searched for the missing text, found none, and wrote them up as gaps 8 and 9.
 
 ### The knowledge base
 
@@ -92,7 +96,7 @@ So the gate's work on AI-written alerts here is mostly holding them for people: 
 
 ## The gaps
 
-The full list, with sources and global examples, is in [docs/gaps.md](docs/gaps.md). In short:
+Twelve gaps. For each one, [docs/gaps.md](docs/gaps.md) gives the missing text, the sources we searched (including the organisers' UAE dataset, where 6 of our 36 queries returned nothing and the rest returned clauses about other things), the evidence from the prototype, a global example and who could close it. Gaps 1 to 7 came from the mapping exercise and the incident replays. Gaps 8 to 12 came from running the agents. In short:
 
 1. **CAP has no field for AI involvement or a named approver.** We propose five registered parameters, signed with the alert, as an input to ITU-T SG17: [docs/cap-ai-provenance-profile.md](docs/cap-ai-provenance-profile.md).
 2. **No public UAE rule on who approves an AI-drafted alert.** The UAE AI Charter asks for human oversight but sets no operational rule for it.
@@ -101,6 +105,11 @@ The full list, with sources and global examples, is in [docs/gaps.md](docs/gaps.
 5. **No international norm for correcting false alerts.** Hawaii's correction took 38 minutes and was not linked to the false alert.
 6. **Vetted templates don't fit cell broadcast.** The FCC's Arabic dust storm template is 10 cell broadcast pages long, because the templates were written for a 360-character US limit. No UAE text sets a page budget: the current TDRA handset spec sets none, and a 2015 summary of an older version advised 1 page.
 7. **CAP status and US test practice conflict.** 246 of 1,000 US alerts marked "Actual" carried a test event code.
+8. **Nothing requires a phone alert to say what to do.** CAP marks `<instruction>` optional, and 658 of the 1,711 live alerts we read carry one. Neither Saudi feed does in any of its 54 alerts. Australia's CAP profile recommends an instruction; no UAE text asks for the action on the first cell broadcast page.
+9. **No published mapping from UAE weather bulletins to CAP urgency, severity and certainty.** An AI drafter has to choose the severity and a reviewer has nothing to check it against. Australia's profile publishes such a table.
+10. **No UAE rule that the area sent must match the area requested.** Los Angeles 2025 and Japan 2022 both failed here. The FCC's stated objective is for providers "to match the target area provided by an alert originator".
+11. **Signing an alert is optional in CAP, and no UAE text requires it.** 1,211 of the 1,711 live alerts are signed; none of Australia's 499 is. The UAE's 2021 electronic transactions law defines an electronic seal, but nothing applies it to public alerts.
+12. **No retention rule for alert origination logs or AI drafting records.** The closest UAE text is about telecom consumer records. The FCC requires providers to log alerts at their gateway and keep the records for review.
 
 ## How it works
 
@@ -155,7 +164,7 @@ NADHIR_LLM=replay .venv/bin/python -m nadhir.ablation       # rerun the fault ab
 .venv/bin/python -m nadhir.serve                            # local demo at http://localhost:8000 (needs ANTHROPIC_API_KEY in .env to draft new alerts)
 ```
 
-CI runs all of this on every push.
+CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs the first six on every push. It reruns the bench and both fault sets from the recorded model answers and fails if any result differs from the committed one, rechecks every knowledge-base quote against the indexed text, re-verifies every audit log's hash chain and recounts the real-feed audit.
 
 ## Limits
 

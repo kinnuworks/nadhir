@@ -29,6 +29,16 @@ GAPS = {
            "emergency message one page handset"],
     "G7": ["test alert status actual exercise", "public alert test message marking",
            "emergency alert drill test procedure"],
+    "G8": ["first page of alert message must state protective action", "warning message content what the public should do",
+           "instruction to recipients emergency notification"],
+    "G9": ["weather warning severity level mapping", "urgency severity certainty of alert",
+           "colour coded weather warning levels criteria"],
+    "G10": ["alert target area accuracy geo-targeting", "warning sent only to affected area cell broadcast",
+            "geographical area of emergency notification"],
+    "G11": ["digital signature of alert message originator", "authentication of emergency alert source",
+            "electronic signature government messages integrity"],
+    "G12": ["retention of emergency alert logs", "records of public warning messages kept for audit",
+            "log of AI system decisions retention period"],
 }
 
 

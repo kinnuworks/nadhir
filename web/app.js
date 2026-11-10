@@ -206,7 +206,7 @@ async function approve() {
     : res.objections_unacknowledged ? "Open objections have not been read by an approver yet." : "Some rules still wait for a person; see below.";
   $("releaseOut").innerHTML = `${decision(res.decision, "Final check: ", sub)}
     ${verdictList(res.verdicts)}
-    <details class="disclosure" open><summary>Audit log: ${res.log.length} records, ${esc(res.log_check)}</summary>
+    <details class="disclosure" open><summary>Audit log: ${esc(res.log_check)}</summary>
       <pre class="terminal">${res.log.map((r) => `<span class="h">${String(r.seq).padStart(2, "0")}</span> ${esc(r.actor)} · ${esc(r.action)}  ${esc(r.hash.slice(0, 12))} ← ${esc(r.prev.slice(0, 12))}`).join("\n")}</pre></details>
     <details class="disclosure"><summary>Signed CAP XML</summary><pre class="terminal">${esc(res.xml)}</pre></details>`;
   $("releaseOut").scrollIntoView({ behavior: "smooth", block: "start" });

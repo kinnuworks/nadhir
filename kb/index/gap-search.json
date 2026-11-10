@@ -440,6 +440,277 @@
      }
     ]
    }
+  ],
+  "G8": [
+   {
+    "query": "first page of alert message must state protective action",
+    "hits": [
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0090",
+      "title": "API First Guideline",
+      "locator": "p.37",
+      "score": 9.81,
+      "text": "⁞ 4.4.4⁝ Service Life Cycle State Approval SLA’s The SLA’s specific to a service performance can be: • Response Time • Throughput • Service Availability • Secured Message Transmission These SLA’s shall be defined in the service requirements document and can be agreed upon and signed off with the sta"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/AI_Adoption_Guidelines_in_Government_Services#0047",
+      "title": "AI Adoption Guidelines in Government Services",
+      "locator": "p.22",
+      "score": 9.63,
+      "text": "UAE was the first to appoint a Minister of State for AI KSA was the first to grant citizenship to a robot Strtegic Focus 1 2 3 Address National Challenges / Threats"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0079",
+      "title": "API First Guideline",
+      "locator": "p.34",
+      "score": 9.29,
+      "text": "Run time rules and actions need to be implemented to assure the confidentiality using web service level security. The actions to be applied depend on the sensitivity of the data transferred and transactions performed in the services. The following table shows the runtime actions based on the above c"
+     }
+    ]
+   },
+   {
+    "query": "warning message content what the public should do",
+    "hits": [
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/IAM_Eng_Updated#0003",
+      "title": "IAM Eng Updated",
+      "locator": "p.2",
+      "score": 9.57,
+      "text": "Blocking Message: means the message which appears when attempting to access Blocked Content. 1-2 Exemption: means in respect of a particular User’s access to Internet Content, allowing that User to access Internet Content under Prohibited Content Categories fully or partially, permanently or tempora"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree-Law_34_of_2021_Cybercrimes#0091",
+      "title": "Federal Decree-Law 34 of 2021 Cybercrimes",
+      "locator": "p.32",
+      "score": 8.7,
+      "text": "stipulated in this Decree-Law if they have verified the dissemination, re-dissemination, or circulation of illegal content or content containing false data. The writs provided for in this Decree-Law shall be issued by the competent authorities using the available methods including electronic methods"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/IAM_Eng_Updated#0011",
+      "title": "IAM Eng Updated",
+      "locator": "p.4",
+      "score": 8.37,
+      "text": "Classification, Identification, Reporting and Notification of Prohibited Content 3-1 Prohibited Content is Internet Content that is unacceptable and contrary to the public interest, public morality, public order, public and national security, Islamic morality or any prohibited matter according to an"
+     }
+    ]
+   },
+   {
+    "query": "instruction to recipients emergency notification",
+    "hits": [
+     {
+      "id": "ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0209",
+      "title": "AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1)",
+      "locator": "p.109",
+      "score": 8.56,
+      "text": "Annex C - Sample Reports & Forms A number of forms, reports and guideline manual shall be available with the entity’s Incident Management and Business Continuity Teams. These forms and reports include: • Instructions on how to record and update messages, using the entity’s voice-mail system. • Sampl"
+     }
+    ]
+   }
+  ],
+  "G9": [
+   {
+    "query": "weather warning severity level mapping",
+    "hits": [
+     {
+      "id": "ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0047",
+      "title": "UAE National Air Quality Agenda 2031",
+      "locator": "p.9",
+      "score": 8.89,
+      "text": "federal standards, though concentrations of ground-level O3 were more frequently recorded at levels in excess of the standard. It has been determined that ground-level O3 is the main driver of potential non-attainment of the set API. Despite having met the targets for particulate matter less than 10"
+     }
+    ]
+   },
+   {
+    "query": "urgency severity certainty of alert",
+    "hits": []
+   },
+   {
+    "query": "colour coded weather warning levels criteria",
+    "hits": [
+     {
+      "id": "ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0376",
+      "title": "3.2 TDRA Consumer Protection Regulations v2",
+      "locator": "p.63",
+      "score": 11.1,
+      "text": "25.9. Subject to the provisions of 25.4, Licensees may offer such enhanced directories as the Licensee sees fit. Such enhanced services could for instance include bold, boxed, or colour listings and may include addition information such as logos, location plans and maps, directions etc. Licensees ma"
+     },
+     {
+      "id": "ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0047",
+      "title": "UAE National Air Quality Agenda 2031",
+      "locator": "p.9",
+      "score": 8.89,
+      "text": "federal standards, though concentrations of ground-level O3 were more frequently recorded at levels in excess of the standard. It has been determined that ground-level O3 is the main driver of potential non-attainment of the set API. Despite having met the targets for particulate matter less than 10"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0086",
+      "title": "Federal Decree No 46 of 2021 on Electronic Transactions",
+      "locator": "p.35",
+      "score": 8.14,
+      "text": "for the relevant level of security in the Electronic Identification System and Digital Identity as approved by TDRA. 3. The Digital Identity used in Qualified Trust Services shall meet a high level of security and trust. 4. TDRA shall, after coordination with the Competent Authorities, set the techn"
+     }
+    ]
+   }
+  ],
+  "G10": [
+   {
+    "query": "alert target area accuracy geo-targeting",
+    "hits": [
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Guide_to_Access_Government_Information_2017#0003",
+      "title": "Guide to Access Government Information 2017",
+      "locator": "p.2",
+      "score": 8.57,
+      "text": "Section 2: The Target Group The target group of this guide are the individuals, who are looking for information about the decisions and procedures of the government authorities, researches in various areas, application and software solution developers, consultants and private sector institutions con"
+     },
+     {
+      "id": "ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0148",
+      "title": "UAE National Air Quality Agenda 2031",
+      "locator": "p.21",
+      "score": 8.36,
+      "text": "Target - 100% compliance with national standards for gaseous pollutants by 2040 - 90% compliance with national standard of PM2.5 by 2040 PM2.5 concentration in residential areas Reach 35 μg/m3 annual average concentration of PM2.5 in residential areas by 2030."
+     }
+    ]
+   },
+   {
+    "query": "warning sent only to affected area cell broadcast",
+    "hits": [
+     {
+      "id": "ITU-UAE:06_Environment_and_Sustainability/UAE_National_Air_Quality_Agenda_2031#0162",
+      "title": "UAE National Air Quality Agenda 2031",
+      "locator": "p.22",
+      "score": 8.11,
+      "text": "it inhibits plant growth and affects both agricultural flora as well as natural ecosystems. Emissions controls on ozone precursor pollutants could help protect sensitive and/or valuable ecological resources. Other air pollutants such SO2 have the potential to directly or indirectly affect habitat ar"
+     }
+    ]
+   },
+   {
+    "query": "geographical area of emergency notification",
+    "hits": []
+   }
+  ],
+  "G11": [
+   {
+    "query": "digital signature of alert message originator",
+    "hits": [
+     {
+      "id": "ITU-UAE:03_Digital_Government_and_Telecom/3.1_UAE_Digital_Government_Strategy_2025#0016",
+      "title": "UAE Digital Government Strategy 2025",
+      "locator": "Strategic KPIs",
+      "score": 11.85,
+      "text": "90% Percentage of services digitised (end-to-end) 100% Services that require personal verification offer a digital option 100% Services that require a manual signature offer a digital option 100% Digital capabilities"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0052",
+      "title": "Federal Decree No 46 of 2021 on Electronic Transactions",
+      "locator": "p.19",
+      "score": 9.0,
+      "text": "following: a. Any message from the Addressee, whether by electronic, automated or any other means. b. Any conduct on the part of the Addressee which shall be sufficient to notify the Originator of receipt of the Electronic Document. 2. If the Originator has stated that the Electronic Document is con"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0078",
+      "title": "Federal Decree No 46 of 2021 on Electronic Transactions",
+      "locator": "p.31",
+      "score": 8.08,
+      "text": "Article (29) Responsibilities of the Relying Party 1. A Relying Party shall be held responsible for the consequences of the failure thereof to take the necessary measures to ensure the validity and enforceability of an Authentication Certificate and to observe any restrictions thereon. 2. A Relying "
+     }
+    ]
+   },
+   {
+    "query": "authentication of emergency alert source",
+    "hits": [
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/API_First_Guideline#0080",
+      "title": "API First Guideline",
+      "locator": "p.34",
+      "score": 12.18,
+      "text": "Security categorization Run time action/rule High • Authenticate consumers against a user directory • Message-level security » Username/password credentials » Digital certificate authentication » Data encryption • API identification • Source IP • HTTP Basic authentication. • Transport-Level Security"
+     }
+    ]
+   },
+   {
+    "query": "electronic signature government messages integrity",
+    "hits": [
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0081",
+      "title": "Federal Decree No 46 of 2021 on Electronic Transactions",
+      "locator": "p.33",
+      "score": 16.2,
+      "text": "2. Notifying the concerned Licensee if it becomes known that there are doubts about the level of security or validity of the Electronic Signature or Seal Creation Data thereof that is used to create such signature or seal. 3. Ensuring the accuracy and integrity of any material data provided thereby "
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0021",
+      "title": "Federal Decree No 46 of 2021 on Electronic Transactions",
+      "locator": "p.7",
+      "score": 14.64,
+      "text": "Reliable Electronic An electronic signature that meets the conditions specified in Signature: Article (19) hereof. Qualified Electronic A Reliable Electronic Signature that is created by a qualified Signature: electronic signature device, and is issued based on a Qualified Electronic Signature Authe"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Federal_Decree_No_46_of_2021_on_Electronic_Transactions#0062",
+      "title": "Federal Decree No 46 of 2021 on Electronic Transactions",
+      "locator": "p.24",
+      "score": 14.41,
+      "text": "mere fact that it is received in electronic form and processed through Trust Services and Qualified Trust Services. 2. A hard copy of an official Electronic Document shall be considered conclusive evidence to the extent that it is identical to the original of such document. 3. A Qualified Electronic"
+     }
+    ]
+   }
+  ],
+  "G12": [
+   {
+    "query": "retention of emergency alert logs",
+    "hits": []
+   },
+   {
+    "query": "records of public warning messages kept for audit",
+    "hits": [
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/Data_Protection_Law_Final#0069",
+      "title": "Data Protection Law Final",
+      "locator": "p.10",
+      "score": 13.78,
+      "text": "kept on a publicly available register maintained by the Commissioner; and (b) accompanied by such fee as may be prescribed in Regulations made by the DIFCA Board of Directors. Records of Processing activities (1)"
+     },
+     {
+      "id": "ITU-UAE:05_Business_Continuity/5.1_NCEMA_7000_2021_BCM_Standard#0068",
+      "title": "AE/SCNS/NCEMA 7000:2021 — Business Continuity Management Standard",
+      "locator": "p.17",
+      "score": 12.83,
+      "text": "Yes No b Reporting results and maintaining related records? Yes No c Audit criteria, scope, frequency and methods? Yes No 74 75 Do you write Internal Audit Report containing: 78 a"
+     },
+     {
+      "id": "ITU-UAE:05_Business_Continuity/5.1b_NCEMA_7000_2012_BCM_Standard_v1#0047",
+      "title": "AE/HSC/NCEMA 7000:2012 — Business Continuity Management Standard (v1)",
+      "locator": "p.35",
+      "score": 12.49,
+      "text": "Part 1: Specifications 8.11.6 Conformity and Certification The entity should ascertain conformity and certification to this standard. This can be through a self-assessment or third party assessment or third party certification. In due course, NCEMA will develop a process for third party certificatio"
+     }
+    ]
+   },
+   {
+    "query": "log of AI system decisions retention period",
+    "hits": [
+     {
+      "id": "ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0054",
+      "title": "3.2 TDRA Consumer Protection Regulations v2",
+      "locator": "p.11",
+      "score": 13.37,
+      "text": "3.9. Licensees shall maintain records and shall provide copies of such records to the TDRA on demand. Unless the provisions of any relevant law requires otherwise, or specific provisions in these Regulations state otherwise, the record retention period shall be in accordance with the following table"
+     },
+     {
+      "id": "ITU-UAE:01_AI_Strategy_and_Governance/AI_Guide_v1#0031",
+      "title": "AI Guide v1",
+      "locator": "p.9",
+      "score": 12.62,
+      "text": "Machine Learning Model Output • Identity fraud detection • Image classification • Customer retention • Diagnostics Figure 4. Machine Learning Model Supervised learning Unsupervised learning Clustering Regression • Recommended systems • Customer segmentation • Targetted marketing"
+     },
+     {
+      "id": "ITU-UAE:03_Digital_Government_and_Telecom/3.2_TDRA_Consumer_Protection_Regulations_v2#0055",
+      "title": "3.2 TDRA Consumer Protection Regulations v2",
+      "locator": "p.11",
+      "score": 12.57,
+      "text": "Minimum retention period Hard Copy Application Forms – for Telecommunications Services Hard copies shall be retained for at least three (3) years. Thereafter, digitised copies shall be retained ad infinitum. Electronic Application Forms – for Telecommunications Services Copies of application electro"
+     }
+    ]
+   }
   ]
  }
 }
