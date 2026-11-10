@@ -18,7 +18,7 @@
   <div class="nav__bar">
     <a class="nav__brand" href="#top"><img class="app-icon" src="/web/icon-64.png" alt="">Nadhir</a>
     <div class="nav__links">
-      <a href="#console">Try it</a><a href="#replays">Real failures</a><a href="#layers">Layers</a><a href="#log">Audit log</a><a href="#gaps">Gaps</a><a href="#y3172">Y.3172</a>
+      <a href="#console">Try it</a><a href="#replays">Real failures</a><a href="#layers">Layers</a><a href="#log">Audit log</a><a href="#gaps">Gaps</a><a href="#y3172">Standards</a>
     </div>
     <a class="btn btn-ink btn-sm" href="#console">Draft an alert</a>
   </div>
@@ -46,12 +46,12 @@
             <button role="tab" aria-selected="false" aria-controls="pv-hi" id="tab-hi" type="button">Hawaii 2018 · as sent</button>
           </div>
           <div class="preview__body" id="pv-uae" role="tabpanel" aria-labelledby="tab-uae">
-            <div class="decision decision--waiting decision--sm"><span class="decision__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg></span><div>Waiting for two named people<small>No rule failed. Four wait for approvers.</small></div></div>
+            <div class="decision decision--waiting decision--sm"><span class="decision__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg></span><div>Waiting for two named people<small>No rule failed. Four rules need named approvers before release.</small></div></div>
             <p class="preview__msg"><span class="eyebrow">English draft</span>NCM warning: blowing dust and sand reducing visibility until 19:00 today</p>
             <p class="preview__msg preview__msg--ar" lang="ar" dir="rtl">تحذير NCM: غبار ورمال متطايرة تُخفّض مستوى الرؤية حتى الساعة 19:00 اليوم</p>
             <ul class="checks">
               <li class="is-ok"><b>Rumour left out.</b> “A dam near Al Ain has burst” was marked unverified, so the drafter dropped it.</li>
-              <li class="is-ok"><b>R11 removed “Al Ain”</b> from the text. No verified input names it.</li>
+              <li class="is-ok"><b>“Al Ain” taken out of the text.</b> Rule R11 flagged it because no verified input names that place. The operator's zone still sends the alert there.</li>
               <li class="is-wait"><b>R9:</b> the Arabic is machine translated, so a named Arabic reader must approve it.</li>
               <li class="is-wait"><b>Network operator agent objects:</b> “Neither language gives any action for the recipient to take.”</li>
             </ul>
@@ -71,9 +71,9 @@
     </div>
 
     <div class="proof" id="proof">
-      <a class="proof__item" href="#replays"><b class="t-mono" id="pf-replays">8 <span>of 9</span></b><span id="pf-replays-l">real alert failures caught by the rules, scored against the official finding</span></a>
-      <a class="proof__item" href="#layers"><b class="t-mono">24 <span>of 24</span></b><span>pre-registered faults caught by rules and agents together (rules alone: 14)</span></a>
-      <a class="proof__item" href="#gaps"><b class="t-mono">12</b><span>policy and standards gaps, 5 of them surfaced by the agents</span></a>
+      <a class="proof__item" href="#replays"><b class="t-mono" id="pf-replays">8 <span>of 13</span></b><span id="pf-replays-l">real alert failures caught by the rules, scored against the official finding. Held out: 2 of 7.</span></a>
+      <a class="proof__item" href="#layers"><b class="t-mono">23 <span>of 24</span></b><span>faults written in advance by someone else, named by the reviewer agents. The rules alone named 14; together, all 24.</span></a>
+      <a class="proof__item" href="#gaps"><b class="t-mono">12</b><span>gaps in UAE policy and alerting standards that the build exposed, 5 surfaced by the agents</span></a>
       <a class="proof__item" href="#how"><b class="t-mono">11,572</b><span>clauses from 115 documents that the agents search and must quote</span></a>
     </div>
   </div>
