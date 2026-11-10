@@ -39,6 +39,8 @@ AI is starting to write warning text. The US National Weather Service publishes 
 | SINK | Signed alert to a cell broadcast centre stub; hash-chained audit log | D13 Digital infrastructure | TDRA cell broadcast specs (2017; TS FS 001 v2.0, 2019) |
 | MLFO / sandbox | Orchestrator with gate-feedback redrafts; replay bench of real failures, demo keys and zones | D7, D10 | ITU-T Y.3172 |
 
+All 13 Readiness dimensions are rated in `docs/y3172-and-readiness.md`, each with its evidence or the reason it is missing: five are exercised by running code (D4, D7, D8, D10, D13), four partly (D1, D5, D6, D11), and four are not addressed (D2, D3, D9, D12).
+
 ## 5. Error scenarios
 
 Each scenario follows the template's steps: deployed, problem noticed, handled under rules in the KB. The first four replay real failures; the answer key is the official finding. Across nine real failures the rules catch the official finding in 8; three of the nine were added after the rules were frozen, and the rules catch 2 of those 3 (the miss is in scenario 6).

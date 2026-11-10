@@ -148,7 +148,7 @@ None of them can approve. A person can release an alert with an objection still 
 | R10 | Corrections reference the alert they correct | CAP 1.2, IPAWS profile, FCC Hawaii report |
 | R11 | No number, hazard or place that the inputs don't contain | ITU ESTR.AICNHM, MHEWS report (2026) |
 
-Mapping to ITU-T Y.3172 and the AI Readiness Framework: [docs/y3172-and-readiness.md](docs/y3172-and-readiness.md).
+Mapping to ITU-T Y.3172 and the AI Readiness Framework: [docs/y3172-and-readiness.md](docs/y3172-and-readiness.md). Each Y.3172 node is mapped to the code that implements it (the underlay network is not touched), and all 13 Readiness dimensions are rated: five exercised by running code (D4, D7, D8, D10, D13), four partly (D1, D5, D6, D11), four not addressed (D2, D3, D9, D12).
 
 ## Check it yourself
 
