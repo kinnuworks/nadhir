@@ -2,6 +2,8 @@
 
 Status: draft written as a possible input to ITU-T Study Group 17 (the group that maintains X.1303bis). Version 0.1. Not adopted by anyone.
 
+The same proposal, laid out as a contribution a member could file with SG17, is in [sg17-draft-contribution.md](sg17-draft-contribution.md). It has not been submitted.
+
 ## The problem
 
 CAP 1.2 (OASIS, 2010; ITU-T X.1303bis, 2014) gives an alert no defined place to say:

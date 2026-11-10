@@ -121,8 +121,19 @@ def build(a):
         p.paragraph_format.space_after = Pt(3)
         p.paragraph_format.keep_with_next = True
 
-    def add_table(rows):
+    def add_table(rows, widths=None):
         t = copy.deepcopy(table_tpl)
+        if widths:  # column shares, set by a "<!-- widths: a b c d -->" line above the table
+            pr = t.find(qn("w:tblPr"))
+            total = int(pr.find(qn("w:tblW")).get(qn("w:w")))
+            dxa = [round(total * w / sum(widths)) for w in widths]
+            for gc, w in zip(t.find(qn("w:tblGrid")).findall(qn("w:gridCol")), dxa):
+                gc.set(qn("w:w"), str(w))
+            for tr in t.findall(qn("w:tr")):
+                for tc, w in zip(tr.findall(qn("w:tc")), dxa):
+                    tc.find(qn("w:tcPr")).find(qn("w:tcW")).set(qn("w:w"), str(w))
+            layout = pr.makeelement(qn("w:tblLayout"), {qn("w:type"): "fixed"})
+            pr.find(qn("w:tblLook")).addprevious(layout)
         trs = t.findall(qn("w:tr"))
         while len(trs) < len(rows):
             new = copy.deepcopy(trs[-1])
@@ -152,9 +163,15 @@ def build(a):
 
     lines = md.splitlines()[1:]
     i = 0
+    widths = None
     while i < len(lines):
         ln = lines[i].rstrip()
         if not ln or ln.startswith("Team leader:"):
+            i += 1
+            continue
+        m = re.fullmatch(r"<!-- widths: ([\d ]+) -->", ln)
+        if m:
+            widths = [int(w) for w in m.group(1).split()]
             i += 1
             continue
         if ln.startswith("## "):
@@ -166,7 +183,8 @@ def build(a):
                 if not all(re.fullmatch(r":?-+:?", c) for c in cells):
                     rows.append(cells)
                 i += 1
-            add_table(rows)
+            add_table(rows, widths)
+            widths = None
             continue
         elif ln.startswith("!["):
             m = re.match(r"!\[(.*)\]\((.*)\)", ln)

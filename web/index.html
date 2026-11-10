@@ -31,6 +31,7 @@
         <span class="badge badge--dot hero-badge">For UAE-Alert · CAP 1.2 (ITU-T X.1303bis)</span>
         <h1>AI drafts the warning. <span class="t-muted">Rules and people decide.</span></h1>
         <p class="lead">An AI agent writes the public alert in English and Arabic, but it can't send anything. Twelve cited rules, four reviewer agents and two named people decide whether it reaches phones.</p>
+        <p class="hero-finding"><b>Why it matters:</b> of 1,711 live alerts we read from 8 public feeds in 6 countries, none records whether an AI drafted it or who approved it. CAP has no field for either.</p>
         <div class="cta-row">
           <button class="btn btn-halo btn-lg" id="heroDraft" type="button">Draft the prefilled alert</button>
           <a class="btn btn-outline btn-lg" href="#replays">See the real failures</a>
@@ -166,6 +167,16 @@
     </div>
     <div class="stats" id="benchStats"></div>
     <div id="bench" class="replays" role="table" aria-label="Replay results"><p class="t-small">Loading the replays…</p></div>
+    <div class="proposed reveal">
+      <p class="proposed__h">Proposed rules, not built <small>one for each held-out miss; the results above do not credit them</small></p>
+      <ul>
+        <li><span class="t-mono">R12</span><div><b>Run the grounding check on all text, templates included.</b><span>Taiwan 2024: English from an old missile template.</span></div></li>
+        <li><span class="t-mono">R13</span><div><b>Every phone number and link is on the issuer's verified contact list.</b><span>Netherlands 2019: a wrong WhatsApp number.</span></div></li>
+        <li><span class="t-mono">R14</span><div><b>Hash the approved text per language; a change before release needs re-approval.</b><span>UK 2023: an autocorrect broke a Welsh word.</span></div></li>
+        <li><span class="t-mono">R15</span><div><b>Status Test goes only to a registered test group.</b><span>New Zealand 2017: tests left the closed group.</span></div></li>
+        <li><span class="t-mono">R16</span><div><b>The channel fits the size of the target area.</b><span>Minnesota 2024: a one-block order aired over broadcast.</span></div></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -263,38 +274,39 @@
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Policy and standards gaps</span>
       <h2>Twelve gaps, grouped by who can close them.</h2>
-      <p class="lead">Each has sources, evidence from this prototype and a global example in <span class="t-mono">docs/gaps.md</span>. Five were surfaced by the reviewer agents, when they recorded concerns no clause could back.</p>
+      <p class="lead">Each has draft wording a body could adopt, who would file it, and the gate rule that already enforces it, in <a href="https://github.com/kinnuworks/nadhir/blob/main/docs/gaps.md"><span class="t-mono">docs/gaps.md</span></a>. Five were surfaced by the reviewer agents, when they recorded concerns no clause could back. ITU leads Pillar 3 of Early Warnings for All, on warning dissemination and communication, and these gaps sit at that step.</p>
     </div>
     <article class="gap-hero reveal">
       <span class="gap__id t-mono">G1 · ITU-T SG17</span>
       <h3>CAP has no field for AI involvement or a named approver.</h3>
-      <p>In 1,711 live alerts from 8 feeds, none records either. We propose five registered CAP parameters, signed with the alert. A draft profile is in the repository.</p>
+      <p>In 1,711 live alerts from 8 feeds, none records either. We propose five registered CAP parameters, signed with the alert. Rule R8 already enforces them here.</p>
+      <p><a class="gap-hero__link" href="https://github.com/kinnuworks/nadhir/blob/main/docs/sg17-draft-contribution.md">Read the draft SG17 contribution (not submitted)</a></p>
     </article>
     <div class="gap-groups">
       <div class="gap-group reveal">
         <p class="gap-group__h">ITU-T SG17 <small>CAP / X.1303bis</small></p>
         <ul>
-          <li><span class="t-mono">G6</span><div><b>Vetted templates don't fit cell broadcast pages.</b><span>The FCC's Arabic dust storm template runs to 10 pages in UCS-2.</span></div></li>
-          <li><span class="t-mono">G7</span><div><b>CAP status and US test practice disagree.</b><span>246 of 1,000 US alerts marked “Actual” carry a test event code.</span></div></li>
-          <li><span class="t-mono">G8</span><div><b>Nothing requires an alert to say what to do.</b><span>658 of 1,711 live alerts carry an instruction. Also UAE: NCEMA with TDRA.</span><em class="agent-found">found by agents</em></div></li>
-          <li><span class="t-mono">G11</span><div><b>Signing is optional, and no UAE text requires it.</b><span>1,211 of 1,711 are signed; none of Australia's 499. Also UAE: TDRA with NCEMA.</span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G6</span><div><b>Vetted templates don't fit cell broadcast pages.</b><span>The FCC's Arabic dust storm template runs to 10 pages in UCS-2. <i class="gap-rule">Enforced here by R6</i></span></div></li>
+          <li><span class="t-mono">G7</span><div><b>CAP status and US test practice disagree.</b><span>246 of 1,000 US alerts marked “Actual” carry a test event code. <i class="gap-rule">Enforced here by R2</i></span></div></li>
+          <li><span class="t-mono">G8</span><div><b>Nothing requires an alert to say what to do.</b><span>658 of 1,711 live alerts carry an instruction. Also UAE: NCEMA with TDRA. <i class="gap-rule">Checked by a reviewer agent; no rule yet</i></span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G11</span><div><b>Signing is optional, and no UAE text requires it.</b><span>1,211 of 1,711 are signed; none of Australia's 499. Also UAE: TDRA with NCEMA. <i class="gap-rule">Enforced here by R5</i></span><em class="agent-found">found by agents</em></div></li>
         </ul>
       </div>
       <div class="gap-group reveal" style="--i:1">
         <p class="gap-group__h">UAE bodies <small>TDRA, NCEMA, NCM</small></p>
         <ul>
-          <li><span class="t-mono">G2</span><div><b>No rule on who approves an AI-drafted alert.</b><span>NCEMA / TDRA. The UAE AI Charter states principles only.</span></div></li>
-          <li><span class="t-mono">G3</span><div><b>No rule on machine translation of alerts.</b><span>The FCC refuses it for phone alerts; the US weather service uses it.</span></div></li>
-          <li><span class="t-mono">G4</span><div><b>No public CAP feed on the WMO register.</b><span>The UAE entry is dated 2013. Saudi Arabia, Qatar and Kuwait publish feeds.</span></div></li>
-          <li><span class="t-mono">G9</span><div><b>No mapping from bulletins to CAP severity.</b><span>NCM with NCEMA. Australia publishes a table.</span><em class="agent-found">found by agents</em></div></li>
-          <li><span class="t-mono">G10</span><div><b>No rule that the area sent matches the area requested.</b><span>TDRA with operators. Los Angeles 2025 and Japan 2022 failed here.</span><em class="agent-found">found by agents</em></div></li>
-          <li><span class="t-mono">G12</span><div><b>No retention rule for alert logs or AI drafting records.</b><span>TDRA with NCEMA. The FCC requires gateway logs.</span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G2</span><div><b>No rule on who approves an AI-drafted alert.</b><span>NCEMA / TDRA. The UAE AI Charter states principles only. <i class="gap-rule">Enforced here by R1 and R9</i></span></div></li>
+          <li><span class="t-mono">G3</span><div><b>No rule on machine translation of alerts.</b><span>The FCC refuses it for phone alerts; the US weather service uses it. <i class="gap-rule">Enforced here by R9</i></span></div></li>
+          <li><span class="t-mono">G4</span><div><b>No public CAP feed on the WMO register.</b><span>The UAE entry is dated 2013. Saudi Arabia, Qatar and Kuwait publish feeds. <i class="gap-rule">No gate rule; the feed audit would read it</i></span></div></li>
+          <li><span class="t-mono">G9</span><div><b>No mapping from bulletins to CAP severity.</b><span>NCM with NCEMA. Australia publishes a table. <i class="gap-rule">Checked by a reviewer agent; no rule yet</i></span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G10</span><div><b>No rule that the area sent matches the area requested.</b><span>TDRA with operators. Los Angeles 2025 and Japan 2022 failed here. <i class="gap-rule">R3 covers the origination half</i></span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G12</span><div><b>No retention rule for alert logs or AI drafting records.</b><span>TDRA with NCEMA. The FCC requires gateway logs. <i class="gap-rule">The hash-chained log writes the record</i></span><em class="agent-found">found by agents</em></div></li>
         </ul>
       </div>
       <div class="gap-group reveal" style="--i:2">
         <p class="gap-group__h">International good practice <small>ITU-T or ITU-D</small></p>
         <ul>
-          <li><span class="t-mono">G5</span><div><b>No norm for correcting a false alert.</b><span>Hawaii's and LA's corrections went out as new alerts. 3 of 1,000 recent US cancellations did not link to what they cancelled.</span></div></li>
+          <li><span class="t-mono">G5</span><div><b>No norm for correcting a false alert.</b><span>Hawaii's and LA's corrections went out as new alerts. 3 of 1,000 recent US cancellations did not link to what they cancelled. <i class="gap-rule">R10 checks the reference</i></span></div></li>
         </ul>
       </div>
     </div>

@@ -2,6 +2,8 @@
 
 **Nadhir lets AI draft a public warning but never send it. Rules, reviewers and people decide.**
 
+We read 1,711 live alerts from 8 public feeds in 6 countries. None records whether an AI drafted it or who approved it, and CAP, the alert format, defines no field for either. Nadhir is a working gate that writes both into the signed alert, and a list of twelve policy and standards gaps with draft wording a regulator or standards group could adopt.
+
 AI drafts → 12 rules check → 4 reviewer agents object, with quotes → named people approve → the alert is signed and released.
 
 It is for the agencies that send emergency phone alerts. In more detail:
@@ -12,7 +14,7 @@ It is for the agencies that send emergency phone alerts. In more detail:
 
 We replayed thirteen real alert failures. Run on the 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. Seven of the thirteen were held out: added after the rules were frozen, and picked and mapped by someone who did not write the rules. The frozen rules catch 2 of those 7, the reviewer agents one more. The misses are reported below, because they show which failure types twelve rules do not cover. The agents earn their place on meaning: on 24 faults written in advance by someone else, the rules alone named 14 and the agents 23. The ten only the agents caught are wrong facts, reversed advice and changed meaning in the Arabic.
 
-It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
+It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log. ITU leads Pillar 3 of Early Warnings for All, on warning dissemination and communication; Nadhir works at that step, between the warning text and the broadcast.
 
 ![The core loop on the live demo: a real NCM dust warning is drafted in English and Arabic, the rules and reviewer agents hold it for people, two approvers and an Arabic reader approve, and the signed alert is cleared](docs/media/core-loop.gif)
 
@@ -52,6 +54,18 @@ We rebuilt thirteen real public alert failures from published reports and ran ea
 | **Held out.** Minnesota, Apr 2024: a one-block shelter order meant for phones aired over broadcast across the Twin Cities | Hennepin County Sheriff's Office release | none | **no** | **no** |
 
 The rules catch the finding in 8 of 13, and in 2 of the 7 held-out cases; rules or agents catch 9 of 13 and 3 of 7. Taiwan is a miss for the rules: R11 (no detail the inputs don't contain) only runs on AI-written text, and Taiwan's wrong English came from an old human template. The agents, reading the same inputs, caught it. The four added on 10 Nov are misses for both, and each is a failure type that none of the twelve rules covers: a wrong contact number in human-written text (Netherlands), a human-side edit to a second language after approval (UK), the wrong channel (Minnesota) and a test leaving its test group (New Zealand). R11 and R9 would need to run on all text, not only AI text, and the gate has no check on channel or test audience. We kept the rules frozen and report this as the result.
+
+Each miss points to a rule we propose and have not built:
+
+| Proposed rule | What it would check | The miss it answers |
+|---|---|---|
+| R12 | The grounding check runs on all text, templates included | Taiwan 2024 |
+| R13 | Every phone number and link is on the issuer's verified contact list | Netherlands 2019 |
+| R14 | The approved text is hashed per language, and a change before release needs re-approval | UK 2023 |
+| R15 | Status Test goes only to a registered test group | New Zealand 2017 |
+| R16 | The channel fits the size of the target area | Minnesota 2024 |
+
+None of these is in the gate, and the counts above do not credit them.
 
 Two notes on how these were scored. After the first run of the new four, we fixed the bench so that a field the record leaves blank ("unknown") is left out of the rebuilt alert instead of being written into it; that is the bench's existing rule that a silent record counts in the alert's favour. With that fixed, R2 still fired on New Zealand, but only because the message text is not public, so the rebuilt alert has no text saying it is a test. The real messages did say so. We do not count that hit, or the agent hits on New Zealand and Minnesota, which also rest on gaps in the rebuild. The reasons are written in `bench/contexts.yaml` and applied by the bench code; this adjudication can only remove credit. Hawaii, Japan, Ontario, Los Angeles and the Netherlands rest on investigation reports or official reviews; the others rest on official statements, and India on press only.
 
@@ -102,9 +116,9 @@ So the gate's work on AI-written alerts here is mostly holding them for people: 
 
 ## The gaps
 
-Twelve gaps. For each one, [docs/gaps.md](docs/gaps.md) gives the missing text, the sources we searched (including the organisers' UAE dataset, where 6 of our 36 queries returned nothing and the rest returned clauses about other things), the evidence from the prototype, a global example and who could close it. Gaps 1 to 7 came from the mapping exercise and the incident replays. Gaps 8 to 12 came from running the agents. In short:
+Twelve gaps. For each one, [docs/gaps.md](docs/gaps.md) gives draft wording a body could adopt (ours, with no legal review), who would file it, the gate rule that already enforces it in the prototype, the missing text, the sources we searched (including the organisers' UAE dataset, where 6 of our 36 queries returned nothing and the rest returned clauses about other things), the evidence from the prototype, a global example and who could close it. Gaps 1 to 7 came from the mapping exercise and the incident replays. Gaps 8 to 12 came from running the agents. In short:
 
-1. **CAP has no field for AI involvement or a named approver.** We propose five registered parameters, signed with the alert, as an input to ITU-T SG17: [docs/cap-ai-provenance-profile.md](docs/cap-ai-provenance-profile.md).
+1. **CAP has no field for AI involvement or a named approver.** We propose five registered parameters, signed with the alert, as an input to ITU-T SG17: [docs/cap-ai-provenance-profile.md](docs/cap-ai-provenance-profile.md). The same proposal is laid out as a contribution a member could file, with the feed evidence and sample XML: [docs/sg17-draft-contribution.md](docs/sg17-draft-contribution.md). It is a draft and has not been submitted.
 2. **No public UAE rule on who approves an AI-drafted alert.** The UAE AI Charter asks for human oversight but sets no operational rule for it.
 3. **Machine translation of alerts.** The UAE has no rule. In the US, the FCC refuses it for phone alerts while the National Weather Service uses it.
 4. **The UAE lists no public CAP feed** on the WMO Register of Alerting Authorities. Saudi Arabia, Qatar and Kuwait do.
@@ -201,6 +215,6 @@ CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs the first six on 
 
 ## Repository
 
-`nadhir/` the gate, agents, institution reviewers, retrieval, orchestrator and server · `kb/` the knowledge base (registry with hashes and quotes; `kb/index/` the clause index and its build and verify scripts) · `bench/` real incidents, UAE scenarios and vetted templates · `audit/` real-feed audit and snapshot · `runs/` recorded model answers, results and logs · `docs/` gaps, CAP profile, mapping · `tests/`.
+`nadhir/` the gate, agents, institution reviewers, retrieval, orchestrator and server · `kb/` the knowledge base (registry with hashes and quotes; `kb/index/` the clause index and its build and verify scripts) · `bench/` real incidents, UAE scenarios and vetted templates · `audit/` real-feed audit and snapshot · `runs/` recorded model answers, results and logs · `docs/` gaps, CAP profile, draft SG17 contribution, mapping · `tests/`.
 
 Open source under the MIT licence. Uses public documents only.

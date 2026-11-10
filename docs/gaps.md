@@ -1,6 +1,6 @@
 # Policy and standards gaps
 
-Each gap lists what is missing, where we looked, what evidence the prototype produced, a global example, and who could act. KB ids refer to `kb/sources.yaml`. "Not found" means we searched the public texts listed and did not find it. It is not proof that nothing exists internally.
+Each gap lists what is missing, where we looked, what evidence the prototype produced, a global example, and who could act. Each also has draft wording a regulator or standards group could adopt, who would file it, and the gate rule that already enforces it. The draft wording is ours: a starting text for the body named, with no legal review behind it. KB ids refer to `kb/sources.yaml`. "Not found" means we searched the public texts listed and did not find it. It is not proof that nothing exists internally.
 
 We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `Dataset/UAE`, 62 documents in folders 01 to 06, indexed clause by clause in `kb/index/`) with three fixed queries per gap. `python -m kb.gap_search` reruns it and writes every hit, with its score and text, to `kb/index/gap-search.json`. For every gap the closest UAE clauses are about something else, and six of the 36 queries returned nothing above the relevance floor. Examples: for G3 (machine translation of alerts) the best hit is the accessibility policy's sign-language translation; for G1 (who approved an alert) it is a blank business-continuity plan form in NCEMA 7000:2012; for G5 (correcting a false alert) it is the cybercrime law's notices to remove false content online; for G12 (keeping alert logs) it is the retention table for telecom consumer records; for G11 (signing alerts) it is the general law on electronic signatures and seals.
 
@@ -12,6 +12,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Why now.** ITU's own reports ask for this oversight. ESTR.AICNHM (ITU-T, 2025): "Establish warning systems, oversights and failsafes." *Leveraging AI to Enhance MHEWS* (ITU, UNDRR, WMO, IFRC, 2026): "Define how AI informs warning decisions; ensure human oversight and documentation of use." Neither defines where that documentation goes in the alert.
 - **Global example.** Canada's CAP-CP `AutoTranslated` (machine translation only, optional, no approver).
 - **Proposal.** Five registered `<parameter>` names, signed with the alert: `docs/cap-ai-provenance-profile.md`. Implemented and tested as gate rule R8.
+- **Draft wording.** "Every `<info>` block SHALL carry the parameters `AIInvolvement`, `ApprovedBy` and `ApprovalCount`. `AIModel` SHALL be present when `AIInvolvement` is not `none`, and `MachineTranslated` when any block was machine translated. All five SHALL be added before the alert is signed." The full draft, with sample XML and the feed evidence, is `docs/sg17-draft-contribution.md`.
+- **Who files it.** An ITU Member State or Sector Member, as a contribution to ITU-T Study Group 17, which maintains X.1303bis. The draft is written and has not been submitted.
+- **Enforced by.** R8. It checks that `AIInvolvement` is present, valid and equal to what the pipeline recorded, that `MachineTranslated` lists the machine-translated languages, that `ApprovedBy` is present and that `ApprovalCount` equals the number of approvers. It does not check `AIModel`.
 
 ## G2. No public UAE rule on who approves an AI-drafted public alert (policy, NCEMA / TDRA)
 
@@ -21,6 +24,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Global example.** The FCC Hawaii recommendations (2018). The MHEWS report's call for "human-in-the-loop governance frameworks" (MHEWS-2026).
 - **Found since.** The official portal (UAE-PORTAL-EWS) says sending warnings "is limited to entities responsible for the safety of individuals in the UAE" and names NCEMA, the Ministry of Interior, the emirates' police forces and the Ministry of Health and Prevention, but not who approves a message. Dubai Decree No. 48 of 2024 (DXB-DECREE-48-2024) tasks the Dubai Resilience Centre to "establish a unified early warning regulation for the Emirate"; we found no published regulation.
 - **Proposal.** A published two-person rule for high-impact alerts, with a named reviewer for any AI-drafted or machine-translated text, written so a gate like R1 and R9 can check it.
+- **Draft wording.** "A public alert with status Actual and severity Severe or Extreme shall be approved by two named persons before broadcast. Where an AI system drafted or translated any of the text, one approver shall have read that text in each language it is sent in. The approvers' roles shall be recorded in the alert."
+- **Who files it.** NCEMA, with TDRA for the cell broadcast channel.
+- **Enforced by.** R1 (two named people for a Severe or Extreme alert with status Actual) and R9 (a named language approver for machine-translated text).
 
 ## G3. Machine translation of alerts: no UAE rule, and the US is split (policy)
 
@@ -29,6 +35,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Global example.** The US is split. The FCC declined machine translation for Wireless Emergency Alerts (FCC-23-88) and then said "We do not—and cannot—revisit the viability of machine translation" (FCC-DA-25-12). Instead it published human-vetted templates in 13 languages, Arabic included. Meanwhile the National Weather Service uses AI translation for its products (NWS-AI-TRANSLATION).
 - **Evidence.** In our UAE scenarios the translator agent chose machine translation for Arabic over the US vetted template. The gate held every such alert until a named Arabic reader approved the wording (R9). It also checks that every number and time in the translation matches the source.
 - **Proposal.** A UAE rule: alert text in any language comes from a vetted template, or a named person who reads that language approves it. Record which, in the alert (G1).
+- **Draft wording.** "Alert text in a language other than the one it was drafted in shall come from a template approved in advance by the issuing authority, or shall be approved before broadcast by a named person who reads that language. The alert shall record which."
+- **Who files it.** NCEMA, with TDRA.
+- **Enforced by.** R9. R7 checks that every required language is present.
 
 ## G4. The UAE lists no public CAP feed on the WMO Register of Alerting Authorities (policy, low cost)
 
@@ -36,6 +45,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** Saudi Arabia, Qatar and Kuwait list feeds that are live, and our audit read 54, 5 and 1 current alerts from them. Bahrain and Oman list feeds that were empty on 8 Nov 2026.
 - **Global example.** WMO's CAP guidance and the Early Warnings for All dissemination pillar, which ITU leads (WMO-CAP-GUIDE, EW4ALL-P3).
 - **Proposal.** Publish UAE warnings as a public CAP feed and update the register entry. A feed published from the start with G1's parameters would be the first national feed to record AI involvement and approval.
+- **Draft wording.** "NCM shall publish UAE public warnings as a CAP 1.2 feed and keep the UAE entry in the WMO Register of Alerting Authorities current, including the feed address."
+- **Who files it.** NCM. The register entry is in the name of the UAE's "Meteorological Department".
+- **Enforced by.** No gate rule. The feed audit in `audit/` would read the feed once it exists.
 
 ## G5. No international norm for correcting a false alert, or reporting on it afterwards (standards and policy)
 
@@ -43,18 +55,27 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** In the Hawaii replay, the 38-minute correction was a new alert with no link to the false one, and the gate's R10 holds it. The FCC report asked that "corrections to false alerts must be issued over the same systems used to issue the false alert" (FCC-HI-2018). LA County's 2025 correction was also sent as a new alert. In 1,000 recent real US alerts, the gate found 3 more cancellations sent as new alerts with no `<references>`.
 - **Global example.** The FCC Hawaii report and the US congressional report on LA County (LA-2025) are public after-action reviews. EU-Alert law sets duties to deliver warnings (EU-ALERT) but not after-action reporting.
 - **Proposal.** An ITU-T or ITU-D good-practice text: corrections must reference the original, go out on the same channels and reach the same area, and a short after-action note is published.
+- **Draft wording.** "A message that corrects or cancels a public alert SHALL use msgType Update or Cancel and SHALL reference the original in `<references>`. It SHALL go out over every channel the original used, to at least the same area. The issuing authority SHOULD publish a short account of a false alert afterwards."
+- **Who files it.** A contribution to ITU-T SG17 for the CAP part, and to ITU-D for the after-action practice.
+- **Enforced by.** R10, for the reference only. The prototype does not check channels or area on a correction.
 
 ## G6. Vetted multilingual templates don't fit cell broadcast page limits (standards, found by the prototype)
 
 - **Missing.** No rule ties alert templates to the bearer they travel on.
 - **Evidence.** Filled in, the FCC's vetted Arabic dust storm template is 384 characters. Arabic needs UCS-2 encoding on cell broadcast, at 41 characters a page (TS23038), so this is 10 pages. The English version is 4 pages in GSM-7. The templates were written for the US WEA limit of 360 characters (FCC-16-127), not for cell broadcast pages. No UAE text sets a page budget either: TDRA's current handset spec (TDRA-TSFS001, TS FS 001 v2.0, 2019) requires Arabic and English but sets no page limit, while a 2015 summary of an earlier version says "Message should be limited to 1 page maximum" (TDRA-TS040, secondary).
 - **Proposal.** Template sets that state their bearer and length per script, so a country adopting them for cell broadcast knows the cost in pages. Gate rule R6 counts pages per language.
+- **Draft wording.** "A template set published for public alerting SHALL state, for each language, the bearer it was written for, the character encoding, and the length in characters and in cell broadcast pages." On the UAE side, TDRA would set a page budget per language for UAE-Alert.
+- **Who files it.** The template publishers, or a contribution to SG17 as guidance. TDRA for the UAE page budget.
+- **Enforced by.** R6. It counts characters and pages per language (93 characters a page in GSM-7, 41 in UCS-2), fails over a limit the profile sets and warns above the advised page count. No UAE limit exists for it to enforce.
 
 ## G7. CAP status and US test practice conflict (standards, found by the prototype)
 
 - **Missing.** CAP 1.2 has a `Test` status. In US practice, scheduled EAS tests go out with status `Actual` so that broadcast stations relay them.
 - **Evidence.** 246 of the 1,000 IPAWS alerts in our snapshot carry a test event code but status `Actual`. Our first gate run flagged 119 of them under R2 before we added a narrow US exemption. A receiver that relies on `status` alone cannot tell a scheduled test from a live alert.
 - **Proposal.** SG17 could note the convention in X.1303bis guidance, or profiles could add a parameter that marks scheduled tests explicitly.
+- **Draft wording.** "A scheduled test SHOULD use status Test. Where a profile sends scheduled tests with status Actual so that broadcasters relay them, the profile SHALL define a parameter that marks the message as a scheduled test."
+- **Who files it.** A contribution to SG17, and the owner of each national profile.
+- **Enforced by.** R2, with a narrow exemption for US scheduled-test event codes that the parameter would replace.
 
 ## G8. Nothing requires a phone alert to say what to do (standards and policy, SG17 / NCEMA with TDRA)
 
@@ -63,6 +84,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** 658 of the 1,711 live alerts in our audit carry an `<instruction>`. Neither Saudi feed does in any of its 54 alerts. In the prototype, the network operator reviewer is asked to check that the first page carries the hazard and the action. In 37 of the 54 injected-fault cases it recorded that it found no clause requiring an action there (F01: "no clause shown requires an action on page one"). The gate has no rule for this today, because we found no text to cite for one.
 - **Global example.** Australia's CAP profile: "It is RECOMMENDED that alert message producers include response types when applicable, along with a corresponding <instruction> value" (CAPAU, p.21). The FCC's vetted templates pair "a description of the threat and the protective action the public should take" (FCC-DA-25-12, p.21).
 - **Proposal.** A UAE template rule: every public alert names the hazard and one action within the first page, in each required language. In X.1303bis guidance, make `<instruction>` expected for alerts with status `Actual`. Either text would let a gate rule check it.
+- **Draft wording.** "Every public alert with status Actual shall name the hazard and one protective action within the first cell broadcast page, in each required language." For X.1303bis guidance: "`<instruction>` SHOULD be present when status is Actual."
+- **Who files it.** NCEMA with TDRA for the UAE rule. A contribution to SG17 for the guidance.
+- **Enforced by.** No rule yet. The network operator reviewer checks it and records that no clause backs the check. A rule can cite either text once one exists.
 
 ## G9. No published mapping from UAE weather bulletins to CAP urgency, severity and certainty (policy, NCM with NCEMA)
 
@@ -71,6 +95,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** The met office reviewer recorded in 30 of the 54 fault cases that no clause sets the severity (F12: "The bulletin gives no severity grade, so "Moderate" is the drafter's choice"; F11: "No clause sets a severity level for dust events in the UAE"). When we inflated severity to Extreme (faults F04 and P24), no rule could object. Only the reviewers named it, by comparing the alert with the bulletin.
 - **Global example.** Australia publishes the mapping for bushfire levels: "Advice = Moderate Watch and Act = Severe Emergency Warning = Extreme" (CAPAU, p.22). The US defines the values in regulation: "Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property)" (47 CFR 10.400(b), quoted in FCC-16-127, p.18).
 - **Proposal.** NCM and NCEMA publish a table from warning level and hazard thresholds to the three CAP values. A deterministic rule can then replace the reviewer's judgement.
+- **Draft wording.** "NCM and NCEMA shall publish a table that maps each warning level and hazard threshold to the CAP urgency, severity and certainty values. An alert shall carry the values the table gives for the bulletin it is based on."
+- **Who files it.** NCM with NCEMA.
+- **Enforced by.** No rule yet. The met office reviewer compares the alert with the bulletin, and a table would let a rule do it.
 
 ## G10. No UAE rule that the area sent must match the area requested (policy, TDRA with operators)
 
@@ -79,6 +106,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** Two real incidents in our replays are area errors. In Los Angeles, "the message was sent county-wide in error" (LA-2025, p.8). In Japan, the J-Alert "mistakenly included Tokyo because data on where to send warnings was not erased after it was used in a previous drill" (JALERT-2022). Gate rule R3 holds both. In the fault tests R3 named a widened area (F08) and a swapped one (P10). When only the area description said "All emirates" and the codes stayed the same (F09), no rule fired and only the issuing authority reviewer named it.
 - **Global example.** The FCC: "Our ultimate objective is for all Participating CMS Providers to match the target area provided by an alert originator" (FCC-16-127, p.37), later set as "Hit 100% target area within 0.1 mile overshoot by Nov 2019" (IPAWS-OPEN, p.23). EU-Alert: "EU-Alert shall support DBGF", device-based geo-fencing (ETSI-EUALERT, p.11).
 - **Proposal.** A TDRA requirement on targeting accuracy for operators, and an origination rule that the area is drawn for this event and compared with the request before release, as R3 does.
+- **Draft wording.** "Before release, the originator shall compare the area codes or polygon of the alert with the area requested for this event, and shall not release the alert if they differ. Operators shall deliver a cell broadcast alert to the requested area within a stated tolerance and report the result to TDRA."
+- **Who files it.** TDRA, with the operators.
+- **Enforced by.** R3, for the origination half. Delivery accuracy on the network is outside the prototype.
 
 ## G11. Signing an alert is optional in CAP, and no UAE text requires it (standards and policy, SG17 / TDRA with NCEMA)
 
@@ -87,6 +117,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** 1,211 of the 1,711 live alerts in our audit are signed. All 499 Australian alerts and the one from Kuwait are not. In our replay of Brazil 2026, where "at least 10 unauthorized alerts were sent to phones" (BRAZIL-2026), gate rules R1, R4 and R5 (signed by a registered originator key) hold the message.
 - **Global example.** In the US, origination tools send digitally signed CAP messages to IPAWS-OPEN, and the aggregator authenticates the sender before anything is relayed (IPAWS-OPEN, pp.8-9).
 - **Proposal.** A UAE rule that every alert is sealed by a registered originator under the 2021 law's trust services, and that gateways reject unsigned or unregistered messages. SG17 could make the signature expected in X.1303bis profiles for public alerting.
+- **Draft wording.** "Every public alert shall carry the electronic seal of a registered originator, created under Federal Decree-Law No. 46 of 2021. A gateway shall reject an alert that is unsigned, or signed by a key not registered for that hazard and area." For SG17: profiles for public alerting SHOULD require the enveloped signature of CAP 1.2 §3.3.4.1.
+- **Who files it.** TDRA with NCEMA for the UAE rule. A contribution to SG17 for the profile text.
+- **Enforced by.** R5 (signature present and verified against the sender's registered certificates), with R4 (the sender may warn for this hazard and area).
 
 ## G12. No retention rule for alert origination logs or AI drafting records (policy, TDRA with NCEMA)
 
@@ -95,6 +128,9 @@ We also searched the organisers' own UAE policy dataset (ITU Sandbox_Training, `
 - **Evidence.** The prototype writes a hash-chained log for every alert, and CI re-verifies every chain on each push. No text told us how long to keep those logs or who may read them, so the prototype sets no retention period.
 - **Global example.** The FCC: "We require Participating CMS Providers to log their receipt of Alert Messages at their Alert Gateway and to appropriately maintain those records for review" (47 CFR 10.320(g), FCC-16-127, p.32).
 - **Proposal.** A TDRA and NCEMA rule that origination logs, including AI drafts and reviewer objections, are kept for a stated period in a tamper-evident form and are available to the regulator on request.
+- **Draft wording.** "The issuing authority shall keep the origination record of every public alert for a stated period: the inputs, each AI draft, each reviewer objection, the approvers' roles and the message sent. The record shall be tamper-evident and available to TDRA on request."
+- **Who files it.** TDRA with NCEMA.
+- **Enforced by.** No gate rule. `nadhir/log.py` writes that record as a hash-chained log, and no retention period is set for it.
 
 ## How the gaps map to the AI Readiness Framework
 

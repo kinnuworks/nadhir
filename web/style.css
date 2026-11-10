@@ -683,3 +683,17 @@ details.paste:not([open]){padding-block:20px}
 .replay>summary{padding-block:11px}
 @media (max-width:900px){.node{min-height:0}}
 .nc{display:block;margin-top:8px;font-size:13px;color:var(--wait)}
+
+/* v13: finding line, proposed rules, enforcing rule per gap */
+.hero-finding{margin-top:16px;max-width:560px;font-size:var(--fs-small);line-height:1.5;color:rgba(255,255,255,.9)}
+.hero-finding b{color:#fff}
+.proposed{margin-top:16px;padding:18px 20px;border-radius:var(--r-lg);background:var(--surface);box-shadow:var(--ring);border:1px dashed var(--line-2)}
+.proposed__h{font-weight:650;font-size:15px;margin-bottom:10px}
+.proposed__h small{display:block;font-weight:400;font-size:var(--fs-micro);color:var(--ink-3)}
+.proposed ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.proposed li{display:grid;grid-template-columns:44px 1fr;gap:10px;font-size:var(--fs-small)}
+.proposed li b{display:block;font-weight:600}
+.proposed li span{color:var(--ink-3)}
+.proposed li>.t-mono{color:var(--accent-ink)}
+.gap-rule{display:block;margin-top:3px;font-style:normal;font-size:12px;font-weight:600;color:var(--accent-ink)}
+.gap-hero__link{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
