@@ -43,3 +43,13 @@ brazil-2026:
 india-test-2023:
   sent: "2023-10-10T11:30:00+05:30"
   runs: 1
+
+# Held-out set 2 (added 10 Nov 2026). Adjudication by us after the run. It can only take credit away:
+# a hit that rests on a gap in our rebuild, not on the failure the official finding names, is not counted.
+nz-ema-test-2017:
+  not_counted:
+    rules: "R2 fired because the message text is not public, so the rebuilt alert has no text saying it is a test. The real messages were called tests; the failure was the audience."
+    agents: "The issuing-authority reviewer objected to 'Test' versus 'Exercise' status, not to the messages leaving the restricted test group."
+hennepin-2024:
+  not_counted:
+    agents: "The objections matched area terms because the rebuilt alert lacks the block and end time; none points to the real failure, which was sending over EAS instead of WEA."

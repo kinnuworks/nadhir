@@ -1,0 +1,167 @@
+{
+ "key": "f9f86895c2f681c6f2b6299ef88c993d8ceb743146f7efcb6ff9b51ce5d54690",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Police activity in Robbinsdale.\",\n   \"characters\": 31,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}\n\nKnowledge base clauses returned by your searches ('3GPP cell broadcast page limit GSM-7 UCS-2 encoding', 'cell broadcast first page hazard and protective action guidance', 'FCC report wireless emergency alert message clarity failures'):\n\n[TS23041#0274] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\nETSI TS 123 041 V18.3.0 (2024-02) In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE. In the case where the user information is GSM 7 bit default alphabet encoded, the appropriate padding characters and bit-fill are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]). In the case where the user information is 8 bit encoded, the appropriate padding octets are added to the end of the user information to complete the CBC-Message-Information-Page (see 3GPP TS 23.038 [3]).\n\n[TS23041#0182] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.43):\n9.2.3 GSM only [In the case of multipage CBS messages, the individual pages are considered as independent by the BSC scheduling algorithm]. KILL Request/Indication PARAMETER Message-Identifier Old-Serial-Number Cell-List GSM only [Channel Indicator\n\n[TS23041#0275] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.61):\n9.3.19.1 Identification of a directory number within a CBS-Message-Information-Page For information relating to this feature see 3GPP TS 23.040 [4]. 9.3.20 CBS-Message-Information-Length n This parameter gives the number of octets of the CBS-Message-Information-Page n containing user information. The remaining octets of the CBS-Message-Information-Page n contain only padding information and are not included in this parameter. In the case where the user information is encoded using the GSM 7 bit default alphabet and the last character terminates at an octet boundary, this parameter indicates the number of octets of user information. In the case where the last character does not terminate at an octet boundary, this parameter indicates the number of octets up to the octet boundary immediately following the last GSM 7 bit default alphabet character of user information. In UMTS and E-UTRAN, the CBS-Message-Information-Pages together with the associated CBS-MessageInformation-Length parameter are broadcasted as a single unit over the radio inteface, and are part of 'CB Data' parameter at the UE.\n\n[TS23038#0052] 3GPP TS 23.038 Alphabets and language-specific information, version 18.0.0 Release 18 (ETSI TS 123 038 V18.0.0) (p.14):\nMessage coding: GSM 7 bit default alphabet 8 bit data Bit 1 0 0 1 1 Bit 0 Message Class: 0 No message class. 1 Class 1 user defined. 0 Class 2 user defined. 1 Class 3 default meaning: TE specific (see 3GPP TS 27.005 [8]) NOTE 1: The language indication shall appear at the start of each Message Information Page (see 3GPP TS 23.041 [5]) and the language indication on each Message Information Page shall be for the same language. NOTE 2: Message text in Hebrew, Arabic and Russian cannot be encoded in the GSM 7-bit default alphabet. For these languages UCS2 encoding shall be used. These codings may also be used for USSD and MMI/display purposes.\n\n[MHEWS-2026#0572] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.134):\nAI Avatars for Localised Emergency Communication Canada AI-Based Tidal Surge Forecasting Preparedness and crisis communication AI-generated avatars deliver trusted government safety messages in more than 170 languages using video communication. By automating multilingual messaging and localized preparedness guidance, the system enhances accessible warning dissemination (Pillar 3) and supports public awareness and protective action during emergencies (Pillar 4). Further information: https://www. pelmorex.com/en/media-hub/the-weather-network-launches-its-first-advertising-campaign-using-an-ai-assisted-avatar/ Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[TS23041#0421] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.84):\n9.4.1.2.4 Page Parameter This parameter is coded as two 4-bit fields. The first field (bits 0-3) indicates the binary value of the total number of pages in the CBS message and the second field (bits 4-7) indicates binary the page number within that sequence. The coding starts at 0001, with 0000 reserved. If a mobile receives the code 0000 in either the first field or the second field then it shall treat the CBS message exactly the same as a CBS message with page parameter 0001 0001 (i.e. a single page message).\n\n[MHEWS-2026#0430] Leveraging AI to Enhance Multi-Hazard Early Warning Systems (full report) (p.102):\nFeedback and input; system testing; trust and adoption; protective action Access to information; mechanisms for input; trust in institutions; capacity to respond Provide feedback; participate in testing; adopt protective actions; share experiences Table 5. Stakeholder roles and enabling conditions for AI implementation in warning dissemination and communication Leveraging AI to Enhance Multi-Hazard Early Warning Systems (MHEWS)\n\n[ON-PICKERING-2020#0014] Investigation into the emergency alerts sent on January 12, 2020 (Key findings):\nThe DO was not acting on any information concerning a nuclear incident. The DO immediately recognized the error and proceeded to seek guidance on corrective action from EMO supervisors. Despite a series of consultations with on-duty, on-call and off-duty EMO supervisors at different levels, no clear instructions were provided to the on-duty DOs in the immediate aftermath of the first alert. Supervisors were uncertain about whether or how to issue a second alert as broadcast intrusive, meaning that it would be broadcast in the same manner as the first alert.\n\n[FCC-23-88#0120] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.21):\nThis will contribute to the overall clarity of the Alert Message and enable those with vision impairments and other access and function needs to understand the geographic area affected by an emergency by using screen readers to understand the Alert Message’s text.115 We also expect industry to consult with mobile accessibility experts in the process of standardizing and developing this functionality to determine whether there are advances in technology that would allow location information in the map, as well as the user’s location, to be accessible to screen readers.116 C.\n\n[FCC-16-127#0447] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.74):\nProvider.”479 Section 10.500 requires WEA-capable mobile devices to authenticate interactions with CMS Provider infrastructure, monitor for Alert Messages, maintain subscriber alert opt-out selections and language preferences, extract Alert Message content in the subscriber’s preferred language, present Alert Message content to the device consistent with subscriber opt-out selections, and detect and suppress duplicate Alert Messages.480 Similarly, compliance with these requirements is contingent upon “the capabilities of a Participating CMS Provider’s delivery technologies.”481 Emergency managers state that one of the primary obstacles to accelerating emergency management agencies’ authentication as WEA alert initiators is a lack of clarity about the quality of service that WEA provides.482 b.\n\n[FCC-16-127#0686] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.118):\nA WEA Alert Message processed by a Participating CMS Provider must not exceed 90 characters of alphanumeric text.\n\n[FCC-16-127#0302] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.49):\n329 WEA NPRM, 30 FCC Rcd at 13819, paras. 82, 84 (including extending the maximum WEA message length, establishing a new Alert message classification, and including embedded references in WEA Alert Messages among our WEA message content rules). 330 See id. at 13819, para. 82.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The message is deliverable: one language, GSM-7, 1 page, well under the 15-page limit, and no required languages are set. However, the first page names only a vague hazard ('Police activity') with no protective action, so the first page does not carry the hazard and the action.",
+  "objections": [
+   {
+    "issue": "The first page names only a vague hazard, 'Police activity in Robbinsdale.', and gives no protective action. The reader is not told what to do, so the first page does not carry both hazard and action as required for handset readability.",
+    "field": "phone_text",
+    "blocking": false,
+    "fix": "Add a clear action to the first page, for example 'Police activity in Robbinsdale. Avoid the area and follow official instructions.' The hazard should also be specific, and the full text should stay within the single page.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "phone_text",
+      "quote": "Police activity in Robbinsdale."
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "No encoding, page-count or required-language problem was found. The text is GSM-7, 1 page, and no required languages are listed.",
+    "searched_for": "3GPP cell broadcast page limit GSM-7 UCS-2 encoding"
+   },
+   {
+    "concern": "The only supporting clause for first-page hazard and action content in my searches was not found. No clause shown requires the first page to carry the hazard and the action.",
+    "searched_for": "cell broadcast first page hazard and protective action guidance"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4811,
+  "output_tokens": 501,
+  "at": "2026-11-10T10:56:55Z"
+ }
+}

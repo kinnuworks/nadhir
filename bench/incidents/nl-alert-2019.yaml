@@ -1,0 +1,140 @@
+id: nl-alert-2019
+heldout: true
+title: "National NL-Alert during the 112 outage gave a newspaper's WhatsApp tip line as the police number"
+date: "2019-06-24"
+jurisdiction: "Netherlands (Ministry of Justice and Security, JenV; national NL-Alert sent through the police account)"
+sources: [NL-2019-INSP, NL-2019-WEDERHOOR, NL-2019-NOS]
+
+summary: >-
+  A KPN telephone network fault made the emergency number 112 and the police service number 0900-8844
+  unreachable nationwide from 15:34 to 18:52. The ministry supplied the text for a national NL-Alert, which the
+  police sent from their account at 18:12. It listed alternative police phone numbers and a WhatsApp number. The
+  police and the ministry had each checked the alternative 088 numbers but neither checked the WhatsApp number,
+  which turned out to be the tip line of the newspaper De Telegraaf. A new national NL-Alert with a different
+  WhatsApp number followed at 19:12.
+
+timeline:
+  - {t: "2019-06-24T15:34+02:00", event: "A fault in KPN's telephone network makes 112 and the police number 0900-8844 unreachable nationwide.", source: NL-2019-INSP}
+  - {t: "2019-06-24T17:07+02:00", event: "The ministry tells a WhatsApp group of safety-region communication advisers that it is working on a national NL-Alert.", source: NL-2019-INSP}
+  - {t: "2019-06-24T17:12+02:00", event: "The police tweet two alternative 088 numbers for 112 and 0900-8844.", source: NL-2019-INSP}
+  - {t: "2019-06-24T17:15+02:00", event: "The police national staff shares the numbers and the text for the national NL-Alert with the ministry; police and ministry each check that the 088 numbers reach the 112 centre. Neither checks the WhatsApp number.", source: NL-2019-INSP}
+  - {t: "2019-06-24T17:21+02:00", event: "The Utrecht joint control room (GMU), holding a national account during a software roll-out, sends its own national NL-Alert; citizens receive it only at 18:12 because of technical problems with NL-Alert.", source: NL-2019-INSP}
+  - {t: "2019-06-24T17:23+02:00", event: "The ministry tries to send a national NL-Alert; the message hangs in the system, and at 17:26 the ministry asks the police to send it from the police account.", source: NL-2019-INSP}
+  - {t: "2019-06-24T18:12+02:00", event: "The police send the national NL-Alert with the alternative numbers and the WhatsApp number; citizens receive it around 18:15.", source: NL-2019-INSP}
+  - {t: "2019-06-24T18:52+02:00", event: "The KPN telephony fault ends; 112 is reachable again.", source: NL-2019-INSP}
+  - {t: "2019-06-24 (19:00-19:30)", event: "It becomes clear that users of the WhatsApp number do not reach the 112 centre because the number is De Telegraaf's tip line.", source: NL-2019-INSP}
+  - {t: "2019-06-24T19:12+02:00", event: "A new national NL-Alert gives a different WhatsApp number to replace the earlier one.", source: NL-2019-INSP}
+  - {t: "2019-06-24T21:30+02:00", event: "A closing national NL-Alert says 112 and 0900-8844 are reachable again.", source: NL-2019-INSP}
+  - {t: "2020-06-25", event: "Agentschap Telecom, the Justice and Security Inspectorate and the Health and Youth Care Inspectorate publish their joint report.", source: NL-2019-INSP}
+
+inputs:
+  event_text: >-
+    KPN telephone network fault since 15:34: 112 and the police number 0900-8844 are unreachable nationwide.
+    Police technicians have opened two alternative 088 numbers that route around the KPN network; the police and
+    the ministry have each checked that calls to these numbers reach the 112 centre. Police Twitter account
+    @Politiemelding is available.
+  event_text_basis: "Inspectorates' report, section 3.3.2 (pages 59-61): the 088 numbers and their check, the police tweet at 17:12. Paraphrased and translated by us. The report does not say where the WhatsApp number came from or what the intended police WhatsApp number was."
+  issuer: "Ministry of Justice and Security (content), sent by the police (Meldkamer Diensten Centrum account)"
+  environment: live
+  intended_status: Actual
+  requested_area:
+    areaDesc: "Netherlands (national NL-Alert)"
+    areaDesc_basis: "Report: 'landelijk NL-Alert' throughout section 3.3.2."
+
+real_message:
+  text_verbatim: "Landelijke storing KPN: 112 niet bereikbaar. Politie heeft alternatief telefoonnummer (…) WhatsApp telefoonnummer (…) Twitter @Politiemelding. 112 not reachable. In case of emergency use numbers above"
+  text_source_note: "As quoted in the report, section 3.3.2, page 61. The report replaces the phone numbers with '(…)'; the actual 088 numbers and the wrong WhatsApp number are not given."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Politie (on behalf of the Ministry of Justice and Security)"
+  category: Infra
+  event: "Emergency number 112 unavailable (telephone network outage)"
+  urgency: Immediate
+  severity: Severe
+  certainty: Observed
+  language: nl
+  language_note: "Dutch text with a short English sentence at the end, in one message."
+  headline: "Landelijke storing KPN: 112 niet bereikbaar."
+  description: "Politie heeft alternatief telefoonnummer (…) WhatsApp telefoonnummer (…) Twitter @Politiemelding."
+  instruction: "112 not reachable. In case of emergency use numbers above"
+  areaDesc: "Nederland"
+  area:
+    areaDesc: "Nederland (national)"
+  approvals_count: unknown
+  approvals_basis: "Report: the police and the ministry each checked the 088 numbers independently before sending; neither checked the WhatsApp number. Who signed off the final text is not stated."
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, event, urgency, severity, certainty, headline, description, instruction, areaDesc, sender, language]
+  reconstruction_note: >-
+    The text, send time, sender account and national scope come from the inspectorates' report. The split of the
+    text into headline, description and instruction and all CAP enum values are our reconstruction; NL-Alert's
+    message as sent to the cell broadcast centre is not public.
+
+corrections:
+  - t: "2019-06-24T19:12+02:00"
+    kind: "new national NL-Alert"
+    text_verbatim: unknown
+    text_source_note: "Report, section 3.3.2: the new NL-Alert gives a different WhatsApp number to replace the earlier one. Its wording is not quoted."
+    references_original: unknown
+    references_original_note: "Described by the report as a rectification ('Ter rectificatie') that replaces the earlier number; whether the text named the 18:12 alert, or carried any machine reference to it, is not stated."
+    source: NL-2019-INSP
+
+real_outcome:
+  text: >-
+    A national alert sent during a nationwide 112 outage gave the public a WhatsApp number that reached a newspaper
+    tip line instead of the emergency services. The replacement number went out an hour after the wrong one, and
+    20 minutes after 112 had been restored. KPN 4G customers received none of the day's NL-Alerts because of a
+    separate fault in KPN's NL-Alert delivery.
+  source: NL-2019-INSP
+
+official_finding:
+  body: "Agentschap Telecom, Inspectie Justitie en Veiligheid and Inspectie Gezondheidszorg en Jeugd (joint report)"
+  document: "Onbereikbaarheid van 112 op 24 juni 2019: Het handelen van KPN, de overheid, hulpdiensten en zorgorganisaties (June 2020), section 1.1 Aanleiding, page 7"
+  finding_status: official-verbatim
+  quote: "Daarbij bleek een van de (WhatsApp-)nummers in een landelijk NL-Alertbericht per abuis dat van de tiplijn van de Telegraaf te zijn."
+  quote_translation_unofficial: "One of the (WhatsApp) numbers in a national NL-Alert message turned out, by mistake, to be that of De Telegraaf's tip line."
+  source: NL-2019-INSP
+  further_quotes:
+    - rule: R11
+      quote: "De politie en het ministerie (DGPenV, NCTV en NKC tezamen) controleren onafhankelijk van elkaar of de alternatieve 088-nummers bij de 112-alarmcentrale binnenkomen. Het vermelde WhatsApp-nummer in het landelijke NL-Alert controleren zij beiden niet."
+      quote_translation_unofficial: "The police and the ministry each check independently whether the alternative 088 numbers reach the 112 centre. Neither of them checks the WhatsApp number given in the national NL-Alert."
+      locator: "Section 3.3.2 Tijdsblokken, 17.00-17.30, page 60 (wording settled after the ministry's comments, see NL-2019-WEDERHOOR item 27)"
+    - rule: R10
+      quote: "Ter rectificatie volgt om 19.12 uur – een uur nadat burgers de alternatieve landelijke nummers en het foutieve WhatsApp-nummer ontvangen – een nieuw landelijk NL-Alert. Dit NL-Alert biedt een ander WhatsApp-nummer ter vervanging van het eerdere aangeboden nummer."
+      quote_translation_unofficial: "As a rectification, at 19.12, an hour after citizens received the alternative national numbers and the wrong WhatsApp number, a new national NL-Alert follows. This NL-Alert gives a different WhatsApp number to replace the number offered earlier."
+      locator: "Section 3.3.2 Tijdsblokken, 19.00-19.30, page 62"
+    - rule: R4
+      quote: "De inhoud van dit bericht is nagenoeg conform het ODG maar de uitvoering daarvan niet. In het ODG staat immers opgenomen dat het besluit en de boodschap voorbehouden is aan het ministerie."
+      quote_translation_unofficial: "The content of this message largely follows the operational service guide (ODG) but its execution does not. The ODG states that the decision and the message are reserved to the ministry."
+      locator: "Section 3.3.2, page 60. This is about the separate 17:21 national NL-Alert sent by the GMU control room, not the 18:12 alert replayed here."
+
+expected_rules: [R11]
+expected_rules_basis: >-
+  R11 (no number that the inputs don't contain): the report's finding is that the alert carried a WhatsApp number
+  nobody had checked and that was not a police number at all. The checked facts were the two 088 numbers; the
+  WhatsApp number came from outside them.
+
+unknowns:
+  - "Where the wrong WhatsApp number came from and what the intended police WhatsApp number was."
+  - "The actual phone numbers in the 18:12 alert (the report elides them)."
+  - "The wording of the 19:12 correction and whether it referred to the 18:12 alert."
+  - "Who approved the final text of the 18:12 alert, and whether NL-Alert records approvers or signs messages."
+  - "The CAP or cell broadcast parameters as sent."
+
+framing_note: >-
+  The report covers far more than this alert: the KPN outage, a separate 24-hour fault in KPN's NL-Alert
+  delivery on 4G, delayed national and regional alerts, regional alerts that reached people in other safety
+  regions, and a ministry that did not take the lead. Only the wrong WhatsApp number in the 18:12 national alert
+  is replayed. R11 can only catch the number if the inputs carry the verified numbers; a checker cannot tell a
+  wrong number from a right one it was never given. The GMU alert at 17:21 (R4, sender not entitled under the
+  ODG) is a different message and is not counted here.
+
+source_urls:
+  NL-2019-INSP: "https://zoek.officielebekendmakingen.nl/blg-942150.pdf"
+  NL-2019-WEDERHOOR: "https://zoek.officielebekendmakingen.nl/blg-942153.pdf"
+  NL-2019-NOS: "https://nos.nl/l/2290545"
+source_hashes:
+  NL-2019-INSP: {sha256: "34afc5ac3a4e9aab6be2d92faad93367bf875c8fb6b8be92d0d865c557911717", fetched: "2026-11-10", note: "Annex to Kamerstuk 29517; PDF title 'Onbereikbaarheid van 112 op 24 juni 2019'."}
+  NL-2019-WEDERHOOR: {sha256: "880f34c7eb2a0b408ed8e06e819aa227c8ce696b305aa3900b50305926e37342", fetched: "2026-11-10", note: "'Tabellen wederhoor' annex: the organisations' comments on the draft report and the inspectorate's changes."}
+  NL-2019-NOS: {sha256: "637fab8cdb9e4b5a11843ecd6e44056a9c47e824637958244cded3795df0e03b", fetched: "2026-11-10", note: "NOS live blog of 24 June 2019 (resolves to nos.nl/artikel/2290545); press context only, not used for any quote. Dynamic page, so the hash may differ on refetch."}

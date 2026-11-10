@@ -1,0 +1,122 @@
+id: uk-welsh-test-2023
+heldout: true
+title: "UK national Emergency Alerts test: an online autocorrect changed a Welsh word in the bilingual alert"
+date: "2023-04-23"
+jurisdiction: "United Kingdom (Cabinet Office, UK Emergency Alerts; bilingual English and Welsh version for Wales)"
+sources: [UK-2023-HCWS740, UK-2023-GOVUK, UK-2023-NC]
+
+summary: >-
+  The first UK-wide test of Emergency Alerts went out at 15:00 on Sunday 23 April 2023 in two versions: English
+  only, and a bilingual English and Welsh alert received in Wales. In the Welsh text the word for "safe",
+  "ddiogel", appeared as "Vogel", a word that does not exist in Welsh. The Cabinet Office's written statement to
+  Parliament says an online system made a small autocorrect during an operational process, making one word in
+  the Welsh test message incorrect.
+
+timeline:
+  - {t: "2023-04-23T00:15+01:00", event: "GOV.UK publishes the English wording the test message will carry.", source: UK-2023-GOVUK}
+  - {t: "2023-04-23T14:59:08+01:00", event: "The Cabinet Office approves the alert; networks issue it within seconds, timed for 15:00.", source: UK-2023-HCWS740}
+  - {t: "2023-04-23T15:00+01:00", event: "Phones receive the test; in Wales the alert is bilingual. Readers spot 'eich cadw chi ac eraill yn Vogel' in the Welsh text.", source: UK-2023-NC}
+  - {t: "2023-04-23T15:21+01:00", event: "The Cabinet Office instructs networks to stop transmitting the alert.", source: UK-2023-HCWS740}
+  - {t: "2023-04-23 (afternoon)", event: "A UK Government spokesperson says a technical error caused one word in the Welsh version to be misspelt.", source: UK-2023-NC}
+  - {t: "2023-04-25", event: "Written ministerial statement HCWS740 'Resilience Update' attributes the Welsh error to an online autocorrect in an operational process.", source: UK-2023-HCWS740}
+
+inputs:
+  event_text: >-
+    National test of the UK Emergency Alerts system. Approved English text: "This is a test of Emergency Alerts,
+    a new UK government service that will warn you if there’s a life-threatening emergency nearby. In a real
+    emergency, follow the instructions in the alert to keep yourself and others safe. Visit gov.uk/alerts for
+    more information. This is a test. You do not need to take any action." A Welsh version of the same text is
+    required for the bilingual alert in Wales.
+  event_text_basis: "English wording from GOV.UK (UK-2023-GOVUK); the existence of a bilingual English and Welsh version from HCWS740. The approved Welsh source text is not public."
+  issuer: "Cabinet Office"
+  environment: live
+  intended_status: Test
+  intended_status_basis: "A planned, publicised national test; the text says 'This is a test'."
+  requested_area:
+    areaDesc: "Wales (bilingual version); the English-only version went to the rest of the UK"
+    areaDesc_basis: "HCWS740: two versions were issued, one in English and a bilingual English and Welsh alert; Nation.Cymru: in Wales a bilingual message was sent. The exact area definition is not public."
+
+real_message:
+  text_verbatim: unknown
+  text_verbatim_note: "The full Welsh text as received is not quoted in our sources. Nation.Cymru quotes the faulty clause, 'eich cadw chi ac eraill yn Vogel', where the intended clause was 'eich cadw chi ac eraill yn ddiogel' ('to keep you and others safe'). The English part is assumed to match the GOV.UK wording."
+  text_en_published: "This is a test of Emergency Alerts, a new UK government service that will warn you if there’s a life-threatening emergency nearby. In a real emergency, follow the instructions in the alert to keep yourself and others safe. Visit gov.uk/alerts for more information. This is a test. You do not need to take any action."
+  text_cy_fragment_verbatim: "eich cadw chi ac eraill yn Vogel"
+  text_cy_fragment_source: UK-2023-NC
+  status: Test
+  msgType: Alert
+  scope: Public
+  sender: "Cabinet Office (UK Emergency Alerts)"
+  category: Other
+  event: "National test of Emergency Alerts"
+  urgency: Unknown
+  severity: Unknown
+  certainty: Unknown
+  language: cy
+  language_note: "Bilingual alert. The replay rebuilds the Welsh info block; the English block is the GOV.UK text."
+  headline: "Emergency Alerts test"
+  description: unknown
+  description_note: "Welsh description not public except the faulty clause above."
+  instruction: unknown
+  areaDesc: "Wales"
+  area:
+    areaDesc: "Wales"
+  approvals_count: unknown
+  approvals_basis: "HCWS740: 'The alert was approved by the Cabinet Office at 14:59:08'; who approved, and whether the Welsh text was checked after the autocorrect, is not stated."
+  signed: unknown
+  references: null
+  reconstructed_fields: [status, msgType, scope, category, event, urgency, severity, certainty, headline, areaDesc, language]
+  reconstruction_note: >-
+    The English text, the approval and stop times, the two versions and the cause come from the Cabinet Office
+    statement and GOV.UK. The Welsh fragment comes from Nation.Cymru. All CAP enum values are our reconstruction;
+    how the UK system encodes a public test (CAP status Test, Exercise or Actual on a test channel) is not public,
+    so Test is a guess, and urgency, severity and certainty are set to the CAP value Unknown.
+
+corrections: []
+corrections_note: "No corrective alert was sent; the error was acknowledged by a spokesperson and in the written statement."
+
+real_outcome:
+  text: >-
+    Phones in Wales showed a bilingual test alert whose Welsh text told people to keep themselves and others
+    "Vogel" instead of "safe". The Cabinet Office said the essence of the message was unchanged and that the
+    error would be fixed for future alerts.
+  source: UK-2023-HCWS740
+
+official_finding:
+  body: "Cabinet Office (written ministerial statement by the Deputy Prime Minister and Chancellor of the Duchy of Lancaster)"
+  document: "Written statement HCWS740, 'Resilience Update', House of Commons, 25 April 2023"
+  finding_status: official-verbatim
+  quote: "A further issue arose with the Welsh version of the Test Message. Following a short internal review we believe that this error occurred as a result of an operational process, whereby an online system made a small autocorrect, rendering one word in the Welsh test message incorrect."
+  source: UK-2023-HCWS740
+  further_quotes:
+    - rule: R9
+      quote: "A technical error caused one word in the Welsh language version of the emergency test alert to be misspelt."
+      locator: "UK Government spokesperson, as quoted by Nation.Cymru on 23 April 2023 (UK-2023-NC); official statement via press"
+
+expected_rules: [R9]
+expected_rules_basis: >-
+  R9 (machine-processed language text needs a vetted template or a named reader's approval): the finding is that
+  an automated online step changed the Welsh text and nobody caught it before release. It is an autocorrect
+  rather than machine translation, so R9 is the closest rule, not an exact match; a named Welsh reader approving
+  the final text, or a locked vetted template, is the control that would have stopped it.
+
+unknowns:
+  - "The full Welsh text as sent, and the approved Welsh source text."
+  - "Which online system made the autocorrect and at which step (drafting, copy into the alerting tool, or submission)."
+  - "Whether a Welsh speaker reviewed the text, and before or after the autocorrect."
+  - "The CAP encoding of the test (status, info blocks per language, area) and whether it was signed."
+
+framing_note: >-
+  The official account calls it an autocorrect in an operational process; the press called it a mistranslation.
+  This file follows the official account. R7 would pass: both languages were present. 'Vogel' happens to be a
+  proper noun elsewhere, so a place-name check under R11 might flag it by chance; the finding does not point to
+  R11, so it is not counted. The same statement reports a Three UK delivery fault and duplicate alerts, which
+  are outside the gate's rules and are not replayed.
+
+source_urls:
+  UK-2023-HCWS740: "https://questions-statements-api.parliament.uk/api/writtenstatements/statements/1623574"
+  UK-2023-GOVUK: "https://www.gov.uk/government/news/uk-emergency-alerts-test-keep-calm-and-carry-on-this-is-just-a-test"
+  UK-2023-NC: "https://nation.cymru/news/uk-emergency-alert-messages-strange-welsh-mistranslation-blunder/"
+source_hashes:
+  UK-2023-HCWS740: {sha256: "d86e6c1497447ce4f16a5cef879cdf209a014fd8bcb54fec1ea694d97820a8c0", fetched: "2026-11-10", note: "UK Parliament written statements API (JSON) for HCWS740; the human page https://questions-statements.parliament.uk/written-statements/detail/2023-04-25/hcws740 refused automated fetches."}
+  UK-2023-GOVUK: {sha256: "f7fa2eb84be1cd8e847daaea29612f3b48a30ea0f8d35df19662180ab6d10ce2", fetched: "2026-11-10", note: "Cabinet Office news story, first published 23 April 2023 00:15 BST."}
+  UK-2023-NC: {sha256: "4c91d51eb6a8c8f15127badad248797bb28987bd29a3d95cfcbf8f2a110fceec", fetched: "2026-11-10", note: "Nation.Cymru, published 23 April 2023 15:59 UTC; dynamic page, hash may differ on refetch."}

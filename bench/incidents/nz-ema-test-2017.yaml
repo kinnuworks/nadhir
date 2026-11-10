@@ -1,0 +1,116 @@
+id: nz-ema-test-2017
+heldout: true
+title: "New Zealand Emergency Mobile Alert test messages meant for a closed test environment reached Vodafone customers at 1:30 am"
+date: "2017-10-04"
+jurisdiction: "New Zealand (Ministry of Civil Defence & Emergency Management, MCDEM; Emergency Mobile Alert, before national launch)"
+sources: [NZ-2017-MCDEM, NZ-2017-NA, NZ-2017-HBT, NZ-2017-REG]
+
+summary: >-
+  While MCDEM's European-based service provider was testing the new Emergency Mobile Alert cell broadcast system,
+  three test messages went out to the public on the Vodafone network between about 1:30 and 1:50 am New Zealand
+  time instead of staying in a restricted test environment. MCDEM apologised, said the messages were sent in error
+  by its provider, took full responsibility and said future tests would be done in daylight hours.
+
+timeline:
+  - {t: "2017-10-04T01:32+13:00", event: "First of three test alerts reaches Vodafone customers; a recipient quoted by the paper got them at 01:32, 01:33 and 01:49. MCDEM gives the window as 01:30 to 01:50.", source: NZ-2017-HBT}
+  - {t: "2017-10-04 (early hours)", event: "MCDEM tweets an apology to people who received tests for Emergency Mobile Alerts at an inconvenient hour.", source: NZ-2017-REG}
+  - {t: "2017-10-04", event: "MCDEM publishes 'Emergency Mobile Alert test' on civildefence.govt.nz: the three test messages were sent in error by its European-based service provider.", source: NZ-2017-MCDEM}
+  - {t: "2017-10-04", event: "MCDEM director tells media the texts were sent in error, that something in the system had not restricted them to the testing environment, and that she takes full responsibility.", source: NZ-2017-NA}
+
+inputs:
+  event_text: >-
+    None. No hazard. The provider was testing the Emergency Mobile Alert technology ahead of its launch at the end
+    of 2017; the messages were meant only for a select testing group in a restricted test environment.
+  event_text_basis: "MCDEM statement (NZ-2017-MCDEM) and the director's remarks as reported (NZ-2017-NA, NZ-2017-HBT)."
+  issuer: "Ministry of Civil Defence & Emergency Management (test run by its European-based service provider)"
+  environment: live
+  environment_basis: "The messages reached Vodafone's public cell broadcast network. The intended target was a restricted test environment (director: 'There was something in the system that hadn't restricted it to just in that testing environment so it went to the wider public')."
+  intended_status: Test
+  intended_status_basis: "MCDEM calls them test messages sent while testing the new technology."
+  requested_area:
+    areaDesc: "None: a restricted test environment / select testing group, not a public area"
+    areaDesc_basis: "Hawke's Bay Today: the alerts were only meant to be sent to a select testing group."
+
+real_message:
+  text_verbatim: unknown
+  text_verbatim_note: "The wording of the three test messages was not found in any source we fetched."
+  status: Test
+  msgType: Alert
+  scope: unknown
+  scope_note: "Unknown how scope was set; the intended audience was a restricted test group, the actual audience was the public on Vodafone."
+  sender: "Ministry of Civil Defence & Emergency Management (via its service provider)"
+  category: Other
+  event: "Emergency Mobile Alert test"
+  urgency: Unknown
+  severity: Unknown
+  certainty: Unknown
+  language: en
+  headline: unknown
+  description: unknown
+  instruction: unknown
+  areaDesc: unknown
+  area:
+    areaDesc: "unknown"
+    note: "Delivered to Vodafone customers whose phones were cell broadcast enabled; press reports cover Northland and Hawke's Bay and The Register describes about half of New Zealanders as Vodafone subscribers. The cell coverage actually used is not stated by MCDEM."
+  approvals_count: unknown
+  signed: unknown
+  references: null
+  reconstructed_fields: [status, msgType, sender, category, event, urgency, severity, certainty, language]
+  reconstruction_note: >-
+    Only the facts that these were test messages, three of them, on the Vodafone network, between about 01:30 and
+    01:50, sent by the provider, come from the record. Status Test follows MCDEM's own description; the other CAP
+    values are our placeholders, with urgency, severity and certainty set to the CAP value Unknown.
+
+corrections: []
+corrections_note: "No corrective alert was found. MCDEM apologised on its website, on Twitter and through the media."
+
+real_outcome:
+  text: >-
+    Vodafone customers across New Zealand with cell broadcast enabled phones were woken by three loud test alerts
+    between about 1:30 and 1:50 am, weeks before the system's public launch.
+  source: NZ-2017-HBT
+
+official_finding:
+  body: "Ministry of Civil Defence & Emergency Management (MCDEM), New Zealand"
+  document: "'Emergency Mobile Alert test', news item on civildefence.govt.nz, October 2017 (Wayback Machine capture of 15 October 2017)"
+  finding_status: official-verbatim
+  quote: "The three test messages were sent in error by our European-based service provider while testing the new Emergency Mobile Alert technology."
+  source: NZ-2017-MCDEM
+  further_quotes:
+    - rule: R2
+      quote: "There was something in the system that hadn't restricted it to just in that testing environment so it went to the wider public"
+      locator: "MCDEM director Sarah Stuart-Black, as quoted by Hawke's Bay Today, 4 October 2017 (NZ-2017-HBT); official statement via press"
+    - rule: R2
+      quote: "It is completely unacceptable and I take full responsibility and certainly apologise to every person that was woken by the messages."
+      locator: "MCDEM director, as quoted by the Northern Advocate (NZ-2017-NA); official statement via press"
+
+expected_rules: [R2]
+expected_rules_basis: >-
+  R2 (no test sent as live): MCDEM says test messages meant for a restricted testing environment went to the
+  public. The messages were tests and were described as tests, so the failure is that a test reached the live
+  public network, which is the R2 case closest to the finding.
+
+unknowns:
+  - "The text of the three messages and whether they were visibly labelled as tests."
+  - "How the provider's system separated test and live delivery, and what failed."
+  - "The CAP or cell broadcast parameters (status, scope, message identifier/channel) used."
+  - "Which cells were used and how many people received the alerts."
+  - "Whether any second person approved the test sends."
+
+framing_note: >-
+  The cause sits with a vendor's test set-up, before the national launch. R2 is about status matching reality;
+  here the status (test) was right and the audience was wrong, so a gate can only catch this if it knows that a
+  Test-status message is about to go to the live public network. R3 is not counted: no public area was requested.
+  The press linked the 1:30 am timing to the provider working on European time; MCDEM's statement does not say
+  so, and this file does not rely on it.
+
+source_urls:
+  NZ-2017-MCDEM: "https://web.archive.org/web/20171015014222id_/http://www.civildefence.govt.nz:80/about/news-and-events/news/emergency-mobile-alert-test"
+  NZ-2017-NA: "https://www.nzherald.co.nz/northern-advocate/news/ministry-apologises-after-text-alert-test-wakes-northlanders/L2DHIKFDK2PXVR7TVUPP2O7XXQ/"
+  NZ-2017-HBT: "https://www.nzherald.co.nz/hawkes-bay-today/news/residents-riled-by-early-emergency-alerts/ZKNQ25UMXJRQUP6NOBLEHBGBJQ/"
+  NZ-2017-REG: "https://www.theregister.com/2017/10/04/developers_timezone_fail_woke_half_of_new_zealand/"
+source_hashes:
+  NZ-2017-MCDEM: {sha256: "9c33c0ecb348fc2903a87c6cac807f1ec994af42c2dbe83d062261024fe99917", fetched: "2026-11-10", note: "The live civildefence.govt.nz URL returned 403 to automated fetches; the raw (id_) Wayback capture of 15 Oct 2017 was used."}
+  NZ-2017-NA: {sha256: "503fafb587af03aa34e92255691d1edccfe45bbcc83a95d8d6525e031d519438", fetched: "2026-11-10", note: "Northern Advocate (NZ Herald), published 4 Oct 2017; dynamic page, hash may differ on refetch."}
+  NZ-2017-HBT: {sha256: "d1acde943ea412dc61131e2826467b8f5fbea0ee6fb2c63d2ffb95a455901233", fetched: "2026-11-10", note: "Hawke's Bay Today (NZ Herald); dynamic page, hash may differ on refetch."}
+  NZ-2017-REG: {sha256: "21a61b832a343c93a65f1a92680b63e461f8ce374af7be2290f002c9af3fdd29", fetched: "2026-11-10", note: "The Register, 4 Oct 2017 02:56 UTC; quotes MCDEM's tweet. Press context only."}

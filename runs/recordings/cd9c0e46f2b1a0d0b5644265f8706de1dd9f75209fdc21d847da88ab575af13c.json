@@ -1,0 +1,168 @@
+{
+ "key": "cd9c0e46f2b1a0d0b5644265f8706de1dd9f75209fdc21d847da88ab575af13c",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Hennepin County Sheriff's Office Emergency Communications Facility\": {\n   \"name\": \"Hennepin County Sheriff's Office Emergency Communications Facility\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"3600-3700 block of Hubbard and West Broadway, Robbinsdale, Minnesota\",\n  \"codes\": [],\n  \"drawn_for_event\": \"hennepin-2024\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Hennepin County Sheriff's Office Emergency Communications Facility\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Security\"\n  ],\n  \"event\": \"Shelter in Place Warning\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"unknown\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Shelter in place\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 alert area areaDesc polygon required', 'FCC report wireless emergency alert wrong area sender authorization', 'CAP status Actual versus Exercise issuer authority'):\n\n[CAP12#0132] Common Alerting Protocol Version 1.2 (3.2.4 \"area\" Element and Sub-elements):\nareaDesc cap. alertInfoArea. areaDesc. text The text describing the affected area of the alert message (REQUIRED) A text description of the affected area. polygon cap. alertInfoArea. polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[CAPCP#0059] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nresource resourceDesc mimeType size uri derefUri figest Area Rule #8 (<area> blocks are required) areaDesc polygon Rule #7 (Location References are required) Recommendation #1 (Preferential treatment of <polygon> and <circle>)\n\n[X1303BIS#0092] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nThe text describing A text description of the affected area. the affected area of the alert message (REQUIRED) polygon cap.alertInfoArea.polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[CAPAU#0113] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.34):\n5) It is RECOMMENDED that an associated geospatial value for the <polygon> or <circle> elements be included in the <area> element as well. The use of <polygon> and <circle> are preferred where the message consumer has the ability to interpret the geospatial information in those sub-elements. 6) Avoid using both <polygon> and <circle> in a single message when possible; however, if both are used then the <area> should be considered to be the union of the <polygon> and <circle> sub-elements. areaDesc\n\n[FCC-23-88#0187] Wireless Emergency Alerts, Third Report and Order (FCC 23-88) (p.31):\nservice providers that elect to transmit emergency alerts and for the devices and equipment used by such providers for transmitting such alerts.”). 185 See Section 9201 of the William M. (Mac) Thornberry National Defense Authorization Act for Fiscal Year 2021,\n\n[FCC-16-127#0691] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.120):\nNo person may transmit or cause to transmit the WEA common audio attention signal, or a recording or simulation thereof, in any circumstance other than in an actual National, State or Local Area emergency or authorized test, except as designed and used for Public Service Announcements (PSAs) by federal, state, local, tribal and territorial entities, and non-governmental organizations in coordination with those entities, to raise public awareness about emergency alerting, provided that the entity presents the PSA in a non-misleading manner, including by explicitly stating that the emergency alerting attention signal is being used in the context of a PSA for the purpose of educating the viewing or listening public about emergency alerting. PART 11 – EMERGENCY ALERT SYSTEM 1. Amend § 11.45 to read as follows: § 11.45 Prohibition of false or deceptive EAS transmissions. No person may transmit or cause to transmit the EAS codes or Attention Signal, or a recording or simulation thereof, in any circumstance other than in an actual National, State or Local Area emergency or authorized test of the EAS, or as specified in Section 10.520(d).\n\n[FCC-16-127#0161] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.27):\n147 See FEMA Comments at 2 (stating, for example, that “[t]he Tennessee Emergency Management Agency experienced a situation in which all cellular 911 calls were being incorrectly routed to the wrong county dispatch center. This created a disruption in critical public safety services. The ability to issue a WEA including the correct direct emergency telephone number would have reduced potential delays providing emergency services to the proper areas.”). See NYCEM Comments at 11; TDI Comments at 14; San Joaquin OES Comments at 1;\u0003Los Angeles EMD Comments at 1; The Iowa Flood Center at the University of Iowa Comments, PS Docket 15-91, 2 (Feb. 12, 2016) (Iowa Flood Center Comments).\n\n[LA-2025#0039] Sounding the Alarm: Lessons from the Kenneth Fire False Alerts (p.15):\nEVAC Software – A Genasys, Inc. system used by public safety agencies to create and manage evacuation zone maps and designate areas requiring emergency protective action. FCC (Federal Communications Commission) – The federal agency that regulates interstate and international communications and oversees technical rules for alerting systems like WEA. FEMA (Federal Emergency Management Agency) – A U.S. Department of Homeland Security agency that operates and maintains IPAWS, and supports emergency preparedness, response, and recovery. Geocode – A broad geographic identifier (such as a county or city) used to define the general area where an alert can be sent. IPAWS (Integrated Public Alert and Warning System) – A FEMA-managed national system that enables authorized agencies to send emergency alerts through multiple communication channels, including WEA, EAS, and NOAA Weather Radio. Polygon – A more precise geographic shape or boundary used to target alert messages to specific impacted areas within a broader geocode. PROTECT App – A Genasys, Inc. mobile application that allows users to receive alerts, view hazard zones, and access emergency information. TTY (Teletypewriter) – A communication device used by individuals who are deaf, hard of hearing, or speech-impaired, capable of receiving emergency alert messages. WEA (Wireless Emergency Alerts) – Short emergency messages sent by authorized agencies to mobile devices in a targeted area via participating wireless carriers.\n\n[CAP12#0153] Common Alerting Protocol Version 1.2 (3.4 XML Schema):\n<element name = \"sent\"> <simpleType> <restriction base = \"xs:dateTime\"> <pattern value = \"\\d\\d\\d\\d-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d[-,+]\\d\\d:\\d\\d\"/> </restriction> </simpleType> </element> <element name = \"status\"> <simpleType> <restriction base = \"xs:string\"> <enumeration value = \"Actual\"/> <enumeration value = \"Exercise\"/>\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPAU#0048] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n<scope>Public</scope> <status>Actual</status> <msgType>Alert</msgType> ... <code>urn:oasis:names:tc:emergency:cap :1.2:profile:CAP-AU:1.0</code> ... 4) For alert messages with a <msgType> of “Ack” or “Error”, an info element is not required, as these messages are primarily intended for system level purposes and not for distribution to the public.\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The sender is in the issuer register with wildcard area and category authority. The status Actual fits a real event on a live console. No active alert from a higher authority is overreached, and a new Alert needs no reference. But the alert's area does not match the area requested for this event. The alert says areaDesc \"unknown\" with no polygon, while the requested area is the 3600-3700 block of Hubbard and West Broadway, Robbinsdale.",
+  "objections": [
+   {
+    "issue": "The alert's target area is \"unknown\" with no polygon or geocode. It does not match the area drawn for event hennepin-2024, so the alert does not target the requested area.",
+    "field": "areaDesc",
+    "blocking": true,
+    "fix": "Set areaDesc to the requested area (3600-3700 block of Hubbard and West Broadway, Robbinsdale, Minnesota) and attach the polygon drawn for hennepin-2024. If the area is deliberately withheld from the public, a person must decide that before sending.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "requested_area",
+      "quote": "3600-3700 block of Hubbard and West Broadway, Robbinsdale, Minnesota"
+     },
+     {
+      "kind": "view",
+      "ref": "alert",
+      "quote": "\"areaDesc\": \"unknown\""
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0132",
+      "quote": "The text describing the affected area of the alert message (REQUIRED)"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4969,
+  "output_tokens": 1122,
+  "at": "2026-11-10T10:54:22Z"
+ }
+}

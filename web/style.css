@@ -682,3 +682,4 @@ details.paste:not([open]){padding-block:20px}
 #replays .stat .t-small{margin-top:0}
 .replay>summary{padding-block:11px}
 @media (max-width:900px){.node{min-height:0}}
+.nc{display:block;margin-top:8px;font-size:13px;color:var(--wait)}

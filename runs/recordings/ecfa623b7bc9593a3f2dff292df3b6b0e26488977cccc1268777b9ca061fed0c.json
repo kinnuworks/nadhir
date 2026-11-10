@@ -1,0 +1,201 @@
+{
+ "key": "ecfa623b7bc9593a3f2dff292df3b6b0e26488977cccc1268777b9ca061fed0c",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"National test of the UK Emergency Alerts system. Approved English text: \\\"This is a test of Emergency Alerts, a new UK government service that will warn you if there’s a life-threatening emergency nearby. In a real emergency, follow the instructions in the alert to keep yourself and others safe. Visit gov.uk/alerts for more information. This is a test. You do not need to take any action.\\\" A Welsh version of the same text is required for the bilingual alert in Wales.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Test\",\n  \"event\": \"National test of Emergency Alerts\",\n  \"severity\": \"Unknown\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"Emergency Alerts test\",\n  \"description\": \"unknown\",\n  \"instruction\": \"unknown\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 status Test exercise alert severity certainty values', 'alert description must match approved bulletin text test message', 'WMO guidance test alerts wording no action required'):\n\n[CAPAU#0061] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.19):\nOPTIONAL Notes: Policy 1) This element MUST be included for all alert messages intended for public distribution. Example: Weather alert for public distribution: <alert> ... <status>Actual</status> 2) Different <info> elements MAY be used to support two separate <area>s that are experiencing different levels of threat, where each <area> uses the same <category>, <event> and <eventCode> values in both <info> elements, but requires different <urgency>/<severity>/<certainty> values.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[CAPCP#0057] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (CAP Elements Mapping Table to CAP-CP):\nRecommendation #3 (Use established <event> values) responseType urgency severity certainty audience eventCode Rule #2 (Constraint of one subject event per alert message) Rule #6 (A recognized <eventCode> must be used)\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[CAP12#0115] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\ndescription cap. alertInfo. description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message.\n\n[CAP12#0132] Common Alerting Protocol Version 1.2 (3.2.4 \"area\" Element and Sub-elements):\nareaDesc cap. alertInfoArea. areaDesc. text The text describing the affected area of the alert message (REQUIRED) A text description of the affected area. polygon cap. alertInfoArea. polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[X1303BIS#0092] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nThe text describing A text description of the affected area. the affected area of the alert message (REQUIRED) polygon cap.alertInfoArea.polygon. group The paired values of points defining a polygon that delineates the affected area of the alert message (OPTIONAL)\n\n[WMO-CAP-GUIDE#0004] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nPublic and First Responder Action: People receive the alert through multiple communication channels and take appropriate action based on the guidance provided. First responders may receive tailored alerts to support emergency coordination and response. CAP Resources Explore a comprehensive collection of resources on the Common Alerting Protocol (CAP), including online courses, toolkits, guidelines and documents on the CAP implementation. Explore CAP Resources\n\n[FL-2023-WGCU#0001] Official explains why Florida was awakened Thursday by alert (article body):\nThe alert was not for an emergency, rather just a \"test\": “This is a TEST of the Emergency Alert System. No action is required.”\n\n[WMO-CAP-GUIDE#0014] Common Alerting Protocol (CAP) (WMO CAP site) (WMO joins Emergency Alerting Call to Action):\nWMO joins Emergency Alerting Call to Action News 24 June 2020\n\n[WMO-CAP-JUMPSTART#0013] Common Alerting Protocol (CAP) Jump-Start offer (leaflet) (p.2):\nHere are ten typical actions for an alerting authority on the way to implementing CAP: An official alerting authority could be an NMHS or any other nationally authorized organization. WMO Members should also list these authorities in the “Register of Alerting Authorities” established by WMO and ITU. Details on how editors are designated by Permanent Representatives (PRs) of Member countries with WMO are provided during the registration process of editors which starts at the followng weblink: http:// www-db.wmo.int/alerting/edit.asp.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert does not carry the approved bulletin text. The verified input gives an approved English message and says it is a test needing no action, but the alert's description and instruction are just \"unknown\" and the headline gives no indication of the test or that no action is needed. Severity, urgency and certainty are all \"Unknown\", which is not what the bulletin supports. The status \"Test\" is correct.",
+  "objections": [
+   {
+    "issue": "Description and instruction are placeholders (\"unknown\") and omit the approved text. The alert therefore does not say what the bulletin says: it is a test, no action is needed, and gov.uk/alerts has more information.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Put the approved English text in description: \"This is a test of Emergency Alerts, a new UK government service that will warn you if there’s a life-threatening emergency nearby... This is a test.\" Set instruction to \"You do not need to take any action.\"",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "This is a test. You do not need to take any action."
+     },
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "unknown"
+     },
+     {
+      "kind": "clause",
+      "ref": "CAP12#0115",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     }
+    ]
+   },
+   {
+    "issue": "Severity, urgency and certainty are all \"Unknown\", yet the bulletin is a definite, confirmed test of no threat. Certainty \"Unknown\" understates what the bulletin supports, and severity \"Unknown\" is not the bulletin's meaning of minimal to no threat.",
+    "field": "severity",
+    "blocking": false,
+    "fix": "Set certainty to \"Observed\" (the test is determined to be occurring) and severity to \"Minor\" (minimal to no known threat), keeping status \"Test\". Choose urgency from the test timing, which the bulletin does not give.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0068",
+      "quote": "\"Minor\" – Minimal to no known threat to life or property"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "\"Observed\" – Determined to have occurred or to be ongoing"
+     },
+     {
+      "kind": "view",
+      "ref": "certainty",
+      "quote": "Unknown"
+     }
+    ]
+   }
+  ],
+  "no_basis": [
+   {
+    "concern": "The Welsh version required for the bilingual alert in Wales is not visible to me, and I cannot check it.",
+    "searched_for": "Clause on bilingual or Welsh alert text matching the approved bulletin"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 3975,
+  "output_tokens": 901,
+  "at": "2026-11-10T10:55:32Z"
+ }
+}

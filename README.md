@@ -10,7 +10,7 @@ It is for the agencies that send emergency phone alerts. In more detail:
 3. Four reviewer agents, on a different AI model from the drafter, each play one institution with its own partial view: the met office, the issuing authority, the network operator and regulator, and an Arabic-language reviewer. They search an 11,572-clause knowledge base, UAE texts first, and must quote what they rely on. Code drops any objection whose quote isn't word for word in its source.
 4. People decide. A severe alert needs two named approvers, plus a named person who reads Arabic when the Arabic was machine translated. Then the alert is signed.
 
-We replayed nine real alert failures. Run on the 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. Three of the nine were added after the rules were frozen: Ontario 2020, Florida 2023 and Taiwan 2024. The rules catch the first two, and the reviewer agents catch Taiwan.
+We replayed thirteen real alert failures. Run on the 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. Seven of the thirteen were held out: added after the rules were frozen, and picked and mapped by someone who did not write the rules. The frozen rules catch 2 of those 7, the reviewer agents one more. The misses are reported below, because they show which failure types twelve rules do not cover.
 
 It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
 
@@ -33,7 +33,7 @@ What step 3 ends on, from a run of the demo scenario with demo approver names (t
 
 ### Replays of real alert failures
 
-We rebuilt nine real public alert failures from published reports and ran each message through the gate as it was actually sent. The answer key for each replay is the investigator's or authority's own published finding. Three of them (marked held out) were added after the rules were frozen at commit `beb8f54`; `nadhir/gate.py` has not changed since, and nobody who wrote the rules picked or mapped those three.
+We rebuilt thirteen real public alert failures from published reports and ran each message through the gate as it was actually sent. The answer key for each replay is the investigator's or authority's own published finding. Seven of them (marked held out) were added after the rule logic was frozen at commit `beb8f54` (only comments and source lists in `nadhir/gate.py` have changed since). Nobody who wrote the rules picked or mapped them: three were added on 9 Nov and four on 10 Nov, the second set by an agent told not to open the rules or bench code (`bench/heldout-2-notes.md`).
 
 | Real failure | Answer key | Rules that fired on the real message | Finding's rule caught by the rules? | By the agents alone? |
 |---|---|---|---|---|
@@ -46,8 +46,14 @@ We rebuilt nine real public alert failures from published reports and ran each m
 | **Held out.** Ontario, Jan 2020: Pickering nuclear alert sent from the live system during training | Ontario Solicitor General investigation (official) | R1, R2 | yes | yes (R2, R10) |
 | **Held out.** Florida, Apr 2023: broadcasters' monthly test reached phones at 4:45 a.m. | Florida Division of Emergency Management statement | R2 | yes | yes |
 | **Held out.** Taiwan, Jan 2024: satellite launch alert whose English said "missile" and "air raid" | Ministry of National Defense statement | none | **no** | yes (met office reviewer: "the alert names the wrong hazard") |
+| **Held out.** Netherlands, Jun 2019: during the 112 outage, NL-Alert gave a WhatsApp number that was a newspaper's tip line | Joint report of Agentschap Telecom and two inspectorates (official) | none | **no** | **no** |
+| **Held out.** UK, Apr 2023: national test; an autocorrect turned the Welsh word for "safe" into "Vogel" | Cabinet Office written statement HCWS740 | none | **no** | **no** |
+| **Held out.** New Zealand, Oct 2017: test alerts for a closed test group reached Vodafone customers at 1:30 a.m. | Civil Defence ministry statement | R2, not counted (see below) | **no** | **no** |
+| **Held out.** Minnesota, Apr 2024: a one-block shelter order meant for phones aired over broadcast across the Twin Cities | Hennepin County Sheriff's Office release | none | **no** | **no** |
 
-The rules catch the finding in 8 of 9, and in 2 of the 3 held-out cases. Taiwan is a real miss: R11 (no detail the inputs don't contain) only runs on AI-written text, and Taiwan's wrong English came from an old human template. The agents, reading the same inputs, caught it. Seoul and Florida rest on official statements as quoted or published, not investigation reports; India is press only.
+The rules catch the finding in 8 of 13, and in 2 of the 7 held-out cases; rules or agents catch 9 of 13 and 3 of 7. Taiwan is a miss for the rules: R11 (no detail the inputs don't contain) only runs on AI-written text, and Taiwan's wrong English came from an old human template. The agents, reading the same inputs, caught it. The four added on 10 Nov are misses for both, and each is a failure type that none of the twelve rules covers: a wrong contact number in human-written text (Netherlands), a human-side edit to a second language after approval (UK), the wrong channel (Minnesota) and a test leaving its test group (New Zealand). R11 and R9 would need to run on all text, not only AI text, and the gate has no check on channel or test audience. We kept the rules frozen and report this as the result.
+
+Two notes on how these were scored. After the first run of the new four, we fixed the bench so that a field the record leaves blank ("unknown") is left out of the rebuilt alert instead of being written into it; that is the bench's existing rule that a silent record counts in the alert's favour. With that fixed, R2 still fired on New Zealand, but only because the message text is not public, so the rebuilt alert has no text saying it is a test. The real messages did say so. We do not count that hit, or the agent hits on New Zealand and Minnesota, which also rest on gaps in the rebuild. The reasons are written in `bench/contexts.yaml` and applied by the bench code; this adjudication can only remove credit. Hawaii, Japan, Ontario, Los Angeles and the Netherlands rest on investigation reports or official reviews; the others rest on official statements, and India on press only.
 
 ### Which layer catches what (ablation)
 
@@ -189,7 +195,7 @@ CI ([.github/workflows/ci.yml](.github/workflows/ci.yml)) runs the first six on 
 - In replays the approvals are scripted and labelled as such. In the live demo, a person clicks.
 - R11 is a surface check. It catches invented numbers, hazard words and listed place names, not every wrong claim.
 - Two hosted models play the six agents: one for the drafter and translator (`NADHIR_MODEL`), another for the four reviewers (`NADHIR_REVIEW_MODEL`). The institution agents stand in for roles; they are not the real UAE bodies and don't speak for them. Recorded answers make every run replayable, but a fresh run can differ.
-- Our own fault set and its narrowed terms are ours. The pre-registered set was written outside the build, but by an AI agent, not by alerting professionals. The held-out replays are the independent test on real failures, and there are only three of them.
+- Our own fault set and its narrowed terms are ours. The pre-registered set was written outside the build, but by an AI agent, not by alerting professionals. The held-out replays are the independent test on real failures. There are seven, and the rules catch two.
 - Pickering, Florida and Taiwan were reconstructed by a separate research pass from public reports; several CAP fields are inferred and marked so in each file. Where the area encoding isn't public, the replay assumes it matched the request.
 - If an intruder controls an issuer's own signing key, R5 cannot tell. The two-person rule is the backstop.
 

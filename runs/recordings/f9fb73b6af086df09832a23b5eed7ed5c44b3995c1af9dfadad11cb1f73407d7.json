@@ -1,0 +1,133 @@
+{
+ "key": "f9fb73b6af086df09832a23b5eed7ed5c44b3995c1af9dfadad11cb1f73407d7",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Hennepin County Sheriff's Office Emergency Communications Facility\nContext: real event\nTarget area (chosen by the operator): 3600-3700 block of Hubbard and West Broadway, Robbinsdale, Minnesota\n\nEvent inputs:\n1. [verified; incident timeline] Police activity: possible armed domestic situation at the 3600 block of West Broadway, Robbinsdale; three people detained, information on additional suspects. Residents of the 3600-3700 block of Hubbard and West Broadway should shelter in place until about 10 to 10:30 pm (police said 10 pm, the Sheriff's Office about 10:30 pm, per the press).",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Security",
+  "event": "Police Activity - Shelter in Place",
+  "urgency": "Immediate",
+  "severity": "Severe",
+  "certainty": "Likely",
+  "headline": "Shelter in place: police activity near 3600 block of West Broadway, Robbinsdale",
+  "description": "Police activity: possible armed domestic situation, 3600 block of West Broadway, Robbinsdale. Three people detained; police have information on more suspects. Residents of the 3600-3700 block of Hubbard and West Broadway: shelter in place until about 10:30 pm.",
+  "instruction": "Stay inside, lock doors and keep away from windows. Do not go outside until officials say it is safe.",
+  "left_out": [
+   "The police's stated end time of 10 pm: it conflicts with the Sheriff's Office estimate of about 10:30 pm, both reported via the press. I used the Sheriff's Office time because it is the issuer's own and the more cautious of the two."
+  ],
+  "note_for_reviewer": "The input gives two end times reported via the press (10 pm from police, about 10:30 pm from the Sheriff's Office). Please confirm the current shelter end time. I set certainty to Likely, not Observed, because the armed element is described only as 'possible'."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1301,
+  "output_tokens": 1263,
+  "at": "2026-11-10T10:54:36Z"
+ }
+}

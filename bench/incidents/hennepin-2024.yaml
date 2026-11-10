@@ -1,0 +1,115 @@
+id: hennepin-2024
+heldout: true
+title: "One-block shelter-in-place warning in Robbinsdale went out over EAS to the whole Twin Cities broadcast region"
+date: "2024-04-22"
+jurisdiction: "United States, Minnesota (Hennepin County Sheriff's Office, Emergency Communications Facility; IPAWS)"
+sources: [MN-2024-HCSO, MN-2024-CBS, MN-2024-KSTP]
+
+summary: >-
+  Robbinsdale police, responding to a possible armed domestic situation, needed residents of one block of West
+  Broadway to shelter in place. The Hennepin County Sheriff's Office Emergency Communications Facility meant to
+  send a Wireless Emergency Alert to that small area. It went out instead as an Emergency Alert System alert,
+  which aired on most broadcast television stations in the Twin Cities metro region. The Sheriff's Office put
+  it down to human error at a step it has identified in the alert process.
+
+timeline:
+  - {t: "2024-04-22 (evening)", event: "Robbinsdale police respond to a report of a possible armed domestic situation in the 3600 block of West Broadway; three people are detained and a shelter-in-place order is requested for the block.", source: MN-2024-CBS}
+  - {t: "2024-04-22T19:34-05:00", event: "A shelter-in-place warning is issued beyond its intended area: sent as an EAS alert instead of a WEA, it airs on most Twin Cities broadcast TV stations.", source: MN-2024-HCSO}
+  - {t: "2024-04-22 (evening)", event: "HCSO posts an update on social media and to news media saying the alert went beyond its intended radius in error.", source: MN-2024-HCSO}
+  - {t: "2024-04-22T22:33-05:00", event: "The shelter-in-place warning for the intended area is cleared.", source: MN-2024-HCSO}
+  - {t: "2024-04-23T11:44-05:00", event: "HCSO media release 'Update on Erroneous Shelter in Place Alert' gives the cause as human error at the Emergency Communications Facility.", source: MN-2024-HCSO}
+
+inputs:
+  event_text: >-
+    Police activity: possible armed domestic situation at the 3600 block of West Broadway, Robbinsdale; three people
+    detained, information on additional suspects. Residents of the 3600-3700 block of Hubbard and West Broadway
+    should shelter in place until about 10 to 10:30 pm (police said 10 pm, the Sheriff's Office about 10:30 pm, per the press).
+  event_text_basis: "HCSO media release of 23 April 2024 (intended area, clearance) and CBS Minnesota (police account of the incident and the until-time). Paraphrased by us."
+  issuer: "Hennepin County Sheriff's Office, Emergency Communications Facility (for Robbinsdale Police Department)"
+  environment: live
+  intended_status: Actual
+  intended_channel: "WEA only (IPAWS), not EAS"
+  requested_area:
+    areaDesc: "3600-3700 block of Hubbard and West Broadway, Robbinsdale, Minnesota"
+    areaDesc_basis: "HCSO: 'This warning was intended only for the 3600-3700 block of Hubbard and West Broadway in Robbinsdale.'"
+
+real_message:
+  text_verbatim: unknown
+  text_verbatim_note: "Not quoted by HCSO or the press reports we fetched. CBS Minnesota says residents received a message instructing them to shelter in place due to police activity in Robbinsdale."
+  status: Actual
+  msgType: Alert
+  scope: Public
+  sender: "Hennepin County Sheriff's Office Emergency Communications Facility"
+  category: Security
+  event: "Shelter in Place Warning"
+  urgency: Immediate
+  severity: Severe
+  certainty: Likely
+  language: en-US
+  headline: "Shelter in place"
+  description: "Police activity in Robbinsdale."
+  instruction: "Shelter in place."
+  areaDesc: unknown
+  area:
+    areaDesc: "unknown"
+    note: "Sent as EAS, so it aired on most broadcast TV stations in the Twin Cities metro region (HCSO); CBS Minnesota reports it reached the entire county. The CAP area and geocodes as sent are not public."
+  approvals_count: unknown
+  approvals_basis: "HCSO: the staff member who sent it is FEMA-certified to send alerts. No second approver is mentioned."
+  signed: unknown
+  references: null
+  reconstructed_fields: [category, event, urgency, severity, certainty, headline, description, instruction, language]
+  reconstruction_note: >-
+    The send time, intended area, wrong channel and cause come from the HCSO release. The message wording and all
+    CAP values are our reconstruction from the press description; the IPAWS CAP message, including any area
+    polygon, SAME geocodes and channel-blocking parameters, is not public.
+
+corrections: []
+corrections_note: "No corrective alert over EAS or WEA was found. HCSO says it clarified the error 'on social media and directly to news media'. How the warning was 'cleared' at 22:33 is not stated."
+
+real_outcome:
+  text: >-
+    A shelter-in-place warning meant for one block in Robbinsdale aired on most broadcast TV stations across the
+    Twin Cities metro region on a Monday evening, and was reported as reaching all of Hennepin County.
+  source: MN-2024-HCSO
+
+official_finding:
+  body: "Hennepin County Sheriff's Office (HCSO)"
+  document: "Media release 'Update on Erroneous Shelter in Place Alert', 23 April 2024 (Hennepin County GovDelivery bulletin)"
+  finding_status: official-verbatim
+  quote: "This warning was meant to be sent to the target area of Robbinsdale by Wireless Emergency Alert (WEA), which is a component of the Integrated Public Alert and Warning System (IPAWS). Instead it was sent as an Emergency Alert System (EAS) alert, which resulted in the alert being aired on most broadcast television stations in the Twin Cities Metro region."
+  source: MN-2024-HCSO
+  further_quotes:
+    - rule: R3
+      quote: "Last night at 7:34 pm, a shelter in place warning was issued beyond its intended area. This warning was intended only for the 3600-3700 block of Hubbard and West Broadway in Robbinsdale."
+      locator: "HCSO media release, first paragraph"
+    - rule: R3
+      quote: "This occurred because of human error at HCSO's Emergency Communications Facility (ECF). The staff member who sent the alert is certified by the Federal Emergency Management Agency (FEMA) to send these alerts, and HCSO has identified the step in the alert process that resulted in the mistake."
+      locator: "HCSO media release, third paragraph"
+
+expected_rules: [R3]
+expected_rules_basis: >-
+  R3 (the area sent is the area requested): the finding is that a warning requested for one block reached a whole
+  broadcast region because it went out over EAS instead of WEA. The wrong channel is how the area grew; R3 is the
+  rule that compares what was requested with what was sent.
+
+unknowns:
+  - "The alert text, CAP area (polygon or SAME/FIPS codes) and any channel parameters as sent."
+  - "Whether the alert also went out over WEA to the intended block, or only over EAS."
+  - "Which step in the alert software caused the mistake and what fix was proposed to the developer."
+  - "Whether a second person reviewed the alert before sending."
+  - "How the warning was cleared at 22:33 (cancel message, expiry or other)."
+
+framing_note: >-
+  The Sheriff's Office says human error and names no software fault, while also planning to suggest a software
+  fix to make the error less likely. A gate that only sees the CAP polygon may miss this if the polygon was right
+  and only the EAS routing was wrong; R3 can catch it only if the dissemination channel or the geocodes that drive
+  EAS are part of the area it compares. No corrective alert was sent, so R10 does not apply.
+
+source_urls:
+  MN-2024-HCSO: "https://content.govdelivery.com/accounts/MNHENNE/bulletins/3983bce"
+  MN-2024-CBS: "https://www.cbsnews.com/minnesota/news/robbinsdale-police-shelter-in-place-alert-hennepin-county/"
+  MN-2024-KSTP: "https://kstp.com/kstp-news/top-news/robbinsdale-shelter-in-place-alert-went-out-to-all-of-hennepin-county-by-accident-police-say/"
+source_hashes:
+  MN-2024-HCSO: {sha256: "bad6f97d965dbfa9b157a15e61fdd8ed578e7293b10116596ef17e7ee751bde8", fetched: "2026-11-10", note: "Bulletin sent 04/23/2024 11:44 AM CDT."}
+  MN-2024-CBS: {sha256: "8eaffd180bc3f5b5692ead3c697133d4c9961cc06b7c2b7f71f0870344fa4ce5", fetched: "2026-11-10", note: "Updated 23 April 2024 12:18 PM CDT; dynamic page, hash may differ on refetch."}
+  MN-2024-KSTP: {sha256: "3937e29b4147701f698b6fa1a487336a84e40769eccaa26987629f4a441f8632", fetched: "2026-11-10", note: "Press context (one-block radius, police account); dynamic page, hash may differ on refetch."}

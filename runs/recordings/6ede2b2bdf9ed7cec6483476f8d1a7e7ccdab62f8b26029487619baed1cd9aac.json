@@ -1,0 +1,33 @@
+{
+ "key": "6ede2b2bdf9ed7cec6483476f8d1a7e7ccdab62f8b26029487619baed1cd9aac",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Ministry of Civil Defence & Emergency Management (via its service provider)\": {\n   \"name\": \"Ministry of Civil Defence & Emergency Management (via its service provider)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"None: a restricted test environment / select testing group, not a public area\",\n  \"codes\": [],\n  \"drawn_for_event\": \"nz-ema-test-2017\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Ministry of Civil Defence & Emergency Management (via its service provider)\",\n  \"status\": \"Test\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"unknown\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Emergency Mobile Alert test\",\n  \"severity\": \"Unknown\",\n  \"areaDesc\": \"unknown\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"unknown\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP 1.2 status Test Exercise Draft restricted scope addresses",
+   "alert sender authorization issuer register area validation",
+   "CAP msgType Update Cancel references correction previous alert"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1055,
+  "output_tokens": 72,
+  "at": "2026-11-10T10:55:02Z"
+ }
+}

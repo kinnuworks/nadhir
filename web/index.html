@@ -162,7 +162,7 @@
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Real failures</span>
       <h2 id="replaysH">Real alert failures, replayed. <span class="t-muted">The official finding is the answer key.</span></h2>
-      <p class="lead" id="replaysLead">Each message was rebuilt from public reports and run through the rules as it was sent. Held-out cases were added after the rules were frozen, picked and mapped by someone who did not write the rules.</p>
+      <p class="lead" id="replaysLead">Each message was rebuilt from public reports and run through the rules as it was sent. Seven were held out: added after the rules were frozen, and picked by someone who did not write them. The misses show what twelve rules don't cover.</p>
     </div>
     <div class="stats" id="benchStats"></div>
     <div id="bench" class="replays" role="table" aria-label="Replay results"><p class="t-small">Loading the replays…</p></div>
@@ -336,7 +336,7 @@
       <details><summary>Who wrote the faults and answer keys?</summary><p>The 30-fault set and its matching terms are ours. The 24 pre-registered faults were written by a separate AI agent that saw only the drafts, and committed before the run. They were not written by alerting professionals. The replays use the investigators' own findings as the answer key.</p></details>
       <details><summary>Are the reviewer agents the real institutions?</summary><p>No. They stand in for roles. Two models play the six agents: one drafts and translates, another reviews.</p></details>
       <details><summary>What about the UAE specifics?</summary><p>The issuer register, target zones and signing keys are demo stand-ins. TDRA's 2019 UAE-Alert specification is the primary text for handset behaviour; the 2015 handset rules come from a compliance firm's summary.</p></details>
-      <details><summary>What do the misses mean?</summary><p>R11 only checks AI-written text, so a wrong human template (Taiwan 2024) gets past the rules. The met office reviewer caught it. A grounding check should run on every alert. Every held-out result is shown as it came out, misses included.</p></details>
+      <details><summary>What do the misses mean?</summary><p>Five real failures get past the frozen rules. Taiwan 2024 and the Netherlands 2019 put wrong facts in human-written text, which R11 does not check. The UK 2023 test had a Welsh word broken by an autocorrect, which R9 does not check because it only covers machine translation. Minnesota 2024 went out on the wrong channel, and New Zealand 2017 test alerts left their test group; no rule looks at either. The agents caught Taiwan only. We kept the rules frozen and show every result as it came out.</p></details>
     </div>
   </div>
 </section>

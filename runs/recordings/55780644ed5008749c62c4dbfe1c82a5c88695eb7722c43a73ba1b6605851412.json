@@ -1,0 +1,144 @@
+{
+ "key": "55780644ed5008749c62c4dbfe1c82a5c88695eb7722c43a73ba1b6605851412",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"National test of the UK Emergency Alerts system. Approved English text: \\\"This is a test of Emergency Alerts, a new UK government service that will warn you if there’s a life-threatening emergency nearby. In a real emergency, follow the instructions in the alert to keep yourself and others safe. Visit gov.uk/alerts for more information. This is a test. You do not need to take any action.\\\" A Welsh version of the same text is required for the bilingual alert in Wales.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Test\",\n  \"event\": \"National test of Emergency Alerts\",\n  \"severity\": \"Unknown\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"Emergency Alerts test\",\n  \"description\": \"\",\n  \"instruction\": \"\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 status Test exercise alert requirements', 'severity urgency certainty Unknown values CAP', 'alert description instruction required fields test message'):\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAP12#0084] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nnote cap. alert. note. text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> “Exercise” and <msgType> “Error”.\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0065] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Immediate\" – Responsive action should be taken immediately \"Expected\" – Responsive action should be taken soon (within next hour) \"Future\" – Responsive action should be taken in the near future \"Past\" – Responsive action is no longer required \"Unknown\" – Urgency not known\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[IPAWS-PROFILE#0049] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nThe <description> and <instruction> elements may refer to future events or actions.. expires REQUIRED. description Messages SHOULD have meaningful values for the <description>. The content in <description> may be truncated and therefore it is recommended that essential information be addressed first.\n\n[TS23041#0278] 3GPP TS 23.041 Technical realization of Cell Broadcast Service (CBS), version 18.3.0 Release 18 (ETSI TS 123 041 V18.3.0) (p.62):\nWarning typeValue 0000000 0000001 0000010 0000011 0000100 0000101-1111111 61 ETSI TS 123 041 V18.3.0 (2024-02) Warning type Earthquake Tsunami Earthquake and Tsunami Test Other Reserved for future use The fields for emergency user alert and popup indications are type binary. They are used to command mobile terminals to activate emergency user alert and message popup in order to alert the users upon the reception of ETWS primary notification (e.g. paging message). The codings for the fields are shown below: Field Value Instruction to Terminal\n\n[CAPCP#0140] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #5. <responseType> is strongly recommended, when applicable):\nExample: Element: <responseType> Use: Recommended Type: Policy Value: Description: It is recommended that alert message issuers include response types when applicable, along with a corresponding <instruction> value. Using <responseType> allows for automated dissemination in all included languages of the actions the end user is expected to take when instructions may not be available, or not available in all languages. Notes: Example: <info> ... <responseType>Shelter</responseType> <responseType>Monitor</responseType> <instruction>Take cover as threatening conditions approach and monitor local media broadcasts for further updates</instruction> ... </info>",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert matches the bulletin on the hazard facts. It is a national test of the UK Emergency Alerts system, and status is Test. It reports no hazard, time or place, and no unverified report. Severity, urgency and certainty are all Unknown, which does not overstate or understate anything for a test with no real hazard.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Description and instruction are empty, so the approved bulletin wording ('This is a test. You do not need to take any action.') is not carried in the alert text. The headline and status still identify it as a test. This is a completeness matter for the drafter or approvers, not a hazard-fact error.",
+    "searched_for": "CAP 1.2 requirement that description and instruction be populated; both are OPTIONAL in CAP 1.2, so no clause makes the omission an error."
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4317,
+  "output_tokens": 714,
+  "at": "2026-11-10T10:57:24Z"
+ }
+}

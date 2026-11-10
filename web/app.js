@@ -251,6 +251,7 @@ fetch("/web/results/bench.json").then((r) => r.json()).then((b) => {
   const heldRules = held.filter((i) => i.match).length;
   const both = all.filter((i) => i.match || (i.agents_on_real || []).some((x) => i.expected.includes(x))).length;
   $("pf-replays").innerHTML = `${rules} <span>of ${all.length}</span>`;
+  $("pf-replays-l").textContent = `real alert failures caught by the rules, scored against the official finding. Held out: ${heldRules} of ${held.length}.`;
   $("benchStats").innerHTML = [
     [rules, all.length, "official findings matched by the rules alone"],
     [heldRules, held.length, "held-out failures caught by the frozen rules"],
@@ -263,10 +264,10 @@ fetch("/web/results/bench.json").then((r) => r.json()).then((b) => {
       <summary>
         <span class="replay__what" role="cell"><span class="replay__year">${esc(i.date.slice(0, 4))}${i.heldout ? '<em>held out</em>' : ""}</span><b>${esc(i.title)}</b></span>
         <span class="replay__rules" role="cell"><span class="replay__lbl">Rules</span>${chips(i.as_sent.failed)}</span>
-        <span role="cell"><span class="replay__lbl">Finding</span>${i.match ? '<span class="pill pill--pass">yes</span>' : '<span class="pill pill--fail">missed</span>'} <span class="t-micro">key ${esc(i.expected.join(", ") || "none")}</span></span>
+        <span role="cell"><span class="replay__lbl">Finding</span>${i.match ? '<span class="pill pill--pass">yes</span>' : `<span class="pill pill--fail">${i.not_counted && i.not_counted.rules ? "not counted" : "missed"}</span>`} <span class="t-micro">key ${esc(i.expected.join(", ") || "none")}</span></span>
         <span role="cell"><span class="replay__lbl">Agents</span>${i.agents_on_real ? (i.agents_on_real.length ? chips(i.agents_on_real) : '<span class="pill pill--fail">missed</span>') : "not run"}</span>
       </summary>
-      <div class="replay__more"><p>${esc(i.outcome)}</p><blockquote>“${esc(i.finding.quote)}”<cite>${esc(i.finding.body)}</cite></blockquote></div>
+      <div class="replay__more"><p>${esc(i.outcome)}${i.not_counted ? Object.values(i.not_counted).map((t) => `<span class="nc">Not counted: ${esc(t)}</span>`).join("") : ""}</p><blockquote>“${esc(i.finding.quote)}”<cite>${esc(i.finding.body)}</cite></blockquote></div>
     </details>`).join("") + `<p class="t-small bench-note">${esc(b.note || "")} Open a row for the official finding.</p>`;
   observeReveals($("benchStats"));
 }).catch(() => { $("bench").innerHTML = '<p class="t-small">Replay results not built yet.</p>'; });

@@ -73,14 +73,29 @@ def defaults(inc: dict, ctx: dict) -> dict:
     return d
 
 
+PLACEHOLDERS = {"unknown", "not public"}
+
+
+def _clean(v):
+    """A field the public record leaves blank is written 'unknown' in the incident files. It must never reach
+    the rebuilt message as text: a blank field is omitted, so its CAP default (or the alert's favour) applies."""
+    if isinstance(v, str) and v.strip().lower() in PLACEHOLDERS:
+        return None
+    if isinstance(v, dict):
+        return {k: _clean(x) for k, x in v.items()}
+    return v
+
+
 def _check_message(inc, d, m, ident, msg_type="Alert", status=None):
     sender = d["sender"]
-    area = _area(m.get("area") or inc["real_message"].get("area") or {"areaDesc": m.get("areaDesc")})
+    m = _clean(m)
+    rm = _clean(inc["real_message"])
+    area = _area(m.get("area") or rm.get("area") or {"areaDesc": m.get("areaDesc")})
     req0 = _area(d.get("requested_area"))
     if not (area["geocodes"] or area["polygons"]):
         # area encoding not public: assume it matched the request (in the alert's favour)
-        area = {**area, "geocodes": req0["geocodes"] or [["RECORD", "area-not-public"]], "polygons": req0["polygons"]}
-    rm = inc["real_message"]
+        area = {**area, "geocodes": req0["geocodes"] or [["RECORD", "area-not-public"]], "polygons": req0["polygons"],
+                "areaDesc": area["areaDesc"] or req0["areaDesc"]}
     info = {"language": m.get("language") or rm.get("language") or "en-US",
             "category": [m.get("category") or rm.get("category") or "Other"],
             "event": m.get("event") or rm.get("event") or "Alert",
@@ -256,10 +271,17 @@ def main(argv: list[str]) -> int:
         row["heldout"] = bool(inc.get("heldout"))
         if run_ai:
             row["agents_on_real"] = agents_on_real(inc, ctx, sent["xml"])
+        nc = ctx.get("not_counted") or {}
+        if nc:
+            row["not_counted"] = nc
+        if nc.get("rules"):
+            row["match"], row["caught"], row["missed"] = False, [], sorted(expected)
+        if nc.get("agents") and row.get("agents_on_real"):
+            row["agents_on_real"]["caught"] = []
         if run_ai and not ctx.get("skip_ai"):
             row["ai"] = ai_arm(incident_scenario(inc, ctx), ctx.get("runs", 1), institutions_on=False)
         rows.append(row)
-        print(f"{inc['id']}: as sent {sent['decision']} {sent['failed']} expected {expected} match={match}"
+        print(f"{inc['id']}: as sent {sent['decision']} {sent['failed']} expected {expected} match={row['match']}"
               + (f" agents caught {row['agents_on_real']['caught']}" if row.get("agents_on_real") else ""))
     scen = []
     if run_ai:
@@ -276,7 +298,8 @@ def main(argv: list[str]) -> int:
     WEB.mkdir(parents=True, exist_ok=True)
     (OUT / "results.json").write_text(json.dumps(result, ensure_ascii=False, indent=1), encoding="utf-8")
     slim = {**result, "incidents": [{**r, "as_sent": {k: r["as_sent"][k] for k in ("decision", "failed")},
-                                     "agents_on_real": (r.get("agents_on_real") or {}).get("caught")} for r in rows],
+                                     "agents_on_real": (r.get("agents_on_real") or {}).get("caught"),
+                                     "not_counted": r.get("not_counted")} for r in rows],
             "scenarios": [{k: x[k] for k in ("id", "title", "label", "summary")} for x in scen]}
     (WEB / "bench.json").write_text(json.dumps(slim, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"official finding matched: {result['matched']}/{result['total']}")

@@ -1,0 +1,148 @@
+{
+ "key": "465a2ba808195a86ec6b517efce534b1a9da1f5abdb83af45caf99dde1f70cf1",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"None. No hazard. The provider was testing the Emergency Mobile Alert technology ahead of its launch at the end of 2017; the messages were meant only for a select testing group in a restricted test environment.\"\n  }\n ],\n \"context\": \"EXERCISE / DRILL\",\n \"alert_english\": {\n  \"status\": \"Test\",\n  \"event\": \"Emergency Mobile Alert test\",\n  \"severity\": \"Unknown\",\n  \"urgency\": \"Unknown\",\n  \"certainty\": \"Unknown\",\n  \"headline\": \"unknown\",\n  \"description\": \"unknown\",\n  \"instruction\": \"unknown\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP status Test exercise alert message requirements', 'accidental test alert sent to public regulator report', 'CAP severity urgency certainty Unknown values hazard-free test'):\n\n[X1303BIS#0056] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.17):\nnote cap.alert.note.text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> \"Exercise\" and <msgType> \"Error\". references cap.alert.references.group\n\n[CAP12#0084] Common Alerting Protocol Version 1.2 (3.2.1 \"alert\" Element and Sub-elements):\nnote cap. alert. note. text The text describing the purpose or significance of the alert message (OPTIONAL) The message note is primarily intended for use with <status> “Exercise” and <msgType> “Error”.\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[FL-2023-FDEM#0002] Florida Division of Emergency Management Issues Updates on Emergency Response in Florida (Florida Division of Emergency Management Issues Updates on Emergency Response in Florida):\nFlorida Division of Emergency Management Issues Updates on Emergency Response in Florida In response to the accidental alert Florida Division of Emergency Management (FDEM) issued this tweet and statement: Emergency alert testing directives originate from the federal government. This morning's test was supposed to be a test of televised emergency alerts, which the Florida Association of Broadcasters normally schedules for very early in the morning because that is when the fewest people are watching TV (to minimize disruption). Florida contracts with a company called EverBridge to provide the technical coding and instructions required to push out emergency alerts. Everbridge sent the wrong technical specifications for this alert – which ultimately pushed the alert over the Wireless Emergency Alert system (cellphones).\n\n[IPAWS-OPEN#0024] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.21):\n1,324 • WEAs sent by NCMEC 1,357 • WEAs sent by state/local 13,118 • Total Emergency Alert System (EAS) messages sent 11,920 • EAS, including tests, sent by state/local 1,198 • EAS non-test sent by state/local\n\n[FCC-HI-2018#0149] Report and Recommendations: Hawaii Emergency Management Agency January 13, 2018 False Alert (p.25):\nand use language such as “This is a test.” The script and content for actual emergency alerts versus test alerts should be clearly distinguishable.  Develop, in a manner consistent with the Commission’s rules, protocols governing tests, uses, and corrections to alerts that are sent to the public over the EAS and WEA.\n\n[FL-2023-WGCU#0003] Official explains why Florida was awakened Thursday by alert (Florida Association of Broadcasters statement, as quoted):\nThe State of Florida's Division of Emergency Management Watch Office sent out the incorrect test, which sent the wrong alert.\n\n[X1303BIS#0068] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Extreme\" – Extraordinary threat to life or property \"Severe\" – Significant threat to life or property \"Moderate\" – Possible threat to life or property \"Minor\" – Minimal to no known threat to life or property \"Unknown\" – Severity unknown\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0065] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.19):\n(1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Immediate\" – Responsive action should be taken immediately \"Expected\" – Responsive action should be taken soon (within next hour) \"Future\" – Responsive action should be taken in the near future \"Past\" – Responsive action is no longer required \"Unknown\" – Urgency not known\n\n[CAP12#0101] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\n“Moderate” - Possible threat to life or property “Minor” – Minimal to no known threat to life or property “Unknown” - Severity unknown certainty cap. alertInfo. certainty. code The code denoting the certainty of the subject event of the alert message (REQUIRED)",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "agree",
+  "summary": "The alert says nothing that goes beyond the bulletin. The only input states there is no hazard and that this was a technology test. The alert is marked status Test, the event is named as an Emergency Mobile Alert test, and severity, urgency and certainty are all Unknown, so no hazard, time, place or severity is asserted, and no unverified report appears. Whether the headline, description and instruction should be filled in with plain test wording is a content and wording matter outside hazard-fact fidelity, so I do not object.",
+  "objections": [],
+  "no_basis": [
+   {
+    "concern": "Headline, description and instruction are all just 'unknown'. This may be unhelpful to recipients, but it adds no hazard claim and is not a hazard-fact mismatch.",
+    "searched_for": "Clause requiring hazard-fact consistency or a minimum content for Test-status alerts"
+   },
+   {
+    "concern": "Severity, urgency and certainty are Unknown rather than a lower value such as Minor, which could arguably better reflect 'no hazard'. Unknown does not overstate anything.",
+    "searched_for": "Clause on severity, urgency and certainty values for a hazard-free test"
+   }
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4088,
+  "output_tokens": 387,
+  "at": "2026-11-10T10:55:08Z"
+ }
+}

@@ -1,0 +1,134 @@
+{
+ "key": "494f7f75fe2da0c97b5bee286effed7436d66a2864579259f677894bfce53cc9",
+ "system": "You draft public warning messages for a national alerting authority.\nYou receive event inputs (each marked verified or unverified) and the issuing context.\nWrite one alert in English as CAP 1.2 fields.\n\n- Use only facts present in the verified inputs. Do not add places, numbers, times or hazards that are not there.\n- Leave unverified inputs out of the alert, and say why in `left_out`.\n- `description` is the text shown on the phone by cell broadcast: plain words, under 280 characters, hazard + where + until when, if known.\n- `instruction` is the protective action in one or two short sentences.\n- Pick CAP values honestly: status from the context (Actual for a real event, Exercise for a drill), severity and urgency from the inputs.\n- `note_for_reviewer` is one or two sentences for the human approver: what you were unsure about.",
+ "user": "Issuer: Politie (on behalf of the Ministry of Justice and Security)\nContext: real event\nTarget area (chosen by the operator): Netherlands (national NL-Alert)\n\nEvent inputs:\n1. [verified; incident timeline] KPN telephone network fault since 15:34: 112 and the police number 0900-8844 are unreachable nationwide. Police technicians have opened two alternative 088 numbers that route around the KPN network; the police and the ministry have each checked that calls to these numbers reach the 112 centre. Police Twitter account @Politiemelding is available.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "status": {
+    "type": "string",
+    "enum": [
+     "Actual",
+     "Exercise",
+     "System",
+     "Test",
+     "Draft"
+    ]
+   },
+   "msgType": {
+    "type": "string",
+    "enum": [
+     "Alert",
+     "Update",
+     "Cancel"
+    ]
+   },
+   "category": {
+    "type": "string",
+    "enum": [
+     "Geo",
+     "Met",
+     "Safety",
+     "Security",
+     "Rescue",
+     "Fire",
+     "Health",
+     "Env",
+     "Transport",
+     "Infra",
+     "CBRNE",
+     "Other"
+    ]
+   },
+   "event": {
+    "type": "string"
+   },
+   "urgency": {
+    "type": "string",
+    "enum": [
+     "Immediate",
+     "Expected",
+     "Future",
+     "Past",
+     "Unknown"
+    ]
+   },
+   "severity": {
+    "type": "string",
+    "enum": [
+     "Extreme",
+     "Severe",
+     "Moderate",
+     "Minor",
+     "Unknown"
+    ]
+   },
+   "certainty": {
+    "type": "string",
+    "enum": [
+     "Observed",
+     "Likely",
+     "Possible",
+     "Unlikely",
+     "Unknown"
+    ]
+   },
+   "headline": {
+    "type": "string"
+   },
+   "description": {
+    "type": "string"
+   },
+   "instruction": {
+    "type": "string"
+   },
+   "left_out": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   },
+   "note_for_reviewer": {
+    "type": "string"
+   }
+  },
+  "required": [
+   "status",
+   "msgType",
+   "category",
+   "event",
+   "urgency",
+   "severity",
+   "certainty",
+   "headline",
+   "description",
+   "instruction",
+   "left_out",
+   "note_for_reviewer"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "status": "Actual",
+  "msgType": "Alert",
+  "category": "Infra",
+  "event": "Emergency number 112 outage",
+  "urgency": "Immediate",
+  "severity": "Severe",
+  "certainty": "Observed",
+  "headline": "112 and police number 0900-8844 unreachable nationwide",
+  "description": "A KPN telephone network fault since 15:34 means emergency number 112 and police number 0900-8844 cannot be reached anywhere in the Netherlands. It is not yet known when this will be fixed.",
+  "instruction": "In an emergency, call [INSERT 088 NUMBER 1] or [INSERT 088 NUMBER 2] instead of 112. Updates are posted on Twitter at @Politiemelding.",
+  "left_out": [
+   "No unverified inputs were received, so nothing was left out for that reason.",
+   "The two alternative 088 phone numbers are not in the input. I did not make them up. Placeholders mark where they go."
+  ],
+  "note_for_reviewer": "Do not send this until the two verified 088 numbers replace the placeholders. Without them the instruction gives people no usable way to reach the 112 centre. No end time was given, so the message says it is not yet known."
+ },
+ "meta": {
+  "model": "claude-opus-5-5",
+  "input_tokens": 1266,
+  "output_tokens": 1093,
+  "at": "2026-11-10T10:55:00Z"
+ }
+}

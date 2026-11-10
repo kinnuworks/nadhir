@@ -1,0 +1,33 @@
+{
+ "key": "8317b49f6a7eaea51229d28fa018207bb53afe1b9e4063bfbe081feddad77552",
+ "system": "You are the Network operator and regulator reviewer, standing in for the telecom regulator and mobile operators (cell broadcast delivery). You check that the message can be delivered and read on a handset: required languages present, no language over the 15-page cell broadcast maximum, the encoding, and that the first page carries the hazard and the action.\nYou see only each language's phone text with its character count, encoding and page count, and the profile's required languages. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"profile\": \"GENERIC\",\n \"required_languages\": [],\n \"handset_spec\": null,\n \"recorded_gaps\": [],\n \"phone_text\": [\n  {\n   \"language\": \"en\",\n   \"text\": \"Police activity in Robbinsdale.\",\n   \"characters\": 31,\n   \"encoding\": \"GSM-7\",\n   \"pages\": 1\n  }\n ]\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "3GPP cell broadcast page limit GSM-7 UCS-2 encoding",
+   "cell broadcast first page hazard and protective action guidance",
+   "FCC report wireless emergency alert message clarity failures"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 684,
+  "output_tokens": 77,
+  "at": "2026-11-10T10:56:49Z"
+ }
+}

@@ -1,0 +1,163 @@
+{
+ "key": "2a5e2f2e4f0a4b38d04cb0863fb5e5324aa8eba23a281b56e1061405fb39ae31",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Politie (on behalf of the Ministry of Justice and Security)\": {\n   \"name\": \"Politie (on behalf of the Ministry of Justice and Security)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Netherlands (national NL-Alert)\",\n  \"codes\": [],\n  \"drawn_for_event\": \"nl-alert-2019\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Politie (on behalf of the Ministry of Justice and Security)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Infra\"\n  ],\n  \"event\": \"Emergency number 112 unavailable (telephone network outage)\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Nederland (national)\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Landelijke storing KPN: 112 niet bereikbaar.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 sender authorization issuer register status Actual', 'alert area must match requested area geocode polygon', 'cell broadcast national alert issuing authority rules'):\n\n[CAPAU#0044] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.12):\n<alert> ... <sender>example@dfes.wa.gov.au</sender> <info> <senderName>Western Australia Police </senderName> ... </alert> status REQUIRED Notes: Technical 1) Value of “Actual” SHALL be used when messages are intended for public dissemination. Example: CAP v1.2 Standard\n\n[CAPCP#0110] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nExample: (The first Alert message with a 3 hour expires time) <alert ... > <identifier>ABC-7</identifier> <sender>A@ca</sender> <sent>2008-01-01T01:00:00-00:00</sent> <status>Actual</status> <msgType>Alert</msgType> ... <references></references> <info> ... <expires>2008-01-01T04:00:00-00:00</expires> ... </info> ... </alert> (The subsequent “Update” with a 3 hour expires time referencing the first)\n\n[CAPCP#0111] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-8</identifier> <sender>A@ca</sender> <sent>2008-01-01T02:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00</references> <info> ... <expires>2008-01-01T05:00:00-00:00</expires> ... </info> ... </alert> (Another subsequent Update with a 3 hours expires time referencing the first two)\n\n[CAPCP#0112] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\n<alert ... > <identifier>ABC-9</identifier> <sender>A@ca</sender> <sent>2008-01-01T03:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-7,2008-01-01T01:00:00-00:00 A@ca,ABC-8,2008-01-01T02:00:00-00:00</references> <info> ... <expires>2008-01-01T06:00:00-00:00</expires> ... </info> ... </alert> (A further subsequent Update with a 3 hours expires time referencing the most recent two as the earliest one has expired and should not be playing anymore for two reasons...1) it has been superseded, or 2) it has expired) <alert ... > <identifier>ABC-10</identifier> <sender>A@ca</sender> <sent>2008-01-01T04:00:00-00:00</sent> <status>Actual</status> <msgType>Update</msgType> ... <references>A@ca,ABC-8,2008-01-01T02:00:00-00:00 A@ca,ABC-9,2008-01-01T03:00:00-00:00</references> <info> ... <expires>2008-01-01T07:00:00-00:00</expires> ... </info> ... </alert>\n\n[CAP12#0131] Common Alerting Protocol Version 1.2 (3.2.4 \"area\" Element and Sub-elements):\n(2) MAY contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[FCC-16-127#0688] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.119):\nA Participating CMS Provider must transmit any Alert Message that is specified by a geocode, circle, or polygon to an area not larger than the provider's approximation of coverage for the Counties or County Equivalents with which that geocode, circle, or polygon intersects that best approximates the specified geocode, circle, or polygon. If, however, the Participating CMS Provider cannot broadcast the Alert Message to an area that best approximates the specified geocode, circle, or polygon, a Participating CMS Provider may transmit an Alert Message to an area not larger than the propagation area of a single transmission site. If, however, the propagation area of a provider's transmission site exceeds a single County or County Equivalent, a Participating CMS Provider may transmit an Alert Message to an area not exceeding the propagation area. (b) Upon request from an emergency management agency, a Participating CMS Provider will disclose information regarding their capabilities for geo-targeting Alert Messages. A Participating CMS Provider is only required to disclose this information to an emergency management agency insofar as it would pertain to Alert Messages initiated by that emergency management agency, and only so long as the emergency management agency offers confidentiality protection at least equal to that provided by the federal FOIA. 10. Add a new Section 10.480: § 10.480 Language support.\n\n[CAPCP#0122] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #1. Preferential treatment of <polygon> and <circle>):\n</geocode> ... </area> </info> The <polygon> provided is a more accurate representation of the alert area than is the combination of boundary files associated with the <geocode> values included in the alert.\n\n[X1303BIS#0095] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.25):\nNotes or value domain (1) Multiple occurrences permitted, in which case the target area for the <info> block is the union of all the included <area> blocks. (2) May contain one or multiple instances of <polygon>, <circle> or <geocode>. If multiple <polygon>, <circle> or <geocode> elements are included, the area described by this <area> block is represented by the union of all the included elements.\n\n[TDRA-TSFS001#0005] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.3):\n2 Scope The Government of the United Arab Emirates developed a National Public Warning Service (UAEAlert) which will use the cell broadcast technology to disseminate warning alerts issued by authorities to the public in times of crisis and therefore is required to have effective, high quality communication methods and systems to meet this need. One of the channels is the mobile networks in the UAE through Cell Broadcast technology. The main scope of this specification is to enable Cell Broadcast service in all mobile devices operating in the UAE mobile networks.\n\n[TDRA-TSFS001#0001] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.1):\nTECHNICAL SPECIFICATION Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) TS FS 001, Version 2.0 Document Date: November 25, 2019 Telecommunications Regulatory Authority (TRA) P O Box 26662, Abu Dhabi, United Arab Emirates (UAE) www.tra.gov.ae\n\n[TDRA-TSFS001#0003] Technical Specification TS FS 001, Version 2.0: Enabling Cell Broadcast for National Public Warning Service (UAE-Alert) (p.2):\nUpdated National Emergency Crisis and Disaster Management Authority comments. TABLE OF CONTENTS 1 GENERAL REQUIREMENTS 3 2 SCOPE 3 3 DEFINITIONS 3 4 TECHNICAL REQUIREMENTS 4 4.1 4.2 4.3 4.4 MOBILE TECHNICAL SPECIFICATION 4 SPECIFICATIONS 4 FEATURE PHONES 5 SMART PHONES 6 5 VALIDITY OF STANDARDS 7 6 EFFECTIVE DATE 7\n\n[ETSI-EUALERT#0025] ETSI TS 102 900 V1.4.1 Emergency Communications (EMTEL); European Public Warning System (EU-ALERT) using the Cell Broadcast Service (p.6):\nUK-ALERT: The national variant of EU-ALERT for the United Kingdom.  FR-ALERT: The national variant of EU-ALERT for France. message identifier: parameter in a Cell Broadcast message that is an indication of the topic NOTE:",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "escalate",
+  "summary": "The sender is in the issuer register with national scope (level 1, all areas, all categories). Status Actual fits a real event on a live console, there is no active alert from a higher authority, and this is a new Alert so no references are needed. The one problem is that the alert area is not a clean match for the requested area. The alert carries no polygons and its only code is a RECORD marker, 'area-not-public', whereas the requested area is a drawn national NL-Alert with empty codes. A person should confirm the national area before this goes out.",
+  "objections": [
+   {
+    "issue": "The alert's target area cannot be verified against the requested area. The alert has no polygon and no geocode, and its only area code is a RECORD marker, 'area-not-public'. The requested area is a drawn national NL-Alert with empty codes. A person must confirm that the intended area is all of the Netherlands.",
+    "field": "codes",
+    "blocking": true,
+    "fix": "Have a person confirm the national target area. Then set a proper area definition (a national geocode or polygon) that matches the requested area instead of the 'area-not-public' marker.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "codes",
+      "quote": "area-not-public"
+     },
+     {
+      "kind": "view",
+      "ref": "requested_area",
+      "quote": "Netherlands (national NL-Alert)"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5193,
+  "output_tokens": 466,
+  "at": "2026-11-10T10:54:44Z"
+ }
+}

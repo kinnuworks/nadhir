@@ -1,0 +1,214 @@
+{
+ "key": "201042a04c033d6f1555f1fbf8e7df8098bb3a8a568442d9a7bb939a4d324254",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"Police activity: possible armed domestic situation at the 3600 block of West Broadway, Robbinsdale; three people detained, information on additional suspects. Residents of the 3600-3700 block of Hubbard and West Broadway should shelter in place until about 10 to 10:30 pm (police said 10 pm, the Sheriff's Office about 10:30 pm, per the press).\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Shelter in Place Warning\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Likely\",\n  \"headline\": \"Shelter in place\",\n  \"description\": \"unknown\",\n  \"instruction\": \"Shelter in place.\"\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 severity urgency certainty definitions', 'alert description instruction must include hazard location time', 'shelter in place alert wording law enforcement incident'):\n\n[CAPCP#0084] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #5. <info> blocks must specify the content language):\n<info> <language>en-CA</language> <category>Met</category> <event>Hurricane</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>Avalon Peninsula</areaDesc> ... </area> </info> <info> <language>fr-CA</language> <category>Met</category> <event>Ouragan</event> <responseType>Monitor</responseType> <urgency>Expected</urgency> <severity>Severe</severity> <certainty>Likely</certainty> ... <area> <areaDesc>péninsule d'Avalon</areaDesc> ... </area> </info>\n\n[FCC-16-127#0104] Wireless Emergency Alerts; Amendments to Part 11 Regarding the Emergency Alert System, Report and Order and FNPRM (FCC 16-127) (p.18):\n88 See 47 CFR § 10.400(b) (further defining each of the elements as follows, “(1) Urgency - The CAP Urgency element must be either Immediate (i.e., responsive action should be taken immediately) or Expected (i.e., responsive action should be taken soon, within the next hour); (2) Severity - The CAP Severity element must be either Extreme (i.e., an extraordinary threat to life or property) or Severe (i.e., a significant threat to life or property); (3) Certainty The CAP Certainty element must be either Observed (i.e., determined to have occurred or to be ongoing) or Likely (i.e., has a probability of greater than 50 percent)”).\n\n[WMO-CAP-GUIDE#0002] Common Alerting Protocol (CAP) (WMO CAP site) (How does CAP work?):\nHow does CAP work? Message Creation: An authorized alerting authority creates a CAP alert message using the XML format. The message includes standardized elements like event type, severity, urgency, certainty, area description, and recommended actions.\n\n[X1303BIS#0069] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.20):\ncertainty cap.alertInfo.certainty.code The code denoting the certainty of the subject event of the alert message (REQUIRED) (1) The <urgency>, <severity>, and <certainty> elements collectively distinguish less emphatic from more emphatic messages. (2) Code Values: \"Observed\" – Determined to have occurred or to be ongoing \"Likely\" – Likely (p > ~50%) \"Possible\" – Possible but not likely (p <= ~50%) \"Unlikely\" – Not expected to occur (p ~ 0) \"Unknown\" – Certainty unknown (3) For backward compatibility with CAP 1.0, the deprecated value of \"Very Likely\" should be treated as equivalent to \"Likely\". audience cap.alertInfo.audience.text The text describing the intended audience of the alert message (OPTIONAL) 12 Notes or value domain\n\n[X1303BIS#0077] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.22):\ndescription cap.alertInfo.description. text The text describing the subject event of the alert message (OPTIONAL) An extended human readable description of the hazard or event that occasioned this message. instruction cap.alertInfo.instruction.text The text describing the recommended action to be taken by recipients of the alert message (OPTIONAL)\n\n[CAPCP#0140] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #5. <responseType> is strongly recommended, when applicable):\nExample: Element: <responseType> Use: Recommended Type: Policy Value: Description: It is recommended that alert message issuers include response types when applicable, along with a corresponding <instruction> value. Using <responseType> allows for automated dissemination in all included languages of the actions the end user is expected to take when instructions may not be available, or not available in all languages. Notes: Example: <info> ... <responseType>Shelter</responseType> <responseType>Monitor</responseType> <instruction>Take cover as threatening conditions approach and monitor local media broadcasts for further updates</instruction> ... </info>\n\n[X1303BIS#0017] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.7):\nStructure of the CAP alert message Each CAP alert message consists of an <alert> segment, which may contain one or more <info> segments, each of which may include one or more <area> and/or <resource> segments. Under most circumstances, CAP messages with a <msgType> value of \"Alert\" should include at least one <info> element. (See the document object model diagram in clause 7.1, below). • <alert> The <alert> segment provides basic information about the current message: its purpose, its source and its status, as well as a unique identifier for the current message and links to any other, related messages. An <alert> segment may be used alone for message acknowledgements, cancellations or other system functions, but most <alert> segments will include at least one <info> segment. • <info> The <info> segment describes an anticipated or actual event in terms of its urgency (time available to prepare), severity (intensity of impact) and certainty (confidence in the observation or prediction), as well as providing both categorical and textual descriptions of the subject event. It may also provide instructions for appropriate response by message recipients and various other details (hazard duration, technical parameters, contact information, links to additional information sources, etc.).\n\n[IPAWS-PROFILE#0049] Common Alerting Protocol, v. 1.2 USA Integrated Public Alert and Warning System Profile Version 1.0 (2 CAP v1.2 IPAWS Profile):\nThe <description> and <instruction> elements may refer to future events or actions.. expires REQUIRED. description Messages SHOULD have meaningful values for the <description>. The content in <description> may be truncated and therefore it is recommended that essential information be addressed first.\n\n[IPAWS-OPEN#0021] Integrated Public Alert and Warning System (FEMA IPAWS Engineering briefing, CAP workshop 2018) (p.19):\nWhen is IPAWS used? https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTtKAp_-DQup5-KO8a_oIyiw3IF5smXvRYMDXzmhh5SSpifzT0oGroUCLQ MISSING Anything public safety officials determine as threat to public safety: ✓ Evacuation ✓ Shelter-In-Place ✓ Law Enforcement Situations ✓ 911 Outage ✓ Road Closure ✓ Chemical Spill/Release ✓ Water Contamination ✓ Emergency Water Distribution Location ✓ Emergency Relief Location ✓ Emergency Shelter Locations ✓ Dam Release Alert ✓ Critical Power Outage ✓ Nuclear Accident ✓ Landslide ✓ Pipe Line Break ✓ Extreme Weather ✓ Flooding ✓ Volcano ✓ Earthquakes ✓ Wildfires ✓ Child Abductions/AMBER\n\n[X1303BIS#0035] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.12):\n6.3.1 Manual origination \"The Incident Commander at an industrial fire with potential of a major explosion decides to issue a public alert with three components: 1) an evacuation of the area within half a mile of the fire; 2) a shelter-in-place instruction for people in a polygon roughly describing a downwind dispersion 'plume' extending several miles downwind and half a mile upwind from the fire;\n\n[CAP12#0094] Common Alerting Protocol Version 1.2 (3.2.2 \"info\" Element and Sub-elements):\nresponseType cap. alertInfo. responseType. code The code denoting the type of action recommended for the target audience (OPTIONAL) (1) Code Values: “Shelter” – Take shelter in place or per <instruction>\n\n[CAP12#0057] Common Alerting Protocol Version 1.2 (2.3.1 Manual Origination):\n2.3.1 Manual Origination The Incident Commander at an industrial fire with potential of a major explosion decides to issue a public alert with three components: a) An evacuation of the area within half a mile of the fire; b) a shelter-in-place instruction for people in a polygon roughly describing a downwind dispersion ‘plume’ extending several miles downwind and half a mile upwind from the fire; and c) a request for all media and civilian aircraft to remain above 2500 feet above ground level when within a half mile radius of the fire.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "The alert does not match the verified bulletin. Description is 'unknown', so the hazard, place and end time are missing. The instruction gives no area or duration. Certainty 'Likely' is lower than the bulletin supports for a shelter order already in effect, and the timing conflict (10 pm vs 10:30 pm) is not stated.",
+  "objections": [
+   {
+    "issue": "Description is the placeholder 'unknown'. The alert never states the hazard (police activity, possible armed domestic situation), the place (3600 block of West Broadway, Robbinsdale; 3600-3700 block of Hubbard and West Broadway) or the time. The headline is also generic.",
+    "field": "description",
+    "blocking": true,
+    "fix": "Replace the description with the verified facts: police activity involving a possible armed domestic situation in the 3600 block of West Broadway, Robbinsdale; three people detained and information on additional suspects. Name the affected blocks (3600-3700 Hubbard and West Broadway).",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "description",
+      "quote": "unknown"
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "possible armed domestic situation at the 3600 block of West Broadway"
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0077",
+      "quote": "An extended human readable description of the hazard or event that occasioned this message."
+     }
+    ]
+   },
+   {
+    "issue": "The instruction 'Shelter in place.' gives no area and no end time. The bulletin limits it to specific blocks until about 10 to 10:30 pm, and the sources differ (police said 10 pm, Sheriff's Office about 10:30 pm). The alert must carry this without picking one time silently.",
+    "field": "instruction",
+    "blocking": true,
+    "fix": "Write: residents of the 3600-3700 block of Hubbard and West Broadway should shelter in place until about 10 to 10:30 pm (police said 10 pm, Sheriff's Office about 10:30 pm).",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "instruction",
+      "quote": "Shelter in place."
+     },
+     {
+      "kind": "view",
+      "ref": "event_inputs",
+      "quote": "should shelter in place until about 10 to 10:30 pm"
+     }
+    ]
+   },
+   {
+    "issue": "Certainty 'Likely' understates the bulletin. The police activity and the shelter order are verified and ongoing, so the event is determined to be ongoing. The only uncertain part is that the situation is 'possible' armed domestic, which belongs in the description wording.",
+    "field": "certainty",
+    "blocking": false,
+    "fix": "Set certainty to Observed, and keep 'possible armed domestic situation' in the description so the uncertainty is conveyed there.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "alert_english",
+      "quote": "\"certainty\": \"Likely\""
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0069",
+      "quote": "\"Observed\" – Determined to have occurred or to be ongoing"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 4906,
+  "output_tokens": 1071,
+  "at": "2026-11-10T10:54:22Z"
+ }
+}

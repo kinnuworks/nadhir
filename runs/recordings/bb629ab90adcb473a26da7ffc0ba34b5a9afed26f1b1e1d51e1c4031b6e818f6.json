@@ -1,0 +1,168 @@
+{
+ "key": "bb629ab90adcb473a26da7ffc0ba34b5a9afed26f1b1e1d51e1c4031b6e818f6",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You cannot approve or send the alert; people decide.\n\nReview the alert within your mandate only. Decide:\n- \"agree\": nothing within your mandate is wrong;\n- \"object\": something is wrong and the drafter can fix it (say how in `fix`);\n- \"escalate\": something is wrong that needs a decision by a person or a higher authority.\n\nEvery objection needs evidence. Each evidence item is a word-for-word quote (at least 5 words for a\nclause, at least 3 for the alert or inputs) from either a knowledge base clause shown to you (kind\n\"clause\", ref = its id) or the material you were shown (kind \"view\", ref = the field name). Quotes are\nchecked by code; an objection with no quote that matches is thrown away. Do not object to things\noutside your mandate. Do not repeat the same issue twice. Issues listed under `recorded_gaps` are already\nreported to the approvers on every alert; do not object to them again.\nIf you have a concern but none of the clauses shown supports it, put it in `no_basis` instead.\n\nFor every objection also fill `uae_basis`: if one of the UAE clauses shown (ids starting with ITU-UAE:, TDRA-,\nUAE-, DXB-) speaks to this issue, set status \"cites_uae\" with its id and a word-for-word quote; otherwise set\nstatus \"none_applies\" with empty ref and quote. Say \"none_applies\" honestly: it tells the regulator where UAE\ntexts are silent.",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Ministry of Civil Defence & Emergency Management (via its service provider)\": {\n   \"name\": \"Ministry of Civil Defence & Emergency Management (via its service provider)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"None: a restricted test environment / select testing group, not a public area\",\n  \"codes\": [],\n  \"drawn_for_event\": \"nz-ema-test-2017\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Ministry of Civil Defence & Emergency Management (via its service provider)\",\n  \"status\": \"Test\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Other\"\n  ],\n  \"event\": \"Emergency Mobile Alert test\",\n  \"severity\": \"Unknown\",\n  \"areaDesc\": \"None: a restricted test environment / select testing group, not a public area\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": null\n }\n}\n\nKnowledge base clauses returned by your searches ('CAP 1.2 status Test Exercise Draft definitions', 'CAP sender authority verification issuer register area', 'CAP msgType Update Cancel references correction'):\n\n[X1303BIS#0049] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nCode Values: \"Actual\" – Actionable by all targeted recipients \"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note> \"System\" – For messages that support alert network internal functions \"Test\" – Technical testing only, all recipients disregard \"Draft\" – A preliminary template or draft, not actionable in its current form\n\n[CAPCP#0077] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #4. Alert messages intended for public distribution must include an <info> block):\n<code>profile:CAP-CP:1.0</code> <note /> <references /> <incidents /> <info> </info> </alert> (not for public distribution) <alert .. > ... <status>Actual</status> <msgType>Error</msgType> <source>Environment Canada</source> <scope>Public</scope> <code>profile:CAP-CP :1.0</code> <note >Invalid eventCode</note> <references >test@ec.gc.ca,TEST-1,2009-01-01T12:00:00-00:00</references> <incidents /> </alert>\n\n[X1303BIS#0048] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nTable 7-1 – \"alert\" element and sub-elements Element name Context.class.attribute. representation Definition and (Optionality) Notes or value domain status cap.alert.status.code The code denoting the appropriate handling of the alert message (REQUIRED)\n\n[X1303BIS#0112] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.31):\n8.3 ASN.1 module /* xml version = \"1.0\" encoding = \"UTF-8\" */ /* Copyright OASIS Open 2010 All Rights Reserved */ CAP-1-2 {itu-t recommendation x(24) cap(1303) version1-2(2)} DEFINITIONS AUTOMATIC TAGS ::= BEGIN IMPORTS -- from Rec. ITU-T X.694 | ISO/IEC 8825-5 String, DateTime, Language, AnyURI, Decimal FROM XSD {joint-iso-itu-t asn1(1) specification(0) modules(0) xsd-module(2) version2(2)}; /* CAP Alert Message (version 1.2) */ Alert ::= SEQUENCE { identifier XSD.String, sender XSD.String, sent XSD.DateTime (CONSTRAINED BY {/* XML representation of the XSD pattern \"\\d\\d\\d\\d-\\d\\d-\\d\\dT \\d\\d:\\d\\d:\\d\\d[-,+]\\d\\d:\\d\\d\" */}), status ENUMERATED { actual, draft, exercise, system, test }, msgType ENUMERATED { ack, alert, cancel, error, update }, source XSD.String OPTIONAL, scope ENUMERATED { private, public, restricted }, restriction XSD.String OPTIONAL, addresses XSD.String OPTIONAL, code-list SEQUENCE OF code XSD.String, note XSD.String OPTIONAL, references XSD.String OPTIONAL, incidents XSD.String OPTIONAL, info-list SEQUENCE OF info SEQUENCE { language XSD.Language OPTIONAL, category-list SEQUENCE (SIZE(1..MAX)) OF category ENUMERATED { cBRNE, env, fire, geo, health,\n\n[CAPCP#0128] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #2. <sender> should be descriptive):\n... <sender>operations-center@EMO@gnb.ca</sender> ... Note: The example is not a real value. The following is an example of an issuing authority that uses a third party to create the actual CAP message file on their behalf. ... ControlCenter@third-party.ca ... Note: The example is not a real value.\n\n[CAPCP#0138] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Recommendation #4. A <senderName> is strongly recommended):\n... <sender>Montreal@gc.ca</sender>... <info> ... <language>en-CA</language> <senderName>Environment Canada</senderName> .. </info> <info> .. <language>fr-CA</language> <senderName>Environnement Canada</senderName> .. </info> 2) In this case, the issuing authority for the Alert is not the same entity that creates the CAP message file ... <sender>ControlCenter@third-party.ca<sender> ... <info> ... <language>en-CA</language> <senderName>Environment Canada</senderName> .. </info> <info> .. <language>fr-CA</language> <senderName>Environnement Canada</senderName> .. </info>\n\n[WMO-REGISTER#0003] WMO Register of Alerting Authorities: United Arab Emirates, Meteorological Department (recId=173) (WMO Register of Alerting Authorities):\nAuthorization Basis: [ blank ] CAP Feed URL(s): [ blank ] Forecasts URL: http://www.worldweather.org/117/m117.htm Alerting Area (NWSE): [ blank ] Default map for this authority (alerting area not yet specified).\n\n[CAPAU#0043] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.12):\nProfile Specification Type Profile Specification Normative Non-Normative 3) If an alert message created by another agency is being passed through a system, such as a data aggregator, with no alterations, then the <sender> can remain as is. However, if any changes are made to the message, or if the aggregator is the authority to its clients, the <sender> value should change to reflect the aggregator, and the original message’s extended identifier (sender, identifier, sent) is to be added to the <incidents> block, with a <source> value added identifying the original sender and what was changed.\n\n[X1303BIS#0050] Recommendation ITU-T X.1303bis: Common alerting protocol (CAP 1.2) (p.16):\nmsgType cap.alert.msgType.code The code denoting the nature of the alert message (REQUIRED) Code Values: \"Alert\" – Initial information requiring attention by targeted recipients \"Update\" – Updates and supersedes the earlier message(s) identified in <references> \"Cancel\" – Cancels the earlier message(s) identified in <references> \"Ack\" – Acknowledges receipt and acceptance of the message(s) identified in <references> \"Error\" – Indicates rejection of the message(s) identified in <references>; explanation should appear in <note>\n\n[CAPAU#0047] Emergency Data Exchange Language (EDXL) Common Alerting Protocol (CAP) v1.2 Australia (AU) Profile Version 1.0, Committee Specification 02 (Attachment A to CAP-AU-STD) (p.13):\n2) Message states, and the transition from one state to another, are implied with the use of the <msgType> and <references> elements. 3) For alert messages intended for public distribution, a <msgType> of “Alert”, “Update” or “Cancel” does affect the message state, and an <info> element is REQUIRED.\n\n[CAPCP#0107] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nConsistent with the normative copy of the Reference Standard, <references> are required with <msgType> values of “Update” or “Cancel”. Further, CAP-CP requires references to all active messages (ones with at least one active <info> block) whose status is impacted by the new message. An “active” <info> block is one that has not yet reached its <expires> time.\n\n[CAPCP#0106] Canadian Profile of the Common Alerting Protocol (CAP-CP): Introduction and Rule Set 1.0 (Draft 2) (Rule #9. An Update or Cancel message should minimally include references to all active messages):\nNotes: The normative copy in CAP requires <references> for “Update” and “Cancel” values, however, it is not enforced in the schema. Example: Element: <references> Use: Required Type: Policy Value: Description:",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "position": {
+    "type": "string",
+    "enum": [
+     "agree",
+     "object",
+     "escalate"
+    ]
+   },
+   "summary": {
+    "type": "string"
+   },
+   "objections": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "issue": {
+       "type": "string"
+      },
+      "field": {
+       "type": "string"
+      },
+      "blocking": {
+       "type": "boolean"
+      },
+      "fix": {
+       "type": "string"
+      },
+      "uae_basis": {
+       "type": "object",
+       "properties": {
+        "status": {
+         "type": "string",
+         "enum": [
+          "cites_uae",
+          "none_applies"
+         ]
+        },
+        "ref": {
+         "type": "string"
+        },
+        "quote": {
+         "type": "string"
+        }
+       },
+       "required": [
+        "status",
+        "ref",
+        "quote"
+       ],
+       "additionalProperties": false
+      },
+      "evidence": {
+       "type": "array",
+       "items": {
+        "type": "object",
+        "properties": {
+         "kind": {
+          "type": "string",
+          "enum": [
+           "clause",
+           "view"
+          ]
+         },
+         "ref": {
+          "type": "string"
+         },
+         "quote": {
+          "type": "string"
+         }
+        },
+        "required": [
+         "kind",
+         "ref",
+         "quote"
+        ],
+        "additionalProperties": false
+       }
+      }
+     },
+     "required": [
+      "issue",
+      "field",
+      "blocking",
+      "fix",
+      "uae_basis",
+      "evidence"
+     ],
+     "additionalProperties": false
+    }
+   },
+   "no_basis": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "concern": {
+       "type": "string"
+      },
+      "searched_for": {
+       "type": "string"
+      }
+     },
+     "required": [
+      "concern",
+      "searched_for"
+     ],
+     "additionalProperties": false
+    }
+   }
+  },
+  "required": [
+   "position",
+   "summary",
+   "objections",
+   "no_basis"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "position": "object",
+  "summary": "Sender is in the issuer register with wildcard scope, no higher-authority alerts are active, and the msgType Alert needs no references. However, the context is EXERCISE / DRILL while the alert status is Test, and the console environment is live. A drill should carry status Exercise, not Test. The requested area is a restricted test group, which matches the alert area.",
+  "objections": [
+   {
+    "issue": "Context is EXERCISE / DRILL but the alert status is 'Test'. A drill should stay a drill, so the status should be 'Exercise' (actionable only by designated participants). 'Test' means technical testing only, with all recipients disregarding it, so the status does not fit the stated context.",
+    "field": "status",
+    "blocking": false,
+    "fix": "Set status to 'Exercise' and add the exercise identifier in note (e.g. nz-ema-test-2017). If the intent is purely technical testing, correct the context to a test context instead.",
+    "uae_basis": {
+     "status": "none_applies",
+     "ref": "",
+     "quote": ""
+    },
+    "evidence": [
+     {
+      "kind": "view",
+      "ref": "context",
+      "quote": "EXERCISE / DRILL"
+     },
+     {
+      "kind": "view",
+      "ref": "alert.status",
+      "quote": "\"status\": \"Test\""
+     },
+     {
+      "kind": "clause",
+      "ref": "X1303BIS#0049",
+      "quote": "\"Exercise\" – Actionable only by designated exercise participants; exercise identifier should appear in <note>"
+     }
+    ]
+   }
+  ],
+  "no_basis": []
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 5049,
+  "output_tokens": 482,
+  "at": "2026-11-10T10:57:03Z"
+ }
+}

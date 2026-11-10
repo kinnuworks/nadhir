@@ -1,0 +1,33 @@
+{
+ "key": "7cfe638623e2591e2ed34d76118e5b1ab8d7e8d22215e67712c0ca4151ccaf05",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Emergency Management Ontario PEOC\": {\n   \"name\": \"Emergency Management Ontario PEOC\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"EXERCISE / DRILL\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"None intended (training-system practice alert). The template text names people within ten kilometres of the Pickering Nuclear Generating Station.\",\n  \"codes\": [],\n  \"drawn_for_event\": \"pickering-2020\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Emergency Management Ontario PEOC\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"CBRNE\"\n  ],\n  \"event\": \"Nuclear power plant incident\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"None intended (training-system practice alert). The template text names people within ten kilometres of the Pickering Nuclear Generating Station.\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Incident at the Pickering Nuclear Generating Station\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP status Exercise Draft Actual drill alert rules",
+   "Pickering false alert 2020 Ontario cell broadcast error",
+   "issuer authority validation sender area scope alert"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1094,
+  "output_tokens": 69,
+  "at": "2026-11-10T10:57:06Z"
+ }
+}

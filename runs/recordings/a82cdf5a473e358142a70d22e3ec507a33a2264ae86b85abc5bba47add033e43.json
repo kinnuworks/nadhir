@@ -1,0 +1,33 @@
+{
+ "key": "a82cdf5a473e358142a70d22e3ec507a33a2264ae86b85abc5bba47add033e43",
+ "system": "You are the Issuing authority reviewer, standing in for the national emergency authority that issues alerts (who, where, when). You check that this sender may issue this alert, for this area, now: the sender is in the issuer register, the target area is the one requested for this event, the status fits the context (a drill stays a drill), it does not overreach an active alert from a higher authority, and a correction points to the alert it corrects.\nYou see only the issuer register, active and earlier alerts, the requested area and the alert's status, type, sender and area. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"issuer_register\": {\n  \"Politie (on behalf of the Ministry of Justice and Security)\": {\n   \"name\": \"Politie (on behalf of the Ministry of Justice and Security)\",\n   \"level\": 1,\n   \"areas\": [\n    \"*\"\n   ],\n   \"categories\": [\n    \"*\"\n   ]\n  }\n },\n \"active_alerts_from_other_authorities\": [],\n \"earlier_alerts_from_this_system\": [],\n \"context\": \"real event\",\n \"console_environment\": \"live\",\n \"requested_area\": {\n  \"areaDesc\": \"Netherlands (national NL-Alert)\",\n  \"codes\": [],\n  \"drawn_for_event\": \"nl-alert-2019\",\n  \"origin\": \"drawn\"\n },\n \"alert\": {\n  \"sender\": \"Politie (on behalf of the Ministry of Justice and Security)\",\n  \"status\": \"Actual\",\n  \"msgType\": \"Alert\",\n  \"scope\": \"Public\",\n  \"references\": null,\n  \"category\": [\n   \"Infra\"\n  ],\n  \"event\": \"Emergency number 112 unavailable (telephone network outage)\",\n  \"severity\": \"Severe\",\n  \"areaDesc\": \"Nederland (national)\",\n  \"codes\": [\n   [\n    \"RECORD\",\n    \"area-not-public\"\n   ]\n  ],\n  \"polygons\": [],\n  \"headline\": \"Landelijke storing KPN: 112 niet bereikbaar.\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP 1.2 sender authorization issuer register status Actual",
+   "alert area must match requested area geocode polygon",
+   "cell broadcast national alert issuing authority rules"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 1061,
+  "output_tokens": 64,
+  "at": "2026-11-10T10:54:38Z"
+ }
+}

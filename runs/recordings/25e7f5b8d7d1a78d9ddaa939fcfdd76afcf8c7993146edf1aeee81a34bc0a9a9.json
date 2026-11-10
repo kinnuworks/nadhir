@@ -1,0 +1,33 @@
+{
+ "key": "25e7f5b8d7d1a78d9ddaa939fcfdd76afcf8c7993146edf1aeee81a34bc0a9a9",
+ "system": "You are the Met office reviewer, standing in for the national meteorological centre (hazard facts). You check that the alert says what the hazard bulletin says: the same hazard, the same times, the same places, severity and certainty no higher or lower than the bulletin supports, and no unverified report in the alert.\nYou see only the event inputs (marked verified or unverified) and the English alert fields. You do not see anything else about this alert.\nBefore you review, search the knowledge base for the rules and guidance you need. It holds standards\n(CAP 1.2 / ITU-T X.1303bis, 3GPP cell broadcast specs, WMO and ITU guidance), regulator reports on past\nalert failures (FCC), and UAE texts (TDRA's cell broadcast handset spec, the official portal's early warning\npage, Dubai emergency decrees, UAE AI and data policy). For a UAE alert each search returns UAE texts first.\nWrite up to 3 short keyword queries (3 to 8 words each).",
+ "user": "What you can see:\n{\n \"event_inputs\": [\n  {\n   \"n\": 1,\n   \"verified\": true,\n   \"source\": \"incident timeline\",\n   \"text\": \"KPN telephone network fault since 15:34: 112 and the police number 0900-8844 are unreachable nationwide. Police technicians have opened two alternative 088 numbers that route around the KPN network; the police and the ministry have each checked that calls to these numbers reach the 112 centre. Police Twitter account @Politiemelding is available.\"\n  }\n ],\n \"context\": \"real event\",\n \"alert_english\": {\n  \"status\": \"Actual\",\n  \"event\": \"Emergency number 112 unavailable (telephone network outage)\",\n  \"severity\": \"Severe\",\n  \"urgency\": \"Immediate\",\n  \"certainty\": \"Observed\",\n  \"headline\": \"Landelijke storing KPN: 112 niet bereikbaar.\",\n  \"description\": \"Landelijke storing KPN: 112 niet bereikbaar. Politie heeft alternatief telefoonnummer (…) WhatsApp telefoonnummer (…) Twitter @Politiemelding. 112 not reachable. In case of emergency use numbers above\",\n  \"instruction\": \"112 not reachable. In case of emergency use numbers above\"\n }\n}",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "queries": {
+    "type": "array",
+    "items": {
+     "type": "string"
+    }
+   }
+  },
+  "required": [
+   "queries"
+  ],
+  "additionalProperties": false
+ },
+ "data": {
+  "queries": [
+   "CAP severity urgency certainty definitions Observed Severe Immediate",
+   "alert must not contain placeholder or missing information instructions",
+   "emergency number outage alert failure 911 FCC report"
+  ]
+ },
+ "meta": {
+  "model": "claude-sonnet-5-5",
+  "input_tokens": 959,
+  "output_tokens": 71,
+  "at": "2026-11-10T10:54:39Z"
+ }
+}

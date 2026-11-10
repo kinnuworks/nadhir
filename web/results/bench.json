@@ -28,7 +28,8 @@
    "missed": [],
    "ai": null,
    "heldout": false,
-   "agents_on_real": []
+   "agents_on_real": [],
+   "not_counted": null
   },
   {
    "id": "florida-test-2023",
@@ -81,7 +82,8 @@
    "heldout": true,
    "agents_on_real": [
     "R2"
-   ]
+   ],
+   "not_counted": null
   },
   {
    "id": "hawaii-2018",
@@ -143,7 +145,66 @@
    "heldout": false,
    "agents_on_real": [
     "R2"
-   ]
+   ],
+   "not_counted": null
+  },
+  {
+   "id": "hennepin-2024",
+   "title": "One-block shelter-in-place warning in Robbinsdale went out over EAS to the whole Twin Cities broadcast region",
+   "date": "2024-04-22",
+   "outcome": "A shelter-in-place warning meant for one block in Robbinsdale aired on most broadcast TV stations across the Twin Cities metro region on a Monday evening, and was reported as reaching all of Hennepin County.",
+   "finding": {
+    "body": "Hennepin County Sheriff's Office (HCSO)",
+    "quote": "This warning was meant to be sent to the target area of Robbinsdale by Wireless Emergency Alert (WEA), which is a component of the Integrated Public Alert and Warning System (IPAWS). Instead it was sent as an Emergency Alert System (EAS) alert, which resulted in the alert being aired on most broadcast television stations in the Twin Cities Metro region.",
+    "source": "MN-2024-HCSO"
+   },
+   "expected": [
+    "R3"
+   ],
+   "as_sent": {
+    "decision": "release",
+    "failed": []
+   },
+   "match": false,
+   "caught": [],
+   "missed": [
+    "R3"
+   ],
+   "ai": {
+    "runs": [
+     {
+      "run": 1,
+      "ungoverned_violations": [
+       "R3"
+      ],
+      "attempts": 1,
+      "review_decision": "blocked",
+      "final_decision": "blocked",
+      "final_failed": [
+       "R3"
+      ],
+      "status": "Actual",
+      "left_out": [
+       "The police's stated end time of 10 pm: it conflicts with the Sheriff's Office estimate of about 10:30 pm, both reported via the press. I used the Sheriff's Office time because it is the issuer's own and the more cautious of the two."
+      ],
+      "translation": [],
+      "log": "runs/bench/logs/hennepin-2024-run1.jsonl",
+      "log_check": "7 records, chain intact, head 506c89fd70ef",
+      "english": {
+       "headline": "Shelter in place: police activity near 3600 block of West Broadway, Robbinsdale",
+       "description": "Police activity: possible armed domestic situation, 3600 block of West Broadway, Robbinsdale. Three people detained; police have information on more suspects. Residents of the 3600-3700 block of Hubbard and West Broadway: shelter in place until about 10:30 pm.",
+       "instruction": "Stay inside, lock doors and keep away from windows. Do not go outside until officials say it is safe."
+      },
+      "institutions": null
+     }
+    ],
+    "summary": "1/1 first drafts broke a rule (R3); with the gate: 0/1 released after redraft and approval, 1 held"
+   },
+   "heldout": true,
+   "agents_on_real": [],
+   "not_counted": {
+    "agents": "The objections matched area terms because the rebuilt alert lacks the block and end time; none points to the real failure, which was sending over EAS instead of WEA."
+   }
   },
   {
    "id": "india-test-2023",
@@ -199,7 +260,8 @@
    "heldout": false,
    "agents_on_real": [
     "R2"
-   ]
+   ],
+   "not_counted": null
   },
   {
    "id": "jalert-2022",
@@ -255,7 +317,8 @@
    "heldout": false,
    "agents_on_real": [
     "R3"
-   ]
+   ],
+   "not_counted": null
   },
   {
    "id": "la-county-2025",
@@ -312,7 +375,127 @@
    "heldout": false,
    "agents_on_real": [
     "R3"
-   ]
+   ],
+   "not_counted": null
+  },
+  {
+   "id": "nl-alert-2019",
+   "title": "National NL-Alert during the 112 outage gave a newspaper's WhatsApp tip line as the police number",
+   "date": "2019-06-24",
+   "outcome": "A national alert sent during a nationwide 112 outage gave the public a WhatsApp number that reached a newspaper tip line instead of the emergency services. The replacement number went out an hour after the wrong one, and 20 minutes after 112 had been restored. KPN 4G customers received none of the day's NL-Alerts because of a separate fault in KPN's NL-Alert delivery.",
+   "finding": {
+    "body": "Agentschap Telecom, Inspectie Justitie en Veiligheid and Inspectie Gezondheidszorg en Jeugd (joint report)",
+    "quote": "Daarbij bleek een van de (WhatsApp-)nummers in een landelijk NL-Alertbericht per abuis dat van de tiplijn van de Telegraaf te zijn.",
+    "source": "NL-2019-INSP"
+   },
+   "expected": [
+    "R11"
+   ],
+   "as_sent": {
+    "decision": "release",
+    "failed": []
+   },
+   "match": false,
+   "caught": [],
+   "missed": [
+    "R11"
+   ],
+   "ai": {
+    "runs": [
+     {
+      "run": 1,
+      "ungoverned_violations": [
+       "R3"
+      ],
+      "attempts": 1,
+      "review_decision": "blocked",
+      "final_decision": "blocked",
+      "final_failed": [
+       "R3"
+      ],
+      "status": "Actual",
+      "left_out": [
+       "No unverified inputs were received, so nothing was left out for that reason.",
+       "The two alternative 088 phone numbers are not in the input. I did not make them up. Placeholders mark where they go."
+      ],
+      "translation": [],
+      "log": "runs/bench/logs/nl-alert-2019-run1.jsonl",
+      "log_check": "7 records, chain intact, head ce6fdfaa8cb7",
+      "english": {
+       "headline": "112 and police number 0900-8844 unreachable nationwide",
+       "description": "A KPN telephone network fault since 15:34 means emergency number 112 and police number 0900-8844 cannot be reached anywhere in the Netherlands. It is not yet known when this will be fixed.",
+       "instruction": "In an emergency, call [INSERT 088 NUMBER 1] or [INSERT 088 NUMBER 2] instead of 112. Updates are posted on Twitter at @Politiemelding."
+      },
+      "institutions": null
+     }
+    ],
+    "summary": "1/1 first drafts broke a rule (R3); with the gate: 0/1 released after redraft and approval, 1 held"
+   },
+   "heldout": true,
+   "agents_on_real": [],
+   "not_counted": null
+  },
+  {
+   "id": "nz-ema-test-2017",
+   "title": "New Zealand Emergency Mobile Alert test messages meant for a closed test environment reached Vodafone customers at 1:30 am",
+   "date": "2017-10-04",
+   "outcome": "Vodafone customers across New Zealand with cell broadcast enabled phones were woken by three loud test alerts between about 1:30 and 1:50 am, weeks before the system's public launch.",
+   "finding": {
+    "body": "Ministry of Civil Defence & Emergency Management (MCDEM), New Zealand",
+    "quote": "The three test messages were sent in error by our European-based service provider while testing the new Emergency Mobile Alert technology.",
+    "source": "NZ-2017-MCDEM"
+   },
+   "expected": [
+    "R2"
+   ],
+   "as_sent": {
+    "decision": "blocked",
+    "failed": [
+     "R2"
+    ]
+   },
+   "match": false,
+   "caught": [],
+   "missed": [
+    "R2"
+   ],
+   "ai": {
+    "runs": [
+     {
+      "run": 1,
+      "ungoverned_violations": [
+       "R3"
+      ],
+      "attempts": 1,
+      "review_decision": "blocked",
+      "final_decision": "blocked",
+      "final_failed": [
+       "R3"
+      ],
+      "status": "Exercise",
+      "left_out": [
+       "No location: the target is a restricted test environment, not a public area, so no place is named.",
+       "No end time: the verified input gives no time window for the test."
+      ],
+      "translation": [],
+      "log": "runs/bench/logs/nz-ema-test-2017-run1.jsonl",
+      "log_check": "7 records, chain intact, head 18658d96c191",
+      "english": {
+       "headline": "EXERCISE ONLY: Emergency Mobile Alert test message. No hazard.",
+       "description": "EXERCISE – THIS IS A TEST. Ministry of Civil Defence & Emergency Management is testing Emergency Mobile Alert ahead of its launch. There is no emergency and no hazard. For the select testing group only.",
+       "instruction": "No action needed. This is only a test; there is no emergency."
+      },
+      "institutions": null
+     }
+    ],
+    "summary": "1/1 first drafts broke a rule (R3); with the gate: 0/1 released after redraft and approval, 1 held"
+   },
+   "heldout": true,
+   "agents_on_real": [],
+   "not_counted": {
+    "rules": "R2 fired because the message text is not public, so the rebuilt alert has no text saying it is a test. The real messages were called tests; the failure was the audience.",
+    "agents": "The issuing-authority reviewer objected to 'Test' versus 'Exercise' status, not to the messages leaving the restricted test group."
+   }
   },
   {
    "id": "pickering-2020",
@@ -380,7 +563,8 @@
    "agents_on_real": [
     "R10",
     "R2"
-   ]
+   ],
+   "not_counted": null
   },
   {
    "id": "seoul-2023",
@@ -441,7 +625,8 @@
    "heldout": false,
    "agents_on_real": [
     "R4"
-   ]
+   ],
+   "not_counted": null
   },
   {
    "id": "taiwan-2024",
@@ -496,7 +681,65 @@
    "heldout": true,
    "agents_on_real": [
     "R11"
-   ]
+   ],
+   "not_counted": null
+  },
+  {
+   "id": "uk-welsh-test-2023",
+   "title": "UK national Emergency Alerts test: an online autocorrect changed a Welsh word in the bilingual alert",
+   "date": "2023-04-23",
+   "outcome": "Phones in Wales showed a bilingual test alert whose Welsh text told people to keep themselves and others \"Vogel\" instead of \"safe\". The Cabinet Office said the essence of the message was unchanged and that the error would be fixed for future alerts.",
+   "finding": {
+    "body": "Cabinet Office (written ministerial statement by the Deputy Prime Minister and Chancellor of the Duchy of Lancaster)",
+    "quote": "A further issue arose with the Welsh version of the Test Message. Following a short internal review we believe that this error occurred as a result of an operational process, whereby an online system made a small autocorrect, rendering one word in the Welsh test message incorrect.",
+    "source": "UK-2023-HCWS740"
+   },
+   "expected": [
+    "R9"
+   ],
+   "as_sent": {
+    "decision": "release",
+    "failed": []
+   },
+   "match": false,
+   "caught": [],
+   "missed": [
+    "R9"
+   ],
+   "ai": {
+    "runs": [
+     {
+      "run": 1,
+      "ungoverned_violations": [
+       "R3"
+      ],
+      "attempts": 1,
+      "review_decision": "blocked",
+      "final_decision": "blocked",
+      "final_failed": [
+       "R3"
+      ],
+      "status": "Exercise",
+      "left_out": [
+       "Welsh-language text: the input says a Welsh version is required for Wales, but no approved Welsh text was supplied. I did not write my own translation, because unapproved wording should not go out on an official alert. An approved Welsh text must be added before the bilingual alert is sent to Wales.",
+       "Part of the approved English text: the full approved text is over the 280-character limit for the description. The sentence 'In a real emergency, follow the instructions in the alert to keep yourself and others safe.' was moved to the instruction field instead."
+      ],
+      "translation": [],
+      "log": "runs/bench/logs/uk-welsh-test-2023-run1.jsonl",
+      "log_check": "7 records, chain intact, head 5c36d1fa016c",
+      "english": {
+       "headline": "TEST: UK Emergency Alerts national test - no action needed",
+       "description": "This is a test of Emergency Alerts, a new UK government service that will warn you if there's a life-threatening emergency nearby. Visit gov.uk/alerts for more information. This is a test. You do not need to take any action.",
+       "instruction": "In a real emergency, follow the instructions in the alert to keep yourself and others safe. This is a test. You do not need to take any action."
+      },
+      "institutions": null
+     }
+    ],
+    "summary": "1/1 first drafts broke a rule (R3); with the gate: 0/1 released after redraft and approval, 1 held"
+   },
+   "heldout": true,
+   "agents_on_real": [],
+   "not_counted": null
   }
  ],
  "scenarios": [
@@ -526,6 +769,6 @@
   }
  ],
  "matched": 8,
- "total": 9,
+ "total": 13,
  "note": "Replays are rebuilt from public reports, not the original systems. Approvals in AI runs are scripted and labelled as such; in the live demo a person clicks."
 }
