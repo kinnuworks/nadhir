@@ -1,19 +1,25 @@
 # Nadhir
 
-**For alerting authorities: AI drafts the public warning, and cited rules, institution reviewers and two people decide whether it goes out.**
+**Nadhir lets AI draft a public warning but never send it. Rules, reviewers and people decide.**
 
-Nadhir writes and checks emergency phone alerts. One AI agent drafts the alert and a second translates it into Arabic. Neither can send anything. Twelve fixed rules then check it, each quoting a public policy or an official investigation. Four more agents review it next, on a different AI model from the drafter, each standing in for an institution with its own partial view: the met office, the issuing authority, the network operator and regulator, and an Arabic reviewer. They search an 11,572-clause knowledge base themselves, UAE texts first, and must quote what they rely on; code drops any objection whose quote isn't word for word in its source. People approve last, and the alert is signed.
+AI drafts → 12 rules check → 4 reviewer agents object, with quotes → named people approve → the alert is signed and released.
 
-Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. Run on three real failures added after the rules were frozen, they catch two; the agents catch the third.
+It is for the agencies that send emergency phone alerts. In more detail:
+1. An AI agent drafts the alert and a second one translates it into Arabic. Neither can send anything.
+2. Twelve fixed rules (R0 to R11) check it. Each rule quotes a public policy or an official investigation.
+3. Four reviewer agents, on a different AI model from the drafter, each play one institution with its own partial view: the met office, the issuing authority, the network operator and regulator, and an Arabic-language reviewer. They search an 11,572-clause knowledge base, UAE texts first, and must quote what they rely on. Code drops any objection whose quote isn't word for word in its source.
+4. People decide. A severe alert needs two named approvers, plus a named person who reads Arabic when the Arabic was machine translated. Then the alert is signed.
 
-It works on CAP 1.2 (ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
+Run on the real 2018 Hawaii missile alert, the rules block it for the two reasons the US regulator later named: a drill was sent live, and one person could send it alone. We also ran three real failures that were added after the rules were frozen: Ontario 2020, Florida 2023 and Taiwan 2024. The rules catch the first two, and the reviewer agents catch Taiwan.
+
+It works on CAP 1.2 (the Common Alerting Protocol, ITU-T X.1303bis), the alert format behind cell broadcast systems such as UAE-Alert, and keeps every step in a tamper-evident (hash-chained) log.
 
 **Live demo:** https://nadhir-gilt.vercel.app (no sign-up)
 
 **Try it in 30 seconds**
 1. Open the live demo. The inputs are already filled in: a real UAE National Center of Meteorology dust warning, plus an unverified rumour. Press **Draft alert**.
-2. Look at what happened. The drafter left the rumour out. The rule table shows the Arabic is machine translated, so it waits for someone who reads Arabic (R9). Below it, the four institution reviewers each give a position, with the clauses they searched and the quotes they rely on. Their objections went back to the drafter once; the ones still open are listed for the approvers.
-3. Type two names and an Arabic reviewer, tick that you read the open objections, then press **Approve**. You get the signed CAP XML, the final verdicts and the audit log with its hash chain.
+2. Look at what happened. The drafter left the rumour out. The rule table shows the Arabic is machine translated, so it waits for a named person who reads Arabic (rule R9). Below it, the four institution reviewers each give a position, with the clauses they searched and the quotes they rely on. Their objections went back to the drafter once; the ones still open are listed for the approvers.
+3. Type two approver names and the name of someone who reads Arabic, tick that you read the open objections, then press **Approve**. You get the signed CAP XML, the final verdicts and the audit log with its hash chain.
 
 **Use it on real alerts today.** Section 4 of the demo checks a live public feed (Saudi Arabia, Qatar, Kuwait, Canada or Australia): the server fetches the latest alerts and runs the rules that need no issuer context, with no AI involved, in a few seconds. Any CAP alert can also be pasted in, with the reviewers as a second reader before sending. On a real Kuwaiti alert from 8 Nov 2026, the Arabic reviewer pointed out that the Arabic gives a wave height ("more than 6 feet") that the English leaves out.
 

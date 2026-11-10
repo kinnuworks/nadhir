@@ -6,7 +6,7 @@ Team leader: {{LEADER}} · Team members: {{MEMBERS}} · Contact details: {{CONTA
 
 Nadhir shows AI agents drafting public warning alerts, while a gate of cited rules, four institution agents that must quote their sources, and named people decide whether each alert goes out. It is built for the UAE's cell broadcast warning system (UAE-Alert) and the alert format behind it, the Common Alerting Protocol (CAP 1.2, ITU-T X.1303bis).
 
-AI is starting to write warning text. The US National Weather Service publishes AI-translated products. ITU's 2026 report *Leveraging AI to Enhance Multi-Hazard Early Warning Systems* calls for AI to "operate within human-in-the-loop governance frameworks". Nobody has built that frame for the alert itself. Nadhir is one: the model proposes, and deterministic rules and people decide. Each rule quotes its policy source, and the mapping exercise produced seven policy and standards gaps (section 6). That ties the prototype to the AI Readiness Framework's "policy for AI" dimension, not just to a product.
+AI is starting to write warning text. The US National Weather Service publishes AI-translated products. ITU's 2026 report *Leveraging AI to Enhance Multi-Hazard Early Warning Systems* calls for AI to "operate within human-in-the-loop governance frameworks". Nobody has built that frame for the alert itself. Nadhir is one: the model proposes, and deterministic rules and people decide. Each rule quotes its policy source, and the mapping exercise produced seven policy and standards gaps (section 6). That links the prototype to the AI Readiness Framework's "policy for AI" dimension.
 
 ## 2. Description of the use case
 
@@ -32,11 +32,11 @@ AI is starting to write warning text. The US National Weather Service publishes 
 |---|---|---|---|
 | SRC | NCM hazard warnings and event reports, marked verified or unverified | D4 Contextualization (UAE bulletins in Arabic and English) | NCM warnings via WAM; WMO CAP guidance |
 | C | Inputs per event, operator-drawn target area, issuer register, prior alerts | D7 Strategy alignment (who may warn for what) | UAE issuer list (press); Seoul 2023 ministry statement |
-| PP | Draft to CAP 1.2 XML, schema check, cell broadcast page count per script | D13 Digital infrastructure | CAP 1.2 / X.1303bis and XSD; 3GPP TS 23.041, 23.038; TDRA TS040 summary |
+| PP | Draft to CAP 1.2 XML, schema check, cell broadcast page count per script | D13 Digital infrastructure | CAP 1.2 / X.1303bis and XSD; 3GPP TS 23.041, 23.038; TDRA TS FS 001 v2.0 (UAE-Alert) |
 | M | Drafter and Translator agents (hosted LLM); propose only, every answer recorded | D8 Collaboration with AI | ITU ESTR.AICNHM; MHEWS report 2026 |
 | P | 12 deterministic rules, each citing a source; block or hold. Four institution agents with partial views object with verified quotes | D7, D8, D10 (organisers' own map for P) | FCC Hawaii report; FCC DA 25-12; UAE AI Charter; 3GPP TS 23.041 |
 | D | Two named approvers, approver roles and AI involvement written in, XML signature, final check | D8 Collaboration with AI | FCC Hawaii report; CAP 1.2 §3.3.4.1; proposed profile |
-| SINK | Signed alert to a cell broadcast centre stub; hash-chained audit log | D13 Digital infrastructure | TDRA cell broadcast spec (2017) |
+| SINK | Signed alert to a cell broadcast centre stub; hash-chained audit log | D13 Digital infrastructure | TDRA cell broadcast specs (2017; TS FS 001 v2.0, 2019) |
 | MLFO / sandbox | Orchestrator with gate-feedback redrafts; replay bench of real failures, demo keys and zones | D7, D10 | ITU-T Y.3172 |
 
 ## 5. Error scenarios
@@ -66,4 +66,4 @@ Seven gaps, each with sources and a global example in docs/gaps.md. For each, we
 6. **G6, standards:** vetted multilingual templates are written for a 360-character US limit, not cell broadcast pages. The FCC Arabic dust storm template is 10 pages in UCS-2; no UAE text sets a page budget (TDRA TS FS 001 v2.0 sets none).
 7. **G7, standards:** CAP status vs US test practice. 246 of 1,000 US alerts marked "Actual" carry a test event code.
 
-**Limits.** Replays are rebuilt from public reports. Where the record is silent, we assume the alert was fine. Four incidents rest on official statements rather than investigation reports, and India on press only. The injected faults and their matching terms are ours. The UAE handset rules come from a compliance firm's summary. The demo issuer, zones and keys are stand-ins. Two models play the six agents (one drafts and translates, another reviews); the institution agents stand in for roles, not the real bodies.
+**Limits.** Replays are rebuilt from public reports. Where the record is silent, we assume the alert was fine. Four incidents rest on official statements rather than investigation reports, and India on press only. The injected faults and their matching terms are ours. The 2015 handset rules (TS040) come from a compliance firm's summary; TDRA's 2019 UAE-Alert specification is the primary text. The demo issuer, zones and keys are stand-ins. Two models play the six agents (one drafts and translates, another reviews); the institution agents stand in for roles, not the real bodies.

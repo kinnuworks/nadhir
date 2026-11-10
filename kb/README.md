@@ -1,6 +1,6 @@
 # Knowledge base
 
-`sources.yaml` lists the public documents that the gate rules (R1 to R11) and the gap list (G1 to G5) rely on. Each entry has the document's title, publisher, date, URL, kind, jurisdiction, a check status, the date we fetched it, the SHA-256 of the bytes we fetched, the rules and gaps it supports, and one to three short verbatim quotes with a locator.
+`sources.yaml` lists the public documents that the gate rules (R0 to R11) and the gap list (G1 to G7) rely on. Each entry has the document's title, publisher, date, URL, kind, jurisdiction, a check status, the date we fetched it, the SHA-256 of the bytes we fetched, the rules and gaps it supports, and one to three short verbatim quotes with a locator.
 
 The repo holds metadata, hashes and short quotes only. Full documents are not stored here. Every source is public and free to read. Nothing is paywalled or confidential.
 
@@ -10,7 +10,7 @@ The repo holds metadata, hashes and short quotes only. Full documents are not st
 - `verified-secondary`: the primary text was not reachable, so a press report or other summary was used. The quotes come from that summary, and the `notes` field names it. Every press article in the KB has this status, because a news report of an official finding is not the finding.
 - `not-fetched`: we could not fetch the source. It has no quotes and no hash. No entry currently has this status.
 
-The KB has 43 entries: 33 verified-primary and 10 verified-secondary. Two entries were removed after the first pass: a u.ae page that returned HTTP 404, and press reports of a 2026 UAE alert whose cause is not public.
+The KB has 53 entries: 40 verified-primary and 13 verified-secondary. The clause index in `index/` splits these sources, plus the organisers' public UAE policy dataset, into 11,572 searchable clauses from 115 documents. Two entries were removed after the first pass: a u.ae page that returned HTTP 404, and press reports of a 2026 UAE alert whose cause is not public.
 
 ## How quotes were checked
 
@@ -22,7 +22,7 @@ The KB has 43 entries: 33 verified-primary and 10 verified-secondary. Two entrie
 
 ## Points to know before citing
 
-- UAE handset rules. The TS040 requirements (Arabic and English, one page) are known only from a compliance firm's 2015 summary, so `TDRA-TS040` is verified-secondary. For the 2017 cell broadcast behaviour spec we did fetch the TRA-hosted file (`TDRA-2017-CB`), but it is a one-page table with no title or date. The title and the 21 Sep 2017 effective date come from the Kiwa summary that links to it. The table gives channel IDs for a primary and a secondary language. It does not name the languages.
+- UAE handset rules. The 2015 TS040 requirements (Arabic and English, one page) are known only from a compliance firm's summary, so `TDRA-TS040` is verified-secondary. TDRA's 2019 UAE-Alert specification (`TDRA-TSFS001`, TS FS 001 v2.0) is verified-primary: handsets must show alerts in Arabic and English, and it sets no page limit. For the 2017 cell broadcast behaviour spec we did fetch the TRA-hosted file (`TDRA-2017-CB`), but it is a one-page table with no title or date. The title and the 21 Sep 2017 effective date come from the Kiwa summary that links to it. The table gives channel IDs for a primary and a secondary language. It does not name the languages.
 - UAE issuers. The list of bodies allowed to send alerts comes from Gulf News (`UAE-ISSUERS`). No NCEMA document with the list was found.
 - Rules whose incident evidence is press only: R2 (India test alerts), R3 (J-Alert 2022), R4 (Seoul 2023) and R5 (Brazil 2026). Each of these rules also has at least one primary standard or regulator source.
 - Three US failures have primary findings: Hawaii 2018 (FCC report), Los Angeles 2025 (Rep. Garcia's report) and the FCC orders on machine translation.
