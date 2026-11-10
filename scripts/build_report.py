@@ -15,7 +15,7 @@ from pathlib import Path
 import docx
 from docx.enum.text import WD_COLOR_INDEX
 from docx.oxml.ns import qn
-from docx.shared import Pt
+from docx.shared import Cm, Pt
 
 ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = ROOT / "research" / "report" / "ITU-submission-template.docx"
@@ -168,6 +168,16 @@ def build(a):
                 i += 1
             add_table(rows)
             continue
+        elif ln.startswith("!["):
+            m = re.match(r"!\[(.*)\]\((.*)\)", ln)
+            p = add_para()
+            p.alignment = 1
+            p.paragraph_format.space_after = Pt(1)
+            p.paragraph_format.keep_with_next = True
+            p.add_run().add_picture(str(ROOT / m.group(2)), width=Cm(16.5))
+            cap = add_para()
+            _fmt(cap, after=4)
+            _run(cap, m.group(1), italic=True, size=TABLE_PT)
         elif ln.startswith("- "):
             p = add_para()
             _fmt(p, after=2, indent=18)

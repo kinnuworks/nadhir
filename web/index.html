@@ -18,110 +18,163 @@
   <div class="nav__bar">
     <a class="nav__brand" href="#top"><img class="app-icon" src="/web/icon-64.png" alt="">Nadhir</a>
     <div class="nav__links">
-      <a href="#console">Try it</a><a href="#replays">Real failures</a><a href="#layers">Layers</a><a href="#live">Live feeds</a><a href="#gaps">Gaps</a>
+      <a href="#console">Try it</a><a href="#replays">Real failures</a><a href="#layers">Layers</a><a href="#log">Audit log</a><a href="#gaps">Gaps</a><a href="#y3172">Y.3172</a>
     </div>
     <a class="btn btn-ink btn-sm" href="#console">Draft an alert</a>
   </div>
 </nav>
 
-<header class="hero hero--color" id="top">
+<header class="hero hero--color hero--split2" id="top">
   <div class="container">
-    <div id="heroCopy">
-    <span class="badge badge--dot hero-badge">For UAE-Alert · CAP 1.2 (ITU-T X.1303bis)</span>
-    <h1>AI drafts the warning. <span class="t-muted">Rules and people decide.</span></h1>
-    <p class="lead">An AI agent writes the public alert in English and Arabic, but it can't send anything. Twelve cited rules, four reviewer agents and named people decide whether it goes out.</p>
-    <div class="cta-row">
-      <button class="btn btn-halo btn-lg" id="heroDraft" type="button">Draft the prefilled alert</button>
-      <a class="btn btn-outline btn-lg" href="#replays">See nine real failures</a>
-    </div>
-    <p class="trust"><span>No sign-up</span><span>Starts from a real UAE weather warning</span><span>Nothing here sends a real alert</span></p>
-    </div>
+    <div class="hero__grid">
+      <div id="heroCopy" class="hero__copy">
+        <span class="badge badge--dot hero-badge">For UAE-Alert · CAP 1.2 (ITU-T X.1303bis)</span>
+        <h1>AI drafts the warning. <span class="t-muted">Rules and people decide.</span></h1>
+        <p class="lead">An AI agent writes the public alert in English and Arabic, but it can't send anything. Twelve cited rules, four reviewer agents and two named people decide whether it reaches phones.</p>
+        <div class="cta-row">
+          <button class="btn btn-halo btn-lg" id="heroDraft" type="button">Draft the prefilled alert</button>
+          <a class="btn btn-outline btn-lg" href="#replays">See the real failures</a>
+        </div>
+        <p class="trust"><span>No sign-up</span><span>Starts from a real UAE weather warning</span><span>Sends nothing real</span></p>
+      </div>
 
-    <div class="hero__visual bleed" id="console">
-      <div class="window console">
-        <div class="window__bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><span class="window__title">Nadhir · Alert console</span><span class="bar-tag">Demo issuer and keys, not real UAE systems</span></div>
-        <div class="console__body">
-          <div class="console__grid">
-            <section class="console__inputs" aria-label="Event inputs">
-              <div class="console__head">
-                <p class="t-title">Event inputs</p>
-                <p class="t-small">Prefilled with a real National Center of Meteorology dust warning (4 March 2026, published by WAM) and a made-up rumour marked unverified. Edit them or write your own.</p>
-              </div>
-              <div id="inputs" class="inputs"></div>
-              <button id="add" class="btn btn-ghost btn-sm" type="button">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add input</button>
-              <div class="console__controls">
-                <label class="field">Target zone <span class="t-micro">chosen by the operator, not the AI</span>
-                  <select id="zone"><option value="al-ain">Al Ain (demo zone)</option><option value="abu-dhabi-city">Abu Dhabi city (demo zone)</option><option value="dubai">Dubai (demo zone)</option><option value="sharjah">Sharjah (demo zone)</option><option value="fujairah">Fujairah (demo zone)</option></select></label>
-                <label class="toggle"><input type="checkbox" id="exercise" class="switch"> This is a drill</label>
-              </div>
-              <div class="console__go">
-                <button id="draft" class="btn btn-candy btn-lg" type="button">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 6l6 6-6 6"/></svg>Draft alert</button>
-                <span id="draftStatus" class="t-small" role="status"></span>
-              </div>
-            </section>
-            <aside class="pipeline" aria-label="What happens after you press Draft">
-              <p class="eyebrow">What happens next</p>
-              <ol class="steps" id="steps">
-                <li data-step="draft"><span class="step__dot"></span><div><b>Drafter</b><span>Writes CAP fields from verified inputs only</span></div></li>
-                <li data-step="translate"><span class="step__dot"></span><div><b>Translator</b><span>Writes the Arabic, from a vetted template if one fits</span></div></li>
-                <li data-step="rules"><span class="step__dot"></span><div><b>12 rules</b><span>Fixed code, each rule citing its source</span></div></li>
-                <li data-step="review"><span class="step__dot"></span><div><b>4 reviewer agents</b><span>Object only with a word-for-word quote</span></div></li>
-                <li data-step="people"><span class="step__dot"></span><div><b>Named people</b><span>Approve, then the alert is signed</span></div></li>
-              </ol>
-              <p class="t-micro">The issuer, zones and signing keys are demo stand-ins.</p>
-            </aside>
+      <div class="hero__preview">
+        <div class="window preview" aria-label="Two results from the gate">
+          <div class="window__bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><span class="window__title">Gate result</span></div>
+          <div class="preview__tabs" role="tablist">
+            <button role="tab" aria-selected="true" aria-controls="pv-uae" id="tab-uae" type="button">AI draft · UAE dust warning</button>
+            <button role="tab" aria-selected="false" aria-controls="pv-hi" id="tab-hi" type="button">Hawaii 2018 · as sent</button>
           </div>
-          <div id="draftOut" class="results" aria-live="polite"></div>
+          <div class="preview__body" id="pv-uae" role="tabpanel" aria-labelledby="tab-uae">
+            <div class="decision decision--waiting decision--sm"><span class="decision__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/></svg></span><div>Waiting for two named people<small>No rule failed. Four wait for approvers.</small></div></div>
+            <p class="preview__msg"><span class="eyebrow">English draft</span>NCM warning: blowing dust and sand reducing visibility until 19:00 today</p>
+            <p class="preview__msg preview__msg--ar" lang="ar" dir="rtl">تحذير NCM: غبار ورمال متطايرة تُخفّض مستوى الرؤية حتى الساعة 19:00 اليوم</p>
+            <ul class="checks">
+              <li class="is-ok"><b>Rumour left out.</b> “A dam near Al Ain has burst” was marked unverified, so the drafter dropped it.</li>
+              <li class="is-ok"><b>R11 removed “Al Ain”</b> from the text. No verified input names it.</li>
+              <li class="is-wait"><b>R9:</b> the Arabic is machine translated, so a named Arabic reader must approve it.</li>
+              <li class="is-wait"><b>Network operator agent objects:</b> “Neither language gives any action for the recipient to take.”</li>
+            </ul>
+          </div>
+          <div class="preview__body" id="pv-hi" role="tabpanel" aria-labelledby="tab-hi" hidden>
+            <div class="decision decision--blocked decision--sm"><span class="decision__icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.6" stroke-linecap="round"><path d="M7 7l10 10M17 7 7 17"/></svg></span><div>Blocked<small>Three rules failed. All three match the FCC's findings.</small></div></div>
+            <p class="preview__msg preview__msg--alarm"><span class="eyebrow">The real message</span>BALLISTIC MISSILE THREAT INBOUND TO HAWAII. SEEK IMMEDIATE SHELTER. THIS IS NOT A DRILL.</p>
+            <ul class="checks">
+              <li class="is-block"><b>R2:</b> the event was a drill, but the alert says Actual.</li>
+              <li class="is-block"><b>R1:</b> one person sent an extreme live alert. Two must approve.</li>
+              <li class="is-block"><b>R10:</b> the correction 38 minutes later did not reference the false alert.</li>
+            </ul>
+          </div>
+          <p class="preview__foot">Real outputs: the first is today's demo draft, the second the Hawaii replay.</p>
         </div>
       </div>
+    </div>
+
+    <div class="proof" id="proof">
+      <a class="proof__item" href="#replays"><b class="t-mono" id="pf-replays">8 <span>of 9</span></b><span id="pf-replays-l">real alert failures caught by the rules, scored against the official finding</span></a>
+      <a class="proof__item" href="#layers"><b class="t-mono">24 <span>of 24</span></b><span>pre-registered faults caught by rules and agents together (rules alone: 14)</span></a>
+      <a class="proof__item" href="#gaps"><b class="t-mono">12</b><span>policy and standards gaps, 5 of them surfaced by the agents</span></a>
+      <a class="proof__item" href="#how"><b class="t-mono">11,572</b><span>clauses from 115 documents that the agents search and must quote</span></a>
     </div>
   </div>
 </header>
 
-<section class="section section--alt after-bleed" id="how">
+<section class="section section--alt" id="console-wrap">
+  <div class="container">
+    <div class="section-head section-head--tight">
+      <span class="eyebrow"><span class="dot"></span>Try it</span>
+      <h2>Draft a real UAE warning.</h2>
+      <p class="lead">Press Draft. The prefilled example takes about 20 seconds.</p>
+    </div>
+    <div class="window console" id="console">
+      <div class="window__bar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><span class="window__title">Nadhir · Alert console</span><span class="bar-tag">Demo issuer and keys</span></div>
+      <div class="console__body">
+        <div class="console__grid">
+          <section class="console__inputs" aria-label="Event inputs">
+            <div class="console__head">
+              <p class="t-title">Event inputs</p>
+              <p class="t-small">A real National Center of Meteorology dust warning (4 March 2026, via WAM) and a made-up rumour marked unverified. Edit them or write your own.</p>
+            </div>
+            <div id="inputs" class="inputs"></div>
+            <button id="add" class="btn btn-ghost btn-sm" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add input</button>
+            <div class="console__controls">
+              <label class="field">Target zone <span class="t-micro">chosen by the operator, not the AI</span>
+                <select id="zone"><option value="al-ain">Al Ain (demo zone)</option><option value="abu-dhabi-city">Abu Dhabi city (demo zone)</option><option value="dubai">Dubai (demo zone)</option><option value="sharjah">Sharjah (demo zone)</option><option value="fujairah">Fujairah (demo zone)</option></select></label>
+              <label class="toggle"><input type="checkbox" id="exercise" class="switch"> This is a drill</label>
+            </div>
+            <div class="console__go">
+              <button id="draft" class="btn btn-candy btn-lg" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h12M12 6l6 6-6 6"/></svg>Draft alert</button>
+              <span id="draftStatus" class="t-small" role="status"></span>
+            </div>
+          </section>
+          <aside class="pipeline" aria-label="What happens after you press Draft">
+            <p class="eyebrow">What happens next</p>
+            <ol class="steps" id="steps">
+              <li data-step="draft"><span class="step__dot"></span><div><b>Drafter</b><span>Writes CAP fields from verified inputs only</span></div></li>
+              <li data-step="translate"><span class="step__dot"></span><div><b>Translator</b><span>Writes the Arabic, from a vetted template if one fits</span></div></li>
+              <li data-step="rules"><span class="step__dot"></span><div><b>12 rules</b><span>Fixed code, each rule citing its source</span></div></li>
+              <li data-step="review"><span class="step__dot"></span><div><b>4 reviewer agents</b><span>Object only with a word-for-word quote</span></div></li>
+              <li data-step="people"><span class="step__dot"></span><div><b>Named people</b><span>Approve, then the alert is signed</span></div></li>
+            </ol>
+          </aside>
+        </div>
+        <div id="draftOut" class="results" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>How a warning gets out</span>
-      <h2>Four layers between the model and a phone.</h2>
-      <p class="lead">The model only proposes text. Code, reviewers and people each get a say, and every step is written to a hash-chained log that anyone can verify.</p>
+      <h2>The model proposes. <span class="t-muted">Code, reviewers and people decide.</span></h2>
     </div>
-    <div class="grid grid-2 flow">
-      <article class="tile reveal" style="--i:0"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
-        <div><p class="t-title">1. Drafter and translator</p><p>One agent turns verified inputs into CAP fields and leaves unverified ones out. A second writes the Arabic, from a vetted template when one exists, and flags machine translation for review.</p></div></article>
-      <article class="tile reveal" style="--i:1"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
-        <div><p class="t-title">2. Twelve fixed rules</p><p>Rules R0 to R11 are plain code. Each quotes a public policy or an official investigation. A failed rule blocks the alert; a missing approval holds it.</p></div></article>
-      <article class="tile reveal" style="--i:2"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.8-3 3-4.6 5.5-4.6s4.7 1.6 5.5 4.6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.6c2.3.1 3.8 1.5 4.5 4.4"/></svg></div>
-        <div><p class="t-title">3. Four reviewer agents</p><p>Met office, issuing authority, network operator and regulator, and an Arabic reviewer. Each sees only its part, searches 11,572 clauses (UAE texts first) and must quote its source word for word, or the objection is dropped.</p></div></article>
-      <article class="tile reveal" style="--i:3"><div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.4 3 8.3 7 10 4-1.7 7-5.6 7-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <div><p class="t-title">4. Named people</p><p>A severe alert needs two approvers, plus a named reader for machine-translated Arabic. Their roles and the AI's part are written into the alert, which is then signed.</p></div></article>
+    <div class="flowmap">
+      <ol class="flowmap__row">
+        <li class="node"><span class="node__tag t-mono">SRC · C</span><b>Event inputs</b><span>Each marked verified or not. The operator picks the zone.</span></li>
+        <li class="node node--ai"><span class="node__tag t-mono">M</span><b>Drafter and translator</b><span>AI writes CAP fields in English and Arabic. It has no send function.</span></li>
+        <li class="node node--rule"><span class="node__tag t-mono">P</span><b>12 rules</b><span>Plain code. A failed rule blocks; a missing approval holds.</span></li>
+        <li class="node node--agent"><span class="node__tag t-mono">P</span><b>4 reviewer agents</b><span>Met office, issuer, operator, Arabic. Each must quote a clause word for word.</span></li>
+        <li class="node node--people"><span class="node__tag t-mono">D</span><b>2 named people</b><span>Read open objections, approve, then the alert is signed.</span></li>
+      </ol>
+      <div class="flowmap__loop"><span>Rule failures and cited objections go back to the drafter, up to twice</span></div>
+      <div class="flowmap__log"><span class="t-mono">SINK</span> Every step is written to a hash-chained audit log. <a class="link" href="#log">Try to tamper with one</a></div>
+      <figure class="phone" aria-label="Illustration: how the demo draft would look on a phone">
+        <div class="phone__screen">
+          <p class="phone__time">14:58</p>
+          <div class="phone__alert">
+            <p class="phone__head">Emergency alert · تنبيه طوارئ</p>
+            <p class="phone__ar" lang="ar" dir="rtl">تحذير NCM: رياح شمالية غربية نشطة إلى قوية تتسبب في تطاير الغبار والرمال، مما يُخفّض مستوى الرؤية إلى أقل من 2,000 م…</p>
+            <p class="phone__en">NCM warning: fresh to strong northwesterly winds are causing blowing dust and sand, reducing visibility to less than 2,000 m…</p>
+          </div>
+        </div>
+        <figcaption>Illustration of the demo draft on a phone. It only gets here after both approvals and the signature.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="section" id="replays">
+<section class="section section--alt" id="replays">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Real failures</span>
-      <h2>Nine real alert failures, replayed. <span class="t-muted">The official finding is the answer key.</span></h2>
-      <p class="lead">Each message was rebuilt from public reports and run through the rules exactly as it was sent. Three were added after the rules were frozen, and nobody who wrote the rules picked them.</p>
+      <h2 id="replaysH">Real alert failures, replayed. <span class="t-muted">The official finding is the answer key.</span></h2>
+      <p class="lead" id="replaysLead">Each message was rebuilt from public reports and run through the rules as it was sent. Held-out cases were added after the rules were frozen, picked and mapped by someone who did not write the rules.</p>
     </div>
-    <div class="stats">
-      <div class="stat reveal" style="--i:0"><p class="stat__n t-mono">8 <span>of 9</span></p><p class="t-small">official findings caught by the rules alone</p></div>
-      <div class="stat reveal" style="--i:1"><p class="stat__n t-mono">2 <span>of 3</span></p><p class="t-small">held-out failures caught by the frozen rules</p></div>
-      <div class="stat reveal" style="--i:2"><p class="stat__n t-mono">9 <span>of 9</span></p><p class="t-small">caught by rules and reviewer agents together</p></div>
-    </div>
-    <div id="bench" class="incidents"><p class="t-small">Loading the replays…</p></div>
+    <div class="stats" id="benchStats"></div>
+    <div id="bench" class="replays" role="table" aria-label="Replay results"><p class="t-small">Loading the replays…</p></div>
   </div>
 </section>
 
-<section class="section section--alt" id="layers">
+<section class="section" id="layers">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Which layer catches what</span>
       <h2>Rules catch the format. <span class="t-muted">Agents catch the meaning.</span></h2>
-      <p class="lead">We put one known fault at a time into real AI drafts, then sent the faulty alert to the rules alone, the reviewer agents alone, and both together.</p>
+      <p class="lead">We put one known fault at a time into real AI drafts, then sent each to the rules alone, the agents alone, and both.</p>
     </div>
     <div class="grid grid-2">
       <article class="card card--raised chart-card">
@@ -138,12 +191,33 @@
   </div>
 </section>
 
+<section class="section section--alt" id="log">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Audit log</span>
+      <h2>Change one character. <span class="t-muted">The chain breaks.</span></h2>
+      <p class="lead">This is the real log of one UAE dust warning run: 21 steps from inputs to broadcast. Your browser recomputes every SHA-256 hash itself.</p>
+    </div>
+    <div class="card card--raised tamper">
+      <div class="tamper__bar">
+        <span id="chainState" class="pill pill--na">checking…</span>
+        <div class="tamper__btns">
+          <button class="btn btn-candy btn-sm" id="tamperBtn" type="button">Change one character in step 1</button>
+          <button class="btn btn-outline btn-sm" id="resetBtn" type="button" hidden>Undo</button>
+        </div>
+      </div>
+      <p class="t-small" id="tamperNote">Step 1 is the drafter's text. The edit swaps one digit in the visibility figure, the kind of change nobody would spot by eye.</p>
+      <ol class="chain" id="chain"></ol>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="live">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Use it today</span>
       <h2>Check real alerts now.</h2>
-      <p class="lead">Pick a national alert feed. The server fetches its latest alerts and runs the rules that need no issuer context. No AI is involved, and it takes a few seconds.</p>
+      <p class="lead">Pick a national feed. The server fetches its latest alerts and runs the rules that need no issuer context. No AI is involved.</p>
     </div>
     <div class="try">
       <div class="card try__controls">
@@ -157,14 +231,11 @@
         <span id="feedStatus" class="t-small" role="status"></span>
         <p class="t-small">Up to 12 alerts per feed. Area, sender authority, approvals and keys need the issuer's own console, so they aren't checked here.</p>
       </div>
-      <div class="stage stage--soft try__out"><div id="feedOut" class="feed-out"><p class="empty"><span>Choose a feed and press <b>Check this feed now</b>.<br>The results land here.</span></p></div></div>
+      <div class="stage stage--soft try__out"><div id="feedOut" class="feed-out"><p class="empty"><span>Choose a feed and press <b>Check this feed now</b>.</span></p></div></div>
     </div>
-
-    <div class="card paste">
-      <div class="paste__head">
-        <p class="t-title">Or paste one alert: a second reader before you send</p>
-        <p class="t-small">Paste a CAP 1.2 XML alert, for example one from a public feed. Rules that need the issuer's console (approvals, keys, requested area) show as pending.</p>
-      </div>
+    <details class="card paste">
+      <summary class="t-title">Or paste one CAP alert and check it</summary>
+      <p class="t-small">Rules that need the issuer's console (approvals, keys, requested area) show as pending.</p>
       <textarea id="xml" rows="7" spellcheck="false" placeholder="&lt;alert xmlns=&quot;urn:oasis:names:tc:emergency:cap:1.2&quot;&gt;…"></textarea>
       <div class="paste__row">
         <label class="field field--inline">Profile <select id="profile"><option>GENERIC</option><option>UAE</option><option>US</option></select></label>
@@ -172,7 +243,7 @@
         <button id="check" class="btn btn-ink" type="button">Check alert</button>
       </div>
       <div id="checkOut" class="results" aria-live="polite"></div>
-    </div>
+    </details>
   </div>
 </section>
 
@@ -181,7 +252,7 @@
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>What real alerts record today</span>
       <h2>1,711 live alerts. <span class="t-muted">None says who approved it or whether AI helped.</span></h2>
-      <p class="lead">A snapshot of eight public feeds on 8 November 2026. CAP has no field for either, which is the first gap below.</p>
+      <p class="lead">Eight public feeds, read on 8 November 2026. CAP has no field for either, which is gap G1 below.</p>
     </div>
     <div id="auditOut" class="card card--raised table-card"><p class="t-small">Loading…</p></div>
   </div>
@@ -191,43 +262,86 @@
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Policy and standards gaps</span>
-      <h2>Twelve gaps, five of them found by the agents.</h2>
-      <p class="lead">Each one has sources, prototype evidence, a global example and a named owner in the repository. G1 to G7 came from the mapping exercise and the incident replays. G8 to G12 came from the reviewers recording concerns they could not back with a clause. We also searched the organisers' UAE policy dataset, 62 documents clause by clause, for each gap; the closest clauses are about other things.</p>
+      <h2>Twelve gaps, grouped by who can close them.</h2>
+      <p class="lead">Each has sources, evidence from this prototype and a global example in <span class="t-mono">docs/gaps.md</span>. Five were surfaced by the reviewer agents, when they recorded concerns no clause could back.</p>
     </div>
-    <div class="bento gaps">
-      <article class="span-4 is-accent reveal"><span class="gap__id t-mono">G1 · standards (ITU-T SG17)</span><h3>CAP has no field for AI involvement or a named approver.</h3><p>In 1,711 live alerts from 8 feeds, none records either. We propose five registered parameters, signed with the alert. A draft profile is in the repository.</p></article>
-      <article class="span-2 reveal" style="--i:1"><span class="gap__id t-mono">G2 · UAE policy</span><p class="t-title">No public rule on who approves an AI-drafted public alert.</p><p class="t-small">The UAE AI Charter states principles only. Global example: the FCC's two-person recommendation after Hawaii.</p></article>
-      <article class="span-2 reveal"><span class="gap__id t-mono">G3 · UAE policy</span><p class="t-title">No rule on machine translation of alerts.</p><p class="t-small">The US is split: the FCC refuses it for phone alerts, while the National Weather Service uses AI translation.</p></article>
-      <article class="span-2 reveal" style="--i:1"><span class="gap__id t-mono">G4 · UAE policy</span><p class="t-title">No public CAP feed on the WMO register.</p><p class="t-small">The UAE record is dated 2013. Saudi Arabia, Qatar and Kuwait publish live feeds.</p></article>
-      <article class="span-2 reveal" style="--i:2"><span class="gap__id t-mono">G5 · international norm</span><p class="t-title">No norm on correcting a false alert.</p><p class="t-small">3 of 1,000 recent US alerts cancelled earlier alerts without linking to them.</p></article>
-      <article class="span-3 reveal"><span class="gap__id t-mono">G6 · standards</span><p class="t-title">Vetted templates are sized for a 360-character US limit, not cell broadcast pages.</p><p class="t-small">The FCC's Arabic dust storm template runs to 10 pages in UCS-2. No UAE text sets a page budget, and TDRA TS FS 001 v2.0 sets none.</p></article>
-      <article class="span-3 reveal" style="--i:1"><span class="gap__id t-mono">G7 · standards</span><p class="t-title">CAP status and US test practice disagree.</p><p class="t-small">246 of 1,000 US alerts marked "Actual" carry a test event code.</p></article>
-      <article class="span-2 reveal"><span class="gap__id t-mono">G8 · standards and UAE policy</span><p class="t-title">Nothing requires a phone alert to say what to do.</p><p class="t-small">CAP marks the instruction optional. 658 of 1,711 live alerts carry one, and neither Saudi feed does in any of its 54.</p></article>
-      <article class="span-2 reveal" style="--i:1"><span class="gap__id t-mono">G9 · UAE policy</span><p class="t-title">No published mapping from weather bulletins to CAP severity.</p><p class="t-small">In 30 of 54 fault cases the met office reviewer recorded that no clause sets the severity. Australia publishes a table.</p></article>
-      <article class="span-2 reveal" style="--i:2"><span class="gap__id t-mono">G10 · UAE policy</span><p class="t-title">No rule that the area sent must match the area requested.</p><p class="t-small">Los Angeles 2025 and Japan 2022 both failed here. The FCC sets a target-area objective for providers.</p></article>
-      <article class="span-3 reveal"><span class="gap__id t-mono">G11 · standards and UAE policy</span><p class="t-title">Signing an alert is optional in CAP, and no UAE text requires it.</p><p class="t-small">1,211 of 1,711 live alerts are signed; none of Australia's 499 is. The UAE's 2021 law defines an electronic seal but nothing applies it to alerts.</p></article>
-      <article class="span-3 reveal" style="--i:1"><span class="gap__id t-mono">G12 · UAE policy</span><p class="t-title">No retention rule for alert logs or AI drafting records.</p><p class="t-small">The closest UAE text covers telecom consumer records. The FCC requires providers to log alerts and keep the records for review.</p></article>
+    <article class="gap-hero reveal">
+      <span class="gap__id t-mono">G1 · ITU-T SG17</span>
+      <h3>CAP has no field for AI involvement or a named approver.</h3>
+      <p>In 1,711 live alerts from 8 feeds, none records either. We propose five registered CAP parameters, signed with the alert. A draft profile is in the repository.</p>
+    </article>
+    <div class="gap-groups">
+      <div class="gap-group reveal">
+        <p class="gap-group__h">ITU-T SG17 <small>CAP / X.1303bis</small></p>
+        <ul>
+          <li><span class="t-mono">G6</span><div><b>Vetted templates don't fit cell broadcast pages.</b><span>The FCC's Arabic dust storm template runs to 10 pages in UCS-2.</span></div></li>
+          <li><span class="t-mono">G7</span><div><b>CAP status and US test practice disagree.</b><span>246 of 1,000 US alerts marked “Actual” carry a test event code.</span></div></li>
+          <li><span class="t-mono">G8</span><div><b>Nothing requires an alert to say what to do.</b><span>658 of 1,711 live alerts carry an instruction. Also UAE: NCEMA with TDRA.</span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G11</span><div><b>Signing is optional, and no UAE text requires it.</b><span>1,211 of 1,711 are signed; none of Australia's 499. Also UAE: TDRA with NCEMA.</span><em class="agent-found">found by agents</em></div></li>
+        </ul>
+      </div>
+      <div class="gap-group reveal" style="--i:1">
+        <p class="gap-group__h">UAE bodies <small>TDRA, NCEMA, NCM</small></p>
+        <ul>
+          <li><span class="t-mono">G2</span><div><b>No rule on who approves an AI-drafted alert.</b><span>NCEMA / TDRA. The UAE AI Charter states principles only.</span></div></li>
+          <li><span class="t-mono">G3</span><div><b>No rule on machine translation of alerts.</b><span>The FCC refuses it for phone alerts; the US weather service uses it.</span></div></li>
+          <li><span class="t-mono">G4</span><div><b>No public CAP feed on the WMO register.</b><span>The UAE entry is dated 2013. Saudi Arabia, Qatar and Kuwait publish feeds.</span></div></li>
+          <li><span class="t-mono">G9</span><div><b>No mapping from bulletins to CAP severity.</b><span>NCM with NCEMA. Australia publishes a table.</span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G10</span><div><b>No rule that the area sent matches the area requested.</b><span>TDRA with operators. Los Angeles 2025 and Japan 2022 failed here.</span><em class="agent-found">found by agents</em></div></li>
+          <li><span class="t-mono">G12</span><div><b>No retention rule for alert logs or AI drafting records.</b><span>TDRA with NCEMA. The FCC requires gateway logs.</span><em class="agent-found">found by agents</em></div></li>
+        </ul>
+      </div>
+      <div class="gap-group reveal" style="--i:2">
+        <p class="gap-group__h">International good practice <small>ITU-T or ITU-D</small></p>
+        <ul>
+          <li><span class="t-mono">G5</span><div><b>No norm for correcting a false alert.</b><span>Hawaii's and LA's corrections went out as new alerts. 3 of 1,000 recent US cancellations did not link to what they cancelled.</span></div></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section section--alt" id="limits">
+<section class="section section--alt" id="y3172">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Standards mapping</span>
+      <h2>Every ITU-T Y.3172 node, <span class="t-muted">with its code and its test.</span></h2>
+      <p class="lead">All 13 AI Readiness dimensions are rated in the repository: five exercised by running code, four partly, four not addressed.</p>
+    </div>
+    <div class="card card--raised table-card">
+      <div class="table-wrap"><table class="mini-table y-table">
+        <tr><th>Node</th><th>In Nadhir</th><th>Code</th><th>Checked by</th><th>Limit</th></tr>
+        <tr><td class="t-mono">SRC</td><td>Event inputs, each marked verified or not</td><td class="t-mono">bench/, web inputs</td><td>R11 tests (invented number, place, hazard)</td><td>Inputs typed or pasted; no live bulletin feed</td></tr>
+        <tr><td class="t-mono">C</td><td>Inputs, operator's zone, issuer register, prior alerts</td><td class="t-mono">pipeline.py</td><td>R3 and R4 tests; Seoul and LA replays</td><td>Demo issuer register and zones</td></tr>
+        <tr><td class="t-mono">PP</td><td>CAP 1.2 XML, schema check, page count per script</td><td class="t-mono">cap.py, gate.py R0, R6</td><td>R0 and R6 tests (UCS-2 pages)</td><td>Page budget is noted, not enforced: no UAE limit exists (G6)</td></tr>
+        <tr><td class="t-mono">M</td><td>Drafter and translator agents; propose only</td><td class="t-mono">agents.py</td><td>Every answer recorded; CI replays all runs from the recordings</td><td>Hosted model; recordings fix outputs, not model behaviour</td></tr>
+        <tr><td class="t-mono">P</td><td>12 rules; 4 reviewer agents that must quote</td><td class="t-mono">gate.py, institutions.py</td><td>36 rule tests, 6 agent tests, 54 injected faults, 9+ replays</td><td>Agents stand in for roles, not the real bodies</td></tr>
+        <tr><td class="t-mono">D</td><td>Two named approvers, roles written in, signed</td><td class="t-mono">pipeline.py</td><td>R1, R5, R8, R9 tests (incl. tamper after signing)</td><td>Demo keys; no real identity check on names</td></tr>
+        <tr><td class="t-mono">SINK</td><td>Signed alert to a broadcast stub; hash-chained log</td><td class="t-mono">log.py</td><td>Log tests; CI re-verifies every log's chain</td><td>No real cell broadcast centre</td></tr>
+        <tr><td class="t-mono">MLFO</td><td>Orchestrator: order, redrafts (up to 2), model choice</td><td class="t-mono">pipeline.py</td><td>Bench runs with and without the gate</td><td>Fixed order; no load or failover testing</td></tr>
+        <tr><td class="t-mono">Sandbox</td><td>Replay bench, demo issuer, keys and zones</td><td class="t-mono">bench.py, keys/demo/</td><td>CI reruns the bench on every push</td><td>Replays rebuilt from public reports, not the original systems</td></tr>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="limits">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="dot"></span>Limits</span>
       <h2>What this does not prove.</h2>
     </div>
     <div class="faq">
-      <details><summary>Are the replays the original systems?</summary><p>No. Each one is rebuilt from public reports. Where the record is silent, we assume the alert was fine. Four incidents rest on official statements rather than investigation reports, and the India case on press reports only.</p></details>
-      <details><summary>Who wrote the faults and answer keys?</summary><p>The 30-fault set and its matching terms are ours. The 24 pre-registered faults were written by a separate agent that saw only the drafts, and committed before the run. The replays use the investigators' own findings as the answer key.</p></details>
+      <details><summary>Are the replays the original systems?</summary><p>No. Each one is rebuilt from public reports. Where the record is silent, we assume the alert was fine. Some incidents rest on official statements rather than investigation reports, and the India case on press reports only.</p></details>
+      <details><summary>Who wrote the faults and answer keys?</summary><p>The 30-fault set and its matching terms are ours. The 24 pre-registered faults were written by a separate AI agent that saw only the drafts, and committed before the run. They were not written by alerting professionals. The replays use the investigators' own findings as the answer key.</p></details>
       <details><summary>Are the reviewer agents the real institutions?</summary><p>No. They stand in for roles. Two models play the six agents: one drafts and translates, another reviews.</p></details>
       <details><summary>What about the UAE specifics?</summary><p>The issuer register, target zones and signing keys are demo stand-ins. TDRA's 2019 UAE-Alert specification is the primary text for handset behaviour; the 2015 handset rules come from a compliance firm's summary.</p></details>
-      <details><summary>Does the Taiwan miss matter?</summary><p>Yes. The frozen rules missed it because R11 only checks AI-written text, and Taiwan's wrong English came from an old human template. The met office reviewer caught it. A grounding check should run on every alert.</p></details>
+      <details><summary>What do the misses mean?</summary><p>R11 only checks AI-written text, so a wrong human template (Taiwan 2024) gets past the rules. The met office reviewer caught it. A grounding check should run on every alert. Every held-out result is shown as it came out, misses included.</p></details>
     </div>
   </div>
 </section>
 
-<section class="section final">
+<section class="section section--alt final">
   <div class="container">
     <img class="final__icon" src="/web/icon-256.png" alt="" width="88" height="88">
     <h2>Try it on a real UAE warning. <span class="t-muted">It takes about a minute.</span></h2>
@@ -248,8 +362,8 @@ if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 }else document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-const nav=document.querySelector('.nav'),hero=document.getElementById('heroCopy');
-if(nav&&hero)new IntersectionObserver(([e])=>nav.classList.toggle('nav--on-color',e.isIntersecting),{rootMargin:'-40px 0px -90% 0px'}).observe(hero);
+const nav=document.querySelector('.nav'),hero=document.getElementById('top');
+if(nav&&hero){const navTone=()=>nav.classList.toggle('nav--on-color',scrollY<hero.offsetHeight-60);addEventListener('scroll',navTone,{passive:true});navTone();}
 </script>
 </body>
 </html>

@@ -139,7 +139,7 @@ $("draft").onclick = async () => {
   }));
   const btn = $("draft");
   btn.disabled = true;
-  $("draftStatus").innerHTML = '<span class="spin"></span>Drafting and reviewing. The prefilled example takes a few seconds; new text can take up to about 90.';
+  $("draftStatus").innerHTML = '<span class="spin"></span>Drafting and reviewing. The prefilled example takes about 20 seconds; new text can take up to about 90.';
   $("draftOut").innerHTML = "";
   animateSteps();
   const res = await post("/api/draft", { inputs, zone: $("zone").value, exercise: $("exercise").checked });
@@ -245,19 +245,108 @@ $("feedBtn").onclick = async () => {
 
 /* ---------- published results ---------- */
 fetch("/web/results/bench.json").then((r) => r.json()).then((b) => {
-  const items = [...b.incidents].sort((x, y) => (x.heldout === y.heldout ? x.date.localeCompare(y.date) : x.heldout ? 1 : -1));
-  $("bench").innerHTML = items.map((i) => `<article class="incident${i.match ? "" : " is-miss"} reveal">
-      <div class="incident__top"><span class="incident__date">${esc(i.date.slice(0, 4))}${i.heldout ? " · held out" : ""}</span>${i.as_sent.decision === "blocked" ? pill("fail").replace("fails", "blocked") : '<span class="pill pill--na">not blocked</span>'}</div>
-      <p class="t-title">${esc(i.title)}</p>
-      <p>${esc(i.outcome)}</p>
-      <blockquote>“${esc(i.finding.quote)}”<cite>${esc(i.finding.body)}</cite></blockquote>
-      <div class="incident__foot">
-        <div>Rules that fired: ${i.as_sent.failed.length ? i.as_sent.failed.map((x) => `<span class="rule-chip">${esc(x)}</span>`).join("") : "none"}</div>
-        <div>Matches the finding: ${i.match ? '<span class="pill pill--pass">yes</span>' : '<span class="pill pill--fail">no</span>'} <span class="t-micro">expected ${esc(i.expected.join(", "))}</span></div>
-        <div>Reviewer agents alone: ${i.agents_on_real ? (i.agents_on_real.length ? i.agents_on_real.map((x) => `<span class="rule-chip">${esc(x)}</span>`).join("") : '<span class="pill pill--fail">missed</span>') : "not run"}</div>
-      </div></article>`).join("") + `<p class="t-small bench-note">${esc(b.note || "")}</p>`;
-  observeReveals($("bench"));
+  const all = b.incidents;
+  const held = all.filter((i) => i.heldout);
+  const rules = all.filter((i) => i.match).length;
+  const heldRules = held.filter((i) => i.match).length;
+  const both = all.filter((i) => i.match || (i.agents_on_real || []).some((x) => i.expected.includes(x))).length;
+  $("pf-replays").innerHTML = `${rules} <span>of ${all.length}</span>`;
+  $("benchStats").innerHTML = [
+    [rules, all.length, "official findings matched by the rules alone"],
+    [heldRules, held.length, "held-out failures caught by the frozen rules"],
+    [both, all.length, "caught by rules or reviewer agents"],
+  ].map(([n, d, l], k) => `<div class="stat reveal" style="--i:${k}"><p class="stat__n t-mono">${n} <span>of ${d}</span></p><p class="t-small">${l}</p></div>`).join("");
+  const items = [...all].sort((x, y) => (x.heldout === y.heldout ? x.date.localeCompare(y.date) : x.heldout ? 1 : -1));
+  const chips = (xs) => xs.length ? xs.map((x) => `<span class="rule-chip">${esc(x)}</span>`).join("") : '<span class="t-micro">none</span>';
+  $("bench").innerHTML = `<div class="replay replay--head" role="row"><span role="columnheader">Failure</span><span role="columnheader">Rules that fired</span><span role="columnheader">Matches the finding</span><span role="columnheader">Agents alone</span></div>` +
+    items.map((i) => `<details class="replay${i.match ? "" : " is-miss"}${i.heldout ? " is-held" : ""}" role="row">
+      <summary>
+        <span class="replay__what" role="cell"><span class="replay__year">${esc(i.date.slice(0, 4))}${i.heldout ? '<em>held out</em>' : ""}</span><b>${esc(i.title)}</b></span>
+        <span class="replay__rules" role="cell"><span class="replay__lbl">Rules</span>${chips(i.as_sent.failed)}</span>
+        <span role="cell"><span class="replay__lbl">Finding</span>${i.match ? '<span class="pill pill--pass">yes</span>' : '<span class="pill pill--fail">missed</span>'} <span class="t-micro">key ${esc(i.expected.join(", ") || "none")}</span></span>
+        <span role="cell"><span class="replay__lbl">Agents</span>${i.agents_on_real ? (i.agents_on_real.length ? chips(i.agents_on_real) : '<span class="pill pill--fail">missed</span>') : "not run"}</span>
+      </summary>
+      <div class="replay__more"><p>${esc(i.outcome)}</p><blockquote>“${esc(i.finding.quote)}”<cite>${esc(i.finding.body)}</cite></blockquote></div>
+    </details>`).join("") + `<p class="t-small bench-note">${esc(b.note || "")} Open a row for the official finding.</p>`;
+  observeReveals($("benchStats"));
 }).catch(() => { $("bench").innerHTML = '<p class="t-small">Replay results not built yet.</p>'; });
+
+/* ---------- hero preview tabs ---------- */
+document.querySelectorAll(".preview__tabs [role=tab]").forEach((t) => {
+  t.onclick = () => {
+    document.querySelectorAll(".preview__tabs [role=tab]").forEach((o) => {
+      const on = o === t;
+      o.setAttribute("aria-selected", on);
+      $(o.getAttribute("aria-controls")).hidden = !on;
+    });
+  };
+});
+
+/* ---------- audit log tamper check (same bytes as Python json.dumps(sort_keys=True, ensure_ascii=False)) ---------- */
+const pyjson = (v) => {
+  if (v === null) return "null";
+  if (Array.isArray(v)) return "[" + v.map(pyjson).join(", ") + "]";
+  if (typeof v === "object") return "{" + Object.keys(v).sort().map((k) => JSON.stringify(k) + ": " + pyjson(v[k])).join(", ") + "}";
+  return JSON.stringify(v);
+};
+const sha256 = async (t) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t)))].map((x) => x.toString(16).padStart(2, "0")).join("");
+const LOG_LABEL = { inputs: "event inputs", draft: "draft", translate: "Arabic translation", review: "review", approve: "approval", "objections-at-approval": "open objections read", "release-check": "final check", broadcast: "broadcast" };
+let logOrig = null, logNow = null, tamperStage = 0;
+async function checkChain(recs) {
+  let prev = "0".repeat(64), broke = -1, why = "";
+  const rows = [];
+  for (const [k, r] of recs.entries()) {
+    const { hash, ...body } = r;
+    const h = await sha256(pyjson(body));
+    let ok = true, note = "";
+    if (broke < 0 && r.prev !== prev) { ok = false; note = "previous-hash link broken"; }
+    else if (broke < 0 && h !== hash) { ok = false; note = "content does not match its hash"; }
+    if (!ok && broke < 0) { broke = k; why = note; }
+    rows.push({ r, h, state: broke < 0 ? "ok" : k === broke ? "bad" : "after", note });
+    prev = hash;
+  }
+  return { rows, broke, why };
+}
+async function drawChain() {
+  if (!crypto.subtle) { $("chainState").textContent = "this browser can't hash"; return; }
+  const { rows, broke, why } = await checkChain(logNow);
+  $("chainState").className = `pill pill--${broke < 0 ? "pass" : "fail"}`;
+  $("chainState").textContent = broke < 0 ? `${rows.length} steps, chain intact` : `broken at step ${broke}: ${why}`;
+  $("chain").innerHTML = rows.map(({ r, h, state, note }) => `<li class="crow is-${state}">
+      <span class="crow__seq t-mono">${String(r.seq).padStart(2, "0")}</span>
+      <span class="crow__what"><b>${esc(r.actor)}</b> · ${esc(LOG_LABEL[r.action] || r.action)}${state === "bad" ? `<em>${esc(note)}</em>` : ""}</span>
+      <span class="crow__hash t-mono">${esc(h.slice(0, 10))} <i>←</i> ${esc(r.prev.slice(0, 10))}</span></li>`).join("");
+}
+fetch("/web/results/log-sample.jsonl").then((r) => r.text()).then((t) => {
+  logOrig = t.split("\n").filter(Boolean).map((l) => JSON.parse(l));
+  logNow = structuredClone(logOrig);
+  drawChain();
+}).catch(() => { $("chainState").textContent = "log not found"; });
+$("tamperBtn").onclick = async () => {
+  if (!logNow) return;
+  if (tamperStage === 0) {
+    const f = logNow[1].payload.fields;
+    f.description = f.description.replace("2,000", "3,000");
+    tamperStage = 1;
+    $("tamperBtn").textContent = "Now recompute step 1's hash to hide it";
+    $("tamperNote").innerHTML = 'Step 1 now says visibility under <b>3,000</b> metres. Its stored hash no longer matches its content.';
+  } else if (tamperStage === 1) {
+    const { hash, ...body } = logNow[1];
+    logNow[1].hash = await sha256(pyjson(body));
+    tamperStage = 2;
+    $("tamperBtn").hidden = true;
+    $("tamperNote").innerHTML = "Step 1's hash is fixed, so step 2's link to it breaks instead. To hide the edit, someone would have to rewrite every later hash, and the head would then differ from any copy kept elsewhere. That is why the head hash should be held by a second party.";
+  }
+  $("resetBtn").hidden = false;
+  drawChain();
+};
+$("resetBtn").onclick = () => {
+  logNow = structuredClone(logOrig); tamperStage = 0;
+  $("tamperBtn").hidden = false; $("resetBtn").hidden = true;
+  $("tamperBtn").textContent = "Change one character in step 1";
+  $("tamperNote").textContent = "Step 1 is the drafter's text. The edit swaps one digit in the visibility figure, the kind of change nobody would spot by eye.";
+  drawChain();
+};
 
 function bars(s, ofLabel) {
   const rows = [["No checks", s.named.none ?? 0], ["12 rules only", s.named.rules], ["4 reviewer agents only", s.named.agents], ["Rules and agents", s.named.both]];
@@ -292,8 +381,8 @@ fetch("/web/results/audit.json").then((r) => r.json()).then((a) => {
   $("auditOut").innerHTML = `<div class="audit-big"><div><b class="t-mono">${total.toLocaleString("en")}</b><span>live public alerts read</span></div>
       <div><b class="t-mono">${ai}</b><span>record that AI or machine translation was involved</span></div>
       <div><b class="t-mono">0</b><span>record who approved them (17 US alerts carry a vendor login name)</span></div></div>
-    <div class="table-wrap"><table class="mini-table"><tr><th>Source</th><th>Alerts</th><th>AI marker</th><th>Approver marker</th><th>Signed</th></tr>
-    ${a.rows.map((r) => `<tr><td>${esc(r.source)}</td><td class="t-mono">${r.alerts}</td><td class="t-mono">${r.ai}</td><td class="t-mono">${r.approver}</td><td class="t-mono">${r.signed}</td></tr>`).join("")}</table></div>
+    <details><summary class="link">Per feed</summary><div class="table-wrap"><table class="mini-table"><tr><th>Source</th><th>Alerts</th><th>AI marker</th><th>Approver marker</th><th>Signed</th></tr>
+    ${a.rows.map((r) => `<tr><td>${esc(r.source)}</td><td class="t-mono">${r.alerts}</td><td class="t-mono">${r.ai}</td><td class="t-mono">${r.approver}</td><td class="t-mono">${r.signed}</td></tr>`).join("")}</table></div></details>
     <p class="t-micro" style="margin-top:12px">${esc(a.note || "")}</p>`;
 }).catch(() => { $("auditOut").innerHTML = '<p class="t-small">Audit results not built yet.</p>'; });
 

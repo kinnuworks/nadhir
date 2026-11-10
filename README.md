@@ -113,6 +113,8 @@ Twelve gaps. For each one, [docs/gaps.md](docs/gaps.md) gives the missing text, 
 
 ## How it works
 
+![(a) The pipeline, labelled with ITU-T Y.3172 nodes. (b) Which layer names each injected fault, for the pre-registered set and our own](docs/media/fig-pipeline-layers.png)
+
 ```
 event inputs ─► Drafter ─► Translator ─► Gate: R0–R11 ─► 4 institution agents ─► people approve ─► sign ─► Gate again ─► broadcast
  (verified /    English     Arabic:       deterministic,    met office, issuer,     two names, read      XML-DSig    release
@@ -150,7 +152,19 @@ None of them can approve. A person can release an alert with an objection still 
 
 Mapping to ITU-T Y.3172 and the AI Readiness Framework: [docs/y3172-and-readiness.md](docs/y3172-and-readiness.md). Each Y.3172 node is mapped to the code that implements it (the underlay network is not touched), and all 13 Readiness dimensions are rated: five exercised by running code (D4, D7, D8, D10, D13), four partly (D1, D5, D6, D11), four not addressed (D2, D3, D9, D12).
 
+| Y.3172 node | Code | Checked by | Limit |
+|---|---|---|---|
+| SRC / C | `nadhir/pipeline.py` | R3, R4 and R11 tests; Seoul and LA replays | Demo issuer register and zones; inputs typed, not fed live |
+| PP | `nadhir/cap.py`, `gate.py` R0 and R6 | Schema and UCS-2 page tests | Page budget noted, not enforced (no UAE limit exists, G6) |
+| M | `nadhir/agents.py` | Every model answer recorded; CI replays all runs from the recordings | Recordings fix the outputs, not the model's behaviour |
+| P | `nadhir/gate.py`, `nadhir/institutions.py` | 36 rule tests, 6 agent tests, 54 injected faults, the replays | Agents stand in for roles, not the real bodies |
+| D | `nadhir/pipeline.py` | R1, R5, R8 and R9 tests, including tampering after signing | Demo keys; approver names are not identity-checked |
+| SINK / MLFO | `nadhir/log.py`, `nadhir/pipeline.py` | Log tests; CI re-verifies every chain | Cell broadcast centre is a stub; no load testing |
+
 ## Check it yourself
+
+On the live page, the audit log section loads the real 21-step log of one UAE run and recomputes every SHA-256 hash in your browser. One button changes a single digit in the drafter's text and shows where the chain breaks; a second recomputes that step's hash and shows the break moving to the next link.
+
 
 ```bash
 python -m venv .venv && .venv/bin/pip install -r requirements.txt pytest

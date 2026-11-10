@@ -15,6 +15,20 @@ Y.3172 (06/2019) describes a machine-learning pipeline in a network: source, col
 | ML sandbox | The replay bench and the demo issuer, keys and zones. Nothing touches a real broadcast system | `nadhir/bench.py`, `nadhir/keys/demo/` | D10 AI policy (rules tried on real failures before any live use) | Y3172 |
 | Underlay | A real cell broadcast centre and handsets. Not touched | n/a | n/a | TS23041 |
 
+## What tests each node, and its limit
+
+| Node | Checked by | Limit |
+|---|---|---|
+| SRC | R11 tests (invented number, place, hazard) | Inputs are typed or pasted; no live bulletin feed |
+| C | R3 and R4 tests; Seoul and LA replays | Demo issuer register and zones |
+| PP | R0 schema test; R6 tests, including UCS-2 pages for Arabic | Page budget is noted, not enforced: no UAE limit exists (G6) |
+| M | Every model answer is recorded; CI replays all runs from the recordings and fails on any change | Recordings fix the outputs, not the model's behaviour |
+| P | 36 rule tests, 6 agent tests (quote check, partial views, dropped objections), 54 injected faults, the replays | The agents stand in for roles, not the real bodies |
+| D | R1, R5, R8 and R9 tests, including tampering after signing | Demo keys; approver names are not identity-checked |
+| SINK | Log tests (edit and deletion detected); CI re-verifies every log's chain | No real cell broadcast centre |
+| MLFO | Bench runs with and without the gate | Fixed order; no load or failover testing |
+| ML sandbox | CI reruns the bench on every push | Replays are rebuilt from public reports, not the original systems |
+
 ## All 13 Readiness dimensions, with status
 
 Dimension names follow the ITU AI Readiness Framework 2.0 as used in the organisers' own simulation code (ITUAIReadiness, `simulation/server/agents/`). Their Y.3172 node-to-dimension map (`usecase.py`) is in the second column, so the two tables line up. Status says how far this prototype goes, with the file or result that shows it.

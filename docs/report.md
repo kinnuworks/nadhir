@@ -16,6 +16,8 @@ AI is starting to write warning text. The US National Weather Service publishes 
 
 **Our solution.** A Drafter agent turns verified event inputs into CAP fields and leaves unverified inputs out. A Translator agent produces Arabic, from a vetted template where one exists, otherwise by machine translation flagged for review. The gate then runs 12 rules (R0–R11). Text failures go back to the Drafter, up to twice. Four institution agents then review the draft, each standing in for a body with its own partial view: a met office reviewer (sees the bulletin and the English text), an issuing-authority reviewer (sees the issuer register, active alerts and the area), a network operator and regulator reviewer (sees each language's text with its cell broadcast page count) and an Arabic reviewer (sees English and Arabic only). Each writes its own searches over a clause-level knowledge base and must quote what it relies on; code drops any objection whose quote is not word for word in the clause or the alert. Cited objections go back to the Drafter once; any still open go to the people, who must read them before release. Process failures (area, issuer, approvals, signature) are held for people. After approval, the approver roles and the AI involvement are written into the alert and signed. The gate checks it once more, then releases it. Every step is logged in a hash chain.
 
+![Figure 1. (a) The pipeline, labelled with ITU-T Y.3172 nodes. (b) Which layer names each injected fault. A fault counts as named only if the rule or agent output contains the terms committed for it in advance.](docs/media/fig-pipeline-layers.png)
+
 ## 3. Use case requirements per pipeline node
 
 - **SRC:** event inputs must be marked verified or unverified. Only verified inputs may reach the alert text (R11 checks every number, hazard and listed place against them).
@@ -40,6 +42,17 @@ AI is starting to write warning text. The US National Weather Service publishes 
 | MLFO / sandbox | Orchestrator with gate-feedback redrafts; replay bench of real failures, demo keys and zones | D7, D10 | ITU-T Y.3172 |
 
 All 13 Readiness dimensions are rated in `docs/y3172-and-readiness.md`, each with its evidence or the reason it is missing: five are exercised by running code (D4, D7, D8, D10, D13), four partly (D1, D5, D6, D11), and four are not addressed (D2, D3, D9, D12).
+
+Each node is also tied to the code that does the job, the check that tests it, and its limit:
+
+| Node | Code | Checked by | Limit |
+|---|---|---|---|
+| SRC / C | `pipeline.py` | R3, R4, R11 tests; Seoul and LA replays | Demo issuer register and zones; inputs typed, not fed live |
+| PP | `cap.py`, `gate.py` R0, R6 | Schema and UCS-2 page tests | Page budget noted, not enforced (no UAE limit, G6) |
+| M | `agents.py` | Every answer recorded; CI replays all runs from recordings | Recordings fix outputs, not model behaviour |
+| P | `gate.py`, `institutions.py` | 36 rule tests, 6 agent tests, 54 injected faults, replays | Agents stand in for roles, not the real bodies |
+| D | `pipeline.py` | R1, R5, R8, R9 tests, incl. tampering after signing | Demo keys; approver names not identity-checked |
+| SINK / MLFO | `log.py`, `pipeline.py` | Log tests; CI re-verifies every chain | Broadcast centre is a stub; no load testing |
 
 ## 5. Error scenarios
 
