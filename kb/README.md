@@ -1,6 +1,6 @@
 # Knowledge base
 
-`sources.yaml` lists the public documents that the gate rules (R0 to R11) and the gap list (G1 to G7) rely on. Each entry has the document's title, publisher, date, URL, kind, jurisdiction, a check status, the date we fetched it, the SHA-256 of the bytes we fetched, the rules and gaps it supports, and one to three short verbatim quotes with a locator.
+`sources.yaml` lists the public documents that the gate rules (R0 to R11) and the gap list (G1 to G12) rely on. Each entry has the document's title, publisher, date, URL, kind, jurisdiction, a check status, the date we fetched it, the SHA-256 of the bytes we fetched, the rules and gaps it supports, and one to three short verbatim quotes with a locator.
 
 The repo holds metadata, hashes and short quotes only. Full documents are not stored here. Every source is public and free to read. Nothing is paywalled or confidential.
 
